@@ -1,0 +1,32 @@
+name: Shinyguitar resource bridge
+on:
+  workflow_dispatch:
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Fetch pinned Shinyguitar repository
+        run: |
+          git clone --filter=blob:none --no-checkout https://github.com/sfzinstruments/karoryfer.shinyguitar.git shinyguitar
+          cd shinyguitar
+          git sparse-checkout init --cone
+          git sparse-checkout set Programs Samples
+          git checkout 57243cca85277dbcc120ce17c6178032f93c80f3
+      - name: Build Shinyguitar proof pack
+        run: |
+          mkdir -p proof-pack
+          cp -a shinyguitar/Programs proof-pack/
+          cp -a shinyguitar/Samples proof-pack/
+          printf '%s\n' \
+            'Source: sfzinstruments/karoryfer.shinyguitar' \
+            'Pinned commit: 57243cca85277dbcc120ce17c6178032f93c80f3' \
+            'License: CC0-1.0' \
+            'Purpose: AI Composition real-sample guitar renderer verification' \
+            > proof-pack/PROVENANCE.txt
+          find proof-pack -type f | sort > proof-pack/FILELIST.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shinyguitar-proof-pack
+          path: proof-pack
+          compression-level: 0

@@ -1,28 +1,34 @@
 name: Big Rusty resource bridge
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 jobs:
   acquire:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Fetch pinned Big Rusty repository
         run: |
-          git clone https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git big-rusty
+          git clone --filter=blob:none --no-checkout https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git big-rusty
           cd big-rusty
+          git sparse-checkout init --cone
+          git sparse-checkout set Programs Samples/kick_24 Samples/snare_14 Samples/hihat_14 Samples/tom_14 Samples/tom_15 Samples/tom_18 Samples/tom_22 Samples/crash_17 Samples/ride_22 Samples/china_18 Samples/stack_3_layer
           git checkout f07ce00df34a46b6b08375be56fe116cf15782bc
       - name: Build full-kit proof pack
         run: |
-          mkdir -p proof-pack
-          cp -a big-rusty/Programs proof-pack/
           mkdir -p proof-pack/Samples
+          cp -a big-rusty/Programs proof-pack/
           for d in kick_24 snare_14 hihat_14 tom_14 tom_15 tom_18 tom_22 crash_17 ride_22 china_18 stack_3_layer; do
+            test -d "big-rusty/Samples/$d"
             cp -a "big-rusty/Samples/$d" "proof-pack/Samples/"
           done
-          printf '%s\n'             'Source: sfzinstruments/karoryfer.big-rusty-drums'             'Pinned commit: f07ce00df34a46b6b08375be56fe116cf15782bc'             'Purpose: AI Composition real-sample drum renderer verification'             > proof-pack/PROVENANCE.txt
+          printf '%s\n' \
+            'Source: sfzinstruments/karoryfer.big-rusty-drums' \
+            'Pinned commit: f07ce00df34a46b6b08375be56fe116cf15782bc' \
+            'Purpose: AI Composition real-sample drum renderer verification' \
+            > proof-pack/PROVENANCE.txt
+          find proof-pack -type f | sort > proof-pack/FILELIST.txt
       - uses: actions/upload-artifact@v4
         with:
           name: big-rusty-full-kit-proof-pack
           path: proof-pack
-          compression-level: 6
+          compression-level: 0

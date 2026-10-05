@@ -1,0 +1,28 @@
+name: Big Rusty resource bridge
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch pinned Big Rusty repository
+        run: |
+          git clone https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git big-rusty
+          cd big-rusty
+          git checkout f07ce00df34a46b6b08375be56fe116cf15782bc
+      - name: Build full-kit proof pack
+        run: |
+          mkdir -p proof-pack
+          cp -a big-rusty/Programs proof-pack/
+          mkdir -p proof-pack/Samples
+          for d in kick_24 snare_14 hihat_14 tom_14 tom_15 tom_18 tom_22 crash_17 ride_22 china_18 stack_3_layer; do
+            cp -a "big-rusty/Samples/$d" "proof-pack/Samples/"
+          done
+          printf '%s\n'             'Source: sfzinstruments/karoryfer.big-rusty-drums'             'Pinned commit: f07ce00df34a46b6b08375be56fe116cf15782bc'             'Purpose: AI Composition real-sample drum renderer verification'             > proof-pack/PROVENANCE.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: big-rusty-full-kit-proof-pack
+          path: proof-pack
+          compression-level: 6

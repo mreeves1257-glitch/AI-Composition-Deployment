@@ -50,28 +50,62 @@ path.write_text(json.dumps(registry,indent=2)+"\n")
 # genre-adapter boundary. Quick/test mode stays untouched.
 adapter=Path("composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py")
 a=adapter.read_text()
-old_progression=""" cycle = ['I','vi','IV','V'] if quality in ('major','ionian') else ['i','VI','III','VII']
- rotation = (seedv // 19) % len(cycle)
- req['roman_progression'] = cycle[rotation:] + cycle[:rotation]
+override=r"""
+# --- full-length development override ---
+from genre_development_patch import (
+    build_developed_progression as _build_developed_progression,
+    develop_full_length as _develop_full_length,
+)
+_legacy_build_setup = build_setup
+
+def build_setup(name, profile, mode='quick', creation_seed=0):
+    result = _legacy_build_setup(name, profile, mode, creation_seed)
+    if mode != 'normal' or result.get('status') != 'PASS':
+        return result
+
+    req = dict(result['theory_request'])
+    bars = int(result['bars'])
+    seedv = int(hashlib.sha256(
+        f"{profile['profile_id']}:{creation_seed}".encode()
+    ).hexdigest()[:8], 16)
+    req['roman_progression'] = _build_developed_progression(
+        req['mode'], bars, seedv
+    )
+
+    ctx = engine.build_composition_context(req)
+    if ctx.get('status') not in ('PASS', 'REVIEW_REQUIRED'):
+        blocked = dict(result)
+        blocked.update(
+            status='THEORY_BLOCK',
+            theory=ctx,
+            theory_request=req,
+            events=[],
+        )
+        return blocked
+
+    events = generate_events(
+        name,
+        result['execution_template'],
+        profile,
+        ctx,
+        result['tempo_bpm'],
+        creation_seed,
+    )
+    events = _develop_full_length(
+        events,
+        ctx,
+        result['execution_template'],
+        creation_seed,
+    )
+
+    developed = dict(result)
+    developed['theory_request'] = req
+    developed['theory_status'] = ctx['status']
+    developed['events'] = events
+    developed['development_model'] = 'FULL_LENGTH_SECTIONAL_V1'
+    return developed
 """
-new_progression=""" if mode=='normal':
-  from genre_development_patch import build_developed_progression
-  req['roman_progression'] = build_developed_progression(quality,bars,seedv)
- else:
-  cycle = ['I','vi','IV','V'] if quality in ('major','ionian') else ['i','VI','III','VII']
-  rotation = (seedv // 19) % len(cycle)
-  req['roman_progression'] = cycle[rotation:] + cycle[:rotation]
-"""
-if old_progression not in a: raise SystemExit("GENRE_PROGRESSION_PATCH_TARGET_NOT_FOUND")
-a=a.replace(old_progression,new_progression,1)
-old_events=" events=generate_events(name,tmpl,profile,ctx,bpm,creation_seed)\n"
-new_events=""" events=generate_events(name,tmpl,profile,ctx,bpm,creation_seed)
- if mode=='normal':
-  from genre_development_patch import develop_full_length
-  events=develop_full_length(events,ctx,tmpl,creation_seed)
-"""
-if old_events not in a: raise SystemExit("GENRE_DEVELOPMENT_PATCH_TARGET_NOT_FOUND")
-adapter.write_text(a.replace(old_events,new_events,1))
+adapter.write_text(a + "\n" + override + "\n")
 p=Path("composer/runtime/output_handoff.py"); s=p.read_text()
 old="""    # Source stems cannot be promoted to a final master without the separate 3D module.
     return {'status':'AUDIO_STEMS_READY_MASTER_REQUIRED','audio_rendered':False,

@@ -342,6 +342,17 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     developed['tempo_bpm'] = tempo_bpm
     developed['bars'] = bars
     developed['events'] = events
+    if name == 'ROCK':
+        # The legacy palette declares one generic "drums" instrument even
+        # though developed Rock events use separate sample-backed kit members.
+        # Keep the completeness guard: declare the required real instruments.
+        declared = []
+        for instrument in result['palette']:
+            if instrument == 'drums':
+                declared.extend(('kick_drum_rock', 'snare_drum', 'hi_hat'))
+            else:
+                declared.append(instrument)
+        developed['palette'] = declared
     developed['development_model'] = 'FULL_LENGTH_SECTIONAL_V2'
     return developed
 """
@@ -442,4 +453,34 @@ if old not in s:
 p.write_text(s.replace(old,new))
 PY
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+# Exercise the actual genre setup with no audio rendering. A bad palette,
+# missing core drum part, or mixed instrument IDs must fail this build rather
+# than leave an apparently-live composer that rejects every Rock composition.
+python - <<'PY'
+from pathlib import Path
+import importlib.util, sys
+root = Path("composer/runtime").resolve()
+sys.path.insert(0, str(root))
+source = root / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
+spec = importlib.util.spec_from_file_location("composer_rock_smoketest", source)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+result = module.GenreExecutionAdapter().resolve("ROCK", mode="normal", creation_seed=0)
+assert result.get("status") == "PASS", result.get("status")
+events = result["events"]
+assert events, "ROCK_HAS_NO_EVENTS"
+declared = set(result["palette"])
+used = {e["instrument_id"] for e in events}
+missing = sorted(declared - used)
+assert not missing, "ROCK_DECLARED_PART_NOT_GENERATED:" + repr(missing)
+required = {"kick_drum_rock", "snare_drum", "hi_hat"}
+assert required <= declared, "ROCK_REQUIRED_PART_NOT_DECLARED"
+by_track = {}
+for event in events:
+    by_track.setdefault(event["track_id"], set()).add(event["instrument_id"])
+mixed = {k: sorted(v) for k, v in by_track.items() if len(v) != 1}
+assert not mixed, "ROCK_MULTIPLE_INSTRUMENT_IDS:" + repr(mixed)
+print("ROCK_THEORY_MIDI_ROUTING_CHECK PASS", "events=" + str(len(events)),
+      "tracks=" + str(len(by_track)), flush=True)
+PY
 echo "CURRENT COMPOSER BASELINE READY"

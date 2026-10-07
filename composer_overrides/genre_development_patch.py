@@ -299,6 +299,72 @@ def develop_full_length(
         if e["duration_beats"] > 0:
             developed.append(e)
 
+    # The preserved Rock profile requires a complete kit. The legacy base
+    # generator supplies kick/snare/hat but omits the standard extended roles.
+    # Add them here only when that track is genuinely absent, using the
+    # preserved event schema and standard Rock MIDI drum-note assignments.
+    if tmpl == "rock":
+        existing_tracks = {str(e.get("track_id", "")).upper() for e in developed}
+
+        if "TOMS" not in existing_tracks:
+            # Short descending fills at 16-bar transitions.
+            for bar in range(15, max(15, total_bars - 1), 16):
+                if bar >= total_bars - 1:
+                    break
+                for frac, note, velocity in (
+                    (0.625, 47, 86),
+                    (0.750, 45, 94),
+                    (0.875, 43, 102),
+                ):
+                    start = bar * meter + meter * frac
+                    if start < total_beats:
+                        developed.append({
+                            "track_id": "TOMS",
+                            "instrument_id": "tom_tom",
+                            "drum": "tom",
+                            "start_beat": start,
+                            "duration_beats": 0.12,
+                            "midi": note,
+                            "velocity": velocity,
+                            "articulation": "tom_fill",
+                        })
+
+        if "CRASH" not in existing_tracks:
+            # Mark section arrivals without turning every phrase into a crash.
+            crash_bars = [4] + list(range(16, total_bars, 16))
+            for bar in crash_bars:
+                start = bar * meter
+                if bar < total_bars and start < total_beats:
+                    developed.append({
+                        "track_id": "CRASH",
+                        "instrument_id": "crash_cymbal",
+                        "drum": "crash",
+                        "start_beat": start,
+                        "duration_beats": 0.20,
+                        "midi": 49,
+                        "velocity": 90,
+                        "articulation": "section_crash",
+                    })
+
+        if "RIDE" not in existing_tracks:
+            # Alternate timekeeping in selected later lift phrases so the ride
+            # has a musical role rather than duplicating the hi-hat everywhere.
+            for section_start in range(32, total_bars, 32):
+                for bar in range(section_start, min(section_start + 4, total_bars)):
+                    for beat in (0.0, 1.0, 2.0, 3.0):
+                        start = bar * meter + beat
+                        if start < total_beats:
+                            developed.append({
+                                "track_id": "RIDE",
+                                "instrument_id": "ride_cymbal",
+                                "drum": "ride",
+                                "start_beat": start,
+                                "duration_beats": 0.10,
+                                "midi": 51,
+                                "velocity": 72,
+                                "articulation": "ride_timekeeping",
+                            })
+
     developed.sort(
         key=lambda x: (
             float(x.get("start_beat", 0.0)),

@@ -4,7 +4,7 @@ Resolves approved sample resources and never synthesizes/substitutes timbre.
 """
 from __future__ import annotations
 from pathlib import Path
-import os, re, shutil, subprocess, wave, math
+import os, re, shutil, subprocess, wave, math, struct
 
 class SFZRendererError(RuntimeError): pass
 
@@ -73,6 +73,47 @@ def validate_sfz_samples(sfz_path: Path) -> dict:
             'sfz_files_validated':len(visited)}
 
 
+def _wav_level_metrics(wav_path: Path) -> dict:
+    """Measure rendered PCM without loading the whole stem into memory."""
+    peak=0.0
+    sum_squares=0.0
+    sample_count=0
+    with wave.open(str(wav_path),'rb') as stream:
+        width=stream.getsampwidth()
+        channels=stream.getnchannels()
+        if width not in (1,2,4):
+            raise SFZRendererError('SFZ_WAVEFORM_UNSUPPORTED_SAMPLE_WIDTH')
+        scale={1:127.0,2:32767.0,4:2147483647.0}[width]
+        while True:
+            chunk=stream.readframes(8192)
+            if not chunk:
+                break
+            if width==1:
+                values=(byte-128 for byte in chunk)
+            elif width==2:
+                values=(item[0] for item in struct.iter_unpack('<h',chunk))
+            else:
+                values=(item[0] for item in struct.iter_unpack('<i',chunk))
+            for value in values:
+                normalized=float(value)/scale
+                magnitude=abs(normalized)
+                if magnitude>peak:
+                    peak=magnitude
+                sum_squares+=normalized*normalized
+                sample_count+=1
+    if sample_count<=0 or peak<=0.0:
+        raise SFZRendererError('SFZ_WAVEFORM_INVALID_OR_SILENT')
+    rms=math.sqrt(sum_squares/sample_count)
+    return {
+        'peak_linear':peak,
+        'peak_dbfs':20.0*math.log10(max(peak,1e-12)),
+        'rms_linear':rms,
+        'rms_dbfs':20.0*math.log10(max(rms,1e-12)),
+        'measured_samples':sample_count,
+        'measured_channels':channels,
+    }
+
+
 def resolve_renderer() -> str:
     explicit=os.environ.get(RENDERER_ENV)
     if explicit:
@@ -117,13 +158,14 @@ def render_midi(resource: dict, midi_path: str|Path, wav_path: str|Path, sample_
     try:
         with wave.open(str(wav),'rb') as stream:
             frames=stream.getnframes(); channels=stream.getnchannels(); rate=stream.getframerate()
-            width=stream.getsampwidth(); audible=False
-            while True:
-                chunk=stream.readframes(8192)
-                if not chunk: break
-                audible |= any(v != (128 if width==1 else 0) for v in chunk)
-        if not frames or not audible or rate!=sample_rate or channels not in (1,2):
+            width=stream.getsampwidth()
+        if not frames or rate!=sample_rate or channels not in (1,2):
             raise SFZRendererError('SFZ_WAVEFORM_INVALID_OR_SILENT')
-    except (wave.Error, EOFError, OSError) as exc:
+        levels=_wav_level_metrics(wav)
+    except SFZRendererError:
+        raise
+    except (wave.Error, EOFError, OSError, struct.error) as exc:
         raise SFZRendererError('SFZ_WAVEFORM_UNREADABLE:'+str(exc))
-    return {**ready,'frames':frames,'channels':channels,'sample_rate':rate,'status':'AUDIO_RENDER_PASS','wav_path':str(wav),'audio_rendered':True}
+    return {**ready,'frames':frames,'channels':channels,'sample_rate':rate,
+            'sample_width':width,**levels,'status':'AUDIO_RENDER_PASS',
+            'wav_path':str(wav),'audio_rendered':True}

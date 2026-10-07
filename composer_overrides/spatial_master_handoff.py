@@ -15,6 +15,13 @@ def _load(filename,name):
     spec=importlib.util.spec_from_file_location(name,ROOT/filename)
     module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module); return module
 
+def _sha256_file(path):
+    h=hashlib.sha256()
+    with Path(path).open('rb') as stream:
+        for block in iter(lambda: stream.read(1024*1024), b''):
+            h.update(block)
+    return h.hexdigest()
+
 SCENE=_load('AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py','scene009')
 MASTER=_load('AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py','master006')
 
@@ -110,6 +117,9 @@ def finalize_real_stems(engine_result,stems,output_root):
         max_frames=max(max_frames,frames)
 
         profile=profiles[track]; iid=profile['instrument_id']; role=profile.get('role')
+        binding=bindings[track]
+        target_gain_db=float(binding.get('target_gain_db',0.0))
+        target_gain=10.0**(target_gain_db/20.0)
         source=SCENE.sources_from_renderer005_manifest({'independent_stems':[{
             'instrument_id':iid,'path':str(path),'sha256':MASTER.sha256_file(path)
         }]})[0]
@@ -117,7 +127,8 @@ def finalize_real_stems(engine_result,stems,output_root):
         source['provenance']={
             'audio_sha256':MASTER.sha256_file(path),
             'renderer':'SFIZZ_REAL_SAMPLE_RENDERER',
-            'resource':bindings[track],
+            'resource':binding,
+            'target_gain_db':target_gain_db,
             'production_resource_ready':True,
             'placement_basis':'EXISTING_009_NEUTRAL_STAGING'
         }
@@ -135,7 +146,9 @@ def finalize_real_stems(engine_result,stems,output_root):
         angle=(pan+1)*math.pi/4
         entries.append({
             'track':track,'path':path,'channels':channels,'width':width,'frames':frames,
-            'left_gain':float(math.cos(angle)),'right_gain':float(math.sin(angle))
+            'left_gain':float(math.cos(angle))*target_gain,
+            'right_gain':float(math.sin(angle))*target_gain,
+            'target_gain_db':target_gain_db
         })
 
     if not max_frames:
@@ -196,7 +209,7 @@ def finalize_real_stems(engine_result,stems,output_root):
     manifest['global_3d_gate']=validate_final_audio_output(manifest)
     if not manifest['global_3d_gate']['compliant']:
         raise ValueError('GLOBAL_3D_GATE_FAILED')
-    manifest['derivative_sha256']=hashlib.sha256(derivative.read_bytes()).hexdigest()
+    manifest['derivative_sha256']=_sha256_file(derivative)
     (directory/'output_manifest.json').write_text(json.dumps(manifest,indent=2))
     return {
         'status':'AUDIO_RENDER_PASS',

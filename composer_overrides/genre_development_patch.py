@@ -167,10 +167,20 @@ def develop_full_length(
             gain *= (0.82, 0.96, 1.08, 0.90, 1.12, 0.76)[section_role]
 
             if is_bass:
-                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), min(1.55, max(0.5, meter / 2 - 0.25)))
+                # Rock bass notes occur on beats 0 and 2. Let the real sustained
+                # samples ring almost to the next bass attack instead of chopping
+                # them off after roughly a beat and a half.
+                e["duration_beats"] = max(
+                    float(e.get("duration_beats", 0.1)),
+                    min(1.90, max(0.75, meter / 2 - 0.10)),
+                )
                 gain *= 1.06
             if is_harmony and "guitar" in instrument:
-                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), 0.88)
+                # Rhythm-guitar chords also land on 0 and 2; preserve a small
+                # breathing gap while allowing the sampled strings to decay.
+                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), 1.65)
+            if is_lead and "guitar" in instrument:
+                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), 0.78)
 
             # First phrase behaves like an intro: establish groove before lead.
             if bar < 4:

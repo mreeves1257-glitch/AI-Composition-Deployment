@@ -96,8 +96,34 @@ def develop_full_length(
     )
     total_bars = max(1, int((total_beats + meter - 1e-9) // meter))
 
+    # A guitar chord is not a keyboard block. For Rock, stagger the individual
+    # sampled-guitar notes by a few milliseconds in alternating pick direction.
+    # This changes performance timing only; it does not invent notes or timbre.
+    working_events = [dict(event) for event in events]
+    if tmpl == "rock":
+        chord_groups: dict[float, list[dict[str, Any]]] = {}
+        for event in working_events:
+            if str(event.get("track_id", "")).upper() != "HARMONY":
+                continue
+            if "guitar" not in str(event.get("instrument_id", "")).lower():
+                continue
+            chord_groups.setdefault(round(float(event.get("start_beat", 0.0)), 6), []).append(event)
+        for start_key, chord in chord_groups.items():
+            if len(chord) < 2:
+                continue
+            bar = int(start_key // max(meter, 1e-9))
+            reverse = ((bar + creation_seed) % 2) == 1
+            ordered = sorted(chord, key=lambda event: int(event.get("midi", 0)), reverse=reverse)
+            strum_step = 0.032
+            for index, event in enumerate(ordered):
+                original_duration = float(event.get("duration_beats", 0.1))
+                event["start_beat"] = float(start_key) + index * strum_step
+                event["duration_beats"] = max(0.08, original_duration - index * strum_step)
+                if "velocity" in event:
+                    event["velocity"] = _clamp_velocity(float(event["velocity"]) + (2 - index))
+
     developed: list[dict[str, Any]] = []
-    for source in events:
+    for source in working_events:
         e = dict(source)
         bar = _bar_of(e, meter)
         local = float(e.get("start_beat", 0.0)) - bar * meter
@@ -139,6 +165,12 @@ def develop_full_length(
             phrase_in_section = (bar % 16) // 4
             section_role = section % 6
             gain *= (0.82, 0.96, 1.08, 0.90, 1.12, 0.76)[section_role]
+
+            if is_bass:
+                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), min(1.55, max(0.5, meter / 2 - 0.25)))
+                gain *= 1.06
+            if is_harmony and "guitar" in instrument:
+                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), 0.88)
 
             # First phrase behaves like an intro: establish groove before lead.
             if bar < 4:

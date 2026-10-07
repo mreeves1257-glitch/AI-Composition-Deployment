@@ -389,6 +389,8 @@ test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-crash-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz"
 AI_COMP_RESOURCE_BANK="$BANK" PATH="$TOOLS_DIR/bin:$PATH" python - <<'PY'
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path("composer/runtime").resolve()))
 from sfz_renderer_adapter import validate_sfz_samples
 bank=Path("composer/runtime/sound_resources")
 checks=[

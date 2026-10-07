@@ -387,5 +387,20 @@ test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-crash-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz"
+AI_COMP_RESOURCE_BANK="$BANK" PATH="$TOOLS_DIR/bin:$PATH" python - <<'PY'
+from pathlib import Path
+from sfz_renderer_adapter import validate_sfz_samples
+bank=Path("composer/runtime/sound_resources")
+checks=[
+    bank/"KARORYFER_GROWLYBASS_V1_002/growlybass_clean.sfz",
+    bank/"KARORYFER_SHINYGUITAR/Programs/composer-electric.sfz",
+    bank/"KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz",
+    bank/"KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz",
+    bank/"KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz",
+]
+for path in checks:
+    report=validate_sfz_samples(path)
+    print("REAL_INSTRUMENT_RESOURCE_READY", path.name, report, flush=True)
+PY
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 echo "CURRENT COMPOSER BASELINE READY"

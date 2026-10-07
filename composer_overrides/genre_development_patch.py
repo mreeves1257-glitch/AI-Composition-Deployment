@@ -167,20 +167,23 @@ def develop_full_length(
             gain *= (0.82, 0.96, 1.08, 0.90, 1.12, 0.76)[section_role]
 
             if is_bass:
-                # Rock bass notes occur on beats 0 and 2. Let the real sustained
-                # samples ring almost to the next bass attack instead of chopping
-                # them off after roughly a beat and a half.
-                e["duration_beats"] = max(
-                    float(e.get("duration_beats", 0.1)),
-                    min(1.90, max(0.75, meter / 2 - 0.10)),
-                )
-                gain *= 1.06
+                # Keep Rock bass articulated. The previous 1.9-beat minimum made
+                # a correct BPM feel half-speed. Use punchy quarter/eighth-note
+                # values and let the sampled instrument provide its own decay.
+                original = float(e.get("duration_beats", 0.1))
+                e["duration_beats"] = min(original, 0.90 if phrase_in_section in (0, 2) else 0.48)
+                e["duration_beats"] = max(0.22, e["duration_beats"])
+                gain *= 1.08
             if is_harmony and "guitar" in instrument:
-                # Rhythm-guitar chords also land on 0 and 2; preserve a small
-                # breathing gap while allowing the sampled strings to decay.
-                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), 1.65)
+                # Rhythm guitar must articulate the pulse rather than sustain
+                # across most of a two-beat span.
+                original = float(e.get("duration_beats", 0.1))
+                e["duration_beats"] = min(original, 0.82 if phrase_in_section in (0, 2) else 0.46)
+                e["duration_beats"] = max(0.18, e["duration_beats"])
             if is_lead and "guitar" in instrument:
-                e["duration_beats"] = max(float(e.get("duration_beats", 0.1)), 0.78)
+                original = float(e.get("duration_beats", 0.1))
+                e["duration_beats"] = min(original, 0.62)
+                e["duration_beats"] = max(0.16, e["duration_beats"])
 
             # First phrase behaves like an intro: establish groove before lead.
             if bar < 4:
@@ -299,11 +302,47 @@ def develop_full_length(
         if e["duration_beats"] > 0:
             developed.append(e)
 
-    # The preserved Rock profile requires a complete kit. The legacy base
-    # generator supplies kick/snare/hat but omits the standard extended roles.
-    # Add them here only when that track is genuinely absent, using the
-    # preserved event schema and standard Rock MIDI drum-note assignments.
+    # The preserved Rock profile requires a complete, audible kit. Add a
+    # deterministic kick/snare backbeat underneath the legacy pattern so Rock
+    # always has a physical groove. These are short one-shot drum triggers.
     if tmpl == "rock":
+        for bar in range(total_bars):
+            bar_start = bar * meter
+            # Kick: strong 1 and 3, with selected eighth-note pushes for motion.
+            kick_positions = [0.0, 2.0]
+            if bar % 4 in (1, 3):
+                kick_positions.append(2.5)
+            if bar % 8 == 7:
+                kick_positions.append(3.5)
+            for beat in kick_positions:
+                start = bar_start + beat
+                if start < total_beats:
+                    developed.append({
+                        "track_id": "KICK",
+                        "instrument_id": "kick_drum_rock",
+                        "drum": "kick",
+                        "start_beat": start,
+                        "duration_beats": 0.10,
+                        "midi": 36,
+                        "velocity": 112 if beat in (0.0, 2.0) else 96,
+                        "articulation": "rock_kick",
+                    })
+
+            # Snare: conventional backbeat on 2 and 4.
+            for beat in (1.0, 3.0):
+                start = bar_start + beat
+                if start < total_beats:
+                    developed.append({
+                        "track_id": "SNARE",
+                        "instrument_id": "snare_drum",
+                        "drum": "snare",
+                        "start_beat": start,
+                        "duration_beats": 0.10,
+                        "midi": 38,
+                        "velocity": 108 if beat == 3.0 else 102,
+                        "articulation": "rock_backbeat",
+                    })
+
         existing_tracks = {str(e.get("track_id", "")).upper() for e in developed}
 
         if "TOMS" not in existing_tracks:

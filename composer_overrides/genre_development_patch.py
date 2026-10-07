@@ -125,6 +125,15 @@ def develop_full_length(
     developed: list[dict[str, Any]] = []
     for source in working_events:
         e = dict(source)
+        # Match legacy Rock drum notes to the dedicated SFZ instrument on
+        # each logical track. Previously KICK and SNARE mixed "drums" with
+        # their named identities, which the MIDI router correctly rejects.
+        if tmpl == "rock" and e.get("instrument_id") == "drums":
+            e["instrument_id"] = {
+                "KICK": "kick_drum_rock",
+                "SNARE": "snare_drum",
+                "HAT": "hi_hat",
+            }.get(str(e.get("track_id", "")).upper(), e["instrument_id"])
         bar = _bar_of(e, meter)
         local = float(e.get("start_beat", 0.0)) - bar * meter
         phrase = bar // 4

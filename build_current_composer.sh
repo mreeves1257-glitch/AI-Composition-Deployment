@@ -251,9 +251,25 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
 
     req = dict(result['theory_request'])
     bars = int(result['bars'])
+    tempo_bpm = int(result['tempo_bpm'])
     seedv = int(hashlib.sha256(
         f"{profile['profile_id']}:{creation_seed}".encode()
     ).hexdigest()[:8], 16)
+
+    # Rock was landing at 125 BPM for the baseline seed, which is too relaxed
+    # for the driving test the Control Panel is using. Stay inside the approved
+    # ROCK profile (100-145) but bias normal Rock into its faster band.
+    if name == 'ROCK':
+        approved = profile.get('tempo_bpm_range') or [tempo_bpm, tempo_bpm]
+        profile_lo, profile_hi = int(approved[0]), int(approved[-1])
+        fast_lo = min(profile_hi, max(profile_lo, 132))
+        tempo_bpm = fast_lo + (seedv % max(1, profile_hi - fast_lo + 1))
+
+        num, den = map(int, str(result['meter']).split('/'))
+        beats_per_bar = float(num) * 4.0 / float(den)
+        bars = max(24, min(320, round(210.0 * tempo_bpm / (60.0 * beats_per_bar))))
+        req['bars'] = bars
+
     req['roman_progression'] = _build_developed_progression(
         req['mode'], bars, seedv
     )
@@ -274,7 +290,7 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         result['execution_template'],
         profile,
         ctx,
-        result['tempo_bpm'],
+        tempo_bpm,
         creation_seed,
     )
     events = _develop_full_length(
@@ -287,8 +303,10 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     developed = dict(result)
     developed['theory_request'] = req
     developed['theory_status'] = ctx['status']
+    developed['tempo_bpm'] = tempo_bpm
+    developed['bars'] = bars
     developed['events'] = events
-    developed['development_model'] = 'FULL_LENGTH_SECTIONAL_V1'
+    developed['development_model'] = 'FULL_LENGTH_SECTIONAL_V2'
     return developed
 """
 adapter.write_text(a + "\n" + override + "\n")

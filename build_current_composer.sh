@@ -30,6 +30,7 @@ ln -sfn "$BANK/KARORYFER_SHINYGUITAR/Samples/electric" "$BANK/KARORYFER_SHINYGUI
 ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Samples" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/Samples"
 ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/mappings"
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
+cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
 cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/global_3d_output_gate.py composer/runtime/
@@ -45,6 +46,32 @@ bindings["electric_guitar:LEAD_MELODY"]={"resource_id":"KARORYFER_SHINYGUITAR","
 for instrument_id,gain in {"kick_drum_rock":-1.0,"snare_drum":-5.0,"hi_hat":-9.0,"ride_cymbal":-8.0,"crash_cymbal":-8.0,"tom_drum":-4.0,"tom_tom":-4.0}.items():
     bindings[instrument_id]={"resource_id":"KARORYFER_BIG_RUSTY_DRUMS","target_gain_db":gain,"resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/01-full.sfz","library":"Karoryfer Big Rusty Drums","license":"CC0-1.0","renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER","fallback_policy":"NO_SYNTHETIC_SUBSTITUTION"}
 path.write_text(json.dumps(registry,indent=2)+"\n")
+# Preserve the existing composer and add long-form development at its established
+# genre-adapter boundary. Quick/test mode stays untouched.
+adapter=Path("composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py")
+a=adapter.read_text()
+old_progression=""" cycle = ['I','vi','IV','V'] if quality in ('major','ionian') else ['i','VI','III','VII']
+ rotation = (seedv // 19) % len(cycle)
+ req['roman_progression'] = cycle[rotation:] + cycle[:rotation]
+"""
+new_progression=""" if mode=='normal':
+  from genre_development_patch import build_developed_progression
+  req['roman_progression'] = build_developed_progression(quality,bars,seedv)
+ else:
+  cycle = ['I','vi','IV','V'] if quality in ('major','ionian') else ['i','VI','III','VII']
+  rotation = (seedv // 19) % len(cycle)
+  req['roman_progression'] = cycle[rotation:] + cycle[:rotation]
+"""
+if old_progression not in a: raise SystemExit("GENRE_PROGRESSION_PATCH_TARGET_NOT_FOUND")
+a=a.replace(old_progression,new_progression,1)
+old_events=" events=generate_events(name,tmpl,profile,ctx,bpm,creation_seed)\n"
+new_events=""" events=generate_events(name,tmpl,profile,ctx,bpm,creation_seed)
+ if mode=='normal':
+  from genre_development_patch import develop_full_length
+  events=develop_full_length(events,ctx,tmpl,creation_seed)
+"""
+if old_events not in a: raise SystemExit("GENRE_DEVELOPMENT_PATCH_TARGET_NOT_FOUND")
+adapter.write_text(a.replace(old_events,new_events,1))
 p=Path("composer/runtime/output_handoff.py"); s=p.read_text()
 old="""    # Source stems cannot be promoted to a final master without the separate 3D module.
     return {'status':'AUDIO_STEMS_READY_MASTER_REQUIRED','audio_rendered':False,
@@ -61,5 +88,5 @@ PY
 test -f "$BANK/KARORYFER_GROWLYBASS_V1_002/growlybass_vicious.sfz"
 test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/electric_one.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/01-full.sfz"
-python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/render_server.py
+python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 echo "CURRENT COMPOSER BASELINE READY"

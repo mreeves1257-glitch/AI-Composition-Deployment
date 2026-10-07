@@ -10,7 +10,7 @@ from typing import Any
 
 
 def build_developed_progression(quality: str, bars: int, seedv: int) -> list[str]:
-    """Return a bar-length diatonic progression with phrase and section variation."""
+    """Return a bar-length progression that develops every phrase, not every section."""
     is_major = quality in ("major", "ionian")
     if is_major:
         variants = [
@@ -35,21 +35,41 @@ def build_developed_progression(quality: str, bars: int, seedv: int) -> list[str
 
     out: list[str] = []
     phase = (seedv // 19) % len(variants)
-    for bar in range(max(0, int(bars))):
+    total = max(0, int(bars))
+    for bar in range(total):
         phrase = bar // 4
         section = bar // 16
-        pattern = variants[(phase + section * 2 + phase // 3 + seedv + phrase // 8) % len(variants)]
+        phrase_in_section = phrase % 4
+
+        # The previous version selected one four-bar pattern for almost an
+        # entire 16-bar section. Move through a different approved pattern
+        # on each four-bar phrase so the piece actually travels.
+        pattern_index = (
+            phase
+            + (seedv % 3)
+            + section * 2
+            + phrase_in_section
+            + (section // 2)
+        ) % len(variants)
+        pattern = variants[pattern_index]
         chord = pattern[bar % 4]
-        if bar % 8 == 7:
+
+        # Eight-bar cadences give phrases punctuation without resetting the
+        # whole section to the same four-chord cell.
+        if bar % 8 == 7 and bar != total - 1:
             chord = dominant
-        if bar > 0 and bar % 16 == 0:
+        if bar % 16 == 15:
+            chord = tonic if section % 2 else dominant
+
+        # Later sections can deliberately recall the opening, but only for
+        # one phrase rather than repeating the whole opening block.
+        if section % 4 == 3 and phrase_in_section == 0:
+            chord = variants[phase][bar % 4]
+
+        if bar == total - 1:
             chord = tonic
-        if section % 4 == 3 and (bar % 16) < 4:
-            opening = variants[phase]
-            chord = opening[bar % 4]
         out.append(chord)
     return out
-
 
 def _clamp_velocity(value: float) -> int:
     return max(1, min(127, int(round(value))))
@@ -112,6 +132,65 @@ def develop_full_length(
         )
         is_support = track.startswith("SUPPORT_")
 
+        # Rock needs audible song-scale development, not a four-bar cell with
+        # tiny velocity changes. Keep the same generated notes/resources but
+        # reshape timing, density, and phrase roles across each 16-bar section.
+        if tmpl == "rock":
+            phrase_in_section = (bar % 16) // 4
+            section_role = section % 6
+            gain *= (0.82, 0.96, 1.08, 0.90, 1.12, 0.76)[section_role]
+
+            # First phrase behaves like an intro: establish groove before lead.
+            if bar < 4:
+                if is_lead:
+                    continue
+                if is_kick and local >= meter / 2:
+                    continue
+                if is_hat and int(round(local * 2)) % 2:
+                    continue
+
+            # Make each four-bar phrase use a genuinely different rhythmic
+            # accompaniment shape.
+            if is_harmony:
+                if phrase_in_section == 1 and local >= meter / 2:
+                    e["start_beat"] = bar * meter + min(meter - 0.08, local + 0.25)
+                elif phrase_in_section == 2:
+                    if local >= meter / 2 and bar % 2 == 0:
+                        continue
+                    if local < meter / 2:
+                        e["duration_beats"] = min(1.35, max(0.08, meter / 2 - 0.08))
+                elif phrase_in_section == 3 and local >= meter / 2:
+                    e["start_beat"] = bar * meter + min(meter - 0.08, local + 0.50)
+
+            if is_bass and local >= meter / 2:
+                if phrase_in_section == 1:
+                    e["start_beat"] = bar * meter + min(meter - 0.08, local + 0.25)
+                elif phrase_in_section == 3:
+                    e["start_beat"] = bar * meter + max(0.0, local - 0.25)
+
+            if is_kick and local >= meter / 2:
+                if phrase_in_section == 1:
+                    e["start_beat"] = bar * meter + min(meter - 0.08, local + 0.50)
+                elif phrase_in_section == 2 and bar % 2 == 0:
+                    continue
+                elif phrase_in_section == 3:
+                    e["start_beat"] = bar * meter + min(meter - 0.08, local + 0.75)
+
+            if is_hat:
+                eighth_slot = int(round(local * 2))
+                if phrase_in_section == 0 and section % 2 == 0 and eighth_slot % 2:
+                    continue
+                if phrase_in_section == 2 and bar % 2 == 1 and eighth_slot in (1, 5):
+                    continue
+
+            # Leave real spaces in verse-like phrases and bring the lead back
+            # for the lift, instead of playing the same short figure forever.
+            if is_lead:
+                if phrase_in_section == 0 and section % 2 == 0:
+                    continue
+                if phrase_in_section == 2 and bar % 4 == 1:
+                    continue
+
         if breakdown:
             if is_lead:
                 continue
@@ -124,7 +203,7 @@ def develop_full_length(
             gain *= 0.78
 
         if is_harmony and not breakdown:
-            variant = (phrase + creation_seed) % 4
+            variant = (phrase + section + creation_seed) % 4
             if variant == 1 and local > 0:
                 shifted = min(meter - 0.06, local + 0.125)
                 e["start_beat"] = bar * meter + shifted

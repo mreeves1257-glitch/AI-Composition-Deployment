@@ -296,6 +296,10 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         approved = profile.get('tempo_bpm_range') or [tempo_bpm, tempo_bpm]
         profile_lo, profile_hi = int(approved[0]), int(approved[-1])
         tempo_bpm = profile_hi
+        # The preserved Output Core builds the MIDI execution package from
+        # theory['tempo_bpm'], so write the selected Rock tempo back into the
+        # theory request before rebuilding composition context.
+        req['tempo_bpm'] = tempo_bpm
 
         num, den = map(int, str(result['meter']).split('/'))
         beats_per_bar = float(num) * 4.0 / float(den)

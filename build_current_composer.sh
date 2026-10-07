@@ -26,6 +26,16 @@ install_library "KARORYFER_GROWLYBASS_V1_002" "https://github.com/sfzinstruments
 install_library "KARORYFER_SHINYGUITAR" "https://github.com/sfzinstruments/karoryfer.shinyguitar.git" "master"
 install_library "KARORYFER_BIG_RUSTY_DRUMS" "https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git" "main"
 find "$BANK/KARORYFER_SHINYGUITAR" "$BANK/KARORYFER_BIG_RUSTY_DRUMS" -type f -name "*.sfz" -print0 | xargs -0 sed -i 's#\\#/#g'
+
+python - <<'PY'
+from pathlib import Path
+root=Path("composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs")
+src=(root/"main.sfz").read_text(encoding="utf-8")
+src=src.replace("default_path=$sample_dir/", "default_path=../Samples/")
+src="\n".join(line for line in src.splitlines() if '#include "acoustic_' not in line)
+src=src.replace("set_cc106=0", "set_cc106=32")
+(root/"composer-electric.sfz").write_text(src+"\n", encoding="utf-8")
+PY
 ln -sfn "$BANK/KARORYFER_SHINYGUITAR/Samples/electric" "$BANK/KARORYFER_SHINYGUITAR/Programs/electric"
 ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Samples" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/Samples"
 ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/mappings"
@@ -206,14 +216,37 @@ cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-1
 cp composer_overrides/AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/global_3d_output_gate.py composer/runtime/
 cp composer_overrides/spatial_master_handoff.py composer/runtime/
+cp composer_overrides/standalone_3d_mixer.py composer/runtime/
 cp composer_overrides/render_server.py composer/runtime/
 python - <<'PY'
 import json
 from pathlib import Path
 path=Path("composer/runtime/target_registry.json"); registry=json.loads(path.read_text())
 bindings=registry["targets"]["INTERNAL"].setdefault("instrument_bindings",{})
-bindings["electric_guitar:RHYTHM_POWER_CHORDS"]={"resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-5.0,"resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/electric_one.sfz","library":"Karoryfer Shinyguitar","license":"CC0-1.0","renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER","fallback_policy":"NO_SYNTHETIC_SUBSTITUTION"}
-bindings["electric_guitar:LEAD_MELODY"]={"resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-6.0,"resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/electric_one.sfz","library":"Karoryfer Shinyguitar","license":"CC0-1.0","renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER","fallback_policy":"NO_SYNTHETIC_SUBSTITUTION"}
+bindings["electric_bass_guitar"]={
+    "resource_id":"KARORYFER_GROWLYBASS_V1_002","target_gain_db":0.0,
+    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"growlybass_clean.sfz",
+    "library":"Karoryfer Growlybass","license":"CC0",
+    "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
+    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
+    "articulation_policy":"SUSTAINED_REAL_BASS_WITH_NATIVE_VELOCITY_AND_ROUND_ROBIN"
+}
+bindings["electric_guitar:RHYTHM_POWER_CHORDS"]={
+    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-5.0,
+    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric.sfz",
+    "library":"Karoryfer Shinyguitar","license":"CC0-1.0",
+    "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
+    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
+    "midi_mapping":{"initial_cc":{"100":0,"101":127,"106":32,"107":0}}
+}
+bindings["electric_guitar:LEAD_MELODY"]={
+    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-6.0,
+    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric.sfz",
+    "library":"Karoryfer Shinyguitar","license":"CC0-1.0",
+    "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
+    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
+    "midi_mapping":{"initial_cc":{"100":0,"101":127,"106":24,"107":0}}
+}
 programs={
     "kick_drum_rock":(-1.0,"Programs/composer-kick-lite.sfz"),
     "snare_drum":(-5.0,"Programs/composer-snare-lite.sfz"),
@@ -316,20 +349,43 @@ old="""    # Source stems cannot be promoted to a final master without the separ
             'source_audio_rendered':True,'stems':stems,'reason':'SPATIAL_MASTER_HANDOFF_REQUIRED',
             'next_stage':'EXTERNAL_3D_MASTER','fallback_policy':'NO_SYNTHETIC_SUBSTITUTION'}
 """
-new="""    from spatial_master_handoff import finalize_real_stems
+new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
+    # separate final-stage process so it cannot alter composition or instrument
+    # rendering and does not share the Composer's audio working memory.
+    import subprocess, sys
     final_root = OUT / 'final_audio'
-    return finalize_real_stems(engine_result, stems, final_root)
+    job_dir = OUT / package.package_id / 'three_d_mixer'
+    job_dir.mkdir(parents=True, exist_ok=True)
+    job_path = job_dir / 'job.json'
+    job_path.write_text(json.dumps({'engine_result': engine_result, 'stems': stems}), encoding='utf-8')
+    cp = subprocess.run(
+        [sys.executable, str(ROOT / 'standalone_3d_mixer.py'), str(job_path), str(final_root)],
+        capture_output=True, text=True, timeout=240
+    )
+    try:
+        mixed = json.loads((cp.stdout or '').strip())
+    except json.JSONDecodeError:
+        return {'status':'AUDIO_3D_MIX_FAILED','audio_rendered':False,
+                'reason':'UNREADABLE_3D_MIXER_RESPONSE',
+                'mixer_stderr':(cp.stderr or '')[-800:]}
+    if cp.returncode != 0 or mixed.get('status') != 'AUDIO_RENDER_PASS':
+        mixed.setdefault('status','AUDIO_3D_MIX_FAILED')
+        mixed.setdefault('audio_rendered',False)
+        mixed['mixer_stderr']=(cp.stderr or '')[-800:]
+        return mixed
+    mixed['pipeline_order']=['COMPOSITION','REAL_INSTRUMENT_RENDER','STANDALONE_3D_FINAL_STAGE']
+    return mixed
 """
 if old not in s: raise SystemExit("OUTPUT_HANDOFF_PATCH_TARGET_NOT_FOUND")
 p.write_text(s.replace(old,new))
 PY
-test -f "$BANK/KARORYFER_GROWLYBASS_V1_002/growlybass_vicious.sfz"
-test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/electric_one.sfz"
+test -f "$BANK/KARORYFER_GROWLYBASS_V1_002/growlybass_clean.sfz"
+test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer-electric.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-crash-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz"
-python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 echo "CURRENT COMPOSER BASELINE READY"

@@ -1,0 +1,1 @@
+October 5 working Composer baseline migrated to dedicated deployment source. Real SFZ stems feed preserved Scene 009 / Object Master 006 and return a stereo listening derivative through the Composer gateway.

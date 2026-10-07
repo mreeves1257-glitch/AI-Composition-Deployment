@@ -249,12 +249,12 @@ bindings["electric_guitar:LEAD_MELODY"]={
 }
 programs={
     "kick_drum_rock":(4.0,"Programs/composer-kick-lite.sfz"),
-    "snare_drum":(3.0,"Programs/composer-snare-lite.sfz"),
-    "hi_hat":(-2.0,"Programs/composer-hihat-lite.sfz"),
-    "ride_cymbal":(-2.0,"Programs/composer-ride-lite.sfz"),
-    "crash_cymbal":(0.0,"Programs/composer-crash-lite.sfz"),
-    "tom_drum":(3.0,"Programs/composer-tom-lite.sfz"),
-    "tom_tom":(3.0,"Programs/composer-tom-lite.sfz"),
+    "snare_drum":(5.0,"Programs/composer-snare-lite.sfz"),
+    "hi_hat":(14.0,"Programs/composer-hihat-lite.sfz"),
+    "ride_cymbal":(5.0,"Programs/composer-ride-lite.sfz"),
+    "crash_cymbal":(5.0,"Programs/composer-crash-lite.sfz"),
+    "tom_drum":(5.0,"Programs/composer-tom-lite.sfz"),
+    "tom_tom":(5.0,"Programs/composer-tom-lite.sfz"),
 }
 for instrument_id,(gain,mapping) in programs.items():
     bindings[instrument_id]={

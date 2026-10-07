@@ -40,7 +40,7 @@ ln -sfn "$BANK/KARORYFER_SHINYGUITAR/Samples/electric" "$BANK/KARORYFER_SHINYGUI
 ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Samples" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/Samples"
 ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/mappings"
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz" <<'SFZ'
-<global> lokey=0 hikey=127 loop_mode=one_shot seq_length=4 ampeg_release=0.20
+<global> key=42 loop_mode=one_shot seq_length=4 ampeg_release=0.20
 
 <group> hivel=15
 <region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl1_rr1.flac
@@ -96,7 +96,7 @@ SFZ
 # full library graphs that exceed the 512 MiB Render instance in normal mode.
 
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz" <<'SFZ'
-<global> lokey=0 hikey=127 loop_mode=one_shot seq_length=4
+<global> key=36 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.00 ampeg_sustain=100 ampeg_release=0.20
 <group> hivel=31
 <region> sample=../Samples/kick_24/kick/kick/k_vl1_rr1.flac
 <region> sample=../Samples/kick_24/kick/kick/k_vl1_rr2.flac seq_position=2
@@ -120,7 +120,7 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz" <<'SFZ'
 SFZ
 
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz" <<'SFZ'
-<global> lokey=0 hikey=127 loop_mode=one_shot seq_length=4
+<global> key=38 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.20 ampeg_sustain=100 ampeg_release=0.25
 <group> hivel=31
 <region> sample=../Samples/snare_14/center/top/sn_center_vl1_rr1.flac
 <region> sample=../Samples/snare_14/center/top/sn_center_vl1_rr2.flac seq_position=2
@@ -144,7 +144,7 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz" <<'SFZ'
 SFZ
 
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz" <<'SFZ'
-<global> lokey=0 hikey=127 loop_mode=one_shot seq_length=4
+<global> lokey=41 hikey=47 pitch_keycenter=45 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.30 ampeg_sustain=100 ampeg_release=0.25
 <group> hivel=31
 <region> sample=../Samples/tom_14/center/cl/t14_vl1_rr1.flac
 <region> sample=../Samples/tom_14/center/cl/t14_vl1_rr2.flac seq_position=2
@@ -168,7 +168,7 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz" <<'SFZ'
 SFZ
 
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-crash-lite.sfz" <<'SFZ'
-<global> lokey=0 hikey=127 loop_mode=one_shot seq_length=4
+<global> key=49 loop_mode=one_shot seq_length=4 ampeg_release=1.80
 <group> hivel=31
 <region> sample=../Samples/crash_17/cr/cl/cr_vl1_rr1.flac
 <region> sample=../Samples/crash_17/cr/cl/cr_vl1_rr2.flac seq_position=2
@@ -192,7 +192,7 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-crash-lite.sfz" <<'SFZ'
 SFZ
 
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz" <<'SFZ'
-<global> lokey=0 hikey=127 loop_mode=one_shot seq_length=3
+<global> key=51 loop_mode=one_shot seq_length=3 ampeg_release=1.30
 <group> hivel=31
 <region> sample=../Samples/ride_22/rd/cl/rd_vl1_rr1.flac
 <region> sample=../Samples/ride_22/rd/cl/rd_vl1_rr2.flac seq_position=2
@@ -232,7 +232,7 @@ bindings["electric_bass_guitar"]={
     "articulation_policy":"SUSTAINED_REAL_BASS_WITH_NATIVE_VELOCITY_AND_ROUND_ROBIN"
 }
 bindings["electric_guitar:RHYTHM_POWER_CHORDS"]={
-    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-5.0,
+    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-7.0,
     "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric.sfz",
     "library":"Karoryfer Shinyguitar","license":"CC0-1.0",
     "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
@@ -240,7 +240,7 @@ bindings["electric_guitar:RHYTHM_POWER_CHORDS"]={
     "midi_mapping":{"initial_cc":{"100":0,"101":127,"106":32,"107":0}}
 }
 bindings["electric_guitar:LEAD_MELODY"]={
-    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-6.0,
+    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-8.0,
     "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric.sfz",
     "library":"Karoryfer Shinyguitar","license":"CC0-1.0",
     "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
@@ -248,13 +248,13 @@ bindings["electric_guitar:LEAD_MELODY"]={
     "midi_mapping":{"initial_cc":{"100":0,"101":127,"106":24,"107":0}}
 }
 programs={
-    "kick_drum_rock":(-1.0,"Programs/composer-kick-lite.sfz"),
-    "snare_drum":(-5.0,"Programs/composer-snare-lite.sfz"),
-    "hi_hat":(-9.0,"Programs/composer-hihat-lite.sfz"),
-    "ride_cymbal":(-8.0,"Programs/composer-ride-lite.sfz"),
-    "crash_cymbal":(-8.0,"Programs/composer-crash-lite.sfz"),
-    "tom_drum":(-4.0,"Programs/composer-tom-lite.sfz"),
-    "tom_tom":(-4.0,"Programs/composer-tom-lite.sfz"),
+    "kick_drum_rock":(4.0,"Programs/composer-kick-lite.sfz"),
+    "snare_drum":(3.0,"Programs/composer-snare-lite.sfz"),
+    "hi_hat":(-2.0,"Programs/composer-hihat-lite.sfz"),
+    "ride_cymbal":(-2.0,"Programs/composer-ride-lite.sfz"),
+    "crash_cymbal":(0.0,"Programs/composer-crash-lite.sfz"),
+    "tom_drum":(3.0,"Programs/composer-tom-lite.sfz"),
+    "tom_tom":(3.0,"Programs/composer-tom-lite.sfz"),
 }
 for instrument_id,(gain,mapping) in programs.items():
     bindings[instrument_id]={
@@ -295,8 +295,7 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     if name == 'ROCK':
         approved = profile.get('tempo_bpm_range') or [tempo_bpm, tempo_bpm]
         profile_lo, profile_hi = int(approved[0]), int(approved[-1])
-        fast_lo = min(profile_hi, max(profile_lo, 132))
-        tempo_bpm = fast_lo + (seedv % max(1, profile_hi - fast_lo + 1))
+        tempo_bpm = profile_hi
 
         num, den = map(int, str(result['meter']).split('/'))
         beats_per_bar = float(num) * 4.0 / float(den)
@@ -403,6 +402,40 @@ checks=[
 for path in checks:
     report=validate_sfz_samples(path)
     print("REAL_INSTRUMENT_RESOURCE_READY", path.name, report, flush=True)
+PY
+python - <<'PY'
+from pathlib import Path
+p=Path("composer/runtime/input_gateway.py")
+s=p.read_text()
+old="""    return {
+        'status': result.get('status'),
+        'genre': result.get('genre',genre.strip()),
+        'reason': result.get('reason'),
+        'stage': result.get('stage'),
+        'audio_rendered': result.get('audio_rendered',False),
+        'output_handoff': result.get('output_handoff'),
+"""
+new="""    stems=(result.get('audio_render') or {}).get('stems',[])
+    diagnostics=[{
+        'track_id':stem.get('track_id'),
+        'instrument_id':stem.get('instrument_id'),
+        'note_count':stem.get('note_count'),
+        'peak_dbfs':stem.get('peak_dbfs'),
+        'rms_dbfs':stem.get('rms_dbfs'),
+    } for stem in stems]
+    return {
+        'status': result.get('status'),
+        'genre': result.get('genre',genre.strip()),
+        'tempo_bpm': result.get('modules',{}).get('theory',{}).get('tempo_bpm'),
+        'render_diagnostics': diagnostics,
+        'reason': result.get('reason'),
+        'stage': result.get('stage'),
+        'audio_rendered': result.get('audio_rendered',False),
+        'output_handoff': result.get('output_handoff'),
+"""
+if old not in s:
+    raise SystemExit("INPUT_GATEWAY_DIAGNOSTIC_PATCH_TARGET_NOT_FOUND")
+p.write_text(s.replace(old,new))
 PY
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 echo "CURRENT COMPOSER BASELINE READY"

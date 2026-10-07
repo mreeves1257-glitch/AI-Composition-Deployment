@@ -69,7 +69,7 @@ def develop_full_length(
     if not events:
         return events
 
-    meter = float(ctx["meter"]["numerator"])
+    meter = float(ctx["meter"]["numerator"]) * 4.0 / float(ctx["meter"]["denominator"])
     total_beats = max(
         float(e.get("start_beat", 0.0)) + float(e.get("duration_beats", 0.0))
         for e in events

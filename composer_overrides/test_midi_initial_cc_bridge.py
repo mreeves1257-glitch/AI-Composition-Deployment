@@ -35,7 +35,7 @@ class ExplicitControlBridgeTests(unittest.TestCase):
         self.assertIn(bytes((0xB0, 103, 85)), raw)
         self.assertIn(bytes((0xB0, 104, 90)), raw)
         self.assertEqual(raw.count(bytes((0xB0, 1, 88))), 1)
-        self.assertIn(bytes((0x90, 40, 80)), raw)
+        self.assertIn(bytes((0x91, 40, 80)), raw)
 
     def test_no_midi_controls_not_requested(self):
         self.assertEqual(
@@ -66,7 +66,7 @@ class ExplicitControlBridgeTests(unittest.TestCase):
         self.assertIn(bytes((0x90, 64, 90)), plain)
         self.assertIn(bytes((0x90, 64, 90)), controlled)
         self.assertIn(bytes((0x80, 64, 0)), controlled)
-        self.assertIn(bytes((0x90, 40, 80)), controlled)
+        self.assertIn(bytes((0x91, 40, 80)), controlled)
 
 
 if __name__ == "__main__":

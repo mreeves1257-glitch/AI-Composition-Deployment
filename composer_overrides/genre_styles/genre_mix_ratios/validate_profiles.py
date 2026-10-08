@@ -38,6 +38,60 @@ for filename in set(index["genre_to_family_file"].values()):
         assert p["original_instrument_sources_off_limits"] is True
         assert p["actual_source_wav_sfz_files_must_remain_unchanged"] is True
         assert p["auto_apply"] is False
+        assert family["seven_stage_sequence_filed_for_every_genre"] is True
+        assert family["stage_wiring_activated"] is False
+        plan=p["seven_stage_plan"]
+        assert plan["genre_identity"] == "GENRE_"+p["musical_definition"]["profile_id"].replace("-", "_")
+        assert plan["stage_count"] == 7
+        assert plan["enable_runtime_connections"] is False
+        assert plan["auto_apply"] is False
+        assert plan["do_not_change_universal_recordings"] is True
+        assert plan["do_not_reconfigure_current_composer_or_plug"] is True
+        expected_order=[
+            "SELECT_GENRE",
+            "DEFINE_MUSICAL_STRUCTURE",
+            "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "COMPOSE_SEPARATE_PARTS",
+            "PERFORM_MUSICALLY",
+            "RENDER_SEPARATE_AUDIO_STEMS",
+            "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+        ]
+        assert plan["stage_order"] == expected_order
+        steps=plan["stages"]
+        assert len(steps) == 7
+        assert [s["order"] for s in steps] == list(range(1,8))
+        assert [s["name"] for s in steps] == expected_order
+        assert all(s["connection_activated"] is False for s in steps)
+        assert len({s["planned_stage_id"] for s in steps}) == 7
+        handoffs=plan["proposed_handoffs"]
+        assert len(handoffs) == 6
+        assert all(x["status"] == "RESERVED_NOT_CONNECTED" for x in handoffs)
+        assert all(x["from"] == steps[i]["planned_stage_id"] and
+                   x["to"] == steps[i+1]["planned_stage_id"]
+                   for i,x in enumerate(handoffs))
+        assert steps[2]["drum_kit_id"] == p["selected_shared_drum_kit_id"]
+        assert steps[2]["independent_track_roles"] == [x["track_id"] for x in p["individual_instrument_tracks"]]
+        assert steps[5]["required_track_roles"] == [x["track_id"] for x in p["individual_instrument_tracks"]]
+        assert steps[6]["operation_order"] == ["GENRE_OWNS_INDIVIDUAL_STEM_RATIOS","STANDALONE_3D_MIXER_LAST"]
+        def exists_field(ref):
+            v=p
+            for section in ref.split("."):
+                if not isinstance(v,dict) or section not in v:
+                    return False
+                v=v[section]
+            return True
+        for step in steps:
+            assert all(exists_field(f) for f in step.get("source_fields",[])), (genre,step["name"])
+        source_map=p["existing_file_cross_references"]
+        assert source_map["shared_drum_catalog"] == index["shared_drum_kit_catalog"]
+        repo_root=ROOT.parents[2]
+        for source_group,sources in source_map.items():
+            if isinstance(sources,list):
+                assert all((repo_root/source).is_file() for source in sources), (genre,source_group)
+            elif source_group=="original_runtime_bundle":
+                assert (repo_root/sources).is_file()
+            elif source_group=="shared_drum_catalog":
+                assert (repo_root/sources).is_file()
         assert family["family_contains_original_music_definitions"] is True
         assert family["original_routing_protected"] is True
         assert family["development_mode"] == "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"

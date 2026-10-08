@@ -14,6 +14,8 @@ PATCH = (
     ANCHOR
     + "            from midi_initial_cc_bridge import append_initial_cc\n"
     + "            absolute = append_initial_cc(absolute, package.metadata, track_id, channel)\n"
+    + "            from expressive_gesture_bridge import append_expressive_gestures\n"
+    + "            absolute = append_expressive_gestures(absolute, package.metadata, track_id, channel, package.ppq, track_events)\n"
 )
 
 

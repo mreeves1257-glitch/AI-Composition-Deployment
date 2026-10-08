@@ -30,6 +30,10 @@ def get_style(genre_name, profile):
     module = import_module("." + GENRE_STYLE_MODULES[genre_name], __package__)
     if module.GENRE_NAME != genre_name:
         return None
+    # A reserved Jazz name is not a developed style; keep this path inactive
+    # until Jazz Ballad becomes an approved musical template.
+    if getattr(module, "DEVELOPMENT_STATUS", None) == "NOT_STARTED":
+        return None
     if module.GENRE_PROFILE_ID != profile.get("profile_id"):
         return None
     if profile.get("resolution_policy") != "AUTOMATIC_BASELINE_ALLOWED":

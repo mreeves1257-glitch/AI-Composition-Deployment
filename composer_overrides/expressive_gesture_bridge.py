@@ -118,7 +118,20 @@ def append_expressive_gestures(
         raise PerformanceGestureError("CAPABILITY_INSTRUMENT_MISMATCH")
     if cap.get("note_mode") != "monophonic_expressive_gestures_only":
         raise PerformanceGestureError("UNSUPPORTED_CHANNEL_NOTE_MODE")
-    gestures = selection.get("gestures", [])
+    if selection.get("gesture_source") == "note_articulation":
+        if "gestures" in selection:
+            raise PerformanceGestureError("AMBIGUOUS_GESTURE_SOURCE")
+        from musical_gesture_author import (
+            author_from_note_articulations, GestureAuthorError,
+        )
+        try:
+            gestures = author_from_note_articulations(notes, cap, ppq=ppq)
+        except GestureAuthorError as exc:
+            raise PerformanceGestureError(str(exc)) from exc
+    elif "gesture_source" in selection:
+        raise PerformanceGestureError("UNKNOWN_GESTURE_SOURCE")
+    else:
+        gestures = selection.get("gestures", [])
     if not isinstance(gestures, list) or len(gestures) > MAX_GESTURES_PER_TRACK:
         raise PerformanceGestureError("INVALID_GESTURE_COLLECTION")
     intervals = _note_intervals(notes, ppq)
@@ -127,6 +140,8 @@ def append_expressive_gestures(
     for g in gestures:
         if not isinstance(g, dict) or set(g) != {"at_beat", "control", "value"}:
             raise PerformanceGestureError("INVALID_GESTURE_FIELDS")
+        if not isinstance(g["control"], str):
+            raise PerformanceGestureError("INVALID_GESTURE_CONTROL_NAME")
         control = cap["supported_controls"].get(g["control"])
         if control is None or control.get("message") != "control_change":
             raise PerformanceGestureError("CONTROL_NOT_SUPPORTED_BY_INSTRUMENT")

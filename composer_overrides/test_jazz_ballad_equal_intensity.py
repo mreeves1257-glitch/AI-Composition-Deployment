@@ -13,6 +13,7 @@ from pathlib import Path
 import numpy as np
 
 from genre_styles.Jazz.jazz_ballad import balance_mix
+from genre_styles.Jazz.instrument_packages import load_package
 from genre_styles.Jazz.ballad_leveler import (
     INSTRUMENTS, PROFILE, equalize_ballad_stems, _active_rms_and_peak_db
 )
@@ -35,6 +36,7 @@ def make_engine(stems_path, genre="Jazz Ballad", silent_role=None):
         "HARMONY": 0.35, "LEAD": 0.028, "BASS": 0.10,
         "SNARE": 0.065, "HAT": 0.075, "KICK": 0.115,
     }
+    originals = load_package('jazz_ballad')['instruments']
     profiles = []
     resources = []
     stems = []
@@ -45,7 +47,9 @@ def make_engine(stems_path, genre="Jazz Ballad", silent_role=None):
         resources.append({"track_id": role,
                           "resource": {"instrument_id": iid,
                                        "target_gain_db": -6.0,
-                                       "resource_type": "SFZ_SAMPLE_LIBRARY"}})
+                                       "resource_type": "SFZ_SAMPLE_LIBRARY",
+                                       "resource_id": originals[role]["resource_id"],
+                                       "preferred_mapping": originals[role]["sfz"]}})
         stems.append({"track_id": role, "wav_path": str(p)})
     return {"genre": genre, "modules": {
         "instrument": {"profiles": profiles},
@@ -54,7 +58,7 @@ def make_engine(stems_path, genre="Jazz Ballad", silent_role=None):
 
 
 class JazzEqualIntensityTest(unittest.TestCase):
-    def test_all_six_have_equal_active_intensity(self):
+    def test_all_six_follow_requested_style_relative_intensities(self):
         with tempfile.TemporaryDirectory() as folder:
             score, stems = make_engine(Path(folder))
             original = copy.deepcopy(score)
@@ -62,13 +66,18 @@ class JazzEqualIntensityTest(unittest.TestCase):
             self.assertEqual(score, original, "MUST_NOT_MUTATE_SOURCE_SCORE")
             self.assertEqual(output["jazz_mix_instruction"]["name"], PROFILE)
             self.assertTrue(output["jazz_mix_instruction"]["all_six_recorded_stems_present"])
-            levels = [t["effective_active_rms_dbfs"] for t in
-                      output["jazz_mix_instruction"]["track_measurements"].values()]
-            self.assertLess(max(levels) - min(levels), 1.2,
-                            "All six recorded parts need comparable active level")
+            levels = output["jazz_mix_instruction"]["track_measurements"]
             self.assertEqual(len(levels), 6)
-            self.assertEqual(set(output["jazz_mix_instruction"]["track_measurements"]),
-                             set(INSTRUMENTS))
+            self.assertEqual(set(levels), set(INSTRUMENTS))
+            target = output["jazz_mix_instruction"]["requested_mix_ratios_db"]
+            self.assertEqual(target, {
+                "HARMONY": 0.0, "LEAD": 0.0, "KICK": 0.0,
+                "BASS": -3.0, "SNARE": -12.0, "HAT": -7.0})
+            piano = levels["HARMONY"]["effective_active_rms_dbfs"]
+            for role, offset in target.items():
+                self.assertLess(abs(levels[role]["effective_active_rms_dbfs"] - piano - offset),
+                                0.2, "Original-sound mix ratio: " + role)
+            self.assertTrue(output["jazz_mix_instruction"]["original_instrument_sources_verified"])
 
     def test_preserve_piano_source_and_no_modified_wavs(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -92,6 +101,15 @@ class JazzEqualIntensityTest(unittest.TestCase):
             stems = [x for x in stems if x["track_id"] != "BASS"]
             with self.assertRaisesRegex(ValueError, "JAZZ_BALLAD_MISSING_AUDIO_STEM:BASS"):
                 equalize_ballad_stems(score, stems)
+
+    def test_reject_tampered_original_instrument_identity(self):
+        with tempfile.TemporaryDirectory() as folder:
+            score, stems = make_engine(Path(folder))
+            changed = next(row for row in score["modules"]["target"]["resolved_resources"]
+                           if row["track_id"] == "LEAD")
+            changed["resource"]["preferred_mapping"] = "fake-clarinet.sfz"
+            with self.assertRaisesRegex(ValueError, "ORIGINAL_INSTRUMENT_LINK_CHANGED:LEAD"):
+                balance_mix(score, stems)
 
     def test_rock_and_other_jazz_unchanged(self):
         with tempfile.TemporaryDirectory() as folder:

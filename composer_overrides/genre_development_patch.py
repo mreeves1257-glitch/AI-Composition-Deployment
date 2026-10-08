@@ -277,11 +277,17 @@ def develop_full_length(
 
         if is_lead:
             note = e.get("midi")
-            if isinstance(note, int):
+            if isinstance(note, int) and tmpl != "rock":
+                # Preserve non-Rock genre execution unchanged. Rock's old
+                # automatic +12/-12 semitone flip made the sampled lead sound
+                # thin and piercing regardless of the authored melodic range.
                 octave_shift = (0, 12, 0, -12)[(section + creation_seed) % 4]
                 candidate = note + octave_shift
                 if 48 <= candidate <= 108:
                     e["midi"] = candidate
+            # Rock lead keeps the notes authored by the theory/arrangement
+            # engine; foreground presence is handled by the existing gain
+            # contract, not by artificial transposition.
             if total_bars >= 24 and phrase % 6 == 4 and bar % 4 == 0:
                 continue
 

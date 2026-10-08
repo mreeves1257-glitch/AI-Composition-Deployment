@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from jazz_arranger_style import arrange_jazz_ballad as _arrange
 from jazz_balance_contract import apply_jazz_ballad_balance as _balance
+from .leveling import match_jazz_ballad_presence as _level
 
 GENRE_NAME = "Jazz Ballad"
 GENRE_PROFILE_ID = "JAZZ_BALLAD_V1"
@@ -71,6 +72,14 @@ def arrange_events(events: list[dict], context: dict, creation_seed: int) -> lis
     return _arrange(events, context, creation_seed)
 
 
-def balance_mix(engine_result: dict) -> dict:
-    """Give the actual recorded Jazz instruments appropriate ensemble balance."""
-    return _balance(engine_result)
+def balance_mix(engine_result: dict, stems: list[dict] | None = None) -> dict:
+    """Balance only Jazz Ballad, based on real recorded stem intensity.
+
+    Without stems, retain the existing static Jazz balance for safe, backwards-
+    compatible contracts and offline checks. With stems, match actual active
+    source levels before forwarding to the unmodified standalone 3D mixer.
+    """
+    baseline = _balance(engine_result)
+    if stems is None or not isinstance(baseline, dict) or baseline.get("genre") != GENRE_NAME:
+        return baseline
+    return _level(baseline, stems)

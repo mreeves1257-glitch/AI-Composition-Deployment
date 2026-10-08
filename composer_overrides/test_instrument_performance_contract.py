@@ -42,6 +42,11 @@ class PerformanceContractTest(unittest.TestCase):
            note('BASS',0,.5,43,'genre_bass','electric_bass_guitar'),
            note('KEYS',0,1,60,'genre_harmony','electric_piano')]
         self.assertEqual(perform(x,'ROCK'),x)
+    def test_fractional_beat_coordinates(self):
+        x=[note('HARMONY','37/2','7/15'),note('HARMONY','41/2','7/15')]
+        out=perform(x,'ROCK')
+        self.assertGreater(out[0]['duration_beats'],1.5)
+        self.assertEqual(out[0]['start_beat'],'37/2')
     def test_valid_contract(self):
         self.assertEqual(CONTRACT_VERSION,'INSTRUMENT_PERFORMANCE_V1')
         self.assertEqual(list(GENRE_POLICIES),['ROCK'])

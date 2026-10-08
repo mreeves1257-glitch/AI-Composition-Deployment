@@ -6,6 +6,7 @@ Never invents notes, sound banks, tracks, tempos, or changes drums/bass/mixer.
 """
 from __future__ import annotations
 from collections import defaultdict
+from fractions import Fraction
 from typing import Any
 
 CONTRACT_VERSION = "INSTRUMENT_PERFORMANCE_V1"
@@ -21,6 +22,11 @@ GENRE_POLICIES = {
         }
     }
 }
+
+
+def _beats(value: Any) -> float:
+    """Read decimal or rational beat coordinates without changing the grid."""
+    return float(Fraction(str(value)))
 
 
 def _electric_guitar(event: dict[str, Any]) -> bool:
@@ -46,18 +52,18 @@ def perform(events: list[dict[str, Any]], genre: str) -> list[dict[str, Any]]:
             tracks[str(event.get("track_id", ""))].append(index)
 
     for track, indices in tracks.items():
-        indices.sort(key=lambda i: (float(result[i]["start_beat"]), int(result[i].get("midi", 0))))
+        indices.sort(key=lambda i: (_beats(result[i]["start_beat"]), int(result[i].get("midi", 0))))
         gestures: list[list[int]] = []
         for index in indices:
-            start = float(result[index]["start_beat"])
-            if not gestures or start - float(result[gestures[-1][0]]["start_beat"]) > rules["close_attack_beats"]:
+            start = _beats(result[index]["start_beat"])
+            if not gestures or start - _beats(result[gestures[-1][0]]["start_beat"]) > rules["close_attack_beats"]:
                 gestures.append([index])
             else:
                 gestures[-1].append(index)
 
         for pos, members in enumerate(gestures):
-            first = float(result[members[0]]["start_beat"])
-            next_onset = float(result[gestures[pos + 1][0]]["start_beat"]) if pos + 1 < len(gestures) else None
+            first = _beats(result[members[0]]["start_beat"])
+            next_onset = _beats(result[gestures[pos + 1][0]]["start_beat"]) if pos + 1 < len(gestures) else None
             # At the end of an instrumental phrase, honor the source duration;
             # do not invent a held note to fill a musical gap or song length.
             if next_onset is None:
@@ -67,8 +73,8 @@ def perform(events: list[dict[str, Any]], genre: str) -> list[dict[str, Any]]:
                 continue
             for index in members:
                 event = result[index]
-                start = float(event["start_beat"])
-                original = float(event["duration_beats"])
+                start = _beats(event["start_beat"])
+                original = _beats(event["duration_beats"])
                 technique = str(event.get("articulation", "")).lower()
                 explicit_short = any(word in technique for word in ("mute", "staccato", "chop", "short", "pizz"))
                 explicit_legato = "legato" in technique

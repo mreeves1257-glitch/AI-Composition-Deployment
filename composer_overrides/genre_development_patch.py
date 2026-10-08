@@ -705,8 +705,27 @@ def build_jazz_progression(genre_name: str, profile: dict[str, Any],
     minor = quality in ("natural_minor", "aeolian", "minor")
     if (genre_name == "Jazz Fusion" and not minor) or (genre_name != "Jazz Fusion" and not major):
         raise ValueError("JAZZ_HARMONY_MODE_REQUIRES_REVIEW")
-    options = JAZZ_ROMAN_PATTERNS[genre_name]
     total = max(0, int(bars))
+    if genre_name == "Jazz Ballad":
+        # Keyboard-arranger concept: connected eight-bar phrases, with a
+        # different functional chord pattern for each phrase/section.
+        # The former I-I/vi-vi/... pattern repeated every eight bars and
+        # could hold tonic for four bars across the loop boundary.
+        # All notes remain in the existing Theory engine's approved vocabulary.
+        sections = (
+            ("I", "vi", "ii", "V", "I", "IV", "ii", "V"),
+            ("IV", "iii", "vi", "V", "I", "vi", "ii", "V"),
+            ("iii", "vi", "ii", "V", "IV", "I", "ii", "V"),
+            ("I", "IV", "iii", "vi", "ii", "V", "IV", "V"),
+        )
+        first = (int(seedv) // 19) % len(sections)
+        out = [sections[(first + bar // 8) % len(sections)][bar % 8]
+               for bar in range(total)]
+        if out:
+            out[-1] = "I"
+        return out
+    # Preserve every other approved Jazz style unchanged.
+    options = JAZZ_ROMAN_PATTERNS[genre_name]
     initial = (int(seedv) // 19) % len(options)
     out = [options[(initial + bar // 16) % len(options)][bar % 8] for bar in range(total)]
     if out:

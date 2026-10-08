@@ -1,0 +1,26 @@
+name: Jazz arranger isolated validation
+
+on:
+  pull_request:
+    paths:
+      - 'composer_overrides/jazz_arranger_style.py'
+      - 'composer_overrides/jazz_balance_contract.py'
+      - 'composer_overrides/genre_development_patch.py'
+      - 'composer_overrides/test_jazz_arranger_style.py'
+      - 'build_current_composer.sh'
+  workflow_dispatch:
+
+jobs:
+  jazz-branch-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax validation
+        run: |
+          python -m py_compile composer_overrides/jazz_arranger_style.py composer_overrides/jazz_balance_contract.py composer_overrides/genre_development_patch.py composer_overrides/test_jazz_arranger_style.py
+          bash -n build_current_composer.sh
+      - name: Verify arranger ranges, chord changes, stereo balance isolation and preserved piano
+        run: python composer_overrides/test_jazz_arranger_style.py -v

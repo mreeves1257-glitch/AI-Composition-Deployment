@@ -9,11 +9,11 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-ANCHOR = "            absolute = _midi_pitch_events(track_events, package.ppq)\n"
+ANCHOR = "            absolute = _midi_pitch_events(track_events, package.ppq, channel)\n"
 PATCH = (
     ANCHOR
     + "            from midi_initial_cc_bridge import append_initial_cc\n"
-    + "            absolute = append_initial_cc(absolute, package.metadata, track_id)\n"
+    + "            absolute = append_initial_cc(absolute, package.metadata, track_id, channel)\n"
 )
 
 

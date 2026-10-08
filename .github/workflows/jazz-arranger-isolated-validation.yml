@@ -7,6 +7,7 @@ on:
       - 'composer_overrides/jazz_balance_contract.py'
       - 'composer_overrides/genre_development_patch.py'
       - 'composer_overrides/genre_styles/**'
+      - 'composer_overrides/test_jazz_equal_intensity.py'
       - 'composer_overrides/test_genre_style_files.py'
       - 'composer_overrides/test_jazz_arranger_style.py'
       - 'build_current_composer.sh'
@@ -24,9 +25,10 @@ jobs:
         run: |
           python -m py_compile composer_overrides/jazz_arranger_style.py composer_overrides/jazz_balance_contract.py composer_overrides/genre_development_patch.py composer_overrides/test_jazz_arranger_style.py
           python -m compileall -q composer_overrides/genre_styles
-          python -m py_compile composer_overrides/test_genre_style_files.py
+          python -m py_compile composer_overrides/test_genre_style_files.py composer_overrides/test_jazz_equal_intensity.py
           bash -n build_current_composer.sh
       - name: Verify arranger ranges, chord changes, stereo balance isolation and preserved piano
         run: |
           python composer_overrides/test_jazz_arranger_style.py -v
           python composer_overrides/test_genre_style_files.py -v
+          python composer_overrides/test_jazz_equal_intensity.py -v

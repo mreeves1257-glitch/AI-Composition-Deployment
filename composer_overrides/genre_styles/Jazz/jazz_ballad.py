@@ -74,3 +74,13 @@ def arrange_events(events: list[dict], context: dict, creation_seed: int) -> lis
 def balance_mix(engine_result: dict) -> dict:
     """Give the actual recorded Jazz instruments appropriate ensemble balance."""
     return _balance(engine_result)
+
+
+def equalize_instrument_intensity(engine_result: dict, rendered_stems: list[dict]) -> dict:
+    """All six Jazz Ballad instruments have the same measured active RMS.
+
+    The real Wurlitzer piano's established volume anchors the ensemble.
+    No instrument/sample synthesis, waveform DSP or shared 3D mixer changes.
+    """
+    from .equal_intensity import equalize_jazz_ballad
+    return equalize_jazz_ballad(engine_result, rendered_stems)

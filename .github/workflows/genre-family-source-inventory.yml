@@ -1,0 +1,38 @@
+name: Audit original musical genre profiles for family consolidation
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/genre-family-source-inventory.yml'
+      - 'composer_overrides/genre_styles/genre_mix_ratios/**'
+      - 'composer_overrides/genre_styles/genre_family_loader.py'
+jobs:
+  original-musical-profiles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract original runtime profile fields without modifying them
+        run: |
+          mkdir -p /tmp/original_composer_family
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original_composer_family
+          python - <<'PY'
+          import ast, json
+          from pathlib import Path
+          root = Path("/tmp/original_composer_family")
+          registry = json.loads((root/"AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json").read_text())
+          script_path = root/"AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
+          program = ast.parse(script_path.read_text())
+          palettes = ast.literal_eval(next(n.value for n in program.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=="PALETTES" for t in n.targets)))
+          family_func=next(n for n in program.body if isinstance(n,ast.FunctionDef) and n.name=="family_template")
+          namespace={}
+          exec(compile(ast.Module(body=[family_func],type_ignores=[]),str(script_path),"exec"),namespace)
+          all_rows={}
+          for name,profile in registry["profiles"].items():
+              family=namespace["family_template"](name)
+              all_rows[name]={"original_profile":profile,"original_family_template":family,"original_palette":list(palettes[family])}
+          assert len(all_rows)==55
+          print("MUSICAL_REGISTRY_START")
+          print(json.dumps(all_rows,ensure_ascii=False,separators=(",",":")))
+          print("MUSICAL_REGISTRY_END")
+          PY
+      - name: Validate new genre families and drum source protection
+        run: python composer_overrides/genre_styles/genre_mix_ratios/validate_profiles.py

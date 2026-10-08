@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "genre": "Jazz Ballad",
+  "profile_name": "JAZZ_BALLAD_ORIGINAL_SOURCES_LOCKED_MIX_V1",
+  "purpose": "Independent Jazz Ballad final-mix ratios only; do not rewrite samples, instruments, SFZ programs, registered mappings, composition events, or shared 3D mixer",
+  "reference_role": "HARMONY",
+  "ratios_db": {
+    "HARMONY": {
+      "catalog_key": "electric_piano_wurlitzer",
+      "relative_active_level_db": 0,
+      "role": "PIANO_REFERENCE_PRESERVE"
+    },
+    "LEAD": {
+      "catalog_key": "clarinet_vsco",
+      "relative_active_level_db": 5,
+      "role": "CLARINET_CLEAR_MELODY"
+    },
+    "BASS": {
+      "catalog_key": "double_bass_meatbass",
+      "relative_active_level_db": 2,
+      "role": "DOUBLE_BASS_SUPPORT"
+    },
+    "KICK": {
+      "catalog_key": "brush_kick_swirly",
+      "relative_active_level_db": 6,
+      "role": "AUDIBLE_BASS_DRUM"
+    },
+    "SNARE": {
+      "catalog_key": "brush_snare_swirly",
+      "relative_active_level_db": -12,
+      "role": "VERY_SUBTLE_RUSHING_BRUSH"
+    },
+    "HAT": {
+      "catalog_key": "brush_hat_swirly",
+      "relative_active_level_db": -7,
+      "role": "QUIET_LIGHT_TIMEKEEPING"
+    }
+  },
+  "mixer_only": true,
+  "sample_file_edits_allowed": false,
+  "source_registry_edits_allowed": false,
+  "notes": "All dB figures are preliminary relative active-level mix goals anchored to the current recorded piano, not modifications to any instrument or sample. Rushing sound has not been proven to be an ocean drum; existing linked roles are brush snare and hat. Original source files remain authoritative."
+}

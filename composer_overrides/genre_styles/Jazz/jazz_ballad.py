@@ -71,6 +71,13 @@ def arrange_events(events: list[dict], context: dict, creation_seed: int) -> lis
     return _arrange(events, context, creation_seed)
 
 
-def balance_mix(engine_result: dict) -> dict:
-    """Give the actual recorded Jazz instruments appropriate ensemble balance."""
-    return _balance(engine_result)
+def balance_mix(engine_result: dict, stems: list[dict] | None = None) -> dict:
+    """Balance Jazz Ballad instruments from the *actual rendered* track audio.
+
+    Keep the previous fixed-trim path as a non-audio metadata fallback for
+    offline tools. Real composition uses measured six-stem balancing only.
+    """
+    if stems is None:
+        return _balance(engine_result)
+    from .ballad_leveler import equalize_ballad_stems
+    return equalize_ballad_stems(engine_result, stems)

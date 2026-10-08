@@ -30,6 +30,17 @@ jobs:
               family=namespace["family_template"](name)
               all_rows[name]={"original_profile":profile,"original_family_template":family,"original_palette":list(palettes[family])}
           assert len(all_rows)==55
+          idx=json.loads(Path("composer_overrides/genre_styles/genre_mix_ratios/index.json").read_text())
+          assert set(idx["genre_to_family_file"]) == set(all_rows)
+          for name,source in all_rows.items():
+              family=json.loads((Path("composer_overrides/genre_styles/genre_mix_ratios")/idx["genre_to_family_file"][name]).read_text())
+              profile=family["profiles"][name]
+              assert profile["musical_definition"]==source["original_profile"], "ORIGINAL_MUSIC_DEFINITION_CHANGED:"+name
+              assert profile["runtime_musical_connections"]["original_family_template"]==source["original_family_template"]
+              assert profile["original_composer_instrument_palette"]==source["original_palette"]
+              assert profile["musical_definition_source"]=="PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY"
+              assert profile["auto_apply"] is False
+          print("PASS_ALL_55_ORIGINAL_MUSICAL_PROFILES_COPIED_INTACT_TO_13_FAMILIES")
           print("MUSICAL_REGISTRY_START")
           print(json.dumps(all_rows,ensure_ascii=False,separators=(",",":")))
           print("MUSICAL_REGISTRY_END")

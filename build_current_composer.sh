@@ -249,6 +249,7 @@ cp -R composer_overrides/genre_styles composer/runtime/genre_styles
 cp composer_overrides/jazz_arranger_style.py composer/runtime/jazz_arranger_style.py
 cp composer_overrides/jazz_balance_contract.py composer/runtime/jazz_balance_contract.py
 cp composer_overrides/test_jazz_arranger_style.py composer/runtime/test_jazz_arranger_style.py
+cp composer_overrides/test_jazz_equal_presence.py composer/runtime/test_jazz_equal_presence.py
 cp composer_overrides/test_genre_style_files.py composer/runtime/test_genre_style_files.py
 cp composer_overrides/instrument_performance_contract.py composer/runtime/instrument_performance_contract.py
 cp composer_overrides/test_instrument_performance_contract.py composer/runtime/test_instrument_performance_contract.py
@@ -506,6 +507,10 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
         mixed.setdefault('audio_rendered',False)
         mixed['mixer_stderr']=(cp.stderr or '')[-800:]
         return mixed
+    if isinstance(mixer_instructions.get('jazz_equal_presence'), dict):
+        # Explain precisely which sampled parts reached equal active presence;
+        # this remains diagnostic metadata, not a claim of perfect perception.
+        mixed['jazz_equal_presence'] = mixer_instructions['jazz_equal_presence']
     mixed['pipeline_order']=['COMPOSITION','REAL_INSTRUMENT_RENDER','STANDALONE_3D_FINAL_STAGE']
     return mixed
 """
@@ -645,6 +650,7 @@ PY
 # Guard piano integrity, actual sample MIDI ranges, developed chord movement,
 # and absence of changes to working Rock and unrelated genres.
 python composer/runtime/test_jazz_arranger_style.py -v
+python composer/runtime/test_jazz_equal_presence.py -v
 python composer/runtime/test_genre_style_files.py -v
 
 # Keep the six confirmed recorded Jazz Ballad roles and extended harmony.

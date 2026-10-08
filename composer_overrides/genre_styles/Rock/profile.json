@@ -137,7 +137,7 @@
         "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
         "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
         "original_family_template": "rock",
-        "active_style_module": "composer_overrides/genre_styles/rock.py",
+        "active_style_module": "composer_overrides/genre_styles/Rock/rock.py",
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
         "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "rock_recorded",
@@ -228,7 +228,7 @@
               "musical_definition.arrangement_transformation"
             ],
             "source_files": [
-              "composer_overrides/genre_styles/rock.py"
+              "composer_overrides/genre_styles/Rock/rock.py"
             ],
             "state": "WORKING_MUSIC_INCOMPLETE",
             "planned_stage_id": "GENRE_ROCK_CORE_V2_STEP_04",
@@ -245,7 +245,7 @@
             ],
             "source_files": [
               "composer_overrides/instrument_performance_contract.py",
-              "composer_overrides/genre_styles/rock.py"
+              "composer_overrides/genre_styles/Rock/rock.py"
             ],
             "needs": [
               "ARTICULATION",
@@ -292,7 +292,7 @@
               "musical_definition.production_mastering_intent"
             ],
             "source_files": [
-              "composer_overrides/rock_balance_contract.py"
+              "composer_overrides/genre_styles/Rock/rock_balance_contract.py"
             ],
             "downstream_reference_files": [
               "composer_overrides/standalone_3d_mixer.py",
@@ -348,15 +348,15 @@
       "existing_file_cross_references": {
         "original_runtime_bundle": "composer/runtime.b64",
         "genre_specific_arrangement_files": [
-          "composer_overrides/genre_styles/rock.py"
+          "composer_overrides/genre_styles/Rock/rock.py"
         ],
         "genre_specific_instrument_files": [],
         "genre_specific_performance_files": [
           "composer_overrides/instrument_performance_contract.py",
-          "composer_overrides/genre_styles/rock.py"
+          "composer_overrides/genre_styles/Rock/rock.py"
         ],
         "genre_specific_mix_files": [
-          "composer_overrides/rock_balance_contract.py"
+          "composer_overrides/genre_styles/Rock/rock_balance_contract.py"
         ],
         "shared_instrument_files": [
           "composer_overrides/verified_future_instruments.json",

@@ -698,6 +698,10 @@ from pathlib import Path
 root = Path("composer/runtime").resolve()
 sys.path.insert(0, str(root))
 from sfz_renderer_adapter import render_midi
+import os
+renderer = root.parent.parent / ".composer_tools" / "bin" / "sfizz_render"
+assert renderer.is_file(), "JAZZ_PROBE_SFIZZ_RENDERER_MISSING"
+os.environ["AI_COMP_SFZ_RENDERER"] = str(renderer)
 source = root / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
 spec = importlib.util.spec_from_file_location("jazz_real_recorded_audio_probe", source)
 adapter = importlib.util.module_from_spec(spec)

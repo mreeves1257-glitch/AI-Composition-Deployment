@@ -183,16 +183,9 @@ def develop_full_length(
                 e["duration_beats"] = min(original, 0.90 if phrase_in_section in (0, 2) else 0.48)
                 e["duration_beats"] = max(0.22, e["duration_beats"])
                 gain *= 1.08
-            if is_harmony and "guitar" in instrument:
-                # Rhythm guitar must articulate the pulse rather than sustain
-                # across most of a two-beat span.
-                original = float(e.get("duration_beats", 0.1))
-                e["duration_beats"] = min(original, 0.82 if phrase_in_section in (0, 2) else 0.46)
-                e["duration_beats"] = max(0.18, e["duration_beats"])
-            if is_lead and "guitar" in instrument:
-                original = float(e.get("duration_beats", 0.1))
-                e["duration_beats"] = min(original, 0.62)
-                e["duration_beats"] = max(0.16, e["duration_beats"])
+            # Do not truncate all guitar notes to a universal short value.
+            # The genre-authorized instrument performance layer below selects
+            # ringing, fast-picked, legato, or explicitly short playing.
 
             # First phrase behaves like an intro: establish groove before lead.
             if bar < 4:
@@ -261,7 +254,11 @@ def develop_full_length(
             if variant == 1 and local > 0:
                 shifted = min(meter - 0.06, local + 0.125)
                 e["start_beat"] = bar * meter + shifted
-            elif variant == 2 and local >= meter / 2:
+            elif variant == 2 and local >= meter / 2 and not (
+                tmpl == "rock" and "guitar" in instrument
+            ):
+                # Rock chord tones must not disappear merely because their
+                # MIDI pitch is odd: that can destroy the chord's identity.
                 midi = int(e.get("midi", 60))
                 if midi % 2:
                     continue
@@ -420,4 +417,7 @@ def develop_full_length(
             int(x.get("midi", 0) or 0),
         )
     )
+    if tmpl == "rock":
+        from instrument_performance_contract import perform
+        developed = perform(developed, "ROCK")
     return developed

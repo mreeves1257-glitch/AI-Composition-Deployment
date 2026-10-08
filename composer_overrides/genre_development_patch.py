@@ -497,3 +497,82 @@ def develop_full_length(
         # Genre expression shapes the performance; SFZ owns the sound.
         developed = apply_genre_expression(developed, tmpl, meter, creation_seed)
     return developed
+
+# --- Shared eight-section Genre Development template (non-rendering) ---
+# This is a VIEW of the existing 55 authoritative performance profiles.
+# No sound-bank settings, instrument DSP, new musical defaults or mixer behavior
+# are duplicated inside individual genre configurations.
+GENRE_TEMPLATE_VERSION = "GENRE_DEVELOPMENT_EIGHT_SECTION_R1"
+GENRE_TEMPLATE_FIELDS = (
+    ("Genre Identity", (
+        "profile_id", "family", "status", "scope_note", "resolution_policy", "provenance")),
+    ("Music Theory", ("harmony_behavior",)),
+    ("Rhythm & Groove", (
+        "meter_options", "groove_behavior", "percussion_behavior_if_applicable")),
+    ("Tempo", ("tempo_bpm_range",)),
+    ("Song Structure", (
+        "form_tendencies", "phrase_behavior", "arrangement_transformation")),
+    ("Instrumentation", (
+        "instrument_role_behavior", "bass_behavior", "ensemble_player_behavior",
+        "manufacturer_adapter_requirements")),
+    ("Musical Expression & Natural Performance", (
+        "dynamic_behavior", "articulation_behavior",
+        "timing_humanization_behavior", "continuous_performance_control")),
+    ("Genre Validation", (
+        "sound_effects_intent", "mix_prominence_intent", "production_mastering_intent")),
+)
+# Shared references are defined once, never copied into instrument profiles.
+UNIVERSAL_GENRE_REFERENCES = {
+    "note_and_beat_engine": "EXISTING_COMPOSITION_THEORY_AND_EVENT_ENGINE",
+    "expression_capabilities": "EXISTING_INSTRUMENT_PERFORMANCE_AND_SFZ_CONTROLS",
+    "recorded_instrument_audio": "EXISTING_APPROVED_SAMPLE_RENDERER",
+    "final_audio": "EXISTING_STANDALONE_3D_MIXER",
+}
+
+
+def compile_genre_template(genre_name: str, profile: dict[str, Any]) -> dict[str, Any]:
+    """Read, but never rewrite, an authoritative genre performance profile.
+
+    The eight original headings are kept as a fixed view of existing metadata.
+    Fields cannot fall through to another genre or receive guessed defaults.
+    The seven controlled-choice genres retain their input gates.
+    """
+    if not genre_name or not isinstance(profile, dict):
+        raise ValueError("GENRE_TEMPLATE_SOURCE_INVALID")
+    required = {field for _, fields in GENRE_TEMPLATE_FIELDS for field in fields}
+    missing = sorted(field for field in required if field not in profile)
+    if missing:
+        raise ValueError("GENRE_TEMPLATE_FIELDS_MISSING:" + ",".join(missing))
+    bounds = profile["tempo_bpm_range"]
+    if (not isinstance(bounds, list) or len(bounds) != 2 or
+            not all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in bounds) or
+            not 0 < bounds[0] <= bounds[1]):
+        raise ValueError("GENRE_TEMPLATE_TEMPO_RANGE_INVALID")
+    if not isinstance(profile["meter_options"], list) or not profile["meter_options"]:
+        raise ValueError("GENRE_TEMPLATE_METER_OPTIONS_INVALID")
+
+    # Copy only values from the specific selected genre. No DSP settings here.
+    from copy import deepcopy
+    sections = [
+        {"number": i, "heading": title,
+         "genre_specific": {field: deepcopy(profile[field]) for field in fields}}
+        for i, (title, fields) in enumerate(GENRE_TEMPLATE_FIELDS, 1)
+    ]
+    sections[3]["pace_choices"] = {
+        "A": "SLOW_WITHIN_APPROVED_GENRE_RANGE",
+        "B": "MEDIUM_WITHIN_APPROVED_GENRE_RANGE",
+        "C": "FAST_WITHIN_APPROVED_GENRE_RANGE",
+        "exact_pace_boundaries": "GENRE_SPECIFIC_VALIDATION_PENDING",
+    }
+    automatic = profile["resolution_policy"] == "AUTOMATIC_BASELINE_ALLOWED"
+    return {
+        "template_version": GENRE_TEMPLATE_VERSION,
+        "selected_genre": str(genre_name),
+        "selected_profile_id": profile["profile_id"],
+        "resolution_policy": profile["resolution_policy"],
+        "automatic_baseline_allowed": automatic,
+        "decision_status": "BASELINE_ALLOWED" if automatic else "CONTROLLED_INPUT_REQUIRED",
+        "universal_reference": UNIVERSAL_GENRE_REFERENCES,
+        "sections": sections,
+        "audio_validation": "NOT_ESTABLISHED_BY_TEMPLATE",
+    }

@@ -681,7 +681,8 @@ JAZZ_ROMAN_PATTERNS = {
 def _approved_jazz(genre_name: str, profile: dict[str, Any]) -> bool:
     return (isinstance(profile, dict) and
             profile.get("resolution_policy") == "AUTOMATIC_BASELINE_ALLOWED" and
-            JAZZ_GENRE_PROFILES.get(genre_name) == profile.get("profile_id"))
+            genre_name in JAZZ_GENRE_PROFILES and
+            JAZZ_GENRE_PROFILES[genre_name] == profile.get("profile_id"))
 
 
 def build_jazz_progression(genre_name: str, profile: dict[str, Any],

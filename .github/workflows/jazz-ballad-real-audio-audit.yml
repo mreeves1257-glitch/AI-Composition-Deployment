@@ -1,0 +1,176 @@
+name: Jazz Ballad real audio handoff audit
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/jazz-ballad-real-audio-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recorded-ballad-through-plug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - name: Compose Jazz Ballad and verify playable final stereo WAV
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime
+          import json
+          import time
+          import urllib.request
+          import urllib.error
+          import urllib.parse
+          import uuid
+
+          base = "https://ai-composer-shared-plug-clean.onrender.com"
+          request = {
+              "interface_version": "COMPOSER_INTERFACE_V1",
+              "request_id": "ci-jazz-"+uuid.uuid4().hex,
+              "source": "Control Panel",
+              "music_engine": "AI_COMPOSITION",
+              "destination": "AI Composition - Sandbox",
+              "entry_path": "/plug",
+              "command": "compose",
+              "execute": "AICompositionEngine.run",
+              "target": "INTERNAL",
+              "mode": "normal",
+              "genre": "Jazz Ballad",
+              "tuning_reference_hz": 440,
+              "requested_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+          }
+          def fetch(url, method="GET", data=None, headers=None, timeout=480, length=None):
+              req=urllib.request.Request(url,method=method,data=data,headers=headers or {})
+              with urllib.request.urlopen(req,timeout=timeout) as response:
+                  body=response.read() if length is None else response.read(length)
+                  return response.status,dict(response.headers.items()),body
+
+          start=time.monotonic()
+          try:
+              status, headers, raw = fetch(
+                  base+"/plug",method="POST",
+                  data=json.dumps(request).encode("utf-8"),
+                  headers={"Content-Type":"application/json"},timeout=480)
+          except urllib.error.HTTPError as exc:
+              print("JAZZ_AUDIT_PLUGIN_HTTP_ERROR",exc.code,exc.read(500).decode("utf-8","replace"),flush=True)
+              raise
+          print("PLUGIN_HTTP",status,"SECONDS",round(time.monotonic()-start,1),flush=True)
+          data=json.loads(raw.decode("utf-8"))
+          result=data.get("ai_composition",data)
+          if not isinstance(result,dict):
+              raise AssertionError("NO_COMPOSER_RESULT")
+          audio=result.get("audio_render") or {}
+          diagnostics=result.get("render_diagnostics") or []
+          print("COMPOSITION",json.dumps({
+             "genre":result.get("genre"),
+             "status":result.get("status"),
+             "audio_rendered":result.get("audio_rendered"),
+             "audio_status":audio.get("status"),
+             "mixer_stage":audio.get("mixer_stage"),
+             "tempo_bpm":result.get("tempo_bpm"),
+          },default=str),flush=True)
+          if result.get("genre") != "Jazz Ballad":
+              raise AssertionError("WRONG_GENRE")
+          if result.get("audio_rendered") is not True or audio.get("audio_rendered") is not True:
+              raise AssertionError("JAZZ_FINAL_AUDIO_NOT_RENDERED:"+str(result.get("status")))
+          if audio.get("status") != "AUDIO_RENDER_PASS":
+              raise AssertionError("JAZZ_FINAL_MIX_FAILED:"+str(audio.get("status")))
+          tracks={str(row.get("track_id","")).upper():row for row in diagnostics if isinstance(row,dict)}
+          required={"LEAD","BASS","HARMONY","KICK","SNARE","HAT"}
+          missing=required-set(tracks)
+          if missing:
+              raise AssertionError("MISSING_RECORDED_JAZZ_INSTRUMENTS:"+str(missing))
+          for role in sorted(required):
+              row=tracks[role]
+              if not isinstance(row.get("note_count"),int) or row["note_count"]<1:
+                  raise AssertionError("EMPTY_JAZZ_PART:"+role)
+              if not isinstance(row.get("peak_dbfs"),(int,float)) or not isinstance(row.get("rms_dbfs"),(int,float)):
+                  raise AssertionError("SILENT_JAZZ_STEM:"+role)
+              print("INSTRUMENT",role,"notes",row["note_count"],
+                    "peak",round(row["peak_dbfs"],2),
+                    "rms",round(row["rms_dbfs"],2),flush=True)
+
+          # Playback goes through the plug, exactly as the existing control
+          # panel requests it. Do not download or expose all recorded files.
+          urls=[audio.get("audio_url"),audio.get("playback_url"),
+                result.get("audio_url"),result.get("playback_url")]
+          url=next((u for u in urls if isinstance(u,str) and u.startswith("https://")),None)
+          if not url:
+              path=audio.get("wav_path") or result.get("wav_path")
+              if not isinstance(path,str) or "/output/" not in path or not path.endswith(".wav"):
+                  raise AssertionError("MISSING_FINAL_STEREO_WAV_PATH")
+              relative=path.rsplit("/output/",1)[-1]
+              url=base+"/audio/"+urllib.parse.quote(relative,safe="/")
+          head_status,head_headers,_=fetch(url,method="HEAD",timeout=120)
+          mime=head_headers.get("Content-Type",head_headers.get("content-type","")).lower()
+          size=int(head_headers.get("Content-Length",head_headers.get("content-length","0")))
+          if head_status not in (200,206) or "audio/" not in mime or size<=44:
+              raise AssertionError("UNPLAYABLE_FINAL_WAV_METADATA:"+str((head_status,mime,size)))
+          read_status,read_headers,header=fetch(
+              url,method="GET",headers={"Range":"bytes=0-127"},timeout=120,length=128)
+          if read_status not in (200,206) or not (
+              header[:4]==b"RIFF" and header[8:12]==b"WAVE"):
+              raise AssertionError("NOT_A_VALID_WAVE_AUDIO_SOURCE")
+          # Audit the real final stereo file, not merely the first WAV header.
+          # These checks detect digital clipping, empty outputs and channel
+          # format errors, but cannot replace listening for natural brush hiss.
+          import array
+          import math
+          import sys
+          import tempfile
+          import wave
+          with tempfile.TemporaryFile() as stored:
+              with urllib.request.urlopen(url, timeout=120) as playback:
+                  total=0
+                  while True:
+                      block=playback.read(262144)
+                      if not block:
+                          break
+                      total += len(block)
+                      if total > 150000000:
+                          raise AssertionError("JAZZ_FINAL_WAV_TOO_LARGE")
+                      stored.write(block)
+              stored.seek(0)
+              with wave.open(stored,"rb") as audio_stream:
+                  channels=audio_stream.getnchannels()
+                  sample_width=audio_stream.getsampwidth()
+                  sample_rate=audio_stream.getframerate()
+                  frames=audio_stream.getnframes()
+                  duration=frames/sample_rate
+                  if channels!=2 or sample_width!=2 or sample_rate<22050 or duration<30:
+                      raise AssertionError("INVALID_FINAL_STEREO_FORMAT:"+str(
+                          (channels,sample_width,sample_rate,duration)))
+                  clip_count=0
+                  audible_windows=0
+                  checked=0
+                  for i in range(10):
+                      position=min(frames-1,int(frames*(i+0.5)/10))
+                      audio_stream.setpos(position)
+                      samples=array.array("h")
+                      samples.frombytes(audio_stream.readframes(min(sample_rate,frames-position)))
+                      if sys.byteorder!="little":
+                          samples.byteswap()
+                      if not samples:
+                          continue
+                      checked+=1
+                      peak=max(abs(v) for v in samples)
+                      clip_count+=sum(abs(v)>=32760 for v in samples)
+                      if peak>50:
+                          audible_windows+=1
+                  if audible_windows<6 or clip_count>0:
+                      raise AssertionError("FINAL_STEREO_EMPTY_OR_DIGITALLY_CLIPPED:"+str(
+                          (audible_windows,clip_count)))
+                  print("FINAL_STEREO_STREAM_AUDIT_PASS",
+                        json.dumps({"channels":channels,
+                                    "sample_rate":sample_rate,
+                                    "duration_seconds":round(duration,1),
+                                    "checked_windows":checked,
+                                    "audible_windows":audible_windows,
+                                    "clipped_samples":clip_count}),flush=True)
+          print("JAZZ_REAL_AUDIO_HANDOFF_PASS",
+                json.dumps({"all_six_recorded_instruments":True,
+                            "final_wav_http":read_status,
+                            "final_wav_bytes":size,
+                            "final_mixer":audio.get("mixer_stage"),
+                            "playback_source":"PLUG_AUDIO_ENDPOINT"}),flush=True)
+          PY

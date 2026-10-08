@@ -46,7 +46,12 @@ class ExplicitControlBridgeTests(unittest.TestCase):
     def test_only_specific_track_receives_controls(self):
         raw = midi_bytes({"BASS": {"initial_cc": {"7": 35}}})
         self.assertNotIn(bytes((0xB0, 1, 88)), raw)
-        self.assertIn(bytes((0xB0, 7, 35)), raw)
+        self.assertIn(bytes((0xB1, 7, 35)), raw)
+
+    def test_preserves_track_midi_channel(self):
+        controls = append_initial_cc([], (("midi_routing", json.dumps(
+            {"LEAD": {"initial_cc": {"1": 88}}})),), "LEAD", 3)
+        self.assertEqual(controls, [(0, -1, bytes((0xB3, 1, 88)))])
 
     def test_invalid_cc_refused_not_clamped(self):
         for bad in ({"131": 2}, {"1": 200}, {"1": -1}, {"1": True}):

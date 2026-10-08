@@ -13,7 +13,7 @@ from pathlib import Path
 BEFORE_IMPORT = ("    fingerprint=theory.get('composition_fingerprint','')\n"
                  "    return CompositionExecutionPackage(\n")
 AFTER_IMPORT = ("    fingerprint=theory.get('composition_fingerprint','')\n"
-                "    from instrument_gesture_handoff import route_explicit_note_gestures\n"
+                "    from automatic_phrase_handoff import route_performance_intentions\n"
                 "    return CompositionExecutionPackage(\n")
 
 BEFORE_METADATA = (
@@ -22,7 +22,7 @@ BEFORE_METADATA = (
     "('midi_routing',json.dumps(routing)))\n"
 )
 AFTER_METADATA = (
-    "        events=tuple(events), metadata=route_explicit_note_gestures(\n"
+    "        events=tuple(events), metadata=route_performance_intentions(\n"
     "            tuple(events), engine_result['modules']['target'].get('resolved_resources', []),\n"
     "            (('genre',engine_result['genre']),('source_fingerprint',fingerprint),\n"
     "             ('handoff','OCT03_TO_SEP27_OUTPUT_CORE'),('midi_routing',json.dumps(routing)))\n"

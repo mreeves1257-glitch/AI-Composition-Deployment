@@ -27,6 +27,9 @@ install_library "KARORYFER_SHINYGUITAR" "https://github.com/sfzinstruments/karor
 install_library "KARORYFER_BIG_RUSTY_DRUMS" "https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git" "main"
 install_library "GREG_SULLIVAN_E_PIANOS" "https://github.com/sfzinstruments/GregSullivan.E-Pianos.git" "master"
 install_library "FREEPATS_WORLD_PERCUSSION" "https://github.com/freepats/world-percussion.git" "main"
+# All future compatible sample banks use the single manifest below.
+python composer_overrides/sample_bank_onboarding.py --self-test
+python composer_overrides/sample_bank_onboarding.py --install
 find "$BANK/KARORYFER_SHINYGUITAR" "$BANK/KARORYFER_BIG_RUSTY_DRUMS" -type f -name "*.sfz" -print0 | xargs -0 sed -i 's#\\#/#g'
 
 python - <<'PY'
@@ -216,6 +219,8 @@ cp composer_overrides/production_resource_policy.py composer/runtime/production_
 cp composer_overrides/real_electric_piano_probe.py composer/runtime/real_electric_piano_probe.py
 cp composer_overrides/real_rock_alias_probe.py composer/runtime/real_rock_alias_probe.py
 cp composer_overrides/real_conga_probe.py composer/runtime/real_conga_probe.py
+cp composer_overrides/sample_bank_onboarding.py composer/runtime/sample_bank_onboarding.py
+cp composer_overrides/verified_future_instruments.json composer/runtime/verified_future_instruments.json
 cp composer_overrides/genre_resource_readiness.py composer/runtime/genre_resource_readiness.py
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
@@ -499,6 +504,7 @@ PY
 python composer/runtime/real_electric_piano_probe.py
 python composer/runtime/real_rock_alias_probe.py
 python composer/runtime/real_conga_probe.py
+python composer/runtime/sample_bank_onboarding.py --apply
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py

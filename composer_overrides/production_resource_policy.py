@@ -17,6 +17,21 @@ APPROVED_SAMPLE_BANKS = {
     "KARORYFER_BIG_RUSTY_DRUMS": {"library": "Karoryfer Big Rusty Drums", "license": "CC0-1.0"},
 }
 
+# New banks enter this allowlist only through the checked-in, SHA-pinned
+# onboarding manifest. Build preflight must audition every mapped note before
+# these resources can reach a live Render service.
+from pathlib import Path
+_manifest = Path(__file__).with_name("verified_future_instruments.json")
+if _manifest.is_file():
+    _data = json.loads(_manifest.read_text(encoding="utf-8"))
+    from sample_bank_onboarding import validate_manifest
+    validate_manifest(_data)
+    for _bank in _data["new_banks"]:
+        _rid = _bank["resource_id"]
+        if _rid in APPROVED_SAMPLE_BANKS:
+            raise ValueError("ONBOARD_BANK_PROVENANCE_COLLISION:" + _rid)
+        APPROVED_SAMPLE_BANKS[_rid] = {"library": _bank["library"], "license": _bank["license"]}
+
 class ProductionResourceBlocked(ValueError):
     pass
 

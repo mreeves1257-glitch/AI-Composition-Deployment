@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "purpose": "Approved recorded-sample onboarding; legacy five proven banks remain unchanged",
+  "new_banks": [],
+  "new_instruments": [
+    {
+      "instrument_id": "bongo",
+      "resource_id": "FREEPATS_WORLD_PERCUSSION",
+      "source_sfz": "WorldPercussion 20200905.sfz",
+      "derived_sfz": "composer-bongo-three-strokes.sfz",
+      "note_map": {
+        "51": 60,
+        "52": 61,
+        "53": 62
+      },
+      "test_notes": [
+        60,
+        61,
+        62
+      ],
+      "expected_sample_references": 31,
+      "gain_db": -6,
+      "stroke_names": {
+        "60": "muted_bongo",
+        "61": "high_bongo",
+        "62": "low_bongo"
+      },
+      "attribution": "FreePats / recorded Xavimart and collaborators, CC0; https://github.com/freepats/world-percussion"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "genre": "Soul",
+  "genre_template": "soul",
+  "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+  "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+  "reference_instrument_track": "TRUMPET",
+  "original_composer_instrument_palette": [
+    "electric_bass",
+    "electric_piano",
+    "trumpet",
+    "drums"
+  ],
+  "individual_instrument_tracks": [
+    {
+      "track_id": "ELECTRIC_BASS",
+      "instrument_id": "electric_bass",
+      "proposed_relative_active_level_db": -2,
+      "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "ELECTRIC_PIANO",
+      "instrument_id": "electric_piano",
+      "proposed_relative_active_level_db": -3,
+      "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "TRUMPET",
+      "instrument_id": "trumpet",
+      "proposed_relative_active_level_db": 0,
+      "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "KICK",
+      "instrument_id": null,
+      "original_palette_group": "drums",
+      "proposed_relative_active_level_db": 0,
+      "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "SNARE",
+      "instrument_id": null,
+      "original_palette_group": "drums",
+      "proposed_relative_active_level_db": -3,
+      "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "HAT",
+      "instrument_id": null,
+      "original_palette_group": "drums",
+      "proposed_relative_active_level_db": -7,
+      "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+      "source_is_read_only": true
+    }
+  ],
+  "pending_drum_source_splits": [
+    "drums"
+  ],
+  "actual_source_wav_sfz_files_must_remain_unchanged": true,
+  "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+  "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+  "auto_apply": false
+}

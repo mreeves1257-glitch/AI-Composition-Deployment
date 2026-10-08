@@ -1,0 +1,52 @@
+name: Composer Automatic Phrase Decisions V1 Source Check
+on:
+  push:
+    branches:
+      - automatic-musical-phrasing-v1-2026-10-08
+  pull_request:
+    paths:
+      - 'composer_overrides/phrase_expression_decisions.py'
+      - 'composer_overrides/automatic_phrase_handoff.py'
+      - 'composer_overrides/test_automatic_phrase_decisions.py'
+      - 'composer_overrides/install_instrument_gesture_handoff.py'
+      - 'build_current_composer.sh'
+  workflow_dispatch:
+
+jobs:
+  explicit-and-automatic-performer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract immutable original runtime and install existing and gated handoffs
+        run: |
+          mkdir -p composer/runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
+          cp composer_overrides/midi_initial_cc_bridge.py composer/runtime/
+          cp composer_overrides/musical_gesture_author.py composer/runtime/
+          cp composer_overrides/expressive_gesture_bridge.py composer/runtime/
+          cp composer_overrides/instrument_gesture_handoff.py composer/runtime/
+          cp composer_overrides/phrase_expression_decisions.py composer/runtime/
+          cp composer_overrides/automatic_phrase_handoff.py composer/runtime/
+          cp composer_overrides/performance_capabilities.json composer/runtime/
+          cp composer_overrides/test_midi_initial_cc_bridge.py composer/runtime/
+          cp composer_overrides/test_expressive_gesture_bridge.py composer/runtime/
+          cp composer_overrides/test_instrument_gesture_handoff.py composer/runtime/
+          cp composer_overrides/test_automatic_phrase_decisions.py composer/runtime/
+          python composer_overrides/install_midi_control_bridge.py --core composer/runtime/AI_Comp_Executable_Output_Core_001.py
+          python composer_overrides/install_instrument_gesture_handoff.py --handoff composer/runtime/output_handoff.py
+      - name: Verify deterministic phrase choices, selected instrument, explicit priority and unchanged default MIDI
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: |
+          python -m unittest -v test_automatic_phrase_decisions test_instrument_gesture_handoff test_expressive_gesture_bridge test_midi_initial_cc_bridge
+          python -m py_compile composer/runtime/phrase_expression_decisions.py composer/runtime/automatic_phrase_handoff.py composer/runtime/output_handoff.py
+          bash -n build_current_composer.sh
+      - name: Preserve inactive family-stage and soundbank architecture
+        run: |
+          python composer_overrides/genre_styles/validate_profiles.py
+          test ! -e composer_overrides/genre_styles/genre_mix_ratios
+          echo AUTOMATIC_PHRASING_GATED_SOURCE_CHECK_PASS

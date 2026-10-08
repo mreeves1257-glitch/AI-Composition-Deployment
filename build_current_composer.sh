@@ -689,6 +689,85 @@ assert {e["midi"] for e in former} == {60,64}, former
 print("JAZZ_CHORD_TONES_PRESERVED_PASS",flush=True)
 PY
 
+# Isolated Jazz audio evidence using actual GENRE-GENERATED piano notes,
+# not a hand-created chord, an instrument substitution, or the final 3D master.
+# Never change the approved Wurlitzer SFZ/sample bank.
+python - <<'PY'
+import collections, importlib.util, json, struct, sys
+from pathlib import Path
+root = Path("composer/runtime").resolve()
+sys.path.insert(0, str(root))
+from sfz_renderer_adapter import render_midi
+source = root / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
+spec = importlib.util.spec_from_file_location("jazz_real_recorded_audio_probe", source)
+adapter = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(adapter)
+result = adapter.GenreExecutionAdapter().resolve("Jazz Ballad", mode="normal", creation_seed=0)
+assert result["status"] == "PASS", result.get("status")
+assert result["execution_template"] == "jazz_ballad"
+piano = [e for e in result["events"] if e.get("track_id") == "HARMONY"]
+assert piano and all(e.get("instrument_id") == "electric_piano" for e in piano)
+groups = collections.defaultdict(list)
+for note in piano:
+    groups[round(float(note["start_beat"]), 6)].append(note)
+onsets = sorted(groups)[:4]
+assert len(onsets) == 4, "JAZZ_PIANO_CHORD_ONSETS_MISSING"
+for onset in onsets:
+    voices = groups[onset]
+    assert len(voices) == 4, ("JAZZ_CHORD_LOST_VOICE", onset, voices)
+    assert len({int(n["midi"]) for n in voices}) == 4
+    assert len({int(n["velocity"]) for n in voices}) == 1
+chosen = [note for onset in onsets for note in groups[onset]]
+# Standard MIDI: preserve the generated note pitch/onset/duration/velocity.
+def vlq(n):
+    assert n >= 0
+    values = [n & 0x7f]
+    n >>= 7
+    while n:
+        values.insert(0, (n & 0x7f) | 0x80)
+        n >>= 7
+    return bytes(values)
+tempo_us = max(1, round(60_000_000 / int(result["tempo_bpm"])))
+messages = [(0, 0, b"\xff\x51\x03" + tempo_us.to_bytes(3, "big"))]
+for n in chosen:
+    pitch, vel = int(n["midi"]), int(n["velocity"])
+    assert 0 <= pitch <= 127 and 1 <= vel <= 127
+    start = round(float(n["start_beat"]) * 480)
+    end = start + max(1, round(float(n["duration_beats"]) * 480))
+    messages.extend(((start, 2, bytes([0x90, pitch, vel])),
+                     (end, 1, bytes([0x80, pitch, 0]))))
+messages.sort(key=lambda x: (x[0], x[1], x[2]))
+track = bytearray()
+position = 0
+for when, _, msg in messages:
+    track += vlq(when - position) + msg
+    position = when
+track += b"\x00\xff\x2f\x00"
+out = root / "output" / "jazz_recorded_chord_probe"
+out.mkdir(parents=True, exist_ok=True)
+midi_path = out / "jazz-ballad-generated-piano.mid"
+wav_path = out / "jazz-ballad-generated-piano.wav"
+midi_path.write_bytes(b"MThd" + struct.pack(">IHHH", 6, 0, 1, 480) +
+                      b"MTrk" + struct.pack(">I", len(track)) + track)
+bindings = json.loads((root / "target_registry.json").read_text())[
+    "targets"]["INTERNAL"]["instrument_bindings"]
+resource = bindings["electric_piano"]
+assert resource["resource_id"] == "GREG_SULLIVAN_E_PIANOS"
+assert resource["preferred_mapping"] == "Wurlitzer EP200/composer-wurlitzer.sfz"
+rendered = render_midi(resource, midi_path, wav_path, sample_rate=44100)
+assert rendered["status"] == "AUDIO_RENDER_PASS"
+assert rendered["peak_linear"] > 0 and rendered["rms_linear"] > 0
+print("JAZZ_BALLAD_REAL_RECORDED_CHORD_AUDIO_PASS", json.dumps({
+    "profile": "Jazz Ballad", "source": "ACTUAL_GENERATED_HARMONY_EVENTS",
+    "real_recorded_sample_bank": resource["resource_id"],
+    "chord_onsets": len(onsets), "midi_note_count": len(chosen),
+    "peak_dbfs": round(rendered["peak_dbfs"], 2),
+    "rms_dbfs": round(rendered["rms_dbfs"], 2),
+    "audio_status": "SHORT_PIANO_DIAGNOSTIC_ONLY",
+    "full_song_3d_verified": False,
+}, sort_keys=True), flush=True)
+PY
+
 python composer/runtime/test_instrument_performance_contract.py
 python composer/runtime/test_rock_lead_register.py
 python composer/runtime/test_rock_balance_contract.py

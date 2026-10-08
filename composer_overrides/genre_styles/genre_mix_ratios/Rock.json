@@ -10,7 +10,7 @@
       "schema_version": 1,
       "genre": "ROCK",
       "genre_template": "rock",
-      "profile_status": "WORKING_ROCK_PROTECTED_UNCHANGED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "PRESERVED_EXISTING_RESOURCE_GAIN_TRIM_DB",
       "reference_instrument_track": "HARMONY",
       "original_composer_instrument_palette": [
@@ -86,7 +86,7 @@
       ],
       "pending_drum_source_splits": [],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "PRESERVE_CURRENT_BEHAVIOR",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Rock",
@@ -139,7 +139,7 @@
         "original_family_template": "rock",
         "active_style_module": "composer_overrides/genre_styles/rock.py",
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ROCK_EXISTING_WORKING_IMPLEMENTATION_PRESERVED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "rock_recorded",
         "per_instrument_mix_config_owned_by_genre": true
       },

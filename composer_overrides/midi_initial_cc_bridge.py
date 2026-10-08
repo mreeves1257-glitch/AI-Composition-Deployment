@@ -20,16 +20,19 @@ def append_initial_cc(
     note_events: list[tuple[int, int, bytes]],
     metadata: Iterable[tuple[str, str]],
     track_id: str,
+    channel: int = 0,
 ) -> list[tuple[int, int, bytes]]:
     """Insert MIDI CC at tick zero, before Note On, for this exact track.
 
-    A MIDI channel-1 CC is B0 <controller 0..127> <value 0..127>.
-    The existing Output Core places independent instrument stems in distinct
-    files; channel 1 is therefore correct for each independent stem.
+    A MIDI CC is (B0 + channel) <controller 0..127> <value 0..127>.
+    The Output Core assigns MIDI channels to tracks. Preserve that channel
+    for every inserted instrument control, including the combined MIDI file.
 
     Existing note-off order (0) and note-on order (1) are unchanged.
     Controller priority (-1) ensures SFZ controls are initialized first.
     """
+    if isinstance(channel, bool) or not isinstance(channel, int) or not 0 <= channel <= 15:
+        raise MidiControlContractError("INVALID_MIDI_CHANNEL")
     routing_values = [v for k, v in metadata if k == "midi_routing"]
     if not routing_values:
         return list(note_events)
@@ -62,7 +65,7 @@ def append_initial_cc(
             or not 0 <= number <= 127 or not 0 <= value <= 127
         ):
             raise MidiControlContractError("INVALID_CC_VALUE_OR_NUMBER")
-        events.append((0, -1, bytes((0xB0, number, value))))
+        events.append((0, -1, bytes((0xB0 | channel, number, value))))
     # Stable ordering preserves the target resource's explicit CC ordering for
     # initialization; never reorder different CCs by their numeric ID.
     return sorted(events, key=lambda event: (event[0], event[1]))

@@ -1,0 +1,55 @@
+name: Verify Resolved-Instrument Performance Handoff
+on:
+  push:
+    branches:
+      - instrument-aware-performance-handoff-2026-10-08
+  pull_request:
+    paths:
+      - 'composer_overrides/instrument_gesture_handoff.py'
+      - 'composer_overrides/install_instrument_gesture_handoff.py'
+      - 'composer_overrides/test_instrument_gesture_handoff.py'
+      - 'build_current_composer.sh'
+  workflow_dispatch:
+jobs:
+  instrument-aware-routing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract unmodified Composer archive; apply guarded local output hooks
+        run: |
+          mkdir -p composer/runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
+          cp composer_overrides/midi_initial_cc_bridge.py composer/runtime/
+          cp composer_overrides/expressive_gesture_bridge.py composer/runtime/
+          cp composer_overrides/musical_gesture_author.py composer/runtime/
+          cp composer_overrides/performance_capabilities.json composer/runtime/
+          cp composer_overrides/instrument_gesture_handoff.py composer/runtime/
+          cp composer_overrides/test_instrument_gesture_handoff.py composer/runtime/
+          cp composer_overrides/test_midi_initial_cc_bridge.py composer/runtime/
+          cp composer_overrides/test_expressive_gesture_bridge.py composer/runtime/
+          python composer_overrides/install_midi_control_bridge.py --core composer/runtime/AI_Comp_Executable_Output_Core_001.py
+          python composer_overrides/install_instrument_gesture_handoff.py --handoff composer/runtime/output_handoff.py
+          python composer_overrides/install_instrument_gesture_handoff.py --handoff composer/runtime/output_handoff.py | grep ALREADY_INSTALLED
+      - name: Check end-to-end source metadata and real MIDI serialization
+        env:
+          PYTHONPATH: composer/runtime
+        run: |
+          python -m unittest -v test_instrument_gesture_handoff test_expressive_gesture_bridge test_midi_initial_cc_bridge
+          python -m py_compile composer/runtime/output_handoff.py composer/runtime/instrument_gesture_handoff.py
+          bash -n build_current_composer.sh
+      - name: Confirm no genres or sample assets were activated or changed
+        run: |
+          python composer_overrides/genre_styles/validate_profiles.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          index=json.loads(Path("composer_overrides/genre_styles/index.json").read_text())
+          caps=json.loads(Path("composer_overrides/performance_capabilities.json").read_text())
+          assert caps["activated_genres"]==[]
+          assert index["verified_full_music_genre_count"]==0
+          assert index["automatic_application_enabled"] is False
+          print("INSTRUMENT_GESTURE_HANDOFF_SOURCE_CONTRACT_PASS")
+          PY

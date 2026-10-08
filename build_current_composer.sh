@@ -259,7 +259,10 @@ cp composer_overrides/musical_gesture_author.py composer/runtime/
 cp composer_overrides/performance_capabilities.json composer/runtime/
 cp composer_overrides/test_midi_initial_cc_bridge.py composer/runtime/
 cp composer_overrides/test_expressive_gesture_bridge.py composer/runtime/
+cp composer_overrides/instrument_gesture_handoff.py composer/runtime/
+cp composer_overrides/test_instrument_gesture_handoff.py composer/runtime/
 python composer_overrides/install_midi_control_bridge.py --core composer/runtime/AI_Comp_Executable_Output_Core_001.py
+python composer_overrides/install_instrument_gesture_handoff.py --handoff composer/runtime/output_handoff.py
 python - <<'PY'
 import json
 from pathlib import Path
@@ -601,7 +604,7 @@ PY
 
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
-python -m py_compile composer/runtime/midi_initial_cc_bridge.py composer/runtime/expressive_gesture_bridge.py composer/runtime/musical_gesture_author.py composer/runtime/AI_Comp_Executable_Output_Core_001.py composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/genre_styles/Rock/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+python -m py_compile composer/runtime/midi_initial_cc_bridge.py composer/runtime/expressive_gesture_bridge.py composer/runtime/musical_gesture_author.py composer/runtime/instrument_gesture_handoff.py composer/runtime/AI_Comp_Executable_Output_Core_001.py composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/genre_styles/Rock/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 
 # Verify routed harmony for all 55 without changing sample routing or sound.
 python - <<'PY'
@@ -877,6 +880,7 @@ PY
 
 python composer/runtime/test_midi_initial_cc_bridge.py
 python composer/runtime/test_expressive_gesture_bridge.py -v
+python composer/runtime/test_instrument_gesture_handoff.py -v
 python composer/runtime/test_instrument_performance_contract.py
 PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_lead_register
 PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_balance_contract

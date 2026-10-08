@@ -58,6 +58,30 @@ class JazzArrangerTests(unittest.TestCase):
         self.assertGreater(len({e["midi"] for e in track(a, "LEAD")}), 4)
         self.assertLess(len(track(a, "SNARE")), len(track(original, "SNARE")) // 2)
 
+    def test_clarinet_has_own_line_different_from_original_piano(self):
+        ctx, original = fake_score(48)
+        arranged = arrange_jazz_ballad(original, ctx, 8)
+        piano_before = [e for e in original if e["track_id"] == "HARMONY"]
+        piano_after = [e for e in arranged if e["track_id"] == "HARMONY"]
+        self.assertEqual(piano_after, piano_before, "Never change piano performance")
+        clarinet = [e for e in arranged if e["track_id"] == "LEAD"]
+        self.assertEqual(len(clarinet), 96, "Keep a complete separate clarinet line")
+        self.assertTrue(all(e["instrument_id"] == "clarinet_bb" for e in clarinet))
+        self.assertTrue(all(CLARINET_RANGE[0] <= e["midi"] <= CLARINET_RANGE[1]
+                            for e in clarinet))
+        self.assertTrue(any(abs(e["start_beat"] - round(e["start_beat"])) > 0.25
+                            for e in clarinet),
+                        "Clarinet entrance must be distinct from on-beat piano")
+        # A jazz ballad melody may share chord tones, but should not simply
+        # shadow the piano in both pitch and entrance at the same time.
+        exact_doublings = 0
+        for note in clarinet:
+            if any(p["midi"] == note["midi"] and
+                   abs(p["start_beat"] - note["start_beat"]) < 0.01
+                   for p in piano_before):
+                exact_doublings += 1
+        self.assertLess(exact_doublings, len(clarinet) // 10)
+
     def test_harmonic_bass_movement(self):
         ctx, original = fake_score()
         a = arrange_jazz_ballad(original, ctx, 0)

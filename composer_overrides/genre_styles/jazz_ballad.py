@@ -15,6 +15,91 @@ GENRE_NAME = "Jazz Ballad"
 GENRE_PROFILE_ID = "JAZZ_BALLAD_V1"
 STYLE_VERSION = "JAZZ_BALLAD_INDEPENDENT_STYLE_R1"
 
+# This instrument package is genre-owned, while recorded samples stay
+# in the shared sound_resources library. Do not duplicate the WAV/SFZ files.
+INSTRUMENT_PACKAGE = {
+    "version": 1,
+    "genre": GENRE_NAME,
+    "link_mode": "SHARED_SAMPLE_LIBRARY_REFERENCE",
+    "shared_root": "sound_resources",
+    "resource_type": "SFZ_SAMPLE_LIBRARY",
+    "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+    "instruments": {
+        "HARMONY": {
+            "instrument_id": "electric_piano",
+            "registry_binding": "electric_piano",
+            "resource_id": "GREG_SULLIVAN_E_PIANOS",
+            "sfz": "Wurlitzer EP200/composer-wurlitzer.sfz",
+            "role": "ACCOMPANIMENT",
+            "sound_preservation": "KEEP_APPROVED_WURLITZER_PIANO",
+        },
+        "LEAD": {
+            "instrument_id": "clarinet_bb",
+            "registry_binding": "clarinet_bb",
+            "resource_id": "JAZZ_VSCO_CLARINET_PINNED",
+            "sfz": "Programs/jazz-clarinet.sfz",
+            "role": "FOREGROUND_MELODY",
+            "supported_midi_notes": [60, 71],
+        },
+        "BASS": {
+            "instrument_id": "double_bass",
+            "registry_binding": "double_bass",
+            "resource_id": "JAZZ_MEATBASS_PINNED",
+            "sfz": "Programs/jazz-pizzicato.sfz",
+            "role": "ACOUSTIC_BASS",
+            "supported_midi_notes": [35, 55],
+        },
+        "KICK": {
+            "instrument_id": "kick_drum_rock",
+            "source_instrument_id": "brush_drums",
+            "registry_binding": "kick_drum_rock:brush_drums",
+            "resource_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+            "sfz": "Programs/jazz-brush-kick.sfz",
+            "role": "SOFT_KICK",
+            "supported_midi_notes": [36, 36],
+        },
+        "SNARE": {
+            "instrument_id": "snare_drum",
+            "source_instrument_id": "brush_drums",
+            "registry_binding": "snare_drum:brush_drums",
+            "resource_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+            "sfz": "Programs/jazz-brush-snare.sfz",
+            "role": "BRUSH_SNARE",
+            "supported_midi_notes": [38, 38],
+        },
+        "HAT": {
+            "instrument_id": "hi_hat",
+            "source_instrument_id": "brush_drums",
+            "registry_binding": "hi_hat:brush_drums",
+            "resource_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+            "sfz": "Programs/jazz-brush-hat.sfz",
+            "role": "LIGHT_TIMEKEEPING",
+            "supported_midi_notes": [42, 42],
+        },
+    },
+}
+
+
+def instrument_links() -> dict:
+    """Return separate link metadata; never duplicate recorded source files."""
+    from copy import deepcopy
+    return deepcopy(INSTRUMENT_PACKAGE)
+
+
+def validate_instrument_links(bindings: dict) -> None:
+    """Reject missing or mismatched SFZ references; preserve sample identity."""
+    if not isinstance(bindings, dict):
+        raise ValueError("JAZZ_INSTRUMENT_BINDINGS_NOT_AVAILABLE")
+    for role, spec in INSTRUMENT_PACKAGE["instruments"].items():
+        resource = bindings.get(spec["registry_binding"])
+        if not isinstance(resource, dict):
+            raise ValueError("JAZZ_MISSING_INSTRUMENT_LINK:" + role)
+        if (resource.get("resource_id") != spec["resource_id"]
+                or resource.get("preferred_mapping") != spec["sfz"]
+                or resource.get("resource_type") != "SFZ_SAMPLE_LIBRARY"):
+            raise ValueError("JAZZ_INSTRUMENT_LINK_MISMATCH:" + role)
+
+
 # Independent eight-bar phrases. The original pair of eight-bar cells often
 # repeated the tonic over multiple measures and made the track feel static.
 # Each element is a chord function validated by the existing Theory layer.

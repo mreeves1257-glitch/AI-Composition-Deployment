@@ -657,7 +657,7 @@ def genre_template_from_registry(genre_name: str, registry: dict[str, Any]) -> d
 # Genre-specific Jazz policy now lives under genre_styles/<genre>.py.
 # This compatibility import retains the established adapter's public API,
 # without storing Jazz Ballad, Bebop, Swing, etc. in this common source file.
-from genre_styles.jazz_harmony import (
+from genre_styles.Jazz.harmony import (
     JAZZ_GENRE_PROFILES,
     build_jazz_progression,
     realize_jazz_voicings,

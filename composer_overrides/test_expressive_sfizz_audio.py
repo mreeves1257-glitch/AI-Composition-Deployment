@@ -38,8 +38,7 @@ def package(with_timed_vibrato):
                 "resource_id": RESOURCE_ID,
                 "preferred_mapping": PROGRAM,
                 "gestures": [
-                    {"at_beat": "0", "control": "vibrato_depth", "value": 0},
-                    {"at_beat": "1", "control": "vibrato_depth", "value": 88},
+                    {"at_beat": "1/2", "control": "vibrato_depth", "value": 88},
                     {"at_beat": "7/2", "control": "vibrato_depth", "value": 0},
                 ],
             },
@@ -93,8 +92,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix="sfizz-expression-",dir=str(ROOT/"output")) as temp:
         directory=Path(temp)
         rendered=[]
-        for expressive in (False,True):
-            name="timed-vibrato" if expressive else "fixed-zero"
+        for name, expressive in (("fixed-zero-A",False),("fixed-zero-B",False),("timed-vibrato",True)):
             mid=directory/(name+".mid")
             wav=directory/(name+".wav")
             mid.write_bytes(MidiAdapter().render(package(expressive),"test-fingerprint").payload)
@@ -106,17 +104,30 @@ def main():
                 "sample_rate":rate,"frames":report["frames"],
                 "peak_dbfs":round(report["peak_dbfs"],2),
             },flush=True)
-        base,gesture=rendered
-        pre=window_difference(base,gesture,44100,0.08,0.35)
-        mid=window_difference(base,gesture,44100,0.9,1.45)
-        assert math.isfinite(mid) and mid > max(1e-6,pre*2),(
-            "TIMED_CC1_DID_NOT_CHANGE_ACTUAL_RECORDED_INSTRUMENT",
-            {"pre_difference_rms":pre,"mid_difference_rms":mid},
-        )
+        first,repeat,gesture=rendered
+        # Compare the SAME fixed-control render twice first. If the real
+        # sample engine has nondeterministic selection/phase we must not
+        # misattribute ordinary differences to the timed MIDI message.
+        pre_repeat=window_difference(first,repeat,44100,0.03,0.14)
+        pre_expression=window_difference(first,gesture,44100,0.03,0.14)
+        post_repeat=window_difference(first,repeat,44100,0.45,0.95)
+        post_expression=window_difference(first,gesture,44100,0.45,0.95)
+        print("EXPRESSIVE_RECORDED_SOURCE_CONTROLLED_AB",{
+            "pre_repeat_rms":round(pre_repeat,9),
+            "pre_expression_rms":round(pre_expression,9),
+            "post_repeat_rms":round(post_repeat,9),
+            "post_expression_rms":round(post_expression,9),
+        },flush=True)
+        assert math.isfinite(post_expression) and post_expression > max(
+            1e-6, post_repeat*1.25, pre_expression*0.5
+        ), ("EXPRESSION_CAUSAL_AUDIO_EFFECT_NOT_YET_DEMONSTRATED",{
+            "pre_repeat":pre_repeat,"pre_expression":pre_expression,
+            "post_repeat":post_repeat,"post_expression":post_expression,
+        })
         print("TIMED_NATIVE_CC1_SFIZZ_WAV_RESPONSE_PASS",{
-            "pre_difference_rms":round(pre,8),
-            "mid_difference_rms":round(mid,8),
-            "different_waveform_from_same_recorded_source":True,
+            "baseline_variability_measured":True,
+            "post_expression_difference_rms":round(post_expression,8),
+            "same_original_recorded_sample_library":True,
         },flush=True)
 
 

@@ -49,6 +49,22 @@ def engine_result(articulation=None, *,
     }
 
 
+def independently_authored_midi_plan():
+    """Manual note-gesture reference: specifies exact timing, not note labels."""
+    return {
+        "SOLO": {
+            "capability_id": "SHINYGUITAR_RECORDED_LEAD_CC1_V1",
+            "resource_id": "KARORYFER_SHINYGUITAR",
+            "preferred_mapping": "Programs/composer-electric-lead.sfz",
+            "gestures": [
+                {"at_beat": "0", "control": "vibrato_depth", "value": 0},
+                {"at_beat": "1", "control": "vibrato_depth", "value": 88},
+                {"at_beat": "7/2", "control": "vibrato_depth", "value": 0},
+            ],
+        },
+    }
+
+
 def midi_bytes(result):
     return MidiAdapter().render(
         build_execution_package(result), "source-fingerprint-fixture"
@@ -131,7 +147,9 @@ class InstrumentAwareComposerHandoffTests(unittest.TestCase):
     def test_note_annotation_and_identical_gestures_have_same_midi_events(self):
         tagged = build_execution_package(engine_result("sustained_vibrato"))
         untagged = build_execution_package(engine_result(None))
-        manual = replace(untagged, metadata=tagged.metadata)
+        manual = replace(untagged, metadata=untagged.metadata + (
+            ("expressive_gesture_plan", json.dumps(independently_authored_midi_plan())),
+        ))
         raw_auto = MidiAdapter().render(tagged,"same-fingerprint").payload
         raw_manual = MidiAdapter().render(manual,"same-fingerprint").payload
         if raw_auto != raw_manual:

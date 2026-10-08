@@ -39,6 +39,21 @@ src=src.replace("default_path=$sample_dir/", "default_path=../Samples/")
 src="\n".join(line for line in src.splitlines() if '#include "acoustic_' not in line)
 src=src.replace("set_cc106=0", "set_cc106=32")
 (root/"composer-electric.sfz").write_text(src+"\n", encoding="utf-8")
+# Separate recorded-guitar SFZ program for Rock leads. Keep the rhythm program
+# completely unchanged. The built-in Shinyguitar LFO creates true pitch vibrato
+# on sustained notes after a natural onset delay/fade, not on every quick pick.
+lead=src
+for previous, desired in (
+    ("set_cc1=0", "set_cc1=88"),
+    ("set_cc103=32", "set_cc103=85"),
+    ("set_cc104=0", "set_cc104=90"),
+    ("set_cc105=36", "set_cc105=64"),
+    ("lfo01_pitch_oncc1=14", "lfo01_pitch_oncc1=30"),
+):
+    if lead.count(previous)!=1:
+        raise SystemExit("LEAD_VIBRATO_SFZ_ANCHOR_NOT_FOUND:"+previous)
+    lead=lead.replace(previous,desired,1)
+(root/"composer-electric-lead.sfz").write_text(lead+"\n", encoding="utf-8")
 PY
 ln -sfn "$BANK/KARORYFER_SHINYGUITAR/Samples/electric" "$BANK/KARORYFER_SHINYGUITAR/Programs/electric"
 ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Samples" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/Samples"
@@ -122,6 +137,28 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz" <<'SFZ'
 <region> sample=../Samples/kick_24/kick/kick/k_vl13_rr3.flac seq_position=3
 <region> sample=../Samples/kick_24/kick/kick/k_vl13_rr4.flac seq_position=4
 SFZ
+
+# Sub-kick derives entirely from existing REAL Big Rusty drum recordings.
+# It is a separately attenuated, low-passed octave-lower sampled kick layer,
+# not a synthesized bass tone or additional melodic bass instrument.
+# Preserve the original kick mapping for an A/B build-time audio regression.
+python - <<'PY'
+from pathlib import Path
+p=Path("composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz")
+original=p.read_text(encoding="utf-8")
+p.with_name("composer-kick-without-sub.sfz").write_text(original, encoding="utf-8")
+extra=["", "// ROCK SUB-KICK: repitched real kick recordings, subdued beneath original."]
+for lo,hi,layer in ((1,31,1),(32,63,5),(64,95,9),(96,127,13)):
+    extra.append(
+        f"<group> lovel={lo} hivel={hi} transpose=-12 volume=-11.0 "
+        "fil_type=lpf_1p cutoff=105 ampeg_attack=0.005 "
+        "ampeg_hold=0.01 ampeg_decay=0.34 ampeg_sustain=0"
+    )
+    for rr in range(1,5):
+        path=f"../Samples/kick_24/kick/kick/k_vl{layer}_rr{rr}.flac"
+        extra.append(f"<region> sample={path} seq_position={rr}")
+p.write_text(original+"\n".join(extra)+"\n",encoding="utf-8")
+PY
 
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz" <<'SFZ'
 <global> key=38 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.20 ampeg_sustain=100 ampeg_release=0.25
@@ -217,6 +254,7 @@ SFZ
 cp composer_overrides/production_resource_policy.py composer/runtime/production_resource_policy.py
 cp composer_overrides/real_electric_piano_probe.py composer/runtime/real_electric_piano_probe.py
 cp composer_overrides/real_rock_alias_probe.py composer/runtime/real_rock_alias_probe.py
+cp composer_overrides/rock_expression_depth_probe.py composer/runtime/rock_expression_depth_probe.py
 cp composer_overrides/real_conga_probe.py composer/runtime/real_conga_probe.py
 cp composer_overrides/sample_bank_onboarding.py composer/runtime/sample_bank_onboarding.py
 cp composer_overrides/verified_future_instruments.json composer/runtime/verified_future_instruments.json
@@ -286,11 +324,12 @@ bindings["electric_guitar:RHYTHM_POWER_CHORDS"]={
 }
 bindings["electric_guitar:LEAD_MELODY"]={
     "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-8.0,
-    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric.sfz",
+    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric-lead.sfz",
     "library":"Karoryfer Shinyguitar","license":"CC0-1.0",
     "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
     "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
-    "midi_mapping":{"initial_cc":{"100":0,"101":127,"106":24,"107":0}}
+    "midi_mapping":{"initial_cc":{"1":88,"100":0,"101":127,"103":85,"104":90,"105":64,"106":24,"107":0}},
+    "articulation_policy":"SUSTAINED_LEAD_VIBRATO_DELAYED_NO_RHYTHM_MODULATION"
 }
 programs={
     "kick_drum_rock":(10.0,"Programs/composer-kick-lite.sfz"),
@@ -452,7 +491,9 @@ p.write_text(s.replace(old,new))
 PY
 test -f "$BANK/KARORYFER_GROWLYBASS_V1_002/growlybass_clean.sfz"
 test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer-electric.sfz"
+test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer-electric-lead.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz"
+test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-without-sub.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz"
@@ -511,6 +552,7 @@ p.write_text(s.replace(old,new))
 PY
 python composer/runtime/real_electric_piano_probe.py
 python composer/runtime/real_rock_alias_probe.py
+python composer/runtime/rock_expression_depth_probe.py
 python composer/runtime/real_conga_probe.py
 python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply

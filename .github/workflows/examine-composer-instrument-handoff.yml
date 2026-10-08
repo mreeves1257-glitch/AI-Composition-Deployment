@@ -1,0 +1,36 @@
+name: Inspect Preserved Composer Instrument Handoff
+on:
+  push:
+    branches:
+      - instrument-aware-performance-handoff-2026-10-08
+  workflow_dispatch:
+jobs:
+  source-contract-readonly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read exact preserved runtime, no edits and no audio builds
+        run: |
+          mkdir -p /tmp/composer_introspection
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/composer_introspection
+          python - <<'PY'
+          from pathlib import Path
+          root=Path('/tmp/composer_introspection')
+          print("EXTRACTED_SOURCE_FILES",[p.name for p in root.glob('*.py')])
+          for filename in ['output_handoff.py','engine.py','AI_Comp_Executable_Output_Core_001.py','AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py']:
+              p=root/filename
+              if not p.is_file(): print('NOT_FOUND',filename);continue
+              lines=p.read_text().splitlines()
+              print('=== FILE',filename,'LINE_COUNT',len(lines),'===')
+              for i,s in enumerate(lines):
+                  if any(t in s for t in ['def execute','def render','def run','def compose','def handoff','def _','def build','CompositionExecutionPackage(', 'MusicalEvent(', 'target_registry','instrument_bindings','midi_routing','metadata=', 'metadata:', 'output_handoff','_midi_pitch_events','MidiAdapter']):
+                      print(f'SOURCE_MATCH_{filename}:{i+1}: {s[:220]}')
+              if filename=='output_handoff.py':
+                  for i,s in enumerate(lines):
+                      print(f'SOURCE_LINE_output_handoff.py:{i+1}: {s[:240]}')
+              elif filename=='engine.py':
+                  for i,s in enumerate(lines):
+                      if ('output_handoff' in s or 'execution_package' in s or 'metadata' in s):
+                          print('ENGINE_WINDOW')
+                          print('\n'.join(f'SOURCE_LINE_engine.py:{j+1}: {lines[j][:240]}' for j in range(max(0,i-9),min(len(lines),i+16))))
+          PY

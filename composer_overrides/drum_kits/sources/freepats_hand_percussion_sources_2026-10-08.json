@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-08",
+  "reference_only": true,
+  "activation_enabled": false,
+  "actual_sample_files_copied": false,
+  "original_recordings_immutable": true,
+  "source_policy": "No substitution or waveform edits; recorded WAV/FLAC/SFZ source belongs to its original library; this folder holds references only.",
+  "source_id": "FREEPATS_WORLD_PERCUSSION",
+  "name": "FreePats World Percussion — separate hand-percussion instruments",
+  "upstream": "https://github.com/freepats/world-percussion",
+  "license": "CC0-1.0",
+  "runtime_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+  "source_state": "Defined in existing build manifests; each playback/readiness state must be rechecked independently at the current deployment.",
+  "instruments": [
+    {
+      "role": "CONGA",
+      "instrument_id": "conga",
+      "source_mapping": "WorldPercussion 20200905.sfz",
+      "preferred_mapping": "composer-conga-five-strokes.sfz",
+      "source_of_truth": "composer_overrides/real_conga_probe.py",
+      "instrument_registration": "build_current_composer.sh",
+      "sample_references_expected": 38,
+      "declared_composer_strokes": {
+        "60": "standard_conga",
+        "61": "high_conga",
+        "62": "low_conga",
+        "63": "muted_conga",
+        "64": "muted_low_conga"
+      },
+      "status": "Existing build-time mapping and sample/audio probe code present; no new verification performed"
+    },
+    {
+      "role": "BONGO",
+      "instrument_id": "bongo",
+      "source_mapping": "WorldPercussion 20200905.sfz",
+      "preferred_mapping": "composer-bongo-three-strokes.sfz",
+      "source_of_truth": "composer_overrides/verified_future_instruments.json",
+      "sample_references_expected": 31,
+      "declared_composer_strokes": {
+        "60": "muted_bongo",
+        "61": "high_bongo",
+        "62": "low_bongo"
+      },
+      "status": "Declared in future-instrument onboarding; actual install/render availability not independently confirmed by this inventory"
+    }
+  ],
+  "note": "Hand percussion is filed alongside drum instruments as shared sound resources, but its rhythm, articulation, density, volume and arrangement stay in the selecting genre. No fixed Latin, Afrobeats or other genre sound-kit substitution is implied."
+}

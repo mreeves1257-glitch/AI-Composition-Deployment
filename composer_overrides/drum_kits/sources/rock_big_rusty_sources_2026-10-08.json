@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-08",
+  "reference_only": true,
+  "activation_enabled": false,
+  "actual_sample_files_copied": false,
+  "original_recordings_immutable": true,
+  "source_policy": "No substitution or waveform edits; recorded WAV/FLAC/SFZ source belongs to its original library; this folder holds references only.",
+  "source_id": "KARORYFER_BIG_RUSTY_DRUMS",
+  "name": "Karoryfer Big Rusty Drums",
+  "upstream": "https://github.com/sfzinstruments/karoryfer.big-rusty-drums",
+  "license": "CC0-1.0",
+  "build_source": "build_current_composer.sh",
+  "runtime_bank_root": "composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS",
+  "drum_catalog_kit_id": "rock_recorded",
+  "source_state": "Existing recorded sample-bank build mappings preserved; no new end-to-end rendered-audio verification in this documentation pass.",
+  "individual_instruments": [
+    {
+      "role": "KICK",
+      "instrument_id": "kick_drum_rock",
+      "preferred_mapping": "Programs/composer-kick-lite.sfz",
+      "original_sample_family": "Samples/kick_24/",
+      "output": "independent_kick_stem"
+    },
+    {
+      "role": "SNARE",
+      "instrument_id": "snare_drum",
+      "preferred_mapping": "Programs/composer-snare-lite.sfz",
+      "original_sample_family": "Samples/snare_14/",
+      "output": "independent_snare_stem"
+    },
+    {
+      "role": "HAT",
+      "instrument_id": "hi_hat",
+      "preferred_mapping": "Programs/composer-hihat-lite.sfz",
+      "original_sample_family": "Samples/hihat_14/",
+      "output": "independent_hi_hat_stem"
+    },
+    {
+      "role": "TOMS",
+      "instrument_id": "tom_drum",
+      "aliases": [
+        "tom_tom"
+      ],
+      "preferred_mapping": "Programs/composer-tom-lite.sfz",
+      "original_sample_family": "Samples/tom_14/",
+      "output": "independent_toms_stem"
+    },
+    {
+      "role": "CRASH",
+      "instrument_id": "crash_cymbal",
+      "preferred_mapping": "Programs/composer-crash-lite.sfz",
+      "original_sample_family": "Samples/crash_17/",
+      "output": "independent_crash_stem"
+    },
+    {
+      "role": "RIDE",
+      "instrument_id": "ride_cymbal",
+      "preferred_mapping": "Programs/composer-ride-lite.sfz",
+      "original_sample_family": "Samples/ride_22/",
+      "output": "independent_ride_stem"
+    }
+  ],
+  "status_note": "Rock's existing instrument-specific gain trims and genre playing rules remain in the Rock style/mix files, not this shared drum source entry."
+}

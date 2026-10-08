@@ -1,0 +1,1003 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-10-08",
+  "purpose": "READ_ONLY_CROSS_REFERENCE_FOR_ALL_GENRE_DRUM_KIT_SELECTIONS",
+  "reference_only": true,
+  "automatic_runtime_application": false,
+  "genre_wiring_activated": false,
+  "source_of_truth": "composer_overrides/genre_styles/genre_mix_ratios/{family}.json",
+  "shared_kit_source_of_truth": "composer_overrides/drum_kits/drum_kit_catalog.json",
+  "shared_recorded_source_reference_files": [
+    "composer_overrides/drum_kits/sources/rock_big_rusty_sources_2026-10-08.json",
+    "composer_overrides/drum_kits/sources/jazz_swirly_brush_sources_2026-10-08.json",
+    "composer_overrides/drum_kits/sources/freepats_hand_percussion_sources_2026-10-08.json"
+  ],
+  "preserved_unverified_kit_descriptors": [
+    {
+      "kit_id": "unverified_drums",
+      "original_palette_descriptor": "drums",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_soft",
+      "original_palette_descriptor": "drums_soft",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_shuffle",
+      "original_palette_descriptor": "drums_shuffle",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_ride",
+      "original_palette_descriptor": "drums_ride",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_brush_drums",
+      "original_palette_descriptor": "brush_drums",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_latin",
+      "original_palette_descriptor": "drums_latin",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_electronic",
+      "original_palette_descriptor": "drums_electronic",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_break_drums",
+      "original_palette_descriptor": "break_drums",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_dembow",
+      "original_palette_descriptor": "drums_dembow",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_afro",
+      "original_palette_descriptor": "drums_afro",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    },
+    {
+      "kit_id": "unverified_drums_four",
+      "original_palette_descriptor": "drums_four",
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "source_mapping": "NOT_ASSIGNED"
+    }
+  ],
+  "styles_count": 55,
+  "style_kit_reference_snapshot": [
+    {
+      "style": "ROCK",
+      "family": "Rock",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Rock.json",
+      "selected_shared_drum_kit_id": "rock_recorded",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT",
+        "TOMS",
+        "CRASH",
+        "RIDE"
+      ],
+      "assigned_drum_instrument_ids": [
+        "KICK:kick_drum_rock",
+        "SNARE:snare_drum",
+        "HAT:hi_hat",
+        "TOMS:tom_tom",
+        "CRASH:crash_cymbal",
+        "RIDE:ride_cymbal"
+      ],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "Swing",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Jazz Ballad",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "jazz_ballad_brush_recorded",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [
+        "KICK:kick_drum_rock",
+        "SNARE:snare_drum",
+        "HAT:hi_hat"
+      ],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "Big Band",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Jazz Waltz",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "unverified_brush_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Bebop",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Cool Jazz",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "unverified_brush_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Dixieland",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Jazz Fusion",
+      "family": "Jazz",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Jazz.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Rhythm and Blues",
+      "family": "R_and_B_Soul_Funk_Disco",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/R_and_B_Soul_Funk_Disco.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Soul",
+      "family": "R_and_B_Soul_Funk_Disco",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/R_and_B_Soul_Funk_Disco.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Funk",
+      "family": "R_and_B_Soul_Funk_Disco",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/R_and_B_Soul_Funk_Disco.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Contemporary R&B",
+      "family": "R_and_B_Soul_Funk_Disco",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/R_and_B_Soul_Funk_Disco.json",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Neo-Soul-related",
+      "family": "R_and_B_Soul_Funk_Disco",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/R_and_B_Soul_Funk_Disco.json",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "DISCO",
+      "family": "R_and_B_Soul_Funk_Disco",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/R_and_B_Soul_Funk_Disco.json",
+      "selected_shared_drum_kit_id": "unverified_drums_four",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Traditional Country",
+      "family": "Country_Bluegrass",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Country_Bluegrass.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Country Rock",
+      "family": "Country_Bluegrass",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Country_Bluegrass.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Country Ballad",
+      "family": "Country_Bluegrass",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Country_Bluegrass.json",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Country Shuffle",
+      "family": "Country_Bluegrass",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Country_Bluegrass.json",
+      "selected_shared_drum_kit_id": "unverified_drums_shuffle",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Two-Step",
+      "family": "Country_Bluegrass",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Country_Bluegrass.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Country Waltz",
+      "family": "Country_Bluegrass",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Country_Bluegrass.json",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Bluegrass-related",
+      "family": "Country_Bluegrass",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Country_Bluegrass.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "Bossa Nova",
+      "family": "Latin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Latin.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "Samba",
+      "family": "Latin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Latin.json",
+      "selected_shared_drum_kit_id": "unverified_drums_latin",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Salsa",
+      "family": "Latin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Latin.json",
+      "selected_shared_drum_kit_id": "unverified_drums_latin",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Mambo",
+      "family": "Latin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Latin.json",
+      "selected_shared_drum_kit_id": "unverified_drums_latin",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Rumba",
+      "family": "Latin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Latin.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "Cha-Cha",
+      "family": "Latin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Latin.json",
+      "selected_shared_drum_kit_id": "unverified_drums_latin",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Bolero",
+      "family": "Latin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Latin.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "House",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Techno",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Trance",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Ambient Electronic",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "Downtempo",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Breakbeat-related",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Garage-related",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Experimental Electronic",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Chugg / #chugg",
+      "family": "Electronic_Dance",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Electronic_Dance.json",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Eclectic New Indie",
+      "family": "Indie_Alternative",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Indie_Alternative.json",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Mexican Reggaeton",
+      "family": "Reggaeton",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Reggaeton.json",
+      "selected_shared_drum_kit_id": "unverified_drums_dembow",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Afrobeats",
+      "family": "Afrobeats_AfroLatin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Afrobeats_AfroLatin.json",
+      "selected_shared_drum_kit_id": "unverified_drums_afro",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Afro-Latin / Afrobeats Fusion",
+      "family": "Afrobeats_AfroLatin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Afrobeats_AfroLatin.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Afro House",
+      "family": "Afrobeats_AfroLatin",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Afrobeats_AfroLatin.json",
+      "selected_shared_drum_kit_id": "unverified_drums_four",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Trip-Hop",
+      "family": "Trip_Hop",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Trip_Hop.json",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Contemporary Trip-Hop / Trip-Hop Revival",
+      "family": "Trip_Hop",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Trip_Hop.json",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Regional Electronic Hybrids",
+      "family": "Hybrid_Custom",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Hybrid_Custom.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Genre-Breaking / Borderless",
+      "family": "Hybrid_Custom",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Hybrid_Custom.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Custom Hybrid",
+      "family": "Hybrid_Custom",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Hybrid_Custom.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Custom Style",
+      "family": "Hybrid_Custom",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Hybrid_Custom.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Controlled Custom Style Profile",
+      "family": "Hybrid_Custom",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Hybrid_Custom.json",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "declared_drum_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "connection_activated": false
+    },
+    {
+      "style": "Classical",
+      "family": "Classical_Acoustic",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Classical_Acoustic.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "WALTZ",
+      "family": "Classical_Acoustic",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Classical_Acoustic.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "PIANIST",
+      "family": "Classical_Acoustic",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/Classical_Acoustic.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "New Age",
+      "family": "New_Age_Spiritual",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/New_Age_Spiritual.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    },
+    {
+      "style": "Spiritual",
+      "family": "New_Age_Spiritual",
+      "genre_profile_path": "composer_overrides/genre_styles/genre_mix_ratios/New_Age_Spiritual.json",
+      "selected_shared_drum_kit_id": null,
+      "declared_drum_roles": [],
+      "assigned_drum_instrument_ids": [],
+      "missing_individual_drum_ids": [],
+      "connection_activated": false
+    }
+  ],
+  "note": "This is a dated cross-reference only; each original genre retains sole ownership of its tempo, rhythms, score, performance, drum-kit selection and gain settings. A reference to an unverified kit is not a playable source."
+}

@@ -10,7 +10,7 @@
       "schema_version": 1,
       "genre": "New Age",
       "genre_template": "new_age",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "SYNTH_PAD",
       "original_composer_instrument_palette": [
@@ -51,7 +51,7 @@
       ],
       "pending_drum_source_splits": [],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "New_Age_Spiritual",
@@ -106,7 +106,7 @@
         "original_family_template": "new_age",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": null,
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -320,7 +320,7 @@
       "schema_version": 1,
       "genre": "Spiritual",
       "genre_template": "spiritual",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "CHOIR",
       "original_composer_instrument_palette": [
@@ -361,7 +361,7 @@
       ],
       "pending_drum_source_splits": [],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "New_Age_Spiritual",
@@ -416,7 +416,7 @@
         "original_family_template": "spiritual",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": null,
         "per_instrument_mix_config_owned_by_genre": true
       },

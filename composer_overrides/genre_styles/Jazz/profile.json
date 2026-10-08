@@ -573,7 +573,7 @@
               "musical_definition.continuous_performance_control"
             ],
             "source_files": [
-              "composer_overrides/jazz_arranger_style.py",
+              "composer_overrides/genre_styles/Jazz/jazz_arranger_style.py",
               "composer_overrides/genre_styles/Jazz/jazz_ballad.py",
               "composer_overrides/genre_styles/Jazz/harmony.py"
             ],
@@ -619,7 +619,7 @@
               "musical_definition.production_mastering_intent"
             ],
             "source_files": [
-              "composer_overrides/jazz_balance_contract.py",
+              "composer_overrides/genre_styles/Jazz/jazz_balance_contract.py",
               "composer_overrides/genre_styles/Jazz/jazz_ballad_mix.json",
               "composer_overrides/genre_styles/Jazz/ballad_leveler.py"
             ],
@@ -684,12 +684,12 @@
           "composer_overrides/genre_styles/Jazz/instrument_library.json"
         ],
         "genre_specific_performance_files": [
-          "composer_overrides/jazz_arranger_style.py",
+          "composer_overrides/genre_styles/Jazz/jazz_arranger_style.py",
           "composer_overrides/genre_styles/Jazz/jazz_ballad.py",
           "composer_overrides/genre_styles/Jazz/harmony.py"
         ],
         "genre_specific_mix_files": [
-          "composer_overrides/jazz_balance_contract.py",
+          "composer_overrides/genre_styles/Jazz/jazz_balance_contract.py",
           "composer_overrides/genre_styles/Jazz/jazz_ballad_mix.json",
           "composer_overrides/genre_styles/Jazz/ballad_leveler.py"
         ],

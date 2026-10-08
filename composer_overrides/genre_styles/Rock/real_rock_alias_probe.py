@@ -10,7 +10,7 @@ import struct
 from pathlib import Path
 from sfz_renderer_adapter import render_midi
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = ROOT / "target_registry.json"
 OUT = ROOT / "output" / "resource_probe"
 

@@ -235,27 +235,16 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz" <<'SFZ'
 SFZ
 cp composer_overrides/production_resource_policy.py composer/runtime/production_resource_policy.py
 cp composer_overrides/real_electric_piano_probe.py composer/runtime/real_electric_piano_probe.py
-cp composer_overrides/real_rock_alias_probe.py composer/runtime/real_rock_alias_probe.py
-cp composer_overrides/rock_expression_depth_probe.py composer/runtime/rock_expression_depth_probe.py
-cp composer_overrides/recorded_subkick.py composer/runtime/recorded_subkick.py
 cp composer_overrides/real_conga_probe.py composer/runtime/real_conga_probe.py
 cp composer_overrides/sample_bank_onboarding.py composer/runtime/sample_bank_onboarding.py
 cp composer_overrides/verified_future_instruments.json composer/runtime/verified_future_instruments.json
 cp composer_overrides/genre_resource_readiness.py composer/runtime/genre_resource_readiness.py
-cp composer_overrides/jazz_ballad_recorded_resources.py composer/runtime/jazz_ballad_recorded_resources.py
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
 cp -R composer_overrides/genre_styles composer/runtime/genre_styles
-cp composer_overrides/jazz_arranger_style.py composer/runtime/jazz_arranger_style.py
-cp composer_overrides/jazz_balance_contract.py composer/runtime/jazz_balance_contract.py
-cp composer_overrides/test_jazz_arranger_style.py composer/runtime/test_jazz_arranger_style.py
-cp composer_overrides/test_jazz_ballad_equal_intensity.py composer/runtime/test_jazz_ballad_equal_intensity.py
 cp composer_overrides/test_genre_style_files.py composer/runtime/test_genre_style_files.py
 cp composer_overrides/instrument_performance_contract.py composer/runtime/instrument_performance_contract.py
 cp composer_overrides/test_instrument_performance_contract.py composer/runtime/test_instrument_performance_contract.py
-cp composer_overrides/test_rock_lead_register.py composer/runtime/test_rock_lead_register.py
-cp composer_overrides/rock_balance_contract.py composer/runtime/rock_balance_contract.py
-cp composer_overrides/test_rock_balance_contract.py composer/runtime/test_rock_balance_contract.py
 cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/global_3d_output_gate.py composer/runtime/
@@ -484,13 +473,13 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
     job_path = job_dir / 'job.json'
     # Composer chooses the balance profile; the independent 3D mixer remains
     # unchanged. This is a pure, Rock-only metadata overlay.
-    from rock_balance_contract import apply_rock_balance
+    from genre_styles.Rock.rock_balance_contract import apply_rock_balance
     mixer_instructions = apply_rock_balance(engine_result)
     from genre_styles.Jazz.jazz_ballad import balance_mix as apply_jazz_ballad_balance
     mixer_instructions = apply_jazz_ballad_balance(mixer_instructions, stems)
     # A separate recorded-kick derivative follows the same existing drum
     # events as KICK. The independent 3D mixer remains entirely unchanged.
-    from recorded_subkick import prepare_recorded_subkick
+    from genre_styles.Rock.recorded_subkick import prepare_recorded_subkick
     mixer_instructions, mixer_stems = prepare_recorded_subkick(
         mixer_instructions, stems, job_dir
     )
@@ -579,12 +568,12 @@ if old not in s:
 p.write_text(s.replace(old,new))
 PY
 python composer/runtime/real_electric_piano_probe.py
-python composer/runtime/real_rock_alias_probe.py
-python composer/runtime/rock_expression_depth_probe.py
+PYTHONPATH=composer/runtime python -m genre_styles.Rock.real_rock_alias_probe
+PYTHONPATH=composer/runtime python -m genre_styles.Rock.rock_expression_depth_probe
 python composer/runtime/real_conga_probe.py
 python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
-AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" python composer/runtime/jazz_ballad_recorded_resources.py
+AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" PYTHONPATH=composer/runtime python -m genre_styles.Jazz.jazz_ballad_recorded_resources
 
 # Resolve every Jazz Ballad instrument from its OWN genre file. This checks
 # links against the existing registry and on-disk sample bank, not duplicate
@@ -608,7 +597,7 @@ PY
 
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
-python -m py_compile composer/runtime/midi_initial_cc_bridge.py composer/runtime/AI_Comp_Executable_Output_Core_001.py composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+python -m py_compile composer/runtime/midi_initial_cc_bridge.py composer/runtime/AI_Comp_Executable_Output_Core_001.py composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/genre_styles/Rock/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 
 # Verify routed harmony for all 55 without changing sample routing or sound.
 python - <<'PY'
@@ -650,8 +639,8 @@ PY
 # Audition arranger behavior as pure score processing before any live rendering.
 # Guard piano integrity, actual sample MIDI ranges, developed chord movement,
 # and absence of changes to working Rock and unrelated genres.
-python composer/runtime/test_jazz_arranger_style.py -v
-python composer/runtime/test_jazz_ballad_equal_intensity.py -v
+PYTHONPATH=composer/runtime python -m genre_styles.Jazz.test_jazz_arranger_style -v
+PYTHONPATH=composer/runtime python -m genre_styles.Jazz.test_jazz_ballad_equal_intensity -v
 python composer/runtime/test_genre_style_files.py -v
 
 # Keep the six confirmed recorded Jazz Ballad roles and extended harmony.
@@ -884,8 +873,8 @@ PY
 
 python composer/runtime/test_midi_initial_cc_bridge.py
 python composer/runtime/test_instrument_performance_contract.py
-python composer/runtime/test_rock_lead_register.py
-python composer/runtime/test_rock_balance_contract.py
+PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_lead_register
+PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_balance_contract
 # Exercise the actual genre setup with no audio rendering. A bad palette,
 # missing core drum part, or mixed instrument IDs must fail this build rather
 # than leave an apparently-live composer that rejects every Rock composition.

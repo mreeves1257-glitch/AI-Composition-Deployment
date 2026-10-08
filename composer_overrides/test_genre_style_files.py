@@ -35,7 +35,7 @@ class GenreStyleFileTests(unittest.TestCase):
     def test_independent_files_and_rock(self):
         self.assertEqual(JAZZ_GENRE_PROFILES, COMPATIBLE_PROFILES)
         self.assertEqual(set(JAZZ_GENRE_PROFILES), set(GENRE_STYLE_MODULES) - {"ROCK"})
-        self.assertEqual(GENRE_STYLE_MODULES["ROCK"], "rock")
+        self.assertEqual(GENRE_STYLE_MODULES["ROCK"], "Rock.rock")
         file_paths = set()
         for genre, module_name in GENRE_STYLE_MODULES.items():
             module = importlib.import_module("genre_styles." + module_name)
@@ -124,8 +124,8 @@ class GenreStyleFileTests(unittest.TestCase):
             self.assertIs(apply_jazz_phrase_expression(events, genre, profile, 4), events)
 
     def test_rock_balance_is_untouched(self):
-        from genre_styles.rock import balance_mix
-        from rock_balance_contract import apply_rock_balance
+        from genre_styles.Rock.rock import balance_mix
+        from genre_styles.Rock.rock_balance_contract import apply_rock_balance
         original = {"genre": "Jazz Ballad", "modules": {}}
         self.assertIs(apply_rock_balance(original), original)
         self.assertIs(balance_mix(original), original)

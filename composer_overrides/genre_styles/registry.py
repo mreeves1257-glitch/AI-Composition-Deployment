@@ -2,7 +2,7 @@
 from importlib import import_module
 
 GENRE_STYLE_MODULES = {
-    "ROCK": "rock",
+    "ROCK": "Rock.rock",
     "Swing": "Jazz.swing",
     "Jazz Ballad": "Jazz.jazz_ballad",
     "Big Band": "Jazz.big_band",

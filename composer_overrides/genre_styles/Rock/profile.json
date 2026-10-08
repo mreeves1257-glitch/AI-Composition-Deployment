@@ -10,7 +10,7 @@
       "schema_version": 1,
       "genre": "ROCK",
       "genre_template": "rock",
-      "profile_status": "WORKING_ROCK_PROTECTED_UNCHANGED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "PRESERVED_EXISTING_RESOURCE_GAIN_TRIM_DB",
       "reference_instrument_track": "HARMONY",
       "original_composer_instrument_palette": [
@@ -86,7 +86,7 @@
       ],
       "pending_drum_source_splits": [],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "PRESERVE_CURRENT_BEHAVIOR",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Rock",
@@ -137,9 +137,9 @@
         "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
         "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
         "original_family_template": "rock",
-        "active_style_module": "composer_overrides/genre_styles/rock.py",
+        "active_style_module": "composer_overrides/genre_styles/Rock/rock.py",
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ROCK_EXISTING_WORKING_IMPLEMENTATION_PRESERVED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "rock_recorded",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -228,7 +228,7 @@
               "musical_definition.arrangement_transformation"
             ],
             "source_files": [
-              "composer_overrides/genre_styles/rock.py"
+              "composer_overrides/genre_styles/Rock/rock.py"
             ],
             "state": "WORKING_MUSIC_INCOMPLETE",
             "planned_stage_id": "GENRE_ROCK_CORE_V2_STEP_04",
@@ -245,7 +245,7 @@
             ],
             "source_files": [
               "composer_overrides/instrument_performance_contract.py",
-              "composer_overrides/genre_styles/rock.py"
+              "composer_overrides/genre_styles/Rock/rock.py"
             ],
             "needs": [
               "ARTICULATION",
@@ -292,7 +292,7 @@
               "musical_definition.production_mastering_intent"
             ],
             "source_files": [
-              "composer_overrides/rock_balance_contract.py"
+              "composer_overrides/genre_styles/Rock/rock_balance_contract.py"
             ],
             "downstream_reference_files": [
               "composer_overrides/standalone_3d_mixer.py",
@@ -348,15 +348,15 @@
       "existing_file_cross_references": {
         "original_runtime_bundle": "composer/runtime.b64",
         "genre_specific_arrangement_files": [
-          "composer_overrides/genre_styles/rock.py"
+          "composer_overrides/genre_styles/Rock/rock.py"
         ],
         "genre_specific_instrument_files": [],
         "genre_specific_performance_files": [
           "composer_overrides/instrument_performance_contract.py",
-          "composer_overrides/genre_styles/rock.py"
+          "composer_overrides/genre_styles/Rock/rock.py"
         ],
         "genre_specific_mix_files": [
-          "composer_overrides/rock_balance_contract.py"
+          "composer_overrides/genre_styles/Rock/rock_balance_contract.py"
         ],
         "shared_instrument_files": [
           "composer_overrides/verified_future_instruments.json",
@@ -379,5 +379,7 @@
   "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED",
   "seven_stage_sequence_filed_for_every_genre": true,
   "stage_wiring_activated": false,
-  "stage_sequence_version": "SEVEN_STAGE_PROPOSED_2026_10_08"
+  "stage_sequence_version": "SEVEN_STAGE_PROPOSED_2026_10_08",
+  "family_operational_status": "DYSFUNCTIONAL_FULL_SONG_OUTPUT_USER_REPORTED",
+  "operational_status_note": "Existing instrument/genre attempts did not produce a reliable complete playable song; NOT a functional reference or exemplar. Stored music/material is kept for diagnosis."
 }

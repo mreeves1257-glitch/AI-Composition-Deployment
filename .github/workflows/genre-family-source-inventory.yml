@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/genre-family-source-inventory.yml'
-      - 'composer_overrides/genre_styles/genre_mix_ratios/**'
+      - 'composer_overrides/genre_styles/**'
       - 'composer_overrides/genre_styles/genre_family_loader.py'
 jobs:
   original-musical-profiles:
@@ -30,10 +30,10 @@ jobs:
               family=namespace["family_template"](name)
               all_rows[name]={"original_profile":profile,"original_family_template":family,"original_palette":list(palettes[family])}
           assert len(all_rows)==55
-          idx=json.loads(Path("composer_overrides/genre_styles/genre_mix_ratios/index.json").read_text())
+          idx=json.loads(Path("composer_overrides/genre_styles/index.json").read_text())
           assert set(idx["genre_to_family_file"]) == set(all_rows)
           for name,source in all_rows.items():
-              family=json.loads((Path("composer_overrides/genre_styles/genre_mix_ratios")/idx["genre_to_family_file"][name]).read_text())
+              family=json.loads((Path("composer_overrides/genre_styles")/idx["genre_to_family_file"][name]).read_text())
               profile=family["profiles"][name]
               assert profile["musical_definition"]==source["original_profile"], "ORIGINAL_MUSIC_DEFINITION_CHANGED:"+name
               assert profile["runtime_musical_connections"]["original_family_template"]==source["original_family_template"]
@@ -59,4 +59,4 @@ jobs:
           print("ORIGINAL_RUNTIME_ARCHIVE_FILE_COUNT",len(files))
           PY
       - name: Validate new genre families and drum source protection
-        run: python composer_overrides/genre_styles/genre_mix_ratios/validate_profiles.py
+        run: python composer_overrides/genre_styles/validate_profiles.py

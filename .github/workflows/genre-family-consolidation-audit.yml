@@ -1,0 +1,47 @@
+name: Verify 13 Canonical Genre Family Folders
+on:
+  push:
+    branches:
+      - genre-family-uniform-routing-2026-10-08
+  pull_request:
+    paths:
+      - 'composer_overrides/genre_styles/**'
+      - 'build_current_composer.sh'
+      - '.github/workflows/genre-family-consolidation-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  verify-family-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install existing diagnostic dependency
+        run: python -m pip install 'numpy>=1.24,<3'
+      - name: Assert all 55 families and planned connections remain correctly filed
+        run: python composer_overrides/genre_styles/validate_profiles.py
+      - name: Verify Python and build syntax
+        run: |
+          python -m compileall -q composer_overrides/genre_styles
+          python -m py_compile composer_overrides/genre_development_patch.py composer_overrides/test_genre_style_files.py
+          bash -n build_current_composer.sh
+      - name: Confirm Rock and Jazz modules and diagnostic tests still import correctly
+        env:
+          PYTHONPATH: composer_overrides
+        run: |
+          python -m unittest -v genre_styles.Rock.test_rock_balance_contract genre_styles.Rock.test_rock_lead_register
+          python -m unittest -v genre_styles.Jazz.test_jazz_arranger_style genre_styles.Jazz.test_jazz_ballad_equal_intensity
+          python -m unittest -v test_genre_style_files
+      - name: Verify old duplicate family files and scattered code are absent
+        run: |
+          test ! -e composer_overrides/genre_styles/genre_mix_ratios
+          test ! -e composer_overrides/genre_styles/rock.py
+          test ! -e composer_overrides/jazz_arranger_style.py
+          test ! -e composer_overrides/jazz_balance_contract.py
+          test ! -e composer_overrides/rock_balance_contract.py
+          test ! -e composer_overrides/recorded_subkick.py
+          test -f composer_overrides/genre_styles/Rock/profile.json
+          test -f composer_overrides/genre_styles/Jazz/profile.json
+          echo 'CANONICAL_FAMILY_FOLDER_LAYOUT_PASS'

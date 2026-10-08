@@ -1,0 +1,34 @@
+name: Full Composer Build Check After Family Consolidation
+on:
+  push:
+    branches:
+      - genre-family-uniform-routing-2026-10-08
+  workflow_dispatch:
+
+jobs:
+  full-build-no-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run the ACTUAL preserved Composer build with relocated family files
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: "1"
+        run: |
+          bash build_current_composer.sh
+      - name: Confirm built family files and runtime entrypoints
+        run: |
+          test -f composer/runtime/genre_styles/Rock/profile.json
+          test -f composer/runtime/genre_styles/Jazz/profile.json
+          test -f composer/runtime/genre_styles/Rock/rock.py
+          test -f composer/runtime/genre_styles/Jazz/jazz_arranger_style.py
+          test -f composer/runtime/genre_styles/Jazz/jazz_balance_contract.py
+          test ! -e composer/runtime/rock_balance_contract.py
+          test ! -e composer/runtime/jazz_balance_contract.py
+          test ! -e composer/runtime/real_rock_alias_probe.py
+          test ! -e composer/runtime/jazz_ballad_recorded_resources.py
+          python -m py_compile composer/runtime/render_server.py composer/runtime/engine.py
+          echo 'FULL_COMPOSER_FAMILY_PACKAGE_BUILD_PASS'

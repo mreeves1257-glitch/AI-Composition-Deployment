@@ -4,7 +4,7 @@ import json
 
 ROOT = Path(__file__).resolve().parent
 index = json.loads((ROOT / "index.json").read_text(encoding="utf-8"))
-KIT_PATH = ROOT.parent.parent / "drum_kits" / "drum_kit_catalog.json"
+KIT_PATH = ROOT.parent / "drum_kits" / "drum_kit_catalog.json"
 kits = json.loads(KIT_PATH.read_text(encoding="utf-8"))
 assert index["schema_version"] == 2 and index["profile_count"] == 55
 assert index["family_count"] == 13
@@ -16,7 +16,16 @@ assert kits["genre_balance_owned_by_each_genre"] is True
 assert index["automatic_application_enabled"] is False
 assert index["original_instrument_sources_immutable"] is True
 
+UNVERIFIED = "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED"
+NOT_READY = "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED"
+EXECUTION_UNKNOWN = "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED"
+assert index["operational_readiness_policy"] == UNVERIFIED
+assert index["verified_full_music_genre_count"] == 0
+assert set(index["genre_to_family_file"].values()) == {
+    family + "/profile.json" for family in index["family_memberships"]
+}
 all_genres = set()
+profile_keys = None
 for filename in set(index["genre_to_family_file"].values()):
     file = ROOT / filename
     family = json.loads(file.read_text(encoding="utf-8"))
@@ -31,6 +40,13 @@ for filename in set(index["genre_to_family_file"].values()):
         assert genre not in all_genres, "DUPLICATE_GENRE:" + genre
         all_genres.add(genre)
         assert p["genre"] == genre
+        keys = set(p)
+        if profile_keys is None:
+            profile_keys = keys
+        assert keys == profile_keys, ("INCONSISTENT_GENRE_FIELDS", genre)
+        assert p["profile_status"] == UNVERIFIED, ("GENRE_NOT_VERIFIED", genre)
+        assert p["ready_for_composition"] == NOT_READY, ("NO_COMPLETED_SONG", genre)
+        assert p["runtime_musical_connections"]["musical_implementation_state"] == EXECUTION_UNKNOWN
         assert p["family_name"] == family["musical_family"]
         assert index["genre_to_family_file"][genre] == filename
         assert p["drum_kit_catalog_path"] == index["shared_drum_kit_catalog"]
@@ -84,7 +100,7 @@ for filename in set(index["genre_to_family_file"].values()):
             assert all(exists_field(f) for f in step.get("source_fields",[])), (genre,step["name"])
         source_map=p["existing_file_cross_references"]
         assert source_map["shared_drum_catalog"] == index["shared_drum_kit_catalog"]
-        repo_root=ROOT.parents[2]
+        repo_root=ROOT.parents[1]
         for source_group,sources in source_map.items():
             if isinstance(sources,list):
                 assert all((repo_root/source).is_file() for source in sources), (genre,source_group)
@@ -116,7 +132,7 @@ for filename in set(index["genre_to_family_file"].values()):
         if genre == "ROCK":
             assert kit == "rock_recorded" and len(tracks) == 9
             assert all("existing_gain_trim_db" in x for x in tracks)
-            assert p["profile_status"] == "WORKING_ROCK_PROTECTED_UNCHANGED"
+            assert family["family_operational_status"] == "DYSFUNCTIONAL_FULL_SONG_OUTPUT_USER_REPORTED"
         elif genre == "Jazz Ballad":
             assert kit == "jazz_ballad_brush_recorded" and len(tracks) == 6
             ratio = {r["track_id"]: r["proposed_relative_active_level_db"]
@@ -125,7 +141,6 @@ for filename in set(index["genre_to_family_file"].values()):
                 "HARMONY": 0, "LEAD": 0, "BASS": -3,
                 "KICK": 8, "SNARE": -22, "HAT": -7}
         else:
-            assert p["profile_status"] == "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED"
             assert all(isinstance(x["proposed_relative_active_level_db"], (int, float))
                        for x in tracks)
             if kit:
@@ -137,7 +152,15 @@ for filename in set(index["genre_to_family_file"].values()):
 assert all_genres == set(index["genre_to_family_file"]), "MISSING_STYLE"
 assert sum(len(members) for members in index["family_memberships"].values()) == 55
 for name, members in index["family_memberships"].items():
-    assert all(index["genre_to_family_file"][genre] == name + ".json"
+    assert all(index["genre_to_family_file"][genre] == name + "/profile.json"
                for genre in members)
-assert len(list(ROOT.glob("*.json"))) == 14, "OLD_FLAT_GENRE_FILES_STILL_PRESENT"
-print("PASS: 55 independent styles in 13 family files; 1 separate immutable drum catalog")
+assert len(list(ROOT.glob("*.json"))) == 1, "OLD_FLAT_GENRE_FILES_STILL_PRESENT"
+assert len(list(ROOT.glob("*/profile.json"))) == 13, "MISSING_FAMILY_FOLDER"
+for name in index["family_memberships"]:
+    p = ROOT / name / "profile.json"
+    family = json.loads(p.read_text(encoding="utf-8"))
+    if name in ("Rock", "Jazz"):
+        assert family["family_operational_status"] == "DYSFUNCTIONAL_FULL_SONG_OUTPUT_USER_REPORTED"
+    else:
+        assert family["family_operational_status"] == "NOT_END_TO_END_VERIFIED"
+print("PASS: 55 independent genres in 13 family folders; Rock and Jazz dysfunctional; all stage links inactive")

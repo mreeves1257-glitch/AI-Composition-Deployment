@@ -17,7 +17,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 BANK = ROOT / "sound_resources"
 TARGET = ROOT / "target_registry.json"
 META = {"JAZZ_MEATBASS_PINNED":{"lib":"Karoryfer Meatbass / recorded pizzicato","license":"CC0-1.0","owner":"sfzinstruments/karoryfer.meatbass"},"JAZZ_VSCO_CLARINET_PINNED":{"lib":"VSCO 2 Community Edition / recorded clarinet","license":"CC0-1.0","owner":"sgossner/VSCO-2-CE"},"JAZZ_SWIRLY_BRUSH_PINNED":{"lib":"Karoryfer Swirly Drums / recorded brush kit","license":"CC0-1.0","owner":"sfzinstruments/karoryfer.swirly-drums"}}

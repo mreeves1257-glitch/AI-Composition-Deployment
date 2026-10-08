@@ -5,9 +5,9 @@ import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from jazz_arranger_style import arrange_jazz_ballad, section_for_bar, CLARINET_RANGE, BASS_RANGE
-from jazz_balance_contract import apply_jazz_ballad_balance
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from genre_styles.Jazz.jazz_arranger_style import arrange_jazz_ballad, section_for_bar, CLARINET_RANGE, BASS_RANGE
+from genre_styles.Jazz.jazz_balance_contract import apply_jazz_ballad_balance
 from genre_development_patch import build_jazz_progression
 
 
@@ -123,7 +123,7 @@ class JazzArrangerTests(unittest.TestCase):
         return result,stems
 
     def test_equal_intensity_all_six_and_source_preservation(self):
-        from jazz_balance_contract import (
+        from genre_styles.Jazz.jazz_balance_contract import (
             JAZZ_INTENSITY_WEIGHTS,JAZZ_BALANCE_VERSION,
         )
         original,stems=self._six_track_mix()

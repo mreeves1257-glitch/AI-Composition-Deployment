@@ -104,7 +104,7 @@ class JazzEqualPresenceTests(unittest.TestCase):
                 output.setnchannels(1)
                 output.setsampwidth(2)
                 output.setframerate(16000)
-                output.writeframes(b"\\x00\\x00" * 8000)
+                output.writeframes(bytes(16000))
             with self.assertRaisesRegex(ValueError, "JAZZ_LEVEL_SILENT_INSTRUMENT"):
                 _measure_active_rms(path)
 

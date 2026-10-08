@@ -1,0 +1,648 @@
+{
+  "schema_version": 2,
+  "musical_family": "Electronic_Dance",
+  "reference_only": true,
+  "source_assets_immutable": true,
+  "original_drum_library_is_separate": true,
+  "genre_count": 9,
+  "profiles": {
+    "House": {
+      "schema_version": 1,
+      "genre": "House",
+      "genre_template": "house",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_BASS",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "synth_chord",
+        "synth_lead",
+        "drums_electronic"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "instrument_id": "synth_chord",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "instrument_id": "synth_lead",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": 2,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_electronic"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Techno": {
+      "schema_version": 1,
+      "genre": "Techno",
+      "genre_template": "techno",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_BASS",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "synth_pulse",
+        "noise_fx",
+        "drums_electronic"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_PULSE",
+          "instrument_id": "synth_pulse",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "NOISE_FX",
+          "instrument_id": "noise_fx",
+          "proposed_relative_active_level_db": -17,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": 2,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_electronic"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Trance": {
+      "schema_version": 1,
+      "genre": "Trance",
+      "genre_template": "trance",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_ARP",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "synth_pad",
+        "synth_arp",
+        "drums_electronic"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "instrument_id": "synth_pad",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_ARP",
+          "instrument_id": "synth_arp",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": 2,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_electronic",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_electronic"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_drums_electronic",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Ambient Electronic": {
+      "schema_version": 1,
+      "genre": "Ambient Electronic",
+      "genre_template": "ambient_electronic",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_PAD",
+      "original_composer_instrument_palette": [
+        "synth_pad",
+        "synth_arp",
+        "flute",
+        "noise_fx"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_PAD",
+          "instrument_id": "synth_pad",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_ARP",
+          "instrument_id": "synth_arp",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "FLUTE",
+          "instrument_id": "flute",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "NOISE_FX",
+          "instrument_id": "noise_fx",
+          "proposed_relative_active_level_db": -19,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": null,
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Downtempo": {
+      "schema_version": 1,
+      "genre": "Downtempo",
+      "genre_template": "downtempo",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "ELECTRIC_PIANO",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "electric_piano",
+        "synth_pad",
+        "break_drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "instrument_id": "synth_pad",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "break_drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Breakbeat-related": {
+      "schema_version": 1,
+      "genre": "Breakbeat-related",
+      "genre_template": "breakbeat",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_BASS",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "synth_chord",
+        "break_drums",
+        "noise_fx"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "instrument_id": "synth_chord",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": 2,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "NOISE_FX",
+          "instrument_id": "noise_fx",
+          "proposed_relative_active_level_db": -17,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "break_drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Garage-related": {
+      "schema_version": 1,
+      "genre": "Garage-related",
+      "genre_template": "garage",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_LEAD",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "synth_chord",
+        "synth_lead",
+        "break_drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "instrument_id": "synth_chord",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "instrument_id": "synth_lead",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": 2,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "break_drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Experimental Electronic": {
+      "schema_version": 1,
+      "genre": "Experimental Electronic",
+      "genre_template": "experimental_electronic",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_PAD",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "synth_pad",
+        "noise_fx",
+        "break_drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "instrument_id": "synth_pad",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "NOISE_FX",
+          "instrument_id": "noise_fx",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "break_drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Chugg / #chugg": {
+      "schema_version": 1,
+      "genre": "Chugg / #chugg",
+      "genre_template": "chugg",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_LEAD",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "synth_lead",
+        "break_drums",
+        "noise_fx"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "instrument_id": "synth_lead",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "break_drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "NOISE_FX",
+          "instrument_id": "noise_fx",
+          "proposed_relative_active_level_db": -14,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "break_drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Electronic_Dance",
+      "selected_shared_drum_kit_id": "unverified_break_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    }
+  }
+}

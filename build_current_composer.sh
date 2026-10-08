@@ -714,14 +714,26 @@ assert piano and all(e.get("instrument_id") == "electric_piano" for e in piano)
 groups = collections.defaultdict(list)
 for note in piano:
     groups[round(float(note["start_beat"]), 6)].append(note)
-onsets = sorted(groups)[:4]
-assert len(onsets) == 4, "JAZZ_PIANO_CHORD_ONSETS_MISSING"
+# Two original, genre-generated chord attacks per bar over eight whole bars.
+onsets = sorted(groups)[:16]
+assert len(onsets) == 16, "JAZZ_EIGHT_BAR_PIANO_ONSETS_MISSING"
+assert result["meter"] == "4/4", "JAZZ_BALLAD_METER_CHANGED"
+bars_covered = {int(beat // 4) for beat in onsets}
+assert bars_covered == set(range(8)), ("JAZZ_EIGHT_BAR_GAP", sorted(bars_covered))
 for onset in onsets:
     voices = groups[onset]
     assert len(voices) == 4, ("JAZZ_CHORD_LOST_VOICE", onset, voices)
     assert len({int(n["midi"]) for n in voices}) == 4
     assert len({int(n["velocity"]) for n in voices}) == 1
+# Phrase structure should be audibly non-uniform: preserve distinct changes
+# already made by Genre Development. This test DOES NOT add humanization.
+distinct_chords = {tuple(sorted(int(n["midi"]) for n in groups[o])) for o in onsets}
+attack_velocities = [int(groups[o][0]["velocity"]) for o in onsets]
+assert len(distinct_chords) >= 3, ("JAZZ_HARMONY_STATIC", sorted(distinct_chords))
+assert len(set(attack_velocities)) >= 4, ("JAZZ_EXPRESSION_STATIC", attack_velocities)
+assert max(attack_velocities) - min(attack_velocities) >= 4, "JAZZ_EXPRESSION_DYNAMIC_RANGE_TOO_SMALL"
 chosen = [note for onset in onsets for note in groups[onset]]
+assert len(chosen) == 64, "JAZZ_CHORD_NOTE_COUNT_CHANGED"
 # Standard MIDI: preserve the generated note pitch/onset/duration/velocity.
 def vlq(n):
     assert n >= 0
@@ -749,8 +761,8 @@ for when, _, msg in messages:
 track += b"\x00\xff\x2f\x00"
 out = root / "output" / "jazz_recorded_chord_probe"
 out.mkdir(parents=True, exist_ok=True)
-midi_path = out / "jazz-ballad-generated-piano.mid"
-wav_path = out / "jazz-ballad-generated-piano.wav"
+midi_path = out / "jazz-ballad-eight-bars-generated-piano.mid"
+wav_path = out / "jazz-ballad-eight-bars-generated-piano.wav"
 midi_path.write_bytes(b"MThd" + struct.pack(">IHHH", 6, 0, 1, 480) +
                       b"MTrk" + struct.pack(">I", len(track)) + track)
 bindings = json.loads((root / "target_registry.json").read_text())[
@@ -761,13 +773,18 @@ assert resource["preferred_mapping"] == "Wurlitzer EP200/composer-wurlitzer.sfz"
 rendered = render_midi(resource, midi_path, wav_path, sample_rate=44100)
 assert rendered["status"] == "AUDIO_RENDER_PASS"
 assert rendered["peak_linear"] > 0 and rendered["rms_linear"] > 0
-print("JAZZ_BALLAD_REAL_RECORDED_CHORD_AUDIO_PASS", json.dumps({
+print("JAZZ_BALLAD_EIGHT_BAR_REAL_RECORDED_EXPRESSION_PASS", json.dumps({
     "profile": "Jazz Ballad", "source": "ACTUAL_GENERATED_HARMONY_EVENTS",
     "real_recorded_sample_bank": resource["resource_id"],
-    "chord_onsets": len(onsets), "midi_note_count": len(chosen),
+    "bars": len(bars_covered), "chord_onsets": len(onsets),
+    "midi_note_count": len(chosen),
+    "distinct_chords": len(distinct_chords),
+    "velocity_levels": len(set(attack_velocities)),
+    "velocity_range": [min(attack_velocities), max(attack_velocities)],
+    "duration_seconds": round(rendered["frames"] / rendered["sample_rate"], 2),
     "peak_dbfs": round(rendered["peak_dbfs"], 2),
     "rms_dbfs": round(rendered["rms_dbfs"], 2),
-    "audio_status": "SHORT_PIANO_DIAGNOSTIC_ONLY",
+    "audio_status": "EIGHT_BAR_PIANO_DIAGNOSTIC_ONLY",
     "full_song_3d_verified": False,
 }, sort_keys=True), flush=True)
 PY

@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "musical_family": "Classical_Acoustic",
+  "reference_only": true,
+  "source_assets_immutable": true,
+  "original_drum_library_is_separate": true,
+  "genre_count": 3,
+  "profiles": {
+    "Classical": {
+      "schema_version": 1,
+      "genre": "Classical",
+      "genre_template": "classical",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "VIOLIN",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "violin",
+        "flute",
+        "clarinet"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "VIOLIN",
+          "instrument_id": "violin",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "FLUTE",
+          "instrument_id": "flute",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "CLARINET",
+          "instrument_id": "clarinet",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Classical_Acoustic",
+      "selected_shared_drum_kit_id": null,
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "WALTZ": {
+      "schema_version": 1,
+      "genre": "WALTZ",
+      "genre_template": "waltz",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "VIOLIN",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "acoustic_guitar",
+        "violin",
+        "flute"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "VIOLIN",
+          "instrument_id": "violin",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "FLUTE",
+          "instrument_id": "flute",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Classical_Acoustic",
+      "selected_shared_drum_kit_id": null,
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "PIANIST": {
+      "schema_version": 1,
+      "genre": "PIANIST",
+      "genre_template": "pianist",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "PIANO",
+      "original_composer_instrument_palette": [
+        "piano"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "PIANO",
+          "instrument_id": "piano",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Classical_Acoustic",
+      "selected_shared_drum_kit_id": null,
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    }
+  }
+}

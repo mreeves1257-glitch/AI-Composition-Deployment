@@ -8,6 +8,7 @@ from __future__ import annotations
 from http.server import ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
+import re
 import html
 import os
 import shutil
@@ -72,6 +73,8 @@ class ComposerWithJazzPreview(Handler):
 
     def _serve_preview(self, send_body: bool):
         path = urlsplit(self.path).path
+        if path.startswith("/audio/"):
+            return self._serve_finished_audio(path, send_body)
         if path == "/jazz-ballad-listen":
             content = PAGE
             mime = "text/html; charset=utf-8"
@@ -101,6 +104,77 @@ class ComposerWithJazzPreview(Handler):
                     shutil.copyfileobj(stream, self.wfile)
         except (BrokenPipeError, ConnectionResetError):
             pass
+
+    def _serve_finished_audio(self, path: str, send_body: bool):
+        """Serve only the finished stereo derivative made by the separate 3D mixer.
+
+        Composer emits /audio/final_audio/composition_.../stereo_derivative.wav.
+        Do not expose private stems, instrument banks, or filesystem paths.
+        The output root comes from the SAME output_handoff.OUT used to render.
+        """
+        match = re.fullmatch(
+            r"/audio/final_audio/(composition_[A-Za-z0-9_-]+)/stereo_derivative\\.wav",
+            path,
+        )
+        if match is None:
+            return self._reply(404, b"Unknown audio file.", "text/plain; charset=utf-8", send_body)
+        from output_handoff import OUT
+        target = (OUT / "final_audio" / match.group(1) / "stereo_derivative.wav").resolve()
+        root = (OUT / "final_audio").resolve()
+        if root not in target.parents or not target.is_file():
+            return self._reply(404, b"Final audio not found.", "text/plain; charset=utf-8", send_body)
+
+        try:
+            size = target.stat().st_size
+            if size < 44:
+                return self._reply(503, b"Final audio incomplete.", "text/plain; charset=utf-8", send_body)
+            start, end, status = 0, size - 1, 200
+            range_header = self.headers.get("Range", "")
+            if range_header:
+                requested = re.fullmatch(r"bytes=(\\d*)-(\\d*)", range_header.strip())
+                if requested is None or not any(requested.groups()):
+                    return self._audio_range_error(size, send_body)
+                first, last = requested.groups()
+                if first:
+                    start = int(first)
+                    end = min(int(last), end) if last else end
+                else:
+                    suffix = int(last)
+                    if suffix <= 0:
+                        return self._audio_range_error(size, send_body)
+                    start = max(0, size - suffix)
+                if start >= size or end < start:
+                    return self._audio_range_error(size, send_body)
+                status = 206
+
+            self.send_response(status)
+            self.send_header("Content-Type", "audio/wav")
+            self.send_header("Content-Length", str(end - start + 1))
+            self.send_header("Accept-Ranges", "bytes")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            if status == 206:
+                self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+            self.end_headers()
+            if send_body:
+                with target.open("rb") as source:
+                    source.seek(start)
+                    remaining = end - start + 1
+                    while remaining > 0:
+                        packet = source.read(min(256 * 1024, remaining))
+                        if not packet:
+                            break
+                        self.wfile.write(packet)
+                        remaining -= len(packet)
+        except (BrokenPipeError, ConnectionResetError):
+            pass
+
+    def _audio_range_error(self, size: int, send_body: bool):
+        self.send_response(416)
+        self.send_header("Content-Range", f"bytes */{size}")
+        self.send_header("Content-Length", "0")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
 
     def _reply(self, status, body, mime, send_body):
         self.send_response(status)

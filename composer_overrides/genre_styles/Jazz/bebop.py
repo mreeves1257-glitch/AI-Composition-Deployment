@@ -19,3 +19,11 @@ def chord_progression(bars: int, seedv: int) -> list[str]:
     if out:
         out[-1] = ENDING_CHORD
     return out
+
+
+from .instrument_packages import load_package as _load_instrument_package
+
+
+def instrument_links() -> dict:
+    """Read this genre's links to the common Jazz instrument catalog."""
+    return _load_instrument_package("bebop")

@@ -1,11 +1,11 @@
-"""Independent Swing genre musical profile and chord movement.
+"""Independent Cool Jazz genre musical profile and chord movement.
 
 Each style owns its own chord progression, rather than a shared genre-size table.
 The existing engine still supplies Theory, instrument rendering and playback.
 """
-GENRE_NAME = "Swing"
-GENRE_PROFILE_ID = "JAZZ_SWING_V1"
-CHORD_PATTERNS = [["ii","V","I","vi","ii","V","I","V"],["I","IV","iii","vi","ii","V","I","V"]]
+GENRE_NAME = "Cool Jazz"
+GENRE_PROFILE_ID = "COOL_JAZZ_V1"
+CHORD_PATTERNS = [["I","I","IV","IV","ii","V","I","I"],["vi","vi","ii","ii","IV","IV","V","I"]]
 ENDING_CHORD = "I"
 STYLE_SECTION_BARS = 16
 
@@ -19,3 +19,11 @@ def chord_progression(bars: int, seedv: int) -> list[str]:
     if out:
         out[-1] = ENDING_CHORD
     return out
+
+
+from .instrument_packages import load_package as _load_instrument_package
+
+
+def instrument_links() -> dict:
+    """Read this genre's links to the common Jazz instrument catalog."""
+    return _load_instrument_package("cool_jazz")

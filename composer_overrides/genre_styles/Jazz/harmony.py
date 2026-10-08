@@ -6,7 +6,7 @@ and chord-group dynamics; it contains no private patterns for any genre.
 """
 from __future__ import annotations
 from typing import Any
-from .registry import JAZZ_GENRE_PROFILES, get_style
+from ..registry import JAZZ_GENRE_PROFILES, get_style
 
 
 def is_jazz_profile(genre_name: str, profile: dict[str, Any]) -> bool:

@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "genre": "Bebop",
+  "link_mode": "JAZZ_INSTRUMENT_POOL_LINK",
+  "library": "../instrument_library.json",
+  "binding_status": "STYLE_ROUTING_NOT_YET_VERIFIED",
+  "roles": {
+    "HARMONY": "electric_piano_wurlitzer",
+    "LEAD": "clarinet_vsco",
+    "BASS": "double_bass_meatbass",
+    "KICK": "brush_kick_swirly",
+    "SNARE": "brush_snare_swirly",
+    "HAT": "brush_hat_swirly"
+  },
+  "note": "These are available Jazz-family instruments, not proof that this style's existing score/palette supports every role. Style activation requires its own verified score mapping."
+}

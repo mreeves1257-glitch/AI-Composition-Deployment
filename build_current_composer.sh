@@ -360,7 +360,7 @@ from genre_development_patch import (
     apply_jazz_phrase_expression as _apply_jazz_phrase_expression,
     develop_full_length as _develop_full_length,
 )
-from genre_styles.jazz_ballad import arrange_events as _arrange_jazz_ballad
+from genre_styles.Jazz.jazz_ballad import arrange_events as _arrange_jazz_ballad
 _legacy_build_setup = build_setup
 
 def build_setup(name, profile, mode='quick', creation_seed=0):
@@ -480,7 +480,7 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
     # unchanged. This is a pure, Rock-only metadata overlay.
     from rock_balance_contract import apply_rock_balance
     mixer_instructions = apply_rock_balance(engine_result)
-    from genre_styles.jazz_ballad import balance_mix as apply_jazz_ballad_balance
+    from genre_styles.Jazz.jazz_ballad import balance_mix as apply_jazz_ballad_balance
     mixer_instructions = apply_jazz_ballad_balance(mixer_instructions)
     # A separate recorded-kick derivative follows the same existing drum
     # events as KICK. The independent 3D mixer remains entirely unchanged.

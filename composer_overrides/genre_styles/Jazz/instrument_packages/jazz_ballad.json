@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "genre": "Jazz Ballad",
+  "link_mode": "JAZZ_INSTRUMENT_POOL_LINK",
+  "library": "../instrument_library.json",
+  "binding_status": "VERIFIED_RECORDED_SOURCES",
+  "roles": {
+    "HARMONY": "electric_piano_wurlitzer",
+    "LEAD": "clarinet_vsco",
+    "BASS": "double_bass_meatbass",
+    "KICK": "brush_kick_swirly",
+    "SNARE": "brush_snare_swirly",
+    "HAT": "brush_hat_swirly"
+  },
+  "note": "Verified Jazz Ballad six-part routing. Piano source is unchanged."
+}

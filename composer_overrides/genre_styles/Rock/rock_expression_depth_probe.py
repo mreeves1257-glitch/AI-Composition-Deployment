@@ -12,9 +12,9 @@ from pathlib import Path
 
 import numpy as np
 from sfz_renderer_adapter import render_midi, validate_sfz_samples
-from recorded_subkick import prepare_recorded_subkick
+from .recorded_subkick import prepare_recorded_subkick
 
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(__file__).resolve().parents[2]
 BANK=ROOT/"sound_resources"
 OUT=ROOT/"output"/"rock_expression_probe"
 

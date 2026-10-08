@@ -25,6 +25,7 @@ jobs:
           base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
           cp composer_overrides/midi_initial_cc_bridge.py composer/runtime/
           cp composer_overrides/expressive_gesture_bridge.py composer/runtime/
+          cp composer_overrides/musical_gesture_author.py composer/runtime/
           cp composer_overrides/performance_capabilities.json composer/runtime/
           cp composer_overrides/test_midi_initial_cc_bridge.py composer/runtime/
           cp composer_overrides/test_expressive_gesture_bridge.py composer/runtime/
@@ -34,7 +35,7 @@ jobs:
           PYTHONPATH: composer/runtime
         run: |
           python -m unittest -v test_midi_initial_cc_bridge test_expressive_gesture_bridge
-          python -m py_compile composer/runtime/expressive_gesture_bridge.py composer/runtime/AI_Comp_Executable_Output_Core_001.py
+          python -m py_compile composer/runtime/expressive_gesture_bridge.py composer/runtime/musical_gesture_author.py composer/runtime/AI_Comp_Executable_Output_Core_001.py
           bash -n build_current_composer.sh
       - name: Confirm no automatic genre or instrument activation
         run: |

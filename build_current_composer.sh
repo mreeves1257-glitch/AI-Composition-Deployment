@@ -210,6 +210,7 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz" <<'SFZ'
 <region> sample=../Samples/ride_22/rd/cl/rd_vl10_rr2.flac seq_position=2
 <region> sample=../Samples/ride_22/rd/cl/rd_vl10_rr3.flac seq_position=3
 SFZ
+cp composer_overrides/production_resource_policy.py composer/runtime/production_resource_policy.py
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
 cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
@@ -452,6 +453,8 @@ if old not in s:
     raise SystemExit("INPUT_GATEWAY_DIAGNOSTIC_PATCH_TARGET_NOT_FOUND")
 p.write_text(s.replace(old,new))
 PY
+python composer/runtime/production_resource_policy.py --self-test
+python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 # Exercise the actual genre setup with no audio rendering. A bad palette,
 # missing core drum part, or mixed instrument IDs must fail this build rather

@@ -6,6 +6,8 @@ from __future__ import annotations
 from pathlib import Path
 import os, re, shutil, subprocess, wave, math, struct
 
+from production_resource_policy import ProductionResourceBlocked, require_recorded_sample_resource
+
 class SFZRendererError(RuntimeError): pass
 
 RESOURCE_ENV = 'AI_COMP_RESOURCE_BANK'
@@ -22,6 +24,10 @@ def _candidate_roots():
 
 
 def resolve_sfz(resource: dict) -> Path:
+    try:
+        require_recorded_sample_resource(resource)
+    except ProductionResourceBlocked as exc:
+        raise SFZRendererError("PRODUCTION_RESOURCE_BLOCKED:" + str(exc)) from exc
     mapping=resource.get('preferred_mapping')
     if resource.get('resource_type')!='SFZ_SAMPLE_LIBRARY' or not mapping:
         raise SFZRendererError('SFZ_RESOURCE_DECLARATION_INVALID')

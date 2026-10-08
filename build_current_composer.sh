@@ -138,27 +138,9 @@ cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz" <<'SFZ'
 <region> sample=../Samples/kick_24/kick/kick/k_vl13_rr4.flac seq_position=4
 SFZ
 
-# Sub-kick derives entirely from existing REAL Big Rusty drum recordings.
-# It is a separately attenuated, low-passed octave-lower sampled kick layer,
-# not a synthesized bass tone or additional melodic bass instrument.
-# Preserve the original kick mapping for an A/B build-time audio regression.
-python - <<'PY'
-from pathlib import Path
-p=Path("composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz")
-original=p.read_text(encoding="utf-8")
-p.with_name("composer-kick-without-sub.sfz").write_text(original, encoding="utf-8")
-extra=["", "// ROCK SUB-KICK: repitched real kick recordings, subdued beneath original."]
-for lo,hi,layer in ((1,31,1),(32,63,5),(64,95,9),(96,127,13)):
-    extra.append(
-        f"<group> lovel={lo} hivel={hi} transpose=-12 volume=-11.0 "
-        "fil_type=lpf_1p cutoff=105 ampeg_attack=0.005 "
-        "ampeg_hold=0.01 ampeg_decay=0.34 ampeg_sustain=0"
-    )
-    for rr in range(1,5):
-        path=f"../Samples/kick_24/kick/kick/k_vl{layer}_rr{rr}.flac"
-        extra.append(f"<region> sample={path} seq_position={rr}")
-p.write_text(original+"\n".join(extra)+"\n",encoding="utf-8")
-PY
+# Preserve the original recorded kick sample program unchanged.
+# The independent low-frequency stem is derived after real SFZ rendering,
+# at the Composer -> standalone 3D mixer boundary (see recorded_subkick.py).
 
 cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz" <<'SFZ'
 <global> key=38 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.20 ampeg_sustain=100 ampeg_release=0.25
@@ -255,6 +237,7 @@ cp composer_overrides/production_resource_policy.py composer/runtime/production_
 cp composer_overrides/real_electric_piano_probe.py composer/runtime/real_electric_piano_probe.py
 cp composer_overrides/real_rock_alias_probe.py composer/runtime/real_rock_alias_probe.py
 cp composer_overrides/rock_expression_depth_probe.py composer/runtime/rock_expression_depth_probe.py
+cp composer_overrides/recorded_subkick.py composer/runtime/recorded_subkick.py
 cp composer_overrides/real_conga_probe.py composer/runtime/real_conga_probe.py
 cp composer_overrides/sample_bank_onboarding.py composer/runtime/sample_bank_onboarding.py
 cp composer_overrides/verified_future_instruments.json composer/runtime/verified_future_instruments.json
@@ -467,7 +450,15 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
     # unchanged. This is a pure, Rock-only metadata overlay.
     from rock_balance_contract import apply_rock_balance
     mixer_instructions = apply_rock_balance(engine_result)
-    job_path.write_text(json.dumps({'engine_result': mixer_instructions, 'stems': stems}), encoding='utf-8')
+    # A separate recorded-kick derivative follows the same existing drum
+    # events as KICK. The independent 3D mixer remains entirely unchanged.
+    from recorded_subkick import prepare_recorded_subkick
+    mixer_instructions, mixer_stems = prepare_recorded_subkick(
+        mixer_instructions, stems, job_dir
+    )
+    job_path.write_text(json.dumps({
+        'engine_result': mixer_instructions, 'stems': mixer_stems
+    }), encoding='utf-8')
     cp = subprocess.run(
         [sys.executable, str(ROOT / 'standalone_3d_mixer.py'), str(job_path), str(final_root)],
         capture_output=True, text=True, timeout=240
@@ -493,7 +484,6 @@ test -f "$BANK/KARORYFER_GROWLYBASS_V1_002/growlybass_clean.sfz"
 test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer-electric.sfz"
 test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer-electric-lead.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz"
-test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-without-sub.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz"

@@ -77,7 +77,57 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_SWING_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          95,
+          210
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed",
+          "aba"
+        ],
+        "groove_behavior": "swung eighth feel with ride-led pulse and flexible comping; swing ratio varies with tempo/performance",
+        "phrase_behavior": "4/8-bar phrasing with call-response, pickups, turnaround energy and space for improvisatory lines",
+        "harmony_behavior": "extended tonal harmony; ii-V motion, secondary dominants, substitutions and blues language available without forcing one progression",
+        "bass_behavior": "walking bass structural baseline with chromatic approaches and chord-tone targets",
+        "percussion_behavior_if_applicable": "ride pattern + hi-hat/backbeat accents + feathered/supportive kick as target permits; brushes optional",
+        "instrument_role_behavior": "piano/guitar comping, acoustic/electric bass, drum kit, sax/brass/clarinet melodic roles",
+        "ensemble_player_behavior": "rhythm section negotiates shared swing pocket; comping responds to phrases rather than repeating fixed blocks",
+        "arrangement_transformation": "head/solo/head or sectional jazz form; density changes under solos and ensemble figures",
+        "dynamic_behavior": "interactive accents and phrase crescendos rather than static velocity",
+        "articulation_behavior": "legato/tongued horn lines, comping stabs, bass sustain, brush/stick differentiation",
+        "timing_humanization_behavior": "microtiming is relational to swing pulse and ensemble role; no random jitter",
+        "continuous_performance_control": "expression, articulation, breath and comping-density controls",
+        "sound_effects_intent": "room/reverb restrained; target tone may be warm/natural",
+        "mix_prominence_intent": "bass/ride time feel clear; melody and comping leave mutual space",
+        "production_mastering_intent": "preserve transient nuance and dynamic headroom",
+        "manufacturer_adapter_requirements": "sax/piano target voices may be electronic patches but must retain canonical role behavior",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "swing",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Jazz Ballad": {
       "schema_version": 1,
@@ -151,7 +201,58 @@
       "selected_shared_drum_kit_id": "jazz_ballad_brush_recorded",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_BALLAD_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          45,
+          85
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4"
+        ],
+        "form_tendencies": [
+          "aba",
+          "through_composed"
+        ],
+        "groove_behavior": "slow swing, rubato or straight ballad feel; pulse can soften at phrase edges",
+        "phrase_behavior": "long lyrical phrases with pickups, breath, delayed resolutions and spacious turnarounds",
+        "harmony_behavior": "extended jazz harmony with slow harmonic rhythm, altered dominants and substitutions as controlled options",
+        "bass_behavior": "sparse roots/tenths/walking fragments; bass avoids overcrowding",
+        "percussion_behavior_if_applicable": "brushes or very light kit; cymbal swells and fills used selectively",
+        "instrument_role_behavior": "piano/electric piano, bass, brushes, sax/trumpet/clarinet/flute or guitar lead",
+        "ensemble_player_behavior": "ensemble follows melody breath and rubato; accompaniment thins under exposed lines",
+        "arrangement_transformation": "AABA/ABA/through-composed ballad structures with gradual dynamic arc",
+        "dynamic_behavior": "wide soft-to-medium range with intimate swells",
+        "articulation_behavior": "legato, breathy/soft attacks, restrained accents",
+        "timing_humanization_behavior": "shared rubato and laid-back placement tied to phrase",
+        "continuous_performance_control": "expression and tempo curves are essential",
+        "sound_effects_intent": "warm room/reverb; delay only when stylistically chosen",
+        "mix_prominence_intent": "lead intimate and forward; accompaniment soft and uncluttered",
+        "production_mastering_intent": "warm, dynamic, low-harshness master",
+        "manufacturer_adapter_requirements": "prioritize expressive horn/keys voices and continuous control",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "jazz_ballad",
+        "active_style_module": "composer_overrides/genre_styles/Jazz/jazz_ballad.py",
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_BALLAD_ACTIVE_IN_DEVELOPMENT",
+        "selected_universal_drum_kit": "jazz_ballad_brush_recorded",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Big Band": {
       "schema_version": 1,
@@ -232,7 +333,57 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "BIG_BAND_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          100,
+          200
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed",
+          "aba"
+        ],
+        "groove_behavior": "swing or straight big-band groove with sectional figures and rhythm-section continuity",
+        "phrase_behavior": "8/16-bar phrases, ensemble punches, call-response sections, build toward shout/feature passages",
+        "harmony_behavior": "jazz tonal/extended harmony with arranged voicings and sectional voice leading",
+        "bass_behavior": "walking or riff-based bass tied to drums and ensemble figures",
+        "percussion_behavior_if_applicable": "ride/backbeat support, setup fills and ensemble hits; accents align with horn figures",
+        "instrument_role_behavior": "sax section, trumpets, trombones, piano/guitar, bass, drum kit; optional clarinet/flute doubles",
+        "ensemble_player_behavior": "sections phrase as units; brass/reeds balance and articulate together",
+        "arrangement_transformation": "introductions, ensemble choruses, solos, backgrounds and climactic ensemble returns",
+        "dynamic_behavior": "large sectional contrasts with controlled crescendos into ensemble hits",
+        "articulation_behavior": "tight staccato/accented figures contrasted with legato section pads",
+        "timing_humanization_behavior": "section-coherent placement; brass/reed attacks align with intentional pushes/lays",
+        "continuous_performance_control": "section expression and articulation controls plus solo-feature dynamics",
+        "sound_effects_intent": "natural room with limited enhancement; avoid smearing ensemble attacks",
+        "mix_prominence_intent": "rhythm section foundation; featured section/solo foreground; backgrounds subordinate",
+        "production_mastering_intent": "retain punch and brass detail without harshness",
+        "manufacturer_adapter_requirements": "requires reliable section/ensemble patch mapping and articulation control",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "big_band",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Jazz Waltz": {
       "schema_version": 1,
@@ -305,7 +456,57 @@
       "selected_shared_drum_kit_id": "unverified_brush_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_WALTZ_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          85,
+          180
+        ],
+        "meter_options": [
+          "3/4"
+        ],
+        "form_tendencies": [
+          "aba",
+          "through_composed"
+        ],
+        "groove_behavior": "three-beat jazz pulse with swing/straight subdivision options and elastic accent patterns",
+        "phrase_behavior": "4/8-bar jazz phrasing across 3/4; phrases may cross bar accents",
+        "harmony_behavior": "extended jazz harmony and modal options; functional cadence not mandatory",
+        "bass_behavior": "walking-in-3, roots/fifths or melodic bass according to section",
+        "percussion_behavior_if_applicable": "ride/brush pattern adapted to 3/4; avoid generic oom-pah-pah unless specifically chosen",
+        "instrument_role_behavior": "piano/guitar, bass, drum kit, horn/woodwind lead",
+        "ensemble_player_behavior": "shared 3/4 pocket with flexible comping and interactive fills",
+        "arrangement_transformation": "jazz head/solo/return or ABA",
+        "dynamic_behavior": "phrase arcs with dynamic lift into phrase 3 or 4",
+        "articulation_behavior": "legato horn phrasing, responsive comping, brush/stick variation",
+        "timing_humanization_behavior": "subtle swing placement and phrase rubato",
+        "continuous_performance_control": "expression and tempo breathing",
+        "sound_effects_intent": "natural room/reverb",
+        "mix_prominence_intent": "bass and cymbal pulse clear without dominating melody",
+        "production_mastering_intent": "dynamic master with controlled cymbal brightness",
+        "manufacturer_adapter_requirements": "preserve 3/4 timing and expressive controllers",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "jazz_waltz",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_brush_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Bebop": {
       "schema_version": 1,
@@ -378,7 +579,56 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "BEBOP_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          145,
+          300
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "fast swing with ride-led time, walking bass and syncopated melodic accents",
+        "phrase_behavior": "dense 4/8-bar lines with pickups, enclosures, turnarounds and rapid phrase release",
+        "harmony_behavior": "fast-moving extended harmony, ii-V chains, secondary dominants, substitutions and chromatic approaches",
+        "bass_behavior": "continuous walking bass with chord-tone targets and passing approaches",
+        "percussion_behavior_if_applicable": "ride + hi-hat support; drums comp interactively rather than fixed backbeat",
+        "instrument_role_behavior": "small combo: sax/trumpet/clarinet, piano/guitar, bass, drums",
+        "ensemble_player_behavior": "high interaction; accompaniment leaves harmonic information without crowding solo line",
+        "arrangement_transformation": "head-solos-head baseline with compact ensemble statements",
+        "dynamic_behavior": "accent-driven line shaping rather than large sustained swells",
+        "articulation_behavior": "clean fast tonguing/legato alternation, ghosted notes and rhythmic accents as target permits",
+        "timing_humanization_behavior": "swing microtiming tightens at faster tempos; ensemble relational timing only",
+        "continuous_performance_control": "articulation and accent control prioritized over heavy effects",
+        "sound_effects_intent": "dry-to-natural room; little masking",
+        "mix_prominence_intent": "melody and bass clarity prioritized over dense pads",
+        "production_mastering_intent": "fast transients, controlled cymbals and headroom",
+        "manufacturer_adapter_requirements": "requires fast articulation-capable lead and rhythm voices",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "bebop",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Cool Jazz": {
       "schema_version": 1,
@@ -451,7 +701,58 @@
       "selected_shared_drum_kit_id": "unverified_brush_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "COOL_JAZZ_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          65,
+          150
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4"
+        ],
+        "form_tendencies": [
+          "aba",
+          "through_composed"
+        ],
+        "groove_behavior": "restrained swing or straight feel with more space and lighter attack than hard-driving swing",
+        "phrase_behavior": "longer understated phrases, counterlines and deliberate rests",
+        "harmony_behavior": "extended/modal harmony with transparent voicings and slower harmonic rhythm as options",
+        "bass_behavior": "walking or sparse melodic bass; less aggressive attack",
+        "percussion_behavior_if_applicable": "brushes/light kit favored; percussion leaves air",
+        "instrument_role_behavior": "horn/woodwind lead, piano/guitar, bass, light drums; chamber colors allowed",
+        "ensemble_player_behavior": "balanced, conversational ensemble; no section overwhelms texture",
+        "arrangement_transformation": "ABA/through-composed or head/solo forms with textural restraint",
+        "dynamic_behavior": "restrained dynamics with subtle swells",
+        "articulation_behavior": "soft attacks, legato lines, understated accents",
+        "timing_humanization_behavior": "laid-back but coherent shared pocket",
+        "continuous_performance_control": "continuous expression and breath shaping",
+        "sound_effects_intent": "natural ambience; subtle plate/room if target uses effects",
+        "mix_prominence_intent": "transparent mix with bass and melody both clear",
+        "production_mastering_intent": "low-compression, warm master",
+        "manufacturer_adapter_requirements": "favor nuanced dynamic voices over bright generic substitutions",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "cool_jazz",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_brush_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Dixieland": {
       "schema_version": 1,
@@ -532,7 +833,57 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "DIXIELAND_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          95,
+          220
+        ],
+        "meter_options": [
+          "4/4",
+          "2/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "two-beat or four-beat early-jazz pulse with collective rhythmic lift",
+        "phrase_behavior": "short ensemble strains with collective improvisatory interplay and clear cadences",
+        "harmony_behavior": "functional/blues/ragtime-related harmony with dominant motion and turnarounds",
+        "bass_behavior": "two-beat roots/fifths or four-beat walking depending section",
+        "percussion_behavior_if_applicable": "snare/bass drum/ride or period-appropriate kit behavior; energetic but not modern rock backbeat",
+        "instrument_role_behavior": "trumpet/cornet lead role, clarinet counterline, trombone support, piano/guitar/banjo-role target, bass/tuba, drums",
+        "ensemble_player_behavior": "simultaneous front-line roles remain differentiated: lead, obbligato, tailgate/counter-support",
+        "arrangement_transformation": "multiple strains, breaks and ensemble returns",
+        "dynamic_behavior": "lively accents and collective builds",
+        "articulation_behavior": "brisk tonguing, gliss/falls where supported, crisp rhythm accompaniment",
+        "timing_humanization_behavior": "ensemble push tied to two-beat/four-beat pulse",
+        "continuous_performance_control": "articulation and breath controls",
+        "sound_effects_intent": "small-room/live-band character; avoid heavy modern processing",
+        "mix_prominence_intent": "front line clear with rhythm foundation supportive",
+        "production_mastering_intent": "preserve acoustic transient character",
+        "manufacturer_adapter_requirements": "map brass/clarinet/trombone roles distinctly; no generic single-horn collapse",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "dixieland",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Jazz Fusion": {
       "schema_version": 1,
@@ -613,7 +964,61 @@
       "selected_shared_drum_kit_id": "unverified_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_FUSION_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          85,
+          170
+        ],
+        "meter_options": [
+          "4/4",
+          "6/8",
+          "7/8"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "straight or swung syncopation with funk/rock-derived rhythm-section precision; odd meters allowed only with explicit grouping",
+        "phrase_behavior": "longer developmental phrases, riffs, solo sections and sectional metric/harmonic shifts",
+        "harmony_behavior": "extended/modal jazz harmony mixed with rock/funk vamps and pedal harmony",
+        "bass_behavior": "electric bass may be syncopated, melodic, slapped/picked or pedal-based according to section",
+        "percussion_behavior_if_applicable": "drum kit can be dense and technically active; groove remains coherent through fills and meter shifts",
+        "instrument_role_behavior": "electric guitar, electric bass, drums, keys/synth target, sax/brass/woodwind lead options",
+        "ensemble_player_behavior": "rhythm section tightly interlocks while soloists can float over groove",
+        "arrangement_transformation": "riff sections, solo development, breakdowns and climactic returns",
+        "dynamic_behavior": "broad dynamic range from atmospheric openings to high-energy sections",
+        "articulation_behavior": "clean/fused articulation: legato leads, accented riffs, guitar sustain, crisp drums",
+        "timing_humanization_behavior": "humanized within tight pocket; odd-meter groupings remain stable",
+        "continuous_performance_control": "expression, modulation, pitch bend and target-specific effects may be prominent",
+        "sound_effects_intent": "delay/chorus/drive/synth effects allowed as controlled style components",
+        "mix_prominence_intent": "bass/drums strong but melodic lead remains intelligible",
+        "production_mastering_intent": "modern full-range master with controlled density",
+        "manufacturer_adapter_requirements": "requires electric/synth resources and fast articulation support",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "fusion",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"
 }

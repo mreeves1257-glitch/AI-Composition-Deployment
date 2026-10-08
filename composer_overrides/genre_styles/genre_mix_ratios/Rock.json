@@ -93,7 +93,60 @@
       "selected_shared_drum_kit_id": "rock_recorded",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "ROCK_CORE_V2",
+        "family": "Rock",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "Project-controlled broad Rock baseline; not a universal definition of Rock.",
+        "tempo_bpm_range": [
+          100,
+          145
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "verse_chorus",
+          "through_composed"
+        ],
+        "groove_behavior": "straight or lightly syncopated eighth-note rock pulse; backbeat remains structural but fills and pushes vary by section",
+        "phrase_behavior": "4- or 8-bar phrases with verse/chorus contrast, fills into boundaries, and selective lead call/response",
+        "harmony_behavior": "tonal major/minor; power-chord, triadic, modal or blues-derived vocabulary; progression must vary across pieces",
+        "bass_behavior": "electric bass locks with kick while retaining independent melodic movement; roots/fifths are a baseline, not a fixed template",
+        "percussion_behavior_if_applicable": "kick/snare backbeat, hi-hat/ride timekeeping, tom/crash transitions; pattern variation required across sections",
+        "instrument_role_behavior": "electric guitar rhythm + lead, electric bass, drum kit; optional acoustic guitar, keys, brass/strings via target resources",
+        "ensemble_player_behavior": "rhythm section shares groove hierarchy; lead phrases leave space and answer vocal/melodic gaps",
+        "arrangement_transformation": "verse/chorus or sectional builds; density, register and guitar texture change across sections",
+        "dynamic_behavior": "firm but section-shaped; choruses may lift, breakdowns reduce density",
+        "articulation_behavior": "guitar attacks, sustains, mutes, accents and slides follow role; drums use distinct backbeat/fill articulation",
+        "timing_humanization_behavior": "shared groove offsets and phrase pushes; no independent random jitter",
+        "continuous_performance_control": "velocity + expression + note length + target articulation controls",
+        "sound_effects_intent": "amp/drive/reverb/delay are style resources, not mandatory; preserve bass clarity",
+        "mix_prominence_intent": "kick/bass/rhythm foundation clear; lead present selectively rather than constantly",
+        "production_mastering_intent": "punchy transients, controlled low-end, no automatic loudness flattening",
+        "manufacturer_adapter_requirements": "map canonical guitars/bass/drums to target voices; do not replace genre because a patch is missing",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "rock",
+        "active_style_module": "composer_overrides/genre_styles/rock.py",
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ROCK_EXISTING_WORKING_IMPLEMENTATION_PRESERVED",
+        "selected_universal_drum_kit": "rock_recorded",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"
 }

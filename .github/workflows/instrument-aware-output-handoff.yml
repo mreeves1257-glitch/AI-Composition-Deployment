@@ -27,6 +27,8 @@ jobs:
           cp composer_overrides/musical_gesture_author.py composer/runtime/
           cp composer_overrides/performance_capabilities.json composer/runtime/
           cp composer_overrides/instrument_gesture_handoff.py composer/runtime/
+          cp composer_overrides/phrase_expression_decisions.py composer/runtime/
+          cp composer_overrides/automatic_phrase_handoff.py composer/runtime/
           cp composer_overrides/test_instrument_gesture_handoff.py composer/runtime/
           cp composer_overrides/test_midi_initial_cc_bridge.py composer/runtime/
           cp composer_overrides/test_expressive_gesture_bridge.py composer/runtime/
@@ -38,7 +40,7 @@ jobs:
           PYTHONPATH: composer/runtime
         run: |
           python -m unittest -v test_instrument_gesture_handoff test_expressive_gesture_bridge test_midi_initial_cc_bridge
-          python -m py_compile composer/runtime/output_handoff.py composer/runtime/instrument_gesture_handoff.py
+          python -m py_compile composer/runtime/output_handoff.py composer/runtime/instrument_gesture_handoff.py composer/runtime/phrase_expression_decisions.py composer/runtime/automatic_phrase_handoff.py
           bash -n build_current_composer.sh
       - name: Confirm no genres or sample assets were activated or changed
         run: |

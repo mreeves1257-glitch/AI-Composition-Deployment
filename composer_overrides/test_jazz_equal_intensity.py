@@ -104,7 +104,7 @@ class EqualJazzIntensityTests(unittest.TestCase):
                 writer.setnchannels(1)
                 writer.setsampwidth(2)
                 writer.setframerate(8000)
-                writer.writeframes(b"\\0" * (8000 * 2))
+                writer.writeframes(bytes(8000 * 2))
             with self.assertRaisesRegex(ValueError, "JAZZ_INSTRUMENT_SILENT"):
                 active_rms_dbfs(path)
 

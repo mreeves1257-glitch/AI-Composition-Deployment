@@ -1,54 +1,16 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "genre": "Big Band",
-  "link_mode": "SHARED_SAMPLE_LIBRARY_REFERENCE",
-  "shared_root": "sound_resources",
-  "resource_type": "SFZ_SAMPLE_LIBRARY",
-  "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
-  "binding_status": "GENRE_SPECIFIC_BINDINGS_TO_VERIFY",
-  "instruments": {
-    "HARMONY": {
-      "instrument_id": null,
-      "registry_binding": null,
-      "resource_id": null,
-      "sfz": null,
-      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
-    },
-    "LEAD": {
-      "instrument_id": null,
-      "registry_binding": null,
-      "resource_id": null,
-      "sfz": null,
-      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
-    },
-    "BASS": {
-      "instrument_id": null,
-      "registry_binding": null,
-      "resource_id": null,
-      "sfz": null,
-      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
-    },
-    "KICK": {
-      "instrument_id": null,
-      "registry_binding": null,
-      "resource_id": null,
-      "sfz": null,
-      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
-    },
-    "SNARE": {
-      "instrument_id": null,
-      "registry_binding": null,
-      "resource_id": null,
-      "sfz": null,
-      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
-    },
-    "HAT": {
-      "instrument_id": null,
-      "registry_binding": null,
-      "resource_id": null,
-      "sfz": null,
-      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
-    }
+  "link_mode": "JAZZ_INSTRUMENT_POOL_LINK",
+  "library": "../instrument_library.json",
+  "binding_status": "STYLE_ROUTING_NOT_YET_VERIFIED",
+  "roles": {
+    "HARMONY": "electric_piano_wurlitzer",
+    "LEAD": "clarinet_vsco",
+    "BASS": "double_bass_meatbass",
+    "KICK": "brush_kick_swirly",
+    "SNARE": "brush_snare_swirly",
+    "HAT": "brush_hat_swirly"
   },
-  "note": "Common starter roles only. Do not treat these as loaded or audible. Match the authoritative genre's instrument palette and real recorded resources before connecting this style."
+  "note": "These are available Jazz-family instruments, not proof that this style's existing score/palette supports every role. Style activation requires its own verified score mapping."
 }

@@ -242,6 +242,7 @@ cp composer_overrides/real_conga_probe.py composer/runtime/real_conga_probe.py
 cp composer_overrides/sample_bank_onboarding.py composer/runtime/sample_bank_onboarding.py
 cp composer_overrides/verified_future_instruments.json composer/runtime/verified_future_instruments.json
 cp composer_overrides/genre_resource_readiness.py composer/runtime/genre_resource_readiness.py
+cp composer_overrides/jazz_ballad_recorded_resources.py composer/runtime/jazz_ballad_recorded_resources.py
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
 cp composer_overrides/instrument_performance_contract.py composer/runtime/instrument_performance_contract.py
@@ -564,6 +565,7 @@ python composer/runtime/rock_expression_depth_probe.py
 python composer/runtime/real_conga_probe.py
 python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
+python composer/runtime/jazz_ballad_recorded_resources.py
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py

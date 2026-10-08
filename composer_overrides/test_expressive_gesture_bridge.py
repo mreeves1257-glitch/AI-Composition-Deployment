@@ -178,5 +178,60 @@ class ExpressiveBridgeTests(unittest.TestCase):
             midi_bytes(plan({"at_beat": "1", "control": "vibrato_depth", "value": 88}), not_guitar)
 
 
+    def test_explicit_note_articulation_authors_delayed_vibrato(self):
+        auto = plan()
+        auto["LEAD"].pop("gestures")
+        auto["LEAD"]["gesture_source"] = "note_articulation"
+        tagged = (MusicalEvent(
+            "L1", "LEAD", "electric_guitar", Fraction(0), Fraction(4),
+            64, 90, articulation="sustained_vibrato",
+        ),)
+        before, after = decode_tracks(midi_bytes(lead_events=tagged)), decode_tracks(
+            midi_bytes(auto, lead_events=tagged)
+        )
+        cc = [e for e in after[1] if e[1] & 0xf0 == 0xb0]
+        self.assertEqual(cc, [
+            (0, 0xb0, (1, 88)),  # exact existing instrument CC
+            (0, 0xb0, (1, 0)),   # note begins without modulation
+            (480, 0xb0, (1, 88)),  # note-attached delayed vibrato
+            (1680, 0xb0, (1, 0)), # release before Note Off
+        ])
+        self.assertEqual(
+            [e for e in before[1] if e[1] & 0xf0 in (0x80,0x90)],
+            [e for e in after[1] if e[1] & 0xf0 in (0x80,0x90)],
+        )
+        self.assertEqual(before[2], after[2]) # other track untouched
+
+    def test_without_note_articulation_no_new_gestures(self):
+        auto = plan()
+        auto["LEAD"].pop("gestures")
+        auto["LEAD"]["gesture_source"] = "note_articulation"
+        self.assertEqual(midi_bytes(auto), midi_bytes())
+
+    def test_explicit_vibrato_rejects_short_note(self):
+        auto = plan()
+        auto["LEAD"].pop("gestures")
+        auto["LEAD"]["gesture_source"] = "note_articulation"
+        short = (MusicalEvent(
+            "L1", "LEAD", "electric_guitar", Fraction(0), Fraction(1,2),
+            64, 90, articulation="sustained_vibrato",
+        ),)
+        with self.assertRaisesRegex(PerformanceGestureError,"NOTE_TOO_SHORT"):
+            midi_bytes(auto, lead_events=short)
+
+    def test_auto_mode_rejects_polyphony(self):
+        auto = plan()
+        auto["LEAD"].pop("gestures")
+        auto["LEAD"]["gesture_source"] = "note_articulation"
+        notes = (
+            MusicalEvent("L1","LEAD","electric_guitar",Fraction(0),Fraction(4),
+                         64,90,articulation="sustained_vibrato"),
+            MusicalEvent("L2","LEAD","electric_guitar",Fraction(1),Fraction(1),
+                         67,90),
+        )
+        with self.assertRaisesRegex(PerformanceGestureError,"CHANNEL_POLYPHONY"):
+            midi_bytes(auto,lead_events=notes)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

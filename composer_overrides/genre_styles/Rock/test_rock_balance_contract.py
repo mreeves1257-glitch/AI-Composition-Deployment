@@ -1,6 +1,6 @@
 """Non-audio regression tests for composer-side Rock mix handoff."""
 import unittest
-from rock_balance_contract import apply_rock_balance, ROCK_GAIN_TRIMS_DB, CONTRACT_VERSION
+from genre_styles.Rock.rock_balance_contract import apply_rock_balance, ROCK_GAIN_TRIMS_DB, CONTRACT_VERSION
 
 INSTRUMENTS={
     'HARMONY':'electric_guitar',

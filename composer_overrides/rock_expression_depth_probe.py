@@ -144,7 +144,7 @@ def main()->None:
                     f"<region> sample=../Samples/kick_24/kick/kick/"
                     f"k_vl{layer}_rr{rr}.flac seq_position={rr}"
                 )
-        enhanced_sf.write_text(unmodified+"\\n".join(groups)+"\\n",encoding="utf-8")
+        enhanced_sf.write_text(unmodified+"\n".join(groups)+"\n",encoding="utf-8")
         samples=validate_sfz_samples(enhanced_sf)
         layered=_render(enhanced,36,"layered-real-kick")
         p_after=_low_power(layered)

@@ -45,5 +45,18 @@ jobs:
           print(json.dumps(all_rows,ensure_ascii=False,separators=(",",":")))
           print("MUSICAL_REGISTRY_END")
           PY
+      - name: Inventory every original bundled Composer runtime file
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("/tmp/original_composer_family")
+          files=sorted(str(p.relative_to(root)) for p in root.rglob("*") if p.is_file())
+          assert files, "RUNTIME_BUNDLE_EMPTY"
+          print("RUNTIME_FILE_INVENTORY_START")
+          print(json.dumps(files,separators=(",",":")))
+          print("RUNTIME_FILE_INVENTORY_END")
+          print("ORIGINAL_RUNTIME_ARCHIVE_FILE_COUNT",len(files))
+          PY
       - name: Validate new genre families and drum source protection
         run: python composer_overrides/genre_styles/genre_mix_ratios/validate_profiles.py

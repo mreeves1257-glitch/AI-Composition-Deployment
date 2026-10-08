@@ -249,6 +249,7 @@ cp -R composer_overrides/genre_styles composer/runtime/genre_styles
 cp composer_overrides/jazz_arranger_style.py composer/runtime/jazz_arranger_style.py
 cp composer_overrides/jazz_balance_contract.py composer/runtime/jazz_balance_contract.py
 cp composer_overrides/test_jazz_arranger_style.py composer/runtime/test_jazz_arranger_style.py
+cp composer_overrides/test_jazz_ballad_equal_intensity.py composer/runtime/test_jazz_ballad_equal_intensity.py
 cp composer_overrides/test_genre_style_files.py composer/runtime/test_genre_style_files.py
 cp composer_overrides/instrument_performance_contract.py composer/runtime/instrument_performance_contract.py
 cp composer_overrides/test_instrument_performance_contract.py composer/runtime/test_instrument_performance_contract.py
@@ -645,6 +646,7 @@ PY
 # Guard piano integrity, actual sample MIDI ranges, developed chord movement,
 # and absence of changes to working Rock and unrelated genres.
 python composer/runtime/test_jazz_arranger_style.py -v
+python composer/runtime/test_jazz_ballad_equal_intensity.py -v
 python composer/runtime/test_genre_style_files.py -v
 
 # Keep the six confirmed recorded Jazz Ballad roles and extended harmony.

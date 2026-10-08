@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "genre": "ROCK",
+  "genre_template": "rock",
+  "profile_status": "WORKING_ROCK_PROTECTED_UNCHANGED",
+  "ratio_kind": "PRESERVED_EXISTING_RESOURCE_GAIN_TRIM_DB",
+  "reference_instrument_track": "HARMONY",
+  "original_composer_instrument_palette": [
+    "electric_bass",
+    "electric_guitar",
+    "lead_guitar",
+    "drums"
+  ],
+  "individual_instrument_tracks": [
+    {
+      "track_id": "HARMONY",
+      "instrument_id": "electric_guitar",
+      "existing_gain_trim_db": -5.5,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "LEAD",
+      "instrument_id": "electric_guitar",
+      "existing_gain_trim_db": 5.5,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "BASS",
+      "instrument_id": "electric_bass_guitar",
+      "existing_gain_trim_db": 1,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "KICK",
+      "instrument_id": "kick_drum_rock",
+      "existing_gain_trim_db": 0.5,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "SNARE",
+      "instrument_id": "snare_drum",
+      "existing_gain_trim_db": 6.5,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "HAT",
+      "instrument_id": "hi_hat",
+      "existing_gain_trim_db": 12,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "TOMS",
+      "instrument_id": "tom_tom",
+      "existing_gain_trim_db": 5,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "CRASH",
+      "instrument_id": "crash_cymbal",
+      "existing_gain_trim_db": 5,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "RIDE",
+      "instrument_id": "ride_cymbal",
+      "existing_gain_trim_db": 8,
+      "source_mapping": "PRESERVED_IN_ROCK_BALANCE_CONTRACT",
+      "source_is_read_only": true
+    }
+  ],
+  "pending_drum_source_splits": [],
+  "actual_source_wav_sfz_files_must_remain_unchanged": true,
+  "ready_for_composition": "PRESERVE_CURRENT_BEHAVIOR",
+  "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+  "auto_apply": false
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "genre": "Mexican Reggaeton",
+  "genre_template": "reggaeton",
+  "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+  "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+  "reference_instrument_track": "SYNTH_BASS",
+  "original_composer_instrument_palette": [
+    "synth_bass",
+    "synth_chord",
+    "drums_dembow",
+    "noise_fx"
+  ],
+  "individual_instrument_tracks": [
+    {
+      "track_id": "SYNTH_BASS",
+      "instrument_id": "synth_bass",
+      "proposed_relative_active_level_db": 0,
+      "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "SYNTH_CHORD",
+      "instrument_id": "synth_chord",
+      "proposed_relative_active_level_db": -5,
+      "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "KICK",
+      "instrument_id": null,
+      "original_palette_group": "drums_dembow",
+      "proposed_relative_active_level_db": 2,
+      "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "SNARE",
+      "instrument_id": null,
+      "original_palette_group": "drums_dembow",
+      "proposed_relative_active_level_db": -1,
+      "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "HAT",
+      "instrument_id": null,
+      "original_palette_group": "drums_dembow",
+      "proposed_relative_active_level_db": -6,
+      "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+      "source_is_read_only": true
+    },
+    {
+      "track_id": "NOISE_FX",
+      "instrument_id": "noise_fx",
+      "proposed_relative_active_level_db": -16,
+      "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+      "source_is_read_only": true
+    }
+  ],
+  "pending_drum_source_splits": [
+    "drums_dembow"
+  ],
+  "actual_source_wav_sfz_files_must_remain_unchanged": true,
+  "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+  "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+  "auto_apply": false
+}

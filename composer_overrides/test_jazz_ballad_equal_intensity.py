@@ -71,13 +71,27 @@ class JazzEqualIntensityTest(unittest.TestCase):
             self.assertEqual(set(levels), set(INSTRUMENTS))
             target = output["jazz_mix_instruction"]["requested_mix_ratios_db"]
             self.assertEqual(target, {
-                "HARMONY": 0.0, "LEAD": 0.0, "KICK": 0.0,
-                "BASS": -3.0, "SNARE": -12.0, "HAT": -7.0})
+                "HARMONY": 0.0, "LEAD": 0.0, "KICK": 8.0,
+                "BASS": -3.0, "SNARE": -22.0, "HAT": -7.0})
             piano = levels["HARMONY"]["effective_active_rms_dbfs"]
             for role, offset in target.items():
                 self.assertLess(abs(levels[role]["effective_active_rms_dbfs"] - piano - offset),
                                 0.2, "Original-sound mix ratio: " + role)
             self.assertTrue(output["jazz_mix_instruction"]["original_instrument_sources_verified"])
+
+    def test_independent_stems_and_separate_instrument_sources(self):
+        with tempfile.TemporaryDirectory() as folder:
+            score, stems = make_engine(Path(folder))
+            self.assertEqual(len({s["track_id"] for s in stems}), 6)
+            self.assertEqual(len({s["wav_path"] for s in stems}), 6)
+            self.assertEqual(len({p["track_id"] for p in score["modules"]["instrument"]["profiles"]}), 6)
+            output = balance_mix(score, stems)
+            tracked = output["jazz_mix_instruction"]["track_measurements"]
+            self.assertEqual(len(tracked), 6)
+            self.assertEqual(tracked["HARMONY"]["relative_mix_target_db"], 0)
+            self.assertEqual(tracked["LEAD"]["relative_mix_target_db"], 0)
+            self.assertEqual(tracked["KICK"]["relative_mix_target_db"], 8)
+            self.assertEqual(tracked["SNARE"]["relative_mix_target_db"], -22)
 
     def test_preserve_piano_source_and_no_modified_wavs(self):
         with tempfile.TemporaryDirectory() as folder:

@@ -10,7 +10,7 @@
       "schema_version": 1,
       "genre": "Afrobeats",
       "genre_template": "afrobeats",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "ELECTRIC_PIANO",
       "original_composer_instrument_palette": [
@@ -70,7 +70,7 @@
         "drums_afro"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Afrobeats_AfroLatin",
@@ -123,7 +123,7 @@
         "original_family_template": "afrobeats",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_afro",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -345,7 +345,7 @@
       "schema_version": 1,
       "genre": "Afro-Latin / Afrobeats Fusion",
       "genre_template": "hybrid",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "ELECTRIC_PIANO",
       "original_composer_instrument_palette": [
@@ -405,7 +405,7 @@
         "drums_electronic"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Afrobeats_AfroLatin",
@@ -458,7 +458,7 @@
         "original_family_template": "hybrid",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_electronic",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -680,7 +680,7 @@
       "schema_version": 1,
       "genre": "Afro House",
       "genre_template": "afro_house",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "SYNTH_BASS",
       "original_composer_instrument_palette": [
@@ -740,7 +740,7 @@
         "drums_four"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Afrobeats_AfroLatin",
@@ -792,7 +792,7 @@
         "original_family_template": "afro_house",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_four",
         "per_instrument_mix_config_owned_by_genre": true
       },

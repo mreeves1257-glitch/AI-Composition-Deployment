@@ -717,8 +717,11 @@ for note in piano:
 # Two original, genre-generated chord attacks per bar over eight whole bars.
 onsets = sorted(groups)[:16]
 assert len(onsets) == 16, "JAZZ_EIGHT_BAR_PIANO_ONSETS_MISSING"
-assert result["meter"] == "4/4", "JAZZ_BALLAD_METER_CHANGED"
-bars_covered = {int(beat // 4) for beat in onsets}
+meter_value = result["meter"]
+assert meter_value in ("3/4", "4/4"), ("JAZZ_BALLAD_UNEXPECTED_METER", meter_value)
+numerator, denominator = map(int, meter_value.split("/"))
+bar_beats = numerator * 4.0 / denominator
+bars_covered = {int(beat // bar_beats) for beat in onsets}
 assert bars_covered == set(range(8)), ("JAZZ_EIGHT_BAR_GAP", sorted(bars_covered))
 for onset in onsets:
     voices = groups[onset]

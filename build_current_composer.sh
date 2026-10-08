@@ -488,6 +488,11 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
     mixer_instructions, mixer_stems = prepare_recorded_subkick(
         mixer_instructions, stems, job_dir
     )
+    # Equal active intensity from the actual recorded Jazz stems. This passes
+    # only gain metadata to the existing independent 3D mixer, and preserves
+    # Rock, other genres, and the piano's original sample recordings.
+    from genre_styles.Jazz.jazz_ballad import equalize_instrument_intensity
+    mixer_instructions = equalize_instrument_intensity(mixer_instructions, mixer_stems)
     job_path.write_text(json.dumps({
         'engine_result': mixer_instructions, 'stems': mixer_stems
     }), encoding='utf-8')

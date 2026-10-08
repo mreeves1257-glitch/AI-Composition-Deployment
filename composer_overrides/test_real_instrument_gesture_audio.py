@@ -16,7 +16,7 @@ import wave
 from AI_Comp_Executable_Output_Core_001 import MidiAdapter
 from output_handoff import build_execution_package
 from sfz_renderer_adapter import render_midi
-from test_instrument_gesture_handoff import engine_result
+from test_instrument_gesture_handoff import engine_result, independently_authored_midi_plan
 
 
 ROOT = Path(__file__).resolve().parent
@@ -46,10 +46,13 @@ def run():
     ordinary_package = build_execution_package(untagged)
     assert "expressive_gesture_plan" in dict(auto_package.metadata)
     assert "expressive_gesture_plan" not in dict(ordinary_package.metadata)
-    # The control stream deliberately uses the *same* accepted metadata
-    # but originates from an untagged note, proving that the handoff metadata
-    # is the only link needed for identical expressive sample playback.
-    manual_package = replace(ordinary_package, metadata=auto_package.metadata)
+    # Truly independent negative/control reference: same untaged notes, but
+    # a separate explicit MIDI command schedule (not a copied request to
+    # infer articulation from an untagged note). Compare against the automatic
+    # source-resolved note-articulation route.
+    manual_package = replace(ordinary_package, metadata=ordinary_package.metadata + (
+        ("expressive_gesture_plan", json.dumps(independently_authored_midi_plan())),
+    ))
 
     with tempfile.TemporaryDirectory(prefix="resolved-instrument-",dir=str(ROOT/"output")) as tmp:
         rendered = []

@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
-PROFILE_PATH = ROOT / "genre_registry_WORKING_GENRE_COMPLETE_2026-10-02_182810_CDT.json"
+PROFILE_PATH = ROOT / "AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json"
 TARGET_PATH = ROOT / "target_registry.json"
 OUTPUT_DIR = ROOT / "output" / "genre_readiness"
 

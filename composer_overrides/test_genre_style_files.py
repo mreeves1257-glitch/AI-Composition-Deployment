@@ -65,7 +65,7 @@ class GenreStyleFileTests(unittest.TestCase):
                             for b in range(len(progression) - 3)))
 
     def test_jazz_ballad_has_six_linked_real_instruments(self):
-        from genre_styles.jazz_ballad import instrument_links, validate_instrument_links
+        from genre_styles.Jazz.jazz_ballad import instrument_links, validate_instrument_links
         package = instrument_links()
         self.assertEqual(package["link_mode"], "SHARED_SAMPLE_LIBRARY_REFERENCE")
         self.assertEqual(package["shared_root"], "sound_resources")

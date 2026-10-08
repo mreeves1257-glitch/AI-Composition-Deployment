@@ -79,6 +79,69 @@ def _bar_of(event: dict[str, Any], meter: float) -> int:
     return max(0, int(float(event.get("start_beat", 0.0)) // max(meter, 1e-9)))
 
 
+def apply_genre_expression(
+    events: list[dict[str, Any]],
+    template: str,
+    meter: float,
+    creation_seed: int = 0,
+) -> list[dict[str, Any]]:
+    """Rock-first phrase expression in genre development, not instrument DSP.
+
+    The instrument side already owns guitar sustain/vibrato, recordings,
+    drum samples, and the separate recorded sub-kick. Do not duplicate those
+    mechanisms here. Only existing Rock lead-guitar note velocity and slight
+    offbeat timing are shaped. No new notes, timbres, or extra tracks.
+    Unsupported genres stay completely untouched until separately profiled.
+    """
+    if str(template).lower() != "rock":
+        return events
+    shaped = [dict(event) for event in events]
+    phrases: dict[int, list[int]] = {}
+    for index, event in enumerate(shaped):
+        if str(event.get("track_id", "")).upper() != "LEAD":
+            continue
+        if "guitar" not in str(event.get("instrument_id", "")).lower():
+            continue
+        start = float(event.get("start_beat", 0))
+        phrase_id = int(start // max(float(meter), 1e-9)) // 4
+        phrases.setdefault(phrase_id, []).append(index)
+
+    for phrase_id, indices in phrases.items():
+        indices.sort(key=lambda i: (
+            float(shaped[i]["start_beat"]), int(shaped[i].get("midi", 0))
+        ))
+        count = len(indices)
+        if count < 3:
+            continue
+        for position, index in enumerate(indices):
+            event = shaped[index]
+            articulation = str(event.get("articulation", "")).lower()
+            if any(tag in articulation for tag in ("mute", "staccato", "chop", "short")):
+                continue
+            position_fraction = position / (count - 1)
+            contour = 1.0 - abs(2 * position_fraction - 1.0)
+            phrase_variation = 0.008 * ((phrase_id + int(creation_seed)) % 3 - 1)
+            if isinstance(event.get("velocity"), (int, float)):
+                factor = 0.98 + 0.06 * contour + phrase_variation
+                event["velocity"] = max(
+                    1, min(127, int(round(event["velocity"] * factor)))
+                )
+            # Preserve downbeat anchors and keep the existing groove tight.
+            # Changes never move kick/bass/snare or the sample-based vibrato.
+            if 0 < position < count - 1:
+                start = float(event["start_beat"])
+                previous = float(shaped[indices[position - 1]]["start_beat"])
+                following = float(shaped[indices[position + 1]]["start_beat"])
+                spacing = min(start - previous, following - start)
+                if spacing >= 0.125 and abs(start - round(start)) >= 0.03:
+                    offset = (0.005, -0.006, 0.003, -0.003)[
+                        (position + phrase_id + int(creation_seed)) % 4
+                    ]
+                    offset = max(-spacing * 0.10, min(spacing * 0.10, offset))
+                    event["start_beat"] = round(start + offset, 6)
+    return shaped
+
+
 def develop_full_length(
     events: list[dict[str, Any]],
     ctx: dict[str, Any],
@@ -431,4 +494,6 @@ def develop_full_length(
     if tmpl == "rock":
         from instrument_performance_contract import perform
         developed = perform(developed, "ROCK")
+        # Genre expression shapes the performance; SFZ owns the sound.
+        developed = apply_genre_expression(developed, tmpl, meter, creation_seed)
     return developed

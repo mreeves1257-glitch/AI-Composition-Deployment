@@ -8,6 +8,7 @@ on:
       - 'composer_overrides/genre_development_patch.py'
       - 'composer_overrides/genre_styles/**'
       - 'composer_overrides/test_genre_style_files.py'
+      - 'composer_overrides/test_jazz_equal_presence.py'
       - 'composer_overrides/test_jazz_arranger_style.py'
       - 'build_current_composer.sh'
   workflow_dispatch:
@@ -20,6 +21,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install math dependency for Jazz source-level verification
+        run: python -m pip install numpy
       - name: Syntax validation
         run: |
           python -m py_compile composer_overrides/jazz_arranger_style.py composer_overrides/jazz_balance_contract.py composer_overrides/genre_development_patch.py composer_overrides/test_jazz_arranger_style.py
@@ -29,4 +32,5 @@ jobs:
       - name: Verify arranger ranges, chord changes, stereo balance isolation and preserved piano
         run: |
           python composer_overrides/test_jazz_arranger_style.py -v
+          python composer_overrides/test_jazz_equal_presence.py -v
           python composer_overrides/test_genre_style_files.py -v

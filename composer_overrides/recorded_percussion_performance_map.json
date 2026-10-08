@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "readiness": "SOURCE_RECORDED_SFZ_PROGRAM_STRUCTURE_VERIFIED__AUDIO_ACOUSTIC_PERFORMANCE_NOT_YET_VERIFIED",
+  "readiness": "SOURCE_SFZ_STRUCTURE_VERIFIED_AND_AUDIO_LAYER_SELECTION_VERIFIED__DYNAMIC_BALANCE_CALIBRATION_PENDING",
   "purpose": "Existing recordings, not new sounds. Map musical hit dynamics to literal SFZ velocity-layer selections. No instrument or genre enabled. No source sample replaced.",
   "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
   "source": "build_current_composer.sh Big Rusty drum SFZ heredoc programs (recorded samples and seq_position round robin)",
@@ -180,5 +180,13 @@
     }
   },
   "activated_genres": [],
-  "automatic_application_enabled": false
+  "automatic_application_enabled": false,
+  "audibility_findings": {
+    "program": "Programs/composer-snare-lite.sfz",
+    "test_environment": "Recorded Big Rusty snare, sfizz sample rate 44100, isolated one-note comparison",
+    "ghost_velocity_16_peak_dbfs": -78.268,
+    "strong_velocity_111_peak_dbfs": -21.5,
+    "interpretation": "Velocity layers demonstrably change real WAV, but the current ghost-strike choice is extremely quiet relative to a strong hit. Levels are NOT approved for musical mix use.",
+    "next_step": "Measure source-aware velocity-to-peak/RMS values across layers; select musical dynamic ranges without editing samples."
+  }
 }

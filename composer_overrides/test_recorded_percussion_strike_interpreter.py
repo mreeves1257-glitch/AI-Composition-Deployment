@@ -112,7 +112,7 @@ class RecordedPercussionContractTests(unittest.TestCase):
 
     def test_source_manifest_matches_actual_existing_sfz_heredocs(self):
         data=load_map()
-        source=(ROOT.parent/"build_current_composer.sh").read_text()
+        source=(ROOT.parents[1]/"build_current_composer.sh").read_text()
         self.assertEqual(len(data["programs"]),5)
         self.assertEqual(data["activated_genres"],[])
         self.assertFalse(data["automatic_application_enabled"])

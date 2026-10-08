@@ -1,4 +1,4 @@
-"""Jazz Ballad-only measurable, equal-presence real-instrument mix balancing.
+"""Jazz Ballad-only measured source-verified relative instrument mix balancing.
 
 Measure the already-rendered WAV stem for every Ballad part. Compare its
 ACTIVE sound, not the whole-song average: rests and sparse bass/snares
@@ -95,14 +95,14 @@ def _verified_mix_profile() -> tuple[dict, dict]:
         value = setting.get("relative_active_level_db")
         if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
             raise ValueError("JAZZ_BALLAD_INVALID_MIX_RATIO:" + role)
-        if not -18 <= value <= 10:
+        if not -30 <= value <= 10:
             raise ValueError("JAZZ_BALLAD_MIX_RATIO_OUT_OF_RANGE:" + role)
     if ratios["HARMONY"]["relative_active_level_db"] != 0:
         raise ValueError("JAZZ_BALLAD_PIANO_REFERENCE_CHANGED")
     return profile, originals
 
 def equalize_ballad_stems(engine_result: dict, stems: list[dict]) -> dict:
-    """Match active instrument-track levels, not fader positions.
+    """Apply own-genre instrument ratios using measured active rendered stems.
 
     The measured source must contain real audio for every required Ballad
     instrument. A silent/missing required part fails clearly rather than

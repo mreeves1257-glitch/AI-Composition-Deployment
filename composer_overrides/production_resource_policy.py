@@ -10,6 +10,7 @@ from pathlib import PurePosixPath
 from typing import Any
 
 APPROVED_SAMPLE_BANKS = {
+    "FREEPATS_WORLD_PERCUSSION": {"library": "FreePats World Percussion", "license": "CC0-1.0"},
     "GREG_SULLIVAN_E_PIANOS": {"library": "Greg Sullivan E-Pianos / Wurlitzer EP200", "license": "CC-BY-3.0"},
     "KARORYFER_GROWLYBASS_V1_002": {"library": "Karoryfer Growlybass", "license": "CC0"},
     "KARORYFER_SHINYGUITAR": {"library": "Karoryfer Shinyguitar", "license": "CC0-1.0"},

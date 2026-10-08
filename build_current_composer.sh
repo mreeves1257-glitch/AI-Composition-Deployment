@@ -26,6 +26,7 @@ install_library "KARORYFER_GROWLYBASS_V1_002" "https://github.com/sfzinstruments
 install_library "KARORYFER_SHINYGUITAR" "https://github.com/sfzinstruments/karoryfer.shinyguitar.git" "master"
 install_library "KARORYFER_BIG_RUSTY_DRUMS" "https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git" "main"
 install_library "GREG_SULLIVAN_E_PIANOS" "https://github.com/sfzinstruments/GregSullivan.E-Pianos.git" "master"
+install_library "FREEPATS_WORLD_PERCUSSION" "https://github.com/freepats/world-percussion.git" "main"
 find "$BANK/KARORYFER_SHINYGUITAR" "$BANK/KARORYFER_BIG_RUSTY_DRUMS" -type f -name "*.sfz" -print0 | xargs -0 sed -i 's#\\#/#g'
 
 python - <<'PY'
@@ -214,6 +215,7 @@ SFZ
 cp composer_overrides/production_resource_policy.py composer/runtime/production_resource_policy.py
 cp composer_overrides/real_electric_piano_probe.py composer/runtime/real_electric_piano_probe.py
 cp composer_overrides/real_rock_alias_probe.py composer/runtime/real_rock_alias_probe.py
+cp composer_overrides/real_conga_probe.py composer/runtime/real_conga_probe.py
 cp composer_overrides/genre_resource_readiness.py composer/runtime/genre_resource_readiness.py
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
@@ -228,6 +230,26 @@ import json
 from pathlib import Path
 path=Path("composer/runtime/target_registry.json"); registry=json.loads(path.read_text())
 bindings=registry["targets"]["INTERNAL"].setdefault("instrument_bindings",{})
+# FreePats conga samples. The composer-specific SFZ is prepared and
+# measured in the build; it preserves all 5 recorded stroke groups.
+bindings["conga"]={
+    "resource_id":"FREEPATS_WORLD_PERCUSSION",
+    "resource_type":"SFZ_SAMPLE_LIBRARY",
+    "preferred_mapping":"composer-conga-five-strokes.sfz",
+    "library":"FreePats World Percussion",
+    "license":"CC0-1.0",
+    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
+    "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
+    "target_gain_db":-6.0,
+    "strike_map":{
+        "60":"standard_conga",
+        "61":"high_conga",
+        "62":"low_conga",
+        "63":"muted_conga",
+        "64":"muted_low_conga"
+    },
+    "source":"https://github.com/freepats/world-percussion"
+}
 bindings["electric_piano"]={
     "resource_id":"GREG_SULLIVAN_E_PIANOS","target_gain_db":-6.0,
     "resource_type":"SFZ_SAMPLE_LIBRARY",
@@ -476,6 +498,7 @@ p.write_text(s.replace(old,new))
 PY
 python composer/runtime/real_electric_piano_probe.py
 python composer/runtime/real_rock_alias_probe.py
+python composer/runtime/real_conga_probe.py
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py

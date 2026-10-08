@@ -81,12 +81,25 @@ def perform(events: list[dict[str, Any]], genre: str) -> list[dict[str, Any]]:
                 if original <= 0 or explicit_short:
                     continue
                 if spacing < rules["rapid_phrase_beats"]:
-                    # Faster attacks do not automatically mean staccato.
-                    # Respect the source articulation, including legato.
+                    # Lead melody default: connect individual picked notes
+                    # with a short, natural release rather than reusing the
+                    # source's very short, percussive trigger length. Explicit
+                    # staccato/palm mute above still wins. The underlying
+                    # guitar note onsets, velocities and pitches are retained.
+                    next_gap = max(0.08, next_onset - start)
                     if explicit_legato:
-                        event["duration_beats"] = max(original, min(spacing * 0.96, next_onset - start))
+                        event["duration_beats"] = max(
+                            original, min(next_gap * 0.96, next_gap)
+                        )
+                    elif track.upper() == "LEAD":
+                        event["duration_beats"] = max(
+                            original, min(next_gap * 0.90, next_gap)
+                        )
                     else:
-                        event["duration_beats"] = min(original, max(0.08, next_onset - start - 0.03))
+                        # Rhythm guitar keeps its deliberately short picking.
+                        event["duration_beats"] = min(
+                            original, max(0.08, next_gap - 0.03)
+                        )
                 else:
                     end = first + min(rules["max_ringing_beats"], spacing * rules["ring_fraction"])
                     end = min(end, next_onset - rules["release_gap_beats"])

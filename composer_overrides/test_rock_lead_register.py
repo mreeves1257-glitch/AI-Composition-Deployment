@@ -13,7 +13,7 @@ def original_events():
         {"track_id":"LEAD", "instrument_id":"lead_guitar",
          "start_beat":bar * 4.0 + 0.5, "duration_beats":0.5,
          "midi":74, "velocity":95, "articulation":"genre_lead"}
-        for bar in (9, 25, 42, 57)
+        for bar in (11, 26, 42, 58)
     ]
     # Ensure every section exists in the timeline; no new musical event for
     # the test's selected lead part.

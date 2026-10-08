@@ -1,54 +1,17 @@
-# Jazz — one shared instrument library, Jazz Ballad first
+# Jazz family — one heading, eight related genres
 
-This folder is the parent of the Jazz family. It contains one shared catalog
-of recorded instruments, but **only Jazz Ballad is in development now**.
-The other seven style files and role manifests are deliberately empty placeholders.
-Do not populate them, copy Jazz Ballad into them, or treat them as operational
-arrangements until the finished Ballad has been approved as a reusable template.
+This folder is the **only Jazz family home** in the Composer's 13-family organization. Its `profile.json` defines **Swing, Jazz Ballad, Big Band, Jazz Waltz, Bebop, Cool Jazz, Dixieland, and Jazz Fusion**, each with its distinct musical definition, instrument-track reference, individual mix metadata, and seven-stage planning sequence.
 
-## File structure
+**Operational status: DYSFUNCTIONAL.** Neither the Jazz work attempted previously nor Jazz Ballad delivered a reliable finished, playable full song. The code is preserved because it contains work we may investigate—not because it is an approved reference for other genres.
 
-- `instrument_library.json`: canonical existing Jazz sample references. The WAV/SFZ
-  audio files remain in the shared `sound_resources` bank; there are no copies here.
-- `harmony.py`: bounded common Jazz harmonic mechanics. A placeholder style is
-  not activated by this shared helper.
-- `jazz_ballad.py`: **the only active new Jazz framework**; owns its composition,
-  progression, ensemble arrangement, and instrument role decisions.
-- `instrument_packages/jazz_ballad.json`: working Ballad roles referencing the
-  verified sources in `instrument_library.json`. Its Wurlitzer piano stays
-  unchanged. The double bass, clarinet, kick, brush snare and hat use existing
-  recorded samples.
-- `swing.py`, `big_band.py`, `jazz_waltz.py`, `bebop.py`,
-  `cool_jazz.py`, `dixieland.py`, `jazz_fusion.py`: reserved names only,
-  with `DEVELOPMENT_STATUS = "NOT_STARTED"`, no chord progressions,
-  no arrangement algorithms and no instrument assignments. Their manifests
-  under `instrument_packages/` have empty `roles` objects.
+## Gathered under this single home
+- `jazz_ballad.py`, `harmony.py`, `jazz_arranger_style.py`: prior composition and musical-performance efforts, not proven functional.
+- `jazz_balance_contract.py`, `ballad_leveler.py`, `jazz_ballad_mix.json`: prior Jazz-specific mixing work.
+- `jazz_ballad_recorded_resources.py`, `instrument_library.json`, `instrument_packages/`: source-onboarding code and per-genre **references**; original recorded samples remain in the shared library.
+- `swing.py`, `big_band.py`, `jazz_waltz.py`, `bebop.py`, `cool_jazz.py`, `dixieland.py`, `jazz_fusion.py`: earlier placeholders or incomplete style modules; their differences are retained.
+- `test_jazz_arranger_style.py`, `test_jazz_ballad_equal_intensity.py`: diagnostic code; passing unit checks are **not** proof of finished music.
 
-## Sequence
+## Architecture
+The seven planned stages and handoffs in `profile.json` remain inactive for all eight styles, including Jazz Ballad. All profiles are governed by the same family-filing rules as the other 12 headings. Do not use any Jazz style as a mandatory template for unrelated Jazz genres or Rock.
 
-1. **Finish Jazz Ballad completely:** hear all instruments, develop the melody
-   and chords, balance the ensemble, remove distracting brush noise/static,
-   and confirm stable playable final audio.
-2. Keep that verified implementation as the reference template.
-3. Only then create the other Jazz subgenres individually by copying that
-   proven structure and changing *their own* music rules and instrument
-   selections. Sharing samples does not mean all styles must sound the same.
-
-## Shared infrastructure and other genres
-
-`genre_styles/registry.py` routes named styles while preventing undeveloped
-Jazz placeholder modules from being loaded as finished arrangements.
-The Composer, control panel, plug, sample renderer and standalone 3D mixer
-are shared utilities, not music genre folders.
-
-**Rock stays independent** under `genre_styles/rock.py`; its working audio,
-instrument mix, tempo and performance controls are not modified by Jazz work.
-Other multistyle genres can later use similar family folders when needed.
-
-## Preserve earlier work
-
-Older file versions remain in Git history; the hardcopy references include
-`protected-composer-before-jazz-audibility-2026-10-08` and
-`jazz-pre-consolidation-hardcopy-20261008`.
-Do not overwrite the protected history or claim that resource links alone
-prove a finished audible Jazz performance.
+Separate shared resources and renderer/mixer are linked, not duplicated. Previous revisions and checkpoints remain in Git history. The prior `genre_mix_ratios/Jazz.json` is superseded by **this** `Jazz/profile.json`, not an independent competing Jazz collection.

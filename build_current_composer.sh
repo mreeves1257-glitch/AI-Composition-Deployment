@@ -565,7 +565,7 @@ python composer/runtime/rock_expression_depth_probe.py
 python composer/runtime/real_conga_probe.py
 python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
-python composer/runtime/jazz_ballad_recorded_resources.py
+AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" python composer/runtime/jazz_ballad_recorded_resources.py
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py

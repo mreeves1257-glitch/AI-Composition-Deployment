@@ -77,7 +77,62 @@
       "selected_shared_drum_kit_id": "unverified_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "ECLECTIC_NEW_INDIE_V2",
+        "family": "Emerging / Hybrid",
+        "status": "CONTROLLED_EMERGING_PROFILE",
+        "scope_note": "2026 SoundCloud emerging new-indie scene profile; treated as a scene, not mature universal genre grammar.",
+        "tempo_bpm_range": [
+          70,
+          150
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4",
+          "6/8"
+        ],
+        "form_tendencies": [
+          "verse_chorus",
+          "through_composed"
+        ],
+        "groove_behavior": "flexible indie/rock/folk/hip-hop-informed pulse; live-feeling or programmed groove may coexist",
+        "phrase_behavior": "song-oriented phrases with vulnerable/intimate verses and dynamic chorus or textural shifts",
+        "harmony_behavior": "simple indie harmony, alt-rock motion, R&B color or plugg-adjacent loop language may coexist by component map",
+        "bass_behavior": "electric/acoustic bass or programmed sub depending track; avoid assuming one palette",
+        "percussion_behavior_if_applicable": "live drum, drum-machine or hybrid behavior explicitly selected",
+        "instrument_role_behavior": "guitar-led or guitar-less arrangements, vocals/lead, bass, live/programmed drums, digital textures",
+        "ensemble_player_behavior": "DIY/raw character may coexist with precise programmed elements",
+        "arrangement_transformation": "verse/chorus or short scene-driven structures; contrast between acoustic/raw and electronic layers",
+        "dynamic_behavior": "intimate-to-explosive section contrast",
+        "articulation_behavior": "raw guitar/vocal-like articulation, lo-fi textures, programmed transients as selected",
+        "timing_humanization_behavior": "human/live timing or programmed grid chosen by component, not averaged blindly",
+        "continuous_performance_control": "expression plus lo-fi/FX automation",
+        "sound_effects_intent": "chorus, distortion, saturation, digital artifacts and room tone may be deliberate",
+        "mix_prominence_intent": "lead intimacy prioritized; production artifacts are supporting identity",
+        "production_mastering_intent": "avoid over-polishing away DIY dynamics",
+        "manufacturer_adapter_requirements": "hybrid acoustic/electronic target mapping required",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "SoundCloud Music Intelligence Report 2026",
+          "SoundCloud Stories 2026"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "indie",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"
 }

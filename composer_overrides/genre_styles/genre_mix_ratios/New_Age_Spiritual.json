@@ -58,7 +58,59 @@
       "selected_shared_drum_kit_id": null,
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "NEW_AGE_V2",
+        "family": "New Age",
+        "status": "CONTROLLED_BROAD_PROFILE",
+        "scope_note": "Broad New Age baseline; rhythmic/progressive/neo-classical subprofiles may override.",
+        "tempo_bpm_range": [
+          55,
+          105
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4",
+          "6/8"
+        ],
+        "form_tendencies": [
+          "through_composed",
+          "aba"
+        ],
+        "groove_behavior": "low-to-moderate rhythmic aggression; pulse may be flowing, sparse, arpeggiated or absent",
+        "phrase_behavior": "longer melodic arcs, breath/release space, gradual entrances and exits",
+        "harmony_behavior": "spacious tonal/modal harmony; add9/maj7/sus/open voicings common as options, not requirements",
+        "bass_behavior": "structural support with long tones, gentle motion or pedal behavior; avoid rigid repeated two-hit templates",
+        "percussion_behavior_if_applicable": "optional light percussion; when present favor supportive texture over dominant backbeat unless subtype says otherwise",
+        "instrument_role_behavior": "piano/electric piano/synth, flute, guitar, harp, strings, choir/textures as target resources; role separation foreground vs depth",
+        "ensemble_player_behavior": "continuous expressive shaping and low masking between melody and pads/textures",
+        "arrangement_transformation": "slow evolution of texture, register, orchestration and space; silence is valid material",
+        "dynamic_behavior": "long crescendos/diminuendos and section-scale breathing",
+        "articulation_behavior": "legato and sustained articulation favored, with soft attacks where the selected instrument supports them",
+        "timing_humanization_behavior": "phrase-level microtiming and tempo breathing; repetition must evolve",
+        "continuous_performance_control": "continuous expression, pedal, attack/release and ambience controls when target supports them",
+        "sound_effects_intent": "reverb/depth intentional; avoid washing out foreground definition",
+        "mix_prominence_intent": "clear foreground/background depth with broad spatial field",
+        "production_mastering_intent": "smooth, open, low-harshness master; transient restraint unless subtype requires more activity",
+        "manufacturer_adapter_requirements": "prefer expressive target voices; preserve continuous controller curves and long releases",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "AllMusic New Age reference already recorded in project"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "new_age",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": null,
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Spiritual": {
       "schema_version": 1,
@@ -112,7 +164,62 @@
       "selected_shared_drum_kit_id": null,
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "SPIRITUAL_NONSECTARIAN_PROJECT_BASELINE_V1",
+        "family": "Spiritual",
+        "status": "CONTROLLED_BROAD_PROFILE",
+        "scope_note": "Project-defined nonsectarian baseline so the menu can function without silently mapping Spiritual to Gospel, Christian, New Age, meditation, or any Indigenous/religious tradition.",
+        "tempo_bpm_range": [
+          50,
+          105
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4",
+          "6/8"
+        ],
+        "form_tendencies": [
+          "aba",
+          "through_composed"
+        ],
+        "groove_behavior": "gentle or moderate pulse chosen per composition; no tradition-specific sacred rhythm is assumed",
+        "phrase_behavior": "reflective long phrases, silence and call-response may be used without borrowing a specific religious practice",
+        "harmony_behavior": "tonal/modal/open harmony; no religious/cultural scale system is inferred automatically",
+        "bass_behavior": "simple sustained or melodic support; no culturally specific bass pattern assumed",
+        "percussion_behavior_if_applicable": "optional light percussion only; no ritual/tradition-specific drum pattern without explicit sourced subprofile",
+        "instrument_role_behavior": "piano/guitar/strings/flute/choir-like or ambient target colors may be used as neutral project instrumentation, not as claims of religious tradition",
+        "ensemble_player_behavior": "ensemble supports contemplation and space; cultural signifiers require explicit subprofile",
+        "arrangement_transformation": "through-composed/ABA/verse-like structure with gradual development",
+        "dynamic_behavior": "soft-to-moderate expressive arc",
+        "articulation_behavior": "legato/sustained articulation favored; stronger rhythm only if explicitly requested",
+        "timing_humanization_behavior": "phrase breathing and shared rubato; no stereotyped sacred timing",
+        "continuous_performance_control": "continuous expression and ambience",
+        "sound_effects_intent": "warm room/reverb may support spaciousness without implying ritual acoustics",
+        "mix_prominence_intent": "melody/lead clear with spacious support",
+        "production_mastering_intent": "warm, dynamic, non-aggressive master",
+        "manufacturer_adapter_requirements": "neutral target voices only unless a culturally/religiously specific verified profile is chosen",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "spiritual",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": null,
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"
 }

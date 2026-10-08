@@ -77,7 +77,57 @@
       "selected_shared_drum_kit_id": "unverified_drums_afro",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "AFROBEATS_V2",
+        "family": "Emerging / Hybrid",
+        "status": "CONTROLLED_BROAD_PROFILE",
+        "scope_note": "Broad contemporary Afrobeats umbrella; explicitly distinct from Afrobeat.",
+        "tempo_bpm_range": [
+          90,
+          125
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "verse_chorus",
+          "through_composed"
+        ],
+        "groove_behavior": "groove-first beat with layered syncopation and percussion/bass interlock; no single universal pattern",
+        "phrase_behavior": "hook-forward phrases, call-response and evolving production layers",
+        "harmony_behavior": "tonal/modal loop-based harmony drawing flexibly from pop, R&B, highlife, hip-hop and regional influences",
+        "bass_behavior": "syncopated melodic bass tied to percussion rather than root-only behavior",
+        "percussion_behavior_if_applicable": "layered percussion with humanized timing and distinct roles; electronic/acoustic hybrid common",
+        "instrument_role_behavior": "percussion, bass, guitar/keys/synth, voice/lead and regional instrument colors when explicitly profiled",
+        "ensemble_player_behavior": "rhythm parts interlock and leave space; call-response roles are common options",
+        "arrangement_transformation": "verse/hook/bridge or loop-evolving form with strong sectional production contrast",
+        "dynamic_behavior": "section-based energy changes rather than constant maximum level",
+        "articulation_behavior": "percussive guitar/keys, articulated bass and layered percussion",
+        "timing_humanization_behavior": "humanized groove timing controlled per layer",
+        "continuous_performance_control": "expression + production automation",
+        "sound_effects_intent": "reverb/delay/filter/saturation used selectively",
+        "mix_prominence_intent": "groove foundation clear with lead/hook foreground",
+        "production_mastering_intent": "punchy warm master; low end controlled",
+        "manufacturer_adapter_requirements": "requires percussion variety and hybrid electronic/acoustic target resources",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "GRAMMY reference recorded in project"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "afrobeats",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums_afro",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Afro-Latin / Afrobeats Fusion": {
       "schema_version": 1,
@@ -150,7 +200,57 @@
       "selected_shared_drum_kit_id": "unverified_drums_electronic",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "AFRO_LATIN_AFROBEATS_FUSION_V2",
+        "family": "Emerging / Hybrid",
+        "status": "CONTROLLED_HYBRID_RESOLVER",
+        "scope_note": "Fusion resolver, not one fixed genre grammar.",
+        "tempo_bpm_range": [
+          90,
+          130
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "verse_chorus",
+          "through_composed"
+        ],
+        "groove_behavior": "component-based fusion: Afrobeats groove layer combined with explicitly selected Afro-Latin/Latin rhythmic components; no generic pan-Latin beat",
+        "phrase_behavior": "hook/call-response phrases with sectional emphasis on one source component or another",
+        "harmony_behavior": "tonal/modal loop harmony with source-specific harmonic colors retained",
+        "bass_behavior": "bass behavior derived from selected source component and must not erase the other groove",
+        "percussion_behavior_if_applicable": "percussion map explicitly states which layers derive from Afrobeats and which from selected Latin/Afro-Latin profile",
+        "instrument_role_behavior": "hybrid percussion, bass, guitar/keys/synth, horns/lead as component map requires",
+        "ensemble_player_behavior": "layers preserve provenance and avoid stacking every rhythm simultaneously",
+        "arrangement_transformation": "verse/hook or sectional fusion form with controlled handoffs between components",
+        "dynamic_behavior": "energy shaped by layer introduction/removal",
+        "articulation_behavior": "articulation follows component source",
+        "timing_humanization_behavior": "timing grids must be reconciled explicitly; no blind quantization",
+        "continuous_performance_control": "expression/automation with provenance",
+        "sound_effects_intent": "effects selected by component and overall production",
+        "mix_prominence_intent": "groove clarity and low-end separation primary",
+        "production_mastering_intent": "hybrid master preserves percussion detail",
+        "manufacturer_adapter_requirements": "adapter must support all selected component resources or block missing layer",
+        "resolution_policy": "CONTROLLED_RESOLVER",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "hybrid",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums_electronic",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     },
     "Afro House": {
       "schema_version": 1,
@@ -223,7 +323,59 @@
       "selected_shared_drum_kit_id": "unverified_drums_four",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "AFRO_HOUSE_V2",
+        "family": "Emerging / Hybrid",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          115,
+          125
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "house four-beat foundation with layered polyrhythmic/organic percussion and deep groove",
+        "phrase_behavior": "long dance phrases with gradual layering and tension/release",
+        "harmony_behavior": "loop-based tonal/modal harmony with atmospheric textures",
+        "bass_behavior": "deep bass interlocked with kick; syncopation may follow percussion",
+        "percussion_behavior_if_applicable": "organic/hand-percussion layers over house foundation; offbeat hats/shakers common options",
+        "instrument_role_behavior": "electronic drums, hand percussion, synth bass, pads/keys, voice/lead textures",
+        "ensemble_player_behavior": "percussion layers retain human flow while core dance pulse stays stable",
+        "arrangement_transformation": "long-form build/break/return structure",
+        "dynamic_behavior": "gradual energy automation",
+        "articulation_behavior": "percussive detail + sustained atmospheric layers",
+        "timing_humanization_behavior": "microtimed percussion around stable four-beat foundation",
+        "continuous_performance_control": "filter/level/spatial automation",
+        "sound_effects_intent": "reverb/delay/filter common but controlled",
+        "mix_prominence_intent": "kick/bass clear, percussion wide, lead selective",
+        "production_mastering_intent": "club-capable warm master with percussion detail",
+        "manufacturer_adapter_requirements": "requires hand-percussion + electronic target resources",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "Beatportal reference recorded in project"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "afro_house",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums_four",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"
 }

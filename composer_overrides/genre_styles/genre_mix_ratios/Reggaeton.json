@@ -77,7 +77,59 @@
       "selected_shared_drum_kit_id": "unverified_drums_dembow",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "MEXICAN_REGGAETON_SCENE_V2",
+        "family": "Emerging / Hybrid",
+        "status": "CONTROLLED_EMERGING_PROFILE",
+        "scope_note": "2026 Mexico City emerging scene baseline, not a definition of all Mexican reggaeton.",
+        "tempo_bpm_range": [
+          78,
+          115
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "verse_chorus",
+          "through_composed"
+        ],
+        "groove_behavior": "reggaeton/dembow-derived pulse may combine with trap, plugg, jerk and alternative hip-hop components; component mix is explicit",
+        "phrase_behavior": "short hook-oriented phrases with rap/vocal-like cadence and beat-switch possibilities",
+        "harmony_behavior": "loop-based minor/modal/tonal harmony; harmonic simplicity may leave room for rhythm/texture",
+        "bass_behavior": "sub/808-like or synth bass tied to kick/dembow pattern; slides optional by target",
+        "percussion_behavior_if_applicable": "dembow-derived and trap/plugg/jerk-influenced electronic percussion may coexist by component map",
+        "instrument_role_behavior": "electronic drums, sub/synth bass, synth/sample textures, voice/lead and optional guitar/alternative elements",
+        "ensemble_player_behavior": "production components may change quickly between sections while preserving scene identity",
+        "arrangement_transformation": "compact verse/hook/beat-switch or loop-evolving form",
+        "dynamic_behavior": "strong drops and hook lifts; dynamic contrast often production-driven",
+        "articulation_behavior": "programmed transients, vocal-like lead articulation and sample chops",
+        "timing_humanization_behavior": "grid-based with genre-component swing/jerk offsets when intentionally selected",
+        "continuous_performance_control": "filter/pitch/envelope/level automation central",
+        "sound_effects_intent": "distortion, reverb, delay, clipping-style texture only as controlled production choices",
+        "mix_prominence_intent": "sub/kick and lead/vocal-like role protected from masking",
+        "production_mastering_intent": "modern loud but unclipped master with sub control",
+        "manufacturer_adapter_requirements": "requires electronic drums/sub/synth resources; component provenance retained",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "SoundCloud Music Intelligence Report 2026"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "reggaeton",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums_dembow",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems."
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"
 }

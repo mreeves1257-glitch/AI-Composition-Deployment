@@ -348,6 +348,7 @@ override=r"""
 # --- full-length development override ---
 from genre_development_patch import (
     build_developed_progression as _build_developed_progression,
+    build_profile_progression as _build_profile_progression,
     develop_full_length as _develop_full_length,
 )
 _legacy_build_setup = build_setup
@@ -381,8 +382,8 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         bars = max(24, min(320, round(210.0 * tempo_bpm / (60.0 * beats_per_bar))))
         req['bars'] = bars
 
-    req['roman_progression'] = _build_developed_progression(
-        req['mode'], bars, seedv
+    req['roman_progression'] = _build_profile_progression(
+        name, profile, req['mode'], bars, seedv, _build_developed_progression
     )
 
     ctx = engine.build_composition_context(req)
@@ -549,6 +550,44 @@ python composer/runtime/sample_bank_onboarding.py --apply
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+
+# Verify routed harmony for all 55 without changing sample routing or sound.
+python - <<'PY'
+import json, sys
+from pathlib import Path
+sys.path.insert(0, str(Path("composer/runtime").resolve()))
+from genre_development_patch import build_profile_progression, build_developed_progression
+profiles = json.loads(Path(
+    "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json"
+).read_text())["profiles"]
+assert len(profiles) == 55
+automatic = controlled = 0
+for name, profile in profiles.items():
+    if profile["resolution_policy"] != "AUTOMATIC_BASELINE_ALLOWED":
+        controlled += 1
+        try:
+            build_profile_progression(name, profile, "major", 48, 7, build_developed_progression)
+        except ValueError as e:
+            assert str(e) == "GENRE_HARMONY_CONTROLLED_INPUT_REQUIRED"
+        else:
+            raise AssertionError("CONTROLLED_GENRE_NOT_BLOCKED:" + name)
+        continue
+    automatic += 1
+    mode = "natural_minor" if name == "Funk" else "major"
+    progression = build_profile_progression(
+        name, profile, mode, 48, 7, build_developed_progression
+    )
+    assert len(progression) == 48, name
+    if name == "Funk":
+        assert progression.count("i") >= 34 and progression[-1] == "i"
+    elif name in ("Traditional Country", "Two-Step"):
+        assert set(progression) == {"I", "IV", "V"} and progression[-1] == "I"
+    elif name == "ROCK":
+        assert progression == build_developed_progression(mode, 48, 7)
+assert (automatic, controlled) == (48, 7), (automatic, controlled)
+print("GENRE_PROFILE_HARMONY_ROUTING_PASS", automatic, controlled, flush=True)
+PY
+
 python composer/runtime/test_instrument_performance_contract.py
 python composer/runtime/test_rock_lead_register.py
 python composer/runtime/test_rock_balance_contract.py

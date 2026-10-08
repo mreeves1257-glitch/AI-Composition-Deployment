@@ -71,6 +71,62 @@ def build_developed_progression(quality: str, bars: int, seedv: int) -> list[str
         out.append(chord)
     return out
 
+
+def build_profile_progression(genre_name: str, profile: dict[str, Any],
+                              quality: str, bars: int, seedv: int,
+                              fallback) -> list[str]:
+    """Use specific approved harmonic baselines where supported.
+
+    Genre identity and existing performance registry are authoritative.
+    This layer selects only the Theory engine's currently supported triads.
+    It never invents advanced seventh-chord rendering or edits instruments.
+    All other styles keep the already working progression behavior.
+    """
+    if not isinstance(profile, dict):
+        raise ValueError("GENRE_HARMONY_PROFILE_INVALID")
+    if profile.get("resolution_policy") != "AUTOMATIC_BASELINE_ALLOWED":
+        raise ValueError("GENRE_HARMONY_CONTROLLED_INPUT_REQUIRED")
+    total = max(0, int(bars))
+    if not total:
+        return []
+    major = quality in ("major", "ionian")
+    known = (genre_name, profile.get("profile_id"))
+    patterns = None
+    if known == ("Funk", "FUNK_V1") and not major:
+        # A mostly static, rhythm-centered vamp with occasional contrast.
+        patterns = (
+            ("i", "i", "i", "i", "i", "i", "VII", "i"),
+            ("i", "i", "i", "i", "VI", "VI", "i", "i"),
+            ("i", "i", "i", "i", "i", "i", "i", "i"),
+        )
+    elif known == ("Traditional Country", "TRADITIONAL_COUNTRY_V1") and major:
+        # Strong I/IV/V vocabulary; vi and ii remain options, not mandates.
+        patterns = (
+            ("I", "I", "IV", "I", "V", "IV", "I", "V"),
+            ("I", "IV", "I", "I", "V", "IV", "V", "I"),
+            ("I", "I", "IV", "IV", "I", "V", "I", "V"),
+        )
+    elif known == ("Two-Step", "COUNTRY_TWO_STEP_V1") and major:
+        # Functional cycle appropriate to the existing two-beat groove.
+        patterns = (
+            ("I", "I", "V", "V", "I", "IV", "V", "I"),
+            ("I", "IV", "I", "V", "I", "IV", "V", "I"),
+            ("I", "I", "IV", "I", "V", "V", "I", "I"),
+        )
+    if patterns is None:
+        return fallback(quality, total, seedv)
+
+    initial = (int(seedv) // 19) % len(patterns)
+    out = []
+    for bar in range(total):
+        # Longer harmonic thoughts than the former universal four-chord cell.
+        selected = (bar // 16 + initial) % len(patterns)
+        out.append(patterns[selected][bar % 8])
+    out[-1] = "I" if major else "i"
+    return out
+
+
+
 def _clamp_velocity(value: float) -> int:
     return max(1, min(127, int(round(value))))
 

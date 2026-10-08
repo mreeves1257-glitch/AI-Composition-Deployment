@@ -1,0 +1,27 @@
+name: Isolated MIDI Command Bridge Validation
+on:
+  push:
+    branches:
+      - repair-midi-cc-and-health-2026-10-08
+  workflow_dispatch:
+
+jobs:
+  offline-midi-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore immutable Composer source for isolated contract test
+        run: |
+          mkdir -p composer/runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
+          cp composer_overrides/midi_initial_cc_bridge.py composer/runtime/
+          cp composer_overrides/test_midi_initial_cc_bridge.py composer/runtime/
+      - name: Install guarded MIDI controller hook into temporary source
+        run: python composer_overrides/install_midi_control_bridge.py --core composer/runtime/AI_Comp_Executable_Output_Core_001.py
+      - name: Run MIDI CC bytes and no-change regressions
+        run: python composer/runtime/test_midi_initial_cc_bridge.py -v
+      - name: Compile changed modules
+        run: python -m py_compile composer/runtime/AI_Comp_Executable_Output_Core_001.py composer/runtime/midi_initial_cc_bridge.py composer_overrides/render_server.py

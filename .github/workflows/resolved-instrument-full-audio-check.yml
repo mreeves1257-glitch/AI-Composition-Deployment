@@ -1,0 +1,26 @@
+name: Real Sample Output Handoff Expression Proof
+on:
+  push:
+    branches:
+      - instrument-aware-performance-handoff-2026-10-08
+  workflow_dispatch:
+
+jobs:
+  full-source-audio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build existing composer and real recorded sfizz sound programs
+        run: bash build_current_composer.sh
+      - name: Verify automatically routed explicit note articulation against manual MIDI and real SFZ WAV
+        env:
+          PYTHONPATH: composer/runtime
+        run: |
+          cp composer_overrides/test_real_instrument_gesture_audio.py composer/runtime/
+          python composer/runtime/test_real_instrument_gesture_audio.py
+      - name: Verify all 55 stage handoffs remain inactive
+        run: python composer_overrides/genre_styles/validate_profiles.py

@@ -17,8 +17,21 @@ class PerformanceContractTest(unittest.TestCase):
         self.assertEqual([x['midi'] for x in result],[x['midi'] for x in source])
         self.assertEqual([x['start_beat'] for x in result],[x['start_beat'] for x in source])
     def test_fast_picked_notes_not_automatically_sustained(self):
-        x=[note('LEAD',0,.13,62, 'genre_lead'),note('LEAD',.25,.13,64,'genre_lead'),note('LEAD',.5,.13,65,'genre_lead')]
+        x=[note('LEAD',0,.13,62, 'staccato'),note('LEAD',.25,.13,64,'staccato'),note('LEAD',.5,.13,65,'staccato')]
         self.assertEqual(perform(x,'ROCK'),x)
+    def test_default_rock_lead_notes_join_naturally(self):
+        notes=[note('LEAD',0,.12,65,'genre_lead'),
+               note('LEAD',.25,.12,67,'genre_lead'),
+               note('LEAD',.50,.12,69,'genre_lead'),
+               note('LEAD',.75,.12,71,'genre_lead')]
+        joined=perform(notes,'ROCK')
+        self.assertTrue(all(.20 <= e['duration_beats'] <= .25 for e in joined[:3]))
+        self.assertEqual([e['start_beat'] for e in joined],[e['start_beat'] for e in notes])
+        self.assertEqual([e['midi'] for e in joined],[e['midi'] for e in notes])
+    def test_default_lead_does_not_change_other_genres(self):
+        notes=[note('LEAD',0,.12,65,'genre_lead'),
+               note('LEAD',.25,.12,67,'genre_lead')]
+        self.assertEqual(perform(notes,'FUNK'),notes)
     def test_rock_lead_can_sustain(self):
         x=[note('LEAD',0,.34,67,'genre_lead'),note('LEAD',2,.34,69,'genre_lead')]
         self.assertGreater(perform(x,'ROCK')[0]['duration_beats'],1.5)

@@ -14,10 +14,11 @@ from copy import deepcopy
 from pathlib import Path
 import math
 import wave
+import json
 
 import numpy as np
 
-PROFILE = "JAZZ_BALLAD_EQUAL_ACTIVE_INTENSITY_V1"
+PROFILE = "JAZZ_BALLAD_ORIGINAL_SOURCES_LOCKED_MIX_V1"
 INSTRUMENTS = {
     "HARMONY": "electric_piano",
     "LEAD": "clarinet_bb",
@@ -26,7 +27,8 @@ INSTRUMENTS = {
     "SNARE": "snare_drum",
     "HAT": "hi_hat",
 }
-MAX_TRIM_DB = 22.0
+MAX_TRIM_DB = 32.0
+MIN_TRIM_DB = -32.0
 WINDOW_SECONDS = 0.25
 ACTIVE_WINDOW_RANGE_DB = 24.0
 PEAK_HEADROOM_DB = -2.0
@@ -72,6 +74,33 @@ def _active_rms_and_peak_db(wav_path: str) -> tuple[float, float] | None:
     return active_db, peak_db
 
 
+def _verified_mix_profile() -> tuple[dict, dict]:
+    """Load only Ballad ratios; reject any mismatch with recorded originals."""
+    from .instrument_packages import load_package
+    path = Path(__file__).resolve().with_name("jazz_ballad_mix.json")
+    with path.open(encoding="utf-8") as reader:
+        profile = json.load(reader)
+    if (profile.get("schema_version") != 1 or profile.get("genre") != "Jazz Ballad"
+            or profile.get("profile_name") != PROFILE or profile.get("reference_role") != "HARMONY"
+            or profile.get("mixer_only") is not True or profile.get("sample_file_edits_allowed") is not False
+            or profile.get("source_registry_edits_allowed") is not False):
+        raise ValueError("JAZZ_BALLAD_ORIGINAL_SOURCES_NOT_LOCKED")
+    originals = load_package("jazz_ballad")["instruments"]
+    ratios = profile.get("ratios_db")
+    if not isinstance(ratios, dict) or set(ratios) != set(INSTRUMENTS):
+        raise ValueError("JAZZ_BALLAD_MIX_ROLE_LINKS_INCOMPLETE")
+    for role, setting in ratios.items():
+        if not isinstance(setting, dict) or setting.get("catalog_key") != originals[role]["catalog_key"]:
+            raise ValueError("JAZZ_BALLAD_MIX_SOURCE_LINK_MISMATCH:" + role)
+        value = setting.get("relative_active_level_db")
+        if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
+            raise ValueError("JAZZ_BALLAD_INVALID_MIX_RATIO:" + role)
+        if not -18 <= value <= 10:
+            raise ValueError("JAZZ_BALLAD_MIX_RATIO_OUT_OF_RANGE:" + role)
+    if ratios["HARMONY"]["relative_active_level_db"] != 0:
+        raise ValueError("JAZZ_BALLAD_PIANO_REFERENCE_CHANGED")
+    return profile, originals
+
 def equalize_ballad_stems(engine_result: dict, stems: list[dict]) -> dict:
     """Match active instrument-track levels, not fader positions.
 
@@ -94,6 +123,7 @@ def equalize_ballad_stems(engine_result: dict, stems: list[dict]) -> dict:
                  for row in resource_list if isinstance(row, dict)}
     stems_by_track = {str(row.get("track_id", "")).upper(): row
                       for row in stems if isinstance(row, dict)}
+    mix_profile, originals = _verified_mix_profile()
     levels = {}
     for role, expected_instrument in INSTRUMENTS.items():
         if identities.get(role) != expected_instrument:
@@ -101,6 +131,11 @@ def equalize_ballad_stems(engine_result: dict, stems: list[dict]) -> dict:
         binding = resources.get(role)
         if not isinstance(binding, dict):
             raise ValueError("JAZZ_BALLAD_MISSING_INSTRUMENT_RESOURCE:" + role)
+        source = originals[role]
+        if (binding.get("resource_id") != source["resource_id"]
+                or binding.get("preferred_mapping") != source["sfz"]
+                or binding.get("resource_type") != "SFZ_SAMPLE_LIBRARY"):
+            raise ValueError("JAZZ_BALLAD_ORIGINAL_INSTRUMENT_LINK_CHANGED:" + role)
         stem = stems_by_track.get(role)
         if not isinstance(stem, dict) or not stem.get("wav_path"):
             raise ValueError("JAZZ_BALLAD_MISSING_AUDIO_STEM:" + role)
@@ -115,27 +150,34 @@ def equalize_ballad_stems(engine_result: dict, stems: list[dict]) -> dict:
             "measured_active_rms_dbfs": db, "measured_peak_dbfs": peak_db,
             "original_gain_db": original_gain,
             "original_effective_rms_dbfs": db + original_gain,
+            "catalog_key": source["catalog_key"],
+            "original_resource_id": source["resource_id"],
+            "original_sfz_file": source["sfz"],
+            "relative_mix_target_db": mix_profile["ratios_db"][role]["relative_active_level_db"],
         }
 
-    # Identical *active* level for every sounding part. Sparse accents still
-    # retain musical rests; we don't force an always-on snare or synth.
-    original_levels = [data["original_effective_rms_dbfs"] for data in levels.values()]
-    reference_db = float(np.median(np.asarray(original_levels)))
+    # The original recorded piano is the stable reference. Only final mix
+    # faders are adjusted; source WAV/SFZ instruments are never modified.
+    reference_db = levels["HARMONY"]["original_effective_rms_dbfs"]
     new_gains = {}
+    ratio_deviations = {}
     for role, metrics in levels.items():
-        desired_trim = reference_db - metrics["original_effective_rms_dbfs"]
-        trim = max(-MAX_TRIM_DB, min(MAX_TRIM_DB, desired_trim))
-        # Never demand an individual boosted track exceed 2 dB of sample
-        # headroom. The existing stereo mixer separately normalizes the master.
-        max_safe_gain = PEAK_HEADROOM_DB - metrics["measured_peak_dbfs"]
-        next_gain = min(metrics["original_gain_db"] + trim, max_safe_gain)
+        ratio = float(mix_profile["ratios_db"][role]["relative_active_level_db"])
+        desired_level = reference_db + ratio
+        trim = max(MIN_TRIM_DB, min(MAX_TRIM_DB, desired_level - metrics["original_effective_rms_dbfs"]))
+        peak_safe_max = PEAK_HEADROOM_DB - metrics["measured_peak_dbfs"]
+        next_gain = min(metrics["original_gain_db"] + trim, peak_safe_max)
+        if role == "HARMONY" and metrics["original_gain_db"] <= peak_safe_max:
+            next_gain = metrics["original_gain_db"]
         if not math.isfinite(next_gain):
-            raise ValueError("JAZZ_BALLAD_INVALID_EQUALIZED_GAIN:" + role)
+            raise ValueError("JAZZ_BALLAD_INVALID_MIX_GAIN:" + role)
+        actual_db = metrics["measured_active_rms_dbfs"] + next_gain
+        ratio_deviations[role] = round(actual_db - desired_level, 3)
         metrics["balance_adjustment_db"] = round(next_gain - metrics["original_gain_db"], 3)
-        metrics["effective_active_rms_dbfs"] = round(
-            metrics["measured_active_rms_dbfs"] + next_gain, 3)
-        metrics["peak_after_gain_dbfs"] = round(
-            metrics["measured_peak_dbfs"] + next_gain, 3)
+        metrics["effective_active_rms_dbfs"] = round(actual_db, 3)
+        metrics["target_active_rms_dbfs"] = round(desired_level, 3)
+        metrics["difference_from_target_db"] = ratio_deviations[role]
+        metrics["peak_after_gain_dbfs"] = round(metrics["measured_peak_dbfs"] + next_gain, 3)
         new_gains[role] = next_gain
 
     result = deepcopy(engine_result)
@@ -146,8 +188,13 @@ def equalize_ballad_stems(engine_result: dict, stems: list[dict]) -> dict:
             row["resource"]["mix_profile"] = PROFILE
     result["jazz_mix_instruction"] = {
         "name": PROFILE,
-        "method": "EQUAL_ACTIVE_TRACK_RMS_WITH_PEAK_HEADROOM",
-        "target_active_rms_dbfs": round(reference_db, 3),
+        "method": "GENRE_ONLY_RELATIVE_ACTIVE_MIX_RATIOS",
+        "piano_reference_active_rms_dbfs": round(reference_db, 3),
+        "requested_mix_ratios_db": {role: float(v["relative_active_level_db"])
+                                   for role, v in mix_profile["ratios_db"].items()},
+        "ratio_deviations_db": ratio_deviations,
+        "original_instrument_sources_verified": True,
+        "no_source_file_edits": True,
         "track_measurements": levels,
         "all_six_recorded_stems_present": True,
         "preserve_original_piano_samples": True,

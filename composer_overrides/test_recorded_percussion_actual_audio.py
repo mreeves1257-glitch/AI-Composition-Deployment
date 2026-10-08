@@ -89,8 +89,25 @@ def main():
             "recordings_replaced":False,
             "genre_routes_activated":False,
             "control_panel_changed":False,
-            "audible_layer_response_verified":True,
+            "different_waveforms_verified":True,
+            "musical_loudness_balance_calibrated":False,
         },flush=True)
+        # Follow the existing SFZ levels directly. This table is diagnostic,
+        # not a set of invented dynamic presets. No file or soundbank is edited.
+        calibration=[]
+        for velocity in (8,16,24,31,32,40,48,56,63,64,79,95,96,111,127):
+            midi=Path(temporary)/(f"v{velocity:03d}.mid")
+            wav=Path(temporary)/(f"v{velocity:03d}.wav")
+            midi.write_bytes(make_midi(38,velocity))
+            measured=render_midi(resource,midi,wav,sample_rate=44100)
+            assert measured["audio_rendered"] and measured["peak_linear"]>0
+            calibration.append({
+                "velocity":velocity,
+                "peak_dbfs":round(measured["peak_dbfs"],3),
+                "rms_dbfs":round(measured["rms_dbfs"],3),
+            })
+        print("RECORDED_SNARE_VELOCITY_LEVEL_CALIBRATION",calibration,flush=True)
+        print("PERCUSSION_AUDIBILITY_CALIBRATION_REQUIRED_BEFORE_ACTIVATION",flush=True)
 
 
 if __name__=="__main__":

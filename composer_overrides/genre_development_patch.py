@@ -576,3 +576,13 @@ def compile_genre_template(genre_name: str, profile: dict[str, Any]) -> dict[str
         "sections": sections,
         "audio_validation": "NOT_ESTABLISHED_BY_TEMPLATE",
     }
+
+
+def genre_template_from_registry(genre_name: str, registry: dict[str, Any]) -> dict[str, Any]:
+    """Resolve by exact menu label and never substitute a neighboring style."""
+    if not isinstance(registry, dict) or not isinstance(registry.get("profiles"), dict):
+        raise ValueError("GENRE_TEMPLATE_REGISTRY_INVALID")
+    profiles = registry["profiles"]
+    if genre_name not in profiles:
+        raise ValueError("GENRE_TEMPLATE_UNKNOWN_GENRE:" + str(genre_name))
+    return compile_genre_template(genre_name, profiles[genre_name])

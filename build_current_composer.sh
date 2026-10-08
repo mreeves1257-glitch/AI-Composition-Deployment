@@ -29,7 +29,6 @@ install_library "GREG_SULLIVAN_E_PIANOS" "https://github.com/sfzinstruments/Greg
 install_library "FREEPATS_WORLD_PERCUSSION" "https://github.com/freepats/world-percussion.git" "main"
 # All future compatible sample banks use the single manifest below.
 python composer_overrides/sample_bank_onboarding.py --self-test
-python composer_overrides/sample_bank_onboarding.py --install
 find "$BANK/KARORYFER_SHINYGUITAR" "$BANK/KARORYFER_BIG_RUSTY_DRUMS" -type f -name "*.sfz" -print0 | xargs -0 sed -i 's#\\#/#g'
 
 python - <<'PY'
@@ -504,6 +503,7 @@ PY
 python composer/runtime/real_electric_piano_probe.py
 python composer/runtime/real_rock_alias_probe.py
 python composer/runtime/real_conga_probe.py
+python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json

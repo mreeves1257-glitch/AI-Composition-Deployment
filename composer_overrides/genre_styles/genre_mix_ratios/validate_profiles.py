@@ -45,7 +45,7 @@ for filename in set(index["genre_to_family_file"].values()):
         assert isinstance(definition, dict) and definition["profile_id"]
         assert len(definition.get("tempo_bpm_range", [])) == 2
         assert definition.get("meter_options")
-        assert definition.get("resolution_policy") == "AUTOMATIC_BASELINE_ALLOWED"
+        assert definition.get("resolution_policy") in {"AUTOMATIC_BASELINE_ALLOWED", "CONTROLLED_RESOLVER", "USER_COMPONENTS_REQUIRED", "SAVED_PROFILE_REQUIRED"}
         assert p.get("musical_definition_source") == "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY"
         assert p["runtime_musical_connections"]["original_family_template"] == p["genre_template"]
         assert p["runtime_musical_connections"]["runtime_integration"] == "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE"

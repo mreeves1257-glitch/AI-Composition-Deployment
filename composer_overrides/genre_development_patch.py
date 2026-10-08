@@ -271,6 +271,12 @@ def develop_full_length(
             gain = (0.90, 1.00, 0.83, 1.07)[contour]
 
         breakdown = total_bars >= 32 and section % 4 == 2 and section_bar in (8, 9)
+        # Jazz voicings are chords, not an unrelated collection of MIDI notes.
+        # Never thin or invalidate their constituent pitches by MIDI parity.
+        jazz_voicing = (
+            ctx.get("harmony", {}).get("voicing_model")
+            == "JAZZ_EXTENDED_HARMONY_V1"
+        )
         transition = section_bar in (14, 15)
 
         is_hat = "HAT" in track or "hat" in instrument
@@ -367,7 +373,11 @@ def develop_full_length(
                 continue
             if is_harmony or is_support:
                 midi = int(e.get("midi", 60))
-                if (midi + phrase + creation_seed) % 3:
+                # Preserve all notes in verified Jazz chord voicings, even
+                # when the arrangement is dynamically quieter in a breakdown.
+                if (midi + phrase + creation_seed) % 3 and not (
+                    jazz_voicing and track == "HARMONY"
+                ):
                     continue
             if is_hat and int(round(local * 4)) % 2:
                 continue
@@ -379,10 +389,11 @@ def develop_full_length(
                 shifted = min(meter - 0.06, local + 0.125)
                 e["start_beat"] = bar * meter + shifted
             elif variant == 2 and local >= meter / 2 and not (
-                tmpl == "rock" and "guitar" in instrument
+                (tmpl == "rock" and "guitar" in instrument)
+                or (jazz_voicing and track == "HARMONY")
             ):
-                # Rock chord tones must not disappear merely because their
-                # MIDI pitch is odd: that can destroy the chord's identity.
+                # MIDI parity is not musical harmony. The protected Jazz
+                # and Rock chord groups keep every approved chord tone.
                 midi = int(e.get("midi", 60))
                 if midi % 2:
                     continue

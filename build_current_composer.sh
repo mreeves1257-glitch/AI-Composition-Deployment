@@ -654,6 +654,41 @@ assert [x["notes"] for x in j["harmony"]["chords"]] == [
 print("JAZZ_EXTENDED_HARMONY_OFFLINE_PASS", len(JAZZ_GENRE_PROFILES), len(profiles), flush=True)
 PY
 
+# Verify rich Jazz voicings survive the legacy long-form arrangement edits.
+# Musical event-level only. Does not claim audio rendering is complete.
+python - <<'PY'
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path("composer/runtime").resolve()))
+from genre_development_patch import develop_full_length
+ctx = {
+    "meter":{"numerator":4,"denominator":4},
+    "harmony":{"voicing_model":"JAZZ_EXTENDED_HARMONY_V1"},
+}
+notes = (60, 64, 67, 71)
+def chord_at(bar, beat):
+    return [
+        {"track_id":"HARMONY","instrument_id":"piano",
+         "start_beat":4*bar+beat,"duration_beats":0.45,
+         "midi":midi,"velocity":85,"articulation":"genre_harmony"}
+        for midi in notes
+    ]
+# Bar 8 reaches the former odd-MIDI-note dropping rule.
+for bar, beat, seed in ((8,3,0), (40,1,0)):
+    original = chord_at(bar,beat)
+    out = develop_full_length(original,ctx,"swing",seed)
+    harmony = [e for e in out if e["track_id"] == "HARMONY"]
+    assert set(e["midi"] for e in harmony) == set(notes), (bar,harmony)
+    assert len(harmony) == 4, (bar,harmony)
+    assert len({round(e["velocity"],6) for e in harmony}) == 1, bar
+    assert original == chord_at(bar,beat), "MUTATED_INPUT"
+# The standard non-Jazz branch still receives its former parity treatment.
+non_jazz_ctx = {"meter":ctx["meter"],"harmony":{}}
+former = develop_full_length(chord_at(8,3),non_jazz_ctx,"swing",0)
+assert {e["midi"] for e in former} == {60,64}, former
+print("JAZZ_CHORD_TONES_PRESERVED_PASS",flush=True)
+PY
+
 python composer/runtime/test_instrument_performance_contract.py
 python composer/runtime/test_rock_lead_register.py
 python composer/runtime/test_rock_balance_contract.py

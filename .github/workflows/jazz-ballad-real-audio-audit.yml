@@ -111,6 +111,62 @@ jobs:
           if read_status not in (200,206) or not (
               header[:4]==b"RIFF" and header[8:12]==b"WAVE"):
               raise AssertionError("NOT_A_VALID_WAVE_AUDIO_SOURCE")
+          # Audit the real final stereo file, not merely the first WAV header.
+          # These checks detect digital clipping, empty outputs and channel
+          # format errors, but cannot replace listening for natural brush hiss.
+          import array
+          import math
+          import sys
+          import tempfile
+          import wave
+          with tempfile.TemporaryFile() as stored:
+              with urllib.request.urlopen(url, timeout=120) as playback:
+                  total=0
+                  while True:
+                      block=playback.read(262144)
+                      if not block:
+                          break
+                      total += len(block)
+                      if total > 150000000:
+                          raise AssertionError("JAZZ_FINAL_WAV_TOO_LARGE")
+                      stored.write(block)
+              stored.seek(0)
+              with wave.open(stored,"rb") as audio_stream:
+                  channels=audio_stream.getnchannels()
+                  sample_width=audio_stream.getsampwidth()
+                  sample_rate=audio_stream.getframerate()
+                  frames=audio_stream.getnframes()
+                  duration=frames/sample_rate
+                  if channels!=2 or sample_width!=2 or sample_rate<22050 or duration<30:
+                      raise AssertionError("INVALID_FINAL_STEREO_FORMAT:"+str(
+                          (channels,sample_width,sample_rate,duration)))
+                  clip_count=0
+                  audible_windows=0
+                  checked=0
+                  for i in range(10):
+                      position=min(frames-1,int(frames*(i+0.5)/10))
+                      audio_stream.setpos(position)
+                      samples=array.array("h")
+                      samples.frombytes(audio_stream.readframes(min(sample_rate,frames-position)))
+                      if sys.byteorder!="little":
+                          samples.byteswap()
+                      if not samples:
+                          continue
+                      checked+=1
+                      peak=max(abs(v) for v in samples)
+                      clip_count+=sum(abs(v)>=32760 for v in samples)
+                      if peak>50:
+                          audible_windows+=1
+                  if audible_windows<6 or clip_count>0:
+                      raise AssertionError("FINAL_STEREO_EMPTY_OR_DIGITALLY_CLIPPED:"+str(
+                          (audible_windows,clip_count)))
+                  print("FINAL_STEREO_STREAM_AUDIT_PASS",
+                        json.dumps({"channels":channels,
+                                    "sample_rate":sample_rate,
+                                    "duration_seconds":round(duration,1),
+                                    "checked_windows":checked,
+                                    "audible_windows":audible_windows,
+                                    "clipped_samples":clip_count}),flush=True)
           print("JAZZ_REAL_AUDIO_HANDOFF_PASS",
                 json.dumps({"all_six_recorded_instruments":True,
                             "final_wav_http":read_status,

@@ -1,0 +1,42 @@
+name: Isolated Rock Bass Eight-Bar Full Ensemble 3D A-B
+on:
+  push:
+    branches:
+      - performance-language-research-20261008
+    paths:
+      - research/rock_bass_full_band_ab_v1.py
+      - .github/workflows/rock-bass-full-band-audio.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-composer-sampled-full-band-3d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build original recorded Composer in isolated research runner
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: "1"
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: bash build_current_composer.sh
+      - name: Render independently preserved Rock stems plus alternate bass using original 3D mixer
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: python research/rock_bass_full_band_ab_v1.py
+      - name: Save exact real Rock full ensemble stereo WAVs and source report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-real-8bar-full-band-3d-bass-ab-20261008
+          path: |
+            research/rock_full_band_ab_output/Rock-8bar-full-band-*.wav
+            research/rock_full_band_ab_output/findings.json
+          if-no-files-found: warn
+          retention-days: 14

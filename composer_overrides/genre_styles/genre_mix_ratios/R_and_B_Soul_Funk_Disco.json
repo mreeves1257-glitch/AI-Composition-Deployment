@@ -1,0 +1,448 @@
+{
+  "schema_version": 2,
+  "musical_family": "R_and_B_Soul_Funk_Disco",
+  "reference_only": true,
+  "source_assets_immutable": true,
+  "original_drum_library_is_separate": true,
+  "genre_count": 6,
+  "profiles": {
+    "Rhythm and Blues": {
+      "schema_version": 1,
+      "genre": "Rhythm and Blues",
+      "genre_template": "rnb",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "ELECTRIC_GUITAR",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "electric_guitar",
+        "drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "instrument_id": "electric_guitar",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "R_and_B_Soul_Funk_Disco",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Soul": {
+      "schema_version": 1,
+      "genre": "Soul",
+      "genre_template": "soul",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "TRUMPET",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "trumpet",
+        "drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "TRUMPET",
+          "instrument_id": "trumpet",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "R_and_B_Soul_Funk_Disco",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Funk": {
+      "schema_version": 1,
+      "genre": "Funk",
+      "genre_template": "funk",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "ELECTRIC_BASS",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "electric_guitar",
+        "clav",
+        "drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "instrument_id": "electric_guitar",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "CLAV",
+          "instrument_id": "clav",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": 2,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "R_and_B_Soul_Funk_Disco",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Contemporary R&B": {
+      "schema_version": 1,
+      "genre": "Contemporary R&B",
+      "genre_template": "contemporary_rnb",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_BASS",
+      "original_composer_instrument_palette": [
+        "synth_bass",
+        "electric_piano",
+        "synth_pad",
+        "drums_soft"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "instrument_id": "synth_bass",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "instrument_id": "synth_pad",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_soft"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "R_and_B_Soul_Funk_Disco",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Neo-Soul-related": {
+      "schema_version": 1,
+      "genre": "Neo-Soul-related",
+      "genre_template": "neo_soul",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "ELECTRIC_PIANO",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "electric_guitar",
+        "drums_soft"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "instrument_id": "electric_guitar",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_soft"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "R_and_B_Soul_Funk_Disco",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "DISCO": {
+      "schema_version": 1,
+      "genre": "DISCO",
+      "genre_template": "disco",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "ELECTRIC_BASS",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "electric_guitar",
+        "strings",
+        "drums_four"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "instrument_id": "electric_guitar",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "STRINGS",
+          "instrument_id": "strings",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_four",
+          "proposed_relative_active_level_db": 2,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_four",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_four",
+          "proposed_relative_active_level_db": -6,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_four"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "R_and_B_Soul_Funk_Disco",
+      "selected_shared_drum_kit_id": "unverified_drums_four",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    }
+  }
+}

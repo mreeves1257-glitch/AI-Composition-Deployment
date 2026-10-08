@@ -18,7 +18,7 @@ from genre_development_patch import (
     build_jazz_progression, realize_jazz_voicings,
     apply_jazz_phrase_expression,
 )
-from genre_styles.jazz_ballad import (
+from genre_styles.Jazz.jazz_ballad import (
     chord_progression as ballad_progression,
     arrange_events, balance_mix
 )
@@ -88,6 +88,45 @@ class GenreStyleFileTests(unittest.TestCase):
         bindings["clarinet_bb"]["preferred_mapping"] = "bad.sfz"
         with self.assertRaisesRegex(ValueError, "JAZZ_INSTRUMENT_LINK_MISMATCH"):
             validate_instrument_links(bindings)
+
+    def test_all_jazz_styles_link_one_canonical_instrument_pool(self):
+        from genre_styles.Jazz.instrument_packages import load_package
+        from pathlib import Path
+        import json
+        root = Path(__file__).resolve().parent / "genre_styles" / "Jazz"
+        pool_path = root / "instrument_library.json"
+        self.assertTrue(pool_path.is_file())
+        with pool_path.open(encoding="utf-8") as handle:
+            library = json.load(handle)
+        self.assertEqual(library["library"], "Jazz")
+        self.assertEqual(len(library["instruments"]), 6)
+        expected_keys = {
+            "electric_piano_wurlitzer", "clarinet_vsco", "double_bass_meatbass",
+            "brush_kick_swirly", "brush_snare_swirly", "brush_hat_swirly"
+        }
+        self.assertEqual(set(library["instruments"]), expected_keys)
+        for name, module_path in GENRE_STYLE_MODULES.items():
+            if name == "ROCK":
+                continue
+            style_id = module_path.rsplit(".", 1)[-1]
+            self.assertTrue(module_path.startswith("Jazz."), name)
+            module = importlib.import_module("genre_styles." + module_path)
+            package = module.instrument_links()
+            self.assertEqual(package, load_package(style_id))
+            self.assertEqual(package["source_library"], "Jazz/instrument_library.json")
+            self.assertEqual(package["shared_root"], "sound_resources")
+            self.assertEqual(package["link_mode"], "SHARED_SAMPLE_LIBRARY_REFERENCE")
+            self.assertEqual(set(package["instruments"]),
+                             {"HARMONY", "LEAD", "BASS", "KICK", "SNARE", "HAT"})
+            self.assertEqual(len({spec["catalog_key"] for spec in
+                                  package["instruments"].values()}), 6)
+            self.assertEqual(package["genre"], name)
+            if name == "Jazz Ballad":
+                self.assertEqual(package["binding_status"], "VERIFIED_RECORDED_SOURCES")
+            else:
+                self.assertEqual(package["binding_status"], "STYLE_ROUTING_NOT_YET_VERIFIED")
+        self.assertTrue(all("Jazz." in m for n, m in GENRE_STYLE_MODULES.items()
+                            if n != "ROCK"))
 
     def test_unknown_or_controlled_style_no_automatic_fallback(self):
         profile = {"profile_id": "JAZZ_BALLAD_V1",

@@ -245,9 +245,11 @@ cp composer_overrides/genre_resource_readiness.py composer/runtime/genre_resourc
 cp composer_overrides/jazz_ballad_recorded_resources.py composer/runtime/jazz_ballad_recorded_resources.py
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
+cp -R composer_overrides/genre_styles composer/runtime/genre_styles
 cp composer_overrides/jazz_arranger_style.py composer/runtime/jazz_arranger_style.py
 cp composer_overrides/jazz_balance_contract.py composer/runtime/jazz_balance_contract.py
 cp composer_overrides/test_jazz_arranger_style.py composer/runtime/test_jazz_arranger_style.py
+cp composer_overrides/test_genre_style_files.py composer/runtime/test_genre_style_files.py
 cp composer_overrides/instrument_performance_contract.py composer/runtime/instrument_performance_contract.py
 cp composer_overrides/test_instrument_performance_contract.py composer/runtime/test_instrument_performance_contract.py
 cp composer_overrides/test_rock_lead_register.py composer/runtime/test_rock_lead_register.py
@@ -358,7 +360,7 @@ from genre_development_patch import (
     apply_jazz_phrase_expression as _apply_jazz_phrase_expression,
     develop_full_length as _develop_full_length,
 )
-from jazz_arranger_style import arrange_jazz_ballad as _arrange_jazz_ballad
+from genre_styles.jazz_ballad import arrange_events as _arrange_jazz_ballad
 _legacy_build_setup = build_setup
 
 def build_setup(name, profile, mode='quick', creation_seed=0):
@@ -478,7 +480,7 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
     # unchanged. This is a pure, Rock-only metadata overlay.
     from rock_balance_contract import apply_rock_balance
     mixer_instructions = apply_rock_balance(engine_result)
-    from jazz_balance_contract import apply_jazz_ballad_balance
+    from genre_styles.jazz_ballad import balance_mix as apply_jazz_ballad_balance
     mixer_instructions = apply_jazz_ballad_balance(mixer_instructions)
     # A separate recorded-kick derivative follows the same existing drum
     # events as KICK. The independent 3D mixer remains entirely unchanged.
@@ -577,6 +579,27 @@ python composer/runtime/real_conga_probe.py
 python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
 AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" python composer/runtime/jazz_ballad_recorded_resources.py
+
+# Resolve every Jazz Ballad instrument from its OWN genre file. This checks
+# links against the existing registry and on-disk sample bank, not duplicate
+# audio copies. No other genre or sound engine is changed.
+python - <<'PY'
+import json, sys
+from pathlib import Path
+root=Path("composer/runtime").resolve()
+sys.path.insert(0,str(root))
+from genre_styles.jazz_ballad import instrument_links, validate_instrument_links
+package=instrument_links()
+registry=json.loads((root/"target_registry.json").read_text(encoding="utf-8"))
+bindings=registry["targets"]["INTERNAL"]["instrument_bindings"]
+validate_instrument_links(bindings)
+for role, spec in package["instruments"].items():
+    sfz=root/package["shared_root"]/spec["resource_id"]/spec["sfz"]
+    assert sfz.is_file(), ("JAZZ_LINK_SOURCE_MISSING", role, str(sfz))
+print("JAZZ_BALLAD_INDEPENDENT_INSTRUMENT_LINKS_PASS",
+      sorted(package["instruments"]), flush=True)
+PY
+
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
@@ -622,6 +645,7 @@ PY
 # Guard piano integrity, actual sample MIDI ranges, developed chord movement,
 # and absence of changes to working Rock and unrelated genres.
 python composer/runtime/test_jazz_arranger_style.py -v
+python composer/runtime/test_genre_style_files.py -v
 
 # Offline guard: eight Jazz genre identities; true 7ths/sixths; no changes
 # to Rock, New Age, custom selections, note routing, or instrument audio.

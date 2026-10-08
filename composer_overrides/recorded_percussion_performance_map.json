@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "readiness": "SOURCE_SFZ_STRUCTURE_VERIFIED_AND_AUDIO_LAYER_SELECTION_VERIFIED__DYNAMIC_BALANCE_CALIBRATION_PENDING",
+  "purpose": "Existing recordings, not new sounds. Map musical hit dynamics to literal SFZ velocity-layer selections. No instrument or genre enabled. No source sample replaced.",
+  "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+  "source": "build_current_composer.sh Big Rusty drum SFZ heredoc programs (recorded samples and seq_position round robin)",
+  "programs": {
+    "kick": {
+      "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+      "preferred_mapping": "Programs/composer-kick-lite.sfz",
+      "instrument_ids": [
+        "kick_drum_rock"
+      ],
+      "allowed_midi_notes": [
+        36
+      ],
+      "velocity_layer_ranges": [
+        [
+          1,
+          31
+        ],
+        [
+          32,
+          63
+        ],
+        [
+          64,
+          95
+        ],
+        [
+          96,
+          127
+        ]
+      ],
+      "round_robin_count": 4,
+      "supported_performance_input": "MIDI_NOTE_ON_VELOCITY_AND_RECORDED_RR_ONLY"
+    },
+    "snare": {
+      "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+      "preferred_mapping": "Programs/composer-snare-lite.sfz",
+      "instrument_ids": [
+        "snare_drum"
+      ],
+      "allowed_midi_notes": [
+        38
+      ],
+      "velocity_layer_ranges": [
+        [
+          1,
+          31
+        ],
+        [
+          32,
+          63
+        ],
+        [
+          64,
+          95
+        ],
+        [
+          96,
+          127
+        ]
+      ],
+      "round_robin_count": 4,
+      "supported_performance_input": "MIDI_NOTE_ON_VELOCITY_AND_RECORDED_RR_ONLY"
+    },
+    "closed_hihat": {
+      "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+      "preferred_mapping": "Programs/composer-hihat-lite.sfz",
+      "instrument_ids": [
+        "hi_hat"
+      ],
+      "allowed_midi_notes": [
+        42
+      ],
+      "velocity_layer_ranges": [
+        [
+          1,
+          15
+        ],
+        [
+          16,
+          31
+        ],
+        [
+          32,
+          47
+        ],
+        [
+          48,
+          63
+        ],
+        [
+          64,
+          79
+        ],
+        [
+          80,
+          95
+        ],
+        [
+          96,
+          111
+        ],
+        [
+          112,
+          127
+        ]
+      ],
+      "round_robin_count": 4,
+      "supported_performance_input": "MIDI_NOTE_ON_VELOCITY_AND_RECORDED_RR_ONLY"
+    },
+    "tom": {
+      "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+      "preferred_mapping": "Programs/composer-tom-lite.sfz",
+      "instrument_ids": [
+        "tom_drum",
+        "tom_tom"
+      ],
+      "allowed_midi_notes": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "velocity_layer_ranges": [
+        [
+          1,
+          31
+        ],
+        [
+          32,
+          63
+        ],
+        [
+          64,
+          95
+        ],
+        [
+          96,
+          127
+        ]
+      ],
+      "round_robin_count": 4,
+      "supported_performance_input": "MIDI_NOTE_ON_VELOCITY_AND_RECORDED_RR_ONLY"
+    },
+    "crash": {
+      "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+      "preferred_mapping": "Programs/composer-crash-lite.sfz",
+      "instrument_ids": [
+        "crash_cymbal"
+      ],
+      "allowed_midi_notes": [
+        49
+      ],
+      "velocity_layer_ranges": [
+        [
+          1,
+          31
+        ],
+        [
+          32,
+          63
+        ],
+        [
+          64,
+          95
+        ],
+        [
+          96,
+          127
+        ]
+      ],
+      "round_robin_count": 4,
+      "supported_performance_input": "MIDI_NOTE_ON_VELOCITY_AND_RECORDED_RR_ONLY"
+    }
+  },
+  "activated_genres": [],
+  "automatic_application_enabled": false,
+  "audibility_findings": {
+    "program": "Programs/composer-snare-lite.sfz",
+    "test_environment": "Recorded Big Rusty snare, sfizz sample rate 44100, isolated one-note comparison",
+    "ghost_velocity_16_peak_dbfs": -78.268,
+    "strong_velocity_111_peak_dbfs": -21.5,
+    "interpretation": "Velocity layers demonstrably change real WAV, but the current ghost-strike choice is extremely quiet relative to a strong hit. Levels are NOT approved for musical mix use.",
+    "next_step": "Measure source-aware velocity-to-peak/RMS values across layers; select musical dynamic ranges without editing samples."
+  }
+}

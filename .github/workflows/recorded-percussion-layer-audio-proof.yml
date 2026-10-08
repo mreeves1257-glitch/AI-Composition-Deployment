@@ -1,0 +1,27 @@
+name: Existing Recorded Percussion Dynamic-Layer WAV Proof
+on:
+  push:
+    branches:
+      - recorded-instrument-control-inventory-2026-10-08
+  workflow_dispatch:
+jobs:
+  original-recorded-layers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build original Composer with already owned/linked recorded drum programs
+        run: bash build_current_composer.sh
+      - name: Verify interpreter's ghost and strong struck snare layers in existing WAV
+        env:
+          PYTHONPATH: composer/runtime
+        run: |
+          cp composer_overrides/recorded_percussion_performance_map.json composer/runtime/
+          cp composer_overrides/recorded_percussion_strike_interpreter.py composer/runtime/
+          cp composer_overrides/test_recorded_percussion_actual_audio.py composer/runtime/
+          python composer/runtime/test_recorded_percussion_actual_audio.py
+      - name: Verify all genre stage connections stay inactive
+        run: python composer_overrides/genre_styles/validate_profiles.py

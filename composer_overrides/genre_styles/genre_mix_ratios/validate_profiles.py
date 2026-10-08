@@ -38,6 +38,18 @@ for filename in set(index["genre_to_family_file"].values()):
         assert p["original_instrument_sources_off_limits"] is True
         assert p["actual_source_wav_sfz_files_must_remain_unchanged"] is True
         assert p["auto_apply"] is False
+        assert family["family_contains_original_music_definitions"] is True
+        assert family["original_routing_protected"] is True
+        assert family["development_mode"] == "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED"
+        definition = p.get("musical_definition")
+        assert isinstance(definition, dict) and definition["profile_id"]
+        assert len(definition.get("tempo_bpm_range", [])) == 2
+        assert definition.get("meter_options")
+        assert definition.get("resolution_policy") == "AUTOMATIC_BASELINE_ALLOWED"
+        assert p.get("musical_definition_source") == "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY"
+        assert p["runtime_musical_connections"]["original_family_template"] == p["genre_template"]
+        assert p["runtime_musical_connections"]["runtime_integration"] == "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE"
+        assert p["runtime_musical_connections"]["selected_universal_drum_kit"] == p["selected_shared_drum_kit_id"]
         tracks = p["individual_instrument_tracks"]
         track_ids = [r["track_id"] for r in tracks]
         assert track_ids and len(track_ids) == len(set(track_ids))

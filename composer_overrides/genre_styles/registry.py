@@ -3,14 +3,14 @@ from importlib import import_module
 
 GENRE_STYLE_MODULES = {
     "ROCK": "rock",
-    "Swing": "swing",
-    "Jazz Ballad": "jazz_ballad",
-    "Big Band": "big_band",
-    "Jazz Waltz": "jazz_waltz",
-    "Bebop": "bebop",
-    "Cool Jazz": "cool_jazz",
-    "Dixieland": "dixieland",
-    "Jazz Fusion": "jazz_fusion",
+    "Swing": "Jazz.swing",
+    "Jazz Ballad": "Jazz.jazz_ballad",
+    "Big Band": "Jazz.big_band",
+    "Jazz Waltz": "Jazz.jazz_waltz",
+    "Bebop": "Jazz.bebop",
+    "Cool Jazz": "Jazz.cool_jazz",
+    "Dixieland": "Jazz.dixieland",
+    "Jazz Fusion": "Jazz.jazz_fusion",
 }
 JAZZ_GENRE_PROFILES = {
     "Swing": "JAZZ_SWING_V1",

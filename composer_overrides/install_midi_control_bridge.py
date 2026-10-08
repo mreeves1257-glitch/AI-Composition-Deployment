@@ -22,6 +22,9 @@ def install(path: Path) -> str:
     if source.count(PATCH) == 1:
         return "ALREADY_INSTALLED"
     if source.count(ANCHOR) != 1:
+        candidates = [(i, line) for i, line in enumerate(source.splitlines(), 1)
+                      if "_midi_pitch_events" in line or "absolute =" in line]
+        print("MIDI_CORE_ACTUAL_CANDIDATE_LINES", candidates[:20], flush=True)
         raise RuntimeError("MIDI_CORE_SIGNATURE_CHANGED_DO_NOT_GUESS")
     path.write_text(source.replace(ANCHOR, PATCH, 1), encoding="utf-8")
     return "INSTALLED"

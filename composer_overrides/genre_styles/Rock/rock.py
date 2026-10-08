@@ -1,11 +1,10 @@
-"""Rock genre owner: retain the verified Rock performance, resource and mix.
+"""Rock genre reference. This music is NOT reliably functioning end-to-end.
 
-The existing Rock arrangement and guitar/drum performance remain protected.
-This module is the genre-level entry point for later extraction of the Rock
-score rules, NOT a rewrite of working Rock or a Jazz inheritance.
+Preserves accumulated Rock score/mix information in one family folder for
+later diagnosis. Neither Rock nor Jazz is a proven output template.
 """
 from __future__ import annotations
-from rock_balance_contract import apply_rock_balance
+from .rock_balance_contract import apply_rock_balance
 
 GENRE_NAME = "ROCK"
 GENRE_PROFILE_ID = "ROCK_V1"

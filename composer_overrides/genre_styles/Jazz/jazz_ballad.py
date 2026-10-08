@@ -8,8 +8,8 @@ Other Jazz variants and Rock are *not* aliases of Jazz Ballad.
 """
 from __future__ import annotations
 
-from jazz_arranger_style import arrange_jazz_ballad as _arrange
-from jazz_balance_contract import apply_jazz_ballad_balance as _balance
+from .jazz_arranger_style import arrange_jazz_ballad as _arrange
+from .jazz_balance_contract import apply_jazz_ballad_balance as _balance
 
 GENRE_NAME = "Jazz Ballad"
 GENRE_PROFILE_ID = "JAZZ_BALLAD_V1"

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-08",
+  "reference_only": true,
+  "activation_enabled": false,
+  "actual_sample_files_copied": false,
+  "original_recordings_immutable": true,
+  "source_policy": "No substitution or waveform edits; recorded WAV/FLAC/SFZ source belongs to its original library; this folder holds references only.",
+  "source_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+  "name": "Karoryfer Swirly Drums — recorded Jazz Ballad brush source",
+  "upstream": "https://github.com/sfzinstruments/karoryfer.swirly-drums",
+  "license": "CC0-1.0",
+  "pin_source": "composer_overrides/jazz_ballad_recorded_resources.py",
+  "jazz_instrument_catalog": "composer_overrides/genre_styles/Jazz/instrument_library.json",
+  "drum_catalog_kit_id": "jazz_ballad_brush_recorded",
+  "source_state": "Previously sample/source-route validated for Jazz Ballad; final end-to-end mixed Jazz audio not verified.",
+  "runtime_bank_root": "composer/runtime/sound_resources/JAZZ_SWIRLY_BRUSH_PINNED",
+  "individual_instruments": [
+    {
+      "role": "KICK",
+      "instrument_id": "kick_drum_rock",
+      "source_instrument_id": "brush_drums",
+      "registry_binding": "kick_drum_rock:brush_drums",
+      "preferred_mapping": "Programs/jazz-brush-kick.sfz",
+      "note": 36,
+      "source_sample_family": "Samples/marching_kick/"
+    },
+    {
+      "role": "SNARE",
+      "instrument_id": "snare_drum",
+      "source_instrument_id": "brush_drums",
+      "registry_binding": "snare_drum:brush_drums",
+      "preferred_mapping": "Programs/jazz-brush-snare.sfz",
+      "note": 38,
+      "source_sample_family": "Samples/snare_stir/"
+    },
+    {
+      "role": "HAT",
+      "instrument_id": "hi_hat",
+      "source_instrument_id": "brush_drums",
+      "registry_binding": "hi_hat:brush_drums",
+      "preferred_mapping": "Programs/jazz-brush-hat.sfz",
+      "note": 42,
+      "source_sample_family": "Samples/hat_closed/"
+    }
+  ],
+  "restrictions": [
+    "Keep Rock's Big Rusty mappings unchanged",
+    "Only reference the already approved Jazz Ballad recorded programs; do not automatically assign this kit to other genres",
+    "Render kick, snare and hi-hat as independent stems"
+  ]
+}

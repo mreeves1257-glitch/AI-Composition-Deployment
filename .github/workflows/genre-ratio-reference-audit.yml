@@ -1,0 +1,36 @@
+name: Extract existing genre instrument references (read only)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/genre-ratio-reference-audit.yml'
+      - 'composer_overrides/genre_styles/**'
+      - 'composer_overrides/genre_ratio_reference.py'
+  workflow_dispatch:
+jobs:
+  original-registry-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect original 55 profile and instrument palette references without editing sources
+        run: |
+          mkdir -p /tmp/original_composer_reference
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original_composer_reference
+          python - <<'PY'
+          import ast, json
+          from pathlib import Path
+          root = Path("/tmp/original_composer_reference")
+          reg = json.loads((root/"AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json").read_text())
+          script = ast.parse((root/"AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py").read_text())
+          palettes = ast.literal_eval(next(n.value for n in script.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=="PALETTES" for t in n.targets)))
+          func=next(n for n in script.body if isinstance(n,ast.FunctionDef) and n.name=="family_template")
+          scope={}
+          exec(compile(ast.Module(body=[func],type_ignores=[]), "family_template.py", "exec"),scope)
+          rows=[]
+          for name in reg["profiles"]:
+              family=scope["family_template"](name)
+              rows.append({"genre":name,"template":family,"palette":list(palettes[family])})
+          print("GENRE_PALETTE_START")
+          print(json.dumps(rows,separators=(",",":"),ensure_ascii=False))
+          print("GENRE_PALETTE_END")
+          assert len(rows)==55
+          PY

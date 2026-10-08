@@ -113,7 +113,7 @@ class ComposerWithJazzPreview(Handler):
         The output root comes from the SAME output_handoff.OUT used to render.
         """
         match = re.fullmatch(
-            r"/audio/final_audio/(composition_[A-Za-z0-9_-]+)/stereo_derivative\\.wav",
+            r"/audio/final_audio/(composition_[A-Za-z0-9_-]+)/stereo_derivative\.wav",
             path,
         )
         if match is None:
@@ -131,7 +131,7 @@ class ComposerWithJazzPreview(Handler):
             start, end, status = 0, size - 1, 200
             range_header = self.headers.get("Range", "")
             if range_header:
-                requested = re.fullmatch(r"bytes=(\\d*)-(\\d*)", range_header.strip())
+                requested = re.fullmatch(r"bytes=(\d*)-(\d*)", range_header.strip())
                 if requested is None or not any(requested.groups()):
                     return self._audio_range_error(size, send_body)
                 first, last = requested.groups()

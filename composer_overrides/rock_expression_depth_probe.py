@@ -22,7 +22,7 @@ OUT=ROOT/"output"/"rock_expression_probe"
 def _midi(path, note, vel=100):
     # One measured real kick/guitar sample; no synthetic source.
     tempo=480*3
-    notes=b"\x00\x90"+bytes((note,vel))+b"\x88\x20"+b"\x80"+bytes((note,0))+b"\x00\xff\x2f\x00"
+    notes=b"\x00\x90"+bytes((note,vel))+b"\x8b\x20"+b"\x80"+bytes((note,0))+b"\x00\xff\x2f\x00"
     assert tempo==1440
     path.write_bytes(b"MThd"+struct.pack(">IHHH",6,0,1,480)+
                      b"MTrk"+struct.pack(">I",len(notes))+notes)

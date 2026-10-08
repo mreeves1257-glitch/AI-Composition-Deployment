@@ -225,6 +225,8 @@ cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adap
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
 cp composer_overrides/instrument_performance_contract.py composer/runtime/instrument_performance_contract.py
 cp composer_overrides/test_instrument_performance_contract.py composer/runtime/test_instrument_performance_contract.py
+cp composer_overrides/rock_balance_contract.py composer/runtime/rock_balance_contract.py
+cp composer_overrides/test_rock_balance_contract.py composer/runtime/test_rock_balance_contract.py
 cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/global_3d_output_gate.py composer/runtime/
@@ -421,7 +423,11 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
     job_dir = OUT / package.package_id / 'three_d_mixer'
     job_dir.mkdir(parents=True, exist_ok=True)
     job_path = job_dir / 'job.json'
-    job_path.write_text(json.dumps({'engine_result': engine_result, 'stems': stems}), encoding='utf-8')
+    # Composer chooses the balance profile; the independent 3D mixer remains
+    # unchanged. This is a pure, Rock-only metadata overlay.
+    from rock_balance_contract import apply_rock_balance
+    mixer_instructions = apply_rock_balance(engine_result)
+    job_path.write_text(json.dumps({'engine_result': mixer_instructions, 'stems': stems}), encoding='utf-8')
     cp = subprocess.run(
         [sys.executable, str(ROOT / 'standalone_3d_mixer.py'), str(job_path), str(final_root)],
         capture_output=True, text=True, timeout=240
@@ -509,8 +515,9 @@ python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
-python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 python composer/runtime/test_instrument_performance_contract.py
+python composer/runtime/test_rock_balance_contract.py
 # Exercise the actual genre setup with no audio rendering. A bad palette,
 # missing core drum part, or mixed instrument IDs must fail this build rather
 # than leave an apparently-live composer that rejects every Rock composition.

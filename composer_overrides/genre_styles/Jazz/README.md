@@ -1,43 +1,54 @@
-# Jazz — shared instruments, separate musical styles
+# Jazz — one shared instrument library, Jazz Ballad first
 
-The Jazz family is one directory, with eight independent music-style modules.
-No genre's musical arrangement is stored in a giant cross-genre file.
+This folder is the parent of the Jazz family. It contains one shared catalog
+of recorded instruments, but **only Jazz Ballad is in development now**.
+The other seven style files and role manifests are deliberately empty placeholders.
+Do not populate them, copy Jazz Ballad into them, or treat them as operational
+arrangements until the finished Ballad has been approved as a reusable template.
 
-## Canonical resources
+## File structure
 
-- `instrument_library.json` is the **one source of truth** for available Jazz instruments: instrument ID, registry binding, SFZ program, source bank, verified MIDI note range, and role.
-- All actual recorded WAV/SFZ files remain in the shared runtime `sound_resources` library. The Jazz directory references those files. It **does not duplicate or re-render** them.
-- `instrument_packages/<style>.json` lists only instrument IDs from the shared Jazz catalog, selected for that style. Each has the same structural schema and six initial role links.
-- `instrument_packages/__init__.py` resolves each selected role back to the canonical Jazz catalog. It rejects missing mappings and never substitutes synthetic instruments.
+- `instrument_library.json`: canonical existing Jazz sample references. The WAV/SFZ
+  audio files remain in the shared `sound_resources` bank; there are no copies here.
+- `harmony.py`: bounded common Jazz harmonic mechanics. A placeholder style is
+  not activated by this shared helper.
+- `jazz_ballad.py`: **the only active new Jazz framework**; owns its composition,
+  progression, ensemble arrangement, and instrument role decisions.
+- `instrument_packages/jazz_ballad.json`: working Ballad roles referencing the
+  verified sources in `instrument_library.json`. Its Wurlitzer piano stays
+  unchanged. The double bass, clarinet, kick, brush snare and hat use existing
+  recorded samples.
+- `swing.py`, `big_band.py`, `jazz_waltz.py`, `bebop.py`,
+  `cool_jazz.py`, `dixieland.py`, `jazz_fusion.py`: reserved names only,
+  with `DEVELOPMENT_STATUS = "NOT_STARTED"`, no chord progressions,
+  no arrangement algorithms and no instrument assignments. Their manifests
+  under `instrument_packages/` have empty `roles` objects.
 
-## Individual styles
+## Sequence
 
-| Genre | Style file | Instrument link manifest |
-| --- | --- | --- |
-| Jazz Ballad | `jazz_ballad.py` | `instrument_packages/jazz_ballad.json` |
-| Swing | `swing.py` | `instrument_packages/swing.json` |
-| Big Band | `big_band.py` | `instrument_packages/big_band.json` |
-| Jazz Waltz | `jazz_waltz.py` | `instrument_packages/jazz_waltz.json` |
-| Bebop | `bebop.py` | `instrument_packages/bebop.json` |
-| Cool Jazz | `cool_jazz.py` | `instrument_packages/cool_jazz.json` |
-| Dixieland | `dixieland.py` | `instrument_packages/dixieland.json` |
-| Jazz Fusion | `jazz_fusion.py` | `instrument_packages/jazz_fusion.json` |
+1. **Finish Jazz Ballad completely:** hear all instruments, develop the melody
+   and chords, balance the ensemble, remove distracting brush noise/static,
+   and confirm stable playable final audio.
+2. Keep that verified implementation as the reference template.
+3. Only then create the other Jazz subgenres individually by copying that
+   proven structure and changing *their own* music rules and instrument
+   selections. Sharing samples does not mean all styles must sound the same.
 
-`harmony.py` is a shared *Jazz-family* seventh/sixth-chord helper, not a store of style-specific chord patterns. Each style owns its own progression and will own future stylistic refinements.
+## Shared infrastructure and other genres
 
-## Source and verification boundaries
+`genre_styles/registry.py` routes named styles while preventing undeveloped
+Jazz placeholder modules from being loaded as finished arrangements.
+The Composer, control panel, plug, sample renderer and standalone 3D mixer
+are shared utilities, not music genre folders.
 
-The Jazz library currently contains **six verified recorded mappings**, originally established for Jazz Ballad: Wurlitzer piano, VSCO clarinet, Karoryfer double bass, and three Swirly drum/brush roles (soft kick, brush snare, hi-hat). Jazz Ballad's instrument binding status is `VERIFIED_RECORDED_SOURCES`. The other seven styles have links to the same available library but remain marked `STYLE_ROUTING_NOT_YET_VERIFIED` until their score-specific palette/notes and audio are checked. Linking is not equivalent to proving that the instruments are playing audibly.
+**Rock stays independent** under `genre_styles/rock.py`; its working audio,
+instrument mix, tempo and performance controls are not modified by Jazz work.
+Other multistyle genres can later use similar family folders when needed.
 
-The electric-piano recording and the instrument rendering files are **preserved unchanged**. Jazz Ballad's arranger-style event transformation, relative mixer gains and repetition controls are separate from the piano source.
+## Preserve earlier work
 
-## Isolation rule
-
-- The root `genre_styles/registry.py` only dispatches the chosen genre to its own module.
-- **Rock stays in `genre_styles/rock.py`** and keeps its established performance/balance implementation.
-- Theory validation, the sample library, audio rendering, plug, control panel and standalone 3D mixer remain common infrastructure; their musical policies do not get merged into Jazz files.
-- Never move entire recorded sample banks into a genre folder or rewrite another genre to implement a Jazz correction.
-
-## Preserved checkpoints
-
-The prior cross-genre working snapshot is retained in Git under `jazz-pre-consolidation-hardcopy-20261008`, and the pre-Jazz-audibility baseline under `protected-composer-before-jazz-audibility-2026-10-08`. The changes here are project organization and shared-resource linking, **not** evidence that every Jazz genre has finished, audibly verified music.
+Older file versions remain in Git history; the hardcopy references include
+`protected-composer-before-jazz-audibility-2026-10-08` and
+`jazz-pre-consolidation-hardcopy-20261008`.
+Do not overwrite the protected history or claim that resource links alone
+prove a finished audible Jazz performance.

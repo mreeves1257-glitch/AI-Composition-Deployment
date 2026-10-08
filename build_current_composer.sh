@@ -588,7 +588,7 @@ import json, sys
 from pathlib import Path
 root=Path("composer/runtime").resolve()
 sys.path.insert(0,str(root))
-from genre_styles.jazz_ballad import instrument_links, validate_instrument_links
+from genre_styles.Jazz.jazz_ballad import instrument_links, validate_instrument_links
 package=instrument_links()
 registry=json.loads((root/"target_registry.json").read_text(encoding="utf-8"))
 bindings=registry["targets"]["INTERNAL"]["instrument_bindings"]
@@ -647,8 +647,9 @@ PY
 python composer/runtime/test_jazz_arranger_style.py -v
 python composer/runtime/test_genre_style_files.py -v
 
-# Offline guard: eight Jazz genre identities; true 7ths/sixths; no changes
-# to Rock, New Age, custom selections, note routing, or instrument audio.
+# Keep the six confirmed recorded Jazz Ballad roles and extended harmony.
+# The seven other Jazz names are only placeholders until Ballad is finished.
+# The legacy non-Ballad Composer remains untouched; no early templates.
 python - <<'PY'
 import json, sys
 from pathlib import Path
@@ -657,6 +658,7 @@ from genre_development_patch import (
     JAZZ_GENRE_PROFILES, build_jazz_progression,
     realize_jazz_voicings, apply_jazz_phrase_expression,
 )
+from genre_styles.registry import get_style
 from executable_theory_engine_SOURCE_PRESERVED import TheoryEngine
 profiles = json.loads(Path(
     "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json"
@@ -666,19 +668,20 @@ assert len(profiles) == 55 and len(JAZZ_GENRE_PROFILES) == 8
 for name, profile_id in JAZZ_GENRE_PROFILES.items():
     p = profiles[name]
     assert p["profile_id"] == profile_id
-    mode = "natural_minor" if name == "Jazz Fusion" else "major"
-    prog = build_jazz_progression(name, p, mode, 32, 19)
-    assert len(prog) == 32
+    if name != "Jazz Ballad":
+        assert get_style(name, p) is None, ("PREMATURE_JAZZ_STYLE",name)
+        mode = "natural_minor" if name == "Jazz Fusion" else "major"
+        assert build_jazz_progression(name, p, mode, 32, 19) is None, name
+        continue
+    prog = build_jazz_progression(name, p, "major", 32, 19)
+    assert len(prog) == 32 and prog[-1] == "I"
     ctx = theory.build_composition_context({
-        "tonic": "A" if name == "Jazz Fusion" else "C",
-        "mode": mode,
-        "meter": "3/4" if name == "Jazz Waltz" else "4/4",
-        "bars": 32,
-        "roman_progression": prog,
+        "tonic":"C", "mode":"major", "meter":"4/4",
+        "bars":32, "roman_progression":prog,
     })
-    assert ctx["status"] == "PASS", (name, ctx.get("status"))
-    jazz_ctx = realize_jazz_voicings(ctx, name, p)
-    assert all(len(ch["notes"]) == 4 for ch in jazz_ctx["harmony"]["chords"]), name
+    assert ctx["status"] == "PASS", ctx.get("status")
+    jazz_ctx = realize_jazz_voicings(ctx,name,p)
+    assert all(len(ch["notes"]) == 4 for ch in jazz_ctx["harmony"]["chords"])
     assert len(ctx["harmony"]["chords"][0]["notes"]) == 3, "ORIGINAL_CONTEXT_CHANGED"
     note = [{"track_id":"HARMONY","start_beat":4,"velocity":100}]
     assert apply_jazz_phrase_expression(note,name,p,4) != note
@@ -689,11 +692,11 @@ c = theory.build_composition_context({
     "tonic":"C","mode":"major","meter":"4/4","bars":3,
     "roman_progression":["ii","V","I"],
 })
-j = realize_jazz_voicings(c,"Swing",profiles["Swing"])
+j = realize_jazz_voicings(c,"Jazz Ballad",profiles["Jazz Ballad"])
 assert [x["notes"] for x in j["harmony"]["chords"]] == [
     ["D","F","A","C"],["G","B","D","F"],["C","E","G","B"]
 ]
-print("JAZZ_EXTENDED_HARMONY_OFFLINE_PASS", len(JAZZ_GENRE_PROFILES), len(profiles), flush=True)
+print("JAZZ_BALLAD_ONLY_EXTENDED_HARMONY_PASS", len(JAZZ_GENRE_PROFILES), len(profiles), flush=True)
 PY
 
 # Verify rich Jazz voicings survive the legacy long-form arrangement edits.

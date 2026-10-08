@@ -22,13 +22,13 @@
     },
     "KICK": {
       "catalog_key": "brush_kick_swirly",
-      "relative_active_level_db": 0,
-      "role": "BASS_DRUM_EQUAL_TO_PIANO_AND_CLARINET"
+      "relative_active_level_db": 8,
+      "role": "EXTRA_AUDIBLE_KICK_BEYOND_SUSTAINED_REFERENCE"
     },
     "SNARE": {
       "catalog_key": "brush_snare_swirly",
-      "relative_active_level_db": -12,
-      "role": "VERY_SUBTLE_RUSHING_BRUSH"
+      "relative_active_level_db": -22,
+      "role": "BRUSH_SNARE_QUIETEST_LOWERED_ANOTHER_TEN_DB"
     },
     "HAT": {
       "catalog_key": "brush_hat_swirly",
@@ -39,5 +39,5 @@
   "mixer_only": true,
   "sample_file_edits_allowed": false,
   "source_registry_edits_allowed": false,
-  "notes": "Preliminary listening-target relative active-level ratios, not universal professional dB standards. Piano, clarinet and kick equal at 0 dB; acoustic double bass a little lower; brushed snare and hat more subdued to address rushing/static-like sound. Source instrument recordings, SFZ maps and composition events are off-limits."
+  "notes": "Jazz Ballad-only listening revisions: original piano and clarinet remain equal at 0 dB active reference; brief recorded kick increased +8 dB ABOVE their sustained active-reference target to improve audibility (not a promise of greater bass extension); bass -3 dB; hat -7 dB; brush snare -22 dB (another 10 dB below previous -12 dB, quietest). Only final mixer track gain metadata changes; the original downloaded WAV/SFZ assets and their identity are immutable."
 }

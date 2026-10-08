@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "INSTRUMENT_CAPABILITY_EVIDENCE_NOT_FULL_MUSICAL_APPROVAL",
+  "purpose": "Genre-neutral, exact instrument/program-specific expressive MIDI output; no Yamaha/Korg proprietary implementation.",
+  "activated_genres": [],
+  "entries": {
+    "SHINYGUITAR_RECORDED_LEAD_CC1_V1": {
+      "resource_id": "KARORYFER_SHINYGUITAR",
+      "preferred_mapping": "Programs/composer-electric-lead.sfz",
+      "instrument_ids": [
+        "electric_guitar",
+        "lead_guitar"
+      ],
+      "note_mode": "monophonic_expressive_gestures_only",
+      "supported_controls": {
+        "vibrato_depth": {
+          "message": "control_change",
+          "controller": 1,
+          "value_range": [
+            0,
+            127
+          ],
+          "source_proof": "build_current_composer.sh derives composer-electric-lead.sfz from real Shinyguitar SFZ with lfo01_pitch_oncc1=30 and explicit set_cc1 mapping",
+          "semantic_limit": "Modulation amount of existing sampled-guitar SFZ LFO; not a generic guitar slide, breath, pitch-bend, or phrase humanizer."
+        }
+      },
+      "evidence_status": "SOURCE_CONTROL_MAPPED; AUDIO_RESPONSE_TEST_REQUIRED"
+    }
+  }
+}

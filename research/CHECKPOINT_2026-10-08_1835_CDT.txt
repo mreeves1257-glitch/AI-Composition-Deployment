@@ -1,0 +1,21 @@
+AI COMPOSER — PERFORMANCE LANGUAGE RESEARCH HARD CHECKPOINT
+Checkpoint: 2026-10-08 18:35 CDT (America/Chicago)
+Repository: mreeves1257-glitch/AI-Composition-Deployment
+Isolated research branch: performance-language-research-20261008
+Deployment: UNCHANGED
+Plug: UNCHANGED
+Control panel: UNCHANGED
+Composer runtime and genre links: UNCHANGED
+Original recorded samples: UNCHANGED
+Standalone 3D mixer: UNCHANGED
+
+Research work archived separately in this chat as:
+ai-composer-performance-language_2026-10-08_1835_CDT.zip
+
+That ZIP includes the vocabulary, read-only interpreter, nine independently passing unit checks, documentation, and audit of actual recorded Shinyguitar/Growlybass source SFZs. The code was not installed in the Composer and is not contained in this branch. This GitHub branch contains the durable audit and checkpoint metadata only.
+
+Working finding: only the exact recorded Shinyguitar lead CC1 vibrato has an existing verified expressive handoff, while Shinyguitar release noises, mute samples and other controller capabilities remain largely unmapped. The selected Growlybass clean SFZ includes recorded sustain material but no release-trigger regions; other bank patches have release recordings. Source facts do not prove natural full-song playback.
+
+NEXT: study actual generated note-on/off events versus the selected SFZ release envelopes, source sample durations, and sample looping behavior. Add only source-proven performance capabilities, then validate recorded audio before activating any genre connections.
+
+DO NOT REBUILD OR REPLACE EXISTING STRUCTURES.

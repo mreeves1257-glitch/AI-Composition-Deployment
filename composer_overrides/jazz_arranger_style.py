@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-VERSION = "JAZZ_BALLAD_ARRANGER_STYLE_R1"
+VERSION = "JAZZ_BALLAD_ARRANGER_STYLE_R2_INDEPENDENT_LEAD"
 BASS_RANGE = (35, 55)       # Jazz Meatbass SFZ's verified mapped MIDI range
 CLARINET_RANGE = (60, 71)   # Jazz VSCO clarinet SFZ's verified mapped range
 # These refer to the *composition's* eight-bar sections, not to an instrument.
@@ -45,6 +45,30 @@ def _choose(candidates: list[int], target: int, previous: int | None,
     ))
 
 
+def _piano_active_notes(piano_events: list[dict], at_beat: float) -> set[int]:
+    """Read pitches sounding in the ORIGINAL piano part, without changing it."""
+    return {
+        int(event["midi"]) for event in piano_events
+        if isinstance(event.get("midi"), int)
+        and float(event.get("start_beat", 0)) <= at_beat
+        < float(event.get("start_beat", 0)) + float(event.get("duration_beats", 0))
+    }
+
+
+def _separate_clarinet_from_piano(chord_notes: list[int], scale_notes: list[int],
+                                 piano_notes: set[int]) -> list[int]:
+    """Choose an independent lead note inside the actual recorded clarinet range.
+
+    First take a chord note absent from the piano. When the piano owns all
+    playable chord tones, use a diatonic passing tone instead of doubling it.
+    """
+    distinct_chord = [note for note in chord_notes if note not in piano_notes]
+    if distinct_chord:
+        return distinct_chord
+    distinct_scale = [note for note in scale_notes if note not in piano_notes]
+    return distinct_scale or chord_notes
+
+
 def arrange_jazz_ballad(events: list[dict], ctx: dict,
                         creation_seed: int = 0) -> list[dict]:
     """Adapt an existing Jazz Ballad score, never creating new instruments.
@@ -74,6 +98,14 @@ def arrange_jazz_ballad(events: list[dict], ctx: dict,
     for entries in keyed.values():
         entries.sort(key=lambda pair: (float(pair[1].get("start_beat", 0)), pair[0]))
 
+    # Piano and clarinet have independent logical tracks, instruments and stems.
+    # Consult the preserved piano notes ONLY to give clarinet its own melody.
+    piano_events = [event for event in events
+                    if str(event.get("track_id", "")).upper() == "HARMONY"]
+    scale = ctx.get("key", {}).get("scale_pitch_classes", [])
+    scale_pcs = {pc % 12 for pc in scale if isinstance(pc, int) and not isinstance(pc, bool)}
+    scale_notes = [note for note in range(CLARINET_RANGE[0], CLARINET_RANGE[1] + 1)
+                   if note % 12 in scale_pcs]
     modified = {}
     suppressed = set()
     previous_lead = None
@@ -115,27 +147,28 @@ def arrange_jazz_ballad(events: list[dict], ctx: dict,
             modified[index] = revised
             previous_bass = pitch
 
-        # A melody should develop in four-bar phrases but remain inside the
-        # actually mapped clarinet recordings. Chord tones anchor strong beats.
+        # Keep a separate, clearly discernible clarinet melody against the
+        # unchanged piano's chord voicings. Distinct rhythmic entrance and
+        # note selection prevent the two parts from playing in unison.
         lead_entries = keyed.get(("LEAD", bar), [])
         for position, (index, event) in enumerate(lead_entries):
-            beat = float(event.get("start_beat", 0)) % meter
+            start = float(event.get("start_beat", 0))
+            beat = start % meter
             phrase = bar // 4
             contour = (0, 2, 4, 2, -1, -3, 1, 3)
             target = 65 + contour[(phrase + position + bar % 4 + int(creation_seed)) % 8]
-            # Keep every on-beat melody anchor harmonically related.
-            # Passing notes from the existing scale provide connective motion.
-            candidates = lead_candidates
-            if position > 0 and beat >= meter / 2:
-                scale = ctx.get("key", {}).get("scale_pitch_classes", [])
-                if scale and all(isinstance(pc, int) for pc in scale):
-                    passing = [n for n in range(CLARINET_RANGE[0], CLARINET_RANGE[1] + 1)
-                               if n % 12 in {pc % 12 for pc in scale}]
-                    if passing and (phrase + variation) % 3 == 1:
-                        candidates = passing
+            # Gently offset coincident downbeat entrances without changing
+            # piano rhythm, other instruments or the original WAV/SFZ sounds.
+            concurrent = any(abs(float(p.get("start_beat", 0)) - start) < 0.01
+                             for p in piano_events)
+            expressive_start = start + (0.375 if concurrent and beat < meter - 0.5 else 0.0)
+            sounding_piano = _piano_active_notes(piano_events, expressive_start)
+            candidates = _separate_clarinet_from_piano(
+                lead_candidates, scale_notes, sounding_piano)
             pitch = _choose(candidates, target, previous_lead, True)
             revised = dict(event)
             revised["midi"] = pitch
+            revised["start_beat"] = round(expressive_start, 6)
             if isinstance(revised.get("velocity"), (int, float)):
                 revised["velocity"] = min(127, max(1, int(round(revised["velocity"] * 1.10))))
             if isinstance(revised.get("duration_beats"), (int, float)):

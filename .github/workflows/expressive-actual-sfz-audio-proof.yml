@@ -19,6 +19,8 @@ jobs:
       - name: Compare WAV output from exact same sampled note with and without timed expressive control
         env:
           PYTHONPATH: composer/runtime
-        run: python composer_overrides/test_expressive_sfizz_audio.py
+        run: |
+          cp composer_overrides/test_expressive_sfizz_audio.py composer/runtime/test_expressive_sfizz_audio.py
+          python composer/runtime/test_expressive_sfizz_audio.py
       - name: Confirm the 13 family folders remain informational and inactive
         run: python composer_overrides/genre_styles/validate_profiles.py

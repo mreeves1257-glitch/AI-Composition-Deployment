@@ -481,7 +481,7 @@ new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
     from rock_balance_contract import apply_rock_balance
     mixer_instructions = apply_rock_balance(engine_result)
     from genre_styles.Jazz.jazz_ballad import balance_mix as apply_jazz_ballad_balance
-    mixer_instructions = apply_jazz_ballad_balance(mixer_instructions)
+    mixer_instructions = apply_jazz_ballad_balance(mixer_instructions, stems=stems)
     # A separate recorded-kick derivative follows the same existing drum
     # events as KICK. The independent 3D mixer remains entirely unchanged.
     from recorded_subkick import prepare_recorded_subkick

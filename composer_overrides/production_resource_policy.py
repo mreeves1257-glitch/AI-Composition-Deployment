@@ -1,501 +1,100 @@
-#!/usr/bin/env bash
-set -euo pipefail
-rm -rf composer/runtime
-mkdir -p composer/runtime
-base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
-TOOLS_DIR="$PWD/.composer_tools"
-mkdir -p "$TOOLS_DIR/bin"
-python -m pip install numpy
-if ! command -v sfizz_render >/dev/null 2>&1 && [ ! -x "$TOOLS_DIR/bin/sfizz_render" ]; then
-  rm -rf "$TOOLS_DIR/sfizz-src" "$TOOLS_DIR/sfizz-build"
-  mkdir -p "$TOOLS_DIR/sfizz-src"
-  curl -fsSL "https://github.com/sfztools/sfizz/releases/download/1.2.3/sfizz-1.2.3.tar.gz" -o "$TOOLS_DIR/sfizz.tar.gz"
-  tar -xzf "$TOOLS_DIR/sfizz.tar.gz" -C "$TOOLS_DIR/sfizz-src" --strip-components=1
-  cmake -S "$TOOLS_DIR/sfizz-src" -B "$TOOLS_DIR/sfizz-build" -DCMAKE_BUILD_TYPE=Release -DSFIZZ_JACK=OFF -DSFIZZ_SHARED=OFF -DPLUGIN_LV2=OFF -DPLUGIN_LV2_UI=OFF -DPLUGIN_VST3=OFF -DSFIZZ_RENDER=ON
-  cmake --build "$TOOLS_DIR/sfizz-build" --target sfizz_render -j2
-  SFIZZ_BIN="$(find "$TOOLS_DIR/sfizz-build" -type f -name sfizz_render -perm -111 | head -1)"
-  test -n "$SFIZZ_BIN"; cp "$SFIZZ_BIN" "$TOOLS_DIR/bin/sfizz_render"
-fi
-BANK="$PWD/composer/runtime/sound_resources"; mkdir -p "$BANK"
-install_library () {
-  local rid="$1" repo="$2" branch="$3"; local dest="$BANK/$rid"
-  rm -rf "$dest"; git clone --depth 1 --branch "$branch" "$repo" "$dest"
-  if command -v git-lfs >/dev/null 2>&1; then (cd "$dest" && git lfs pull); fi
-}
-install_library "KARORYFER_GROWLYBASS_V1_002" "https://github.com/sfzinstruments/karoryfer.growlybass.git" "master"
-install_library "KARORYFER_SHINYGUITAR" "https://github.com/sfzinstruments/karoryfer.shinyguitar.git" "master"
-install_library "KARORYFER_BIG_RUSTY_DRUMS" "https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git" "main"
-install_library "GREG_SULLIVAN_E_PIANOS" "https://github.com/sfzinstruments/GregSullivan.E-Pianos.git" "master"
-find "$BANK/KARORYFER_SHINYGUITAR" "$BANK/KARORYFER_BIG_RUSTY_DRUMS" -type f -name "*.sfz" -print0 | xargs -0 sed -i 's#\\#/#g'
+"""Production instrument-resource gate for AI Composer.
 
-python - <<'PY'
-from pathlib import Path
-root=Path("composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs")
-src=(root/"main.sfz").read_text(encoding="utf-8")
-src=src.replace("default_path=$sample_dir/", "default_path=../Samples/")
-src="\n".join(line for line in src.splitlines() if '#include "acoustic_' not in line)
-src=src.replace("set_cc106=0", "set_cc106=32")
-(root/"composer-electric.sfz").write_text(src+"\n", encoding="utf-8")
-PY
-ln -sfn "$BANK/KARORYFER_SHINYGUITAR/Samples/electric" "$BANK/KARORYFER_SHINYGUITAR/Programs/electric"
-ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Samples" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/Samples"
-ln -sfn "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings" "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/mappings/mappings"
-cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz" <<'SFZ'
-<global> key=42 loop_mode=one_shot seq_length=4 ampeg_release=0.20
-
-<group> hivel=15
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl1_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl1_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl1_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl1_rr4.flac seq_position=4
-
-<group> lovel=16 hivel=31
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl2_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl2_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl2_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl2_rr4.flac seq_position=4
-
-<group> lovel=32 hivel=47
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl3_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl3_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl3_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl3_rr4.flac seq_position=4
-
-<group> lovel=48 hivel=63
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl4_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl4_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl4_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl4_rr4.flac seq_position=4
-
-<group> lovel=64 hivel=79
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl5_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl5_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl5_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl5_rr4.flac seq_position=4
-
-<group> lovel=80 hivel=95
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl6_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl6_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl6_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl6_rr4.flac seq_position=4
-
-<group> lovel=96 hivel=111
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl7_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl7_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl7_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl7_rr4.flac seq_position=4
-
-<group> lovel=112 hivel=127
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl8_rr1.flac
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl8_rr2.flac seq_position=2
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl8_rr3.flac seq_position=3
-<region> sample=../Samples/hihat_14/tc/cl/ht_tc_vl8_rr4.flac seq_position=4
-SFZ
-
-# Memory-bounded Composer-facing Big Rusty drum programs. These keep real
-# Big Rusty recordings, velocity layers, and round robin while avoiding the
-# full library graphs that exceed the 512 MiB Render instance in normal mode.
-
-cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz" <<'SFZ'
-<global> key=36 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.00 ampeg_sustain=100 ampeg_release=0.20
-<group> hivel=31
-<region> sample=../Samples/kick_24/kick/kick/k_vl1_rr1.flac
-<region> sample=../Samples/kick_24/kick/kick/k_vl1_rr2.flac seq_position=2
-<region> sample=../Samples/kick_24/kick/kick/k_vl1_rr3.flac seq_position=3
-<region> sample=../Samples/kick_24/kick/kick/k_vl1_rr4.flac seq_position=4
-<group> lovel=32 hivel=63
-<region> sample=../Samples/kick_24/kick/kick/k_vl5_rr1.flac
-<region> sample=../Samples/kick_24/kick/kick/k_vl5_rr2.flac seq_position=2
-<region> sample=../Samples/kick_24/kick/kick/k_vl5_rr3.flac seq_position=3
-<region> sample=../Samples/kick_24/kick/kick/k_vl5_rr4.flac seq_position=4
-<group> lovel=64 hivel=95
-<region> sample=../Samples/kick_24/kick/kick/k_vl9_rr1.flac
-<region> sample=../Samples/kick_24/kick/kick/k_vl9_rr2.flac seq_position=2
-<region> sample=../Samples/kick_24/kick/kick/k_vl9_rr3.flac seq_position=3
-<region> sample=../Samples/kick_24/kick/kick/k_vl9_rr4.flac seq_position=4
-<group> lovel=96 hivel=127
-<region> sample=../Samples/kick_24/kick/kick/k_vl13_rr1.flac
-<region> sample=../Samples/kick_24/kick/kick/k_vl13_rr2.flac seq_position=2
-<region> sample=../Samples/kick_24/kick/kick/k_vl13_rr3.flac seq_position=3
-<region> sample=../Samples/kick_24/kick/kick/k_vl13_rr4.flac seq_position=4
-SFZ
-
-cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz" <<'SFZ'
-<global> key=38 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.20 ampeg_sustain=100 ampeg_release=0.25
-<group> hivel=31
-<region> sample=../Samples/snare_14/center/top/sn_center_vl1_rr1.flac
-<region> sample=../Samples/snare_14/center/top/sn_center_vl1_rr2.flac seq_position=2
-<region> sample=../Samples/snare_14/center/top/sn_center_vl1_rr3.flac seq_position=3
-<region> sample=../Samples/snare_14/center/top/sn_center_vl1_rr4.flac seq_position=4
-<group> lovel=32 hivel=63
-<region> sample=../Samples/snare_14/center/top/sn_center_vl4_rr1.flac
-<region> sample=../Samples/snare_14/center/top/sn_center_vl4_rr2.flac seq_position=2
-<region> sample=../Samples/snare_14/center/top/sn_center_vl4_rr3.flac seq_position=3
-<region> sample=../Samples/snare_14/center/top/sn_center_vl4_rr4.flac seq_position=4
-<group> lovel=64 hivel=95
-<region> sample=../Samples/snare_14/center/top/sn_center_vl7_rr1.flac
-<region> sample=../Samples/snare_14/center/top/sn_center_vl7_rr2.flac seq_position=2
-<region> sample=../Samples/snare_14/center/top/sn_center_vl7_rr3.flac seq_position=3
-<region> sample=../Samples/snare_14/center/top/sn_center_vl7_rr4.flac seq_position=4
-<group> lovel=96 hivel=127
-<region> sample=../Samples/snare_14/center/top/sn_center_vl10_rr1.flac
-<region> sample=../Samples/snare_14/center/top/sn_center_vl10_rr2.flac seq_position=2
-<region> sample=../Samples/snare_14/center/top/sn_center_vl10_rr3.flac seq_position=3
-<region> sample=../Samples/snare_14/center/top/sn_center_vl10_rr4.flac seq_position=4
-SFZ
-
-cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz" <<'SFZ'
-<global> lokey=41 hikey=47 pitch_keycenter=45 loop_mode=one_shot seq_length=4 ampeg_hold=0.08 ampeg_decay=1.30 ampeg_sustain=100 ampeg_release=0.25
-<group> hivel=31
-<region> sample=../Samples/tom_14/center/cl/t14_vl1_rr1.flac
-<region> sample=../Samples/tom_14/center/cl/t14_vl1_rr2.flac seq_position=2
-<region> sample=../Samples/tom_14/center/cl/t14_vl1_rr3.flac seq_position=3
-<region> sample=../Samples/tom_14/center/cl/t14_vl1_rr4.flac seq_position=4
-<group> lovel=32 hivel=63
-<region> sample=../Samples/tom_14/center/cl/t14_vl2_rr1.flac
-<region> sample=../Samples/tom_14/center/cl/t14_vl2_rr2.flac seq_position=2
-<region> sample=../Samples/tom_14/center/cl/t14_vl2_rr3.flac seq_position=3
-<region> sample=../Samples/tom_14/center/cl/t14_vl2_rr4.flac seq_position=4
-<group> lovel=64 hivel=95
-<region> sample=../Samples/tom_14/center/cl/t14_vl4_rr1.flac
-<region> sample=../Samples/tom_14/center/cl/t14_vl4_rr2.flac seq_position=2
-<region> sample=../Samples/tom_14/center/cl/t14_vl4_rr3.flac seq_position=3
-<region> sample=../Samples/tom_14/center/cl/t14_vl4_rr4.flac seq_position=4
-<group> lovel=96 hivel=127
-<region> sample=../Samples/tom_14/center/cl/t14_vl6_rr1.flac
-<region> sample=../Samples/tom_14/center/cl/t14_vl6_rr2.flac seq_position=2
-<region> sample=../Samples/tom_14/center/cl/t14_vl6_rr3.flac seq_position=3
-<region> sample=../Samples/tom_14/center/cl/t14_vl6_rr4.flac seq_position=4
-SFZ
-
-cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-crash-lite.sfz" <<'SFZ'
-<global> key=49 loop_mode=one_shot seq_length=4 ampeg_release=1.80
-<group> hivel=31
-<region> sample=../Samples/crash_17/cr/cl/cr_vl1_rr1.flac
-<region> sample=../Samples/crash_17/cr/cl/cr_vl1_rr2.flac seq_position=2
-<region> sample=../Samples/crash_17/cr/cl/cr_vl1_rr3.flac seq_position=3
-<region> sample=../Samples/crash_17/cr/cl/cr_vl1_rr4.flac seq_position=4
-<group> lovel=32 hivel=63
-<region> sample=../Samples/crash_17/cr/cl/cr_vl2_rr1.flac
-<region> sample=../Samples/crash_17/cr/cl/cr_vl2_rr2.flac seq_position=2
-<region> sample=../Samples/crash_17/cr/cl/cr_vl2_rr3.flac seq_position=3
-<region> sample=../Samples/crash_17/cr/cl/cr_vl2_rr4.flac seq_position=4
-<group> lovel=64 hivel=95
-<region> sample=../Samples/crash_17/cr/cl/cr_vl4_rr1.flac
-<region> sample=../Samples/crash_17/cr/cl/cr_vl4_rr2.flac seq_position=2
-<region> sample=../Samples/crash_17/cr/cl/cr_vl4_rr3.flac seq_position=3
-<region> sample=../Samples/crash_17/cr/cl/cr_vl4_rr4.flac seq_position=4
-<group> lovel=96 hivel=127
-<region> sample=../Samples/crash_17/cr/cl/cr_vl5_rr1.flac
-<region> sample=../Samples/crash_17/cr/cl/cr_vl5_rr2.flac seq_position=2
-<region> sample=../Samples/crash_17/cr/cl/cr_vl5_rr3.flac seq_position=3
-<region> sample=../Samples/crash_17/cr/cl/cr_vl5_rr4.flac seq_position=4
-SFZ
-
-cat > "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz" <<'SFZ'
-<global> key=51 loop_mode=one_shot seq_length=3 ampeg_release=1.30
-<group> hivel=31
-<region> sample=../Samples/ride_22/rd/cl/rd_vl1_rr1.flac
-<region> sample=../Samples/ride_22/rd/cl/rd_vl1_rr2.flac seq_position=2
-<region> sample=../Samples/ride_22/rd/cl/rd_vl1_rr3.flac seq_position=3
-<group> lovel=32 hivel=63
-<region> sample=../Samples/ride_22/rd/cl/rd_vl4_rr1.flac
-<region> sample=../Samples/ride_22/rd/cl/rd_vl4_rr2.flac seq_position=2
-<region> sample=../Samples/ride_22/rd/cl/rd_vl4_rr3.flac seq_position=3
-<group> lovel=64 hivel=95
-<region> sample=../Samples/ride_22/rd/cl/rd_vl7_rr1.flac
-<region> sample=../Samples/ride_22/rd/cl/rd_vl7_rr2.flac seq_position=2
-<region> sample=../Samples/ride_22/rd/cl/rd_vl7_rr3.flac seq_position=3
-<group> lovel=96 hivel=127
-<region> sample=../Samples/ride_22/rd/cl/rd_vl10_rr1.flac
-<region> sample=../Samples/ride_22/rd/cl/rd_vl10_rr2.flac seq_position=2
-<region> sample=../Samples/ride_22/rd/cl/rd_vl10_rr3.flac seq_position=3
-SFZ
-cp composer_overrides/production_resource_policy.py composer/runtime/production_resource_policy.py
-cp composer_overrides/real_electric_piano_probe.py composer/runtime/real_electric_piano_probe.py
-cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
-cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
-cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
-cp composer_overrides/AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py composer/runtime/
-cp composer_overrides/global_3d_output_gate.py composer/runtime/
-cp composer_overrides/spatial_master_handoff.py composer/runtime/
-cp composer_overrides/standalone_3d_mixer.py composer/runtime/
-cp composer_overrides/render_server.py composer/runtime/
-python - <<'PY'
+An instrument ROLE in the musical score is not a playable sound. Only explicitly
+approved, recorded-sample SFZ banks may render production audio. This module
+does not choose substitutes or alter composition, MIDI, or the 3D mix.
+"""
+from __future__ import annotations
 import json
-from pathlib import Path
-path=Path("composer/runtime/target_registry.json"); registry=json.loads(path.read_text())
-bindings=registry["targets"]["INTERNAL"].setdefault("instrument_bindings",{})
-bindings["electric_piano"]={
-    "resource_id":"GREG_SULLIVAN_E_PIANOS","target_gain_db":-6.0,
-    "resource_type":"SFZ_SAMPLE_LIBRARY",
-    "preferred_mapping":"Wurlitzer EP200/composer-wurlitzer.sfz",
-    "library":"Greg Sullivan E-Pianos / Wurlitzer EP200",
-    "license":"CC-BY-3.0","renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
-    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
-    "attribution":"Greg Sullivan; Wurlitzer EP200; sfz mapping kinwie; CC BY 3.0",
+from pathlib import PurePosixPath
+from typing import Any
+
+APPROVED_SAMPLE_BANKS = {
+    "GREG_SULLIVAN_E_PIANOS": {"library": "Greg Sullivan E-Pianos / Wurlitzer EP200", "license": "CC-BY-3.0"},
+    "KARORYFER_GROWLYBASS_V1_002": {"library": "Karoryfer Growlybass", "license": "CC0"},
+    "KARORYFER_SHINYGUITAR": {"library": "Karoryfer Shinyguitar", "license": "CC0-1.0"},
+    "KARORYFER_BIG_RUSTY_DRUMS": {"library": "Karoryfer Big Rusty Drums", "license": "CC0-1.0"},
 }
-bindings["electric_bass_guitar"]={
-    "resource_id":"KARORYFER_GROWLYBASS_V1_002","target_gain_db":0.0,
-    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"growlybass_clean.sfz",
-    "library":"Karoryfer Growlybass","license":"CC0",
-    "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
-    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
-    "articulation_policy":"SUSTAINED_REAL_BASS_WITH_NATIVE_VELOCITY_AND_ROUND_ROBIN"
-}
-bindings["electric_guitar:RHYTHM_POWER_CHORDS"]={
-    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-7.0,
-    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric.sfz",
-    "library":"Karoryfer Shinyguitar","license":"CC0-1.0",
-    "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
-    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
-    "midi_mapping":{"initial_cc":{"100":0,"101":127,"106":32,"107":0}}
-}
-bindings["electric_guitar:LEAD_MELODY"]={
-    "resource_id":"KARORYFER_SHINYGUITAR","target_gain_db":-8.0,
-    "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":"Programs/composer-electric.sfz",
-    "library":"Karoryfer Shinyguitar","license":"CC0-1.0",
-    "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
-    "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
-    "midi_mapping":{"initial_cc":{"100":0,"101":127,"106":24,"107":0}}
-}
-programs={
-    "kick_drum_rock":(10.0,"Programs/composer-kick-lite.sfz"),
-    "snare_drum":(9.0,"Programs/composer-snare-lite.sfz"),
-    "hi_hat":(4.0,"Programs/composer-hihat-lite.sfz"),
-    "ride_cymbal":(5.0,"Programs/composer-ride-lite.sfz"),
-    "crash_cymbal":(6.0,"Programs/composer-crash-lite.sfz"),
-    "tom_drum":(9.0,"Programs/composer-tom-lite.sfz"),
-    "tom_tom":(9.0,"Programs/composer-tom-lite.sfz"),
-}
-for instrument_id,(gain,mapping) in programs.items():
-    bindings[instrument_id]={
-        "resource_id":"KARORYFER_BIG_RUSTY_DRUMS","target_gain_db":gain,
-        "resource_type":"SFZ_SAMPLE_LIBRARY","preferred_mapping":mapping,
-        "library":"Karoryfer Big Rusty Drums","license":"CC0-1.0",
-        "renderer_requirement":"SFZ_COMPATIBLE_SAMPLE_RENDERER",
-        "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION"}
 
-path.write_text(json.dumps(registry,indent=2)+"\n")
-# Preserve the existing composer and add long-form development at its established
-# genre-adapter boundary. Quick/test mode stays untouched.
-adapter=Path("composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py")
-a=adapter.read_text()
-override=r"""
-# --- full-length development override ---
-from genre_development_patch import (
-    build_developed_progression as _build_developed_progression,
-    develop_full_length as _develop_full_length,
-)
-_legacy_build_setup = build_setup
+class ProductionResourceBlocked(ValueError):
+    pass
 
-def build_setup(name, profile, mode='quick', creation_seed=0):
-    result = _legacy_build_setup(name, profile, mode, creation_seed)
-    if mode != 'normal' or result.get('status') != 'PASS':
-        return result
+def require_recorded_sample_resource(binding: dict[str, Any]) -> None:
+    """Fail closed before SFZ preflight; actual sample files are checked there."""
+    if not isinstance(binding, dict):
+        raise ProductionResourceBlocked("RESOURCE_NOT_DECLARED")
+    if binding.get("resource_type") != "SFZ_SAMPLE_LIBRARY":
+        raise ProductionResourceBlocked("NON_SAMPLE_RESOURCE_BLOCKED")
+    if binding.get("fallback_policy") != "NO_SYNTHETIC_SUBSTITUTION":
+        raise ProductionResourceBlocked("FALLBACK_NOT_DISABLED")
+    rid = binding.get("resource_id")
+    approved = APPROVED_SAMPLE_BANKS.get(rid)
+    if not approved:
+        raise ProductionResourceBlocked("UNVERIFIED_SAMPLE_BANK:" + str(rid))
+    if binding.get("library") != approved["library"] or binding.get("license") != approved["license"]:
+        raise ProductionResourceBlocked("SAMPLE_PROVENANCE_MISMATCH:" + str(rid))
+    mapping = binding.get("preferred_mapping")
+    if not isinstance(mapping, str) or not mapping or "\\" in mapping:
+        raise ProductionResourceBlocked("INVALID_SAMPLE_MAPPING")
+    path = PurePosixPath(mapping)
+    if path.is_absolute() or any(part in ("..", ".") for part in mapping.split("/")) or path.suffix.lower() != ".sfz":
+        raise ProductionResourceBlocked("INVALID_SAMPLE_MAPPING")
 
-    req = dict(result['theory_request'])
-    bars = int(result['bars'])
-    tempo_bpm = int(result['tempo_bpm'])
-    seedv = int(hashlib.sha256(
-        f"{profile['profile_id']}:{creation_seed}".encode()
-    ).hexdigest()[:8], 16)
-
-    # Rock was landing at 125 BPM for the baseline seed, which is too relaxed
-    # for the driving test the Control Panel is using. Stay inside the approved
-    # ROCK profile (100-145) but bias normal Rock into its faster band.
-    if name == 'ROCK':
-        approved = profile.get('tempo_bpm_range') or [tempo_bpm, tempo_bpm]
-        profile_lo, profile_hi = int(approved[0]), int(approved[-1])
-        tempo_bpm = profile_hi
-        # The preserved Output Core builds the MIDI execution package from
-        # theory['tempo_bpm'], so write the selected Rock tempo back into the
-        # theory request before rebuilding composition context.
-        req['tempo_bpm'] = tempo_bpm
-
-        num, den = map(int, str(result['meter']).split('/'))
-        beats_per_bar = float(num) * 4.0 / float(den)
-        bars = max(24, min(320, round(210.0 * tempo_bpm / (60.0 * beats_per_bar))))
-        req['bars'] = bars
-
-    req['roman_progression'] = _build_developed_progression(
-        req['mode'], bars, seedv
-    )
-
-    ctx = engine.build_composition_context(req)
-    if ctx.get('status') not in ('PASS', 'REVIEW_REQUIRED'):
-        blocked = dict(result)
-        blocked.update(
-            status='THEORY_BLOCK',
-            theory=ctx,
-            theory_request=req,
-            events=[],
-        )
-        return blocked
-
-    events = generate_events(
-        name,
-        result['execution_template'],
-        profile,
-        ctx,
-        tempo_bpm,
-        creation_seed,
-    )
-    events = _develop_full_length(
-        events,
-        ctx,
-        result['execution_template'],
-        creation_seed,
-    )
-
-    developed = dict(result)
-    developed['theory_request'] = req
-    developed['theory_status'] = ctx['status']
-    developed['tempo_bpm'] = tempo_bpm
-    developed['bars'] = bars
-    developed['events'] = events
-    if name == 'ROCK':
-        # The legacy palette declares one generic "drums" instrument even
-        # though developed Rock events use separate sample-backed kit members.
-        # Keep the completeness guard: declare the required real instruments.
-        declared = []
-        for instrument in result['palette']:
-            if instrument == 'drums':
-                declared.extend(('kick_drum_rock', 'snare_drum', 'hi_hat'))
-            else:
-                declared.append(instrument)
-        developed['palette'] = declared
-    developed['development_model'] = 'FULL_LENGTH_SECTIONAL_V2'
-    return developed
-"""
-adapter.write_text(a + "\n" + override + "\n")
-p=Path("composer/runtime/output_handoff.py"); s=p.read_text()
-old="""    # Source stems cannot be promoted to a final master without the separate 3D module.
-    return {'status':'AUDIO_STEMS_READY_MASTER_REQUIRED','audio_rendered':False,
-            'source_audio_rendered':True,'stems':stems,'reason':'SPATIAL_MASTER_HANDOFF_REQUIRED',
-            'next_stage':'EXTERNAL_3D_MASTER','fallback_policy':'NO_SYNTHETIC_SUBSTITUTION'}
-"""
-new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
-    # separate final-stage process so it cannot alter composition or instrument
-    # rendering and does not share the Composer's audio working memory.
-    import subprocess, sys
-    final_root = OUT / 'final_audio'
-    job_dir = OUT / package.package_id / 'three_d_mixer'
-    job_dir.mkdir(parents=True, exist_ok=True)
-    job_path = job_dir / 'job.json'
-    job_path.write_text(json.dumps({'engine_result': engine_result, 'stems': stems}), encoding='utf-8')
-    cp = subprocess.run(
-        [sys.executable, str(ROOT / 'standalone_3d_mixer.py'), str(job_path), str(final_root)],
-        capture_output=True, text=True, timeout=240
-    )
-    try:
-        mixed = json.loads((cp.stdout or '').strip())
-    except json.JSONDecodeError:
-        return {'status':'AUDIO_3D_MIX_FAILED','audio_rendered':False,
-                'reason':'UNREADABLE_3D_MIXER_RESPONSE',
-                'mixer_stderr':(cp.stderr or '')[-800:]}
-    if cp.returncode != 0 or mixed.get('status') != 'AUDIO_RENDER_PASS':
-        mixed.setdefault('status','AUDIO_3D_MIX_FAILED')
-        mixed.setdefault('audio_rendered',False)
-        mixed['mixer_stderr']=(cp.stderr or '')[-800:]
-        return mixed
-    mixed['pipeline_order']=['COMPOSITION','REAL_INSTRUMENT_RENDER','STANDALONE_3D_FINAL_STAGE']
-    return mixed
-"""
-if old not in s: raise SystemExit("OUTPUT_HANDOFF_PATCH_TARGET_NOT_FOUND")
-p.write_text(s.replace(old,new))
-PY
-test -f "$BANK/KARORYFER_GROWLYBASS_V1_002/growlybass_clean.sfz"
-test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer-electric.sfz"
-test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz"
-test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz"
-test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz"
-test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-tom-lite.sfz"
-test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-crash-lite.sfz"
-test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-ride-lite.sfz"
-AI_COMP_RESOURCE_BANK="$BANK" PATH="$TOOLS_DIR/bin:$PATH" python - <<'PY'
-from pathlib import Path
-import sys
-sys.path.insert(0, str(Path("composer/runtime").resolve()))
-from sfz_renderer_adapter import validate_sfz_samples
-bank=Path("composer/runtime/sound_resources")
-checks=[
-    bank/"KARORYFER_GROWLYBASS_V1_002/growlybass_clean.sfz",
-    bank/"KARORYFER_SHINYGUITAR/Programs/composer-electric.sfz",
-    bank/"KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-kick-lite.sfz",
-    bank/"KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-snare-lite.sfz",
-    bank/"KARORYFER_BIG_RUSTY_DRUMS/Programs/composer-hihat-lite.sfz",
-]
-for path in checks:
-    report=validate_sfz_samples(path)
-    print("REAL_INSTRUMENT_RESOURCE_READY", path.name, report, flush=True)
-PY
-python - <<'PY'
-from pathlib import Path
-p=Path("composer/runtime/input_gateway.py")
-s=p.read_text()
-old="""    return {
-        'status': result.get('status'),
-        'genre': result.get('genre',genre.strip()),
-        'reason': result.get('reason'),
-        'stage': result.get('stage'),
-        'audio_rendered': result.get('audio_rendered',False),
-        'output_handoff': result.get('output_handoff'),
-"""
-new="""    stems=(result.get('audio_render') or {}).get('stems',[])
-    diagnostics=[{
-        'track_id':stem.get('track_id'),
-        'instrument_id':stem.get('instrument_id'),
-        'note_count':stem.get('note_count'),
-        'peak_dbfs':stem.get('peak_dbfs'),
-        'rms_dbfs':stem.get('rms_dbfs'),
-    } for stem in stems]
+def audit_bindings(registry: dict[str, Any]) -> dict[str, Any]:
+    bindings = registry["targets"]["INTERNAL"].get("instrument_bindings", {})
+    production = []
+    blocked = []
+    for instrument_id, resource in sorted(bindings.items()):
+        try:
+            require_recorded_sample_resource(resource)
+            production.append(instrument_id)
+        except ProductionResourceBlocked as exc:
+            blocked.append({"instrument_id": instrument_id, "reason": str(exc)})
     return {
-        'status': result.get('status'),
-        'genre': result.get('genre',genre.strip()),
-        'tempo_bpm': result.get('modules',{}).get('theory',{}).get('tempo_bpm'),
-        'render_diagnostics': diagnostics,
-        'reason': result.get('reason'),
-        'stage': result.get('stage'),
-        'audio_rendered': result.get('audio_rendered',False),
-        'output_handoff': result.get('output_handoff'),
-"""
-if old not in s:
-    raise SystemExit("INPUT_GATEWAY_DIAGNOSTIC_PATCH_TARGET_NOT_FOUND")
-p.write_text(s.replace(old,new))
-PY
-python composer/runtime/real_electric_piano_probe.py
-python composer/runtime/production_resource_policy.py --self-test
-python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
-python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
-# Exercise the actual genre setup with no audio rendering. A bad palette,
-# missing core drum part, or mixed instrument IDs must fail this build rather
-# than leave an apparently-live composer that rejects every Rock composition.
-python - <<'PY'
-from pathlib import Path
-import importlib.util, sys
-root = Path("composer/runtime").resolve()
-sys.path.insert(0, str(root))
-source = root / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
-spec = importlib.util.spec_from_file_location("composer_rock_smoketest", source)
-module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(module)
-result = module.GenreExecutionAdapter().resolve("ROCK", mode="normal", creation_seed=0)
-assert result.get("status") == "PASS", result.get("status")
-events = result["events"]
-assert events, "ROCK_HAS_NO_EVENTS"
-declared = set(result["palette"])
-used = {e["instrument_id"] for e in events}
-missing = sorted(declared - used)
-assert not missing, "ROCK_DECLARED_PART_NOT_GENERATED:" + repr(missing)
-required = {"kick_drum_rock", "snare_drum", "hi_hat"}
-assert required <= declared, "ROCK_REQUIRED_PART_NOT_DECLARED"
-by_track = {}
-for event in events:
-    by_track.setdefault(event["track_id"], set()).add(event["instrument_id"])
-mixed = {k: sorted(v) for k, v in by_track.items() if len(v) != 1}
-assert not mixed, "ROCK_MULTIPLE_INSTRUMENT_IDS:" + repr(mixed)
-print("ROCK_THEORY_MIDI_ROUTING_CHECK PASS", "events=" + str(len(events)),
-      "tracks=" + str(len(by_track)), flush=True)
-PY
-echo "CURRENT COMPOSER BASELINE READY"
+        "policy": "RECORDED_SAMPLE_BANKS_ONLY_NO_SYNTHETIC_SUBSTITUTION",
+        "approved_resource_bank_ids": sorted(APPROVED_SAMPLE_BANKS),
+        "sample_backed_binding_ids": production,
+        "legacy_or_unverified_binding_ids": blocked,
+        "warning": "Registry approval alone does not prove installed samples or audible output. SFZ preflight must pass.",
+    }
+
+def self_test() -> None:
+    for bank_id, provenance in APPROVED_SAMPLE_BANKS.items():
+        real = {"resource_type": "SFZ_SAMPLE_LIBRARY", "resource_id": bank_id,
+                "library": provenance["library"], "license": provenance["license"],
+                "preferred_mapping": "Programs/test.sfz", "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION"}
+        require_recorded_sample_resource(real)
+        for alteration in [
+            {"resource_type": "GM_PROGRAM"},
+            {"fallback_policy": "ALLOW_SYNTHETIC_FALLBACK"},
+            {"resource_id": "UNKNOWN_FAKE_LIBRARY"},
+            {"preferred_mapping": "../fake.sfz"},
+            {"preferred_mapping": "Programs/fake.wav"},
+            {"license": "UNVERIFIED"},
+        ]:
+            test = dict(real, **alteration)
+            try:
+                require_recorded_sample_resource(test)
+            except ProductionResourceBlocked:
+                continue
+            raise AssertionError("UNVERIFIED_INSTRUMENT_ACCEPTED:" + str(alteration))
+    for invalid in (None, {}, {"render_model": "PLUCKED_BASS_CLEAR"}):
+        try:
+            require_recorded_sample_resource(invalid)
+        except ProductionResourceBlocked:
+            continue
+        raise AssertionError("LEGACY_FAKE_INSTRUMENT_ACCEPTED")
+
+if __name__ == "__main__":
+    import argparse
+    from pathlib import Path
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("--audit-registry", type=Path)
+    args = parser.parse_args()
+    if args.self_test:
+        self_test()
+        print("PRODUCTION_REAL_INSTRUMENT_POLICY_TEST PASS", flush=True)
+    if args.audit_registry:
+        report = audit_bindings(json.loads(args.audit_registry.read_text()))
+        print("PRODUCTION_INSTRUMENT_RESOURCE_AUDIT " + json.dumps(report, sort_keys=True), flush=True)

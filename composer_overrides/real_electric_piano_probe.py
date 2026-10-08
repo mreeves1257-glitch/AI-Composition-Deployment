@@ -1,100 +1,66 @@
-"""Production instrument-resource gate for AI Composer.
+"""Build-time compatibility probe for the REAL Greg Sullivan Wurlitzer EP200.
 
-An instrument ROLE in the musical score is not a playable sound. Only explicitly
-approved, recorded-sample SFZ banks may render production audio. This module
-does not choose substitutes or alter composition, MIDI, or the 3D mix.
+No synthesizer, GM fallback, or substitute sound may pass this test. The
+Wurlitzer's original SFZ and FLAC samples are left untouched. We only create
+a separate sfizz-compatible SFZ copy with original macro values expanded.
 """
 from __future__ import annotations
-import json
-from pathlib import PurePosixPath
-from typing import Any
 
-APPROVED_SAMPLE_BANKS = {
-    "GREG_SULLIVAN_E_PIANOS": {"library": "Greg Sullivan E-Pianos / Wurlitzer EP200", "license": "CC-BY-3.0"},
-    "KARORYFER_GROWLYBASS_V1_002": {"library": "Karoryfer Growlybass", "license": "CC0"},
-    "KARORYFER_SHINYGUITAR": {"library": "Karoryfer Shinyguitar", "license": "CC0-1.0"},
-    "KARORYFER_BIG_RUSTY_DRUMS": {"library": "Karoryfer Big Rusty Drums", "license": "CC0-1.0"},
-}
+import os
+import struct
+from pathlib import Path
+from sfz_renderer_adapter import render_midi, validate_sfz_samples
 
-class ProductionResourceBlocked(ValueError):
-    pass
+ROOT = Path(__file__).resolve().parent
+BANK = ROOT / "sound_resources" / "GREG_SULLIVAN_E_PIANOS"
+ORIGINAL = BANK / "Wurlitzer EP200" / "Wurlitzer EP200.sfz"
+COMPATIBLE = BANK / "Wurlitzer EP200" / "composer-wurlitzer.sfz"
 
-def require_recorded_sample_resource(binding: dict[str, Any]) -> None:
-    """Fail closed before SFZ preflight; actual sample files are checked there."""
-    if not isinstance(binding, dict):
-        raise ProductionResourceBlocked("RESOURCE_NOT_DECLARED")
-    if binding.get("resource_type") != "SFZ_SAMPLE_LIBRARY":
-        raise ProductionResourceBlocked("NON_SAMPLE_RESOURCE_BLOCKED")
-    if binding.get("fallback_policy") != "NO_SYNTHETIC_SUBSTITUTION":
-        raise ProductionResourceBlocked("FALLBACK_NOT_DISABLED")
-    rid = binding.get("resource_id")
-    approved = APPROVED_SAMPLE_BANKS.get(rid)
-    if not approved:
-        raise ProductionResourceBlocked("UNVERIFIED_SAMPLE_BANK:" + str(rid))
-    if binding.get("library") != approved["library"] or binding.get("license") != approved["license"]:
-        raise ProductionResourceBlocked("SAMPLE_PROVENANCE_MISMATCH:" + str(rid))
-    mapping = binding.get("preferred_mapping")
-    if not isinstance(mapping, str) or not mapping or "\\" in mapping:
-        raise ProductionResourceBlocked("INVALID_SAMPLE_MAPPING")
-    path = PurePosixPath(mapping)
-    if path.is_absolute() or any(part in ("..", ".") for part in mapping.split("/")) or path.suffix.lower() != ".sfz":
-        raise ProductionResourceBlocked("INVALID_SAMPLE_MAPPING")
+def prepare() -> None:
+    text = ORIGINAL.read_text(encoding="utf-8")
+    assert "sample=" in text and "default_path=Samples/" in text, "WURLITZER_SOURCE_UNEXPECTED"
+    # Original mapped instrument uses ARIA preprocessor constants. Preserve
+    # their documented values, without altering note, sample, or velocity data.
+    replacements = {"$RELEASE": "72", "$VELTRACK": "99", "$EXT": "flac"}
+    for token, value in replacements.items():
+        text = text.replace(token, value)
+    text = "\n".join(line for line in text.splitlines() if not line.lstrip().startswith("#define "))
+    if "$EXT" in text or "$RELEASE" in text or "$VELTRACK" in text:
+        raise RuntimeError("WURLITZER_UNEXPANDED_MACRO")
+    COMPATIBLE.write_text(text + "\n", encoding="utf-8")
+    graph = validate_sfz_samples(COMPATIBLE)
+    print("WURLITZER_REAL_SAMPLE_GRAPH_PASS", graph, flush=True)
 
-def audit_bindings(registry: dict[str, Any]) -> dict[str, Any]:
-    bindings = registry["targets"]["INTERNAL"].get("instrument_bindings", {})
-    production = []
-    blocked = []
-    for instrument_id, resource in sorted(bindings.items()):
-        try:
-            require_recorded_sample_resource(resource)
-            production.append(instrument_id)
-        except ProductionResourceBlocked as exc:
-            blocked.append({"instrument_id": instrument_id, "reason": str(exc)})
-    return {
-        "policy": "RECORDED_SAMPLE_BANKS_ONLY_NO_SYNTHETIC_SUBSTITUTION",
-        "approved_resource_bank_ids": sorted(APPROVED_SAMPLE_BANKS),
-        "sample_backed_binding_ids": production,
-        "legacy_or_unverified_binding_ids": blocked,
-        "warning": "Registry approval alone does not prove installed samples or audible output. SFZ preflight must pass.",
+def one_note_probe() -> None:
+    work = ROOT / "output" / "resource_probe"
+    work.mkdir(parents=True, exist_ok=True)
+    midi = work / "wurlitzer-one-note.mid"
+    wav = work / "wurlitzer-one-note.wav"
+    track = bytes.fromhex("00 90 3c 64 83 60 80 3c 00 00 ff 2f 00")
+    midi.write_bytes(
+        b"MThd" + struct.pack(">IHHH", 6, 0, 1, 480)
+        + b"MTrk" + struct.pack(">I", len(track)) + track
+    )
+    source = {
+        "resource_id": "GREG_SULLIVAN_E_PIANOS",
+        "resource_type": "SFZ_SAMPLE_LIBRARY",
+        "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz",
+        "library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+        "license": "CC-BY-3.0",
+        "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
     }
-
-def self_test() -> None:
-    for bank_id, provenance in APPROVED_SAMPLE_BANKS.items():
-        real = {"resource_type": "SFZ_SAMPLE_LIBRARY", "resource_id": bank_id,
-                "library": provenance["library"], "license": provenance["license"],
-                "preferred_mapping": "Programs/test.sfz", "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION"}
-        require_recorded_sample_resource(real)
-        for alteration in [
-            {"resource_type": "GM_PROGRAM"},
-            {"fallback_policy": "ALLOW_SYNTHETIC_FALLBACK"},
-            {"resource_id": "UNKNOWN_FAKE_LIBRARY"},
-            {"preferred_mapping": "../fake.sfz"},
-            {"preferred_mapping": "Programs/fake.wav"},
-            {"license": "UNVERIFIED"},
-        ]:
-            test = dict(real, **alteration)
-            try:
-                require_recorded_sample_resource(test)
-            except ProductionResourceBlocked:
-                continue
-            raise AssertionError("UNVERIFIED_INSTRUMENT_ACCEPTED:" + str(alteration))
-    for invalid in (None, {}, {"render_model": "PLUCKED_BASS_CLEAR"}):
-        try:
-            require_recorded_sample_resource(invalid)
-        except ProductionResourceBlocked:
-            continue
-        raise AssertionError("LEGACY_FAKE_INSTRUMENT_ACCEPTED")
+    # The build-stage binary is not yet on PATH; target its installed path.
+    renderer = ROOT.parent.parent / ".composer_tools" / "bin" / "sfizz_render"
+    assert renderer.is_file(), "SFIZZ_BUILD_RENDERER_MISSING"
+    os.environ["AI_COMP_SFZ_RENDERER"] = str(renderer)
+    rendered = render_midi(source, midi, wav, sample_rate=44100)
+    assert rendered["audio_rendered"] is True
+    assert rendered["measured_samples"] > 0
+    assert rendered["peak_linear"] > 0
+    print("WURLITZER_REAL_AUDIO_PROBE_PASS",
+          {"sample_rate": rendered["sample_rate"], "peak_dbfs": rendered["peak_dbfs"],
+           "rms_dbfs": rendered["rms_dbfs"], "samples": rendered["measured_samples"]}, flush=True)
 
 if __name__ == "__main__":
-    import argparse
-    from pathlib import Path
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--self-test", action="store_true")
-    parser.add_argument("--audit-registry", type=Path)
-    args = parser.parse_args()
-    if args.self_test:
-        self_test()
-        print("PRODUCTION_REAL_INSTRUMENT_POLICY_TEST PASS", flush=True)
-    if args.audit_registry:
-        report = audit_bindings(json.loads(args.audit_registry.read_text()))
-        print("PRODUCTION_INSTRUMENT_RESOURCE_AUDIT " + json.dumps(report, sort_keys=True), flush=True)
+    prepare()
+    one_note_probe()

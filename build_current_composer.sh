@@ -776,6 +776,44 @@ assert resource["preferred_mapping"] == "Wurlitzer EP200/composer-wurlitzer.sfz"
 rendered = render_midi(resource, midi_path, wav_path, sample_rate=44100)
 assert rendered["status"] == "AUDIO_RENDER_PASS"
 assert rendered["peak_linear"] > 0 and rendered["rms_linear"] > 0
+# A/B listening control: original score and timing; constant MIDI velocity.
+# This diagnostic is independent of instrument definitions and genre profiles.
+flat_velocity = sorted(attack_velocities)[len(attack_velocities) // 2]
+flat_events = [(0, 0, b"\xff\x51\x03" + tempo_us.to_bytes(3, "big"))]
+for n in chosen:
+    pitch = int(n["midi"])
+    start = round(float(n["start_beat"]) * 480)
+    end = start + max(1, round(float(n["duration_beats"]) * 480))
+    flat_events.extend((
+        (start, 2, bytes([0x90, pitch, flat_velocity])),
+        (end, 1, bytes([0x80, pitch, 0])),
+    ))
+flat_events.sort(key=lambda x: (x[0], x[1], x[2]))
+flat_track = bytearray()
+position = 0
+for when, _, msg in flat_events:
+    flat_track += vlq(when - position) + msg
+    position = when
+flat_track += b"\x00\xff\x2f\x00"
+flat_midi_path = out / "jazz-ballad-eight-bars-flat-dynamics.mid"
+flat_wav_path = out / "jazz-ballad-eight-bars-flat-dynamics.wav"
+flat_midi_path.write_bytes(b"MThd" + struct.pack(">IHHH", 6, 0, 1, 480) +
+                           b"MTrk" + struct.pack(">I", len(flat_track)) + flat_track)
+flat_rendered = render_midi(resource, flat_midi_path, flat_wav_path, sample_rate=44100)
+assert flat_rendered["audio_rendered"] and flat_rendered["peak_linear"] > 0
+assert flat_rendered["frames"] == rendered["frames"], "JAZZ_AB_TIMELINE_MISMATCH"
+import hashlib
+assert hashlib.sha256(wav_path.read_bytes()).digest() != hashlib.sha256(
+    flat_wav_path.read_bytes()).digest(), "JAZZ_AB_WAVEFORMS_IDENTICAL"
+print("JAZZ_FLAT_DYNAMICS_COMPARISON_AUDIO_PASS", json.dumps({
+    "same_generated_melody_harmony_and_timing": True,
+    "flat_velocity": flat_velocity,
+    "notes": len(chosen),
+    "duration_seconds": round(flat_rendered["frames"] / flat_rendered["sample_rate"], 2),
+    "recorded_piano_bank": resource["resource_id"],
+    "full_song_3d_verified": False,
+}, sort_keys=True), flush=True)
+
 print("JAZZ_BALLAD_EIGHT_BAR_REAL_RECORDED_EXPRESSION_PASS", json.dumps({
     "profile": "Jazz Ballad", "source": "ACTUAL_GENERATED_HARMONY_EVENTS",
     "real_recorded_sample_bank": resource["resource_id"],

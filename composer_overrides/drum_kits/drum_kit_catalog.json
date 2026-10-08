@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "id": "UNIVERSAL_DRUM_KIT_CATALOG",
+  "source_policy": "REFERENCE_ONLY_ORIGINAL_WAV_SFZ_READ_ONLY",
+  "separation_policy": "EVERY_PERCUSSION_INSTRUMENT_IS_ITS_OWN_TRACK_AND_WAV_STEM; KITS ARE SELECTION GROUPS NEVER PREMIXED AUDIO",
+  "original_files_copied": false,
+  "genre_balance_owned_by_each_genre": true,
+  "kits": {
+    "rock_recorded": {
+      "status": "PRESERVED_EXISTING_ROCK",
+      "original_palette_descriptor": "drums",
+      "sound_reference": "Existing Rock recorded Big Rusty kit target mappings; do not alter",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT",
+        "TOMS",
+        "CRASH",
+        "RIDE"
+      ]
+    },
+    "jazz_ballad_brush_recorded": {
+      "status": "PRESERVED_EXISTING_JAZZ_BALLAD",
+      "original_palette_descriptor": "brush_drums",
+      "sound_reference": "Existing pinned original Karoryfer Swirly Drum SFZ mappings",
+      "catalog_file": "composer_overrides/genre_styles/Jazz/instrument_library.json",
+      "source_bank_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+      "role_keys": {
+        "KICK": "brush_kick_swirly",
+        "SNARE": "brush_snare_swirly",
+        "HAT": "brush_hat_swirly"
+      },
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ]
+    },
+    "unverified_drums": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_soft": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_soft",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_shuffle": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_shuffle",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_ride": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_ride",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_brush_drums": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "brush_drums",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_latin": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_latin",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_electronic": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_electronic",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_break_drums": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "break_drums",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_dembow": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_dembow",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_afro": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_afro",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    },
+    "unverified_drums_four": {
+      "status": "PALETTE_NAME_ONLY_NOT_VERIFIED_REC_AUDIO",
+      "original_palette_descriptor": "drums_four",
+      "independent_roles": [
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_mapping": "NOT_ASSIGNED",
+      "note": "Only a kit category until original individual recorded sources and separate tracks are verified. Do not copy or synthesize substitute sound."
+    }
+  }
+}

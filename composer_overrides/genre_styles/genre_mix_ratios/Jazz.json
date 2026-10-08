@@ -10,7 +10,7 @@
       "schema_version": 1,
       "genre": "Swing",
       "genre_template": "swing",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "TRUMPET",
       "original_composer_instrument_palette": [
@@ -70,7 +70,7 @@
         "drums_ride"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -123,7 +123,7 @@
         "original_family_template": "swing",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_ride",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -353,7 +353,7 @@
       "schema_version": 1,
       "genre": "Jazz Ballad",
       "genre_template": "jazz_ballad",
-      "profile_status": "LIVE_JAZZ_BALLAD_UNVERIFIED_BY_LISTENING",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "HARMONY",
       "original_composer_instrument_palette": [
@@ -414,7 +414,7 @@
       ],
       "pending_drum_source_splits": [],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "EXISTING_BEHAVIOR_NOT_AUDITION_CONFIRMED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -468,7 +468,7 @@
         "original_family_template": "jazz_ballad",
         "active_style_module": "composer_overrides/genre_styles/Jazz/jazz_ballad.py",
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_BALLAD_ACTIVE_IN_DEVELOPMENT",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "jazz_ballad_brush_recorded",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -712,7 +712,7 @@
       "schema_version": 1,
       "genre": "Big Band",
       "genre_template": "big_band",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "TRUMPET",
       "original_composer_instrument_palette": [
@@ -780,7 +780,7 @@
         "drums_ride"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -833,7 +833,7 @@
         "original_family_template": "big_band",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_ride",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -1065,7 +1065,7 @@
       "schema_version": 1,
       "genre": "Jazz Waltz",
       "genre_template": "jazz_waltz",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "FLUTE",
       "original_composer_instrument_palette": [
@@ -1125,7 +1125,7 @@
         "brush_drums"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -1178,7 +1178,7 @@
         "original_family_template": "jazz_waltz",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_brush_drums",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -1408,7 +1408,7 @@
       "schema_version": 1,
       "genre": "Bebop",
       "genre_template": "bebop",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "TRUMPET",
       "original_composer_instrument_palette": [
@@ -1468,7 +1468,7 @@
         "drums_ride"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -1520,7 +1520,7 @@
         "original_family_template": "bebop",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_ride",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -1750,7 +1750,7 @@
       "schema_version": 1,
       "genre": "Cool Jazz",
       "genre_template": "cool_jazz",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "FLUTE",
       "original_composer_instrument_palette": [
@@ -1810,7 +1810,7 @@
         "brush_drums"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -1864,7 +1864,7 @@
         "original_family_template": "cool_jazz",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_brush_drums",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -2094,7 +2094,7 @@
       "schema_version": 1,
       "genre": "Dixieland",
       "genre_template": "dixieland",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "CLARINET",
       "original_composer_instrument_palette": [
@@ -2162,7 +2162,7 @@
         "drums_ride"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -2215,7 +2215,7 @@
         "original_family_template": "dixieland",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_ride",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -2447,7 +2447,7 @@
       "schema_version": 1,
       "genre": "Jazz Fusion",
       "genre_template": "fusion",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "SYNTH_LEAD",
       "original_composer_instrument_palette": [
@@ -2515,7 +2515,7 @@
         "drums"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "Jazz",
@@ -2569,7 +2569,7 @@
         "original_family_template": "fusion",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums",
         "per_instrument_mix_config_owned_by_genre": true
       },

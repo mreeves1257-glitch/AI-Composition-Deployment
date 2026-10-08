@@ -214,6 +214,7 @@ SFZ
 cp composer_overrides/production_resource_policy.py composer/runtime/production_resource_policy.py
 cp composer_overrides/real_electric_piano_probe.py composer/runtime/real_electric_piano_probe.py
 cp composer_overrides/real_rock_alias_probe.py composer/runtime/real_rock_alias_probe.py
+cp composer_overrides/genre_resource_readiness.py composer/runtime/genre_resource_readiness.py
 cp composer_overrides/sfz_renderer_adapter.py composer/runtime/sfz_renderer_adapter.py
 cp composer_overrides/genre_development_patch.py composer/runtime/genre_development_patch.py
 cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
@@ -508,4 +509,5 @@ assert not mixed, "ROCK_MULTIPLE_INSTRUMENT_IDS:" + repr(mixed)
 print("ROCK_THEORY_MIDI_ROUTING_CHECK PASS", "events=" + str(len(events)),
       "tracks=" + str(len(by_track)), flush=True)
 PY
+python composer/runtime/genre_resource_readiness.py
 echo "CURRENT COMPOSER BASELINE READY"

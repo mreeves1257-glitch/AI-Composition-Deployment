@@ -579,6 +579,27 @@ python composer/runtime/real_conga_probe.py
 python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
 AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" python composer/runtime/jazz_ballad_recorded_resources.py
+
+# Resolve every Jazz Ballad instrument from its OWN genre file. This checks
+# links against the existing registry and on-disk sample bank, not duplicate
+# audio copies. No other genre or sound engine is changed.
+python - <<'PY'
+import json, sys
+from pathlib import Path
+root=Path("composer/runtime").resolve()
+sys.path.insert(0,str(root))
+from genre_styles.jazz_ballad import instrument_links, validate_instrument_links
+package=instrument_links()
+registry=json.loads((root/"target_registry.json").read_text(encoding="utf-8"))
+bindings=registry["targets"]["INTERNAL"]["instrument_bindings"]
+validate_instrument_links(bindings)
+for role, spec in package["instruments"].items():
+    sfz=root/package["shared_root"]/spec["resource_id"]/spec["sfz"]
+    assert sfz.is_file(), ("JAZZ_LINK_SOURCE_MISSING", role, str(sfz))
+print("JAZZ_BALLAD_INDEPENDENT_INSTRUMENT_LINKS_PASS",
+      sorted(package["instruments"]), flush=True)
+PY
+
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
 python -m py_compile composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py

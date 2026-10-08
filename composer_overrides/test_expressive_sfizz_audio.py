@@ -22,7 +22,7 @@ from AI_Comp_Executable_Output_Core_001 import (
 from sfz_renderer_adapter import render_midi
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path("composer/runtime").resolve()
 RESOURCE_ID = "KARORYFER_SHINYGUITAR"
 PROGRAM = "Programs/composer-electric-lead.sfz"
 CAPABILITY = "SHINYGUITAR_RECORDED_LEAD_CC1_V1"

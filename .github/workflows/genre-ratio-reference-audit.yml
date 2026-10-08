@@ -33,4 +33,13 @@ jobs:
           print(json.dumps(rows,separators=(",",":"),ensure_ascii=False))
           print("GENRE_PALETTE_END")
           assert len(rows)==55
+          index=json.loads((Path("composer_overrides/genre_styles/genre_mix_ratios/index.json")).read_text())
+          assert set(index["genre_to_file"])==set(reg["profiles"]), "MISSING_OR_EXTRA_GENRE_RATIO_PROFILE"
+          for row in rows:
+              file=Path("composer_overrides/genre_styles/genre_mix_ratios")/index["genre_to_file"][row["genre"]]
+              design=json.loads(file.read_text())
+              assert design["original_composer_instrument_palette"] == row["palette"], "PALETTE_SOURCE_MISMATCH:"+row["genre"]
+          print("ALL_55_RATIO_FILES_MATCH_ORIGINAL_COMPOSER_REGISTRY_AND_PALETTES")
           PY
+      - name: Validate independent instrument tracks and initial per-genre levels
+        run: python composer_overrides/genre_styles/genre_mix_ratios/validate_profiles.py

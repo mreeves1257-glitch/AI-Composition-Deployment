@@ -64,6 +64,31 @@ class GenreStyleFileTests(unittest.TestCase):
         self.assertTrue(all(len(set(progression[b:b + 4])) >= 2
                             for b in range(len(progression) - 3)))
 
+    def test_jazz_ballad_has_six_linked_real_instruments(self):
+        from genre_styles.jazz_ballad import instrument_links, validate_instrument_links
+        package = instrument_links()
+        self.assertEqual(package["link_mode"], "SHARED_SAMPLE_LIBRARY_REFERENCE")
+        self.assertEqual(package["shared_root"], "sound_resources")
+        roles = package["instruments"]
+        self.assertEqual(set(roles), {"HARMONY", "LEAD", "BASS", "KICK", "SNARE", "HAT"})
+        self.assertEqual(roles["HARMONY"]["sound_preservation"],
+                         "KEEP_APPROVED_WURLITZER_PIANO")
+        bindings = {
+            entry["registry_binding"]: {
+                "resource_id": entry["resource_id"],
+                "preferred_mapping": entry["sfz"],
+                "resource_type": package["resource_type"],
+            }
+            for entry in roles.values()
+        }
+        validate_instrument_links(bindings)
+        roles["HARMONY"]["resource_id"] = "ALTERED_IN_COPY"
+        self.assertEqual(instrument_links()["instruments"]["HARMONY"]["resource_id"],
+                         "GREG_SULLIVAN_E_PIANOS")
+        bindings["clarinet_bb"]["preferred_mapping"] = "bad.sfz"
+        with self.assertRaisesRegex(ValueError, "JAZZ_INSTRUMENT_LINK_MISMATCH"):
+            validate_instrument_links(bindings)
+
     def test_unknown_or_controlled_style_no_automatic_fallback(self):
         profile = {"profile_id": "JAZZ_BALLAD_V1",
                    "resolution_policy": "REQUIRES_HUMAN_CONTROL"}

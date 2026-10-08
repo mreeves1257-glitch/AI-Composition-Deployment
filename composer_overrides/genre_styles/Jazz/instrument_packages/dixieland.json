@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "genre": "Dixieland",
+  "link_mode": "SHARED_SAMPLE_LIBRARY_REFERENCE",
+  "shared_root": "sound_resources",
+  "resource_type": "SFZ_SAMPLE_LIBRARY",
+  "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+  "binding_status": "GENRE_SPECIFIC_BINDINGS_TO_VERIFY",
+  "instruments": {
+    "HARMONY": {
+      "instrument_id": null,
+      "registry_binding": null,
+      "resource_id": null,
+      "sfz": null,
+      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
+    },
+    "LEAD": {
+      "instrument_id": null,
+      "registry_binding": null,
+      "resource_id": null,
+      "sfz": null,
+      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
+    },
+    "BASS": {
+      "instrument_id": null,
+      "registry_binding": null,
+      "resource_id": null,
+      "sfz": null,
+      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
+    },
+    "KICK": {
+      "instrument_id": null,
+      "registry_binding": null,
+      "resource_id": null,
+      "sfz": null,
+      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
+    },
+    "SNARE": {
+      "instrument_id": null,
+      "registry_binding": null,
+      "resource_id": null,
+      "sfz": null,
+      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
+    },
+    "HAT": {
+      "instrument_id": null,
+      "registry_binding": null,
+      "resource_id": null,
+      "sfz": null,
+      "verification_status": "PENDING_GENRE_RESOURCE_MAPPING"
+    }
+  },
+  "note": "Common starter roles only. Do not treat these as loaded or audible. Match the authoritative genre's instrument palette and real recorded resources before connecting this style."
+}

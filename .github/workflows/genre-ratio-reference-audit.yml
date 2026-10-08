@@ -34,12 +34,14 @@ jobs:
           print("GENRE_PALETTE_END")
           assert len(rows)==55
           index=json.loads((Path("composer_overrides/genre_styles/genre_mix_ratios/index.json")).read_text())
-          assert set(index["genre_to_file"])==set(reg["profiles"]), "MISSING_OR_EXTRA_GENRE_RATIO_PROFILE"
+          assert set(index["genre_to_family_file"])==set(reg["profiles"]), "MISSING_OR_EXTRA_GENRE_RATIO_PROFILE"
+          root=Path("composer_overrides/genre_styles/genre_mix_ratios")
           for row in rows:
-              file=Path("composer_overrides/genre_styles/genre_mix_ratios")/index["genre_to_file"][row["genre"]]
-              design=json.loads(file.read_text())
+              file=root/index["genre_to_family_file"][row["genre"]]
+              family=json.loads(file.read_text())
+              design=family["profiles"][row["genre"]]
               assert design["original_composer_instrument_palette"] == row["palette"], "PALETTE_SOURCE_MISMATCH:"+row["genre"]
-          print("ALL_55_RATIO_FILES_MATCH_ORIGINAL_COMPOSER_REGISTRY_AND_PALETTES")
+          print("ALL_55_GENRE_FAMILY_REFERENCE_PALETTES_MATCH_PRESERVED_COMPOSER_REGISTRY")
           PY
       - name: Validate independent instrument tracks and initial per-genre levels
         run: python composer_overrides/genre_styles/genre_mix_ratios/validate_profiles.py

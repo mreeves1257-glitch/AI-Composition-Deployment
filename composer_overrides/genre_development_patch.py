@@ -166,6 +166,11 @@ def develop_full_length(
             for token in ("piano", "guitar", "chord", "pad", "strings", "clav", "pulse", "arp")
         )
         is_support = track.startswith("SUPPORT_")
+        # A sampled lead guitar is still a guitar, but it must not also be
+        # processed as RHYTHM/HARMONY: chord timing edits can displace or
+        # discard individual lead notes and create an unnaturally choppy line.
+        if tmpl == "rock" and is_lead:
+            is_harmony = False
 
         # Rock needs audible song-scale development, not a four-bar cell with
         # tiny velocity changes. Keep the same generated notes/resources but

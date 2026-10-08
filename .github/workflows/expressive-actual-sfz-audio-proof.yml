@@ -1,0 +1,26 @@
+name: Actual Recorded-Instrument Expressive Audio Proof
+on:
+  push:
+    branches:
+      - expressive-performance-bridge-v1-2026-10-08
+  workflow_dispatch:
+
+jobs:
+  actual-sfz-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build actual unchanged Composer, real recorded SFZ banks, sfizz
+        run: bash build_current_composer.sh
+      - name: Compare WAV output from exact same sampled note with and without timed expressive control
+        env:
+          PYTHONPATH: composer/runtime
+        run: |
+          cp composer_overrides/test_expressive_sfizz_audio.py composer/runtime/test_expressive_sfizz_audio.py
+          python composer/runtime/test_expressive_sfizz_audio.py
+      - name: Confirm the 13 family folders remain informational and inactive
+        run: python composer_overrides/genre_styles/validate_profiles.py

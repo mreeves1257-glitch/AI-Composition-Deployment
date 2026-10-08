@@ -1,0 +1,57 @@
+name: Instrument-Native Expressive MIDI Gesture Bridge
+on:
+  push:
+    branches:
+      - expressive-performance-bridge-v1-2026-10-08
+  pull_request:
+    paths:
+      - 'composer_overrides/expressive_gesture_bridge.py'
+      - 'composer_overrides/performance_capabilities.json'
+      - 'composer_overrides/install_midi_control_bridge.py'
+      - 'composer_overrides/test_expressive_gesture_bridge.py'
+      - 'build_current_composer.sh'
+  workflow_dispatch:
+jobs:
+  source-aware-midi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract ORIGINAL unmodified composer runtime and install generated-code bridge
+        run: |
+          mkdir -p composer/runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
+          cp composer_overrides/midi_initial_cc_bridge.py composer/runtime/
+          cp composer_overrides/expressive_gesture_bridge.py composer/runtime/
+          cp composer_overrides/musical_gesture_author.py composer/runtime/
+          cp composer_overrides/performance_capabilities.json composer/runtime/
+          cp composer_overrides/test_midi_initial_cc_bridge.py composer/runtime/
+          cp composer_overrides/test_expressive_gesture_bridge.py composer/runtime/
+          python composer_overrides/install_midi_control_bridge.py --core composer/runtime/AI_Comp_Executable_Output_Core_001.py
+      - name: Run exact MIDI serialization, isolation, invalid-patch rejection
+        env:
+          PYTHONPATH: composer/runtime
+        run: |
+          python -m unittest -v test_midi_initial_cc_bridge test_expressive_gesture_bridge
+          python -m py_compile composer/runtime/expressive_gesture_bridge.py composer/runtime/musical_gesture_author.py composer/runtime/AI_Comp_Executable_Output_Core_001.py
+          bash -n build_current_composer.sh
+      - name: Confirm no automatic genre or instrument activation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("composer_overrides/genre_styles")
+          index=json.loads((root/"index.json").read_text())
+          capabilities=json.loads(Path("composer_overrides/performance_capabilities.json").read_text())
+          assert not index["automatic_application_enabled"]
+          assert capabilities["activated_genres"] == []
+          assert len(index["genre_to_family_file"]) == 55
+          assert len(index["family_memberships"]) == 13
+          for family in index["family_memberships"]:
+              data=json.loads((root/family/"profile.json").read_text())
+              assert not data["stage_wiring_activated"]
+              assert all(not p["seven_stage_plan"]["enable_runtime_connections"] for p in data["profiles"].values())
+          print("PASS: CAPABILITY INTERPRETER OPT-IN AND ALL GENRES STILL INACTIVE")
+          PY

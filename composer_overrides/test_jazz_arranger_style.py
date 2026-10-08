@@ -73,25 +73,89 @@ class JazzArrangerTests(unittest.TestCase):
         self.assertEqual(section_for_bar(20, 64), "MAIN_B")
         self.assertEqual(section_for_bar(60, 64), "ENDING")
 
-    def test_balance_scope(self):
-        original = {"genre": "ROCK", "modules": {}}
-        self.assertIs(apply_jazz_ballad_balance(original), original)
-        original = {"genre": "Swing", "modules": {}}
-        self.assertIs(apply_jazz_ballad_balance(original), original)
-        profiles = [{"track_id": track, "instrument_id": iid} for track, iid in (
-            ("LEAD", "clarinet_bb"), ("BASS", "double_bass"), ("HARMONY", "electric_piano"),
-            ("SNARE", "snare_drum"),
-        )]
-        resources = [{"track_id": p["track_id"], "resource": {"target_gain_db": -6.0}}
-                     for p in profiles]
-        score = {"genre": "Jazz Ballad",
-                 "modules": {"instrument": {"profiles": profiles},
-                             "target": {"resolved_resources": resources}}}
-        result = apply_jazz_ballad_balance(score)
-        self.assertIsNot(result, score)
-        self.assertEqual(resources[0]["resource"]["target_gain_db"], -6.0)
-        self.assertGreater(result["modules"]["target"]["resolved_resources"][0]
-                           ["resource"]["target_gain_db"], -6.0)
+    def _six_track_mix(self):
+        ids = {
+            "LEAD": "clarinet_bb", "BASS": "double_bass",
+            "HARMONY": "electric_piano", "SNARE": "snare_drum",
+            "HAT": "hi_hat", "KICK": "kick_drum_rock",
+        }
+        metrics = {
+            "LEAD": (-38.2,-56.1), "BASS": (-18.0,-44.7),
+            "HARMONY": (-16.5,-35.7), "SNARE": (-34.25,-50.3),
+            "HAT": (-35.5,-62.6), "KICK": (-25.1,-49.5),
+        }
+        profiles = [{"track_id":k,"instrument_id":v} for k,v in ids.items()]
+        resources = [{"track_id":k,"resource":{
+            "target_gain_db":-6.0,"resource_id":"RECORDED_"+k,
+            "preferred_mapping":k+".sfz",
+        }} for k in ids]
+        result = {"genre":"Jazz Ballad","modules":{
+            "instrument":{"profiles":profiles},
+            "target":{"resolved_resources":resources},
+        }}
+        stems = [{"track_id":k,"instrument_id":v,"note_count":50,
+                  "peak_dbfs":metrics[k][0],"rms_dbfs":metrics[k][1]}
+                 for k,v in ids.items()]
+        return result,stems
+
+    def test_equal_intensity_all_six_and_source_preservation(self):
+        from jazz_balance_contract import (
+            JAZZ_INTENSITY_WEIGHTS,JAZZ_BALANCE_VERSION,
+        )
+        original,stems=self._six_track_mix()
+        mixed=apply_jazz_ballad_balance(original,stems)
+        self.assertEqual(mixed["jazz_mix_instruction"]["goal"],
+                         "EQUAL_PERCEIVED_INTENSITY")
+        self.assertEqual(mixed["jazz_mix_instruction"]["name"],JAZZ_BALANCE_VERSION)
+        self.assertEqual(len(mixed["jazz_mix_instruction"]["adjusted_tracks"]),6)
+        self.assertLessEqual(mixed["jazz_mix_instruction"]["post_mix_proxy_spread_db"],1.0)
+        resources={x["track_id"]:x["resource"] for x in
+                   mixed["modules"]["target"]["resolved_resources"]}
+        self.assertEqual(original["modules"]["target"]["resolved_resources"][0]
+                         ["resource"]["target_gain_db"],-6.0)
+        self.assertEqual(resources["HARMONY"]["preferred_mapping"],"HARMONY.sfz")
+        self.assertEqual(resources["LEAD"]["resource_id"],"RECORDED_LEAD")
+        scores=[]
+        for stem in stems:
+            track=stem["track_id"]
+            w_rms,w_peak=JAZZ_INTENSITY_WEIGHTS[track]
+            intensity=w_rms*stem["rms_dbfs"]+w_peak*stem["peak_dbfs"]
+            scores.append(intensity+resources[track]["target_gain_db"])
+        self.assertLessEqual(max(scores)-min(scores),1.0)
+        self.assertGreater(resources["LEAD"]["target_gain_db"],
+                           resources["HARMONY"]["target_gain_db"])
+        self.assertGreater(resources["BASS"]["target_gain_db"],
+                           resources["HARMONY"]["target_gain_db"])
+
+    def test_equal_intensity_never_changes_other_genres(self):
+        score,stems=self._six_track_mix()
+        for genre in ("ROCK","Swing","Big Band","Jazz Fusion"):
+            data={**score,"genre":genre}
+            self.assertIs(apply_jazz_ballad_balance(data,stems),data)
+        self.assertIs(apply_jazz_ballad_balance(score),score)
+
+    def test_equal_intensity_fails_missing_or_silent_instruments(self):
+        score,stems=self._six_track_mix()
+        with self.assertRaisesRegex(ValueError,"MISSING_TRACKS"):
+            apply_jazz_ballad_balance(score,stems[:-1])
+        with self.assertRaisesRegex(ValueError,"EMPTY_AUDIO_PART"):
+            apply_jazz_ballad_balance(score,
+                 [{**x,"note_count":0} if x["track_id"]=="LEAD" else x for x in stems])
+        with self.assertRaisesRegex(ValueError,"NO_MEASURABLE_AUDIO"):
+            apply_jazz_ballad_balance(score,
+                 [{**x,"rms_dbfs":float("-inf")} if x["track_id"]=="BASS" else x
+                  for x in stems])
+        with self.assertRaisesRegex(ValueError,"WRONG_AUDIO_SOURCE"):
+            apply_jazz_ballad_balance(score,
+                 [{**x,"instrument_id":"electric_piano"} if x["track_id"]=="LEAD" else x
+                  for x in stems])
+
+    def test_equal_intensity_gain_limit_rejects_unfixable_recording(self):
+        score,stems=self._six_track_mix()
+        excessive=[{**x,"peak_dbfs":-140.0,"rms_dbfs":-170.0}
+                   if x["track_id"]=="LEAD" else x for x in stems]
+        with self.assertRaisesRegex(ValueError,"OUT_OF_RANGE"):
+            apply_jazz_ballad_balance(score,excessive)
 
     def test_chord_motion_is_not_four_bar_static(self):
         profile = {"resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",

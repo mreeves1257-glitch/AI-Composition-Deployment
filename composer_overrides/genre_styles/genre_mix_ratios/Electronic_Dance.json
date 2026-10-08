@@ -77,7 +77,268 @@
       "selected_shared_drum_kit_id": "unverified_drums_electronic",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "HOUSE_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          118,
+          130
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "four-on-floor kick, offbeat/open-hat relationships, syncopated percussion and repeating dance groove",
+        "phrase_behavior": "8/16-bar phrase blocks with gradual layer changes and clear transitions",
+        "harmony_behavior": "loop-based tonal/modal harmony; chord stabs/pads may be simple while timbre evolves",
+        "bass_behavior": "repetitive sub/synth bass groove interlocked with kick, with rhythmic variation by section",
+        "percussion_behavior_if_applicable": "electronic kick/clap/snare/hats/percussion; fills and risers mark transitions",
+        "instrument_role_behavior": "electronic drums, synth bass, keys/pads, vocal/lead samples or instrument roles",
+        "ensemble_player_behavior": "parts are grid-coherent but groove/humanization may vary by substyle",
+        "arrangement_transformation": "intro/build/main/break/return/outro architecture or equivalent dance form",
+        "dynamic_behavior": "long-form automation and section lifts rather than random note dynamics",
+        "articulation_behavior": "short percussive stabs, sustained pads, programmed drum articulations",
+        "timing_humanization_behavior": "quantized core with controlled swing/microtiming where profile calls for it",
+        "continuous_performance_control": "filter, envelope, modulation, sidechain and level automation central",
+        "sound_effects_intent": "delay/reverb/filter/drive/sidechain are production tools, not decorations",
+        "mix_prominence_intent": "kick/sub relationship protected; lead/pads occupy separate frequency/space",
+        "production_mastering_intent": "club-capable low end with controlled transients and headroom",
+        "manufacturer_adapter_requirements": "requires synth/electronic drum target voices; preserve automation metadata",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "house",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums_electronic",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_HOUSE_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_HOUSE_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_HOUSE_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums_electronic",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_CHORD",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_HOUSE_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_HOUSE_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_HOUSE_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_CHORD",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_HOUSE_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_HOUSE_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_HOUSE_V1_STEP_01",
+            "to": "GENRE_HOUSE_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_HOUSE_V1_STEP_02",
+            "to": "GENRE_HOUSE_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_HOUSE_V1_STEP_03",
+            "to": "GENRE_HOUSE_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_HOUSE_V1_STEP_04",
+            "to": "GENRE_HOUSE_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_HOUSE_V1_STEP_05",
+            "to": "GENRE_HOUSE_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_HOUSE_V1_STEP_06",
+            "to": "GENRE_HOUSE_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Techno": {
       "schema_version": 1,
@@ -150,7 +411,268 @@
       "selected_shared_drum_kit_id": "unverified_drums_electronic",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "TECHNO_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          125,
+          150
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "persistent four-on-floor drive with evolving percussion/timbre and repetitive hypnotic cells",
+        "phrase_behavior": "long 8/16/32-bar evolution; phrase identity often comes from texture/automation rather than melody",
+        "harmony_behavior": "minimal, modal or nonfunctional harmonic content; timbral movement may replace chord movement",
+        "bass_behavior": "sub/low synth pulse may be sustained, offbeat or rhythmic; must coexist with kick",
+        "percussion_behavior_if_applicable": "electronic kick, hats, claps/noise/percussion with evolving pattern density",
+        "instrument_role_behavior": "electronic drums, synth bass, synth/noise/textural voices; melodic instrument optional",
+        "ensemble_player_behavior": "layer entrances/exits and automation create development",
+        "arrangement_transformation": "long-form build/reduction/rebuild architecture",
+        "dynamic_behavior": "automation-driven energy curve with controlled drops",
+        "articulation_behavior": "precise programmed attacks with occasional texture tails",
+        "timing_humanization_behavior": "mostly grid-stable with deliberate groove offsets only",
+        "continuous_performance_control": "filter/envelope/modulation/drive/level automation essential",
+        "sound_effects_intent": "delay/reverb/distortion/filter used structurally",
+        "mix_prominence_intent": "kick/low-end dominant but not clipped; textures layered around it",
+        "production_mastering_intent": "club-oriented, controlled loudness and transient shape",
+        "manufacturer_adapter_requirements": "requires synth/electronic drum resources and automation-capable target",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "techno",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums_electronic",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_TECHNO_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_TECHNO_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_TECHNO_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums_electronic",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_PULSE",
+              "NOISE_FX",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_TECHNO_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_TECHNO_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_TECHNO_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_PULSE",
+              "NOISE_FX",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_TECHNO_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_TECHNO_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_TECHNO_V1_STEP_01",
+            "to": "GENRE_TECHNO_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TECHNO_V1_STEP_02",
+            "to": "GENRE_TECHNO_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TECHNO_V1_STEP_03",
+            "to": "GENRE_TECHNO_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TECHNO_V1_STEP_04",
+            "to": "GENRE_TECHNO_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TECHNO_V1_STEP_05",
+            "to": "GENRE_TECHNO_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TECHNO_V1_STEP_06",
+            "to": "GENRE_TECHNO_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Trance": {
       "schema_version": 1,
@@ -223,7 +745,268 @@
       "selected_shared_drum_kit_id": "unverified_drums_electronic",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "TRANCE_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          126,
+          145
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "steady four-on-floor drive with rolling bass, arpeggiation and long tension/release cycles",
+        "phrase_behavior": "16/32-bar phrases with intro, build, breakdown, rise and return/drop-like peak",
+        "harmony_behavior": "tonal/modal progressions with sustained pads, arpeggios and strong melodic hooks",
+        "bass_behavior": "rolling or offbeat synth bass tightly sidechained/interlocked with kick",
+        "percussion_behavior_if_applicable": "electronic kick, hats, claps and risers; density expands toward peaks",
+        "instrument_role_behavior": "synth bass, pads, arps, lead synth/voice-like melody, electronic drums",
+        "ensemble_player_behavior": "layered electronic ensemble develops by automation and register",
+        "arrangement_transformation": "long-form build/breakdown/peak/outro",
+        "dynamic_behavior": "large section-scale crescendos and breakdown contrast",
+        "articulation_behavior": "sustained pads, gated/arpeggiated textures, bright lead articulation",
+        "timing_humanization_behavior": "grid-stable core with controlled groove; phrase timing driven by long sections",
+        "continuous_performance_control": "filter cutoff, resonance, envelopes, modulation, sidechain and expression essential",
+        "sound_effects_intent": "delay/reverb/sidechain/riser effects structural",
+        "mix_prominence_intent": "kick/bass protected; lead and pads wide but controlled",
+        "production_mastering_intent": "wide, bright, energetic master with harshness control",
+        "manufacturer_adapter_requirements": "requires synth/FX resources and automation-capable target",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "trance",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_drums_electronic",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_TRANCE_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_TRANCE_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_TRANCE_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums_electronic",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_PAD",
+              "SYNTH_ARP",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_TRANCE_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_TRANCE_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_TRANCE_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_PAD",
+              "SYNTH_ARP",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_TRANCE_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_TRANCE_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_TRANCE_V1_STEP_01",
+            "to": "GENRE_TRANCE_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TRANCE_V1_STEP_02",
+            "to": "GENRE_TRANCE_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TRANCE_V1_STEP_03",
+            "to": "GENRE_TRANCE_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TRANCE_V1_STEP_04",
+            "to": "GENRE_TRANCE_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TRANCE_V1_STEP_05",
+            "to": "GENRE_TRANCE_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_TRANCE_V1_STEP_06",
+            "to": "GENRE_TRANCE_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Ambient Electronic": {
       "schema_version": 1,
@@ -277,7 +1060,262 @@
       "selected_shared_drum_kit_id": null,
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "AMBIENT_ELECTRONIC_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "Electronic ambient baseline; not automatically New Age or meditation music.",
+        "tempo_bpm_range": [
+          40,
+          95
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4",
+          "free"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "pulse may be absent, soft or slowly repeating; texture evolution is primary",
+        "phrase_behavior": "very long arcs with gradual timbral/registral motion and extended silence/space",
+        "harmony_behavior": "modal, drone, cluster or slowly changing tonal harmony; functional cadence optional",
+        "bass_behavior": "bass may be drone/sub field, sparse tonal support or absent",
+        "percussion_behavior_if_applicable": "percussion optional and usually textural/minimal",
+        "instrument_role_behavior": "pads, synth textures, processed acoustic sources, drones, sparse melodic instruments",
+        "ensemble_player_behavior": "layers behave as evolving fields with foreground events emerging selectively",
+        "arrangement_transformation": "through-composed or long-form textural sections",
+        "dynamic_behavior": "slow fades/swells over long spans",
+        "articulation_behavior": "soft attacks, sustained tones, granular/textural articulations",
+        "timing_humanization_behavior": "timing can float; when pulse exists, humanization is slow and coherent",
+        "continuous_performance_control": "filter/envelope/spatial/modulation automation central",
+        "sound_effects_intent": "reverb/delay/granular/spatial effects may be structural",
+        "mix_prominence_intent": "depth and width prioritized; no constant foreground requirement",
+        "production_mastering_intent": "high dynamic headroom, low harshness, preserve tails",
+        "manufacturer_adapter_requirements": "requires synth/texture resources and long-tail automation",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "ambient_electronic",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": null,
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_AMBIENT_ELECTRONIC_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": null,
+            "independent_track_roles": [
+              "SYNTH_PAD",
+              "SYNTH_ARP",
+              "FLUTE",
+              "NOISE_FX"
+            ],
+            "unverified_instrument_roles": [],
+            "state": "RECORDED_OR_LEGACY_TRACK_REFERENCES_RETAINED",
+            "planned_stage_id": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_PAD",
+              "SYNTH_ARP",
+              "FLUTE",
+              "NOISE_FX"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_01",
+            "to": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_02",
+            "to": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_03",
+            "to": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_04",
+            "to": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_05",
+            "to": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_06",
+            "to": "GENRE_AMBIENT_ELECTRONIC_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Downtempo": {
       "schema_version": 1,
@@ -350,7 +1388,270 @@
       "selected_shared_drum_kit_id": "unverified_break_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "DOWNTEMPO_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          65,
+          110
+        ],
+        "meter_options": [
+          "4/4",
+          "6/8"
+        ],
+        "form_tendencies": [
+          "through_composed",
+          "verse_chorus"
+        ],
+        "groove_behavior": "laid-back electronic/breakbeat groove with spacious subdivision and restrained tempo",
+        "phrase_behavior": "8/16-bar loops with evolving textures and melodic fragments",
+        "harmony_behavior": "tonal/modal loops, extended chords or sparse harmonic fields",
+        "bass_behavior": "warm sub/electric bass groove with space around kick",
+        "percussion_behavior_if_applicable": "electronic/acoustic hybrid drums, often softer transients than dancefloor styles",
+        "instrument_role_behavior": "electronic drums, bass, pads/keys, samples/textures, guitar/lead optional",
+        "ensemble_player_behavior": "parts emphasize pocket and atmosphere over density",
+        "arrangement_transformation": "loop-evolving sectional or verse/chorus hybrid",
+        "dynamic_behavior": "moderate dynamics with gradual automation",
+        "articulation_behavior": "softened drum attacks, sustained textures, selective accents",
+        "timing_humanization_behavior": "laid-back placement with controlled swing/microtiming",
+        "continuous_performance_control": "filter/expression/FX automation",
+        "sound_effects_intent": "reverb/delay/saturation texture common as controlled options",
+        "mix_prominence_intent": "low end warm, lead/textures spacious",
+        "production_mastering_intent": "smooth master with preserved groove dynamics",
+        "manufacturer_adapter_requirements": "requires electronic resources plus optional acoustic target voices",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "downtempo",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_break_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_DOWNTEMPO_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_DOWNTEMPO_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_DOWNTEMPO_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_break_drums",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "ELECTRIC_PIANO",
+              "SYNTH_PAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_DOWNTEMPO_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_DOWNTEMPO_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_DOWNTEMPO_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "ELECTRIC_PIANO",
+              "SYNTH_PAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_DOWNTEMPO_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_DOWNTEMPO_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_DOWNTEMPO_V1_STEP_01",
+            "to": "GENRE_DOWNTEMPO_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DOWNTEMPO_V1_STEP_02",
+            "to": "GENRE_DOWNTEMPO_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DOWNTEMPO_V1_STEP_03",
+            "to": "GENRE_DOWNTEMPO_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DOWNTEMPO_V1_STEP_04",
+            "to": "GENRE_DOWNTEMPO_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DOWNTEMPO_V1_STEP_05",
+            "to": "GENRE_DOWNTEMPO_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DOWNTEMPO_V1_STEP_06",
+            "to": "GENRE_DOWNTEMPO_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Breakbeat-related": {
       "schema_version": 1,
@@ -423,7 +1724,268 @@
       "selected_shared_drum_kit_id": "unverified_break_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "BREAKBEAT_RELATED_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          90,
+          145
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "syncopated broken drum patterns rather than mandatory four-on-floor; chopped/accented subdivisions define groove",
+        "phrase_behavior": "4/8/16-bar loops with fills, edits and pattern mutations",
+        "harmony_behavior": "harmony may be tonal, modal or minimal; rhythm is primary identifier",
+        "bass_behavior": "sub/synth/electric bass syncopates around broken kick pattern",
+        "percussion_behavior_if_applicable": "chopped/sampled-style or originally programmed breaks with ghost notes and fills",
+        "instrument_role_behavior": "electronic drums, bass, synth/keys/samples, lead instruments as selected",
+        "ensemble_player_behavior": "rhythm layers interact through syncopation; fills preserve phrase direction",
+        "arrangement_transformation": "loop-evolving sectional form with breakdowns",
+        "dynamic_behavior": "accent-driven energy and dropouts",
+        "articulation_behavior": "sharp drum edits, ghost notes, stutters where controlled",
+        "timing_humanization_behavior": "groove/swing offsets may be important; preserve pattern feel",
+        "continuous_performance_control": "filter/edit/modulation/level automation",
+        "sound_effects_intent": "delay/filter/distortion/chop effects available",
+        "mix_prominence_intent": "drums/bass prominent; melodic material arranged around break",
+        "production_mastering_intent": "punchy transient master with sub control",
+        "manufacturer_adapter_requirements": "requires electronic drum editing and automation capability",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "breakbeat",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_break_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_BREAKBEAT_RELATED_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_BREAKBEAT_RELATED_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_BREAKBEAT_RELATED_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_break_drums",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_CHORD",
+              "KICK",
+              "SNARE",
+              "HAT",
+              "NOISE_FX"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_BREAKBEAT_RELATED_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_BREAKBEAT_RELATED_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_BREAKBEAT_RELATED_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_CHORD",
+              "KICK",
+              "SNARE",
+              "HAT",
+              "NOISE_FX"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_BREAKBEAT_RELATED_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_BREAKBEAT_RELATED_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_BREAKBEAT_RELATED_V1_STEP_01",
+            "to": "GENRE_BREAKBEAT_RELATED_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BREAKBEAT_RELATED_V1_STEP_02",
+            "to": "GENRE_BREAKBEAT_RELATED_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BREAKBEAT_RELATED_V1_STEP_03",
+            "to": "GENRE_BREAKBEAT_RELATED_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BREAKBEAT_RELATED_V1_STEP_04",
+            "to": "GENRE_BREAKBEAT_RELATED_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BREAKBEAT_RELATED_V1_STEP_05",
+            "to": "GENRE_BREAKBEAT_RELATED_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BREAKBEAT_RELATED_V1_STEP_06",
+            "to": "GENRE_BREAKBEAT_RELATED_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Garage-related": {
       "schema_version": 1,
@@ -496,7 +2058,268 @@
       "selected_shared_drum_kit_id": "unverified_break_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "GARAGE_RELATED_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "Garage-related baseline; specific UKG/2-step/speed-garage subprofiles may override.",
+        "tempo_bpm_range": [
+          124,
+          140
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "shuffled/syncopated garage-derived groove; 2-step kick placement available instead of continuous four-on-floor",
+        "phrase_behavior": "8/16-bar dance phrases with vocal/lead chops and quick transitions",
+        "harmony_behavior": "loop-based house/R&B-influenced harmony and stabs",
+        "bass_behavior": "sub bass syncopated with sparse kick pattern; sliding notes optional by target",
+        "percussion_behavior_if_applicable": "shuffled hats, claps/snares and syncopated kicks; ghost percussion may fill gaps",
+        "instrument_role_behavior": "electronic drums, sub/synth bass, chords/keys, vocal/lead sample-like roles",
+        "ensemble_player_behavior": "layers share shuffle/swing grid while retaining syncopation",
+        "arrangement_transformation": "intro/main/break/return dance structure",
+        "dynamic_behavior": "energy lifts by percussion/bass density and vocal/lead entries",
+        "articulation_behavior": "short stabs, chopped lead articulation, tight percussion",
+        "timing_humanization_behavior": "shuffle microtiming is structural and shared",
+        "continuous_performance_control": "filter/level/pitch-envelope automation",
+        "sound_effects_intent": "reverb/delay/chop and bass processing as controlled tools",
+        "mix_prominence_intent": "sub and snare/clap clear; chords/lead do not mask them",
+        "production_mastering_intent": "tight dance master with controlled sub",
+        "manufacturer_adapter_requirements": "requires shuffle-capable electronic drums and sub-bass/synth patches",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "garage",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_break_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_GARAGE_RELATED_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_GARAGE_RELATED_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_GARAGE_RELATED_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_break_drums",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_CHORD",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_GARAGE_RELATED_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_GARAGE_RELATED_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_GARAGE_RELATED_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_CHORD",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_GARAGE_RELATED_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_GARAGE_RELATED_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_GARAGE_RELATED_V1_STEP_01",
+            "to": "GENRE_GARAGE_RELATED_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_GARAGE_RELATED_V1_STEP_02",
+            "to": "GENRE_GARAGE_RELATED_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_GARAGE_RELATED_V1_STEP_03",
+            "to": "GENRE_GARAGE_RELATED_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_GARAGE_RELATED_V1_STEP_04",
+            "to": "GENRE_GARAGE_RELATED_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_GARAGE_RELATED_V1_STEP_05",
+            "to": "GENRE_GARAGE_RELATED_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_GARAGE_RELATED_V1_STEP_06",
+            "to": "GENRE_GARAGE_RELATED_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Experimental Electronic": {
       "schema_version": 1,
@@ -569,7 +2392,272 @@
       "selected_shared_drum_kit_id": "unverified_break_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "EXPERIMENTAL_ELECTRONIC_V1",
+        "family": "Electronic",
+        "status": "CONTROLLED_COMPONENT_ARCHITECTURE",
+        "scope_note": "Experimental category resolves through explicit component choices; randomness alone is not a profile.",
+        "tempo_bpm_range": [
+          40,
+          180
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4",
+          "6/8",
+          "7/8",
+          "free"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "no single mandatory groove; composition must declare pulse, free-time, additive grouping or algorithmic timing explicitly",
+        "phrase_behavior": "phrase/section logic may be textural, algorithmic, motivic or conventional but must be declared and traceable",
+        "harmony_behavior": "tonal, modal, atonal, spectral, drone or process-based harmony allowed when explicitly selected",
+        "bass_behavior": "bass may be absent, tonal, textural or rhythmic; role must be declared",
+        "percussion_behavior_if_applicable": "percussion may be conventional, electronic, found-sound or absent; pattern must be specified",
+        "instrument_role_behavior": "any controlled instrument/sound resource with explicit role and provenance",
+        "ensemble_player_behavior": "relationships defined per component map; no generic randomization as substitute for design",
+        "arrangement_transformation": "through-composed/component-based structure with explicit transformation rules",
+        "dynamic_behavior": "dynamic behavior declared per section/process",
+        "articulation_behavior": "articulation derived from chosen resources/processes",
+        "timing_humanization_behavior": "timing transformation must be intentional and reproducible",
+        "continuous_performance_control": "automation/process control is first-class",
+        "sound_effects_intent": "effects may be compositional processes, with parameters traceable",
+        "mix_prominence_intent": "mix hierarchy explicitly declared rather than assumed",
+        "production_mastering_intent": "mastering preserves intended extremes without clipping",
+        "manufacturer_adapter_requirements": "adapter must support declared resources; unsupported behaviors block rather than substitute",
+        "resolution_policy": "CONTROLLED_RESOLVER",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "experimental_electronic",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_break_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_EXPERIMENTAL_ELECTRONIC_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "CONTROLLED_RESOLVER",
+            "planned_stage_id": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_break_drums",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_PAD",
+              "NOISE_FX",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_PAD",
+              "NOISE_FX",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_01",
+            "to": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_02",
+            "to": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_03",
+            "to": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_04",
+            "to": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_05",
+            "to": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_06",
+            "to": "GENRE_EXPERIMENTAL_ELECTRONIC_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Chugg / #chugg": {
       "schema_version": 1,
@@ -642,7 +2730,275 @@
       "selected_shared_drum_kit_id": "unverified_break_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "CHUGG_SCENE_V1",
+        "family": "Emerging / Hybrid",
+        "status": "CONTROLLED_EMERGING_PROFILE",
+        "scope_note": "Provisional controlled baseline: SoundCloud identifies #chugg as a scene-specific evolution of plugg within the fast-growing Mexican reggaeton ecosystem. Detailed grammar remains intentionally flexible.",
+        "tempo_bpm_range": [
+          115,
+          165
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed",
+          "verse_chorus"
+        ],
+        "groove_behavior": "plugg-derived emerging groove within the Mexican reggaeton scene; sparse syncopation, trap/plugg textures and local scene variation expected",
+        "phrase_behavior": "short repetitive motifs/hook cells with abrupt edits or beat changes permitted",
+        "harmony_behavior": "loop-based minor/modal harmony; melodic synth motifs may carry more identity than chord progression",
+        "bass_behavior": "sub/808-like bass with slides or sustained notes when supported",
+        "percussion_behavior_if_applicable": "electronic trap/plugg-derived percussion; exact pattern is scene-specific and must vary by composition",
+        "instrument_role_behavior": "electronic drums, sub bass, bright/airy synth or sample textures, voice/lead role",
+        "ensemble_player_behavior": "minimal layers can create space; production edits may function as arrangement events",
+        "arrangement_transformation": "compact loop-evolving/verse-hook structures",
+        "dynamic_behavior": "drop/entry contrasts rather than orchestral dynamic curves",
+        "articulation_behavior": "short programmed attacks, stutters/chops and sustained synth tails as selected",
+        "timing_humanization_behavior": "grid-based with controlled microtiming; do not invent a universal chugg swing",
+        "continuous_performance_control": "pitch/filter/envelope/level automation",
+        "sound_effects_intent": "reverb/delay/distortion/digital texture available as scene components",
+        "mix_prominence_intent": "sub and lead motif prioritized with sparse midrange",
+        "production_mastering_intent": "modern low-end-forward master with clipping prevention",
+        "manufacturer_adapter_requirements": "requires electronic/sub/synth target resources",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "SoundCloud Music Intelligence Report 2026",
+          "SoundCloud #chugg scene tags"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "chugg",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "selected_universal_drum_kit": "unverified_break_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_CHUGG_SCENE_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_CHUGG_SCENE_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_CHUGG_SCENE_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_break_drums",
+            "independent_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT",
+              "NOISE_FX"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_CHUGG_SCENE_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_CHUGG_SCENE_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_CHUGG_SCENE_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "SYNTH_BASS",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT",
+              "NOISE_FX"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_CHUGG_SCENE_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_CHUGG_SCENE_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_CHUGG_SCENE_V1_STEP_01",
+            "to": "GENRE_CHUGG_SCENE_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_CHUGG_SCENE_V1_STEP_02",
+            "to": "GENRE_CHUGG_SCENE_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_CHUGG_SCENE_V1_STEP_03",
+            "to": "GENRE_CHUGG_SCENE_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_CHUGG_SCENE_V1_STEP_04",
+            "to": "GENRE_CHUGG_SCENE_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_CHUGG_SCENE_V1_STEP_05",
+            "to": "GENRE_CHUGG_SCENE_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_CHUGG_SCENE_V1_STEP_06",
+            "to": "GENRE_CHUGG_SCENE_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED",
+  "seven_stage_sequence_filed_for_every_genre": true,
+  "stage_wiring_activated": false,
+  "stage_sequence_version": "SEVEN_STAGE_PROPOSED_2026_10_08"
 }

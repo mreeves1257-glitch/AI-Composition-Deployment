@@ -77,7 +77,277 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_SWING_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          95,
+          210
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed",
+          "aba"
+        ],
+        "groove_behavior": "swung eighth feel with ride-led pulse and flexible comping; swing ratio varies with tempo/performance",
+        "phrase_behavior": "4/8-bar phrasing with call-response, pickups, turnaround energy and space for improvisatory lines",
+        "harmony_behavior": "extended tonal harmony; ii-V motion, secondary dominants, substitutions and blues language available without forcing one progression",
+        "bass_behavior": "walking bass structural baseline with chromatic approaches and chord-tone targets",
+        "percussion_behavior_if_applicable": "ride pattern + hi-hat/backbeat accents + feathered/supportive kick as target permits; brushes optional",
+        "instrument_role_behavior": "piano/guitar comping, acoustic/electric bass, drum kit, sax/brass/clarinet melodic roles",
+        "ensemble_player_behavior": "rhythm section negotiates shared swing pocket; comping responds to phrases rather than repeating fixed blocks",
+        "arrangement_transformation": "head/solo/head or sectional jazz form; density changes under solos and ensemble figures",
+        "dynamic_behavior": "interactive accents and phrase crescendos rather than static velocity",
+        "articulation_behavior": "legato/tongued horn lines, comping stabs, bass sustain, brush/stick differentiation",
+        "timing_humanization_behavior": "microtiming is relational to swing pulse and ensemble role; no random jitter",
+        "continuous_performance_control": "expression, articulation, breath and comping-density controls",
+        "sound_effects_intent": "room/reverb restrained; target tone may be warm/natural",
+        "mix_prominence_intent": "bass/ride time feel clear; melody and comping leave mutual space",
+        "production_mastering_intent": "preserve transient nuance and dynamic headroom",
+        "manufacturer_adapter_requirements": "sax/piano target voices may be electronic patches but must retain canonical role behavior",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "swing",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_JAZZ_SWING_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_JAZZ_SWING_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_JAZZ_SWING_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/instrument_packages/swing.json"
+            ],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums_ride",
+            "independent_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "TRUMPET",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_SWING_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/swing.py"
+            ],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_SWING_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_SWING_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "TRUMPET",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_JAZZ_SWING_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_JAZZ_SWING_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_JAZZ_SWING_V1_STEP_01",
+            "to": "GENRE_JAZZ_SWING_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_SWING_V1_STEP_02",
+            "to": "GENRE_JAZZ_SWING_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_SWING_V1_STEP_03",
+            "to": "GENRE_JAZZ_SWING_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_SWING_V1_STEP_04",
+            "to": "GENRE_JAZZ_SWING_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_SWING_V1_STEP_05",
+            "to": "GENRE_JAZZ_SWING_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_SWING_V1_STEP_06",
+            "to": "GENRE_JAZZ_SWING_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [
+          "composer_overrides/genre_styles/Jazz/swing.py"
+        ],
+        "genre_specific_instrument_files": [
+          "composer_overrides/genre_styles/Jazz/instrument_packages/swing.json"
+        ],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Jazz Ballad": {
       "schema_version": 1,
@@ -151,7 +421,292 @@
       "selected_shared_drum_kit_id": "jazz_ballad_brush_recorded",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_BALLAD_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          45,
+          85
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4"
+        ],
+        "form_tendencies": [
+          "aba",
+          "through_composed"
+        ],
+        "groove_behavior": "slow swing, rubato or straight ballad feel; pulse can soften at phrase edges",
+        "phrase_behavior": "long lyrical phrases with pickups, breath, delayed resolutions and spacious turnarounds",
+        "harmony_behavior": "extended jazz harmony with slow harmonic rhythm, altered dominants and substitutions as controlled options",
+        "bass_behavior": "sparse roots/tenths/walking fragments; bass avoids overcrowding",
+        "percussion_behavior_if_applicable": "brushes or very light kit; cymbal swells and fills used selectively",
+        "instrument_role_behavior": "piano/electric piano, bass, brushes, sax/trumpet/clarinet/flute or guitar lead",
+        "ensemble_player_behavior": "ensemble follows melody breath and rubato; accompaniment thins under exposed lines",
+        "arrangement_transformation": "AABA/ABA/through-composed ballad structures with gradual dynamic arc",
+        "dynamic_behavior": "wide soft-to-medium range with intimate swells",
+        "articulation_behavior": "legato, breathy/soft attacks, restrained accents",
+        "timing_humanization_behavior": "shared rubato and laid-back placement tied to phrase",
+        "continuous_performance_control": "expression and tempo curves are essential",
+        "sound_effects_intent": "warm room/reverb; delay only when stylistically chosen",
+        "mix_prominence_intent": "lead intimate and forward; accompaniment soft and uncluttered",
+        "production_mastering_intent": "warm, dynamic, low-harshness master",
+        "manufacturer_adapter_requirements": "prioritize expressive horn/keys voices and continuous control",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "jazz_ballad",
+        "active_style_module": "composer_overrides/genre_styles/Jazz/jazz_ballad.py",
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_BALLAD_ACTIVE_IN_DEVELOPMENT",
+        "selected_universal_drum_kit": "jazz_ballad_brush_recorded",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_JAZZ_BALLAD_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_JAZZ_BALLAD_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_JAZZ_BALLAD_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/instrument_packages/jazz_ballad.json",
+              "composer_overrides/genre_styles/Jazz/instrument_library.json"
+            ],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "jazz_ballad_brush_recorded",
+            "independent_track_roles": [
+              "HARMONY",
+              "LEAD",
+              "BASS",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [],
+            "state": "RECORDED_OR_LEGACY_TRACK_REFERENCES_RETAINED",
+            "planned_stage_id": "GENRE_JAZZ_BALLAD_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/jazz_ballad.py"
+            ],
+            "state": "WORKING_MUSIC_INCOMPLETE",
+            "planned_stage_id": "GENRE_JAZZ_BALLAD_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [
+              "composer_overrides/jazz_arranger_style.py",
+              "composer_overrides/genre_styles/Jazz/jazz_ballad.py",
+              "composer_overrides/genre_styles/Jazz/harmony.py"
+            ],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_WORK_IN_PROGRESS",
+            "planned_stage_id": "GENRE_JAZZ_BALLAD_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "HARMONY",
+              "LEAD",
+              "BASS",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_JAZZ_BALLAD_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [
+              "composer_overrides/jazz_balance_contract.py",
+              "composer_overrides/genre_styles/Jazz/jazz_ballad_mix.json",
+              "composer_overrides/genre_styles/Jazz/ballad_leveler.py"
+            ],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_JAZZ_BALLAD_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_JAZZ_BALLAD_V1_STEP_01",
+            "to": "GENRE_JAZZ_BALLAD_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_BALLAD_V1_STEP_02",
+            "to": "GENRE_JAZZ_BALLAD_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_BALLAD_V1_STEP_03",
+            "to": "GENRE_JAZZ_BALLAD_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_BALLAD_V1_STEP_04",
+            "to": "GENRE_JAZZ_BALLAD_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_BALLAD_V1_STEP_05",
+            "to": "GENRE_JAZZ_BALLAD_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_BALLAD_V1_STEP_06",
+            "to": "GENRE_JAZZ_BALLAD_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [
+          "composer_overrides/genre_styles/Jazz/jazz_ballad.py"
+        ],
+        "genre_specific_instrument_files": [
+          "composer_overrides/genre_styles/Jazz/instrument_packages/jazz_ballad.json",
+          "composer_overrides/genre_styles/Jazz/instrument_library.json"
+        ],
+        "genre_specific_performance_files": [
+          "composer_overrides/jazz_arranger_style.py",
+          "composer_overrides/genre_styles/Jazz/jazz_ballad.py",
+          "composer_overrides/genre_styles/Jazz/harmony.py"
+        ],
+        "genre_specific_mix_files": [
+          "composer_overrides/jazz_balance_contract.py",
+          "composer_overrides/genre_styles/Jazz/jazz_ballad_mix.json",
+          "composer_overrides/genre_styles/Jazz/ballad_leveler.py"
+        ],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Big Band": {
       "schema_version": 1,
@@ -232,7 +787,279 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "BIG_BAND_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          100,
+          200
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed",
+          "aba"
+        ],
+        "groove_behavior": "swing or straight big-band groove with sectional figures and rhythm-section continuity",
+        "phrase_behavior": "8/16-bar phrases, ensemble punches, call-response sections, build toward shout/feature passages",
+        "harmony_behavior": "jazz tonal/extended harmony with arranged voicings and sectional voice leading",
+        "bass_behavior": "walking or riff-based bass tied to drums and ensemble figures",
+        "percussion_behavior_if_applicable": "ride/backbeat support, setup fills and ensemble hits; accents align with horn figures",
+        "instrument_role_behavior": "sax section, trumpets, trombones, piano/guitar, bass, drum kit; optional clarinet/flute doubles",
+        "ensemble_player_behavior": "sections phrase as units; brass/reeds balance and articulate together",
+        "arrangement_transformation": "introductions, ensemble choruses, solos, backgrounds and climactic ensemble returns",
+        "dynamic_behavior": "large sectional contrasts with controlled crescendos into ensemble hits",
+        "articulation_behavior": "tight staccato/accented figures contrasted with legato section pads",
+        "timing_humanization_behavior": "section-coherent placement; brass/reed attacks align with intentional pushes/lays",
+        "continuous_performance_control": "section expression and articulation controls plus solo-feature dynamics",
+        "sound_effects_intent": "natural room with limited enhancement; avoid smearing ensemble attacks",
+        "mix_prominence_intent": "rhythm section foundation; featured section/solo foreground; backgrounds subordinate",
+        "production_mastering_intent": "retain punch and brass detail without harshness",
+        "manufacturer_adapter_requirements": "requires reliable section/ensemble patch mapping and articulation control",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "big_band",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_BIG_BAND_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_BIG_BAND_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_BIG_BAND_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/instrument_packages/big_band.json"
+            ],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums_ride",
+            "independent_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "TRUMPET",
+              "TROMBONE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_BIG_BAND_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/big_band.py"
+            ],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_BIG_BAND_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_BIG_BAND_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "TRUMPET",
+              "TROMBONE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_BIG_BAND_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_BIG_BAND_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_BIG_BAND_V1_STEP_01",
+            "to": "GENRE_BIG_BAND_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BIG_BAND_V1_STEP_02",
+            "to": "GENRE_BIG_BAND_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BIG_BAND_V1_STEP_03",
+            "to": "GENRE_BIG_BAND_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BIG_BAND_V1_STEP_04",
+            "to": "GENRE_BIG_BAND_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BIG_BAND_V1_STEP_05",
+            "to": "GENRE_BIG_BAND_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BIG_BAND_V1_STEP_06",
+            "to": "GENRE_BIG_BAND_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [
+          "composer_overrides/genre_styles/Jazz/big_band.py"
+        ],
+        "genre_specific_instrument_files": [
+          "composer_overrides/genre_styles/Jazz/instrument_packages/big_band.json"
+        ],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Jazz Waltz": {
       "schema_version": 1,
@@ -305,7 +1132,277 @@
       "selected_shared_drum_kit_id": "unverified_brush_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_WALTZ_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          85,
+          180
+        ],
+        "meter_options": [
+          "3/4"
+        ],
+        "form_tendencies": [
+          "aba",
+          "through_composed"
+        ],
+        "groove_behavior": "three-beat jazz pulse with swing/straight subdivision options and elastic accent patterns",
+        "phrase_behavior": "4/8-bar jazz phrasing across 3/4; phrases may cross bar accents",
+        "harmony_behavior": "extended jazz harmony and modal options; functional cadence not mandatory",
+        "bass_behavior": "walking-in-3, roots/fifths or melodic bass according to section",
+        "percussion_behavior_if_applicable": "ride/brush pattern adapted to 3/4; avoid generic oom-pah-pah unless specifically chosen",
+        "instrument_role_behavior": "piano/guitar, bass, drum kit, horn/woodwind lead",
+        "ensemble_player_behavior": "shared 3/4 pocket with flexible comping and interactive fills",
+        "arrangement_transformation": "jazz head/solo/return or ABA",
+        "dynamic_behavior": "phrase arcs with dynamic lift into phrase 3 or 4",
+        "articulation_behavior": "legato horn phrasing, responsive comping, brush/stick variation",
+        "timing_humanization_behavior": "subtle swing placement and phrase rubato",
+        "continuous_performance_control": "expression and tempo breathing",
+        "sound_effects_intent": "natural room/reverb",
+        "mix_prominence_intent": "bass and cymbal pulse clear without dominating melody",
+        "production_mastering_intent": "dynamic master with controlled cymbal brightness",
+        "manufacturer_adapter_requirements": "preserve 3/4 timing and expressive controllers",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "jazz_waltz",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_brush_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_JAZZ_WALTZ_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_JAZZ_WALTZ_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_JAZZ_WALTZ_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/instrument_packages/jazz_waltz.json"
+            ],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_brush_drums",
+            "independent_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "FLUTE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_WALTZ_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/jazz_waltz.py"
+            ],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_WALTZ_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_WALTZ_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "FLUTE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_JAZZ_WALTZ_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_JAZZ_WALTZ_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_JAZZ_WALTZ_V1_STEP_01",
+            "to": "GENRE_JAZZ_WALTZ_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_WALTZ_V1_STEP_02",
+            "to": "GENRE_JAZZ_WALTZ_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_WALTZ_V1_STEP_03",
+            "to": "GENRE_JAZZ_WALTZ_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_WALTZ_V1_STEP_04",
+            "to": "GENRE_JAZZ_WALTZ_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_WALTZ_V1_STEP_05",
+            "to": "GENRE_JAZZ_WALTZ_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_WALTZ_V1_STEP_06",
+            "to": "GENRE_JAZZ_WALTZ_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [
+          "composer_overrides/genre_styles/Jazz/jazz_waltz.py"
+        ],
+        "genre_specific_instrument_files": [
+          "composer_overrides/genre_styles/Jazz/instrument_packages/jazz_waltz.json"
+        ],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Bebop": {
       "schema_version": 1,
@@ -378,7 +1475,276 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "BEBOP_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          145,
+          300
+        ],
+        "meter_options": [
+          "4/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "fast swing with ride-led time, walking bass and syncopated melodic accents",
+        "phrase_behavior": "dense 4/8-bar lines with pickups, enclosures, turnarounds and rapid phrase release",
+        "harmony_behavior": "fast-moving extended harmony, ii-V chains, secondary dominants, substitutions and chromatic approaches",
+        "bass_behavior": "continuous walking bass with chord-tone targets and passing approaches",
+        "percussion_behavior_if_applicable": "ride + hi-hat support; drums comp interactively rather than fixed backbeat",
+        "instrument_role_behavior": "small combo: sax/trumpet/clarinet, piano/guitar, bass, drums",
+        "ensemble_player_behavior": "high interaction; accompaniment leaves harmonic information without crowding solo line",
+        "arrangement_transformation": "head-solos-head baseline with compact ensemble statements",
+        "dynamic_behavior": "accent-driven line shaping rather than large sustained swells",
+        "articulation_behavior": "clean fast tonguing/legato alternation, ghosted notes and rhythmic accents as target permits",
+        "timing_humanization_behavior": "swing microtiming tightens at faster tempos; ensemble relational timing only",
+        "continuous_performance_control": "articulation and accent control prioritized over heavy effects",
+        "sound_effects_intent": "dry-to-natural room; little masking",
+        "mix_prominence_intent": "melody and bass clarity prioritized over dense pads",
+        "production_mastering_intent": "fast transients, controlled cymbals and headroom",
+        "manufacturer_adapter_requirements": "requires fast articulation-capable lead and rhythm voices",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "bebop",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_BEBOP_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_BEBOP_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_BEBOP_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/instrument_packages/bebop.json"
+            ],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums_ride",
+            "independent_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "TRUMPET",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_BEBOP_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/bebop.py"
+            ],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_BEBOP_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_BEBOP_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "TRUMPET",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_BEBOP_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_BEBOP_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_BEBOP_V1_STEP_01",
+            "to": "GENRE_BEBOP_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BEBOP_V1_STEP_02",
+            "to": "GENRE_BEBOP_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BEBOP_V1_STEP_03",
+            "to": "GENRE_BEBOP_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BEBOP_V1_STEP_04",
+            "to": "GENRE_BEBOP_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BEBOP_V1_STEP_05",
+            "to": "GENRE_BEBOP_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_BEBOP_V1_STEP_06",
+            "to": "GENRE_BEBOP_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [
+          "composer_overrides/genre_styles/Jazz/bebop.py"
+        ],
+        "genre_specific_instrument_files": [
+          "composer_overrides/genre_styles/Jazz/instrument_packages/bebop.json"
+        ],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Cool Jazz": {
       "schema_version": 1,
@@ -451,7 +1817,278 @@
       "selected_shared_drum_kit_id": "unverified_brush_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "COOL_JAZZ_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          65,
+          150
+        ],
+        "meter_options": [
+          "4/4",
+          "3/4"
+        ],
+        "form_tendencies": [
+          "aba",
+          "through_composed"
+        ],
+        "groove_behavior": "restrained swing or straight feel with more space and lighter attack than hard-driving swing",
+        "phrase_behavior": "longer understated phrases, counterlines and deliberate rests",
+        "harmony_behavior": "extended/modal harmony with transparent voicings and slower harmonic rhythm as options",
+        "bass_behavior": "walking or sparse melodic bass; less aggressive attack",
+        "percussion_behavior_if_applicable": "brushes/light kit favored; percussion leaves air",
+        "instrument_role_behavior": "horn/woodwind lead, piano/guitar, bass, light drums; chamber colors allowed",
+        "ensemble_player_behavior": "balanced, conversational ensemble; no section overwhelms texture",
+        "arrangement_transformation": "ABA/through-composed or head/solo forms with textural restraint",
+        "dynamic_behavior": "restrained dynamics with subtle swells",
+        "articulation_behavior": "soft attacks, legato lines, understated accents",
+        "timing_humanization_behavior": "laid-back but coherent shared pocket",
+        "continuous_performance_control": "continuous expression and breath shaping",
+        "sound_effects_intent": "natural ambience; subtle plate/room if target uses effects",
+        "mix_prominence_intent": "transparent mix with bass and melody both clear",
+        "production_mastering_intent": "low-compression, warm master",
+        "manufacturer_adapter_requirements": "favor nuanced dynamic voices over bright generic substitutions",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "cool_jazz",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_brush_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_COOL_JAZZ_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_COOL_JAZZ_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_COOL_JAZZ_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/instrument_packages/cool_jazz.json"
+            ],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_brush_drums",
+            "independent_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "FLUTE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_COOL_JAZZ_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/cool_jazz.py"
+            ],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_COOL_JAZZ_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_COOL_JAZZ_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "DOUBLE_BASS",
+              "ELECTRIC_PIANO",
+              "FLUTE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_COOL_JAZZ_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_COOL_JAZZ_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_COOL_JAZZ_V1_STEP_01",
+            "to": "GENRE_COOL_JAZZ_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_COOL_JAZZ_V1_STEP_02",
+            "to": "GENRE_COOL_JAZZ_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_COOL_JAZZ_V1_STEP_03",
+            "to": "GENRE_COOL_JAZZ_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_COOL_JAZZ_V1_STEP_04",
+            "to": "GENRE_COOL_JAZZ_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_COOL_JAZZ_V1_STEP_05",
+            "to": "GENRE_COOL_JAZZ_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_COOL_JAZZ_V1_STEP_06",
+            "to": "GENRE_COOL_JAZZ_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [
+          "composer_overrides/genre_styles/Jazz/cool_jazz.py"
+        ],
+        "genre_specific_instrument_files": [
+          "composer_overrides/genre_styles/Jazz/instrument_packages/cool_jazz.json"
+        ],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Dixieland": {
       "schema_version": 1,
@@ -532,7 +2169,279 @@
       "selected_shared_drum_kit_id": "unverified_drums_ride",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "DIXIELAND_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          95,
+          220
+        ],
+        "meter_options": [
+          "4/4",
+          "2/4"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "two-beat or four-beat early-jazz pulse with collective rhythmic lift",
+        "phrase_behavior": "short ensemble strains with collective improvisatory interplay and clear cadences",
+        "harmony_behavior": "functional/blues/ragtime-related harmony with dominant motion and turnarounds",
+        "bass_behavior": "two-beat roots/fifths or four-beat walking depending section",
+        "percussion_behavior_if_applicable": "snare/bass drum/ride or period-appropriate kit behavior; energetic but not modern rock backbeat",
+        "instrument_role_behavior": "trumpet/cornet lead role, clarinet counterline, trombone support, piano/guitar/banjo-role target, bass/tuba, drums",
+        "ensemble_player_behavior": "simultaneous front-line roles remain differentiated: lead, obbligato, tailgate/counter-support",
+        "arrangement_transformation": "multiple strains, breaks and ensemble returns",
+        "dynamic_behavior": "lively accents and collective builds",
+        "articulation_behavior": "brisk tonguing, gliss/falls where supported, crisp rhythm accompaniment",
+        "timing_humanization_behavior": "ensemble push tied to two-beat/four-beat pulse",
+        "continuous_performance_control": "articulation and breath controls",
+        "sound_effects_intent": "small-room/live-band character; avoid heavy modern processing",
+        "mix_prominence_intent": "front line clear with rhythm foundation supportive",
+        "production_mastering_intent": "preserve acoustic transient character",
+        "manufacturer_adapter_requirements": "map brass/clarinet/trombone roles distinctly; no generic single-horn collapse",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "dixieland",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums_ride",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_DIXIELAND_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_DIXIELAND_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_DIXIELAND_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/instrument_packages/dixieland.json"
+            ],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums_ride",
+            "independent_track_roles": [
+              "DOUBLE_BASS",
+              "CLARINET",
+              "TRUMPET",
+              "TROMBONE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_DIXIELAND_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [
+              "composer_overrides/genre_styles/Jazz/dixieland.py"
+            ],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_DIXIELAND_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_DIXIELAND_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "DOUBLE_BASS",
+              "CLARINET",
+              "TRUMPET",
+              "TROMBONE",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_DIXIELAND_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_DIXIELAND_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_DIXIELAND_V1_STEP_01",
+            "to": "GENRE_DIXIELAND_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DIXIELAND_V1_STEP_02",
+            "to": "GENRE_DIXIELAND_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DIXIELAND_V1_STEP_03",
+            "to": "GENRE_DIXIELAND_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DIXIELAND_V1_STEP_04",
+            "to": "GENRE_DIXIELAND_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DIXIELAND_V1_STEP_05",
+            "to": "GENRE_DIXIELAND_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_DIXIELAND_V1_STEP_06",
+            "to": "GENRE_DIXIELAND_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [
+          "composer_overrides/genre_styles/Jazz/dixieland.py"
+        ],
+        "genre_specific_instrument_files": [
+          "composer_overrides/genre_styles/Jazz/instrument_packages/dixieland.json"
+        ],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     },
     "Jazz Fusion": {
       "schema_version": 1,
@@ -613,7 +2522,278 @@
       "selected_shared_drum_kit_id": "unverified_drums",
       "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
       "drum_kit_not_a_single_rendered_stem": true,
-      "original_instrument_sources_off_limits": true
+      "original_instrument_sources_off_limits": true,
+      "musical_definition_source": "PRESERVED_2026_10_02_COMPOSER_PERFORMANCE_REGISTRY_EXACT_COPY",
+      "musical_definition": {
+        "profile_id": "JAZZ_FUSION_V1",
+        "family": "Jazz",
+        "status": "CONTROLLED_PROFILE",
+        "scope_note": "",
+        "tempo_bpm_range": [
+          85,
+          170
+        ],
+        "meter_options": [
+          "4/4",
+          "6/8",
+          "7/8"
+        ],
+        "form_tendencies": [
+          "through_composed"
+        ],
+        "groove_behavior": "straight or swung syncopation with funk/rock-derived rhythm-section precision; odd meters allowed only with explicit grouping",
+        "phrase_behavior": "longer developmental phrases, riffs, solo sections and sectional metric/harmonic shifts",
+        "harmony_behavior": "extended/modal jazz harmony mixed with rock/funk vamps and pedal harmony",
+        "bass_behavior": "electric bass may be syncopated, melodic, slapped/picked or pedal-based according to section",
+        "percussion_behavior_if_applicable": "drum kit can be dense and technically active; groove remains coherent through fills and meter shifts",
+        "instrument_role_behavior": "electric guitar, electric bass, drums, keys/synth target, sax/brass/woodwind lead options",
+        "ensemble_player_behavior": "rhythm section tightly interlocks while soloists can float over groove",
+        "arrangement_transformation": "riff sections, solo development, breakdowns and climactic returns",
+        "dynamic_behavior": "broad dynamic range from atmospheric openings to high-energy sections",
+        "articulation_behavior": "clean/fused articulation: legato leads, accented riffs, guitar sustain, crisp drums",
+        "timing_humanization_behavior": "humanized within tight pocket; odd-meter groupings remain stable",
+        "continuous_performance_control": "expression, modulation, pitch bend and target-specific effects may be prominent",
+        "sound_effects_intent": "delay/chorus/drive/synth effects allowed as controlled style components",
+        "mix_prominence_intent": "bass/drums strong but melodic lead remains intelligible",
+        "production_mastering_intent": "modern full-range master with controlled density",
+        "manufacturer_adapter_requirements": "requires electric/synth resources and fast articulation support",
+        "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+        "provenance": [
+          "existing_project_theory",
+          "established_genre_practice"
+        ]
+      },
+      "runtime_musical_connections": {
+        "original_registry_path": "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+        "original_adapter_path": "composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+        "original_family_template": "fusion",
+        "active_style_module": null,
+        "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
+        "musical_implementation_state": "JAZZ_STYLE_PLACEHOLDER_NOT_STARTED",
+        "selected_universal_drum_kit": "unverified_drums",
+        "per_instrument_mix_config_owned_by_genre": true
+      },
+      "musical_development_policy": "Build this genre's melody, harmony, bass, percussion, rhythm, form and expressive behaviors from its own definition and original sample links; no shared melody copying, no source edits, no blended stems.",
+      "seven_stage_plan": {
+        "schema_version": 1,
+        "genre_identity": "GENRE_JAZZ_FUSION_V1",
+        "purpose": "User-approved researched sequence; each genre owns independent planned handoffs; organizational reference only.",
+        "stage_count": 7,
+        "stage_order": [
+          "SELECT_GENRE",
+          "DEFINE_MUSICAL_STRUCTURE",
+          "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+          "COMPOSE_SEPARATE_PARTS",
+          "PERFORM_MUSICALLY",
+          "RENDER_SEPARATE_AUDIO_STEMS",
+          "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        ],
+        "stages": [
+          {
+            "order": 1,
+            "name": "SELECT_GENRE",
+            "source_fields": [
+              "genre",
+              "family_name",
+              "musical_definition.profile_id",
+              "musical_definition.resolution_policy"
+            ],
+            "state": "PROFILE_DEFINED",
+            "requirements": "EXISTING_AUTOMATIC_BASELINE",
+            "planned_stage_id": "GENRE_JAZZ_FUSION_V1_STEP_01",
+            "connection_activated": false
+          },
+          {
+            "order": 2,
+            "name": "DEFINE_MUSICAL_STRUCTURE",
+            "source_fields": [
+              "musical_definition.tempo_bpm_range",
+              "musical_definition.meter_options",
+              "musical_definition.form_tendencies",
+              "musical_definition.harmony_behavior",
+              "musical_definition.phrase_behavior",
+              "musical_definition.groove_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "state": "ORIGINAL_MUSICAL_DEFINITION_SAVED",
+            "planned_stage_id": "GENRE_JAZZ_FUSION_V1_STEP_02",
+            "connection_activated": false
+          },
+          {
+            "order": 3,
+            "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+            "source_fields": [
+              "original_composer_instrument_palette",
+              "individual_instrument_tracks",
+              "selected_shared_drum_kit_id"
+            ],
+            "source_files": [],
+            "drum_kit_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+            "drum_kit_id": "unverified_drums",
+            "independent_track_roles": [
+              "ELECTRIC_BASS",
+              "ELECTRIC_PIANO",
+              "ELECTRIC_GUITAR",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "unverified_instrument_roles": [
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "state": "ORIGINAL_SOURCE_BINDINGS_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_FUSION_V1_STEP_03",
+            "connection_activated": false
+          },
+          {
+            "order": 4,
+            "name": "COMPOSE_SEPARATE_PARTS",
+            "source_fields": [
+              "musical_definition.instrument_role_behavior",
+              "musical_definition.bass_behavior",
+              "musical_definition.percussion_behavior_if_applicable",
+              "musical_definition.harmony_behavior",
+              "musical_definition.ensemble_player_behavior",
+              "musical_definition.arrangement_transformation"
+            ],
+            "source_files": [],
+            "state": "ORIGINAL_PROFILE_PRESENT_ACTUAL_STYLE_WORK_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_FUSION_V1_STEP_04",
+            "connection_activated": false
+          },
+          {
+            "order": 5,
+            "name": "PERFORM_MUSICALLY",
+            "source_fields": [
+              "musical_definition.articulation_behavior",
+              "musical_definition.dynamic_behavior",
+              "musical_definition.timing_humanization_behavior",
+              "musical_definition.continuous_performance_control"
+            ],
+            "source_files": [],
+            "needs": [
+              "ARTICULATION",
+              "TIMING",
+              "SUSTAIN",
+              "VIBRATO_AS_APPROPRIATE",
+              "DYNAMICS",
+              "MELODIC_INDEPENDENCE"
+            ],
+            "state": "PERFORMANCE_IMPLEMENTATION_PENDING",
+            "planned_stage_id": "GENRE_JAZZ_FUSION_V1_STEP_05",
+            "connection_activated": false
+          },
+          {
+            "order": 6,
+            "name": "RENDER_SEPARATE_AUDIO_STEMS",
+            "required_track_roles": [
+              "ELECTRIC_BASS",
+              "ELECTRIC_PIANO",
+              "ELECTRIC_GUITAR",
+              "SYNTH_LEAD",
+              "KICK",
+              "SNARE",
+              "HAT"
+            ],
+            "source_files": [
+              "composer_overrides/sfz_renderer_adapter.py",
+              "composer_overrides/production_resource_policy.py"
+            ],
+            "requirement": "ONE_AUDIO_STEM_PER_INSTRUMENT_TRACK_INCLUDING_EACH_DRUM",
+            "state": "COMPLETE_AUDIO_NOT_CONFIRMED_BY_THIS_FILE",
+            "do_not_synthesize_substitute_instruments": true,
+            "planned_stage_id": "GENRE_JAZZ_FUSION_V1_STEP_06",
+            "connection_activated": false
+          },
+          {
+            "order": 7,
+            "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
+            "source_fields": [
+              "individual_instrument_tracks",
+              "musical_definition.mix_prominence_intent",
+              "musical_definition.production_mastering_intent"
+            ],
+            "source_files": [],
+            "downstream_reference_files": [
+              "composer_overrides/standalone_3d_mixer.py",
+              "composer_overrides/spatial_master_handoff.py"
+            ],
+            "operation_order": [
+              "GENRE_OWNS_INDIVIDUAL_STEM_RATIOS",
+              "STANDALONE_3D_MIXER_LAST"
+            ],
+            "state": "FINAL_MIX_REQUIRES_LISTENING_CALIBRATION",
+            "planned_stage_id": "GENRE_JAZZ_FUSION_V1_STEP_07",
+            "connection_activated": false
+          }
+        ],
+        "proposed_handoffs": [
+          {
+            "from": "GENRE_JAZZ_FUSION_V1_STEP_01",
+            "to": "GENRE_JAZZ_FUSION_V1_STEP_02",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_FUSION_V1_STEP_02",
+            "to": "GENRE_JAZZ_FUSION_V1_STEP_03",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_FUSION_V1_STEP_03",
+            "to": "GENRE_JAZZ_FUSION_V1_STEP_04",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_FUSION_V1_STEP_04",
+            "to": "GENRE_JAZZ_FUSION_V1_STEP_05",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_FUSION_V1_STEP_05",
+            "to": "GENRE_JAZZ_FUSION_V1_STEP_06",
+            "status": "RESERVED_NOT_CONNECTED"
+          },
+          {
+            "from": "GENRE_JAZZ_FUSION_V1_STEP_06",
+            "to": "GENRE_JAZZ_FUSION_V1_STEP_07",
+            "status": "RESERVED_NOT_CONNECTED"
+          }
+        ],
+        "enable_runtime_connections": false,
+        "auto_apply": false,
+        "do_not_change_universal_recordings": true,
+        "do_not_reconfigure_current_composer_or_plug": true,
+        "source_preservation": "Existing original registry and adapter remain authoritative until approved integration."
+      },
+      "existing_file_cross_references": {
+        "original_runtime_bundle": "composer/runtime.b64",
+        "genre_specific_arrangement_files": [],
+        "genre_specific_instrument_files": [],
+        "genre_specific_performance_files": [],
+        "genre_specific_mix_files": [],
+        "shared_instrument_files": [
+          "composer_overrides/verified_future_instruments.json",
+          "composer_overrides/production_resource_policy.py"
+        ],
+        "shared_drum_catalog": "composer_overrides/drum_kits/drum_kit_catalog.json",
+        "common_renderer_files": [
+          "composer_overrides/sfz_renderer_adapter.py",
+          "composer_overrides/render_server.py"
+        ],
+        "downstream_3d_files": [
+          "composer_overrides/standalone_3d_mixer.py",
+          "composer_overrides/spatial_master_handoff.py"
+        ]
+      }
     }
-  }
+  },
+  "family_contains_original_music_definitions": true,
+  "original_routing_protected": true,
+  "development_mode": "MUSICAL_PROFILE_DATA_POPULATED_NOT_AUTO_ACTIVATED",
+  "seven_stage_sequence_filed_for_every_genre": true,
+  "stage_wiring_activated": false,
+  "stage_sequence_version": "SEVEN_STAGE_PROPOSED_2026_10_08"
 }

@@ -1,0 +1,619 @@
+{
+  "schema_version": 2,
+  "musical_family": "Jazz",
+  "reference_only": true,
+  "source_assets_immutable": true,
+  "original_drum_library_is_separate": true,
+  "genre_count": 8,
+  "profiles": {
+    "Swing": {
+      "schema_version": 1,
+      "genre": "Swing",
+      "genre_template": "swing",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "TRUMPET",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "trumpet",
+        "drums_ride"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "TRUMPET",
+          "instrument_id": "trumpet",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_ride"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Jazz Ballad": {
+      "schema_version": 1,
+      "genre": "Jazz Ballad",
+      "genre_template": "jazz_ballad",
+      "profile_status": "LIVE_JAZZ_BALLAD_UNVERIFIED_BY_LISTENING",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "HARMONY",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "clarinet",
+        "brush_drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "HARMONY",
+          "instrument_id": "electric_piano",
+          "catalog_key": "electric_piano_wurlitzer",
+          "proposed_relative_active_level_db": 0,
+          "ratio_origin": "CURRENT_JAZZ_BALLAD_USER_LISTENING_REQUEST",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "LEAD",
+          "instrument_id": "clarinet_bb",
+          "catalog_key": "clarinet_vsco",
+          "proposed_relative_active_level_db": 0,
+          "ratio_origin": "CURRENT_JAZZ_BALLAD_USER_LISTENING_REQUEST",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "BASS",
+          "instrument_id": "double_bass",
+          "catalog_key": "double_bass_meatbass",
+          "proposed_relative_active_level_db": -3,
+          "ratio_origin": "CURRENT_JAZZ_BALLAD_USER_LISTENING_REQUEST",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": "kick_drum_rock",
+          "catalog_key": "brush_kick_swirly",
+          "proposed_relative_active_level_db": 8,
+          "ratio_origin": "CURRENT_JAZZ_BALLAD_USER_LISTENING_REQUEST",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": "snare_drum",
+          "catalog_key": "brush_snare_swirly",
+          "proposed_relative_active_level_db": -22,
+          "ratio_origin": "CURRENT_JAZZ_BALLAD_USER_LISTENING_REQUEST",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": "hi_hat",
+          "catalog_key": "brush_hat_swirly",
+          "proposed_relative_active_level_db": -7,
+          "ratio_origin": "CURRENT_JAZZ_BALLAD_USER_LISTENING_REQUEST",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "EXISTING_BEHAVIOR_NOT_AUDITION_CONFIRMED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "jazz_ballad_brush_recorded",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Big Band": {
+      "schema_version": 1,
+      "genre": "Big Band",
+      "genre_template": "big_band",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "TRUMPET",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "trumpet",
+        "trombone",
+        "drums_ride"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "TRUMPET",
+          "instrument_id": "trumpet",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "TROMBONE",
+          "instrument_id": "trombone",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_ride"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Jazz Waltz": {
+      "schema_version": 1,
+      "genre": "Jazz Waltz",
+      "genre_template": "jazz_waltz",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "FLUTE",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "flute",
+        "brush_drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "FLUTE",
+          "instrument_id": "flute",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "brush_drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "unverified_brush_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Bebop": {
+      "schema_version": 1,
+      "genre": "Bebop",
+      "genre_template": "bebop",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "TRUMPET",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "trumpet",
+        "drums_ride"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "TRUMPET",
+          "instrument_id": "trumpet",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_ride"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Cool Jazz": {
+      "schema_version": 1,
+      "genre": "Cool Jazz",
+      "genre_template": "cool_jazz",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "FLUTE",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "flute",
+        "brush_drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "FLUTE",
+          "instrument_id": "flute",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "brush_drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "unverified_brush_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Dixieland": {
+      "schema_version": 1,
+      "genre": "Dixieland",
+      "genre_template": "dixieland",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "CLARINET",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "clarinet",
+        "trumpet",
+        "trombone",
+        "drums_ride"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "CLARINET",
+          "instrument_id": "clarinet",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "TRUMPET",
+          "instrument_id": "trumpet",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "TROMBONE",
+          "instrument_id": "trombone",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_ride"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "unverified_drums_ride",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Jazz Fusion": {
+      "schema_version": 1,
+      "genre": "Jazz Fusion",
+      "genre_template": "fusion",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_LEAD",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "electric_guitar",
+        "synth_lead",
+        "drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "instrument_id": "electric_guitar",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "instrument_id": "synth_lead",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Jazz",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    }
+  }
+}

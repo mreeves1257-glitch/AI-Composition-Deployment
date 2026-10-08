@@ -1,19 +1,26 @@
-# Original-instrument genre mix profiles (55 styles)
+# Genre intensity ratios — 13 musical families, 55 separate styles
 
-These **55 separate, individually owned genre profile files** correspond exactly to the preserved Composer genre registry and visible Control Panel. Each genre's actual original legacy palette is recorded. No downloaded instrument sources or SFZ files are changed.
+This reference folder contains **13 family JSON files**, each holding distinct style profiles by name. They replace the prior 55 flat genre-ratio JSON files, preserved in the immutable Git checkpoint branch `all-55-genre-ratio-reference-protected-20261008`.
 
-## Important distinction
-**Numeric mix entries for undeveloped genres are provisional design targets**, not published professional standards and not verified recorded output. They are here so every genre has its own place to calibrate its own isolated instrument tracks. Do **not** auto-apply these files. A genre is ready only after verifying the real source link, a fully separate recorded audio stem for every part, actual stem output, relative perceived balance and completed playable music.
+Each `profiles[genre_name]` entry keeps that genre's own original instrument palette, separate instrument track slots, and mix intensity ratios. Related genres share a folder/file without merging their music or borrowing each other's ratio values.
 
-- `ROCK`: preserves the nine existing, proven `ROCK_GAIN_TRIMS_DB` values as **original gain offsets**, which are not comparable to measured active loudness. Its production logic stays untouched.
-- `Jazz Ballad`: mirrors existing six individual instrument target active-level ratios (piano 0, clarinet 0, double bass -3, kick +8, brush snare -22, hat -7); existing live style file `Jazz/jazz_ballad_mix.json` stays authoritative. These are targets, not certified sound.
-- Other 53: genre-specific candidate **relative active stem** levels using their authentic preserved palette. They remain inactive until individual original-source mappings, playback and calibration have been verified.
-- Old palette IDs such as `drums`, `brush_drums`, `break_drums`, and `drums_latin` are **legacy grouped descriptors**, not an acceptable final multi-instrument stem. Each proposed profile explicitly lists independent `KICK`, `SNARE`, and `HAT` slots with **no fake sample assignment** and a pending-source-split flag. Do not claim this split already exists.
-- Musical role influences ratios, not the downloaded sample's amplitude. Tempo and instrumentation are not interchangeable with calibrated audio track ratios.
+**Drum kits are an independent shared module:** see `composer_overrides/drum_kits/drum_kit_catalog.json`. Every genre selects a kit by `selected_shared_drum_kit_id`, where appropriate. Kit sounds are original, universal, and read-only. Kick, snare, hi-hat, toms, and cymbals must remain separate output stems. The catalog's `unverified_*` entries are *only* old palette descriptors, not ready-to-play sampled kits.
 
-## Measurement discipline
-Use identical source-provenance, RMS/active-window and peak measurement definitions for every genre. Short kick transients may need more crest-factor-aware care than sustained clarinet notes. Preserve programme/master-level loudness standards as separate from source-track intensity. Arranger keyboard manuals support independent instrument tracks and per-style-element expression settings; they do **not** supply a canonical genre-by-genre instrument loudness table.
+**Production safeguards:** Rock retains its existing gain trims, Jazz Ballad retains its currently selected 0/0/+8/−3/−7/−22 dB relative instrumental goals, and the other 53 genre profiles are non-activated candidate balances. These files are organizational planning references, **not automatically loaded** by the production Composer; the standalone mixer and recorded instrument WAV/SFZ remain unchanged.
 
-Sources: Korg Pa5X user manual (track-specific Volume CC#07, Style Element Expression CC#11), https://www.korg.com/us/support/download/product/0/895/ ; ITU BS.1770 and EBU Tech 3341 for loudness metering, https://tech.ebu.ch/publications/tech3341/ . These support the method only, not any candidate numbers.
+## Family organization
+- **Rock:** ROCK
+- **Jazz:** Swing, Jazz Ballad, Big Band, Jazz Waltz, Bebop, Cool Jazz, Dixieland, Jazz Fusion
+- **R_and_B_Soul_Funk_Disco:** Rhythm and Blues, Soul, Funk, Contemporary R&B, Neo-Soul-related, DISCO
+- **Country_Bluegrass:** Traditional Country, Country Rock, Country Ballad, Country Shuffle, Two-Step, Country Waltz, Bluegrass-related
+- **Latin:** Bossa Nova, Samba, Salsa, Mambo, Rumba, Cha-Cha, Bolero
+- **Electronic_Dance:** House, Techno, Trance, Ambient Electronic, Downtempo, Breakbeat-related, Garage-related, Experimental Electronic, Chugg / #chugg
+- **Indie_Alternative:** Eclectic New Indie
+- **Reggaeton:** Mexican Reggaeton
+- **Afrobeats_AfroLatin:** Afrobeats, Afro-Latin / Afrobeats Fusion, Afro House
+- **Trip_Hop:** Trip-Hop, Contemporary Trip-Hop / Trip-Hop Revival
+- **Hybrid_Custom:** Regional Electronic Hybrids, Genre-Breaking / Borderless, Custom Hybrid, Custom Style, Controlled Custom Style Profile
+- **Classical_Acoustic:** Classical, WALTZ, PIANIST
+- **New_Age_Spiritual:** New Age, Spiritual
 
-Original sound recordings, instrument definitions, Rock, active Jazz Ballad, plug, control panel, and 3D mixer are outside this profile-generation scope.
+A common loudness measurement procedure helps calibrate original sample/stem intensities, but published standards don't supply a universal numeric gain table for all genres. Follow measurements and actual finished-music listening before approving a mix.

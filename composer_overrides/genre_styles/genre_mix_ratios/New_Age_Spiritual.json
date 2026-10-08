@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "musical_family": "New_Age_Spiritual",
+  "reference_only": true,
+  "source_assets_immutable": true,
+  "original_drum_library_is_separate": true,
+  "genre_count": 2,
+  "profiles": {
+    "New Age": {
+      "schema_version": 1,
+      "genre": "New Age",
+      "genre_template": "new_age",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "SYNTH_PAD",
+      "original_composer_instrument_palette": [
+        "electric_piano",
+        "flute",
+        "strings",
+        "synth_pad"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "instrument_id": "electric_piano",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "FLUTE",
+          "instrument_id": "flute",
+          "proposed_relative_active_level_db": -1,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "STRINGS",
+          "instrument_id": "strings",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "instrument_id": "synth_pad",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "New_Age_Spiritual",
+      "selected_shared_drum_kit_id": null,
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Spiritual": {
+      "schema_version": 1,
+      "genre": "Spiritual",
+      "genre_template": "spiritual",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "CHOIR",
+      "original_composer_instrument_palette": [
+        "piano",
+        "strings",
+        "flute",
+        "choir"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "PIANO",
+          "instrument_id": "piano",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "STRINGS",
+          "instrument_id": "strings",
+          "proposed_relative_active_level_db": -5,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "FLUTE",
+          "instrument_id": "flute",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "CHOIR",
+          "instrument_id": "choir",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "New_Age_Spiritual",
+      "selected_shared_drum_kit_id": null,
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    }
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "schema_version": 2,
+  "musical_family": "Country_Bluegrass",
+  "reference_only": true,
+  "source_assets_immutable": true,
+  "original_drum_library_is_separate": true,
+  "genre_count": 7,
+  "profiles": {
+    "Traditional Country": {
+      "schema_version": 1,
+      "genre": "Traditional Country",
+      "genre_template": "country",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "VIOLIN",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "acoustic_guitar",
+        "violin",
+        "drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "VIOLIN",
+          "instrument_id": "violin",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Country_Bluegrass",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Country Rock": {
+      "schema_version": 1,
+      "genre": "Country Rock",
+      "genre_template": "country_rock",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "ELECTRIC_GUITAR",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "electric_guitar",
+        "acoustic_guitar",
+        "drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "instrument_id": "electric_guitar",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Country_Bluegrass",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Country Ballad": {
+      "schema_version": 1,
+      "genre": "Country Ballad",
+      "genre_template": "country_ballad",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "VIOLIN",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "acoustic_guitar",
+        "violin",
+        "drums_soft"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "VIOLIN",
+          "instrument_id": "violin",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_soft"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Country_Bluegrass",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Country Shuffle": {
+      "schema_version": 1,
+      "genre": "Country Shuffle",
+      "genre_template": "country_shuffle",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "ELECTRIC_GUITAR",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "acoustic_guitar",
+        "electric_guitar",
+        "drums_shuffle"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "instrument_id": "electric_guitar",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_shuffle",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_shuffle",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_shuffle",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_shuffle"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Country_Bluegrass",
+      "selected_shared_drum_kit_id": "unverified_drums_shuffle",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Two-Step": {
+      "schema_version": 1,
+      "genre": "Two-Step",
+      "genre_template": "two_step",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "VIOLIN",
+      "original_composer_instrument_palette": [
+        "electric_bass",
+        "acoustic_guitar",
+        "violin",
+        "drums"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "instrument_id": "electric_bass",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "VIOLIN",
+          "instrument_id": "violin",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums",
+          "proposed_relative_active_level_db": -7,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Country_Bluegrass",
+      "selected_shared_drum_kit_id": "unverified_drums",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Country Waltz": {
+      "schema_version": 1,
+      "genre": "Country Waltz",
+      "genre_template": "country_waltz",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "VIOLIN",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "acoustic_guitar",
+        "violin",
+        "drums_soft"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -2,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "VIOLIN",
+          "instrument_id": "violin",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "KICK",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "SNARE",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "HAT",
+          "instrument_id": null,
+          "original_palette_group": "drums_soft",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_ORIGINAL_SAMPLE_BINDING_AND_INDEPENDENT_STEM",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [
+        "drums_soft"
+      ],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Country_Bluegrass",
+      "selected_shared_drum_kit_id": "unverified_drums_soft",
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    },
+    "Bluegrass-related": {
+      "schema_version": 1,
+      "genre": "Bluegrass-related",
+      "genre_template": "bluegrass",
+      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
+      "reference_instrument_track": "VIOLIN",
+      "original_composer_instrument_palette": [
+        "double_bass",
+        "acoustic_guitar",
+        "violin",
+        "marimba"
+      ],
+      "individual_instrument_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "instrument_id": "double_bass",
+          "proposed_relative_active_level_db": -4,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "instrument_id": "acoustic_guitar",
+          "proposed_relative_active_level_db": -3,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "VIOLIN",
+          "instrument_id": "violin",
+          "proposed_relative_active_level_db": 0,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        },
+        {
+          "track_id": "MARIMBA",
+          "instrument_id": "marimba",
+          "proposed_relative_active_level_db": -9,
+          "track_status": "PENDING_UNIVERSAL_SOURCE_AND_AUDIO_LEVEL_VERIFICATION",
+          "source_is_read_only": true
+        }
+      ],
+      "pending_drum_source_splits": [],
+      "actual_source_wav_sfz_files_must_remain_unchanged": true,
+      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
+      "auto_apply": false,
+      "family_name": "Country_Bluegrass",
+      "selected_shared_drum_kit_id": null,
+      "drum_kit_catalog_path": "composer_overrides/drum_kits/drum_kit_catalog.json",
+      "drum_kit_not_a_single_rendered_stem": true,
+      "original_instrument_sources_off_limits": true
+    }
+  }
+}

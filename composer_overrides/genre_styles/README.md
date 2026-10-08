@@ -1,26 +1,27 @@
-# Genre intensity ratios — 13 musical families, 55 separate styles
+# AI Composer — Genre family directory (October 8, 2026)
 
-This reference folder contains **13 family JSON files**, each holding distinct style profiles by name. They replace the prior 55 flat genre-ratio JSON files, preserved in the immutable Git checkpoint branch `all-55-genre-ratio-reference-protected-20261008`.
+**One family folder per heading: 13 family folders, 55 distinct genres.** `index.json` maps each named genre to its family's `profile.json`. Every family owns its own independent style parameters, instrument-role references, seven ordered **planned** stages and six reserved handoffs. The source filing structure does not mean any complete song is operational.
 
-Each `profiles[genre_name]` entry keeps that genre's own original instrument palette, separate instrument track slots, and mix intensity ratios. Related genres share a folder/file without merging their music or borrowing each other's ratio values.
+## One authoritative home per family
 
-**Drum kits are an independent shared module:** see `composer_overrides/drum_kits/drum_kit_catalog.json`. Every genre selects a kit by `selected_shared_drum_kit_id`, where appropriate. Kit sounds are original, universal, and read-only. Kick, snare, hi-hat, toms, and cymbals must remain separate output stems. The catalog's `unverified_*` entries are *only* old palette descriptors, not ready-to-play sampled kits.
+- `Rock/profile.json`: ROCK. Older, unsuccessful Rock music, balance, source probes, subkick, and tests are gathered **under Rock/**.
+- `Jazz/profile.json`: Swing, Jazz Ballad, Big Band, Jazz Waltz, Bebop, Cool Jazz, Dixieland, Jazz Fusion. Existing style code, arranger, source links, mix controls and tests are gathered **under Jazz/**.
+- `R_and_B_Soul_Funk_Disco/profile.json`, `Country_Bluegrass/profile.json`, `Latin/profile.json`, `Electronic_Dance/profile.json`, `Indie_Alternative/profile.json`, `Reggaeton/profile.json`, `Afrobeats_AfroLatin/profile.json`, `Trip_Hop/profile.json`, `Hybrid_Custom/profile.json`, `Classical_Acoustic/profile.json`, `New_Age_Spiritual/profile.json`.
 
-**Production safeguards:** Rock retains its existing gain trims, Jazz Ballad retains its currently selected 0/0/+8/−3/−7/−22 dB relative instrumental goals, and the other 53 genre profiles are non-activated candidate balances. These files are organizational planning references, **not automatically loaded** by the production Composer; the standalone mixer and recorded instrument WAV/SFZ remain unchanged.
+No duplicate Rock.py or Jazz profiles outside those homes. The former `genre_mix_ratios/` collection has been consolidated into these family directories. The `profile.json` files are the authoritative organization references; associated `.py` files may contain earlier, unsuccessful musical code.
 
-## Family organization
-- **Rock:** ROCK
-- **Jazz:** Swing, Jazz Ballad, Big Band, Jazz Waltz, Bebop, Cool Jazz, Dixieland, Jazz Fusion
-- **R_and_B_Soul_Funk_Disco:** Rhythm and Blues, Soul, Funk, Contemporary R&B, Neo-Soul-related, DISCO
-- **Country_Bluegrass:** Traditional Country, Country Rock, Country Ballad, Country Shuffle, Two-Step, Country Waltz, Bluegrass-related
-- **Latin:** Bossa Nova, Samba, Salsa, Mambo, Rumba, Cha-Cha, Bolero
-- **Electronic_Dance:** House, Techno, Trance, Ambient Electronic, Downtempo, Breakbeat-related, Garage-related, Experimental Electronic, Chugg / #chugg
-- **Indie_Alternative:** Eclectic New Indie
-- **Reggaeton:** Mexican Reggaeton
-- **Afrobeats_AfroLatin:** Afrobeats, Afro-Latin / Afrobeats Fusion, Afro House
-- **Trip_Hop:** Trip-Hop, Contemporary Trip-Hop / Trip-Hop Revival
-- **Hybrid_Custom:** Regional Electronic Hybrids, Genre-Breaking / Borderless, Custom Hybrid, Custom Style, Controlled Custom Style Profile
-- **Classical_Acoustic:** Classical, WALTZ, PIANIST
-- **New_Age_Spiritual:** New Age, Spiritual
+## IMPORTANT operational status
 
-A common loudness measurement procedure helps calibrate original sample/stem intensities, but published standards don't supply a universal numeric gain table for all genres. Follow measurements and actual finished-music listening before approving a mix.
+**ROCK and JAZZ: DYSFUNCTIONAL.** Neither delivered reliable finished, playable full-song output in the user's experience. They must not be treated as working examples or templates. Their accumulated files are retained for examination, not assumed correct.
+
+**Other 11 families:** end-to-end output unverified. All **55** genre entries remain not ready for verified composition. No selected family is marked production-ready.
+
+All 385 reserved per-genre stage entries are inactive; all 330 planned cross-stage links are `RESERVED_NOT_CONNECTED`. (Each genre has 7 stages and 6 handoffs.) This directory does not enable the genre engine, alter the already deployed services, or assert a full 3D master exists.
+
+## Shared libraries and runtime
+
+The immutable recorded WAV/SFZ samples live in shared `sound_resources`, not copied into family folders. Drum kit catalog is `composer_overrides/drum_kits/drum_kit_catalog.json` (shared). The SFZ renderer, core engine, HTTP plug, and standalone 3D mixer remain common services/utilities.
+
+A genre's family `profile.json` can cross-reference universal sound libraries without owning the original sample. Genre-specific code and tests are stored in the family folder. Runtime construction installs the `genre_styles` package as one unit, without extraneous flat Rock/Jazz source copies.
+
+Run `python composer_overrides/genre_styles/validate_profiles.py` to verify 13 folders/55 profiles/operational labels/relative pointers and no activated stage wiring. This is *not* a live music test. Full song work remains separate.

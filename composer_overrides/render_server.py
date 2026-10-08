@@ -73,6 +73,10 @@ class ComposerWithJazzPreview(Handler):
 
     def _serve_preview(self, send_body: bool):
         path = urlsplit(self.path).path
+        # Keep the original Composer's /health contract accessible through the
+        # HTTP entrypoint. Previously this override returned 404 for /health.
+        if path == "/health":
+            return super().do_GET()
         if path.startswith("/audio/"):
             return self._serve_finished_audio(path, send_body)
         if path == "/jazz-ballad-listen":

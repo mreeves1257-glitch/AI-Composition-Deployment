@@ -12,18 +12,18 @@
     },
     "LEAD": {
       "catalog_key": "clarinet_vsco",
-      "relative_active_level_db": 5,
-      "role": "CLARINET_CLEAR_MELODY"
+      "relative_active_level_db": 0,
+      "role": "CLARINET_EQUAL_TO_PIANO"
     },
     "BASS": {
       "catalog_key": "double_bass_meatbass",
-      "relative_active_level_db": 2,
-      "role": "DOUBLE_BASS_SUPPORT"
+      "relative_active_level_db": -3,
+      "role": "DOUBLE_BASS_SLIGHTLY_BELOW_FRONT"
     },
     "KICK": {
       "catalog_key": "brush_kick_swirly",
-      "relative_active_level_db": 6,
-      "role": "AUDIBLE_BASS_DRUM"
+      "relative_active_level_db": 0,
+      "role": "BASS_DRUM_EQUAL_TO_PIANO_AND_CLARINET"
     },
     "SNARE": {
       "catalog_key": "brush_snare_swirly",
@@ -39,5 +39,5 @@
   "mixer_only": true,
   "sample_file_edits_allowed": false,
   "source_registry_edits_allowed": false,
-  "notes": "All dB figures are preliminary relative active-level mix goals anchored to the current recorded piano, not modifications to any instrument or sample. Rushing sound has not been proven to be an ocean drum; existing linked roles are brush snare and hat. Original source files remain authoritative."
+  "notes": "Preliminary listening-target relative active-level ratios, not universal professional dB standards. Piano, clarinet and kick equal at 0 dB; acoustic double bass a little lower; brushed snare and hat more subdued to address rushing/static-like sound. Source instrument recordings, SFZ maps and composition events are off-limits."
 }

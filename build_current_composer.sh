@@ -349,6 +349,9 @@ override=r"""
 from genre_development_patch import (
     build_developed_progression as _build_developed_progression,
     build_profile_progression as _build_profile_progression,
+    build_jazz_progression as _build_jazz_progression,
+    realize_jazz_voicings as _realize_jazz_voicings,
+    apply_jazz_phrase_expression as _apply_jazz_phrase_expression,
     develop_full_length as _develop_full_length,
 )
 _legacy_build_setup = build_setup
@@ -382,9 +385,13 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         bars = max(24, min(320, round(210.0 * tempo_bpm / (60.0 * beats_per_bar))))
         req['bars'] = bars
 
-    req['roman_progression'] = _build_profile_progression(
-        name, profile, req['mode'], bars, seedv, _build_developed_progression
-    )
+    jazz_progression = _build_jazz_progression(name, profile, req['mode'], bars, seedv)
+    if jazz_progression is None:
+        req['roman_progression'] = _build_profile_progression(
+            name, profile, req['mode'], bars, seedv, _build_developed_progression
+        )
+    else:
+        req['roman_progression'] = jazz_progression
 
     ctx = engine.build_composition_context(req)
     if ctx.get('status') not in ('PASS', 'REVIEW_REQUIRED'):
@@ -396,6 +403,11 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
             events=[],
         )
         return blocked
+
+    # The existing Theory engine validates harmonic roots and meter. For
+    # exact approved Jazz profiles, add diatonic sevenths/sixths before
+    # the existing event generator realizes the notes.
+    ctx = _realize_jazz_voicings(ctx, name, profile)
 
     events = generate_events(
         name,
@@ -410,6 +422,11 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         ctx,
         result['execution_template'],
         creation_seed,
+    )
+    # Jazz phrasing is a shared chord gesture, not per-note timing jitter.
+    meter_beats = float(ctx['meter']['numerator']) * 4.0 / float(ctx['meter']['denominator'])
+    events = _apply_jazz_phrase_expression(
+        events, name, profile, meter_beats, creation_seed,
     )
 
     developed = dict(result)
@@ -586,6 +603,55 @@ for name, profile in profiles.items():
         assert progression == build_developed_progression(mode, 48, 7)
 assert (automatic, controlled) == (48, 7), (automatic, controlled)
 print("GENRE_PROFILE_HARMONY_ROUTING_PASS", automatic, controlled, flush=True)
+PY
+
+# Offline guard: eight Jazz genre identities; true 7ths/sixths; no changes
+# to Rock, New Age, custom selections, note routing, or instrument audio.
+python - <<'PY'
+import json, sys
+from pathlib import Path
+sys.path.insert(0, str(Path("composer/runtime").resolve()))
+from genre_development_patch import (
+    JAZZ_GENRE_PROFILES, build_jazz_progression,
+    realize_jazz_voicings, apply_jazz_phrase_expression,
+)
+from executable_theory_engine_SOURCE_PRESERVED import TheoryEngine
+profiles = json.loads(Path(
+    "composer/runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json"
+).read_text())["profiles"]
+theory = TheoryEngine()
+assert len(profiles) == 55 and len(JAZZ_GENRE_PROFILES) == 8
+for name, profile_id in JAZZ_GENRE_PROFILES.items():
+    p = profiles[name]
+    assert p["profile_id"] == profile_id
+    mode = "natural_minor" if name == "Jazz Fusion" else "major"
+    prog = build_jazz_progression(name, p, mode, 32, 19)
+    assert len(prog) == 32
+    ctx = theory.build_composition_context({
+        "tonic": "A" if name == "Jazz Fusion" else "C",
+        "mode": mode,
+        "meter": "3/4" if name == "Jazz Waltz" else "4/4",
+        "bars": 32,
+        "roman_progression": prog,
+    })
+    assert ctx["status"] == "PASS", (name, ctx.get("status"))
+    jazz_ctx = realize_jazz_voicings(ctx, name, p)
+    assert all(len(ch["notes"]) == 4 for ch in jazz_ctx["harmony"]["chords"]), name
+    assert len(ctx["harmony"]["chords"][0]["notes"]) == 3, "ORIGINAL_CONTEXT_CHANGED"
+    note = [{"track_id":"HARMONY","start_beat":4,"velocity":100}]
+    assert apply_jazz_phrase_expression(note,name,p,4) != note
+    assert note[0]["velocity"] == 100
+for name in ("ROCK","New Age","Traditional Country","Funk"):
+    assert build_jazz_progression(name, profiles[name], "major", 32, 19) is None
+c = theory.build_composition_context({
+    "tonic":"C","mode":"major","meter":"4/4","bars":3,
+    "roman_progression":["ii","V","I"],
+})
+j = realize_jazz_voicings(c,"Swing",profiles["Swing"])
+assert [x["notes"] for x in j["harmony"]["chords"]] == [
+    ["D","F","A","C"],["G","B","D","F"],["C","E","G","B"]
+]
+print("JAZZ_EXTENDED_HARMONY_OFFLINE_PASS", len(JAZZ_GENRE_PROFILES), len(profiles), flush=True)
 PY
 
 python composer/runtime/test_instrument_performance_contract.py

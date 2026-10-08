@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import unittest
+from dataclasses import replace
 
 from output_handoff import build_execution_package
 from AI_Comp_Executable_Output_Core_001 import MidiAdapter
@@ -125,6 +126,25 @@ class InstrumentAwareComposerHandoffTests(unittest.TestCase):
                 "sustained_vibrato", instrument="piano", resource_id="PIANO_BANK",
                 program="piano.sfz",
             ))
+
+
+    def test_note_annotation_and_identical_gestures_have_same_midi_events(self):
+        tagged = build_execution_package(engine_result("sustained_vibrato"))
+        untagged = build_execution_package(engine_result(None))
+        manual = replace(untagged, metadata=tagged.metadata)
+        raw_auto = MidiAdapter().render(tagged,"same-fingerprint").payload
+        raw_manual = MidiAdapter().render(manual,"same-fingerprint").payload
+        if raw_auto != raw_manual:
+            first = next((i for i,(a,b) in enumerate(zip(raw_auto,raw_manual)) if a!=b),
+                         min(len(raw_auto),len(raw_manual)))
+            print("ANNOTATION_MIDI_COMPARISON",{
+                "auto_length":len(raw_auto),
+                "manual_length":len(raw_manual),
+                "first_diff_offset":first,
+                "auto_near":raw_auto[max(0,first-10):first+35].hex(),
+                "manual_near":raw_manual[max(0,first-10):first+35].hex(),
+            },flush=True)
+        self.assertEqual(raw_auto,raw_manual,"MIDI_SERIALIZATION_DIFF_FROM_NOTE_ANNOTATION")
 
 
 if __name__ == "__main__":

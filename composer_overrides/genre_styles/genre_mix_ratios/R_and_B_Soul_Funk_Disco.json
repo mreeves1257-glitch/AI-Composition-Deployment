@@ -10,7 +10,7 @@
       "schema_version": 1,
       "genre": "Rhythm and Blues",
       "genre_template": "rnb",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "ELECTRIC_GUITAR",
       "original_composer_instrument_palette": [
@@ -70,7 +70,7 @@
         "drums"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "R_and_B_Soul_Funk_Disco",
@@ -124,7 +124,7 @@
         "original_family_template": "rnb",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -346,7 +346,7 @@
       "schema_version": 1,
       "genre": "Soul",
       "genre_template": "soul",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "TRUMPET",
       "original_composer_instrument_palette": [
@@ -406,7 +406,7 @@
         "drums"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "R_and_B_Soul_Funk_Disco",
@@ -460,7 +460,7 @@
         "original_family_template": "soul",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -682,7 +682,7 @@
       "schema_version": 1,
       "genre": "Funk",
       "genre_template": "funk",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "ELECTRIC_BASS",
       "original_composer_instrument_palette": [
@@ -742,7 +742,7 @@
         "drums"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "R_and_B_Soul_Funk_Disco",
@@ -795,7 +795,7 @@
         "original_family_template": "funk",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -1017,7 +1017,7 @@
       "schema_version": 1,
       "genre": "Contemporary R&B",
       "genre_template": "contemporary_rnb",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "SYNTH_BASS",
       "original_composer_instrument_palette": [
@@ -1077,7 +1077,7 @@
         "drums_soft"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "R_and_B_Soul_Funk_Disco",
@@ -1131,7 +1131,7 @@
         "original_family_template": "contemporary_rnb",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_soft",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -1353,7 +1353,7 @@
       "schema_version": 1,
       "genre": "Neo-Soul-related",
       "genre_template": "neo_soul",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "ELECTRIC_PIANO",
       "original_composer_instrument_palette": [
@@ -1413,7 +1413,7 @@
         "drums_soft"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "R_and_B_Soul_Funk_Disco",
@@ -1467,7 +1467,7 @@
         "original_family_template": "neo_soul",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_soft",
         "per_instrument_mix_config_owned_by_genre": true
       },
@@ -1689,7 +1689,7 @@
       "schema_version": 1,
       "genre": "DISCO",
       "genre_template": "disco",
-      "profile_status": "DRAFT_SUGGESTED_RATIOS_NOT_DEPLOYED",
+      "profile_status": "STRUCTURE_FILED_FULL_MUSIC_UNVERIFIED",
       "ratio_kind": "MIX_ACTIVE_STEM_DB_RELATIVE_TO_STYLE_REFERENCE",
       "reference_instrument_track": "ELECTRIC_BASS",
       "original_composer_instrument_palette": [
@@ -1749,7 +1749,7 @@
         "drums_four"
       ],
       "actual_source_wav_sfz_files_must_remain_unchanged": true,
-      "ready_for_composition": "NO_NOT_UNTIL_ORIGINAL_SOURCE_LINKS_AND_AUDIO_VERIFIED",
+      "ready_for_composition": "NOT_READY_UNTIL_INSTRUMENTS_PERFORMANCE_AND_FINAL_AUDIO_VERIFIED",
       "calibration_requirements": "Measure actual separately rendered stem active level and peak; confirm exact original source mapping, musical role, kick audibility and subjective mix; never interpret proposals as universal published dB standards.",
       "auto_apply": false,
       "family_name": "R_and_B_Soul_Funk_Disco",
@@ -1802,7 +1802,7 @@
         "original_family_template": "disco",
         "active_style_module": null,
         "runtime_integration": "FAMILY_DATA_REFERENCE_ONLY_RUNTIME_STILL_READS_ORIGINAL_PROFILE",
-        "musical_implementation_state": "ORIGINAL_GENERIC_ADAPTER_PROFILE_AUDIO_UNVERIFIED",
+        "musical_implementation_state": "GENRE_SPECIFIC_END_TO_END_EXECUTION_UNVERIFIED",
         "selected_universal_drum_kit": "unverified_drums_four",
         "per_instrument_mix_config_owned_by_genre": true
       },

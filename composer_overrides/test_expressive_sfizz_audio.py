@@ -33,25 +33,25 @@ def package(mode):
         raise ValueError("UNRECOGNIZED_AUDIO_PROOF_MODE")
     routing = {"LEAD": {"initial_cc": {"1": 0}}}
     meta = [("midi_routing", json.dumps(routing))]
-    if mode != "baseline":
-        selected = {
-            "capability_id": CAPABILITY,
-            "resource_id": RESOURCE_ID,
-            "preferred_mapping": PROGRAM,
-        }
+    selected = {
+        "capability_id": CAPABILITY,
+        "resource_id": RESOURCE_ID,
+        "preferred_mapping": PROGRAM,
+    }
+    if mode in ("manual", "baseline"):
+        # Equalize the complete pre-vibrato MIDI history for the true negative
+        # control. Some SFZ patches react to redundant CC0 at note attack.
+        selected["gestures"] = [
+            {"at_beat": "0", "control": "vibrato_depth", "value": 0},
+        ]
         if mode == "manual":
-            selected["gestures"] = [
+            selected["gestures"].extend([
                 {"at_beat": "1", "control": "vibrato_depth", "value": 88},
                 {"at_beat": "7/2", "control": "vibrato_depth", "value": 0},
-            ]
-            # Exactly equivalent MIDI to the authored note: that tagged note
-            # begins with a CC1 reset at tick 0, which the manual path must do.
-            selected["gestures"].insert(
-                0, {"at_beat": "0", "control": "vibrato_depth", "value": 0}
-            )
-        else:
-            selected["gesture_source"] = "note_articulation"
-        meta.append(("expressive_gesture_plan", json.dumps({"LEAD": selected})))
+            ])
+    else:
+        selected["gesture_source"] = "note_articulation"
+    meta.append(("expressive_gesture_plan", json.dumps({"LEAD": selected})))
     note_tag = "sustained_vibrato" if mode == "note_articulation" else None
     return CompositionExecutionPackage(
         "source-native-audio", "No Genre", 120.0, TimeSignature(4, 4), 480,

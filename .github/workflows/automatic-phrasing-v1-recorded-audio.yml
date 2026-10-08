@@ -1,0 +1,28 @@
+name: Automatic Phrase Expression Real Recorded Audio Proof
+on:
+  push:
+    branches:
+      - automatic-musical-phrasing-v1-2026-10-08
+  workflow_dispatch:
+jobs:
+  source-native-sfz-ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build preserved composer with authentic sampled SFZ renderer
+        env:
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: bash build_current_composer.sh
+      - name: Compare Composer automatic phrase interpreter with manual MIDI in actual WAV
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: |
+          cp composer_overrides/test_automatic_phrase_sfizz_audio.py composer/runtime/
+          python composer/runtime/test_automatic_phrase_sfizz_audio.py
+      - name: Assert 55 genres remain structurally unactivated
+        run: python composer_overrides/genre_styles/validate_profiles.py

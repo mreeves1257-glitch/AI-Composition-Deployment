@@ -24,7 +24,18 @@
           "semantic_limit": "Modulation amount of existing sampled-guitar SFZ LFO; not a generic guitar slide, breath, pitch-bend, or phrase humanizer."
         }
       },
-      "evidence_status": "SOURCE_CONTROL_MAPPED; AUDIO_RESPONSE_TEST_REQUIRED"
+      "evidence_status": "TIMED_CC1_ACTUAL_SFIZZ_WAV_RESPONSE_VERIFIED; COMPLETE_HUMAN_MUSIC_NOT_VERIFIED",
+      "gesture_templates": {
+        "sustained_vibrato": {
+          "control": "vibrato_depth",
+          "on_value": 88,
+          "minimum_note_beats": "1",
+          "delay_fraction_of_note": "1/4",
+          "release_fraction_of_note": "1/8",
+          "authored_from": "MusicalEvent.articulation == sustained_vibrato",
+          "guard": "MONOPHONIC_ONLY; EXPLICIT_OPT_IN; REAL_SAMPLED_LEAD_ONLY"
+        }
+      }
     }
   }
 }

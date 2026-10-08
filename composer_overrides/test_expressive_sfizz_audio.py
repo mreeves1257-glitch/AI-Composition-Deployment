@@ -28,25 +28,36 @@ PROGRAM = "Programs/composer-electric-lead.sfz"
 CAPABILITY = "SHINYGUITAR_RECORDED_LEAD_CC1_V1"
 
 
-def package(with_timed_vibrato):
+def package(mode):
+    if mode not in ("baseline", "manual", "note_articulation"):
+        raise ValueError("UNRECOGNIZED_AUDIO_PROOF_MODE")
     routing = {"LEAD": {"initial_cc": {"1": 0}}}
     meta = [("midi_routing", json.dumps(routing))]
-    if with_timed_vibrato:
-        meta.append(("expressive_gesture_plan", json.dumps({
-            "LEAD": {
-                "capability_id": CAPABILITY,
-                "resource_id": RESOURCE_ID,
-                "preferred_mapping": PROGRAM,
-                "gestures": [
-                    {"at_beat": "1/2", "control": "vibrato_depth", "value": 88},
-                    {"at_beat": "7/2", "control": "vibrato_depth", "value": 0},
-                ],
-            },
-        })))
+    if mode != "baseline":
+        selected = {
+            "capability_id": CAPABILITY,
+            "resource_id": RESOURCE_ID,
+            "preferred_mapping": PROGRAM,
+        }
+        if mode == "manual":
+            selected["gestures"] = [
+                {"at_beat": "1", "control": "vibrato_depth", "value": 88},
+                {"at_beat": "7/2", "control": "vibrato_depth", "value": 0},
+            ]
+            # Exactly equivalent MIDI to the authored note: that tagged note
+            # begins with a CC1 reset at tick 0, which the manual path must do.
+            selected["gestures"].insert(
+                0, {"at_beat": "0", "control": "vibrato_depth", "value": 0}
+            )
+        else:
+            selected["gesture_source"] = "note_articulation"
+        meta.append(("expressive_gesture_plan", json.dumps({"LEAD": selected})))
+    note_tag = "sustained_vibrato" if mode == "note_articulation" else None
     return CompositionExecutionPackage(
         "source-native-audio", "No Genre", 120.0, TimeSignature(4, 4), 480,
         (MusicalEvent("note1", "LEAD", "lead_guitar",
-                      Fraction(0), Fraction(4), 60, 105),),
+                      Fraction(0), Fraction(4), 60, 105,
+                      articulation=note_tag),),
         tuple(meta),
     )
 
@@ -92,10 +103,18 @@ def main():
     with tempfile.TemporaryDirectory(prefix="sfizz-expression-",dir=str(ROOT/"output")) as temp:
         directory=Path(temp)
         rendered=[]
-        for name, expressive in (("fixed-zero-A",False),("fixed-zero-B",False),("timed-vibrato",True)):
+        raw_midi={}
+        for name, mode in (
+            ("fixed-zero-A","baseline"),
+            ("fixed-zero-B","baseline"),
+            ("explicit-manual-midi","manual"),
+            ("note-articulation-authored-midi","note_articulation"),
+        ):
             mid=directory/(name+".mid")
             wav=directory/(name+".wav")
-            mid.write_bytes(MidiAdapter().render(package(expressive),"test-fingerprint").payload)
+            raw=MidiAdapter().render(package(mode),"test-fingerprint").payload
+            raw_midi[name]=raw
+            mid.write_bytes(raw)
             report=render_midi(resource,mid,wav,44100)
             assert report["audio_rendered"] and report["peak_linear"]>0
             recorded,rate=pcm(wav)
@@ -104,19 +123,25 @@ def main():
                 "sample_rate":rate,"frames":report["frames"],
                 "peak_dbfs":round(report["peak_dbfs"],2),
             },flush=True)
-        first,repeat,gesture=rendered
+        assert raw_midi["explicit-manual-midi"] == raw_midi["note-articulation-authored-midi"], (
+            "ARTICULATION_NOT_EQUIVALENT_TO_EXPLICIT_NATIVE_MIDI"
+        )
+        first,repeat,manual,gesture=rendered
         # Compare the SAME fixed-control render twice first. If the real
         # sample engine has nondeterministic selection/phase we must not
         # misattribute ordinary differences to the timed MIDI message.
         pre_repeat=window_difference(first,repeat,44100,0.03,0.14)
         pre_expression=window_difference(first,gesture,44100,0.03,0.14)
-        post_repeat=window_difference(first,repeat,44100,0.45,0.95)
-        post_expression=window_difference(first,gesture,44100,0.45,0.95)
+        post_repeat=window_difference(first,repeat,44100,0.7,1.2)
+        post_expression=window_difference(first,gesture,44100,0.7,1.2)
+        manual_to_authored=window_difference(manual,gesture,44100,0.7,1.2)
+        assert manual_to_authored < 1e-8, ("MANUAL_AND_NOTE_TAG_AUDIO_DIVERGED",manual_to_authored)
         print("EXPRESSIVE_RECORDED_SOURCE_CONTROLLED_AB",{
             "pre_repeat_rms":round(pre_repeat,9),
             "pre_expression_rms":round(pre_expression,9),
             "post_repeat_rms":round(post_repeat,9),
             "post_expression_rms":round(post_expression,9),
+            "manual_to_note_tag_rms":round(manual_to_authored,9),
         },flush=True)
         assert math.isfinite(post_expression) and post_expression > max(
             1e-6, post_repeat*1.25, pre_expression*0.5
@@ -124,9 +149,10 @@ def main():
             "pre_repeat":pre_repeat,"pre_expression":pre_expression,
             "post_repeat":post_repeat,"post_expression":post_expression,
         })
-        print("TIMED_NATIVE_CC1_SFIZZ_WAV_RESPONSE_PASS",{
+        print("NOTE_ARTICULATION_TO_REAL_SFIZZ_WAV_PASS",{
             "baseline_variability_measured":True,
             "post_expression_difference_rms":round(post_expression,8),
+            "authored_midi_equals_explicit_midi":True,
             "same_original_recorded_sample_library":True,
         },flush=True)
 

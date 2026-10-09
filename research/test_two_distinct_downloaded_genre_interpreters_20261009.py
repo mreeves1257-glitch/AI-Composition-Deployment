@@ -135,6 +135,98 @@ def run(jazz_path,salsa_path):
     print("TWO_ACTUAL_DISTINCT_GENRE_MUSICAL_INTERPRETERS_PASS",
           json.dumps({**evidence,"bytes":archive.stat().st_size},sort_keys=True))
 
+def prove_original_composer_to_mma_only(mma_home):
+    """ONE selected genre: original Composer -> standalone MMA -> MIDI -> its interpreter.
+
+    No Rock execution; no sampled sound; no changes to imported or live files.
+    """
+    import tempfile
+    from genre_styles.genre_owned_interpreter_dispatch import compose_to_original_mma
+    from genre_styles.source_pattern_library import read_pack
+
+    source, _ = read_pack("Jazz Waltz")
+    # Seven authoritative source chords plus the eighth-bar final cadence
+    # already used in the preserved Jazz Waltz MMA proof procedure.
+    authored_chords = [c["symbol"] for c in source["chords"]]
+    must(len(authored_chords) == 7, "SOURCE_CHORDS_CHANGED")
+    eighth_bar_cadence = "Cmaj7"
+    chord_bars = authored_chords + [eighth_bar_cadence]
+    stage3 = {
+        "status": "PASS",
+        "palette": ["double_bass", "electric_piano", "flute", "brush_drums"],
+        "meter": "3/4", "tempo_bpm": 156,
+    }
+    structure = {
+        "genre": "Jazz Waltz", "meter": "3/4",
+        "tempo_bpm": 156, "chord_bars": chord_bars,
+    }
+    mma_home = Path(mma_home)
+    originals = [
+        mma_home / "mma.py",
+        mma_home / "lib" / "stdlib" / "jazzwaltz.mma",
+    ]
+    must(all(p.is_file() for p in originals), "EXTERNAL_MMA_ORIGINAL_MISSING")
+    before = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in originals}
+    with tempfile.TemporaryDirectory(prefix="composer_to_mma_proof_") as output:
+        # Use MMA's actual groove, compiled via the documented original CLI.
+        result = compose_to_original_mma(
+            "Jazz Waltz",
+            composer_structure=structure,
+            original_stage3_result=stage3,
+            selected_groove="JazzWaltz",
+            external_mma_home=mma_home,
+            isolated_output_root=output,
+        )
+        must(result["status"] ==
+             "COMPOSER_TO_UNMODIFIED_MMA_TO_TYPE1_MIDI_CONFIRMED" and
+             result["midi_note_events"] >= 150 and
+             result["standard_midi_type"] == 1 and
+             result["existing_genre_interpreter_received_midi"] is True and
+             result["original_composer_chord_bars"] == len(chord_bars) and
+             result["recorded_sfz_programs_verified"] is False and
+             result["live_composer_activated"] is False and
+             result["finished_audio_rendered"] is False,
+             "COMPOSER_TO_MMA_TO_OWN_INTERPRETER_NOT_VERIFIED")
+        midi = Path(result["isolated_midi_output"])
+        song = Path(result["isolated_song_input"])
+        must(midi.read_bytes()[:4] == b"MThd" and
+             f"Groove JazzWaltz" in song.read_text() and
+             all(f"{i} {chord}" in song.read_text()
+                 for i, chord in enumerate(chord_bars, 1)),
+             "COMPOSER_CHORDS_NOT_DELIVERED_TO_ORIGINAL_MMA")
+        for changed, badgroove, badchords in [
+            ({**structure, "tempo_bpm": 170}, "JazzWaltz", chord_bars),
+            (structure, "BasicRock", chord_bars),
+            (structure, "JazzWaltz", ["Dm7", "Groove BasicRock"]),
+        ]:
+            try:
+                compose_to_original_mma(
+                    "Jazz Waltz",
+                    composer_structure={**changed, "chord_bars": badchords},
+                    original_stage3_result=stage3,
+                    selected_groove=badgroove,
+                    external_mma_home=mma_home,
+                    isolated_output_root=output,
+                )
+            except Exception as e:
+                must("COMPOSER_MMA" in str(e),
+                     "WRONG_HANDOFF_SAFETY_REJECTION:" + str(e)[:200])
+            else:
+                raise AssertionError("UNAUTHORIZED_GENRE_INPUT_ACCEPTED")
+        print("COMPOSER_TO_ORIGINAL_MMA_TO_TYPE1_MIDI_HANDOFF_PASS",
+              json.dumps({k: result[k] for k in (
+                  "genre", "style_groove", "standard_midi_type",
+                  "midi_note_events", "existing_genre_interpreter_received_midi",
+                  "original_program_files_untouched", "live_composer_activated",
+                  "finished_audio_rendered",
+              )}, sort_keys=True), flush=True)
+    after = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in originals}
+    must(before == after, "EXTERNAL_ARRANGER_PROGRAM_OR_STYLE_CHANGED")
+
+
 if __name__=="__main__":
-    must(len(sys.argv)==3,"USAGE: test_script.py jazzwaltz.mid salsa.mid")
-    run(sys.argv[1],sys.argv[2])
+    if len(sys.argv) == 3 and sys.argv[1] == "--composer-mma":
+        prove_original_composer_to_mma_only(sys.argv[2])
+    else:
+        must(len(sys.argv)==3,"USAGE: script.py jazzwaltz.mid salsa.mid OR --composer-mma /path/to/original/mma")
+        run(sys.argv[1],sys.argv[2])

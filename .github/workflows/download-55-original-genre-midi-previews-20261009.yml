@@ -1,0 +1,57 @@
+name: Download Mido and Publish 55 Original MIDI Preview Files (Research Only)
+on:
+  push:
+    branches:
+      - open-source-midi-download-pack-20261009
+    paths:
+      - research/export_55_original_genre_midi_previews_20261009.py
+      - research/test_downloadable_55_genre_midi_20261009.py
+      - research/MUSIC_SOFTWARE_AND_SFZ_DOWNLOAD_REGISTER_2026-10-09.md
+      - .github/workflows/download-55-original-genre-midi-previews-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  download-open-source-midi-and-export-author-owned-patterns:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download unmodified MIT Mido wheel (not Yamaha/Korg files)
+        run: |
+          mkdir -p research_artifacts/software
+          python -m pip download --no-deps --only-binary=:all: mido==1.3.3 -d research_artifacts/software
+          python -m pip install --no-deps mido==1.3.3
+          python - <<'PY'
+          import mido
+          print('MIDO_OPEN_SOURCE_INSTALLED_FOR_ISOLATED_RESEARCH',mido.__file__)
+          PY
+      - name: Test each original genre compiles to its own valid Type-1 MIDI
+        run: python research/test_downloadable_55_genre_midi_20261009.py
+      - name: Export all 55 genre MIDI previews and archive
+        run: |
+          python research/export_55_original_genre_midi_previews_20261009.py --output research_artifacts
+          test "$(find research_artifacts/midi -maxdepth 1 -name '*.mid' | wc -l)" -eq 55
+      - name: Verify original seven stages, genre profiles and actual Composer remain safe
+        run: |
+          python research/test_all55_source_pattern_library_20261009.py
+          python research/test_shared_22_capability_execution_20261009.py
+          python research/test_55_genre_capability_binding_files_20261009.py
+          python research/test_source_pattern_recorded_resource_stage4_20261009.py
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python research/test_real_composer_grammar_20261009.py
+      - name: Publish downloadable non-audio original 55-genre research pack
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI_Composer_55_Original_Genre_MIDI_Previews_2026-10-09
+          path: |
+            research_artifacts/55_original_genre_midi_previews_2026-10-09.zip
+            research_artifacts/MANIFEST.json
+            research_artifacts/README.txt
+            research_artifacts/software/*.whl
+          retention-days: 30
+          if-no-files-found: error

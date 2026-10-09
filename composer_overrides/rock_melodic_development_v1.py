@@ -1,4 +1,4 @@
-"""Rock phrase composition experiment — OFF unless AI_COMP_ROCK_MELODY_V1=1.
+"""Rock phrase composition experiment — OFF unless AI_COMP_ROCK_CHORD_GRAMMAR_V1=1.
 
 This replaces only pre-existing Rock LEAD notes with short composed melodic
 phrases grounded in the *actual generated* rhythm-guitar chords and bass root.
@@ -11,8 +11,8 @@ from collections import defaultdict
 import os
 import math
 
-SWITCH = "AI_COMP_ROCK_MELODY_V1"
-POLICY = "ROCK_THEME_RESPONSE_CHORD_TONE_GRAMMAR_R1"
+SWITCH = "AI_COMP_ROCK_CHORD_GRAMMAR_V1"
+POLICY = "ROCK_CHORD_ONLY_MELODIC_GRAMMAR_RESEARCH"
 LEAD_RANGE = (60, 78)
 PHRASE_GRAMMARS = {
     "VERSE": {

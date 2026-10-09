@@ -235,13 +235,15 @@ def prove_original_composer_to_mma_only(mma_home):
             "stage4":handoff,
             "blockers":receipt["connection_blockers"],
         }, sort_keys=True), flush=True)
+        # MMA's own Rskip/SeqRnd variation changes note counts between
+        # independent executions. Test faithful accounting, not a fixed count.
         must(receipt["stage3_to_interpreter"]["musical_event_count"] ==
-             result["midi_note_events"] == 233 and
+             result["midi_note_events"] and
              handoff["candidate_event_count"] > 0 and
-             handoff["source_midi_event_count"] == 233 and
+             handoff["source_midi_event_count"] == result["midi_note_events"] and
              handoff["blocked_source_note_count"] > 0 and
              handoff["candidate_event_count"] +
-             handoff["blocked_source_note_count"] == 233,
+             handoff["blocked_source_note_count"] == result["midi_note_events"],
              "SOURCE_MIDI_EVENTS_LOST_OR_FAKED")
         must(receipt["original_event_list_unchanged"] is True and
              receipt["audio_render_authorized"] is False and

@@ -56,6 +56,27 @@ assert "3/4" in profiles["WALTZ"]["meter_options"]
 assert "percussion absent" in profiles["PIANIST"]["stage2_original_musical_definition"]["percussion_behavior_if_applicable"]
 assert "clave" in profiles["Salsa"]["stage2_original_musical_definition"]["percussion_behavior_if_applicable"].lower()
 assert "swing" in profiles["Swing"]["stage2_original_musical_definition"]["groove_behavior"].lower()
+# Exercise the executable SAME Stage3→Stage4 adapter on every one of 55 genres.
+# Isolated test-source IDs and note-range declarations are NOT actual sample evidence.
+full_handoff_count=0
+for name,route in profiles.items():
+    original_roles=route["stage3_original_roles"]
+    assert original_roles, ("GENRE_HAS_NO_RESOLVED_ROLE_REFERENCE",name)
+    meter=route["meter_options"][0]
+    tempo=float(route["tempo_bpm_range"][0])
+    role=original_roles[0]
+    score=registry.handoff_shared_interpreted_events(
+        name,
+        song_structure={"meter":meter,"tempo_bpm":tempo,"section":"TEST_SECTION"},
+        selected_instruments=[{"track_id":role,
+                               "source_id":"ISOLATED_TEST_SOURCE_NOT_REAL_AUDIO",
+                               "min_midi_note":48,"max_midi_note":84}],
+        arranger_events=[{"track_id":role,"midi_note":60,"velocity":77,
+                          "start_beat":0.0,"duration_beats":1.0}])
+    assert score["genre"]==name and len(score["stage4_composer_input_events"])==1
+    assert score["musical_structure"]["meter"]==meter
+    full_handoff_count+=1
+assert full_handoff_count==55
 # Isolated schema and mapping proofs. TEST_SOURCE is not a real installed SFZ.
 examples={}
 for g in ("ROCK","Swing","Jazz Waltz","Salsa","PIANIST"):
@@ -92,7 +113,7 @@ for g in ("ROCK","Swing","Jazz Waltz","Salsa","PIANIST"):
 expect_error(lambda:registry.get_shared_musical_interpreter_link("UNKNOWN GENRE"),
              "UNKNOWN_OR_UNFILED_GENRE")
 summary={"status":"SHARED_INTERPRETER_ALL_55_REGISTRY_AND_TYPED_MIDI_HANDOFF_PASS",
-         "original_genre_count":55,"family_count":13,"source_22_gate_references":55*22,
+         "original_genre_count":55,"family_count":13,"typed_handoffs_exercised":full_handoff_count,"source_22_gate_references":55*22,
          "one_shared_router":True,"all_original_7_stages_intact":True,
          "external_runtimes_installed":False,"deployed_composer_modified":False,
          "real_audio_or_finished_song_verified":False,"example_stage4_midi_event_contracts":examples}

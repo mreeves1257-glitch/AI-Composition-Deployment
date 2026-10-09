@@ -1,0 +1,50 @@
+name: Rock Arranger Interpreter to Recorded SFZ 16-Bar Proof (No Deploy)
+on:
+  push:
+    branches:
+      - rock-arranger-handoff-proof-20261008
+    paths:
+      - .github/workflows/rock-arranger-interpreter-16bar-real-audio.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  external-musical-intent-to-real-rock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install independent MIDI reader (not part of original Composer)
+        run: python -m pip install --disable-pip-version-check mido
+      - name: Rebuild completely original approved recorded source instruments, 3D mixer and unchanged Composer
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_ROCK_MELODY_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+        run: bash build_current_composer.sh
+      - name: Interpret independent original MMA Rock score and typed snare/tom/chorus intentions into separate recorded stems and original 3D
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/mma_rock_band_handoff_16bar_r1.py
+      - name: Preserve 16-bar external MIDI input, exact interpretation trace, separately recorded audio and stereo reference/candidate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-mma-16bar-rock-arranger-to-original-recorded-instruments-r1-20261008
+          path: |
+            research/mma_rock_handoff_r1_output/MMA_Rock_16Bar_Two_Sections.mma
+            research/mma_rock_handoff_r1_output/MMA_Rock_16Bar_Two_Sections.mid
+            research/mma_rock_handoff_r1_output/MMA_Rock_16Bar_Foundation_3D.wav
+            research/mma_rock_handoff_r1_output/MMA_Rock_16Bar_Interpreted_Band_Fill_3D.wav
+            research/mma_rock_handoff_r1_output/foundation/REPORT.json
+            research/mma_rock_handoff_r1_output/interpreted_fill/REPORT.json
+            research/mma_rock_handoff_r1_output/HANDOFF_PROOF.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 21

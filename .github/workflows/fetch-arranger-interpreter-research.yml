@@ -1,0 +1,32 @@
+name: Fetch External Music Arrangement Interpreters — Research Only
+on:
+  push:
+    branches:
+      - external-arranger-interpreter-research-20261008
+    paths:
+      - .github/workflows/fetch-arranger-interpreter-research.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  external-author-sources-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch authoritative MMA distribution or label mirror; fetch JJazzLab source and verify archive licenses
+        run: python research/fetch_external_music_interpreters_2026_10_08.py
+      - name: Archive original interpreter source packages, licenses, provenance, and research notes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: composition-interpreter-external-reference-sources-20261008
+          path: research/external_interpreter_sources_20261008/
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 30

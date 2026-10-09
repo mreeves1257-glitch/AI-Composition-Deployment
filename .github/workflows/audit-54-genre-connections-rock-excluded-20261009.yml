@@ -1,0 +1,28 @@
+name: Read-only Genre Connection Audit (54 others; NEVER run Rock)
+on:
+  push:
+    branches:
+      - audit-all55-connections-rock-readonly-20261009
+    paths:
+      - research/audit_54_genre_connections_no_rock_execution_20261009.py
+      - .github/workflows/audit-54-genre-connections-rock-excluded-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-excluding-rock-no-audio-or-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read and audit 54 non-Rock development connections; never execute Rock
+        run: python research/audit_54_genre_connections_no_rock_execution_20261009.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-54-nonrock-and-rock-excluded-20261009
+          path: audit_outputs/
+          if-no-files-found: error

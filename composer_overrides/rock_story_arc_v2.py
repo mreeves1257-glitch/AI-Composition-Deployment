@@ -28,9 +28,9 @@ LOW, HIGH = 59, 76
 SHAPES = {
     "VERSE_QUESTION": ((0.25,"root"),(1.25,"scale_up"),(2.0,"third"),(3.0,"fifth")),
     "VERSE_ANSWER":   ((0.0,"fifth"),(1.20,"scale_down"),(2.5,"third"),(3.1,"root")),
-    "HOOK_CALL":      ((0.0,"root"),(0.75,"third"),(1.50,"fifth"),(2.5,"third"),(3.25,"root")),
+    "HOOK_CALL":      ((0.0,"root"),(0.75,"third"),(1.50,"fifth"),(2.75,"root")),
     "HOOK_ANSWER":    ((0.25,"fifth"),(1.25,"scale_up"),(2.25,"third"),(3.00,"root")),
-    "HOOK_RESOLVE":   ((0.0,"third"),(1.00,"fifth"),(2.00,"root"),(3.0,"root")),
+    "HOOK_RESOLVE":   ((0.0,"fifth"),(1.25,"third"),(2.75,"root")),
     "VERSE_VARIANT":  ((0.5,"third"),(1.5,"root"),(2.25,"scale_up"),(3.0,"fifth")),
     "BRIDGE_QUESTION":((0.25,"fifth"),(1.25,"third"),(2.50,"root")),
     "BRIDGE_ANSWER":  ((0.0,"third"),(1.50,"scale_down"),(2.75,"root")),

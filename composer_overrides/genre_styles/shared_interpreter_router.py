@@ -173,3 +173,25 @@ def connect_all_genres() -> dict:
     if len(routes) != 55 or len({r["genre_profile_id"] for r in routes.values()}) != 55:
         raise InterpreterConnectionError("NOT_55_UNIQUE_ROUTES")
     return routes
+
+def compile_selected_musical_interpreter(
+    genre: str,
+    *,
+    original_mma_midi_path: str | Path,
+    original_stage3_result: Mapping[str, Any] | None = None,
+) -> dict:
+    """Run a VERIFIED style-specific note-producing backend through ONE router.
+
+    Rock pinned original is the first musical compiler. All other genres are
+    data-linked but intentionally fail closed until their own playing language
+    is separately proven; there is never a universal Rock fallback.
+    """
+    route = route_to_shared_interpreter(
+        genre, original_stage3_result=original_stage3_result
+    )
+    if genre != "ROCK":
+        raise InterpreterConnectionError(
+            "NO_VERIFIED_SCORE_BACKEND_FOR_GENRE:" + genre
+        )
+    from .Rock.rock_pinned_mma_interpreter import compile_pinned_mma_rock_score
+    return compile_pinned_mma_rock_score(original_mma_midi_path, route)

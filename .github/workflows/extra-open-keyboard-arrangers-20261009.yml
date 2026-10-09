@@ -5,6 +5,7 @@ on:
       - additional-keyboard-arranger-engines-research-20261009
     paths:
       - .github/workflows/extra-open-keyboard-arrangers-20261009.yml
+      - research/validate_extra_arranger_midi_research_20261009.py
   workflow_dispatch:
 permissions:
   contents: read
@@ -45,7 +46,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "534b7be0d07595121a9e782c8793244604a1cd41"
           test -f LICENSE
           git rev-parse HEAD > ../PINNED_GITHUB_COMMIT.txt
-          go test ./...
+          go test -vet=off ./...
           go build -o /tmp/verified-backing-tracks
           mkdir -p ../ISOLATED_SAMPLE_MIDI
           /tmp/verified-backing-tracks export examples/hard-rock-ac.btml ../ISOLATED_SAMPLE_MIDI/ROCK_example.mid

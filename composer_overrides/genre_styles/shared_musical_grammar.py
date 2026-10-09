@@ -227,4 +227,13 @@ def compile_musical_plan(
     # all 22 paths exist, but unsupported sound/playback claims stay blocked.
     from .shared_capability_execution import evaluate_22_capabilities
     output["capability_execution"]=evaluate_22_capabilities(output)
+    # The public 22-row status must reflect the actual executed handler,
+    # not the older research-only flag. Handler connected != audio verified.
+    verified_connections=output["capability_execution"]["capabilities"]
+    for item in output["capability_status"]:
+        handler=verified_connections[item["id"]]
+        item["state"]=handler["state"]
+        item["handler"]=handler["handler"]
+        item["handler_connected"]=True
+        item["audio_verified"]=False
     return output

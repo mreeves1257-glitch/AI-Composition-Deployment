@@ -6,6 +6,8 @@ on:
     paths:
       - composer_overrides/genre_styles/source_pattern_library.py
       - composer_overrides/genre_styles/shared_musical_grammar.py
+      - build_current_composer.sh
+      - research/test_real_composer_grammar_20261009.py
       - composer_overrides/genre_styles/**/SOURCE_PATTERN_LIBRARY_R1.json
       - research/test_all55_source_pattern_library_20261009.py
       - .github/workflows/genre-source-pattern-library-55-20261009.yml
@@ -42,6 +44,9 @@ jobs:
           from pathlib import Path
           source=(Path("composer_overrides")/"genre_styles"/"source_pattern_library.py").read_text()
           assert 'compile_musical_plan(' in source
+          build=Path("build_current_composer.sh").read_text()
+          assert build.count("developed['source_pattern_seed_plan'] = compile_original_source_seed(name)")==1
+          assert build.count("from genre_styles.source_pattern_library import compile_original_source_seed")==1
           assert 'genre_styles.Rock.rock_pinned_mma_interpreter' not in source
           assert 'recorded_instruments_verified":False' in source
           print("ONE_INTERPRETER_55_AUTHORED_GENRE_SOURCE_PACKS_NO_AUDIO_PASS")

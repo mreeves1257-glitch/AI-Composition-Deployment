@@ -1,0 +1,56 @@
+name: Rock Groove Eighth/Sixteenth Real Full-Audio Comparison
+on:
+  push:
+    branches:
+      - rock-groove-motion-research-20261008
+    paths:
+      - .github/workflows/rock-groove-motion-full-audio.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-drum-baseline-versus-musical-groove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original recorded Composer build with all research switches OFF
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_ROCK_GROOVE_MOTION_V1: '0'
+          AI_COMP_ROCK_DRUM_COLLISION_V1: '0'
+          AI_COMP_ROCK_MELODY_V1: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: bash build_current_composer.sh
+      - name: Preserve user's preferred cleaner-drum Rock recording baseline
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/run_rock_groove_motion_full_audio_ab.py --mode clean_drums
+      - name: Record same full-length composition with authored eighth/sixteenth hat groove and bass-locked kick
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/run_rock_groove_motion_full_audio_ab.py --mode groove_motion
+      - name: Verify drum-only changes, preserved bass/melody/recorded SFZ, and stereo 3D full songs
+        run: python research/run_rock_groove_motion_full_audio_ab.py --mode compare
+      - name: Preserve recordings and detailed note identity proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-clean-drums-vs-subdivided-groove-full-audio-20261008
+          path: |
+            research/rock_groove_motion_ab_output/clean_drums/Rock_Clean_Drums_Full_3D.wav
+            research/rock_groove_motion_ab_output/clean_drums/report.json
+            research/rock_groove_motion_ab_output/clean_drums/score_events.json
+            research/rock_groove_motion_ab_output/groove_motion/Rock_Eighth_Sixteenth_Groove_Full_3D.wav
+            research/rock_groove_motion_ab_output/groove_motion/report.json
+            research/rock_groove_motion_ab_output/groove_motion/score_events.json
+            research/rock_groove_motion_ab_output/COMPARISON.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 21

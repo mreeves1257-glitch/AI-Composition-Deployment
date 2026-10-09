@@ -251,6 +251,9 @@ cp composer_overrides/test_rock_bass_sustain_policy_v1.py composer/runtime/test_
 # Isolated OFF-by-default Rock percussion composition-only cleanup.
 cp composer_overrides/rock_drum_collision_policy_v1.py composer/runtime/rock_drum_collision_policy_v1.py
 cp composer_overrides/test_rock_drum_collision_policy_v1.py composer/runtime/test_rock_drum_collision_policy_v1.py
+# Research-only groove grammar (OFF by default; no new sample bank).
+cp composer_overrides/rock_groove_motion_v1.py composer/runtime/rock_groove_motion_v1.py
+cp composer_overrides/test_rock_groove_motion_v1.py composer/runtime/test_rock_groove_motion_v1.py
 # Composition quality research: OFF by default; preserves all source instruments.
 cp composer_overrides/rock_melodic_author_v1.py composer/runtime/rock_melodic_author_v1.py
 cp composer_overrides/test_rock_melodic_author_v1.py composer/runtime/test_rock_melodic_author_v1.py
@@ -897,6 +900,7 @@ python composer/runtime/test_automatic_phrase_decisions.py -v
 python composer/runtime/test_instrument_performance_contract.py
 PYTHONPATH=composer/runtime python composer/runtime/test_rock_bass_sustain_policy_v1.py
 PYTHONPATH=composer/runtime python composer/runtime/test_rock_drum_collision_policy_v1.py
+PYTHONPATH=composer/runtime python composer/runtime/test_rock_groove_motion_v1.py
 PYTHONPATH=composer/runtime python composer/runtime/test_rock_melodic_author_v1.py
 PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_lead_register
 PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_balance_contract

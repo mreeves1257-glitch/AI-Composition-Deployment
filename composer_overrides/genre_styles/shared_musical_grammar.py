@@ -206,7 +206,7 @@ def compile_musical_plan(
         "audio_verified":False} for entry in route["capability_requirements"]]
     need(len(statuses)==22 and all(x["scope"] for x in statuses),
          "22_CAPABILITY_RECORDS_INCOMPLETE")
-    return {"schema":GRAMMAR_VERSION,"genre":genre,"family":route["family"],
+    output={"schema":GRAMMAR_VERSION,"genre":genre,"family":route["family"],
         "genre_profile_id":route["genre_profile_id"],
         "source_path":route["source_path"],
         "stage_3_to_4":route["stage_3_to_4"],
@@ -222,3 +222,9 @@ def compile_musical_plan(
         "midi_authorized":False,"recorded_audio_authorized":False,
         "live_playback_verified":False,
         "original_genre_stage_flags_unchanged":True}
+
+    # Single source-grounded dispatcher invoked for every selected genre:
+    # all 22 paths exist, but unsupported sound/playback claims stay blocked.
+    from .shared_capability_execution import evaluate_22_capabilities
+    output["capability_execution"]=evaluate_22_capabilities(output)
+    return output

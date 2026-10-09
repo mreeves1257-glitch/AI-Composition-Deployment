@@ -1,0 +1,43 @@
+name: Unified 55 Genre Musical Grammar — Symbolic Connection Tests (No Deploy)
+on:
+  push:
+    branches:
+      - genre-grammar-interpreter-55-20261009
+    paths:
+      - composer_overrides/genre_styles/shared_musical_grammar.py
+      - build_current_composer.sh
+      - research/test_shared_musical_grammar_20261009.py
+      - .github/workflows/genre-grammar-symbolic-55-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-one-compiler-all-genre-profiles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check executable musical grammar for each of the 55 profiles
+        run: python research/test_shared_musical_grammar_20261009.py
+      - name: Check 55 routing schemas and original seven stages
+        run: |
+          python research/test_shared_interpreter_router_all55_20261009.py
+          python research/test_clean_shared_interpreter_all55_20261009.py
+          python research/validate_uniform_genre_connections_20261009.py
+          python research/validate_all_55_22_capability_procedures_20261009.py
+      - name: Verify one genuine development-hook invocation and no playback activation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          b=Path('build_current_composer.sh').read_text()
+          assert b.count("developed['shared_musical_plan'] = compile_musical_plan(")==1
+          assert "from genre_styles.shared_musical_grammar import compile_musical_plan" in b
+          r=Path('composer_overrides/genre_styles/shared_interpreter_router.py').read_text()
+          assert 'from .Rock.' not in r
+          assert 'def compile_selected_musical_interpreter' not in r
+          assert 'from genre_styles.Rock.rock_pinned_mma_interpreter' not in b
+          print('55_GENRE_SHARED_GRAMMAR_DEV_HANDOFF_STATIC_PASS')
+          PY

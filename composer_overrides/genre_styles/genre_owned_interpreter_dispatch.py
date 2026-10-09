@@ -163,3 +163,238 @@ def dispatch_stage3_to4_genre_owned(
         "production_enabled": False,
         "real_genre_audition_approved": False,
     }
+
+
+def connect_selected_genre_components(
+    genre: str, *, original_stage3_result: dict[str, Any],
+    original_composer_events=(), target_bindings=None,
+    source_midi_path: str | Path | None = None,
+) -> dict[str, Any]:
+    """Execute the EXISTING 55-genre component connections in rehearsal.
+
+    Real genre profile -> Stage-3 selection -> owned interpreter -> own source
+    notes -> exact original role-to-recording resolver -> original Composer
+    Stage-4 *proposal* -> shared 22 Stage-5 capability handlers -> isolated
+    stem/standalone mixer contracts. No new sound engine, no substituted bank,
+    no mutations to original Composer events or source recordings.
+
+    Stage-6/7 actual rendering and final mixing are NEVER invoked here.
+    Unverified programs and external MMA-only score inputs fail closed.
+    """
+    from .shared_interpreter_router import (
+        InterpreterConnectionError, ORIGINAL_STAGE_ORDER,
+        route_to_shared_interpreter,
+    )
+    from .source_pattern_library import read_pack, compile_original_source_seed
+    from .source_pattern_resource_handoff import map_source_roles
+    from .source_pattern_composer_handoff import (
+        prepare_source_pattern_composer_handoff,
+    )
+
+    def check(ok, reason):
+        if not ok:
+            raise InterpreterConnectionError(reason + ":" + genre)
+
+    # The stored original genre profile, interpreter registry, musical seed,
+    # role map and complete original instrument list MUST agree by identity.
+    route = route_to_shared_interpreter(
+        genre, original_stage3_result=original_stage3_result,
+    )
+    check(isinstance(original_stage3_result, dict) and
+          original_stage3_result.get("status") == "PASS",
+          "ORIGINAL_STAGE3_NOT_APPROVED")
+    seed, seedref = read_pack(genre)
+    check(seedref["genre_profile_id"] == route["genre_profile_id"] and
+          original_stage3_result.get("meter") == seed["meter"],
+          "GENRE_SOURCE_METER_OR_PROFILE_DRIFT")
+    tempo = original_stage3_result.get("tempo_bpm")
+    check(type(tempo) is int, "GENRE_STAGE3_TEMPO_NOT_AN_INTEGER")
+    plan = compile_original_source_seed(genre, selected_tempo_bpm=tempo)
+    check(plan["genre"] == genre and
+          plan["source_pattern_contract"]["genre_specific_seed"] == genre and
+          plan["source_pattern_contract"]["production_enabled"] is False,
+          "GENRE_SCORE_NOT_OWNED")
+    check(len(plan["capability_execution"]["capabilities"]) == 22 and
+          plan["capability_execution"]["ready_for_live_deployment"] is False,
+          "GENRE_22_CAPABILITY_CONTRACT_FAILED")
+
+    maps_path = ROOT / route["family"] / "SOURCE_RESOURCE_BINDINGS_R1.json"
+    maps = json.loads(maps_path.read_text(encoding="utf-8"))
+    source_records = [x for x in maps["genres"] if x["genre"] == genre]
+    full = maps["full_genre_track_sound_maps"].get(genre)
+    check(len(source_records) == 1 and
+          source_records[0]["profile_id"] == route["genre_profile_id"] and
+          isinstance(full, dict) and
+          full["profile_id"] == route["genre_profile_id"] and
+          full["genre"] == genre and
+          full.get("production_audio_enabled") is False,
+          "GENRE_FULL_INSTRUMENT_MAP_WRONG_PROFILE")
+    original = json.loads(
+        (ROOT / route["family"] / "profile.json").read_text(encoding="utf-8")
+    )["profiles"][genre]
+    tracks = original["individual_instrument_tracks"]
+    mapped_tracks = full["full_genre_tracks"]
+    check(len(tracks) == len(mapped_tracks) and len(tracks) > 0 and
+          len({x["track_id"] for x in mapped_tracks}) == len(tracks),
+          "ORIGINAL_FULL_TRACK_COUNT_OR_ID_CHANGED")
+    for a, b in zip(tracks, mapped_tracks):
+        check(a["track_id"] == b["track_id"] and
+              a.get("instrument_id") == b.get("original_instrument_id") and
+              a.get("original_palette_group") == b.get("original_palette_group") and
+              b["independent_audio_stem_required"] is True,
+              "SOUND_MAP_TRACK_OR_INSTRUMENT_SUBSTITUTED")
+        if b.get("resource_id"):
+            check(b["mapping_state"] ==
+                  "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED" and
+                  b.get("preflight_verified_for_this_genre") is False and
+                  bool(b.get("sfz_path")) and
+                  bool(b.get("registry_binding_id")),
+                  "INVALID_SOUND_RESOURCE_REFERENCE")
+        else:
+            check(b["mapping_state"] ==
+                  "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING" and
+                  b.get("sfz_path") is None,
+                  "UNVERIFIED_INSTRUMENT_NOT_BLOCKED")
+
+    mapped = map_source_roles(
+        plan, stage3=original_stage3_result,
+        target_bindings=target_bindings,
+    )
+    originals = list(original_composer_events)
+    # Two independently authored external-MMA style interpreters require their
+    # OWN recorded MIDI and an eventual exact note/track-to-SFZ translation.
+    # Don't pass their incompatible event dialect into the Composer renderer.
+    if genre in EXTERNAL_BACKENDS and source_midi_path is None:
+        interpreter = {
+            "status": "BLOCKED_EXTERNAL_GENRE_MIDI_NOT_PROVIDED",
+            "genre": genre, "profile_id":route["genre_profile_id"],
+            "musical_event_count": 0,
+            "stage4_candidate_events": [],
+            "production_enabled": False,
+            "audio_render_authorized": False,
+        }
+    else:
+        interpreter = dispatch_stage3_to4_genre_owned(
+            genre, source_midi_path=source_midi_path,
+            original_stage3_result=original_stage3_result,
+        )
+        check(interpreter["genre"] == genre and
+              interpreter["profile_id"] == route["genre_profile_id"] and
+              interpreter["production_enabled"] is False,
+              "WRONG_GENRE_INTERPRETER_EXECUTED")
+    if genre in EXTERNAL_BACKENDS:
+        proposal = {
+            "status": "BLOCKED_EXTERNAL_STYLE_TO_ORIGINAL_COMPOSER_ROLE_TRANSLATION_PENDING",
+            "candidate_stage4_events": [],
+            "candidate_event_count": 0,
+            "existing_composer_events_unchanged": True,
+            "audio_render_authorized": False,
+        }
+    else:
+        # This is the original Stage-4 shape and existing routing function;
+        # incomplete source/program mappings produce NO partial instrument mix.
+        proposal = prepare_source_pattern_composer_handoff(
+            plan, original_stage3_result=original_stage3_result,
+            existing_events=originals, target_bindings=target_bindings,
+        )
+        check(interpreter["musical_event_count"] ==
+              len(plan["symbolic_note_events"]) and
+              interpreter["stage4_candidate_events"] ==
+              plan["symbolic_note_events"], "INTERPRETER_TO_STAGE4_SCORE_DRIFT")
+    check(proposal["audio_render_authorized"] is False and
+          proposal["existing_composer_events_unchanged"] is True,
+          "ORIGINAL_COMPOSER_EVENTS_OVERWRITTEN")
+
+    pinned_tracks = [x["track_id"] for x in mapped_tracks if x.get("resource_id")]
+    blocked_tracks = [x["track_id"] for x in mapped_tracks if not x.get("resource_id")]
+    source_missing = mapped["unresolved_roles"]
+    blockers = []
+    if interpreter["musical_event_count"] == 0:
+        blockers.append("EXTERNAL_STYLE_MIDI_REQUIRED_FOR_" + genre)
+    if genre in EXTERNAL_BACKENDS:
+        blockers.append("EXTERNAL_STYLE_NOT_YET_TRANSLATED_INTO_ORIGINAL_COMPOSER_EVENT_DIALECT")
+    if source_missing or mapped["unsupported_percussion_notes"]:
+        blockers.append("UNRESOLVED_SOURCE_ROLE_PROGRAM_OR_NOTE_MAPPING")
+    if blocked_tracks:
+        blockers.append("FULL_ARRANGEMENT_TRACKS_REQUIRE_EXACT_SFZ_BINDING")
+    if len(plan["roles"]) != len(mapped_tracks) or \
+       {x["role"] for x in plan["roles"]} != {x["track_id"] for x in mapped_tracks}:
+        blockers.append("SEVEN_BAR_SOURCE_SEED_DOES_NOT_COVER_ALL_FULL_SONG_TRACKS")
+    blockers.extend((
+        "FULL_LENGTH_GENRE_PERFORMANCE_NOT_AUDITIONED",
+        "SFZ_NOTE_ZONES_AND_INDEPENDENT_RECORDED_STEMS_NOT_PREFLIGHTED",
+        "STANDALONE_3D_MIX_AND_PLUG_PHONE_AUDIO_NOT_REVERIFIED",
+    ))
+    order = list(ORIGINAL_STAGE_ORDER)
+    return {
+        "schema": "AI_COMP_55_GENRE_COMPONENT_HANDOFF_REHEARSAL_R1",
+        "genre": genre, "family": route["family"],
+        "profile_id": route["genre_profile_id"],
+        "original_seven_stage_order": order,
+        "interpreter_inserted_between": ["CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+                                          "COMPOSE_SEPARATE_PARTS"],
+        "stage3_to_interpreter": {
+            "status": interpreter["status"], "source": interpreter.get("source_type"),
+            "musical_event_count": interpreter["musical_event_count"],
+            "genre_exclusive": True,
+        },
+        "interpreter_to_original_stage4": {
+            "status": proposal["status"],
+            "candidate_event_count": proposal["candidate_event_count"],
+            "original_event_count": len(originals),
+            "candidate_only_not_active_composer_events": True,
+        },
+        "stage3_to_sound_mapping": {
+            "mapped_symbolic_role_references": mapped["exact_registry_references"],
+            "missing_or_rejected_symbolic_roles": list(source_missing),
+            "unsupported_percussion_note_requests":
+                list(mapped["unsupported_percussion_notes"]),
+            "source_program_identification_complete":
+                mapped["source_program_identification_complete"],
+        },
+        "stage4_to_stage5_performance": {
+            "shared_22_capability_handlers_connected":
+                plan["capability_execution"]["all_handlers_connected"],
+            "handler_count": len(plan["capability_execution"]["capabilities"]),
+            "performance_not_auditioned": True,
+            "capability_report": plan["capability_execution"]["capabilities"],
+        },
+        "stage5_to_stage6_recorded_stems": {
+            "required_original_separate_tracks": list(full["requested_separate_stems"]),
+            "exact_recorded_program_reference_tracks": pinned_tracks,
+            "blocked_exact_program_tracks": blocked_tracks,
+            "sfz_sample_graph_and_note_zone_verified": False,
+            "renderer_executed": False,
+            "stem_wav_count": 0,
+        },
+        "stage6_to_stage7_independent_3d_mixer": {
+            "source": "PRESERVED_ORIGINAL_STANDALONE_3D_MIXER",
+            "status": "BLOCKED_UNTIL_VERIFIED_SEPARATE_WAV_STEMS_EXIST",
+            "mixer_unchanged": True, "mixer_executed": False,
+            "master_wav_created": False,
+        },
+        "original_event_list_unchanged": originals == list(original_composer_events),
+        "live_composer_events_replaced": False,
+        "audio_render_authorized": False,
+        "live_deployment_authorized": False,
+        "connection_blockers": blockers,
+        "status": "COMPONENTS_LINKED_IN_REHEARSAL_NOT_END_TO_END_AUDIO_COMPLETE",
+    }
+
+
+def connect_all_55_component_checkpoints(*, target_bindings=None) -> dict:
+    """Run the same disconnected/non-audio component handoff for all 55."""
+    from .shared_interpreter_router import listed_genres
+    from .source_pattern_library import read_pack
+
+    connections = {}
+    for genre in listed_genres():
+        seed, _ = read_pack(genre)
+        palette = list(dict.fromkeys(x["instrument_id"] for x in seed["roles"]))
+        selected = {"status": "PASS", "palette": palette,
+                    "meter": seed["meter"], "tempo_bpm": seed["tempo_bpm"]}
+        connections[genre] = connect_selected_genre_components(
+            genre, original_stage3_result=selected,
+            target_bindings=target_bindings,
+        )
+    return connections

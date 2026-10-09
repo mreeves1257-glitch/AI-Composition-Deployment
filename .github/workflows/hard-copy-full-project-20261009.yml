@@ -1,0 +1,89 @@
+name: Hard Copy Full AI Composer Project 2026-10-09 1128 CDT (No Deploy)
+on:
+  push:
+    branches:
+      - hard-copy-ai-composer-2026-10-09-1128-CDT
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-recoverable-project-copy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Preserve entire exact committed source as standalone zip
+        run: |
+          mkdir -p hardcopy
+          git archive --format=zip --output=hardcopy/AI_Composer_FULL_SOURCE_2026-10-09_1128_CDT.zip HEAD
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          p=Path("hardcopy/AI_Composer_FULL_SOURCE_2026-10-09_1128_CDT.zip")
+          with ZipFile(p) as z:
+            files=set(z.namelist())
+          expected=[
+           "composer_overrides/genre_styles/index.json",
+           "composer_overrides/genre_styles/Rock/profile.json",
+           "composer_overrides/genre_styles/Jazz/profile.json",
+           "composer_overrides/genre_styles/shared_interpreter_router.py",
+           "composer_overrides/genre_styles/shared_musical_grammar.py",
+           "composer_overrides/genre_styles/shared_capability_execution.py",
+           "composer_overrides/genre_styles/source_pattern_library.py",
+           "composer_overrides/genre_styles/source_pattern_resource_handoff.py",
+           "composer_overrides/genre_styles/source_pattern_composer_handoff.py",
+           "build_current_composer.sh",
+           "research/MUSIC_SOFTWARE_AND_SFZ_DOWNLOAD_REGISTER_2026-10-09.md"]
+          missing=[x for x in expected if x not in files]
+          assert not missing,missing
+          folders=[x for x in files if x.endswith("/SOURCE_PATTERN_LIBRARY_R1.json")]
+          assert len(folders)==13,len(folders)
+          print("FULL_PROJECT_SOURCE_ARCHIVE_PASS",len(files),"committed files")
+          PY
+      - name: Download MIT Mido dependency and prepare all 55 original MIDI preview files
+        run: |
+          mkdir -p hardcopy/software
+          python -m pip download --only-binary=:all: 'mido==1.3.3' -d hardcopy/software
+          python -m pip install mido==1.3.3
+          python research/test_downloadable_55_genre_midi_20261009.py
+          python research/export_55_original_genre_midi_previews_20261009.py --output hardcopy
+          test "$(find hardcopy/midi -maxdepth 1 -name '*.mid' | wc -l)" -eq 55
+      - name: Verify complete hardcopy package and checksums
+        run: |
+          python - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+          from zipfile import ZipFile
+          base=Path("hardcopy")
+          inputs=[base/"AI_Composer_FULL_SOURCE_2026-10-09_1128_CDT.zip",
+                  base/"55_original_genre_midi_previews_2026-10-09.zip"]
+          inputs+=sorted((base/"software").glob("*.whl"))
+          assert len(inputs)>=4,inputs
+          manifest={"preserved_at":"2026-10-09 11:28 CDT",
+           "git_commit":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),
+           "genre_count":55,"folder_count":13,"one_interpreter":True,
+           "audio_samples_included":False,"production_deployment_performed":False,
+           "files":[{"file":str(p.relative_to(base)),"bytes":p.stat().st_size,
+            "sha256":hashlib.sha256(p.read_bytes()).hexdigest()} for p in inputs]}
+          (base/"HARD_COPY_MANIFEST.json").write_text(json.dumps(manifest,indent=2)+"\n")
+          assert len(list((base/"midi").glob("*.mid")))==55
+          for p in inputs[:2]:
+            with ZipFile(p) as z:assert z.testzip() is None
+          print("AI_COMPOSER_FULL_HARD_COPY_VERIFIED",json.dumps(manifest))
+          PY
+      - name: Upload downloadable hardcopy with source, all 55 MIDI previews and wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI_Composer_FULL_HARD_COPY_2026-10-09_1128_CDT
+          path: |
+            hardcopy/AI_Composer_FULL_SOURCE_2026-10-09_1128_CDT.zip
+            hardcopy/55_original_genre_midi_previews_2026-10-09.zip
+            hardcopy/MANIFEST.json
+            hardcopy/HARD_COPY_MANIFEST.json
+            hardcopy/README.txt
+            hardcopy/software/*.whl
+          retention-days: 90
+          if-no-files-found: error

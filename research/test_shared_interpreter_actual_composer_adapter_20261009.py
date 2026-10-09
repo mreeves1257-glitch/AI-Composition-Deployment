@@ -10,6 +10,7 @@ assert (root/"AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.
 shutil.copytree("composer_overrides/genre_styles",root/"genre_styles",dirs_exist_ok=True)
 shutil.copyfile("composer_overrides/genre_development_patch.py",root/"genre_development_patch.py")
 shutil.copyfile("composer_overrides/rock_melodic_author_v1.py",root/"rock_melodic_author_v1.py")
+shutil.copyfile("composer_overrides/instrument_performance_contract.py",root/"instrument_performance_contract.py")
 build=Path("build_current_composer.sh").read_text()
 anchor='override=r"""'
 start=build.index(anchor)+len(anchor)

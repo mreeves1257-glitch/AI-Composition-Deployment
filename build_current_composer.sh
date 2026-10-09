@@ -251,6 +251,9 @@ cp composer_overrides/test_rock_bass_sustain_policy_v1.py composer/runtime/test_
 # Composition quality research: OFF by default; preserves all source instruments.
 cp composer_overrides/rock_melodic_author_v1.py composer/runtime/rock_melodic_author_v1.py
 cp composer_overrides/test_rock_melodic_author_v1.py composer/runtime/test_rock_melodic_author_v1.py
+# Standalone musical storytelling research OFF by default, independent of R1.
+cp composer_overrides/rock_story_arc_v2.py composer/runtime/rock_story_arc_v2.py
+cp composer_overrides/test_rock_story_arc_v2.py composer/runtime/test_rock_story_arc_v2.py
 cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py composer/runtime/
 cp composer_overrides/global_3d_output_gate.py composer/runtime/
@@ -894,6 +897,7 @@ python composer/runtime/test_automatic_phrase_decisions.py -v
 python composer/runtime/test_instrument_performance_contract.py
 PYTHONPATH=composer/runtime python composer/runtime/test_rock_bass_sustain_policy_v1.py
 PYTHONPATH=composer/runtime python composer/runtime/test_rock_melodic_author_v1.py
+PYTHONPATH=composer/runtime python composer/runtime/test_rock_story_arc_v2.py
 PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_lead_register
 PYTHONPATH=composer/runtime python -m genre_styles.Rock.test_rock_balance_contract
 # Exercise the actual genre setup with no audio rendering. A bad palette,

@@ -90,7 +90,7 @@ jobs:
   composer_to_unmodified_mma_midi_one_genre:
     if: github.ref == 'refs/heads/uniform-55-genre-structure-20261009'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -108,7 +108,44 @@ jobs:
           cp -a /tmp/mma-pristine/mma-bin-25.05.0 /tmp/mma-working
           cd /tmp/mma-working
           PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 python mma.py -G > /tmp/mma-disposable-groove-index.log
-      - name: Composer Stage 2/3 -> unmodified MMA -> real MIDI Type 1 -> existing interpreter
+      - name: Obtain original exact recorded electric piano samples in isolation
         run: |
-          python research/test_two_distinct_downloaded_genre_interpreters_20261009.py --composer-mma /tmp/mma-working
+          set -euxo pipefail
+          mkdir -p /tmp/composer-original-recordings
+          git clone --depth 1 --branch master https://github.com/sfzinstruments/GregSullivan.E-Pianos.git /tmp/composer-original-recordings/GREG_SULLIVAN_E_PIANOS
+          test "$(git -C /tmp/composer-original-recordings/GREG_SULLIVAN_E_PIANOS rev-parse HEAD)" = "8c3e581acda3594b553948ff0222d4f84a698376"
+          test -f "/tmp/composer-original-recordings/GREG_SULLIVAN_E_PIANOS/Wurlitzer EP200/Wurlitzer EP200.sfz"
+          test -f "/tmp/composer-original-recordings/GREG_SULLIVAN_E_PIANOS/Wurlitzer EP200/Samples/a1pp.flac"
+      - name: Build the original existing sfizz renderer separately (no new sound engine)
+        run: |
+          set -euxo pipefail
+          mkdir -p /tmp/composer-sfizz-source /tmp/composer-sfizz-build /tmp/composer-sfizz-bin
+          curl --fail --location --retry 3 \
+            https://github.com/sfztools/sfizz/releases/download/1.2.3/sfizz-1.2.3.tar.gz \
+            -o /tmp/composer-sfizz-original.tar.gz
+          tar -xzf /tmp/composer-sfizz-original.tar.gz -C /tmp/composer-sfizz-source --strip-components=1
+          cmake -S /tmp/composer-sfizz-source -B /tmp/composer-sfizz-build \
+            -DCMAKE_BUILD_TYPE=Release -DSFIZZ_JACK=OFF -DSFIZZ_SHARED=OFF \
+            -DPLUGIN_LV2=OFF -DPLUGIN_LV2_UI=OFF -DPLUGIN_VST3=OFF -DSFIZZ_RENDER=ON
+          cmake --build /tmp/composer-sfizz-build --target sfizz_render -j2
+          RENDERER="$(find /tmp/composer-sfizz-build -type f -name sfizz_render -perm -111 | head -1)"
+          test -n "$RENDERER"
+          cp "$RENDERER" /tmp/composer-sfizz-bin/sfizz_render
+      - name: Verify Composer MMA notes through the unchanged recorded EP200 SFZ to a non-silent isolated WAV
+        run: |
+          AI_COMP_RESOURCE_BANK=/tmp/composer-original-recordings \
+          AI_COMP_SFZ_RENDERER=/tmp/composer-sfizz-bin/sfizz_render \
+          AI_COMP_ISOLATED_AUDIO_WORK=/tmp/composer_ep200_probe \
+          python research/test_two_distinct_downloaded_genre_interpreters_20261009.py --composer-mma-audio /tmp/mma-working
+      - name: Preserve only the isolated one-instrument WAV and verification metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: composer-mma-original-electric-piano-audio-verification
+          path: |
+            /tmp/composer_ep200_probe/jazz_waltz_original_wurlitzer_only.wav
+            /tmp/composer_ep200_probe/jazz_waltz_original_piano_only.mid
+            /tmp/composer_ep200_probe/original_wurlitzer_audio_verification.json
+            /tmp/composer_ep200_probe/ATTRIBUTION.txt
+          retention-days: 30
+          if-no-files-found: error
 

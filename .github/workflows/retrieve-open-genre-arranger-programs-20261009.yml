@@ -1,0 +1,58 @@
+name: Download Real Licensed Genre Arranger Sources and 55 Candidate Matrix (Research Only)
+on:
+  push:
+    branches:
+      - genre-specific-interpreters-55-rock-restored-20261009
+    paths:
+      - research/retrieve_external_genre_interpreter_candidates_20261009.py
+      - .github/workflows/retrieve-open-genre-arranger-programs-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retrieve-and-validate-arranger-programs-without-installing-into-composer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all 55 individual interpreter locations and recovered byte-exact Rock code
+        run: |
+          python research/verify_55_independent_genre_interpreter_placements_20261009.py
+      - name: Retrieve actual arranger program sources and inventory all 55 genres
+        run: python research/retrieve_external_genre_interpreter_candidates_20261009.py
+      - name: Verify sources, licenses and source-style research are separate from deployed Composer
+        run: |
+          python - <<'PY'
+          import json,zipfile
+          from pathlib import Path
+          p=Path('research_artifacts/open_source_arranger_interpreter_research_20261009/RETRIEVAL_AND_LICENSE_MANIFEST.json')
+          m=json.loads(p.read_text())
+          assert m['genre_owner_count']==55
+          assert m['mirror_stock_stdlib_file_count']>=100
+          assert m['mirror_total_mma_style_file_count']>=200
+          assert len(m['downloaded_external_source_archives'])>=3
+          assert m['source_material_not_connected_to_55_active_genre_interpreters'] is True
+          assert m['licenses_of_programs_need_individual_review'] is True
+          for item in m['downloaded_external_source_archives']:
+              assert Path(p.parent/item['file']).is_file()
+              assert item['installed_in_live_composer'] is False
+          z=Path('research_artifacts/LICENSED_ARRANGER_PROGRAM_SOURCE_RESEARCH_2026-10-09.zip')
+          with zipfile.ZipFile(z) as a:
+              assert a.testzip() is None
+              assert 'ALL_55_GENRE_POSSIBLE_PROGRAMS_NOT_YET_VERIFIED.csv' in a.namelist()
+          print('OPEN_SOURCE_REAL_PROGRAM_ARCHIVE_AND_55_CANDIDATE_COVERAGE_PASS')
+          PY
+      - name: Supply the actual downloaded programs and license research as user copy
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI_Composer_Genre_Interpreter_Source_Programs_And_55_Matching_2026-10-09
+          path: |
+            research_artifacts/LICENSED_ARRANGER_PROGRAM_SOURCE_RESEARCH_2026-10-09.zip
+            research_artifacts/open_source_arranger_interpreter_research_20261009/RETRIEVAL_AND_LICENSE_MANIFEST.json
+            research_artifacts/open_source_arranger_interpreter_research_20261009/ALL_55_GENRE_POSSIBLE_PROGRAMS_NOT_YET_VERIFIED.csv
+            research_artifacts/open_source_arranger_interpreter_research_20261009/README.txt
+          retention-days: 90
+          if-no-files-found: error

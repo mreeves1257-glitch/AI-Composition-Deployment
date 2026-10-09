@@ -5,6 +5,7 @@ on:
       - all-55-yamaha-korg-22-capability-procedure-20261009
     paths:
       - .github/workflows/external-arranger-libraries-and-55-procedure-audit-20261009.yml
+      - research/validate_all_55_22_capability_procedures_20261009.py
   workflow_dispatch:
 permissions:
   contents: read

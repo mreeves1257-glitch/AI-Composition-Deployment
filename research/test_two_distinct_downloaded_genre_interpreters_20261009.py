@@ -213,6 +213,97 @@ def prove_original_composer_to_mma_only(mma_home):
                      "WRONG_HANDOFF_SAFETY_REJECTION:" + str(e)[:200])
             else:
                 raise AssertionError("UNAUTHORIZED_GENRE_INPUT_ACCEPTED")
+        from genre_styles.genre_owned_interpreter_dispatch import (
+            connect_selected_genre_components,
+        )
+        # A genuine preexisting Composer event stays absolutely authoritative.
+        original_events = [{
+            "track_id":"ELECTRIC_PIANO","instrument_id":"electric_piano",
+            "start_beat":0.0,"duration_beats":1.0,"midi":60,"velocity":88,
+        }]
+        unchanged = json.dumps(original_events, sort_keys=True)
+        receipt = connect_selected_genre_components(
+            "Jazz Waltz",
+            original_stage3_result=stage3,
+            original_composer_events=original_events,
+            source_midi_path=midi,
+        )
+        handoff = receipt["interpreter_to_original_stage4"]
+        must(receipt["stage3_to_interpreter"]["musical_event_count"] ==
+             result["midi_note_events"] == 233 and
+             handoff["candidate_event_count"] > 0 and
+             handoff["source_midi_event_count"] == 233 and
+             handoff["blocked_source_note_count"] > 0 and
+             handoff["candidate_event_count"] +
+             handoff["blocked_source_note_count"] == 233,
+             "SOURCE_MIDI_EVENTS_LOST_OR_FAKED")
+        must(receipt["original_event_list_unchanged"] is True and
+             receipt["audio_render_authorized"] is False and
+             receipt["live_composer_events_replaced"] is False and
+             json.dumps(original_events, sort_keys=True) == unchanged,
+             "ORIGINAL_LIVE_COMPOSER_EVENTS_UNEXPECTEDLY_CHANGED")
+        must(handoff["unfilled_original_genre_tracks"] and
+             "FLUTE" in handoff["unfilled_original_genre_tracks"] and
+             "MMA_SOURCE_NOT_FULLY_MAPPED_TO_ORIGINAL_GENRE_TRACKS" in
+             receipt["connection_blockers"],
+             "UNMAPPED_ORIGINAL_INSTRUMENTS_NOT_PROTECTED")
+        # Reuse precisely the saved original full-genre sound map; no rewritten
+        # percussion bank, style, original instrument or synthetic substitute.
+        import json as _json
+        from genre_styles.source_pattern_composer_handoff import (
+            prepare_external_midi_composer_handoff,
+        )
+        mapfile = _json.loads((ROOT /
+            "composer_overrides/genre_styles/Jazz/SOURCE_RESOURCE_BINDINGS_R1.json"
+        ).read_text())
+        profilefile = _json.loads((ROOT /
+            "composer_overrides/genre_styles/Jazz/profile.json"
+        ).read_text())
+        source_notes = dispatch_stage3_to4_genre_owned(
+            "Jazz Waltz", source_midi_path=midi,
+            original_stage3_result=stage3,
+        )
+        candidate_receipt = prepare_external_midi_composer_handoff(
+            source_notes,
+            original_genre_profile=profilefile["profiles"]["Jazz Waltz"],
+            recorded_full_track_map=mapfile[
+                "full_genre_track_sound_maps"]["Jazz Waltz"],
+            original_stage3_result=stage3,
+            existing_events=original_events,
+        )
+        sound_candidates = candidate_receipt["candidate_stage4_events"]
+        must(len(sound_candidates) == handoff["candidate_event_count"] and
+             sound_candidates and
+             all(event["track_id"] == "ELECTRIC_PIANO" and
+                 event["instrument_id"] == "electric_piano" and
+                 event["resource_id"] == "GREG_SULLIVAN_E_PIANOS" and
+                 event["preferred_mapping"] ==
+                 "Wurlitzer EP200/composer-wurlitzer.sfz" and
+                 event["audit_status"] ==
+                 "REHEARSAL_REFERENCE_ONLY_ORIGINAL_SFZ_NOT_PREFLIGHTED"
+                 for event in sound_candidates),
+             "WRONG_OR_SUBSTITUTED_ORIGINAL_RECORDED_SOUND_CANDIDATE")
+        must(any(n["reason"] == "MMA_INSTRUMENT_NOT_IN_ORIGINAL_SELECTED_TRACKS"
+                 for n in candidate_receipt["blocked_note_details"]) and
+             any(n["reason"] ==
+                 "ORIGINAL_TRACK_EXACT_RECORDED_PROGRAM_NOT_VERIFIED"
+                 for n in candidate_receipt["blocked_note_details"]) and
+             candidate_receipt["individual_stems_verified"] is False and
+             candidate_receipt["audio_render_authorized"] is False,
+             "UNVERIFIED_MMA_INSTRUMENT_WAS_SILENTLY_REPLACED")
+        print("MMA_MIDI_TO_ORIGINAL_COMPOSER_STAGE4_IDENTITIES_PASS",
+              json.dumps({
+                  "genre":"Jazz Waltz",
+                  "MMA_midi_notes":result["midi_note_events"],
+                  "exact_recorded_program_reference_notes":len(sound_candidates),
+                  "blocked_notes":handoff["blocked_source_note_count"],
+                  "only_reference_track":"ELECTRIC_PIANO",
+                  "original_tracks_missing_midi":
+                      handoff["unfilled_original_genre_tracks"],
+                  "existing_composer_events_unchanged":True,
+                  "full_song_audio_ready":False,
+                  "live_activated":False,
+              }, sort_keys=True), flush=True)
         print("COMPOSER_TO_ORIGINAL_MMA_TO_TYPE1_MIDI_HANDOFF_PASS",
               json.dumps({k: result[k] for k in (
                   "genre", "style_groove", "standard_midi_type",

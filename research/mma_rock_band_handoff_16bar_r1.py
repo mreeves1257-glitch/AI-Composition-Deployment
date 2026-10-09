@@ -115,6 +115,10 @@ def make_song(mma_py):
     source.write_text("\n".join(lines)+"\n")
     midi=OUT/"MMA_Rock_16Bar_Two_Sections.mid"
     env=dict(os.environ);env["PYTHONPATH"]=str(mma_py.parent)
+    # Generate the external MMA interpreter's named-style index in isolation.
+    index=subprocess.run([sys.executable,str(mma_py),"-G"],cwd=mma_py.parent,
+                         capture_output=True,text=True,timeout=80,env=env)
+    need(index.returncode==0,"MMA_GROOVE_INDEX_FAILED:"+index.stderr[-600:])
     p=subprocess.run([sys.executable,str(mma_py),"-f",str(midi),str(source)],
                      cwd=mma_py.parent,text=True,capture_output=True,timeout=100,env=env)
     need(p.returncode==0 and midi.is_file(),"MMA_INTERPRETER_FAILED:"+p.stderr[-600:]+p.stdout[-300:])

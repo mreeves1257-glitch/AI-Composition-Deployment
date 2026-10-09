@@ -576,6 +576,11 @@ def develop_full_length(
         # explicitly enabled; no drum sound/gain or other genre is changed.
         from rock_drum_collision_policy_v1 import resolve_rock_drum_collisions
         developed = resolve_rock_drum_collisions(developed, "ROCK")
+        # Real eighth/occasional sixteenth groove scoring experiment.
+        # Requires opted-in collision cleanup, both switches OFF by default.
+        # All instrument sounds and independent 3D mixing stay unchanged.
+        from rock_groove_motion_v1 import apply_rock_groove
+        developed = apply_rock_groove(developed, "ROCK")
     return developed
 
 # --- Shared eight-section Genre Development template (non-rendering) ---

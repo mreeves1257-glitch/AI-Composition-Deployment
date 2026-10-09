@@ -1,4 +1,4 @@
-name: Rock Arranger Interpreter to Recorded SFZ 16-Bar Proof (No Deploy)
+name: Rock Arranger Interpreter to Recorded SFZ 16-Bar Proof R1 (No Deploy)
 on:
   push:
     branches:

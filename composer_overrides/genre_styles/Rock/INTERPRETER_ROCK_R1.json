@@ -183,7 +183,29 @@
           "source_files_preflight_complete": false,
           "active_audio_authorized": false
         }
-      }
+      },
+      "full_arrangement_source_of_truth": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "full_arrangement_genre_pointer": "/full_genre_track_sound_maps/ROCK",
+      "complete_original_nine_track_connection_pointer": "/full_genre_track_sound_maps/ROCK/full_track_component_connections/instrument_and_render_links",
+      "stage3_original_palette_by_full_track": {
+        "HARMONY": "electric_guitar",
+        "LEAD": "lead_guitar",
+        "BASS": "electric_bass",
+        "KICK": "drums",
+        "SNARE": "drums",
+        "HAT": "drums",
+        "TOMS": "drums",
+        "CRASH": "drums",
+        "RIDE": "drums"
+      },
+      "all_nine_full_track_program_references_assigned": true,
+      "four_full_arrangement_roles_not_in_seven_bar_seed": [
+        "LEAD",
+        "TOMS",
+        "CRASH",
+        "RIDE"
+      ],
+      "all_audio_evidence_unverified": true
     },
     "file_connections": {
       "genre_profile": "composer_overrides/genre_styles/Rock/profile.json",
@@ -193,7 +215,9 @@
       "source_pattern": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
       "source_resource_mapping": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
       "capability_procedure": "composer_overrides/genre_styles/Rock/GENRE_22_CAPABILITY_PROCEDURE_R1.json",
-      "capability_binding": "composer_overrides/genre_styles/Rock/GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json"
+      "capability_binding": "composer_overrides/genre_styles/Rock/GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json",
+      "full_arrangement_program_map": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json#/full_genre_track_sound_maps/ROCK/full_track_component_connections",
+      "original_profile_nine_tracks": "composer_overrides/genre_styles/Rock/profile.json#/profiles/ROCK/individual_instrument_tracks"
     },
     "last_authorized_boundary": "STAGE3_TO_STAGE4_CONFIGURATION_ONLY",
     "production_stage_links_enabled": false,
@@ -205,7 +229,15 @@
       "file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
       "genre_key": "ROCK"
     },
-    "audio_render_verified_for_new_route": false
+    "audio_render_verified_for_new_route": false,
+    "stage_3_to_4_connection": {
+      "source": "genre_styles.genre_owned_interpreter_dispatch.connect_selected_genre_components",
+      "rock_interpreter_backend_kept_intact": "composer_overrides/genre_styles/source_pattern_library.py",
+      "original_selected_instruments": "composer_overrides/genre_styles/Rock/profile.json#/profiles/ROCK/original_composer_instrument_palette",
+      "full_arrangement_program_reference": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json#/full_genre_track_sound_maps/ROCK/full_track_component_connections",
+      "output": "DEVELOPMENT_RECEIPT_AND_STAGE4_CANDIDATES_KEEP_LEGACY_COMPOSER_EVENTS_AUTHORITATIVE",
+      "original_stage_links_activated_in_production": false
+    }
   },
   "genre_specific_executable_score": {
     "source_pattern_file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",

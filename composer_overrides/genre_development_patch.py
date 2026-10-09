@@ -559,6 +559,10 @@ def develop_full_length(
         )
     )
     if tmpl == "rock":
+        # New melodic composition is opt-in, BEFORE established guitar performance.
+        # With AI_COMP_ROCK_MELODY_V1 unset, the previous score is preserved.
+        from rock_melodic_author_v1 import compose_rock_melody
+        developed = compose_rock_melody(developed, ctx, creation_seed)
         from instrument_performance_contract import perform
         developed = perform(developed, "ROCK")
         # Genre expression shapes the performance; SFZ owns the sound.

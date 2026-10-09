@@ -1,0 +1,958 @@
+{
+  "schema_version": "AI_COMP_GENRE_ORIGINAL_SOURCE_PATTERNS_R1",
+  "family": "Reggaeton",
+  "genre_count": 1,
+  "original_profile_files_unchanged": true,
+  "audio_verified": false,
+  "musical_approval": "NOT_AUDITIONED",
+  "reference_manufacturer_style_files_copied": false,
+  "source_pattern_selector": "genre_styles.source_pattern_library.compile_original_source_seed",
+  "artistically_refine_later": true,
+  "genres": [
+    {
+      "genre": "Mexican Reggaeton",
+      "profile_id": "MEXICAN_REGGAETON_SCENE_V2",
+      "seed_id": "ORIGINAL_40_MEXICAN_REGGAETON_SCENE_V2",
+      "authoring_status": "ORIGINAL_PROJECT_SEED_NOT_AUDITIONED",
+      "source_ownership": "ORIGINAL_PROJECT_AUTHORED_SYMBOLIC_SEED",
+      "recorded_source_binding": "UNVERIFIED_NOT_CONNECTED",
+      "creative_scope_note": "Illustrative, independently identifiable short source-pattern seed; not a verified finished composition.",
+      "stylistic_reference": "reggaeton/dembow-derived pulse may combine with trap, plugg, jerk and alternative hip-hop components; component mix is explicit",
+      "meter": "4/4",
+      "tempo_bpm": 97,
+      "groove_template": "reggaeton",
+      "sections": [
+        {
+          "name": "INTRO",
+          "bars": 1,
+          "variation_by_role": {
+            "BASS": "INTRO",
+            "HARMONY": "INTRO",
+            "KICK": "INTRO",
+            "SNARE": "INTRO",
+            "HAT": "INTRO"
+          }
+        },
+        {
+          "name": "VERSE_A",
+          "bars": 1,
+          "variation_by_role": {
+            "BASS": "A1",
+            "HARMONY": "A1",
+            "KICK": "A1",
+            "SNARE": "A1",
+            "HAT": "A1"
+          }
+        },
+        {
+          "name": "VERSE_RESPONSE",
+          "bars": 1,
+          "variation_by_role": {
+            "BASS": "A2",
+            "HARMONY": "A2",
+            "KICK": "A2",
+            "SNARE": "A2",
+            "HAT": "A2"
+          }
+        },
+        {
+          "name": "FILL",
+          "bars": 1,
+          "variation_by_role": {
+            "BASS": "FILL",
+            "HARMONY": "FILL",
+            "KICK": "FILL",
+            "SNARE": "FILL",
+            "HAT": "FILL"
+          }
+        },
+        {
+          "name": "CHORUS_B",
+          "bars": 1,
+          "variation_by_role": {
+            "BASS": "B1",
+            "HARMONY": "B1",
+            "KICK": "B1",
+            "SNARE": "B1",
+            "HAT": "B1"
+          }
+        },
+        {
+          "name": "CHORUS_RESPONSE",
+          "bars": 1,
+          "variation_by_role": {
+            "BASS": "B2",
+            "HARMONY": "B2",
+            "KICK": "B2",
+            "SNARE": "B2",
+            "HAT": "B2"
+          }
+        },
+        {
+          "name": "ENDING",
+          "bars": 1,
+          "variation_by_role": {
+            "BASS": "OUTRO",
+            "HARMONY": "OUTRO",
+            "KICK": "OUTRO",
+            "SNARE": "OUTRO",
+            "HAT": "OUTRO"
+          }
+        }
+      ],
+      "chords": [
+        {
+          "bar": 0,
+          "beat": 0,
+          "symbol": "Em"
+        },
+        {
+          "bar": 1,
+          "beat": 0,
+          "symbol": "C"
+        },
+        {
+          "bar": 2,
+          "beat": 0,
+          "symbol": "G"
+        },
+        {
+          "bar": 3,
+          "beat": 0,
+          "symbol": "D"
+        },
+        {
+          "bar": 4,
+          "beat": 0,
+          "symbol": "Em"
+        },
+        {
+          "bar": 5,
+          "beat": 0,
+          "symbol": "C"
+        },
+        {
+          "bar": 6,
+          "beat": 0,
+          "symbol": "Em"
+        }
+      ],
+      "roles": [
+        {
+          "role": "BASS",
+          "instrument_id": "synth_bass",
+          "playable_midi_range": [
+            28,
+            86
+          ]
+        },
+        {
+          "role": "HARMONY",
+          "instrument_id": "synth_chord",
+          "playable_midi_range": [
+            42,
+            104
+          ]
+        },
+        {
+          "role": "KICK",
+          "instrument_id": "kick_drum_rock",
+          "playable_midi_range": [
+            36,
+            36
+          ]
+        },
+        {
+          "role": "SNARE",
+          "instrument_id": "snare_drum",
+          "playable_midi_range": [
+            38,
+            38
+          ]
+        },
+        {
+          "role": "HAT",
+          "instrument_id": "hi_hat",
+          "playable_midi_range": [
+            42,
+            42
+          ]
+        }
+      ],
+      "patterns": [
+        {
+          "role": "BASS",
+          "kind": "CHORD_RELATIVE",
+          "retrigger": "STOP_AT_CHORD",
+          "variations": {
+            "INTRO": [
+              {
+                "beat": "0",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 73
+              }
+            ],
+            "A1": [
+              {
+                "beat": "0",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 87
+              },
+              {
+                "beat": "3/2",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 72
+              },
+              {
+                "beat": "5/2",
+                "duration": "3/4",
+                "degree": 5,
+                "octave": 2,
+                "velocity": 80
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 87
+              }
+            ],
+            "A2": [
+              {
+                "beat": "0",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 87
+              },
+              {
+                "beat": "3/2",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 72
+              },
+              {
+                "beat": "5/2",
+                "duration": "3/4",
+                "degree": 5,
+                "octave": 2,
+                "velocity": 80
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 87
+              }
+            ],
+            "FILL": [
+              {
+                "beat": "0",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 87
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 72
+              }
+            ],
+            "B1": [
+              {
+                "beat": "0",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 99
+              },
+              {
+                "beat": "3/2",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 84
+              },
+              {
+                "beat": "2",
+                "duration": "3/4",
+                "degree": 5,
+                "octave": 2,
+                "velocity": 92
+              },
+              {
+                "beat": "5/2",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 99
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 92
+              }
+            ],
+            "B2": [
+              {
+                "beat": "0",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 95
+              },
+              {
+                "beat": "5/4",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 80
+              },
+              {
+                "beat": "5/2",
+                "duration": "3/4",
+                "degree": 5,
+                "octave": 2,
+                "velocity": 88
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 95
+              }
+            ],
+            "OUTRO": [
+              {
+                "beat": "0",
+                "duration": "3/4",
+                "degree": 1,
+                "octave": 2,
+                "velocity": 78
+              }
+            ]
+          }
+        },
+        {
+          "role": "HARMONY",
+          "kind": "CHORD_RELATIVE",
+          "retrigger": "STOP_AT_CHORD",
+          "variations": {
+            "INTRO": [
+              {
+                "beat": "0",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 67
+              }
+            ],
+            "A1": [
+              {
+                "beat": "0",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 81
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 66
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 4,
+                "velocity": 74
+              },
+              {
+                "beat": "13/4",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 81
+              }
+            ],
+            "A2": [
+              {
+                "beat": "0",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 81
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 66
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 4,
+                "velocity": 74
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 81
+              }
+            ],
+            "FILL": [
+              {
+                "beat": "0",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 81
+              },
+              {
+                "beat": "13/4",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 66
+              }
+            ],
+            "B1": [
+              {
+                "beat": "0",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 93
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 78
+              },
+              {
+                "beat": "2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 4,
+                "velocity": 86
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 93
+              },
+              {
+                "beat": "13/4",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 86
+              }
+            ],
+            "B2": [
+              {
+                "beat": "0",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 89
+              },
+              {
+                "beat": "5/4",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 74
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/2",
+                "degree": 1,
+                "octave": 4,
+                "velocity": 82
+              },
+              {
+                "beat": "13/4",
+                "duration": "1/2",
+                "degree": 3,
+                "octave": 4,
+                "velocity": 89
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 82
+              }
+            ],
+            "OUTRO": [
+              {
+                "beat": "0",
+                "duration": "1/2",
+                "degree": 5,
+                "octave": 4,
+                "velocity": 72
+              }
+            ]
+          }
+        },
+        {
+          "role": "KICK",
+          "kind": "DRUM_ABSOLUTE",
+          "retrigger": "STOP_AT_CHORD",
+          "variations": {
+            "INTRO": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 76
+              }
+            ],
+            "A1": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 90
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 67
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 67
+              }
+            ],
+            "A2": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 90
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 67
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 67
+              }
+            ],
+            "FILL": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 90
+              },
+              {
+                "beat": "15/4",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 67
+              }
+            ],
+            "B1": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 98
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 75
+              },
+              {
+                "beat": "2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 92
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 81
+              }
+            ],
+            "B2": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 90
+              },
+              {
+                "beat": "7/4",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 67
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 67
+              }
+            ],
+            "OUTRO": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 36,
+                "velocity": 82
+              }
+            ]
+          }
+        },
+        {
+          "role": "SNARE",
+          "kind": "DRUM_ABSOLUTE",
+          "retrigger": "STOP_AT_CHORD",
+          "variations": {
+            "INTRO": [
+              {
+                "beat": "1",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 76
+              }
+            ],
+            "A1": [
+              {
+                "beat": "1",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 90
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 67
+              }
+            ],
+            "A2": [
+              {
+                "beat": "1",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 90
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 67
+              }
+            ],
+            "FILL": [
+              {
+                "beat": "3",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 90
+              },
+              {
+                "beat": "13/4",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 67
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 67
+              },
+              {
+                "beat": "15/4",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 73
+              }
+            ],
+            "B1": [
+              {
+                "beat": "1",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 98
+              },
+              {
+                "beat": "2",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 92
+              },
+              {
+                "beat": "5/2",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 75
+              }
+            ],
+            "B2": [
+              {
+                "beat": "1",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 90
+              },
+              {
+                "beat": "11/4",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 67
+              }
+            ],
+            "OUTRO": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 38,
+                "velocity": 82
+              }
+            ]
+          }
+        },
+        {
+          "role": "HAT",
+          "kind": "DRUM_ABSOLUTE",
+          "retrigger": "STOP_AT_CHORD",
+          "variations": {
+            "INTRO": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 76
+              }
+            ],
+            "A1": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 90
+              },
+              {
+                "beat": "3/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              },
+              {
+                "beat": "9/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 73
+              },
+              {
+                "beat": "3",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 84
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              }
+            ],
+            "A2": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 90
+              },
+              {
+                "beat": "3/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              },
+              {
+                "beat": "9/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 73
+              },
+              {
+                "beat": "3",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 84
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              }
+            ],
+            "FILL": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 90
+              },
+              {
+                "beat": "15/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              }
+            ],
+            "B1": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 98
+              },
+              {
+                "beat": "3/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 75
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 75
+              },
+              {
+                "beat": "2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 98
+              },
+              {
+                "beat": "9/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 75
+              },
+              {
+                "beat": "3",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 92
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 81
+              }
+            ],
+            "B2": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 90
+              },
+              {
+                "beat": "1",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 84
+              },
+              {
+                "beat": "3/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              },
+              {
+                "beat": "9/4",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 73
+              },
+              {
+                "beat": "3",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 84
+              },
+              {
+                "beat": "7/2",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 67
+              }
+            ],
+            "OUTRO": [
+              {
+                "beat": "0",
+                "duration": "1/8",
+                "midi": 42,
+                "velocity": 82
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

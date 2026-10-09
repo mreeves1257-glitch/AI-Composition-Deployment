@@ -135,7 +135,7 @@ def run(jazz_path,salsa_path):
     print("TWO_ACTUAL_DISTINCT_GENRE_MUSICAL_INTERPRETERS_PASS",
           json.dumps({**evidence,"bytes":archive.stat().st_size},sort_keys=True))
 
-def prove_original_composer_to_mma_only(mma_home):
+def prove_original_composer_to_mma_only(mma_home, *, isolated_wurlitzer_audio=False):
     """ONE selected genre: original Composer -> standalone MMA -> MIDI -> its interpreter.
 
     No Rock execution; no sampled sound; no changes to imported or live files.
@@ -299,6 +299,11 @@ def prove_original_composer_to_mma_only(mma_home):
              candidate_receipt["individual_stems_verified"] is False and
              candidate_receipt["audio_render_authorized"] is False,
              "UNVERIFIED_MMA_INSTRUMENT_WAS_SILENTLY_REPLACED")
+        if isolated_wurlitzer_audio:
+            prove_original_wurlitzer_program_wav(
+                candidate_receipt, source_midi_sha256=result["source_midi_sha256"],
+                tempo_bpm=stage3["tempo_bpm"],
+            )
         print("MMA_MIDI_TO_ORIGINAL_COMPOSER_STAGE4_IDENTITIES_PASS",
               json.dumps({
                   "genre":"Jazz Waltz",
@@ -323,9 +328,211 @@ def prove_original_composer_to_mma_only(mma_home):
     must(before == after, "EXTERNAL_ARRANGER_PROGRAM_OR_STYLE_CHANGED")
 
 
+
+def prove_original_wurlitzer_program_wav(candidate_receipt, *,
+                                        source_midi_sha256, tempo_bpm):
+    """Isolated real recorded-piano audition of actual MMA Stage-4 candidates.
+
+    Pinned original EP200 audio/SFZ must remain byte-identical. The existing
+    compatibility adapter may write its separate *derivative* SFZ, but no
+    source file, Composer event, other track or deployed service is altered.
+    Partial piano audition is not approval of a whole-genre performance.
+    """
+    import os
+    import re
+    import mido
+    import hashlib
+    from collections import Counter
+    import real_electric_piano_probe as original_probe
+    from sfz_renderer_adapter import render_midi
+
+    bank_root_raw = os.environ.get("AI_COMP_RESOURCE_BANK")
+    renderer_raw = os.environ.get("AI_COMP_SFZ_RENDERER")
+    must(bank_root_raw and renderer_raw, "ISOLATED_RECORDED_BANK_OR_RENDERER_MISSING")
+    bank_root = Path(bank_root_raw).resolve()
+    bank = bank_root / "GREG_SULLIVAN_E_PIANOS"
+    original = bank / "Wurlitzer EP200" / "Wurlitzer EP200.sfz"
+    derivative = bank / "Wurlitzer EP200" / "composer-wurlitzer.sfz"
+    must(original.is_file() and
+         not derivative.exists(), "WURLITZER_ORIGINAL_MISSING_OR_DERIVATIVE_PREEXISTS")
+    sample_dir = bank / "Wurlitzer EP200" / "Samples"
+    sources = [original, *sorted(sample_dir.glob("*.flac"))]
+    must(len(sources) > 35, "WURLITZER_FULL_RECORDED_SAMPLE_LIBRARY_MISSING")
+    source_hashes = {
+        str(p.relative_to(bank)): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sources
+    }
+    # Use the ORIGINAL existing compatibility code, not a new SFZ translator.
+    original_probe.BANK = bank
+    original_probe.ORIGINAL = original
+    original_probe.COMPATIBLE = derivative
+    original_probe.prepare()
+    must(derivative.is_file() and original.read_bytes() != derivative.read_bytes(),
+         "SEPARATE_SFIZZ_COMPATIBLE_PROGRAM_NOT_PRODUCED")
+
+    candidates = candidate_receipt["candidate_stage4_events"]
+    must(candidates and len(candidates) >= 20 and
+         candidate_receipt["candidate_event_count"] == len(candidates) and
+         candidate_receipt["blocked_note_count"] > 0 and
+         candidate_receipt["production_enabled"] is False and
+         candidate_receipt["audio_render_authorized"] is False and
+         candidate_receipt["existing_composer_events_unchanged"] is True,
+         "ELECTRIC_PIANO_SOURCE_SCOPE_INVALID")
+    must(all(n["track_id"] == "ELECTRIC_PIANO" and
+             n["instrument_id"] == "electric_piano" and
+             n["expected_target_binding_id"] == "electric_piano" and
+             n["resource_id"] == "GREG_SULLIVAN_E_PIANOS" and
+             n["preferred_mapping"] ==
+             "Wurlitzer EP200/composer-wurlitzer.sfz" and
+             n["source_midi_channel"] != 9 and
+             n["audit_status"] ==
+             "REHEARSAL_REFERENCE_ONLY_ORIGINAL_SFZ_NOT_PREFLIGHTED"
+             for n in candidates), "WRONG_OR_UNAPPROVED_AUDIO_TRACK_ROUTED")
+
+    # Verify real note AND velocity coverage against existing recorded SFZ
+    # region definitions. Do not transpose pitches or alter musical velocity.
+    regions = []
+    group = {}
+    for line in derivative.read_text().splitlines():
+        stripped = line.strip()
+        if stripped.startswith("<group>"):
+            group = dict((k, int(v)) for k,v in re.findall(
+                r"\b(lokey|hikey|lovel|hivel)=(\d+)", stripped))
+        if stripped.startswith("<region>"):
+            p = {**group, **dict((k, int(v)) for k,v in re.findall(
+                r"\b(lokey|hikey|lovel|hivel)=(\d+)", stripped))}
+            if "sample=" in stripped:
+                regions.append((p.get("lokey", 0), p.get("hikey", 127),
+                                p.get("lovel", 1), p.get("hivel", 127)))
+    must(len(regions) >= 35, "WURLITZER_ORIGINAL_SFZ_REGIONS_MISSING")
+    uncovered = sorted(set(
+        (n["midi"],n["velocity"]) for n in candidates
+        if not any(lo <= n["midi"] <= hi and
+                   lowv <= n["velocity"] <= highv
+                   for lo,hi,lowv,highv in regions)))
+    must(not uncovered,
+         "WURLITZER_RECORDED_NOTE_OR_VELOCITY_ZONE_MISSING:" +
+         repr(uncovered[:16]))
+
+    # Convert the already preserved Stage4 candidate events to a SINGLE
+    # recorded-instrument audition MIDI; never adopt the partial score as a
+    # production-ready full song. sfizz_render reads this standard MIDI.
+    work = Path(os.environ.get("AI_COMP_ISOLATED_AUDIO_WORK", "/tmp/composer_ep200_probe"))
+    work.mkdir(parents=True, exist_ok=True)
+    source_midi = work / "jazz_waltz_original_piano_only.mid"
+    audio_wav = work / "jazz_waltz_original_wurlitzer_only.wav"
+    ticks = 480
+    midi_file = mido.MidiFile(type=1, ticks_per_beat=ticks)
+    clock = mido.MidiTrack()
+    clock.append(mido.MetaMessage("time_signature", numerator=3, denominator=4,
+                                  time=0))
+    clock.append(mido.MetaMessage("set_tempo", tempo=mido.bpm2tempo(tempo_bpm),
+                                  time=0))
+    clock.append(mido.MetaMessage("end_of_track", time=0))
+    midi_file.tracks.append(clock)
+    piano = mido.MidiTrack()
+    piano.append(mido.MetaMessage("track_name", name="ELECTRIC_PIANO", time=0))
+    changes = []
+    for item in candidates:
+        start = round(item["start_beat"] * ticks)
+        end = round((item["start_beat"] + item["duration_beats"]) * ticks)
+        must(0 <= start < end and end <= 1024 * ticks,
+             "INVALID_AUDIO_AUDITION_MIDI_TIMING")
+        pitch = item["midi"]
+        vel = item["velocity"]
+        must(type(pitch) is int and 0 <= pitch <= 127 and
+             type(vel) is int and 1 <= vel <= 127,
+             "INVALID_OR_SUBSTITUTED_AUDIO_MIDI_NOTE")
+        changes.append((start, 1, pitch, vel))
+        changes.append((end, 0, pitch, 0))
+    changes.sort(key=lambda entry: (entry[0], entry[1], entry[2]))
+    previous_tick = 0
+    for tick, is_on, pitch, vel in changes:
+        piano.append(mido.Message(
+            "note_on" if is_on else "note_off", channel=0, note=pitch,
+            velocity=vel, time=tick-previous_tick,
+        ))
+        previous_tick = tick
+    piano.append(mido.MetaMessage("end_of_track", time=0))
+    midi_file.tracks.append(piano)
+    midi_file.save(source_midi)
+    must(len([msg for msg in mido.MidiFile(source_midi).tracks[1]
+              if msg.type == "note_on" and msg.velocity > 0]) ==
+         len(candidates), "AUDIO_RENDER_MIDI_DROPPED_OR_ADDED_NOTES")
+    resource = {
+        "resource_id":"GREG_SULLIVAN_E_PIANOS",
+        "resource_type":"SFZ_SAMPLE_LIBRARY",
+        "preferred_mapping":"Wurlitzer EP200/composer-wurlitzer.sfz",
+        "library":"Greg Sullivan E-Pianos / Wurlitzer EP200",
+        "license":"CC-BY-3.0",
+        "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
+    }
+    rendered = render_midi(resource, source_midi, audio_wav, sample_rate=44100)
+    must(rendered["audio_rendered"] is True and
+         rendered["status"] == "AUDIO_RENDER_PASS" and
+         rendered["peak_linear"] > 0.0001 and
+         rendered["rms_linear"] > 0.00001 and
+         rendered["measured_samples"] > 44100 and
+         audio_wav.stat().st_size > 100000,
+         "ELECTRIC_PIANO_AUDIO_INVALID_OR_NEAR_SILENT")
+    unchanged = {
+        str(p.relative_to(bank)): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sources
+    }
+    must(source_hashes == unchanged,
+         "ORIGINAL_ELECTRIC_PIANO_SFZ_OR_RECORDINGS_CHANGED")
+    report = {
+        "status":"ISOLATED_ORIGINAL_WURLITZER_ARRANGER_NOTE_AUDIO_PASS",
+        "genre":"Jazz Waltz",
+        "original_recorded_instrument":"Greg Sullivan Wurlitzer EP200",
+        "original_library_commit":
+            "8c3e581acda3594b553948ff0222d4f84a698376",
+        "license":"CC-BY-3.0",
+        "source_arranger_midi_sha256":source_midi_sha256,
+        "original_unaltered_source_files":len(sources),
+        "source_files_hash_verified_unchanged":True,
+        "separate_compatibility_SFZ_only":True,
+        "recorded_region_count":len(regions),
+        "all_actual_piano_note_and_velocity_zones_covered":True,
+        "actual_original_piano_notes_rendered":len(candidates),
+        "blocked_other_instruments_not_rendered":
+            candidate_receipt["blocked_note_count"],
+        "sfz_sample_references":rendered["sample_references"],
+        "sample_rate":rendered["sample_rate"],
+        "frames":rendered["frames"],
+        "channels":rendered["channels"],
+        "peak_dbfs":rendered["peak_dbfs"],
+        "rms_dbfs":rendered["rms_dbfs"],
+        "wav_file_size_bytes":audio_wav.stat().st_size,
+        "finished_multitrack_song":False,
+        "full_genre_audio_ready":False,
+        "original_composer_events_replaced":False,
+        "live_service_deployed":False,
+    }
+    (work / "original_wurlitzer_audio_verification.json").write_text(
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    (work / "ATTRIBUTION.txt").write_text(
+        "Greg Sullivan E-Pianos / Wurlitzer EP200: recorded samples by "
+        "Greg Sullivan; SFZ conversion credited in original program to "
+        "kinwie. CC-BY-3.0. Isolated demonstration of unchanged "
+        "original recorded samples through sfizz. MIDI notes authored "
+        "by the separately licensed MMA 25.05 JazzWaltz arranger.\n"
+        "This contains ONLY the Wurlitzer track, not a finished song "
+        "or a representative complete Jazz Waltz arrangement.\n",
+        encoding="utf-8",
+    )
+    print("ORIGINAL_WURLITZER_ISOLATED_STAGE4_AUDIO_PASS",
+          json.dumps(report, sort_keys=True), flush=True)
+
+
 if __name__=="__main__":
-    if len(sys.argv) == 3 and sys.argv[1] == "--composer-mma":
-        prove_original_composer_to_mma_only(sys.argv[2])
+    if len(sys.argv) == 3 and sys.argv[1] in ("--composer-mma", "--composer-mma-audio"):
+        prove_original_composer_to_mma_only(
+            sys.argv[2],
+            isolated_wurlitzer_audio=sys.argv[1] == "--composer-mma-audio",
+        )
     else:
         must(len(sys.argv)==3,"USAGE: script.py jazzwaltz.mid salsa.mid OR --composer-mma /path/to/original/mma")
         run(sys.argv[1],sys.argv[2])

@@ -23,6 +23,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/New_Age_Spiritual/profile.json",
         "json_pointer": "/profiles/New Age/musical_definition",
+        "stage_pointer": "/profiles/New Age/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
@@ -65,6 +66,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/New_Age_Spiritual/profile.json",
         "json_pointer": "/profiles/Spiritual/musical_definition",
+        "stage_pointer": "/profiles/Spiritual/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",

@@ -23,6 +23,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/Rock/profile.json",
         "json_pointer": "/profiles/ROCK/musical_definition",
+        "stage_pointer": "/profiles/ROCK/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",

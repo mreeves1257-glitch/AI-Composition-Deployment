@@ -23,6 +23,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
         "json_pointer": "/profiles/Rhythm and Blues/musical_definition",
+        "stage_pointer": "/profiles/Rhythm and Blues/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
@@ -65,6 +66,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
         "json_pointer": "/profiles/Soul/musical_definition",
+        "stage_pointer": "/profiles/Soul/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
@@ -107,6 +109,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
         "json_pointer": "/profiles/Funk/musical_definition",
+        "stage_pointer": "/profiles/Funk/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
@@ -149,6 +152,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
         "json_pointer": "/profiles/Contemporary R&B/musical_definition",
+        "stage_pointer": "/profiles/Contemporary R&B/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
@@ -191,6 +195,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
         "json_pointer": "/profiles/Neo-Soul-related/musical_definition",
+        "stage_pointer": "/profiles/Neo-Soul-related/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
@@ -233,6 +238,7 @@
       "source_of_truth": {
         "file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
         "json_pointer": "/profiles/DISCO/musical_definition",
+        "stage_pointer": "/profiles/DISCO/seven_stage_plan",
         "read_original_values_at_runtime": true
       },
       "requirements_source": "../GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",

@@ -1,0 +1,45 @@
+{
+  "schema_version": "GENRE_INTERPRETER_FAMILY_XREF_R1",
+  "family_name": "Trip_Hop",
+  "source_profile_file": "composer_overrides/genre_styles/Trip_Hop/profile.json",
+  "profile_count": 2,
+  "original_7_stages_unmodified": true,
+  "reference_only": true,
+  "original_connections_activated": false,
+  "genres": [
+    {
+      "genre_name": "Trip-Hop",
+      "profile_id": "TRIP_HOP_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Trip_Hop/profile.json",
+        "json_pointer": "/profiles/Trip-Hop/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    },
+    {
+      "genre_name": "Contemporary Trip-Hop / Trip-Hop Revival",
+      "profile_id": "CONTEMPORARY_TRIP_HOP_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Trip_Hop/profile.json",
+        "json_pointer": "/profiles/Contemporary Trip-Hop ~1 Trip-Hop Revival/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+name: Hard Save All 55 Genre Interpreter Slots (References Only)
+on:
+  push:
+    branches:
+      - genre-interpreter-all-55-20261008
+    paths:
+      - .github/workflows/hard-save-all-55-genre-interpreter-slots.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  archive-stage-handoffs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify every original genre and distinct style language first
+        run: python3 research/validate_all_55_genre_interpreter_references_20261008.py
+      - name: Retain all 13 new interpreter reference files and hard checkpoint together
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-55-genre-interpreter-handoffs-hard-save-20261008
+          path: |
+            composer_overrides/genre_styles/**/GENRE_INTERPRETER_HANDOFF_R1.json
+            composer_overrides/genre_styles/GENRE_ARRANGER_INTERPRETER_HANDOFF_REFERENCE_R1.json
+            research/validate_all_55_genre_interpreter_references_20261008.py
+            research/HARD_CHECKPOINT_ALL_55_GENRE_INTERPRETER_FILING_2026-10-08_2047_CDT.md
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 30

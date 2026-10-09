@@ -563,6 +563,11 @@ def develop_full_length(
         # With AI_COMP_ROCK_MELODY_V1 unset, the previous score is preserved.
         from rock_melodic_author_v1 import compose_rock_melody
         developed = compose_rock_melody(developed, ctx, creation_seed)
+        # Musical-storytelling V2 applies only AFTER explicitly enabled R1,
+        # before unchanged instrument performance and recorded-sample routes.
+        # Original song and Melody R1 both remain safe when V2 is disabled.
+        from rock_story_arc_v2 import compose_rock_story
+        developed = compose_rock_story(developed, ctx, creation_seed)
         from instrument_performance_contract import perform
         developed = perform(developed, "ROCK")
         # Genre expression shapes the performance; SFZ owns the sound.

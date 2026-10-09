@@ -404,3 +404,176 @@ def connect_all_55_component_checkpoints(*, target_bindings=None) -> dict:
             target_bindings=target_bindings,
         )
     return connections
+
+
+def compose_to_original_mma(
+    genre: str, *,
+    composer_structure: dict[str, Any],
+    original_stage3_result: dict[str, Any],
+    selected_groove: str,
+    external_mma_home: str | Path,
+    isolated_output_root: str | Path,
+) -> dict[str, Any]:
+    """Composer Stage 2/3 -> unmodified EXTERNAL MMA 25.05 -> MIDI Type 1.
+
+    This uses MMA's documented text-song input and CLI (-M 1, -f). Genre style
+    is validated against original checked-in MMA style references. No MMA
+    library files, downloaded program source, original Composer events, SFZ
+    recordings or deployment configuration are changed. Every run writes a
+    new isolated work directory; the output is *not* production audio.
+    """
+    import os
+    import re
+    import subprocess
+    import sys
+    import tempfile
+    from .external_style_midi_reader import (
+        StyleMidiInterfaceError, read_arranger_style_midi,
+    )
+    from .shared_interpreter_router import route_to_shared_interpreter
+
+    def must(condition: bool, reason: str) -> None:
+        if not condition:
+            raise StyleMidiInterfaceError(reason)
+
+    # Require the Composer's selected structure and the existing genre profile
+    # to agree. Never invent a chord progression or silently change meter.
+    route = route_to_shared_interpreter(
+        genre, original_stage3_result=original_stage3_result,
+    )
+    must(isinstance(composer_structure, dict) and
+         composer_structure.get("genre") == genre,
+         "COMPOSER_MMA_STRUCTURE_GENRE_MISMATCH")
+    meter = original_stage3_result.get("meter")
+    tempo = original_stage3_result.get("tempo_bpm")
+    must(isinstance(meter, str) and
+         bool(re.fullmatch(r"[1-9][0-9]?/(2|4|8)", meter)) and
+         type(tempo) is int and
+         composer_structure.get("meter") == meter and
+         composer_structure.get("tempo_bpm") == tempo,
+         "COMPOSER_MMA_STAGE2_STAGE3_CLOCK_MISMATCH")
+    must(original_stage3_result.get("status") == "PASS" and
+         bool(original_stage3_result.get("palette")),
+         "COMPOSER_MMA_STAGE3_INSTRUMENTS_NOT_SELECTED")
+    bars = composer_structure.get("chord_bars")
+    must(isinstance(bars, list) and 1 <= len(bars) <= 256 and
+         all(isinstance(chord, str) and
+             bool(re.fullmatch(r"[A-Ga-g](?:#|b)?[A-Za-z0-9#b+()/.-]*", chord))
+             for chord in bars),
+         "COMPOSER_MMA_EXPLICIT_CHORD_BARS_REQUIRED")
+
+    slot_path = Path(route["family"]) / (
+        "INTERPRETER_" + genre.upper().replace(" ", "_") + "_R1.json"
+    )
+    # Use the authoritative registered filename, not a guessed conversion
+    # from an arbitrary genre label.
+    registry = json.loads((ROOT / "GENRE_INTERPRETER_REGISTRY_R1.json").read_text())
+    registered = Path(registry["per_genre"][genre]["slot_file"])
+    must(registered.parts[:3] == ("composer_overrides", "genre_styles",
+                                  route["family"]),
+         "COMPOSER_MMA_REGISTERED_INTERPRETER_PATH_INVALID")
+    slot = json.loads((ROOT / Path(*registered.parts[2:])).read_text())
+    must(slot["genre_name"] == genre and
+         slot["source_profile_id"] == route["genre_profile_id"],
+         "COMPOSER_MMA_INTERPRETER_PROFILE_MISMATCH")
+    candidates = slot.get("wiring_instruction", {}).get(
+        "genre_mma_style_files", []
+    )
+    must(isinstance(selected_groove, str) and
+         bool(re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]*", selected_groove)),
+         "COMPOSER_MMA_GROOVE_NAME_INVALID")
+    matched = []
+    for source in candidates:
+        relative = Path(source)
+        if relative.parts[:3] != ("composer_overrides", "genre_styles",
+                                  route["family"]):
+            continue
+        style_path = ROOT / Path(*relative.parts[2:])
+        if not style_path.is_file():
+            continue
+        defined = re.findall(
+            r"(?im)^\s*DefGroove\s+([A-Za-z][A-Za-z0-9_-]*)",
+            style_path.read_text(encoding="utf-8"),
+        )
+        if selected_groove.lower() in {name.lower() for name in defined}:
+            matched.append(str(source))
+    must(bool(matched), "COMPOSER_MMA_GROOVE_NOT_IN_OWN_ORIGINAL_STYLE_FILE")
+
+    mma_home = Path(external_mma_home).resolve()
+    original_mma_script = mma_home / "mma.py"
+    must(original_mma_script.is_file() and
+         (mma_home / "lib").is_dir(),
+         "EXTERNAL_MMA_NOT_INSTALLED_OR_NOT_COMPLETE")
+    output_root = Path(isolated_output_root).resolve()
+    output_root.mkdir(parents=True, exist_ok=True)
+    work_dir = Path(tempfile.mkdtemp(
+        prefix="composer_mma_", dir=str(output_root),
+    ))
+    song_path = work_dir / "composer_song.mma"
+    midi_path = work_dir / "arranger_output_type1.mid"
+    numerator, denominator = map(int, meter.split("/"))
+    lines = [
+        "// Composer Stage 2/3 input; run against unchanged MMA executable",
+        "MidiFile SMF=1",
+        f"Tempo {tempo}",
+        f"Groove {selected_groove}",
+        f"TimeSig {numerator} {denominator}",
+    ]
+    lines.extend(f"{index} {chord}" for index, chord in enumerate(bars, 1))
+    song_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    env = dict(os.environ)
+    env["PYTHONPATH"] = str(mma_home)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    try:
+        process = subprocess.run(
+            [sys.executable, str(original_mma_script), "-M", "1",
+             "-f", str(midi_path), str(song_path)],
+            cwd=mma_home, env=env, text=True,
+            capture_output=True, timeout=90, check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise StyleMidiInterfaceError(
+            "COMPOSER_TO_EXTERNAL_MMA_EXECUTION_FAILED:" + str(exc)[:300],
+        ) from exc
+    must(process.returncode == 0 and midi_path.is_file(),
+         "EXTERNAL_MMA_SONG_COMPILE_FAILED:" +
+         (process.stderr or process.stdout)[-500:])
+    raw = midi_path.read_bytes()
+    must(len(raw) > 50 and raw[:4] == b"MThd" and
+         int.from_bytes(raw[8:10], "big") == 1,
+         "COMPOSER_MMA_OUTPUT_NOT_STANDARD_MIDI_TYPE_1")
+    parsed = read_arranger_style_midi(
+        midi_path, meter=(numerator, denominator),
+        tempo_bpm=tempo, required_tracks=(),
+    )
+    # The existing genre-specific reader accepts real MIDI output before
+    # any SFZ role mapping is considered. Only genres with a validated
+    # downstream specialist are permitted to claim interpreted note events.
+    translated = None
+    if genre in EXTERNAL_BACKENDS:
+        translated = dispatch_stage3_to4_genre_owned(
+            genre, source_midi_path=midi_path,
+            original_stage3_result=original_stage3_result,
+        )
+        must(translated["musical_event_count"] == parsed["note_count"],
+             "COMPOSER_MMA_OUTPUT_TO_EXISTING_INTERPRETER_MISMATCH")
+    return {
+        "status": "COMPOSER_TO_UNMODIFIED_MMA_TO_TYPE1_MIDI_CONFIRMED",
+        "genre": genre, "profile_id": route["genre_profile_id"],
+        "original_mma_style_sources": matched,
+        "style_groove": selected_groove,
+        "original_composer_chord_bars": len(bars),
+        "meter": meter, "tempo_bpm": tempo,
+        "isolated_song_input": str(song_path),
+        "isolated_midi_output": str(midi_path),
+        "standard_midi_type": 1,
+        "source_midi_sha256": parsed["source_sha256"],
+        "midi_tracks": parsed["tracks"],
+        "midi_note_events": parsed["note_count"],
+        "existing_genre_interpreter_received_midi": translated is not None,
+        "original_program_files_untouched": True,
+        "composer_authoritative_events_untouched": True,
+        "recorded_sfz_programs_verified": False,
+        "live_composer_activated": False,
+        "finished_audio_rendered": False,
+    }

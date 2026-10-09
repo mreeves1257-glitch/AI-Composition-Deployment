@@ -1,0 +1,20 @@
+name: Verify Genre Interpreter Stage Placement (No Activations)
+on:
+  push:
+    branches:
+      - external-arranger-interpreter-research-20261008
+    paths:
+      - .github/workflows/verify-genre-arranger-handoff.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reference-only-stage-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate all 13 families, 55 genre profiles, seven-step original order, and safe interpretation slot
+        run: python3 research/validate_genre_arranger_slot_r1.py

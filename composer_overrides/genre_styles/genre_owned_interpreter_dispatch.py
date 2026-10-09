@@ -288,7 +288,20 @@ def connect_selected_genre_components(
               interpreter["profile_id"] == route["genre_profile_id"] and
               interpreter["production_enabled"] is False,
               "WRONG_GENRE_INTERPRETER_EXECUTED")
-    if genre in EXTERNAL_BACKENDS:
+    if genre == "Jazz Waltz" and source_midi_path is not None:
+        # Isolated source-MIDI -> ORIGINAL named Composer track references.
+        # Unknown instruments and unverified recording programs must block.
+        # This does NOT replace Stage4 Composer notes or permit partial audio.
+        from .source_pattern_composer_handoff import (
+            prepare_external_midi_composer_handoff,
+        )
+        proposal = prepare_external_midi_composer_handoff(
+            interpreter, original_genre_profile=original,
+            recorded_full_track_map=full,
+            original_stage3_result=original_stage3_result,
+            existing_events=originals,
+        )
+    elif genre in EXTERNAL_BACKENDS:
         proposal = {
             "status": "BLOCKED_EXTERNAL_STYLE_TO_ORIGINAL_COMPOSER_ROLE_TRANSLATION_PENDING",
             "candidate_stage4_events": [],
@@ -317,7 +330,11 @@ def connect_selected_genre_components(
     blockers = []
     if interpreter["musical_event_count"] == 0:
         blockers.append("EXTERNAL_STYLE_MIDI_REQUIRED_FOR_" + genre)
-    if genre in EXTERNAL_BACKENDS:
+    if genre == "Jazz Waltz" and source_midi_path is not None:
+        if proposal["blocked_note_count"] or proposal["unfilled_original_genre_tracks"]:
+            blockers.append("MMA_SOURCE_NOT_FULLY_MAPPED_TO_ORIGINAL_GENRE_TRACKS")
+        blockers.append("RECORDED_AUDIO_PROGRAMS_NOT_PREFLIGHTED")
+    elif genre in EXTERNAL_BACKENDS:
         blockers.append("EXTERNAL_STYLE_NOT_YET_TRANSLATED_INTO_ORIGINAL_COMPOSER_EVENT_DIALECT")
     if source_missing or mapped["unsupported_percussion_notes"]:
         blockers.append("UNRESOLVED_SOURCE_ROLE_PROGRAM_OR_NOTE_MAPPING")
@@ -349,6 +366,9 @@ def connect_selected_genre_components(
             "candidate_event_count": proposal["candidate_event_count"],
             "original_event_count": len(originals),
             "candidate_only_not_active_composer_events": True,
+            "source_midi_event_count": proposal.get("received_external_midi_note_count", 0),
+            "blocked_source_note_count": proposal.get("blocked_note_count", 0),
+            "unfilled_original_genre_tracks": proposal.get("unfilled_original_genre_tracks", []),
         },
         "stage3_to_sound_mapping": {
             "mapped_symbolic_role_references": mapped["exact_registry_references"],

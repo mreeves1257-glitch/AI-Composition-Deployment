@@ -1,0 +1,84 @@
+{
+  "schema_version": "SHARED_INTERPRETER_BACKEND_CATALOG_R1",
+  "date_cdt": "2026-10-09",
+  "one_shared_interface": "composer_overrides.genre_styles.registry.handoff_shared_interpreted_events",
+  "backend_selection_policy": "EXTERNAL_ENGINES_REQUIRE_INDEPENDENT_MIDI_OUTPUT_TEST_AND_SOURCE_MAPPING_BEFORE_ACTIVE",
+  "default_backend": "NONE_DO_NOT_ASSUME_MMA_ROCK_WORKS_FOR_ALL_GENRES",
+  "source_licensed_engines_not_imported_to_live_runtime": true,
+  "external_research_archives": [
+    {
+      "name": "MMA",
+      "version": "25.05.0",
+      "license": "GPL",
+      "status": "ISOLATED_ROCK_SUCCESS_NOT_DEPLOYED",
+      "format": "MULTITRACK_STANDARD_MIDI",
+      "research_copy": "AI_Composer_HARD_STOP_2026-10-08_2117_CDT.zip",
+      "runtime_loaded": false
+    },
+    {
+      "name": "JJazzLabToolkit",
+      "version": "5.2.1",
+      "license": "LGPL-2.1",
+      "status": "DOWNLOADED_SHA256_VERIFIED_NOT_COMPOSER_TESTED",
+      "format": "ARRANGEMENT_ENGINE_JAVA_MIDI",
+      "runtime_minimum": "JAVA_25",
+      "research_copy": "AI_Composer_Keyboard_Music_Modules_PLUS_All55_Procedure_2026-10-09.zip",
+      "runtime_loaded": false
+    },
+    {
+      "name": "Cadenza",
+      "version": "commit_47da8f71670daa4caa1b3db2bf8f60a323f6c6b1",
+      "license": "GPL-3.0",
+      "status": "ORIGINAL_SOURCE_PINNED_NOT_BUILT_OR_COMPOSER_TESTED",
+      "format": "YAMAHA_STYLE_NTR_NTT_RTR_CHORD_FOLLOWING",
+      "research_copy": "AI_Composer_Additional_Arranger_Sources_MIDI_2026-10-09.zip",
+      "runtime_loaded": false
+    },
+    {
+      "name": "BTML_backing_tracks",
+      "version": "commit_534b7be0d07595121a9e782c8793244604a1cd41",
+      "license": "MIT",
+      "status": "ISOLATED_ROCK_JAZZ_FOLK_STANDARD_MIDI_EXPORT_PASS_NOT_SFZ_TESTED",
+      "format": "BTML_YAML_TO_MIDI",
+      "known_limitations": [
+        "HARD_CODED_4_4_TICKS_PER_BAR",
+        "GM_DRUM_MAPPING_NOT_KARORYFER_SFZ"
+      ],
+      "research_copy": "AI_Composer_Additional_Arranger_Sources_MIDI_2026-10-09.zip",
+      "runtime_loaded": false
+    },
+    {
+      "name": "ImproVisor",
+      "version": "commit_550bbb554962249aceb0e82a72142e3e5b3c0d4a",
+      "license": "GPL-2.0",
+      "status": "RESEARCH_SOURCE_ONLY_NOT_BUILT",
+      "format": "JAZZ_STYLE_PHRASE_GRAMMAR",
+      "research_copy": "AI_Composer_Additional_Arranger_Sources_MIDI_2026-10-09.zip",
+      "runtime_loaded": false
+    },
+    {
+      "name": "music21",
+      "version": "10.5.0",
+      "license": "BSD-3-Clause",
+      "status": "DOWNLOADED_VERIFIED_NOT_COMPOSER_TESTED",
+      "format": "SCORE_HARMONY_THEORY_LIB",
+      "research_copy": "AI_Composer_Keyboard_Music_Modules_PLUS_All55_Procedure_2026-10-09.zip",
+      "runtime_loaded": false
+    },
+    {
+      "name": "mingus",
+      "version": "0.6.1",
+      "license": "GPL-3.0",
+      "status": "DOWNLOADED_VERIFIED_NOT_COMPOSER_TESTED",
+      "format": "CHORD_PROGRESSIONS_AND_MIDI",
+      "research_copy": "AI_Composer_Keyboard_Music_Modules_PLUS_All55_Procedure_2026-10-09.zip",
+      "runtime_loaded": false
+    }
+  ],
+  "important_notes": [
+    "Vendor Yamaha/Korg/Ketron/Roland/Casio proprietary firmware is NOT a legal/usable plug-in engine",
+    "These libraries are research candidates, NOT installed executables or globally functioning genre interpreters",
+    "A single shared interface allows selecting only proven arranger data outputs per genre while keeping 55 distinct grammar rules and only confirmed source SFZ programs",
+    "Do not automatically turn on 55 modules or the deployed Composer/Plug/Control Panel"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "GENRE_INTERPRETER_FAMILY_XREF_R1",
+  "family_name": "Indie_Alternative",
+  "family_directory": "Indie_Alternative",
+  "source_profile_file": "composer_overrides/genre_styles/Indie_Alternative/profile.json",
+  "read_only_crossrefs_to_existing_music": true,
+  "purpose": "Explicitly file Stage-3-to-4 musical-intent interpreter slot for every genre while preserving its own language and existing 7-stage flow.",
+  "original_stage_count": 7,
+  "original_connections_activated": false,
+  "external_candidate": "MMA_25_05_0_AS_SEPARATE_GPL_REFERENCE_NOT_INSTALLED",
+  "profile_count": 1,
+  "genres": [
+    {
+      "genre_name": "Eclectic New Indie",
+      "profile_id": "ECLECTIC_NEW_INDIE_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Indie_Alternative/profile.json",
+        "json_pointer": "/profiles/Eclectic New Indie/musical_definition",
+        "stage_pointer": "/profiles/Eclectic New Indie/seven_stage_plan",
+        "read_original_values_at_runtime": true
+      },
+      "accepts_form_and_meter_from": "ORIGINAL_STAGE_02_DEFINE_MUSICAL_STRUCTURE",
+      "accepts_resource_bindings_from": "ORIGINAL_STAGE_03_CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+      "passes_validated_role_plan_to": "ORIGINAL_STAGE_04_COMPOSE_SEPARATE_PARTS",
+      "isolated_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "authoring_policy": "GENRE_SPECIFIC_ONLY_NO_ROCK_FALLBACK",
+      "musical_intent_inputs": [
+        "form_tendencies",
+        "phrase_behavior",
+        "groove_behavior",
+        "harmony_behavior",
+        "bass_behavior",
+        "percussion_behavior_if_applicable",
+        "ensemble_player_behavior",
+        "arrangement_transformation",
+        "instrument_role_behavior"
+      ],
+      "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
+      "selected_instrument_capability_required": true,
+      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
+      "interpreter_stage_connected": false,
+      "renderer_connected": false,
+      "final_3d_mix_modified": false
+    }
+  ]
+}

@@ -10,19 +10,51 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "piano",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_soft",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "RIDE": {
           "original_instrument_id": "ride_cymbal",
@@ -31,7 +63,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "ride_cymbal",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+          "preferred_mapping": "Programs/composer-ride-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              51,
+              51
+            ],
+            "authored_absolute_note_keys": [
+              51
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -43,19 +87,51 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "piano",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "BRUSH": {
           "original_instrument_id": "brush_snare",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              38,
+              38
+            ],
+            "authored_absolute_note_keys": [
+              38
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CYMBAL": {
           "original_instrument_id": "ride_cymbal",
@@ -64,7 +140,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "ride_cymbal",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+          "preferred_mapping": "Programs/composer-ride-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              51,
+              51
+            ],
+            "authored_absolute_note_keys": [
+              51
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -76,19 +164,51 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "horn_section",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_soft",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "RIDE": {
           "original_instrument_id": "ride_cymbal",
@@ -97,7 +217,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "ride_cymbal",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+          "preferred_mapping": "Programs/composer-ride-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              51,
+              51
+            ],
+            "authored_absolute_note_keys": [
+              51
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -109,19 +241,51 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "piano",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_soft",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "RIDE": {
           "original_instrument_id": "ride_cymbal",
@@ -130,7 +294,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "ride_cymbal",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+          "preferred_mapping": "Programs/composer-ride-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              51,
+              51
+            ],
+            "authored_absolute_note_keys": [
+              51
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -142,19 +318,51 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "piano",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_soft",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "RIDE": {
           "original_instrument_id": "ride_cymbal",
@@ -163,7 +371,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "ride_cymbal",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+          "preferred_mapping": "Programs/composer-ride-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              51,
+              51
+            ],
+            "authored_absolute_note_keys": [
+              51
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -175,7 +395,17 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "electric_piano",
@@ -184,13 +414,35 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_piano",
           "resource_id": "GREG_SULLIVAN_E_PIANOS",
-          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_soft",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "RIDE": {
           "original_instrument_id": "ride_cymbal",
@@ -199,7 +451,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "ride_cymbal",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+          "preferred_mapping": "Programs/composer-ride-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              51,
+              51
+            ],
+            "authored_absolute_note_keys": [
+              51
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -211,19 +475,51 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "banjo",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_soft",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "RIDE": {
           "original_instrument_id": "ride_cymbal",
@@ -232,7 +528,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "ride_cymbal",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+          "preferred_mapping": "Programs/composer-ride-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              51,
+              51
+            ],
+            "authored_absolute_note_keys": [
+              51
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -247,7 +555,17 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_bass_guitar",
           "resource_id": "KARORYFER_GROWLYBASS_V1_002",
-          "preferred_mapping": "growlybass_clean.sfz"
+          "preferred_mapping": "growlybass_clean.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "electric_piano",
@@ -256,7 +574,17 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_piano",
           "resource_id": "GREG_SULLIVAN_E_PIANOS",
-          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_rock",
@@ -265,7 +593,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "kick_drum_rock",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+          "preferred_mapping": "Programs/composer-kick-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SNARE": {
           "original_instrument_id": "snare_drum",
@@ -274,7 +614,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "snare_drum",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+          "preferred_mapping": "Programs/composer-snare-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              38,
+              38
+            ],
+            "authored_absolute_note_keys": [
+              38
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HAT": {
           "original_instrument_id": "hi_hat",
@@ -283,7 +635,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "hi_hat",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              42,
+              42
+            ],
+            "authored_absolute_note_keys": [
+              42
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     }
@@ -291,5 +655,895 @@
   "live_audio_enabled": false,
   "target_registry_authority": "composer/runtime/target_registry.json",
   "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
-  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof.",
+  "full_genre_track_sound_maps": {
+    "Swing": {
+      "genre": "Swing",
+      "profile_id": "JAZZ_SWING_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "trumpet",
+        "drums_ride"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "RIDE"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ELECTRIC_PIANO",
+        "TRUMPET",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Jazz Ballad": {
+      "genre": "Jazz Ballad",
+      "profile_id": "JAZZ_BALLAD_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "clarinet",
+        "brush_drums"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "BRUSH",
+        "CYMBAL"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "HARMONY",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "Jazz/instrument_library.json",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "LEAD",
+          "original_instrument_id": "clarinet_bb",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "clarinet_bb",
+          "resource_id": "JAZZ_VSCO_CLARINET_PINNED",
+          "recorded_sample_bank_library": "VSCO 2 Community Edition / recorded clarinet",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/jazz-clarinet.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/JAZZ_VSCO_CLARINET_PINNED",
+          "source_evidence": "Jazz/instrument_library.json",
+          "supported_note_reference": [
+            60,
+            71
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "double_bass",
+          "resource_id": "JAZZ_MEATBASS_PINNED",
+          "recorded_sample_bank_library": "Karoryfer Meatbass / recorded pizzicato",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/jazz-pizzicato.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/JAZZ_MEATBASS_PINNED",
+          "source_evidence": "Jazz/instrument_library.json",
+          "supported_note_reference": [
+            35,
+            55
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": "kick_drum_rock",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "kick_drum_rock:brush_drums",
+          "resource_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+          "recorded_sample_bank_library": "Karoryfer Swirly Drums / recorded brush kit",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/jazz-brush-kick.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/JAZZ_SWIRLY_BRUSH_PINNED",
+          "source_evidence": "Jazz/instrument_library.json",
+          "supported_note_reference": [
+            36
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": "snare_drum",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "snare_drum:brush_drums",
+          "resource_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+          "recorded_sample_bank_library": "Karoryfer Swirly Drums / recorded brush kit",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/jazz-brush-snare.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/JAZZ_SWIRLY_BRUSH_PINNED",
+          "source_evidence": "Jazz/instrument_library.json",
+          "supported_note_reference": [
+            38
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": "hi_hat",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "hi_hat:brush_drums",
+          "resource_id": "JAZZ_SWIRLY_BRUSH_PINNED",
+          "recorded_sample_bank_library": "Karoryfer Swirly Drums / recorded brush kit",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/jazz-brush-hat.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/JAZZ_SWIRLY_BRUSH_PINNED",
+          "source_evidence": "Jazz/instrument_library.json",
+          "supported_note_reference": [
+            42
+          ],
+          "preflight_verified_for_this_genre": false
+        }
+      ],
+      "requested_separate_stems": [
+        "HARMONY",
+        "LEAD",
+        "BASS",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Big Band": {
+      "genre": "Big Band",
+      "profile_id": "BIG_BAND_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "trumpet",
+        "trombone",
+        "drums_ride"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "RIDE"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "TROMBONE",
+          "original_instrument_id": "trombone",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ELECTRIC_PIANO",
+        "TRUMPET",
+        "TROMBONE",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Jazz Waltz": {
+      "genre": "Jazz Waltz",
+      "profile_id": "JAZZ_WALTZ_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "flute",
+        "brush_drums"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "RIDE"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ELECTRIC_PIANO",
+        "FLUTE",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Bebop": {
+      "genre": "Bebop",
+      "profile_id": "BEBOP_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "trumpet",
+        "drums_ride"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "RIDE"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ELECTRIC_PIANO",
+        "TRUMPET",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Cool Jazz": {
+      "genre": "Cool Jazz",
+      "profile_id": "COOL_JAZZ_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "electric_piano",
+        "flute",
+        "brush_drums"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "RIDE"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "brush_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ELECTRIC_PIANO",
+        "FLUTE",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Dixieland": {
+      "genre": "Dixieland",
+      "profile_id": "DIXIELAND_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "clarinet",
+        "trumpet",
+        "trombone",
+        "drums_ride"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "RIDE"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "CLARINET",
+          "original_instrument_id": "clarinet",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "TROMBONE",
+          "original_instrument_id": "trombone",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_ride",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "CLARINET",
+        "TRUMPET",
+        "TROMBONE",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Jazz Fusion": {
+      "genre": "Jazz Fusion",
+      "profile_id": "JAZZ_FUSION_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "original_selected_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "electric_guitar",
+        "synth_lead",
+        "drums"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "recorded_sample_bank_library": "Karoryfer Growlybass",
+          "license": "CC0",
+          "sfz_path": "growlybass_clean.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_GROWLYBASS_V1_002",
+          "source_evidence": "EXPLICIT_ORIGINAL_RUNTIME_ALIAS_OF_electric_bass_guitar",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "original_instrument_id": "electric_guitar",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "original_instrument_id": "synth_lead",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "ELECTRIC_BASS",
+        "ELECTRIC_PIANO",
+        "ELECTRIC_GUITAR",
+        "SYNTH_LEAD",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    }
+  },
+  "sound_mapping_scope": "55_ORIGINAL_GENRE_PROFILES_PLUS_234_SYMBOLIC_ROLES_FULL_GENRE_TRACKS_DISTINCT",
+  "full_sound_map_status": "RECORDED_PROGRAM_IDENTITY_REFERENCES_ONLY_BLOCK_UNVERIFIED_AND_WRONG_GENRE_KITS",
+  "full_genre_audio_preflight_verified": false
 }

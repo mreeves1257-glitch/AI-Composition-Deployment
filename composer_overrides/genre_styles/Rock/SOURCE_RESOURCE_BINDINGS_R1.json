@@ -13,7 +13,17 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_bass_guitar",
           "resource_id": "KARORYFER_GROWLYBASS_V1_002",
-          "preferred_mapping": "growlybass_clean.sfz"
+          "preferred_mapping": "growlybass_clean.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "electric_guitar",
@@ -22,7 +32,17 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_guitar:RHYTHM_POWER_CHORDS",
           "resource_id": "KARORYFER_SHINYGUITAR",
-          "preferred_mapping": "Programs/composer-electric.sfz"
+          "preferred_mapping": "Programs/composer-electric.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_rock",
@@ -31,7 +51,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "kick_drum_rock",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+          "preferred_mapping": "Programs/composer-kick-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SNARE": {
           "original_instrument_id": "snare_drum",
@@ -40,7 +72,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "snare_drum",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+          "preferred_mapping": "Programs/composer-snare-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              38,
+              38
+            ],
+            "authored_absolute_note_keys": [
+              38
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HAT": {
           "original_instrument_id": "hi_hat",
@@ -49,7 +93,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "hi_hat",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              42,
+              42
+            ],
+            "authored_absolute_note_keys": [
+              42
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     }
@@ -57,5 +113,206 @@
   "live_audio_enabled": false,
   "target_registry_authority": "composer/runtime/target_registry.json",
   "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
-  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof.",
+  "full_genre_track_sound_maps": {
+    "ROCK": {
+      "genre": "ROCK",
+      "profile_id": "ROCK_CORE_V2",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Rock/profile.json",
+      "original_selected_instrument_palette": [
+        "electric_bass",
+        "electric_guitar",
+        "lead_guitar",
+        "drums"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "HARMONY",
+          "original_instrument_id": "electric_guitar",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_guitar:RHYTHM_POWER_CHORDS",
+          "resource_id": "KARORYFER_SHINYGUITAR",
+          "recorded_sample_bank_library": "Karoryfer Shinyguitar",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-electric.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_SHINYGUITAR",
+          "source_evidence": "EXACT_RHYTHM_CONTEXT_BUILD_SCRIPT",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "LEAD",
+          "original_instrument_id": "electric_guitar",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_guitar:LEAD_MELODY",
+          "resource_id": "KARORYFER_SHINYGUITAR",
+          "recorded_sample_bank_library": "Karoryfer Shinyguitar",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-electric-lead.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_SHINYGUITAR",
+          "source_evidence": "EXACT_LEAD_CONTEXT_BUILD_SCRIPT",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "BASS",
+          "original_instrument_id": "electric_bass_guitar",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "recorded_sample_bank_library": "Karoryfer Growlybass",
+          "license": "CC0",
+          "sfz_path": "growlybass_clean.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_GROWLYBASS_V1_002",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": "kick_drum_rock",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "recorded_sample_bank_library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-kick-lite.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            36
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": "snare_drum",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "recorded_sample_bank_library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-snare-lite.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            38
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": "hi_hat",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "recorded_sample_bank_library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-hihat-lite.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            42
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "TOMS",
+          "original_instrument_id": "tom_tom",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "tom_tom",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "recorded_sample_bank_library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-tom-lite.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "CRASH",
+          "original_instrument_id": "crash_cymbal",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "crash_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "recorded_sample_bank_library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-crash-lite.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            49
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "recorded_sample_bank_library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "sfz_path": "Programs/composer-ride-lite.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            51
+          ],
+          "preflight_verified_for_this_genre": false
+        }
+      ],
+      "requested_separate_stems": [
+        "HARMONY",
+        "LEAD",
+        "BASS",
+        "KICK",
+        "SNARE",
+        "HAT",
+        "TOMS",
+        "CRASH",
+        "RIDE"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    }
+  },
+  "sound_mapping_scope": "55_ORIGINAL_GENRE_PROFILES_PLUS_234_SYMBOLIC_ROLES_FULL_GENRE_TRACKS_DISTINCT",
+  "full_sound_map_status": "RECORDED_PROGRAM_IDENTITY_REFERENCES_ONLY_BLOCK_UNVERIFIED_AND_WRONG_GENRE_KITS",
+  "full_genre_audio_preflight_verified": false
 }

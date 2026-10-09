@@ -40,6 +40,8 @@ EXACT_PERCUSSION_NOTES={"kick_drum_rock":(36,),
  "crash_cymbal":(49,), "tom_tom":tuple(range(41,48)),
  "conga":tuple(range(60,65))}
 PER_GENRE_DRUMS_ALLOWED={"ROCK":frozenset({"kick_drum_rock","snare_drum","hi_hat"})}
+# Only identity aliases documented in the preserved runtime builder.
+REGISTERED_PALETTE_ALIASES={"electric_bass_guitar":("electric_bass",)}
 
 def require(cond: bool, code: str) -> None:
     if not cond: raise InterpreterConnectionError(code)
@@ -47,7 +49,7 @@ def require(cond: bool, code: str) -> None:
 def load_installed_registry(path: str|Path|None=None) -> dict:
     """Read original Composer target bindings; fail closed if unavailable."""
     if path is None:
-        path=ROOT.parent.parent/"target_registry.json"
+        path=ROOT.parent/"target_registry.json"
     p=Path(path)
     if not p.is_file():return {}
     try:
@@ -119,6 +121,7 @@ def map_source_roles(
                 record.get("preferred_mapping")==sfz,
                 "SOURCE_PROGRAM_PIN_DRIFT:"+name)
         selection_ok=(selection is None or requested in selection or
+                      any(a in selection for a in REGISTERED_PALETTE_ALIASES.get(requested,())) or
                       binding_id in selection or
                       (requested in PER_GENRE_DRUMS_ALLOWED.get(genre,frozenset())
                         and "drums" in selection))

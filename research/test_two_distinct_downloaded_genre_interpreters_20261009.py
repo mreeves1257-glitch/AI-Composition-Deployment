@@ -14,6 +14,7 @@ from genre_styles.Jazz.jazz_waltz_genre_interpreter import (
 from genre_styles.Latin.salsa_genre_interpreter import (
     interpret_genre as salsa)
 from genre_styles.external_style_midi_reader import StyleMidiInterfaceError
+from genre_styles.genre_owned_interpreter_dispatch import dispatch_stage3_to4_genre_owned
 
 OUT=ROOT/"research_artifacts"/"two_unique_genre_interpreter_proofs_20261009"
 
@@ -23,6 +24,40 @@ def must(flag,why):
 def run(jazz_path,salsa_path):
     j=jazz_waltz(jazz_path,selected_genre="Jazz Waltz")
     s=salsa(salsa_path,selected_genre="Salsa")
+    jazz_stage3={"status":"PASS","palette":["double_bass","piano","drums"],
+                 "meter":"3/4","tempo_bpm":156}
+    salsa_stage3={"status":"PASS","palette":["bass","piano","latin percussion"],
+                  "meter":"4/4","tempo_bpm":190}
+    jazz_handoff=dispatch_stage3_to4_genre_owned(
+        "Jazz Waltz",source_midi_path=jazz_path,
+        original_stage3_result=jazz_stage3)
+    salsa_handoff=dispatch_stage3_to4_genre_owned(
+        "Salsa",source_midi_path=salsa_path,
+        original_stage3_result=salsa_stage3)
+    must(jazz_handoff["musical_event_count"]==j["event_count"] and
+         jazz_handoff["stage4_candidate_events"]==j["actual_music_events"] and
+         jazz_handoff["stage3_clock_verified"]["meter"]=="3/4",
+         "JAZZ_WALTZ_NOT_DIRECTED_FROM_OWN_INTERPRETER")
+    must(salsa_handoff["musical_event_count"]==s["event_count"] and
+         salsa_handoff["stage4_candidate_events"]==s["actual_music_events"] and
+         salsa_handoff["stage3_clock_verified"]["meter"]=="4/4",
+         "SALSA_NOT_DIRECTED_FROM_OWN_INTERPRETER")
+    waiting=dispatch_stage3_to4_genre_owned(
+        "Swing",source_midi_path=jazz_path,
+        original_stage3_result={"status":"PASS","palette":["piano"],
+                                "meter":"4/4","tempo_bpm":160})
+    must(waiting["status"]=="BLOCKED_GENRE_OWNED_BACKEND_NOT_YET_IMPLEMENTED" and
+         waiting["musical_event_count"]==0,
+         "NONIMPLEMENTED_GENRE_FAKED_A_SONG")
+    for name,stage3,midi in [
+        ("Jazz Waltz",{"status":"PASS","palette":["double_bass"],"meter":"4/4","tempo_bpm":156},jazz_path),
+        ("Salsa",{"status":"PASS","palette":["piano"],"meter":"3/4","tempo_bpm":190},salsa_path)]:
+        try:dispatch_stage3_to4_genre_owned(
+            name,source_midi_path=midi,original_stage3_result=stage3)
+        except StyleMidiInterfaceError as e:
+            must("STAGE3_CLOCK_MISMATCH" in str(e),
+                 "WRONG_INTERPRETER_FAILURE_REASON")
+        else:raise AssertionError("WRONG_GENRE_CLOCK_ACCEPTED:"+name)
     must(j["genre"]=="Jazz Waltz" and j["meter"]=="3/4" and
          j["tempo_bpm"]==156 and j["bars"]==8,
          "JAZZ_WALTZ_INTERPRETER_NOT_3_4")
@@ -79,6 +114,7 @@ def run(jazz_path,salsa_path):
                    "tracks":s["source_track_roles"],
                    "percussion":s["latin_percussion_roles"]},
           "per_genre_music_interpretation_engines_functional":True,
+          "stage3_to4_genre_dispatch_worked_without_generic_fallback":True,
           "real_SFZ_programs_installed_or_verified_for_these_genres":False,
           "genre_audition_approval":False,"live_composer_activated":False,
           "original_rock_interpreter_or_frozen_hard_copy_changed":False}

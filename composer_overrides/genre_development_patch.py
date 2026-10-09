@@ -563,6 +563,10 @@ def develop_full_length(
         developed = perform(developed, "ROCK")
         # Genre expression shapes the performance; SFZ owns the sound.
         developed = apply_genre_expression(developed, tmpl, meter, creation_seed)
+        # Opt-in research only; original Rock bass note-offs stay canonical.
+        # No change when AI_COMP_ROCK_BASS_SUSTAIN_V1 is unset or != '1'.
+        from rock_bass_sustain_policy_v1 import adapt_rock_bass
+        developed = adapt_rock_bass(developed, "ROCK")
     return developed
 
 # --- Shared eight-section Genre Development template (non-rendering) ---

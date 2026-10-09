@@ -1,0 +1,61 @@
+name: Real Rock Composition Melody Quality A-B - Research Only
+on:
+  push:
+    branches:
+      - performance-language-research-20261008
+    paths:
+      - .github/workflows/rock-melody-composer-audio-research.yml
+      - research/run_rock_composition_melody_ab_v1.py
+      - composer_overrides/rock_melodic_author_v1.py
+      - composer_overrides/test_rock_melodic_author_v1.py
+      - composer_overrides/genre_development_patch.py
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  original-vs-phrase-composer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild actual preserved composer and all original recorded sample sources
+        env:
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: "0"
+          AI_COMP_ROCK_MELODY_V1: "0"
+          AI_COMP_AUTO_PHRASING_V1: "0"
+          PIP_DISABLE_PIP_VERSION_CHECK: "1"
+        run: bash build_current_composer.sh
+      - name: Baseline real complete Rock song unchanged
+        env:
+          AI_COMP_ROCK_MELODY_V1: "0"
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: "0"
+          PYTHONPATH: composer/runtime
+        run: python research/run_rock_composition_melody_ab_v1.py --mode original
+      - name: New Rock composition melody through SAME real samples and 3D mixer
+        env:
+          AI_COMP_ROCK_MELODY_V1: "1"
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: "0"
+          PYTHONPATH: composer/runtime
+        run: python research/run_rock_composition_melody_ab_v1.py --mode melodic_v1
+      - name: Verify EVERY non-lead event identical and report score structure difference
+        run: python research/run_rock_composition_melody_ab_v1.py --mode compare
+      - name: Preserve both completed WAV recordings and audit even if candidate fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-new-melody-vs-old-composition-full-song-20261008
+          path: |
+            research/rock_melody_ab_output/original/result.json
+            research/rock_melody_ab_output/original/score_events.json
+            research/rock_melody_ab_output/original/ROCK_FULL_SONG_ORIGINAL_3D.wav
+            research/rock_melody_ab_output/melodic_v1/result.json
+            research/rock_melody_ab_output/melodic_v1/score_events.json
+            research/rock_melody_ab_output/melodic_v1/ROCK_FULL_SONG_MELODIC_V1_3D.wav
+            research/rock_melody_ab_output/COMPARISON.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 14

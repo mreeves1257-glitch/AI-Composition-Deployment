@@ -148,12 +148,14 @@ def compile_musical_plan(
         need(isinstance(role,str) and role in available and role not in used_patterns,
              "UNKNOWN_OR_DUPLICATE_PATTERN_ROLE")
         used_patterns.add(role)
-        need(p.get("kind")=="CHORD_RELATIVE","UNSUPPORTED_PATTERN_KIND")
+        kind=p.get("kind")
+        need(kind in ("CHORD_RELATIVE","DRUM_ABSOLUTE","ABSOLUTE_MIDI"),
+             "UNSUPPORTED_PATTERN_KIND")
         need(p.get("retrigger") in ("STOP_AT_CHORD","HOLD_THROUGH_CHORD"),
              "MISSING_CHORD_RETRIGGER_POLICY")
         variants=p.get("variations")
         need(isinstance(variants,Mapping) and bool(variants),"MISSING_PATTERN_VARIANTS")
-        need(resolved_sections and resolved_chords,
+        need(resolved_sections and (resolved_chords or kind!="CHORD_RELATIVE"),
              "PATTERNS_REQUIRE_AUTHORED_SECTIONS_AND_CHORDS")
         limits=available[role]["declared_midi_range"]
         need(limits is not None,"PATTERN_REQUIRES_DECLARED_PLAYABLE_RANGE")
@@ -171,33 +173,46 @@ def compile_musical_plan(
                     velocity=n.get("velocity")
                     need(0<=offset<beats_per_bar and duration>0,
                          "INVALID_PATTERN_NOTE_TIMING")
-                    need(isinstance(degree,int) and not isinstance(degree,bool)
-                         and 1<=degree<=7,"INVALID_CHORD_DEGREE")
-                    need(isinstance(octave,int) and not isinstance(octave,bool)
-                         and -1<=octave<=9,"INVALID_NOTE_OCTAVE")
                     need(isinstance(velocity,int) and not isinstance(velocity,bool)
                          and 1<=velocity<=127,"INVALID_NOTE_VELOCITY")
                     at=bar*beats_per_bar+offset
                     ix=bisect_right(times,at)-1
-                    need(ix>=0,"NO_CHORD_FOR_PATTERN_NOTE")
-                    c=resolved_chords[ix]
-                    pitch=(octave+1)*12+c["root_pc"]+SCALES[c["quality"]][degree-1]
+                    c=resolved_chords[ix] if ix>=0 else None
+                    if kind=="CHORD_RELATIVE":
+                        need(c is not None,"NO_CHORD_FOR_PATTERN_NOTE")
+                        need(isinstance(degree,int) and not isinstance(degree,bool)
+                             and 1<=degree<=7,"INVALID_CHORD_DEGREE")
+                        need(isinstance(octave,int) and not isinstance(octave,bool)
+                             and -1<=octave<=9,"INVALID_NOTE_OCTAVE")
+                        pitch=(octave+1)*12+c["root_pc"]+SCALES[c["quality"]][degree-1]
+                        # Slash-bass harmonization is a *role-specific* decision,
+                        # never forced on all pitched instruments.
+                        if n.get("slash_bass") is True and role=="BASS" and degree==1 and c["slash_bass_pc"] is not None:
+                            pitch=(octave+1)*12+c["slash_bass_pc"]
+                    else:
+                        pitch=n.get("midi")
+                        need(type(pitch)==int and 0<=pitch<=127,
+                             "INVALID_ABSOLUTE_SOURCE_PITCH")
+                        need(degree is None and octave is None,
+                             "DO_NOT_HARMONIZE_ABSOLUTE_OR_DRUM_NOTES")
                     need(limits[0]<=pitch<=limits[1],"OUTSIDE_DECLARED_NOTE_RANGE")
                     end=at+duration
                     need(bars is not None and end<=bars*beats_per_bar,
                          "PATTERN_END_OUTSIDE_SONG")
                     cross=bisect_right(times,at)
                     held=False
-                    if cross<len(times) and times[cross]<end:
+                    if kind=="CHORD_RELATIVE" and cross<len(times) and times[cross]<end:
                         if p["retrigger"]=="STOP_AT_CHORD":end=times[cross]
                         else:held=True
                     need(end>at,"ZERO_DURATION_AFTER_CHORD_CHANGE")
                     notes.append({"role":role,
                         "instrument_id":available[role]["instrument_id"],
                         "start_beat":str(at),"duration_beats":str(end-at),
-                        "midi":pitch,"velocity":velocity,"source_chord":c["symbol"],
+                        "midi":pitch,"velocity":velocity,"source_chord":c["symbol"] if c else None,
                         "section":section["name"],"variation":var,
-                        "cross_chord_held":held,"status":"SYMBOLIC_ONLY"})
+                        "cross_chord_held":held,"pattern_kind":kind,
+                        "source_note_mapping":"UNVERIFIED_RECORDED_PROGRAM" if kind=="DRUM_ABSOLUTE" else "SYMBOLIC_ONLY",
+                        "status":"SYMBOLIC_ONLY"})
     notes.sort(key=lambda n:(Fraction(n["start_beat"]),n["role"],n["midi"]))
     statuses=[{"id":entry["id"],
         "state":"PARTIAL_SYMBOLIC_EXECUTABLE" if entry["id"] in SYMBOLIC

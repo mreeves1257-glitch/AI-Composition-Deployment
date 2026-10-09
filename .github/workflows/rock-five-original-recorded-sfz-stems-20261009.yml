@@ -1,0 +1,59 @@
+name: Rock 5 Real Recorded Source Stems - Original 7 Stage Composer, No Deploy
+on:
+  push:
+    branches:
+      - rock-original-five-stem-sfz-proof-20261009
+    paths:
+      - research/render_real_five_rock_source_pattern_stems_20261009.py
+      - .github/workflows/rock-five-original-recorded-sfz-stems-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-genuine-recorded-rock-source-stems:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check preserved Rock Stage 4 and SFZ zone contract before installing large banks
+        run: |
+          python research/test_real_stage4_instrument_target_contract_20261009.py
+          python research/test_rock_source_sfz_keyzone_authority_20261009.py
+      - name: Build existing original Composer and install approved recorded resource banks in isolated runner
+        run: bash build_current_composer.sh
+      - name: Render five 7-bar Rock source tracks from original recorded SFZ files, no new live-event activation
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: python research/render_real_five_rock_source_pattern_stems_20261009.py
+      - name: Assert genuine audio evidence and no false finished song
+        run: |
+          python - <<'PY'
+          import json,zipfile
+          from pathlib import Path
+          root=Path('research_artifacts/rock_original_source_stems')
+          proof=json.loads((root/'PROOF_MANIFEST.json').read_text())
+          assert proof['song_is_complete'] is False
+          assert proof['stage7_3d_final_mix_activated'] is False
+          assert proof['production_deployment_performed'] is False
+          assert len(proof['individual_instrument_stems'])==5
+          assert sum(x['note_count'] for x in proof['individual_instrument_stems'])==102
+          assert all(x['recorded_sample_graph_preflight'] for x in proof['individual_instrument_stems'])
+          with zipfile.ZipFile('research_artifacts/ROCK_5_REAL_RECORDED_SOURCE_STEMS_2026-10-09.zip') as archive:
+              assert archive.testzip() is None
+              assert len([s for s in archive.namelist() if s.endswith('.wav')])==5
+          print('REAL_RECORDED_NOT_SILENT_NOT_PRODUCTION_PROOF_PASS')
+          PY
+      - name: Downloadable separate recorded instrument stems and sample provenance
+        uses: actions/upload-artifact@v4
+        with:
+          name: ROCK_5_Real_Recorded_Source_Stems_2026-10-09
+          path: |
+            research_artifacts/ROCK_5_REAL_RECORDED_SOURCE_STEMS_2026-10-09.zip
+            research_artifacts/rock_original_source_stems/PROOF_MANIFEST.json
+            research_artifacts/rock_original_source_stems/README.txt
+          retention-days: 30
+          if-no-files-found: error

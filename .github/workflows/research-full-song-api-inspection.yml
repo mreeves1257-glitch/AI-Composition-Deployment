@@ -1,0 +1,53 @@
+name: Inspect Original Composer Full Song Execution API (No Deploy)
+on:
+  push:
+    branches:
+      - performance-language-research-20261008
+    paths:
+      - .github/workflows/research-full-song-api-inspection.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-frozen-original-execution-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack immutable Composer source WITHOUT build or audio rendering
+        run: |
+          mkdir -p research/full_song_api_sources
+          base64 -d composer/runtime.b64 | tar -xzf - -C research/full_song_api_sources
+          ls -lh research/full_song_api_sources/{engine.py,input_gateway.py,output_handoff.py,AI_Comp_Executable_Output_Core_001.py} || true
+      - name: Print safe public Python API signatures and entrypoint names
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          root=Path("research/full_song_api_sources")
+          for filename in ("input_gateway.py","engine.py","output_handoff.py","AI_Comp_Executable_Output_Core_001.py"):
+              path=root/filename
+              if not path.is_file(): continue
+              t=ast.parse(path.read_text(),filename=filename)
+              print("SOURCE",filename)
+              for node in t.body:
+                  if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef)):
+                      print("FUNCTION",node.name, "ARGS", [a.arg for a in node.args.args],"LINE",node.lineno)
+                  if isinstance(node,ast.ClassDef):
+                      print("CLASS",node.name)
+                      for child in node.body:
+                          if isinstance(child,(ast.FunctionDef,ast.AsyncFunctionDef)):
+                              print("METHOD",node.name,child.name,"ARGS",[a.arg for a in child.args.args],"LINE",child.lineno)
+          PY
+      - name: Archive frozen source for accurate research integration
+        uses: actions/upload-artifact@v4
+        with:
+          name: frozen-composer-full-song-api-sources-20261008
+          path: |
+            research/full_song_api_sources/input_gateway.py
+            research/full_song_api_sources/engine.py
+            research/full_song_api_sources/output_handoff.py
+            research/full_song_api_sources/AI_Comp_Executable_Output_Core_001.py
+            research/full_song_api_sources/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+          if-no-files-found: error
+          retention-days: 7

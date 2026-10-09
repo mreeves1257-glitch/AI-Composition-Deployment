@@ -69,6 +69,8 @@ def verify_original_runtime_contract():
         from target_program import TargetProgram
         from performance_executor import PerformanceExecutor
         from output_handoff import build_execution_package
+        from AI_Comp_Executable_Output_Core_001 import (
+            OutputManager, RenderRequest, OutputType, write_output_package)
 
         original_instrument_catalog=json.loads((tmp/"instrument_library.json").read_text())
         physical_ids={x["id"] for x in original_instrument_catalog["instruments"]}
@@ -151,12 +153,28 @@ def verify_original_runtime_contract():
         insist({e.track_id for e in package.events}==
                {"BASS","HARMONY","KICK","SNARE","HAT"},
                "ORIGINAL_OUTPUT_CORE_TRACK_ISOLATION_BROKEN")
+        import struct
+        with tempfile.TemporaryDirectory() as midi_folder:
+            written=OutputManager().execute(package,RenderRequest(
+                request_id="ROCK_STAGE4_ISOLATED_REAL_MIDI",
+                requested_outputs=(OutputType.MIDI,)))
+            paths=write_output_package(written,Path(midi_folder))
+            raw=Path(paths["MIDI"]).read_bytes()
+            insist(raw.startswith(b"MThd\\x00\\x00\\x00\\x06".replace(b"\\\\x00",b"\\x00").replace(b"\\\\x06",b"\\x06")),
+                   "ORIGINAL_EXECUTABLE_OUTPUT_CORE_DID_NOT_WRITE_MIDI")
+            fmt,count,ppq=struct.unpack(">HHH",raw[8:14])
+            insist(fmt==1 and count==len(tracks)+1 and ppq==480,
+                   "STAGE4_SEPARATE_REAL_MIDI_TRACKS_NOT_PRESERVED")
+            insist(raw.count(b"MTrk")==count,
+                   "STAGE4_MIDI_FILE_TRACK_STRUCTURE_CORRUPT")
+            insist(len(raw)>1000,"STAGE4_OUTPUT_MIDI_FILE_EMPTY")
         print("ORIGINAL_STAGE4_TO_OUTPUT_CORE_CONTRACT_PASS",json.dumps({
             "proposed_note_events":len(events),
             "real_instrument_resolver":"PASS",
             "real_target_resolver":"PASS",
             "real_performance_executor":"PASS",
             "original_output_core_package":"PASS",
+            "real_type1_multitrack_midi_file_written":"PASS",
             "exact_recording_bank_references":5,
             "not_approved_for_audio":True,
             "missing_original_rock_tracks":result["missing_original_rock_tracks"],

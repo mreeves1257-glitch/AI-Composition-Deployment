@@ -118,3 +118,145 @@ def prepare_source_pattern_composer_handoff(
        "original_composer_is_authoritative_for_audio":True,
        "production_enabled":False
     }
+
+
+def prepare_external_midi_composer_handoff(
+    interpreter: Mapping[str,Any], *,
+    original_genre_profile: Mapping[str,Any],
+    recorded_full_track_map: Mapping[str,Any],
+    original_stage3_result: Mapping[str,Any],
+    existing_events: Sequence[Mapping[str,Any]]=(),
+) -> dict:
+    """Match external arranger MIDI to EXISTING original Stage-4 track IDs.
+
+    Only a referenced original recorded-SFZ instrument is allowed to become
+    an *unapproved isolated candidate*. Sources without an exact recorded
+    program, unselected instruments, and unsupported kit roles remain blocked.
+    Never route this partial proposal to the original Composer, render partial
+    audio, change an arranger style or substitute an original instrument.
+    """
+    genre = interpreter.get("genre")
+    require(genre == "Jazz Waltz" and
+            interpreter.get("source_type") == "GENRE_SPECIFIC_EXTERNAL_MMA_MIDI",
+            "EXTERNAL_MIDI_ORIGINAL_GENRE_NOT_ENABLED_FOR_HANDOFF")
+    require(interpreter.get("audio_render_authorized") is False and
+            interpreter.get("production_enabled") is False and
+            interpreter.get("old_authoritative_composer_events_untouched") is True,
+            "EXTERNAL_MIDI_UNAUTHORIZED_LIVE_INPUT")
+    require(original_genre_profile.get("genre") == genre and
+            recorded_full_track_map.get("genre") == genre and
+            original_genre_profile["musical_definition"]["profile_id"] ==
+            recorded_full_track_map["profile_id"] ==
+            interpreter["profile_id"], "EXTERNAL_MIDI_ORIGINAL_PROFILE_MISMATCH")
+    require(original_stage3_result.get("status") == "PASS" and
+            original_stage3_result.get("palette") ==
+            original_genre_profile.get("original_composer_instrument_palette"),
+            "EXTERNAL_MIDI_STAGE3_ORIGINAL_PALETTE_MISMATCH")
+    tracks = original_genre_profile["individual_instrument_tracks"]
+    assigned = recorded_full_track_map["full_genre_tracks"]
+    require(len(tracks) == len(assigned) and
+            all(t["track_id"] == s["track_id"] and
+                t.get("instrument_id") == s.get("original_instrument_id") and
+                t.get("original_palette_group") == s.get("original_palette_group")
+                for t,s in zip(tracks,assigned)),
+            "EXTERNAL_MIDI_ORIGINAL_TRACK_OR_PALETTE_CHANGED")
+    by_id = {t["track_id"]: t for t in assigned}
+    require(len(by_id) == len(assigned), "ORIGINAL_TRACK_IDS_NOT_UNIQUE")
+    by_instrument = {}
+    for t in assigned:
+        if t.get("original_instrument_id"):
+            by_instrument.setdefault(t["original_instrument_id"],[]).append(t)
+    # MIDI channel ten uses kit semantics. Treat symbols as *musical*
+    # descriptions only; they are NOT SFZ sample or velocity map evidence.
+    percussion_roles = {"SNARE":"SNARE","HI_HAT":"HAT"}
+    received = interpreter["stage4_candidate_events"]
+    require(received and len(received) == interpreter["musical_event_count"],
+            "EXTERNAL_MIDI_INTERPRETED_NOTE_COUNT_DRIFT")
+    candidates, blocked = [], []
+    present_original_tracks = set()
+    for note in received:
+        require(note.get("genre") == genre and
+                note.get("profile_id") == interpreter["profile_id"] and
+                note.get("stage4_status") ==
+                "INTERPRETED_SOURCE_NOTE_NOT_AUTHORIZED_FOR_AUDIO" and
+                note.get("real_SFZ_sample_program_verified") is False,
+                "EXTERNAL_SOURCE_NOTE_OR_AUDIO_AUTHORITY_CHANGED")
+        channel, pitch, velocity = (note["channel"],note["source_midi_note"],
+                                    note["velocity"])
+        start,duration = note["start_beat"],note["duration_beats"]
+        require(type(channel) is int and 0 <= channel <= 15 and
+                type(pitch) is int and 0 <= pitch <= 127 and
+                type(velocity) is int and 1 <= velocity <= 127 and
+                isinstance(start,(int,float)) and
+                isinstance(duration,(int,float)) and
+                0 <= start and 0 < duration,
+                "EXTERNAL_MIDI_NOTE_VALUES_INVALID")
+        if channel == 9:
+            track = by_id.get(percussion_roles.get(note["stage4_role"],""))
+            allowed = track is not None and track.get("original_palette_group") == "brush_drums"
+            reason = "" if allowed else "MMA_PERCUSSION_NOT_AN_ORIGINAL_TRACK"
+        else:
+            matches = by_instrument.get(note["proposed_physical_instrument_id"],[])
+            track = matches[0] if len(matches) == 1 else None
+            allowed = track is not None
+            reason = "" if allowed else "MMA_INSTRUMENT_NOT_IN_ORIGINAL_SELECTED_TRACKS"
+        if not allowed:
+            blocked.append({"source_track":note["source_track"],
+                "stage4_role":note["stage4_role"],"midi":pitch,"reason":reason})
+            continue
+        name = track["track_id"]
+        present_original_tracks.add(name)
+        if not (track.get("mapping_state") ==
+                "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED" and
+                bool(track.get("resource_id")) and
+                bool(track.get("registry_binding_id")) and
+                bool(track.get("sfz_path")) and
+                track.get("preflight_verified_for_this_genre") is False):
+            blocked.append({"source_track":note["source_track"],
+                "track_id":name,"midi":pitch,
+                "reason":"ORIGINAL_TRACK_EXACT_RECORDED_PROGRAM_NOT_VERIFIED"})
+            continue
+        candidates.append({
+            "track_id":name,
+            "instrument_id":track["original_instrument_id"],
+            "expected_target_binding_id":track["registry_binding_id"],
+            "resource_id":track["resource_id"],
+            "preferred_mapping":track["sfz_path"],
+            "start_beat":float(start),
+            "duration_beats":float(duration),
+            "midi":pitch,
+            "velocity":velocity,
+            "source_midi_track":note["source_track"],
+            "source_midi_channel":channel,
+            "composer_stage":"COMPOSE_SEPARATE_PARTS",
+            "audit_status":"REHEARSAL_REFERENCE_ONLY_ORIGINAL_SFZ_NOT_PREFLIGHTED",
+        })
+    candidates.sort(key=lambda n:(n["start_beat"],n["track_id"],n["midi"]))
+    require(len(received) == len(candidates) + len(blocked),
+            "EXTERNAL_MIDI_SILENT_NOTE_DISCARD")
+    missing_original = sorted(set(by_id)-present_original_tracks)
+    reasons = sorted({item["reason"] for item in blocked})
+    original_event_count = len(existing_events)
+    return {
+        "schema":"AI_COMP_EXTERNAL_MIDI_STAGE4_REFERENCE_HANDOFF_V1",
+        "genre":genre,
+        "genre_profile_id":interpreter["profile_id"],
+        "status":"BLOCKED_PARTIAL_MIDI_TO_ORIGINAL_RECORDED_TRACK_REFERENCES",
+        "candidate_stage4_events":candidates,
+        "candidate_event_count":len(candidates),
+        "received_external_midi_note_count":len(received),
+        "blocked_note_count":len(blocked),
+        "blocked_note_reasons":reasons,
+        "blocked_note_details":blocked,
+        "unfilled_original_genre_tracks":missing_original,
+        "recorded_program_reference_tracks":sorted({n["track_id"] for n in candidates}),
+        "original_events_count":original_event_count,
+        "existing_composer_events_unchanged":True,
+        "candidate_is_not_live_events":True,
+        "full_arrangement_ready":False,
+        "individual_stems_verified":False,
+        "source_sfzs_preflight_passed":False,
+        "recorded_audio_authorized":False,
+        "audio_render_authorized":False,
+        "production_enabled":False,
+    }

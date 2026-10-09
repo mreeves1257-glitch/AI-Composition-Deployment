@@ -1,0 +1,482 @@
+{
+  "schema_version": "AI_COMPOSER_22_CAPABILITY_PROCEDURE_V1",
+  "checkpoint_local": "2026-10-09T08:22:28-05:00",
+  "research_source": "AI_Composer_Yamaha_Korg_Interpreter_Gap_Audit_2026-10-09_0802_CDT.pdf",
+  "research_source_date": "2026-10-09 08:02 CDT",
+  "capability_count": 22,
+  "scope": "MISSING_OR_PARTIAL_CAPABILITY_AUDIT_NOT_READY_MADE_MODULES",
+  "owner": "GENRE_SPECIFIC_MUSICAL_LANGUAGE_CROSSREFS_AND_ORIGINAL_7_STAGES",
+  "original_stages": [
+    "SELECT_GENRE",
+    "DEFINE_MUSICAL_STRUCTURE",
+    "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+    "COMPOSE_SEPARATE_PARTS",
+    "PERFORM_MUSICALLY",
+    "RENDER_SEPARATE_AUDIO_STEMS",
+    "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+  ],
+  "interpreter_and_bridge": "NESTED_IN_STAGE_3_TO_4_HANDOFF_NOT_ADDITIONAL_STAGES",
+  "composition_stage": 4,
+  "performance_stage": 5,
+  "render_stage": 6,
+  "genre_mix_then_standalone_3d_stage": 7,
+  "live_plug_not_a_composition_engine": true,
+  "source_samples_immutable": true,
+  "existing_stage_order_unchanged": true,
+  "automatic_activation": false,
+  "disclaimer": "All 22 are requirements/verification gates, not proven executable new modules. Applicability is evaluated using actually selected and verified instruments, not by imposing a guitar or rock drum part on every genre. Do not treat statuses as automatic runtime capability.",
+  "capabilities": [
+    {
+      "id": "CAP_01",
+      "order": 1,
+      "name": "Musical Arranger Interpreter",
+      "verified_status_from_2026_10_09_gap_audit": "FILED_PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        }
+      ],
+      "applicability_rule": "ALL_GENRES",
+      "implementation_requirement": "Stage 2 musical structure and Stage 3 verified instrument roles must become a coherent, style-specific arrangement/part plan at the 3-to-4 handoff.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_02",
+      "order": 2,
+      "name": "Chord Context and Progression Interpreter",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 2,
+          "stage_name": "DEFINE_MUSICAL_STRUCTURE"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        }
+      ],
+      "applicability_rule": "WHEN_HARMONY_USED",
+      "implementation_requirement": "Resolve a section-and-beat indexed chord timeline with root, type, inversion and slash bass, shared by all pitched parts.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_03",
+      "order": 3,
+      "name": "Chord Variation Selection (Korg CV concept)",
+      "verified_status_from_2026_10_09_gap_audit": "MISSING_UNVERIFIED",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        }
+      ],
+      "applicability_rule": "WHEN_CHORD_BASED_ACCOMPANIMENT",
+      "implementation_requirement": "Select pattern variants per part and chord quality; avoid repeating the same accompaniment figure on every section.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_04",
+      "order": 4,
+      "name": "Root-change Note Transposition (Yamaha NTR concept)",
+      "verified_status_from_2026_10_09_gap_audit": "MISSING_UNVERIFIED",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        }
+      ],
+      "applicability_rule": "WHEN_TRANSPOSABLE_PITCHED_PATTERNS",
+      "implementation_requirement": "Move pattern notes by chord root using each instrument's register and role; do not transpose drums.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_05",
+      "order": 5,
+      "name": "Chord-type Note Conversion (Yamaha/Korg NTT concept)",
+      "verified_status_from_2026_10_09_gap_audit": "MISSING_UNVERIFIED",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        }
+      ],
+      "applicability_rule": "WHEN_CHORD_BASED_PATTERNS",
+      "implementation_requirement": "Adapt source motifs for minor/major/seventh/suspended/altered harmony while preserving sensible voice leading.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_06",
+      "order": 6,
+      "name": "Retrigger Hold and Pitch Decision at Chord Boundaries (Yamaha RTR concept)",
+      "verified_status_from_2026_10_09_gap_audit": "MISSING_UNVERIFIED",
+      "stage_owners": [
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "WHEN_SUSTAINED_PITCHED_NOTES",
+      "implementation_requirement": "Explicitly resolve sustained notes crossing chords: hold, stop, retrigger or permitted pitch move; never invent supported articulations.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_07",
+      "order": 7,
+      "name": "Register Voice Leading and Physical Note Limits",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "WHEN_PITCHED_INSTRUMENTS",
+      "implementation_requirement": "Check instrument sample key ranges, plausible voicings, polyphony and player constraints before notes are rendered.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_08",
+      "order": 8,
+      "name": "Section Variation Fill Break and Ending Conductor",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 2,
+          "stage_name": "DEFINE_MUSICAL_STRUCTURE"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        }
+      ],
+      "applicability_rule": "ALL_GENRES",
+      "implementation_requirement": "Generate form-specific intros, verse/chorus variation, fills, pickups, breaks and meaningful endings rather than unvaried loops.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_09",
+      "order": 9,
+      "name": "Ensemble Coordination and Shared Groove Clock",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "WHEN_MULTIPLE_ROLES",
+      "implementation_requirement": "Coordinate the rhythm section, melody and rests around a shared tempo/time-grid and style-specific groove; avoid random independent timing.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_10",
+      "order": 10,
+      "name": "Genre-specific Groove and Performance Grammars",
+      "verified_status_from_2026_10_09_gap_audit": "FILED_PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 2,
+          "stage_name": "DEFINE_MUSICAL_STRUCTURE"
+        },
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "ALL_GENRES",
+      "implementation_requirement": "Translate THIS GENRE's saved meter, groove, harmony, phrase and role definitions; never substitute Rock patterns for other genres.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_11",
+      "order": 11,
+      "name": "Instrument-specific Expressive State Machine",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "WHEN_INSTRUMENT_PERFORMED",
+      "implementation_requirement": "Track start/connect/repeat/end note states, dynamics, timing and release according to each exact selected sound program.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_12",
+      "order": 12,
+      "name": "Guitar Chord Voicing Fingering Strum Direction and Timing",
+      "verified_status_from_2026_10_09_gap_audit": "MISSING_UNVERIFIED",
+      "stage_owners": [
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "ONLY_IF_GUITAR_SELECTED",
+      "implementation_requirement": "Only for selected guitar parts: play physically plausible chord notes with direction-dependent stagger, strums/mutes and measured release; avoid keyboard-block chords.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_13",
+      "order": 13,
+      "name": "Per-note Articulation Choice and Capability-aware Translation",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "WHEN_SUPPORTED_EXPRESSION_REQUESTED",
+      "implementation_requirement": "Map performer gestures to verified source-specific keyswitch/CC/pitch/velocity behavior, otherwise mark unsupported without silent substitution.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_14",
+      "order": 14,
+      "name": "Phrase-aware Musical Expression",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "WHEN_INSTRUMENT_PERFORMED",
+      "implementation_requirement": "Generate connected musical phrase contours, selective vibrato, expressive rests, breathing and instrument-specific accents.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_15",
+      "order": 15,
+      "name": "Time-varying MIDI Performance Event Writer",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        },
+        {
+          "stage_number": 6,
+          "stage_name": "RENDER_SEPARATE_AUDIO_STEMS"
+        }
+      ],
+      "applicability_rule": "WHEN_MIDI_SAMPLE_RENDERING",
+      "implementation_requirement": "Issue correctly timed note-on/off, tempo, safe expression CC and control events only for validated original instrument program mapping.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_16",
+      "order": 16,
+      "name": "Instrument Capability Manifest and Bank-specific Controller Map",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        }
+      ],
+      "applicability_rule": "WHEN_INSTRUMENT_SELECTED",
+      "implementation_requirement": "Confirm exact bank, SFZ path, playable note/velocity/keyswitch/controller map and provenance per selected sound; no generic CC assumptions.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_17",
+      "order": 17,
+      "name": "Sustain Sample Lifetime Note-off and Release Handler",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        },
+        {
+          "stage_number": 6,
+          "stage_name": "RENDER_SEPARATE_AUDIO_STEMS"
+        }
+      ],
+      "applicability_rule": "WHEN_SAMPLED_INSTRUMENT",
+      "implementation_requirement": "Validate audible sustain/loop/release behavior of original sample files, avoid interpreting MIDI note length as audible duration.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_18",
+      "order": 18,
+      "name": "Expressive Drum Strike Rolls and Human Repetition",
+      "verified_status_from_2026_10_09_gap_audit": "PARTIAL",
+      "stage_owners": [
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        },
+        {
+          "stage_number": 6,
+          "stage_name": "RENDER_SEPARATE_AUDIO_STEMS"
+        }
+      ],
+      "applicability_rule": "ONLY_IF_DRUMS_OR_PERCUSSION_SELECTED",
+      "implementation_requirement": "For selected percussion: independent kick/snare/hat/tom/cymbal stems, correct note maps, velocity layers, round robin and musical fills.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_19",
+      "order": 19,
+      "name": "Polyphonic and Per-note Controller Isolation",
+      "verified_status_from_2026_10_09_gap_audit": "MISSING_UNVERIFIED",
+      "stage_owners": [
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        },
+        {
+          "stage_number": 6,
+          "stage_name": "RENDER_SEPARATE_AUDIO_STEMS"
+        }
+      ],
+      "applicability_rule": "ONLY_IF_PER_NOTE_POLYPHONIC_EXPRESSION",
+      "implementation_requirement": "Only where needed, isolate per-note expression across channels if verified; MIDI1 channel controls cannot safely address individual polyphonic notes.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_20",
+      "order": 20,
+      "name": "Role to Instrument ID to Exact SFZ to Recording to Stem Cross-reference",
+      "verified_status_from_2026_10_09_gap_audit": "INCOMPLETE",
+      "stage_owners": [
+        {
+          "stage_number": 3,
+          "stage_name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT"
+        },
+        {
+          "stage_number": 6,
+          "stage_name": "RENDER_SEPARATE_AUDIO_STEMS"
+        }
+      ],
+      "applicability_rule": "WHEN_INSTRUMENT_SELECTED",
+      "implementation_requirement": "Prove every selected role maps to an installed real recorded sample bank/program and an independently audible stem; reconcile unknown IDs.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_21",
+      "order": 21,
+      "name": "Complete Genre Playback Verification",
+      "verified_status_from_2026_10_09_gap_audit": "NOT_RECEIVED_ALL_55",
+      "stage_owners": [
+        {
+          "stage_number": 4,
+          "stage_name": "COMPOSE_SEPARATE_PARTS"
+        },
+        {
+          "stage_number": 5,
+          "stage_name": "PERFORM_MUSICALLY"
+        },
+        {
+          "stage_number": 6,
+          "stage_name": "RENDER_SEPARATE_AUDIO_STEMS"
+        },
+        {
+          "stage_number": 7,
+          "stage_name": "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        }
+      ],
+      "applicability_rule": "ALL_GENRES",
+      "implementation_requirement": "Require genre-specific score, MIDI note mapping, render evidence, measured stems, independently mixed audio, musical audition before activation.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    },
+    {
+      "id": "CAP_22",
+      "order": 22,
+      "name": "Reliable Live Handoff and Phone Audio Return",
+      "verified_status_from_2026_10_09_gap_audit": "NEEDS_VERIFICATION",
+      "stage_owners": [
+        {
+          "stage_number": 7,
+          "stage_name": "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+        }
+      ],
+      "applicability_rule": "ONLY_BEFORE_LIVE_ACTIVATION",
+      "implementation_requirement": "After musical render, verify Composer→Plug→Control Panel transport, job IDs, timeouts, health, complete audio return and actual phone playback.",
+      "implementation_state": "REFERENCE_ONLY_NOT_INSTALLED_BY_THIS_REGISTER",
+      "verification_state": "NOT_VERIFIED_FOR_THIS_GENRE"
+    }
+  ]
+}

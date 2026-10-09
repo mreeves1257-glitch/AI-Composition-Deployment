@@ -240,6 +240,12 @@ def _cap18(ctx):
         role=n.get("role");res=_resources(ctx).get(role,{})
         raw=n.get("source_note")
         source_map=res.get("verified_drum_note_map",{})
+        # Genre-specific percussion can include conga/shaker/tabla/etc;
+        # require exact selected role AND separately verified percussion bank.
+        require(role in _roles(ctx) and res.get("instrument_id")==
+                _roles(ctx)[role]["instrument_id"] and
+                res.get("percussion_source_verified") is True,
+                "DRUM_ROLE_NOT_SELECTED_OR_NOT_PERCUSSION")
         require(res.get("source_verified") is True and
                 type(raw)==int and str(raw) in source_map,
                 "DRUM_SOUND_MAP_NOT_VERIFIED")

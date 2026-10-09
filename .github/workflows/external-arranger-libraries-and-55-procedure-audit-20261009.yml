@@ -47,6 +47,21 @@ jobs:
           set -euxo pipefail
           cp research/EXTERNAL_KEYBOARD_MUSIC_MODULES_README_2026-10-09.md research/external_arranger_downloads_20261009/READ_ME_FIRST_2026-10-09.md
           python -c 'from pathlib import Path; import hashlib,json; from datetime import datetime,timezone; r=Path("research/external_arranger_downloads_20261009"); files=sorted(p for p in r.rglob("*") if p.is_file()); artifacts=[dict(path=str(p.relative_to(r)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size) for p in files]; (r/"CHECKSUM_MANIFEST_2026-10-09.json").write_text(json.dumps({"checked_at_utc":datetime.now(timezone.utc).isoformat(),"research_only":True,"not_installed_into_composer":True,"files":artifacts},indent=2)); print("EXTERNAL_DOWNLOADS_VERIFIED",len(artifacts),artifacts)'
+      - name: Include all 55 original genre handoff XRefs and 22-capability procedure files with downloads
+        run: |
+          set -euxo pipefail
+          out=research/external_arranger_downloads_20261009
+          mkdir -p "$out/55_GENRES_ORIGINAL_HANDOFF_AND_22_CAPABILITY_XREFS"
+          cp composer_overrides/genre_styles/GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json "$out/55_GENRES_ORIGINAL_HANDOFF_AND_22_CAPABILITY_XREFS/"
+          cp research/validate_all_55_22_capability_procedures_20261009.py "$out/55_GENRES_ORIGINAL_HANDOFF_AND_22_CAPABILITY_XREFS/"
+          cp research/HARD_CHECKPOINT_ALL55_22_MUSIC_COMPONENTS_AND_EXTERNAL_ENGINES_2026-10-09.md "$out/55_GENRES_ORIGINAL_HANDOFF_AND_22_CAPABILITY_XREFS/"
+          for f in composer_overrides/genre_styles/*/GENRE_22_CAPABILITY_PROCEDURE_R1.json; do
+            family=$(basename "$(dirname "$f")")
+            mkdir -p "$out/55_GENRES_ORIGINAL_HANDOFF_AND_22_CAPABILITY_XREFS/$family"
+            cp "$f" "$out/55_GENRES_ORIGINAL_HANDOFF_AND_22_CAPABILITY_XREFS/$family/"
+            cp "composer_overrides/genre_styles/$family/GENRE_INTERPRETER_HANDOFF_R1.json" "$out/55_GENRES_ORIGINAL_HANDOFF_AND_22_CAPABILITY_XREFS/$family/"
+          done
+          python research/validate_all_55_22_capability_procedures_20261009.py
       - uses: actions/upload-artifact@v4
         with:
           name: public-arranger-toolkit-and-theory-modules-research-2026-10-09

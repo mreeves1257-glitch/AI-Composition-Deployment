@@ -34,5 +34,5 @@ jobs:
       - name: Confirm live deployment and preserved hard-copy branch are untouched
         run: |
           test -f research/HARD_COPY_ALL_55_PROJECT_2026-10-09_1128_CDT.md
-          test "$(grep -c 'developed\['\"'\"'source_pattern_composer_handoff'\"'\"'\]' build_current_composer.sh)" -ge 1
+          grep -Fq "developed['source_pattern_composer_handoff']" build_current_composer.sh
           echo "READ_ONLY_MACHINE_CONNECTION_AUDIT_PASS_NO_DEPLOY"

@@ -78,11 +78,24 @@ def read_pack(genre: str) -> tuple[dict,dict]:
              "SOURCE_PATTERN_UNPLAYABLE_VARIANTS:"+genre)
     return obj,ref
 
-def compile_original_source_seed(genre: str) -> dict[str,Any]:
-    """Exercise exact original, genre-owned note patterns, but NEVER authorize SFZ."""
+def compile_original_source_seed(genre: str, *, selected_tempo_bpm: int|None=None) -> dict[str,Any]:
+    """Compile original patterns at genre tempo or an explicit permitted Stage-3 tempo.
+
+    Preserve the original source JSON unchanged. The selected tempo is the same
+    authority consumed by the shared CAP_09 ensemble clock, not an independent
+    DAW/playback tempo. Audio/production authorization remains false.
+    """
     data,ref=read_pack(genre)
+    if selected_tempo_bpm is not None:
+        need(type(selected_tempo_bpm) is int and
+             ref["genre_specific_musical_intentions"]["tempo_bpm_range"][0]
+             <= selected_tempo_bpm <=
+             ref["genre_specific_musical_intentions"]["tempo_bpm_range"][-1],
+             "SOURCE_PATTERN_SELECTED_TEMPO_OUTSIDE_GENRE")
+    chosen_tempo=(data["tempo_bpm"] if selected_tempo_bpm is None
+                  else selected_tempo_bpm)
     plan=compile_musical_plan(
-        genre,meter=data["meter"],tempo_bpm=data["tempo_bpm"],bars=7,
+        genre,meter=data["meter"],tempo_bpm=chosen_tempo,bars=7,
         sections=data["sections"],chords=data["chords"],
         roles=data["roles"],patterns=data["patterns"])
     events=plan["symbolic_note_events"]
@@ -104,6 +117,10 @@ def compile_original_source_seed(genre: str) -> dict[str,Any]:
         "source_ownership":data["source_ownership"],
         "role_ids":list(roles),
         "played_section_sequence":list(SECTION_NAMES),
+        "original_seed_tempo_bpm":data["tempo_bpm"],
+        "selected_stage3_tempo_bpm":chosen_tempo,
+        "tempo_origin":("GENRE_SOURCE_DEFAULT" if selected_tempo_bpm is None
+                        else "EXPLICIT_STAGE3_ENSEMBLE_CLOCK"),
         "recorded_instruments_verified":False,
         "musical_audition_approved":False,
         "production_enabled":False}

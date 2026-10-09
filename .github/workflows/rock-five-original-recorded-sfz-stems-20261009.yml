@@ -5,6 +5,7 @@ on:
       - rock-original-five-stem-sfz-proof-20261009
     paths:
       - research/render_real_five_rock_source_pattern_stems_20261009.py
+      - research/run_preserved_standalone_3d_mixer_rock_partial_20261009.py
       - .github/workflows/rock-five-original-recorded-sfz-stems-20261009.yml
   workflow_dispatch:
 permissions:
@@ -29,6 +30,10 @@ jobs:
           PYTHONPATH: composer/runtime
           AI_COMP_AUTO_PHRASING_V1: "0"
         run: python research/render_real_five_rock_source_pattern_stems_20261009.py
+      - name: Verify separate original 3D mixer receives five authentic recording stems (research only)
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/run_preserved_standalone_3d_mixer_rock_partial_20261009.py
       - name: Assert genuine audio evidence and no false finished song
         run: |
           python - <<'PY'
@@ -45,6 +50,10 @@ jobs:
           with zipfile.ZipFile('research_artifacts/ROCK_5_REAL_RECORDED_SOURCE_STEMS_2026-10-09.zip') as archive:
               assert archive.testzip() is None
               assert len([s for s in archive.namelist() if s.endswith('.wav')])==5
+          three=json.loads(Path('research_artifacts/rock_partial_stage7_staging/STAGE7_DIAGNOSTIC_MANIFEST.json').read_text())
+          assert three['is_not_full_arrangement'] is True
+          assert three['not_authoritative_music_master'] is True
+          assert three['stereo_derivative_made_by_original_separate_3d_process'] is True
           print('REAL_RECORDED_NOT_SILENT_NOT_PRODUCTION_PROOF_PASS')
           PY
       - name: Downloadable separate recorded instrument stems and sample provenance
@@ -55,5 +64,7 @@ jobs:
             research_artifacts/ROCK_5_REAL_RECORDED_SOURCE_STEMS_2026-10-09.zip
             research_artifacts/rock_original_source_stems/PROOF_MANIFEST.json
             research_artifacts/rock_original_source_stems/README.txt
+            research_artifacts/ROCK_5_TRACK_STANDALONE_3D_DIAGNOSTIC_2026-10-09.zip
+            research_artifacts/rock_partial_stage7_staging/STAGE7_DIAGNOSTIC_MANIFEST.json
           retention-days: 30
           if-no-files-found: error

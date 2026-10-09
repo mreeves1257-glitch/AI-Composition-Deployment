@@ -95,7 +95,10 @@ def apply_rock_groove(events, genre, *, enabled=None):
             # Offbeat hats lightly carry subdivision instead of masking vocals
             # or adding an equally heavy downbeat on every eighth/sixteenth.
             new["velocity"]=max(25,min(62,round(velocity*(.68 if offset%0.5==0 else .56))))
-            new["articulation"]="rock_eighth_subdivision" if offset%0.5==0 else "rock_sixteenth_pickup"
+            # Keep the ORIGINAL recorded program's articulation contract.
+            # The note's onset is the rhythmic instruction; the sample bank
+            # never needs to understand a new articulation tag.
+            new["articulation"]=source.get("articulation","hat")
             additions.append(new)
             existing.add((bar,offset))
     # Bass-locked pickup: at bars where existing bass hits 2.25 and there is

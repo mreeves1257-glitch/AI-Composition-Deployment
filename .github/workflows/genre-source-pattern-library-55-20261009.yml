@@ -1,0 +1,48 @@
+name: All 55 Independently Authored Source Patterns — Symbolic Playback Readiness
+on:
+  push:
+    branches:
+      - genre-source-pattern-library-55-20261009
+    paths:
+      - composer_overrides/genre_styles/source_pattern_library.py
+      - composer_overrides/genre_styles/shared_musical_grammar.py
+      - composer_overrides/genre_styles/**/SOURCE_PATTERN_LIBRARY_R1.json
+      - research/test_all55_source_pattern_library_20261009.py
+      - .github/workflows/genre-source-pattern-library-55-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  author-and-compile-all-55-independent-musical-genre-seeds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile seven-section independent source-pattern seeds for all 55 genres
+        run: python research/test_all55_source_pattern_library_20261009.py
+      - name: Verify older shared grammar chord-transpose and 22-capability tests still pass
+        run: |
+          python research/test_shared_musical_grammar_20261009.py
+          python research/test_shared_22_capability_execution_20261009.py
+          python research/test_55_genre_capability_binding_files_20261009.py
+          python research/test_shared_interpreter_router_all55_20261009.py
+          python research/test_clean_shared_interpreter_all55_20261009.py
+          python research/validate_uniform_genre_connections_20261009.py
+      - name: Replay preserved Composer Stage3-to-4 runtime hook unchanged
+        run: |
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python research/test_real_composer_grammar_20261009.py
+      - name: Assert no new audio or live deployment
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source=(Path("composer_overrides")/"genre_styles"/"source_pattern_library.py").read_text()
+          assert 'compile_musical_plan(' in source
+          assert 'genre_styles.Rock.rock_pinned_mma_interpreter' not in source
+          assert 'recorded_instruments_verified":False' in source
+          print("ONE_INTERPRETER_55_AUTHORED_GENRE_SOURCE_PACKS_NO_AUDIO_PASS")
+          PY

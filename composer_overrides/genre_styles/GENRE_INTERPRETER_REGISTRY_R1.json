@@ -2,7 +2,7 @@
   "schema": "AI_COMP_GENRE_INTERPRETER_REGISTRY_R1",
   "count": 55,
   "family_count": 13,
-  "status": "55_UNIQUE_GENRE_OWNED_SLOTS_ROCK_SOURCE_BACKEND_RECOVERED_ONLY",
+  "status": "55_GENRE_OWNED_SLOTS_3_BACKEND_IMPLEMENTATIONS_ROCK_PLUS_JAZZ_WALTZ_PLUS_SALSA_52_PENDING",
   "single_shared_output_and_rendering_core": true,
   "original_7_stages_unchanged": true,
   "per_genre": {
@@ -29,7 +29,8 @@
     "Jazz Waltz": {
       "slot_file": "composer_overrides/genre_styles/Jazz/INTERPRETER_JAZZ_WALTZ_R1.json",
       "profile_id": "JAZZ_WALTZ_V1",
-      "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED"
+      "backend_status": "EXTERNAL_MMA_JAZZ_WALTZ_3_4_TO_TYPED_MUSICAL_EVENTS_SOURCE_SFZ_UNVERIFIED",
+      "backend_file": "composer_overrides/genre_styles/Jazz/jazz_waltz_genre_interpreter.py"
     },
     "Bebop": {
       "slot_file": "composer_overrides/genre_styles/Jazz/INTERPRETER_BEBOP_R1.json",
@@ -129,7 +130,8 @@
     "Salsa": {
       "slot_file": "composer_overrides/genre_styles/Latin/INTERPRETER_SALSA_R1.json",
       "profile_id": "SALSA_V1",
-      "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED"
+      "backend_status": "EXTERNAL_MMA_SALSA_CLAVE_4_4_TO_TYPED_MUSICAL_EVENTS_SOURCE_SFZ_UNVERIFIED",
+      "backend_file": "composer_overrides/genre_styles/Latin/salsa_genre_interpreter.py"
     },
     "Mambo": {
       "slot_file": "composer_overrides/genre_styles/Latin/INTERPRETER_MAMBO_R1.json",
@@ -281,5 +283,8 @@
       "profile_id": "SPIRITUAL_NONSECTARIAN_PROJECT_BASELINE_V1",
       "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED"
     }
-  }
+  },
+  "genre_backend_files_present": 3,
+  "genre_backend_files_pending": 52,
+  "audio_ready_from_these_new_per_genre_adapters": 0
 }

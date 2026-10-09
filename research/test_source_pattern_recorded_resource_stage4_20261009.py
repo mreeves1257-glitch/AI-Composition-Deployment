@@ -6,7 +6,7 @@ sys.path.insert(0,str(root/"composer_overrides"))
 from genre_styles.shared_interpreter_router import (connect_all_genres,InterpreterConnectionError)
 from genre_styles.source_pattern_library import compile_original_source_seed
 from genre_styles.source_pattern_resource_handoff import (
- PINNED,CONTEXT_PINNED,load_binding_file,map_source_roles)
+ PINNED,CONTEXT_PINNED,ORIGINAL_SOURCE_PROVENANCE,load_binding_file,map_source_roles)
 from genre_styles.source_pattern_composer_handoff import (
  prepare_source_pattern_composer_handoff)
 
@@ -19,7 +19,9 @@ def rock_fixture():
       ("hi_hat","KARORYFER_BIG_RUSTY_DRUMS","Programs/composer-hihat-lite.sfz")]
     return {identity:{"resource_id":resource,"preferred_mapping":sfz,
              "resource_type":"SFZ_SAMPLE_LIBRARY",
-             "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION"}
+             "fallback_policy":"NO_SYNTHETIC_SUBSTITUTION",
+             "library":ORIGINAL_SOURCE_PROVENANCE[resource][0],
+             "license":ORIGINAL_SOURCE_PROVENANCE[resource][1]}
         for identity,resource,sfz in defs}
 
 class InstrumentToCompositionTests(unittest.TestCase):
@@ -101,6 +103,10 @@ class InstrumentToCompositionTests(unittest.TestCase):
     response=map_source_roles(plan,target_bindings=bad)
     self.assertIn("SNARE",response["unresolved_roles"])
     self.assertFalse(response["source_program_identification_complete"])
+    wrong_license=rock_fixture()
+    wrong_license["snare_drum"]["license"]="UNAUTHORIZED"
+    license_result=map_source_roles(plan,target_bindings=wrong_license)
+    self.assertIn("SNARE",license_result["unresolved_roles"])
     a=prepare_source_pattern_composer_handoff(plan,target_bindings=bad)
     self.assertEqual(a["candidate_stage4_events"],[])
     b=map_source_roles(plan,stage3={"status":"PASS","palette":["electric_guitar","drums"]},

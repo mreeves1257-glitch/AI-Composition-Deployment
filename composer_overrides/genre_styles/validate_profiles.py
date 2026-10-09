@@ -154,7 +154,17 @@ assert sum(len(members) for members in index["family_memberships"].values()) == 
 for name, members in index["family_memberships"].items():
     assert all(index["genre_to_family_file"][genre] == name + "/profile.json"
                for genre in members)
-assert len(list(ROOT.glob("*.json"))) == 1, "OLD_FLAT_GENRE_FILES_STILL_PRESENT"
+# Root JSON here is intentionally limited to canonical indexes and shared
+# reference/bridge manifests; per-genre music still lives ONLY in 13 families.
+shared_root_references = {
+    "index.json",
+    "GENRE_ARRANGER_INTERPRETER_HANDOFF_REFERENCE_R1.json",
+    "GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
+    "SHARED_INTERPRETER_ALL_55_LINKS_R1.json",
+    "SHARED_INTERPRETER_EXTERNAL_BACKEND_CATALOG_R1.json",
+}
+assert {p.name for p in ROOT.glob("*.json")} == shared_root_references, \
+    "UNEXPECTED_FLAT_GENRE_FILES_OR_REFERENCE_FILES_MISSING"
 assert len(list(ROOT.glob("*/profile.json"))) == 13, "MISSING_FAMILY_FOLDER"
 for name in index["family_memberships"]:
     p = ROOT / name / "profile.json"

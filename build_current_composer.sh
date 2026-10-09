@@ -467,6 +467,14 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     developed['tempo_bpm'] = tempo_bpm
     developed['bars'] = bars
     developed['events'] = events
+    # One shared, source-grounded genre grammar, not a second Rock interpreter.
+    # Attach ONLY symbolic intent metadata; the original notes, sampled audio,
+    # plug and independent 3D mixing are untouched and remain gated.
+    from genre_styles.shared_musical_grammar import compile_musical_plan
+    developed['shared_musical_plan'] = compile_musical_plan(
+        name, meter=result['meter'], tempo_bpm=tempo_bpm, bars=bars,
+        original_stage3_result=result,
+    )
     if name == 'ROCK':
         # The legacy palette declares one generic "drums" instrument even
         # though developed Rock events use separate sample-backed kit members.

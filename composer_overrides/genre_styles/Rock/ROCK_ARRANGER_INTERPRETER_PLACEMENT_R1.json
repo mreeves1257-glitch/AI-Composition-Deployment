@@ -1,0 +1,90 @@
+{
+  "schema_version": "ROCK_ARRANGER_INTERPRETER_REFERENCE_R1",
+  "genre": "ROCK",
+  "genre_family": "Rock",
+  "status": "RESEARCH_ONLY_NOT_ATTACHED_TO_COMPOSER",
+  "placement": "WITHIN_EXISTING_SEVEN_STAGE_ROCK_FLOW",
+  "stage_boundary": {
+    "from": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+    "to": "COMPOSE_SEPARATE_PARTS",
+    "uses_prior_step": "DEFINE_MUSICAL_STRUCTURE"
+  },
+  "original_family_profile": "composer_overrides/genre_styles/Rock/profile.json",
+  "original_source_bank_policy": "IMMUTABLE",
+  "original_seven_stage_handoffs_changed": false,
+  "runtime_activated": false,
+  "interpreter_candidate": "MMA 25.05.0 (externally verified official GPL source, NOT yet installed/linked)",
+  "source_interpreter_input": {
+    "genre_musical_definitions": [
+      "groove_behavior",
+      "phrase_behavior",
+      "form_tendencies",
+      "percussion_behavior_if_applicable",
+      "ensemble_player_behavior",
+      "arrangement_transformation"
+    ],
+    "selected_recorded_track_roles": [
+      "KICK",
+      "SNARE",
+      "HAT",
+      "TOMS",
+      "CRASH",
+      "RIDE",
+      "BASS",
+      "HARMONY",
+      "LEAD"
+    ],
+    "song_section_types": [
+      "INTRO",
+      "VERSE",
+      "CHORUS",
+      "BRIDGE",
+      "BREAK",
+      "OUTRO"
+    ],
+    "phrase_boundary_in_beats": "calculated_from_actual_meter_and_section_lengths",
+    "shared_band_groove": "one ensemble plan, individual instrument execution"
+  },
+  "intended_musical_intents": [
+    "PULSE",
+    "BACKBEAT",
+    "GHOST_NOTE",
+    "SNARE_ROLL",
+    "TOM_FILL",
+    "HI_HAT_SUBDIVISION",
+    "KICK_BASS_LOCK",
+    "GUITAR_ACCENT",
+    "LEAD_RESPONSE",
+    "TRANSITION_PICKUP",
+    "CRASH_ARRIVAL",
+    "REST",
+    "BREAKDOWN",
+    "SECTION_REPRISE"
+  ],
+  "example_illustrative_phrase": {
+    "intent": "FILL_INTO_CHORUS",
+    "phrase_role": "last_bar_of_verse",
+    "drummer": "SNARE_SIXTEENTH_ROLL_THEN_TOM_FILL",
+    "rhythm_section": "BASS_AND_RHYTHM_GUITAR_PLAY_COORDINATED_PICKUP",
+    "next_section": "KICK_AND_CRASH_ON_DOWNBEAT_WITH_BASS",
+    "note": "Illustration only. Must be compiled against actual sample voice mappings before any MIDI output."
+  },
+  "interpretation_route": {
+    "step2": "genre defines desired Rock rhythmic and sectional behavior",
+    "step3": "resolve exact original instrument/sample capability and safe drum MIDI mapping",
+    "step3_to_step4": "external language parser/conductor generates validated instrument-role note and section plans",
+    "step4": "compose separate synchronized part events; NEVER mix all drum parts into one stem",
+    "step5": "translate notes/articulations via existing source-native performance contract",
+    "step6": "use recorded SFZ program bindings to produce separate audio stems",
+    "step7": "preserve genre ratios then standalone original 3D mixer"
+  },
+  "safety_requirements": [
+    "NO_SYNTHETIC_SUBSTITUTION",
+    "KEEP_USER_APPROVED_CLEAN_ROCK_INSTRUMENT_BALANCE",
+    "MMA_GM_CHANNEL_10_NOT_ASSUMED_EQUAL_TO_KARORYFER_TRACK_MAPPINGS",
+    "VERIFY_EACH_DRUM_PITCH_AND_RESOURCE_BETWEEN_EXTERNAL_MIDI_AND_ORIGINAL_SFZ",
+    "NO_GPL_CODE_IMPORTED_INTO_ORIGINAL_COMPOSER_WITHOUT_LICENSE_EVALUATION",
+    "NO_GENRE_LINKS_ACTIVATED",
+    "NO_PRODUCTION_CHANGES"
+  ]
+}

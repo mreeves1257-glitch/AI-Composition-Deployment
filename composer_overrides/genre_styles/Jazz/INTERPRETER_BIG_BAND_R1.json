@@ -1,0 +1,56 @@
+{
+  "schema": "AI_COMPOSER_GENRE_OWNED_INTERPRETER_SLOT_R1",
+  "genre_name": "Big Band",
+  "source_profile_id": "BIG_BAND_V1",
+  "genre_family": "Jazz",
+  "authoring_scope": "THIS_EXACT_GENRE_ONLY_NO_FALLBACK_NO_OTHER_GENRE_RULES",
+  "musical_definition_ref": {
+    "file": "composer_overrides/genre_styles/Jazz/profile.json",
+    "json_pointer": "/profiles/Big Band/musical_definition"
+  },
+  "original_seven_stage_ref": {
+    "file": "composer_overrides/genre_styles/Jazz/profile.json",
+    "json_pointer": "/profiles/Big Band/seven_stage_plan"
+  },
+  "source_pattern_ref": {
+    "file": "composer_overrides/genre_styles/Jazz/SOURCE_PATTERN_LIBRARY_R1.json",
+    "genre_key": "Big Band"
+  },
+  "source_resource_ref": {
+    "file": "composer_overrides/genre_styles/Jazz/SOURCE_RESOURCE_BINDINGS_R1.json",
+    "genre_key": "Big Band"
+  },
+  "owned_stage_boundary": "AFTER_STAGE3_INSTRUMENT_SELECTION_BEFORE_STAGE4_COMPOSE",
+  "interpreter_owns": [
+    "section_density_and_transitions",
+    "ensemble_beat_clock_and_groove",
+    "style_specific_chord_conversion",
+    "role_aware_note_retrigger_and_voice_leading",
+    "fills_breaks_and_accents",
+    "source_supported_instrument_player_instructions"
+  ],
+  "original_composer_owns": "STAGE4_COMPOSE_SEPARATE_PARTS",
+  "performance_stage_owns": "STAGE5_RECORDED_INSTRUMENT_ARTICULATION_PHRASING",
+  "shared_reusable_infrastructure": [
+    "genre_styles.shared_interpreter_router",
+    "genre_styles.shared_capability_execution",
+    "original_instrument_program",
+    "original_target_program",
+    "original_midi_output_core",
+    "sfz_renderer_adapter",
+    "independent_standalone_3d_mixer"
+  ],
+  "backend_file": null,
+  "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED",
+  "original_rock_midi_sha256": null,
+  "source_specific_note_score_approved_for_production": false,
+  "full_genre_audition_verified": false,
+  "activated_in_live_composer": false,
+  "prohibited": [
+    "inheriting_Rock_notes_into_another_genre",
+    "generic_piano_or_drums_without_exact_recorded_source",
+    "per_genre_duplicate_render_engine",
+    "eighth_or_ninth_global_stage",
+    "proprietary_Yamaha_Korg_sample_or_style_code_copied"
+  ]
+}

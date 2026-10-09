@@ -57,8 +57,7 @@ def validate():
             expect(stages["enable_runtime_connections"] is False,
                    "GENRE_STAGE_SILENTLY_ENABLED:"+name)
             expect(entry["profile_id"]==definitions["profile_id"],"PROFILE_ID_MISMATCH:"+name)
-            expect(entry["interpreter_slot"]=="BETWEEN_ORIGINAL_STAGE_03_AND_04"
-                   or entry["isolated_slot"]=="BETWEEN_ORIGINAL_STAGE_03_AND_04",
+            expect(entry.get("interpreter_slot",entry.get("isolated_slot"))=="BETWEEN_ORIGINAL_STAGE_03_AND_04",
                    "INTERPRETER_ATTACHED_IN_WRONG_STAGE:"+name)
             xref=entry["source_of_truth"]
             expect(xref["read_original_values_at_runtime"] is True and

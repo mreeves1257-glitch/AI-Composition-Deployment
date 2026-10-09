@@ -1,0 +1,58 @@
+name: Real Complete Rock Song Composer SFZ 3D Output - Research Only
+on:
+  push:
+    branches:
+      - performance-language-research-20261008
+    paths:
+      - .github/workflows/real-rock-full-song-output-research.yml
+      - research/run_real_full_rock_song_v1.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-full-song-before-sustain-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build preserved Composer and original recorded instrument libraries, no deploy
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: bash build_current_composer.sh
+      - name: FIRST verify complete 127-bar original Rock song through real Composer to finished 3D WAV
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: python research/run_real_full_rock_song_v1.py --mode original
+      - name: SECOND verify candidate full Rock song using identical original Composer with research bass release only
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '1'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: python research/run_real_full_rock_song_v1.py --mode candidate
+      - name: Compare exact generated notes and both full 3D WAV results
+        run: python research/run_real_full_rock_song_v1.py --mode compare
+      - name: Archive full-song evidence, playback WAV and diagnostic reports if created
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-complete-rock-song-original-candidate-sfz-3d-20261008
+          path: |
+            research/rock_complete_song_validation/original/result.json
+            research/rock_complete_song_validation/original/composed_events.json
+            research/rock_complete_song_validation/original/ROCK_FULL_SONG_ORIGINAL_3D.wav
+            research/rock_complete_song_validation/candidate/result.json
+            research/rock_complete_song_validation/candidate/composed_events.json
+            research/rock_complete_song_validation/candidate/ROCK_FULL_SONG_CANDIDATE_3D.wav
+            research/rock_complete_song_validation/COMPARISON.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 14

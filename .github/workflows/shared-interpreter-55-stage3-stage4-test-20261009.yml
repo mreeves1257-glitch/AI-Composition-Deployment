@@ -8,6 +8,7 @@ on:
       - composer_overrides/genre_styles/shared_interpreter_router.py
       - research/test_shared_interpreter_router_all55_20261009.py
       - build_current_composer.sh
+      - research/test_shared_interpreter_actual_composer_adapter_20261009.py
   workflow_dispatch:
 permissions:
   contents: read
@@ -53,3 +54,5 @@ jobs:
           print("ORIGINAL_COMPOSER_55_PROFILE_IDS_MATCH_NEW_SHARED_INTERPRETER_PASS")
           print("EXISTING_BUILD_STAGE3_TO_STAGE4_SHARED_INTERPRETER_ROUTING_HOOK_PASS")
           PY
+      - name: Real preserved Composer adapter Rock composition invokes the shared interpreter handoff
+        run: python research/test_shared_interpreter_actual_composer_adapter_20261009.py

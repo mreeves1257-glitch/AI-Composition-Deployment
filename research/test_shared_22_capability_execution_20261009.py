@@ -13,7 +13,9 @@ def rock_plan():
         sections=[{"name":"A","bars":2,"variation_by_role":{"HARMONY":"intro"}}],
         chords=[{"bar":0,"symbol":"C"},{"bar":1,"symbol":"G7"}],
         roles=[{"role":"HARMONY","instrument_id":"electric_guitar",
-                "playable_midi_range":[40,90]}],
+                "playable_midi_range":[40,90]},
+               {"role":"KICK","instrument_id":"kick_drum_rock",
+                "playable_midi_range":[36,36]}],
         patterns=[{"role":"HARMONY","kind":"CHORD_RELATIVE",
           "retrigger":"STOP_AT_CHORD",
           "variations":{"intro":[{"beat":0,"duration":1,"degree":1,
@@ -35,6 +37,22 @@ MANIFEST={
   "verified_drum_note_map":{"36":36},
   "verified_round_robin_variants":3,
   "mpe_verified":True
+},
+"KICK":{
+  "instrument_id":"kick_drum_rock",
+  "resource_id":"TEST_KICK_RECORDING",
+  "source_type":"SFZ_SAMPLE_LIBRARY",
+  "program":"fixture-kick.sfz",
+  "source_verified":True,
+  "percussion_source_verified":True,
+  "verified_cc":[],
+  "verified_articulations":{},
+  "source_sha256":"KICK_INDEPENDENT_CHECKSUM_FIXTURE_ONLY",
+  "stem_id":"KICK",
+  "sample_lifetime":{"note_off_action":"ONE_SHOT","loop_validated":False},
+  "verified_drum_note_map":{"36":36},
+  "verified_round_robin_variants":3,
+  "mpe_verified":False
 }}
 
 class SharedCapabilityTests(unittest.TestCase):
@@ -88,7 +106,7 @@ class SharedCapabilityTests(unittest.TestCase):
                                "duration_beats":2,"start_level":75,"end_level":90}],
               "midi_controls":[{"role":"HARMONY","beat":"1/2",
                                 "controller":1,"value":88}],
-              "drum_strikes":[{"role":"HARMONY","source_note":36,
+              "drum_strikes":[{"role":"KICK","source_note":36,
                                "beat":1,"velocity":85}],
               "per_note_controls":[{"role":"HARMONY","note_id":1,"channel":2}]
             })["capabilities"]
@@ -108,7 +126,7 @@ class SharedCapabilityTests(unittest.TestCase):
             {"articulations":[{"role":"HARMONY","gesture":"imaginary_slide"}]},
             {"guitar_strums":[{"role":"HARMONY","direction":"DOWN",
                               "strings":[{"string":0,"fret":3,"midi":40}]}]},
-            {"drum_strikes":[{"role":"HARMONY","source_note":54,
+            {"drum_strikes":[{"role":"KICK","source_note":54,
                               "beat":0,"velocity":50}]},
             {"per_note_controls":[{"role":"HARMONY","note_id":1,"channel":2},
                                   {"role":"HARMONY","note_id":2,"channel":2}]}

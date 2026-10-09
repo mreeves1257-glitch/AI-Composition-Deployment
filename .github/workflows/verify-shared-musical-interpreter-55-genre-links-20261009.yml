@@ -8,6 +8,7 @@ on:
       - composer_overrides/genre_styles/shared_interpreter_router.py
       - composer_overrides/genre_styles/SHARED_INTERPRETER_ALL_55_LINKS_R1.json
       - research/verify_shared_interpreter_all55_links_20261009.py
+      - composer_overrides/genre_styles/validate_profiles.py
   workflow_dispatch:
 permissions:
   contents: read

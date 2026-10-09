@@ -7,6 +7,7 @@ on:
       - composer_overrides/genre_styles/shared_interpreter_router.py
       - composer_overrides/genre_styles/Rock/rock_pinned_mma_interpreter.py
       - research/test_pinned_mma_shared_interpreter_execution_20261009.py
+      - research/test_rock_guitar_strum_score_20261009.py
   workflow_dispatch:
 permissions:
   contents: read
@@ -36,6 +37,8 @@ jobs:
           python research/validate_all_55_22_capability_procedures_20261009.py
       - name: Execute Rock Stage-3-to-4 backend and compare EVERY note against October 8 exact original
         run: python research/test_pinned_mma_shared_interpreter_execution_20261009.py
+      - name: Verify separate Rock rhythm-guitar strum performance alters no other role or note pitches
+        run: python research/test_rock_guitar_strum_score_20261009.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

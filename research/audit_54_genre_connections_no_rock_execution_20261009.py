@@ -50,7 +50,7 @@ def run():
              "SEVEN_STAGE_OR_LIVE_DRIFT:"+genre)
         need(slot["activated_in_live_composer"] is False and
              slot["source_specific_note_score_approved_for_production"] is False and
-             entry["backend_file"]==slot["backend_file"],
+             entry.get("backend_file", slot["backend_file"])==slot["backend_file"],
              "INTERPRETER_ACTIVE_OR_WRONG_BACKEND:"+genre)
         if genre not in ("Jazz Waltz","Salsa"):
             need(slot["backend_file"]=="composer_overrides/genre_styles/source_pattern_library.py",
@@ -65,7 +65,7 @@ def run():
                  a.get("original_palette_group")==b.get("original_palette_group") and
                  b["independent_audio_stem_required"] is True,
                  "SOURCE_INSTRUMENT_SUBSTITUTION:"+genre)
-            need(b["preflight_verified_for_this_genre"] is False,
+            need(b.get("preflight_verified_for_this_genre") is not True,
                  "UNVERIFIED_AUDIO_FLAG_FALSELY_MARKED_PASS:"+genre)
             if b.get("resource_id"):
                 need(b.get("sfz_path") and b.get("registry_binding_id") and

@@ -1,0 +1,61 @@
+name: Rock Melody R1 Drum Collision A-B - Real 3D Full Songs (Research)
+on:
+  push:
+    branches:
+      - rock-drum-arrangement-research-20261008
+    paths:
+      - .github/workflows/rock-drum-collision-full-song-ab.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preserve-instruments-compare-drum-groove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild real Composer and recorded libraries with every experiment OFF
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_ROCK_DRUM_COLLISION_V1: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_ROCK_MELODY_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: bash build_current_composer.sh
+      - name: First render COMPLETE preserved Melody R1 to the same final 3D mixer
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_DRUM_COLLISION_V1: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: python research/run_rock_drum_arrangement_ab_v1.py --mode melody_r1
+      - name: Then render COMPLETE Melody R1 with ONLY exact duplicate kick/snare hits corrected
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_DRUM_COLLISION_V1: '1'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: python research/run_rock_drum_arrangement_ab_v1.py --mode melody_r1_clean_drums
+      - name: Verify 441 exact event removals, six+ untouched source parts and completed 3D output
+        run: python research/run_rock_drum_arrangement_ab_v1.py --mode compare
+      - name: Preserve WAV recordings, original scores and exact collision report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-melody-r1-drum-collision-full-song-ab-20261008
+          path: |
+            research/rock_drum_collision_ab_output/melody_r1/result.json
+            research/rock_drum_collision_ab_output/melody_r1/score_events.json
+            research/rock_drum_collision_ab_output/melody_r1/ROCK_ORIGINAL_MELODY_R1_FULL_3D.wav
+            research/rock_drum_collision_ab_output/melody_r1_clean_drums/result.json
+            research/rock_drum_collision_ab_output/melody_r1_clean_drums/score_events.json
+            research/rock_drum_collision_ab_output/melody_r1_clean_drums/ROCK_MELODY_R1_SINGLE_DRUM_HITS_FULL_3D.wav
+            research/rock_drum_collision_ab_output/COMPARISON.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 21

@@ -40,8 +40,8 @@
     "sfz_renderer_adapter",
     "independent_standalone_3d_mixer"
   ],
-  "backend_file": null,
-  "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED",
+  "backend_file": "composer_overrides/genre_styles/Latin/salsa_genre_interpreter.py",
+  "backend_status": "EXTERNAL_MMA_SALSA_CLAVE_4_4_TO_TYPED_MUSICAL_EVENTS_SOURCE_SFZ_UNVERIFIED",
   "original_rock_midi_sha256": null,
   "source_specific_note_score_approved_for_production": false,
   "full_genre_audition_verified": false,
@@ -52,5 +52,8 @@
     "per_genre_duplicate_render_engine",
     "eighth_or_ninth_global_stage",
     "proprietary_Yamaha_Korg_sample_or_style_code_copied"
-  ]
+  ],
+  "genre_specific_midi_style_source": "OFFICIAL_MMA_25_05_0_GPL_SEPARATE_EXECUTABLE_NOT_COPIED_INTO_COMPOSER",
+  "technical_midi_file_parsing": "genre_styles.external_style_midi_reader.read_arranger_style_midi",
+  "musical_events_interpreted_in_isolation_not_sample_rendered": true
 }

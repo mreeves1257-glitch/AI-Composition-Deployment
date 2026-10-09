@@ -39,3 +39,26 @@ def get_style(genre_name, profile):
     if profile.get("resolution_policy") != "AUTOMATIC_BASELINE_ALLOWED":
         return None
     return module
+
+
+def get_shared_musical_interpreter_link(genre_name: str) -> dict:
+    """One shared Stage 3-to-4 interpreter package; 55 original genre rules.
+
+    Explicit opt-in only. Does not replace get_style(), activate the Composer
+    or launch third-party engines.
+    """
+    from .shared_interpreter_router import resolve
+    return resolve(genre_name)
+
+
+def handoff_shared_interpreted_events(genre_name: str, *,
+                                     song_structure: dict,
+                                     selected_instruments: list,
+                                     arranger_events: list) -> dict:
+    """Source-validate per-track MIDI-derived parts before original Stage 4."""
+    from .shared_interpreter_router import stage3_to_stage4
+    return stage3_to_stage4(
+        genre_name, song_structure=song_structure,
+        selected_instruments=selected_instruments,
+        arranger_events=arranger_events,
+    )

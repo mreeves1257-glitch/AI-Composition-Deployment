@@ -4,6 +4,7 @@ on:
     branches:
       - checkpoint-all55-component-handoffs-20261009
     paths:
+      - build_current_composer.sh
       - composer_overrides/genre_styles/genre_owned_interpreter_dispatch.py
       - composer_overrides/genre_styles/**/SOURCE_RESOURCE_BINDINGS_R1.json
       - research/test_all55_component_handoffs_20261009.py
@@ -24,6 +25,26 @@ jobs:
         run: python research/test_all55_component_handoffs_20261009.py
       - name: Verify exact recorded-source mapping and original Composer candidate non-activation
         run: python research/test_source_pattern_recorded_resource_stage4_20261009.py
+      - name: Verify original Composer normal-mode runtime receives its isolated component receipt
+        run: |
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python - <<'PY'
+          import runpy
+          test=runpy.run_path('research/test_real_composer_grammar_20261009.py')
+          actual=test['result']
+          receipt=actual.get('genre_component_connection_receipt',{})
+          assert receipt.get('genre') == 'ROCK', receipt
+          assert receipt.get('status') == 'COMPONENTS_LINKED_IN_REHEARSAL_NOT_END_TO_END_AUDIO_COMPLETE', receipt
+          assert receipt['stage3_to_interpreter']['musical_event_count']>0
+          assert receipt['stage4_to_stage5_performance']['handler_count']==22
+          assert receipt['stage5_to_stage6_recorded_stems']['renderer_executed'] is False
+          assert receipt['stage6_to_stage7_independent_3d_mixer']['mixer_executed'] is False
+          assert receipt['live_composer_events_replaced'] is False
+          assert receipt['audio_render_authorized'] is False
+          assert actual.get('events'), 'ORIGINAL_COMPOSER_EVENTS_GONE'
+          print('ORIGINAL_COMPOSER_RECEIVES_REAL_ROCK_COMPONENT_HANDOFF_BUT_PRESERVES_AUDIO')
+          PY
       - name: Reject any output replacement or automatic live deployment
         run: |
           python - <<'PY'

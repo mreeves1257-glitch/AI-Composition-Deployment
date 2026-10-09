@@ -1,0 +1,56 @@
+name: Verify ONE Shared Musical Interpreter Boundary for All 55 Genres
+on:
+  push:
+    branches:
+      - shared-interpreter-link-all55-20261009
+    paths:
+      - .github/workflows/shared-interpreter-55-stage3-stage4-test-20261009.yml
+      - composer_overrides/genre_styles/shared_interpreter_router.py
+      - research/test_shared_interpreter_router_all55_20261009.py
+      - build_current_composer.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-shared-genre-routing-and-original-composer-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: All original 55 genus profiles and 22 recorded musical capability requirements
+        run: |
+          python composer_overrides/genre_styles/validate_profiles.py
+          python research/validate_all_55_22_capability_procedures_20261009.py
+          python research/validate_all_55_genre_interpreter_references_20261008.py
+      - name: Execute one shared interpreter router on 55 original styles, with safety negative tests
+        run: |
+          python -m py_compile composer_overrides/genre_styles/shared_interpreter_router.py
+          python research/test_shared_interpreter_router_all55_20261009.py
+      - name: Verify runtime Composer's original 55 profile identities and real Stage3 to Stage4 hook
+        run: |
+          set -euxo pipefail
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python - <<'PY'
+          from pathlib import Path
+          import json,sys
+          root=Path("composer_overrides/genre_styles")
+          index=json.loads((root/"index.json").read_text())
+          original=Path("/tmp/original-composer-runtime/AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json")
+          assert original.is_file(), "MISSING_LEGACY_ORIGINAL_REGISTRY"
+          legacy=json.loads(original.read_text())["profiles"]
+          assert len(legacy)==55 and len(index["genre_to_family_file"])==55
+          for genre, f in index["genre_to_family_file"].items():
+              family=json.loads((root/f).read_text())
+              assert legacy[genre]["profile_id"]==family["profiles"][genre]["musical_definition"]["profile_id"],"LEGACY_PROFILE_NOT_COMPATIBLE:"+genre
+          script=Path("build_current_composer.sh").read_text()
+          assert script.count("from genre_styles.shared_interpreter_router import route_to_shared_interpreter")==1
+          assert script.count("result['shared_interpreter_handoff'] = route_to_shared_interpreter(")==1
+          assert script.find("result = _legacy_build_setup(name, profile, mode, creation_seed)") < script.find("result['shared_interpreter_handoff'] = route_to_shared_interpreter(") < script.find("req = dict(result['theory_request'])")
+          assert "cp -R composer_overrides/genre_styles composer/runtime/genre_styles" in script
+          print("ORIGINAL_COMPOSER_55_PROFILE_IDS_MATCH_NEW_SHARED_INTERPRETER_PASS")
+          print("EXISTING_BUILD_STAGE3_TO_STAGE4_SHARED_INTERPRETER_ROUTING_HOOK_PASS")
+          PY

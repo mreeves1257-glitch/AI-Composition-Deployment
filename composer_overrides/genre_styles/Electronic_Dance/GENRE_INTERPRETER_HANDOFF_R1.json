@@ -37,11 +37,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Techno",
@@ -70,11 +77,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Trance",
@@ -103,11 +117,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Ambient Electronic",
@@ -136,11 +157,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Downtempo",
@@ -169,11 +197,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Breakbeat-related",
@@ -202,11 +237,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Garage-related",
@@ -235,11 +277,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Experimental Electronic",
@@ -268,11 +317,18 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     },
     {
       "genre_name": "Chugg / #chugg",
@@ -301,11 +357,20 @@
       ],
       "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
       "selected_instrument_capability_required": true,
-      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "typed_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
       "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
       "interpreter_stage_connected": false,
       "renderer_connected": false,
-      "final_3d_mix_modified": false
+      "final_3d_mix_modified": false,
+      "development_symbolic_score_executable": true,
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "original_per_genre_source_score": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "original_role_sound_map": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
+      "production_activated": false,
+      "requires_exact_sample_and_full_song_audition": true
     }
-  ]
+  ],
+  "interpreter_files_reconciled_with_actual_55_genre_registry": true,
+  "current_execution_scope": "DEVELOPMENT_SYMBOLIC_INTERPRETATION_NO_PRODUCTION_SCORE_REPLACEMENT"
 }

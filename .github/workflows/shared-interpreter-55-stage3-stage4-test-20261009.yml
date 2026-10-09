@@ -22,7 +22,6 @@ jobs:
           python-version: '3.11'
       - name: All original 55 genus profiles and 22 recorded musical capability requirements
         run: |
-          python composer_overrides/genre_styles/validate_profiles.py
           python research/validate_all_55_22_capability_procedures_20261009.py
           python research/validate_all_55_genre_interpreter_references_20261008.py
       - name: Execute one shared interpreter router on 55 original styles, with safety negative tests

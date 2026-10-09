@@ -7,6 +7,7 @@ on:
       - composer_overrides/genre_styles/source_pattern_composer_handoff.py
       - research/test_source_pattern_recorded_resource_stage4_20261009.py
       - research/test_real_stage4_instrument_target_contract_20261009.py
+      - research/test_rock_source_sfz_keyzone_authority_20261009.py
       - .github/workflows/rock-stage4-real-instrument-target-contract-20261009.yml
   workflow_dispatch:
 permissions:
@@ -22,6 +23,8 @@ jobs:
           python-version: "3.11"
       - name: Run exact original Stage4 instrument/target/performance/MIDI code against corrected notes
         run: python research/test_real_stage4_instrument_target_contract_20261009.py
+      - name: Check 102 original Rock authored note numbers against commit-pinned source SFZ program zones
+        run: python research/test_rock_source_sfz_keyzone_authority_20261009.py
       - name: Check all 55 genre resource mapping and existing shared 22 handlers remain unchanged
         run: |
           python research/test_source_pattern_recorded_resource_stage4_20261009.py

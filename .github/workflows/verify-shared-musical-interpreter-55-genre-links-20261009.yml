@@ -34,6 +34,38 @@ jobs:
           cp composer_overrides/genre_styles/SHARED_INTERPRETER_EXTERNAL_BACKEND_CATALOG_R1.json research/shared_interpreter_link_evidence_20261009/
           cp composer_overrides/genre_styles/shared_interpreter_router.py research/shared_interpreter_link_evidence_20261009/
           cp research/verify_shared_interpreter_all55_links_20261009.py research/shared_interpreter_link_evidence_20261009/
+      - name: Produce minimal self-contained dated hard copy of all 55 linked original genre profiles
+        run: |
+          set -euxo pipefail
+          out=research/shared_interpreter_link_evidence_20261009/COMPLETE_55_GENRE_LINK_PACKAGE
+          src="$out/composer_overrides/genre_styles"
+          mkdir -p "$src" "$out/research"
+          cp composer_overrides/genre_styles/shared_interpreter_router.py "$src/"
+          cp composer_overrides/genre_styles/registry.py "$src/"
+          cp composer_overrides/genre_styles/__init__.py "$src/"
+          cp composer_overrides/genre_styles/index.json "$src/"
+          cp composer_overrides/genre_styles/GENRE_ARRANGER_INTERPRETER_HANDOFF_REFERENCE_R1.json "$src/"
+          cp composer_overrides/genre_styles/GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json "$src/"
+          cp composer_overrides/genre_styles/SHARED_INTERPRETER_ALL_55_LINKS_R1.json "$src/"
+          cp composer_overrides/genre_styles/SHARED_INTERPRETER_EXTERNAL_BACKEND_CATALOG_R1.json "$src/"
+          for family in composer_overrides/genre_styles/*/GENRE_INTERPRETER_HANDOFF_R1.json; do
+            dir=$(basename "$(dirname "$family")")
+            mkdir -p "$src/$dir"
+            cp "$family" "$src/$dir/"
+            cp "composer_overrides/genre_styles/$dir/profile.json" "$src/$dir/"
+            cp "composer_overrides/genre_styles/$dir/GENRE_22_CAPABILITY_PROCEDURE_R1.json" "$src/$dir/"
+          done
+          cp research/verify_shared_interpreter_all55_links_20261009.py "$out/research/"
+          cp research/HARD_CHECKPOINT_SHARED_INTERPRETER_ONE_PACKAGE_ALL55_2026-10-09_0912_CDT.md "$out/research/"
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          p=Path("research/shared_interpreter_link_evidence_20261009/COMPLETE_55_GENRE_LINK_PACKAGE")
+          files=sorted(f for f in p.rglob("*") if f.is_file())
+          manifest={"date_local":"2026-10-09_0912_CDT","status":"SHARED_LINKS_VALIDATED_NO_LIVE_ACTIVATION","files":[{"path":str(f.relative_to(p)),"sha256":hashlib.sha256(f.read_bytes()).hexdigest(),"bytes":f.stat().st_size} for f in files]}
+          (p/"SHA256_CONTENT_MANIFEST_2026-10-09.json").write_text(json.dumps(manifest,indent=2)+"\n")
+          print("HARD_COPY_55_GENRES_AND_SINGLE_ROUTER_VERIFIED",len(files))
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: Shared_Interpreter_55_Genre_Link_Verification_2026_10_09

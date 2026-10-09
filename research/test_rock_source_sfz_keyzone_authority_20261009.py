@@ -40,12 +40,16 @@ def source_text(role):
         raise RuntimeError("PROGRAM_TEXT_TRUNCATED:"+role)
     return data.decode("utf-8")
 
-def group_playable_keys(sfz, *, guitar=False):
+def group_playable_keys(sfz, *, guitar=False, pitched_bass=False):
     keys=set()
     for group in re.split(r"(?m)^\s*<group>\s*",sfz)[1:]:
         a=re.search(r"(?m)^\s*lokey=(\d+)",group)
         b=re.search(r"(?m)^\s*hikey=(\d+)",group)
         if not a or not b or not re.search(r"(?m)^\s*sample=",group):
+            continue
+        if pitched_bass and not re.search(r"(?m)^\s*sample=sustain",group):
+            # Growlybass keys 81–84 are scrape effects, not pitched bass.
+            # A legal MIDI note there must not pass a bass melody-range check.
             continue
         lo=int(a.group(1));hi=int(b.group(1))
         if not 0<=lo<=hi<=127:raise ValueError("INVALID_SOURCE_SFZ_ZONE")
@@ -81,7 +85,8 @@ def main():
     notes=defaultdict(list)
     for n in seed["symbolic_note_events"]:
         notes[n["role"]].append(n["midi"])
-    allowed={role:group_playable_keys(source_text(role),guitar=(role=="HARMONY"))
+    allowed={role:group_playable_keys(source_text(role),guitar=(role=="HARMONY"),
+                                     pitched_bass=(role=="BASS"))
              for role in UPSTREAM}
     build=(ROOT/"build_current_composer.sh").read_text()
     # Builder must select exactly the program path used in the guarded

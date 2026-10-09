@@ -1,0 +1,50 @@
+name: Source Pattern Recorded-Resource and Stage4 Handoff — 55 Genres (No Deploy)
+on:
+  push:
+    branches:
+      - genre-pattern-resource-stage4-handoff-20261009
+    paths:
+      - build_current_composer.sh
+      - composer_overrides/genre_styles/source_pattern_resource_handoff.py
+      - composer_overrides/genre_styles/source_pattern_composer_handoff.py
+      - composer_overrides/genre_styles/**/SOURCE_RESOURCE_BINDINGS_R1.json
+      - research/test_source_pattern_recorded_resource_stage4_20261009.py
+      - research/test_real_composer_grammar_20261009.py
+      - .github/workflows/genre-pattern-resource-stage4-handoff-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage4-exact-source-identity-without-production-change:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify 55 role maps, exact Rock SFZ ID candidates and blocked unsafe sounds
+        run: python research/test_source_pattern_recorded_resource_stage4_20261009.py
+      - name: Verify common source-pattern notes and 22 capability code remain correct
+        run: |
+          python research/test_all55_source_pattern_library_20261009.py
+          python research/test_shared_22_capability_execution_20261009.py
+          python research/test_55_genre_capability_binding_files_20261009.py
+          python research/test_shared_interpreter_router_all55_20261009.py
+          python research/validate_uniform_genre_connections_20261009.py
+      - name: Check actual original Composer normal-mode integration without rendering
+        run: |
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python research/test_real_composer_grammar_20261009.py
+      - name: Confirm source-pattern Composer score is separate and never deployed
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          b=Path("build_current_composer.sh").read_text()
+          assert b.count("developed['source_pattern_composer_handoff'] = prepare_source_pattern_composer_handoff(")==1
+          assert b.count("from genre_styles.source_pattern_composer_handoff import prepare_source_pattern_composer_handoff")==1
+          assert b.count("developed['events'] = events")==1
+          assert "developed['events'] = developed['source_pattern_composer_handoff']" not in b
+          print("SAME_COMPOSER_EVENTS_NO_PRODUCTION_OVERRIDE_PASS")
+          PY

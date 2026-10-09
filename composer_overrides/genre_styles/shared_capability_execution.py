@@ -7,6 +7,7 @@ No proprietary Yamaha/Korg files, claims or implementations are included.
 """
 from __future__ import annotations
 from collections import defaultdict
+import json
 from fractions import Fraction
 from pathlib import Path
 from typing import Any, Mapping, Sequence
@@ -341,6 +342,29 @@ def evaluate_22_capabilities(
     """
     genre=plan["genre"]
     reference=route_to_shared_interpreter(genre)
+    # Every genre family contains its own authoritative crossref to this
+    # one central dispatcher; validate that reference before executing.
+    family_file=(Path(__file__).resolve().parent/reference["family"]/
+                 "GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json")
+    require(family_file.is_file(),"MISSING_GENRE_EXECUTION_BINDING:"+genre)
+    family_record=json.loads(family_file.read_text(encoding="utf-8"))
+    require(family_record["family"]==reference["family"] and
+            family_record["shared_interpreter_only"] is True and
+            family_record["original_stage_connections_activated"] is False,
+            "INVALID_SHARED_GENRE_EXECUTION_BINDING")
+    matches=[x for x in family_record["per_genre"] if x["genre_name"]==genre]
+    require(len(matches)==1,"GENRE_EXECUTION_BINDING_NOT_UNIQUE:"+genre)
+    binding=matches[0]
+    require(binding["profile_id"]==reference["genre_profile_id"] and
+            binding["source_profile_file"]==reference["source_path"] and
+            binding["stage_3_to_4_interpreter"]==
+               "genre_styles.shared_interpreter_router.route_to_shared_interpreter" and
+            binding["genre_grammar"]==
+               "genre_styles.shared_musical_grammar.compile_musical_plan" and
+            binding["capability_executor"]==
+               "genre_styles.shared_capability_execution.evaluate_22_capabilities" and
+            binding["execution_capabilities"]=="CAP_01_TO_CAP_22_VIA_ONE_SHARED_DISPATCH" and
+            binding["live_enabled"] is False,"EXECUTION_BINDING_PROFILE_MISMATCH:"+genre)
     require(plan["genre_profile_id"]==reference["genre_profile_id"],
             "CROSS_GENRE_EXECUTION_FORBIDDEN")
     require(plan["stage_3_to_4"]==reference["stage_3_to_4"] and
@@ -363,5 +387,7 @@ def evaluate_22_capabilities(
             "shared_interpreter":reference["stage_3_to_4"],
             "capability_count":22,"capabilities":output,
             "all_handlers_connected":True,
+            "genre_binding_file":str(family_file.relative_to(Path(__file__).resolve().parent)),
+            "genre_binding_validated":True,
             "usable_symbolic_outputs_are_not_audio":True,
             "ready_for_live_deployment":False,"audio_verified":False}

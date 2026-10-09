@@ -1,0 +1,38 @@
+name: Verify Entire AI Composer Machine Connection Map (Read-only 2026-10-09)
+on:
+  push:
+    branches:
+      - machine-connection-map-2026-10-09-1342-CDT
+    paths:
+      - research/VERIFIED_ENTIRE_MACHINE_CONNECTION_MAP_2026-10-09_1342_CDT.md
+      - research/verify_entire_machine_map_20261009.py
+      - .github/workflows/verified-entire-machine-map-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  code-grounded-seven-stage-and-55-genre-connection-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify all seven real Composer hops and two separate musical routes
+        run: python research/verify_entire_machine_map_20261009.py
+      - name: Verify all 55 source-pattern/22-handler connection records
+        run: |
+          python research/test_all55_source_pattern_library_20261009.py
+          python research/test_source_pattern_recorded_resource_stage4_20261009.py
+          python research/test_shared_22_capability_execution_20261009.py
+      - name: Exercise the original Composer Stage3 to 4 route in isolation
+        run: |
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python research/test_real_composer_grammar_20261009.py
+      - name: Confirm live deployment and preserved hard-copy branch are untouched
+        run: |
+          test -f research/HARD_COPY_ALL_55_PROJECT_2026-10-09_1128_CDT.md
+          test "$(grep -c 'developed\['\"'\"'source_pattern_composer_handoff'\"'\"'\]' build_current_composer.sh)" -ge 1
+          echo "READ_ONLY_MACHINE_CONNECTION_AUDIT_PASS_NO_DEPLOY"

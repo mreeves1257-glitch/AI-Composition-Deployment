@@ -1,0 +1,42 @@
+name: Verify 55 Separate Genre Interpreter Contracts (No Deploy)
+on:
+  push:
+    branches:
+      - genre-specific-interpreters-55-rock-restored-20261009
+    paths:
+      - composer_overrides/genre_styles/**/INTERPRETER_*_R1.json
+      - composer_overrides/genre_styles/GENRE_INTERPRETER_REGISTRY_R1.json
+      - composer_overrides/genre_styles/Rock/rock_pinned_mma_interpreter.py
+      - composer_overrides/genre_styles/Rock/rock_strum_phrase_performance.py
+      - research/verify_55_independent_genre_interpreter_placements_20261009.py
+      - .github/workflows/verify-55-independent-genre-interpreter-slots-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  verify-55-distinct-interpreter-owners-and-recovered-rock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify 55 distinct interpreter owners and byte-for-byte recovered Rock source backend
+        run: python research/verify_55_independent_genre_interpreter_placements_20261009.py
+      - name: Retrieve exact Oct 8 original Rock input artifact for read-only checksum-pinned interpreter test
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/oct8_original_rock_input
+          gh run download 37870594722 -R mreeves1257-glitch/AI-Composition-Deployment -n official-mma-16bar-rock-arranger-to-original-recorded-instruments-r1-20261008 -D /tmp/oct8_original_rock_input
+          test -f /tmp/oct8_original_rock_input/MMA_Rock_16Bar_Two_Sections.mid
+          python -m pip install mido==1.3.3
+      - name: Exercise exact recovered 16-bar 145 BPM Rock interpreter and its 420 original events
+        run: python research/verify_55_independent_genre_interpreter_placements_20261009.py /tmp/oct8_original_rock_input/MMA_Rock_16Bar_Two_Sections.mid
+      - name: Verify original shared capabilities and separate Rock sources unchanged
+        run: |
+          python research/test_source_pattern_recorded_resource_stage4_20261009.py
+          python research/test_shared_22_capability_execution_20261009.py
+          echo GENRE_INTERPRETER_RESTORATION_NO_PRODUCTION_DEPLOY_PASS

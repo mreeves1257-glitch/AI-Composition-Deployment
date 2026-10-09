@@ -1,0 +1,46 @@
+name: Research Rock Bass Sustain Feature-Gate Full Composer Proof
+on:
+  push:
+    branches:
+      - performance-language-research-20261008
+    paths:
+      - .github/workflows/rock-bass-feature-gate-proof.yml
+      - composer_overrides/rock_bass_sustain_policy_v1.py
+      - composer_overrides/test_rock_bass_sustain_policy_v1.py
+      - composer_overrides/genre_development_patch.py
+      - research/test_full_rock_bass_policy_v1.py
+      - build_current_composer.sh
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-original-composer-off-on-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconstruct original recorded Composer and run native safety tests with new feature disabled
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: "1"
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: "0"
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: bash build_current_composer.sh
+      - name: Verify that production-default and opt-in score differ only in Rock BASS duration
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: "0"
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: python research/test_full_rock_bass_policy_v1.py
+      - name: Archive full song-scoring proof without deployment
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-bass-opt-in-feature-proof-20261008
+          path: research/rock_bass_policy_proof_2026-10-08.json
+          if-no-files-found: warn
+          retention-days: 21

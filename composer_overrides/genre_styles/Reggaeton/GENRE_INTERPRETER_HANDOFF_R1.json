@@ -1,0 +1,28 @@
+{
+  "schema_version": "GENRE_INTERPRETER_FAMILY_XREF_R1",
+  "family_name": "Reggaeton",
+  "source_profile_file": "composer_overrides/genre_styles/Reggaeton/profile.json",
+  "profile_count": 1,
+  "original_7_stages_unmodified": true,
+  "reference_only": true,
+  "original_connections_activated": false,
+  "genres": [
+    {
+      "genre_name": "Mexican Reggaeton",
+      "profile_id": "MEXICAN_REGGAETON_SCENE_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Reggaeton/profile.json",
+        "json_pointer": "/profiles/Mexican Reggaeton/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    }
+  ]
+}

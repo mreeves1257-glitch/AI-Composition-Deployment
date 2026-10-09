@@ -1,0 +1,54 @@
+name: Shared 22 Capability Runtime — All 55 Genre Connections (No Deploy)
+on:
+  push:
+    branches:
+      - shared-22-capability-execution-20261009
+    paths:
+      - composer_overrides/genre_styles/shared_capability_execution.py
+      - composer_overrides/genre_styles/shared_musical_grammar.py
+      - composer_overrides/genre_styles/**/GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json
+      - research/test_shared_22_capability_execution_20261009.py
+      - research/test_55_genre_capability_binding_files_20261009.py
+      - .github/workflows/shared-22-capability-55-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-55-genre-one-interpreter-all-22:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate all 22 shared executable handlers with source-specific and safety tests
+        run: python research/test_shared_22_capability_execution_20261009.py
+      - name: Validate all 55 individual genre bindings and 13 family folders
+        run: python research/test_55_genre_capability_binding_files_20261009.py
+      - name: Retest original 55 profiles and seven-stage common router
+        run: |
+          python research/test_shared_musical_grammar_20261009.py
+          python research/test_shared_interpreter_router_all55_20261009.py
+          python research/test_clean_shared_interpreter_all55_20261009.py
+          python research/validate_uniform_genre_connections_20261009.py
+          python research/validate_all_55_22_capability_procedures_20261009.py
+      - name: Check original Composer runtime still invokes only the one shared interpreter
+        run: |
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python research/test_real_composer_grammar_20261009.py
+      - name: Check language service has no production activation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root=Path("composer_overrides/genre_styles")
+          master=(root/"shared_capability_execution.py").read_text()
+          grammar=(root/"shared_musical_grammar.py").read_text()
+          router=(root/"shared_interpreter_router.py").read_text()
+          assert master.count("def evaluate_22_capabilities(")==1
+          assert 'output["capability_execution"]=evaluate_22_capabilities(output)' in grammar
+          assert "from .Rock." not in router
+          assert 'def compile_selected_musical_interpreter(' not in router
+          print("ONE_INTERPRETER_22_COMMON_EXECUTION_HANDOFF_PASS")
+          PY

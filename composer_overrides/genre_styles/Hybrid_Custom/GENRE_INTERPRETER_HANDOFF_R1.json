@@ -1,0 +1,179 @@
+{
+  "schema_version": "GENRE_INTERPRETER_FAMILY_XREF_R1",
+  "family_name": "Hybrid_Custom",
+  "family_directory": "Hybrid_Custom",
+  "source_profile_file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+  "read_only_crossrefs_to_existing_music": true,
+  "purpose": "Explicitly file Stage-3-to-4 musical-intent interpreter slot for every genre while preserving its own language and existing 7-stage flow.",
+  "original_stage_count": 7,
+  "original_connections_activated": false,
+  "external_candidate": "MMA_25_05_0_AS_SEPARATE_GPL_REFERENCE_NOT_INSTALLED",
+  "profile_count": 5,
+  "genres": [
+    {
+      "genre_name": "Regional Electronic Hybrids",
+      "profile_id": "REGIONAL_ELECTRONIC_HYBRID_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+        "json_pointer": "/profiles/Regional Electronic Hybrids/musical_definition",
+        "stage_pointer": "/profiles/Regional Electronic Hybrids/seven_stage_plan",
+        "read_original_values_at_runtime": true
+      },
+      "accepts_form_and_meter_from": "ORIGINAL_STAGE_02_DEFINE_MUSICAL_STRUCTURE",
+      "accepts_resource_bindings_from": "ORIGINAL_STAGE_03_CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+      "passes_validated_role_plan_to": "ORIGINAL_STAGE_04_COMPOSE_SEPARATE_PARTS",
+      "isolated_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "authoring_policy": "GENRE_SPECIFIC_ONLY_NO_ROCK_FALLBACK",
+      "musical_intent_inputs": [
+        "form_tendencies",
+        "phrase_behavior",
+        "groove_behavior",
+        "harmony_behavior",
+        "bass_behavior",
+        "percussion_behavior_if_applicable",
+        "ensemble_player_behavior",
+        "arrangement_transformation",
+        "instrument_role_behavior"
+      ],
+      "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
+      "selected_instrument_capability_required": true,
+      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
+      "interpreter_stage_connected": false,
+      "renderer_connected": false,
+      "final_3d_mix_modified": false
+    },
+    {
+      "genre_name": "Genre-Breaking / Borderless",
+      "profile_id": "BORDERLESS_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+        "json_pointer": "/profiles/Genre-Breaking ~1 Borderless/musical_definition",
+        "stage_pointer": "/profiles/Genre-Breaking ~1 Borderless/seven_stage_plan",
+        "read_original_values_at_runtime": true
+      },
+      "accepts_form_and_meter_from": "ORIGINAL_STAGE_02_DEFINE_MUSICAL_STRUCTURE",
+      "accepts_resource_bindings_from": "ORIGINAL_STAGE_03_CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+      "passes_validated_role_plan_to": "ORIGINAL_STAGE_04_COMPOSE_SEPARATE_PARTS",
+      "isolated_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "authoring_policy": "GENRE_SPECIFIC_ONLY_NO_ROCK_FALLBACK",
+      "musical_intent_inputs": [
+        "form_tendencies",
+        "phrase_behavior",
+        "groove_behavior",
+        "harmony_behavior",
+        "bass_behavior",
+        "percussion_behavior_if_applicable",
+        "ensemble_player_behavior",
+        "arrangement_transformation",
+        "instrument_role_behavior"
+      ],
+      "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
+      "selected_instrument_capability_required": true,
+      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
+      "interpreter_stage_connected": false,
+      "renderer_connected": false,
+      "final_3d_mix_modified": false
+    },
+    {
+      "genre_name": "Custom Hybrid",
+      "profile_id": "CUSTOM_HYBRID_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+        "json_pointer": "/profiles/Custom Hybrid/musical_definition",
+        "stage_pointer": "/profiles/Custom Hybrid/seven_stage_plan",
+        "read_original_values_at_runtime": true
+      },
+      "accepts_form_and_meter_from": "ORIGINAL_STAGE_02_DEFINE_MUSICAL_STRUCTURE",
+      "accepts_resource_bindings_from": "ORIGINAL_STAGE_03_CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+      "passes_validated_role_plan_to": "ORIGINAL_STAGE_04_COMPOSE_SEPARATE_PARTS",
+      "isolated_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "authoring_policy": "GENRE_SPECIFIC_ONLY_NO_ROCK_FALLBACK",
+      "musical_intent_inputs": [
+        "form_tendencies",
+        "phrase_behavior",
+        "groove_behavior",
+        "harmony_behavior",
+        "bass_behavior",
+        "percussion_behavior_if_applicable",
+        "ensemble_player_behavior",
+        "arrangement_transformation",
+        "instrument_role_behavior"
+      ],
+      "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
+      "selected_instrument_capability_required": true,
+      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
+      "interpreter_stage_connected": false,
+      "renderer_connected": false,
+      "final_3d_mix_modified": false
+    },
+    {
+      "genre_name": "Custom Style",
+      "profile_id": "CUSTOM_STYLE_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+        "json_pointer": "/profiles/Custom Style/musical_definition",
+        "stage_pointer": "/profiles/Custom Style/seven_stage_plan",
+        "read_original_values_at_runtime": true
+      },
+      "accepts_form_and_meter_from": "ORIGINAL_STAGE_02_DEFINE_MUSICAL_STRUCTURE",
+      "accepts_resource_bindings_from": "ORIGINAL_STAGE_03_CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+      "passes_validated_role_plan_to": "ORIGINAL_STAGE_04_COMPOSE_SEPARATE_PARTS",
+      "isolated_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "authoring_policy": "GENRE_SPECIFIC_ONLY_NO_ROCK_FALLBACK",
+      "musical_intent_inputs": [
+        "form_tendencies",
+        "phrase_behavior",
+        "groove_behavior",
+        "harmony_behavior",
+        "bass_behavior",
+        "percussion_behavior_if_applicable",
+        "ensemble_player_behavior",
+        "arrangement_transformation",
+        "instrument_role_behavior"
+      ],
+      "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
+      "selected_instrument_capability_required": true,
+      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
+      "interpreter_stage_connected": false,
+      "renderer_connected": false,
+      "final_3d_mix_modified": false
+    },
+    {
+      "genre_name": "Controlled Custom Style Profile",
+      "profile_id": "CONTROLLED_CUSTOM_STYLE_PROFILE_V2",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+        "json_pointer": "/profiles/Controlled Custom Style Profile/musical_definition",
+        "stage_pointer": "/profiles/Controlled Custom Style Profile/seven_stage_plan",
+        "read_original_values_at_runtime": true
+      },
+      "accepts_form_and_meter_from": "ORIGINAL_STAGE_02_DEFINE_MUSICAL_STRUCTURE",
+      "accepts_resource_bindings_from": "ORIGINAL_STAGE_03_CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+      "passes_validated_role_plan_to": "ORIGINAL_STAGE_04_COMPOSE_SEPARATE_PARTS",
+      "isolated_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "authoring_policy": "GENRE_SPECIFIC_ONLY_NO_ROCK_FALLBACK",
+      "musical_intent_inputs": [
+        "form_tendencies",
+        "phrase_behavior",
+        "groove_behavior",
+        "harmony_behavior",
+        "bass_behavior",
+        "percussion_behavior_if_applicable",
+        "ensemble_player_behavior",
+        "arrangement_transformation",
+        "instrument_role_behavior"
+      ],
+      "expression_owned_by": "ORIGINAL_STAGE_05_PERFORM_MUSICALLY",
+      "selected_instrument_capability_required": true,
+      "typed_interpreter_backend": "UNSELECTED_PENDING_DISTINCT_GENRE_AUDITION",
+      "resource_mapping_state": "PENDING_GENRE_SPECIFIC_VALIDATION",
+      "interpreter_stage_connected": false,
+      "renderer_connected": false,
+      "final_3d_mix_modified": false
+    }
+  ]
+}

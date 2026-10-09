@@ -93,8 +93,17 @@ class InstrumentToCompositionTests(unittest.TestCase):
        if item["track_id"]=="KICK":self.assertEqual(item["midi"],36)
        if item["track_id"]=="SNARE":self.assertEqual(item["midi"],38)
        if item["track_id"]=="HAT":self.assertEqual(item["midi"],42)
-    self.assertEqual(byrole["HARMONY"],{"electric_guitar:RHYTHM_POWER_CHORDS"})
+    self.assertEqual(byrole["HARMONY"],{"electric_guitar"})
     self.assertEqual(byrole["BASS"],{"electric_bass_guitar"})
+    guitar=[x for x in proposal["candidate_stage4_events"] if x["track_id"]=="HARMONY"]
+    self.assertTrue(guitar)
+    self.assertEqual({x["expected_target_binding_id"] for x in guitar},
+                     {"electric_guitar:RHYTHM_POWER_CHORDS"})
+    self.assertEqual(proposal["missing_original_rock_tracks"],
+                     ["LEAD","TOMS","CRASH","RIDE"])
+    self.assertFalse(proposal["candidate_contains_all_original_rock_parts"])
+    self.assertEqual(proposal["arrangement_scope"],
+                     "SEVEN_BAR_SEED_NOT_COMPLETE_SONG")
     self.assertEqual(byrole["KICK"],{"kick_drum_rock"})
  def test_invalid_source_and_unselected_instruments_block(self):
     plan=compile_original_source_seed("ROCK")

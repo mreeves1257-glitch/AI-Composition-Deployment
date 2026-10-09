@@ -40,8 +40,8 @@
     "sfz_renderer_adapter",
     "independent_standalone_3d_mixer"
   ],
-  "backend_file": "composer_overrides/genre_styles/Rock/rock_pinned_mma_interpreter.py",
-  "backend_status": "RECOVERED_EXACT_2026_10_08_ROCK_TRANSLATOR_NEEDS_PINNED_MIDI_AT_EXECUTION",
+  "backend_file": "composer_overrides/genre_styles/source_pattern_library.py",
+  "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
   "original_rock_midi_sha256": "7253c3715299018dc540bdbaf29883bfbd7615ab7e5d943bde45f8d1b19555fe",
   "source_specific_note_score_approved_for_production": false,
   "full_genre_audition_verified": false,
@@ -55,7 +55,7 @@
   ],
   "wiring_instruction": {
     "schema": "AI_COMPOSER_55_GENRE_EXISTING_7_STAGE_WIRING_WITH_SOUND_MAP_2026_10_09",
-    "status": "FILED_AND_CROSS_REFERENCED_NON_PRODUCTION",
+    "status": "ROCK_OWN_GENRE_SOURCE_RESET_STAGED_NO_LIVE_PRODUCTION",
     "preserved_original_architecture": true,
     "stage_order": [
       {
@@ -80,7 +80,7 @@
         "name": "GENRE_OWNED_MUSICAL_INTERPRETER",
         "entrypoint": "genre_styles.genre_owned_interpreter_dispatch.dispatch_stage3_to4_genre_owned",
         "shared_gateway": "genre_styles.shared_interpreter_router.route_to_shared_interpreter",
-        "backend": "composer_overrides/genre_styles/Rock/rock_pinned_mma_interpreter.py",
+        "backend": "composer_overrides/genre_styles/source_pattern_library.py",
         "output": "candidate instrument-specific section/groove/role instructions",
         "live_enabled": false
       },
@@ -198,6 +198,29 @@
     "last_authorized_boundary": "STAGE3_TO_STAGE4_CONFIGURATION_ONLY",
     "production_stage_links_enabled": false,
     "source_specific_recorded_audio_ready": false,
-    "do_not_override_existing_composer_events": true
-  }
+    "do_not_override_existing_composer_events": true,
+    "owned_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+    "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+    "musical_source": {
+      "file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
+      "genre_key": "ROCK"
+    },
+    "audio_render_verified_for_new_route": false
+  },
+  "genre_specific_executable_score": {
+    "source_pattern_file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
+    "genre_key": "ROCK",
+    "musical_definition": {
+      "file": "composer_overrides/genre_styles/Rock/profile.json",
+      "json_pointer": "/profiles/ROCK/musical_definition"
+    },
+    "implementation": "genre_styles.source_pattern_library.compile_original_source_seed",
+    "preserve_per_genre_chord_phrase_meter_pulse_sections_roles": true,
+    "no_original_mma_source_code_import": true,
+    "recorded_sound_will_not_be_assumed": true,
+    "score_length_bars": 7,
+    "production_ready": false
+  },
+  "old_pinned_145_bpm_rock_interpreter_retained_historically_not_active": true,
+  "rock_reset_mode": "START_FRESH_WITH_ORIGINAL_ROCK_SOURCE_PROFILE_AND_OWN_PATTERN_SAME_AS_OTHER_GENRES"
 }

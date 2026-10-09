@@ -1,10 +1,10 @@
 """Strict Stage 3→4 genre-owned interpretation; rehearsal only, never production.
 
 Every original genre has its own authored seven-section musical pattern and
-profile in its established family folder. The 52 genres without a dedicated
-external MIDI translator now execute those OWN score seeds via the existing
-shared score compiler. Rock, Jazz Waltz and Salsa keep their separate,
-unmodified MMA-derived interpreter backends. No genre inherits Rock notes.
+profile in its established family folder. Rock has now been reset to use its
+own Rock-authored score, alongside 52 other genres using the same existing
+compiler. Jazz Waltz and Salsa retain their distinct externally sourced MIDI
+interpretation. The older pinned Rock interpreter is preserved but inactive.
 No sample or SFZ playback is authorized by any of these outputs.
 """
 from __future__ import annotations
@@ -18,7 +18,7 @@ from .shared_interpreter_router import route_to_shared_interpreter
 
 ROOT = Path(__file__).resolve().parent
 AUTHORED_SEED_BACKEND = "composer_overrides/genre_styles/source_pattern_library.py"
-EXTERNAL_BACKENDS = {"ROCK", "Jazz Waltz", "Salsa"}
+EXTERNAL_BACKENDS = {"Jazz Waltz", "Salsa"}
 
 
 def dispatch_stage3_to4_genre_owned(
@@ -115,20 +115,7 @@ def dispatch_stage3_to4_genre_owned(
     else:
         require(source_midi_path is not None,
                 "ORIGINAL_EXTERNAL_GENRE_MIDI_SOURCE_REQUIRED")
-        if genre == "ROCK":
-            from .Rock.rock_pinned_mma_interpreter import compile_pinned_mma_rock_score
-            require(backend ==
-                "composer_overrides/genre_styles/Rock/rock_pinned_mma_interpreter.py",
-                "ROCK_RECOVERED_INTERPRETER_CHANGED")
-            require(stage3.get("tempo_bpm") == 145 and
-                    stage3.get("meter") == "4/4",
-                    "ROCK_INSTRUMENT_CLOCK_NOT_145_4_4")
-            raw = compile_pinned_mma_rock_score(source_midi_path, route)
-            notes = raw["notes"]
-            meter = raw["meter"]
-            tempo = raw["tempo_bpm"]
-            status = "GENRE_OWNED_ROCK_PINNED_SOURCE_SCORE_READY_NOT_DEPLOYED"
-        elif genre == "Jazz Waltz":
+        if genre == "Jazz Waltz":
             from .Jazz.jazz_waltz_genre_interpreter import interpret_genre
             require(backend ==
                 "composer_overrides/genre_styles/Jazz/jazz_waltz_genre_interpreter.py",
@@ -155,9 +142,9 @@ def dispatch_stage3_to4_genre_owned(
             tempo = raw["tempo_bpm"]
             status = "GENRE_OWNED_SALSA_SYMBOLIC_NOT_MAPPED_TO_SFZ"
         require(bool(notes) and
-                (genre == "ROCK" or slot["source_profile_id"] == raw["profile_id"]),
+                (slot["source_profile_id"] == raw["profile_id"]),
                 "GENRE_OWNED_INTERPRETATION_OUTPUT_INVALID")
-        source_type = "GENRE_SPECIFIC_PINNED_OR_EXTERNAL_MMA_MIDI"
+        source_type = "GENRE_SPECIFIC_EXTERNAL_MMA_MIDI"
 
     return {
         "status": status, "genre": genre,

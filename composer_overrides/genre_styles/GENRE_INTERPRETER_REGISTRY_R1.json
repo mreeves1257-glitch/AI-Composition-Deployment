@@ -2,14 +2,17 @@
   "schema": "AI_COMP_GENRE_INTERPRETER_REGISTRY_R1",
   "count": 55,
   "family_count": 13,
-  "status": "55_DISTINCT_GENRE_SOURCE_INTERPRETATIONS_3_SPECIALIZED_MMA_PLUS_52_OWN_SOURCE_SEED_NO_AUDIO_ACTIVATION",
+  "status": "55_DISTINCT_GENRE_SOURCE_INTERPRETATIONS_53_OWN_SOURCE_SEED_2_SPECIALIZED_EXTERNAL_MIDI_NO_AUDIO_ACTIVATION",
   "single_shared_output_and_rendering_core": true,
   "original_7_stages_unchanged": true,
   "per_genre": {
     "ROCK": {
       "slot_file": "composer_overrides/genre_styles/Rock/INTERPRETER_ROCK_R1.json",
       "profile_id": "ROCK_CORE_V2",
-      "backend_status": "RECOVERED_EXACT_2026_10_08_ROCK_TRANSLATOR_NEEDS_PINNED_MIDI_AT_EXECUTION"
+      "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+      "backend_file": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_seed_file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
+      "historical_pinned_mma_backend_archived_preserved": "composer_overrides/genre_styles/Rock/rock_pinned_mma_interpreter.py"
     },
     "Swing": {
       "slot_file": "composer_overrides/genre_styles/Jazz/INTERPRETER_SWING_R1.json",
@@ -440,9 +443,9 @@
       "note_authority": "EXACT_OWN_GENRE_SOURCE_PATTERN_AND_PROFILE_NOT_MMA_GENERIC"
     }
   },
-  "genre_backend_files_present": 3,
+  "genre_backend_files_present": 2,
   "genre_backend_files_pending": 0,
   "audio_ready_from_these_new_per_genre_adapters": 0,
-  "genre_source_seed_executable_slots": 52,
+  "genre_source_seed_executable_slots": 53,
   "live_composer_unchanged": true
 }

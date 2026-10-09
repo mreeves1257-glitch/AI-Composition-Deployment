@@ -16,6 +16,11 @@ GitHub Actions run: https://github.com/mreeves1257-glitch/AI-Composition-Deploym
 - **PASS** the original preserved runtime builder has exactly one Stage3→4 injected common router hook and copies the full new genre_styles package.
 - Original overall `validate_profiles.py` has a PREEXISTING old-flat-file migration check that fails in this inherited branch (unrelated to this change); focused exact original 55 genre checks pass.
 
+## Additional, stronger runtime verification
+The original preserved runtime adapter was unpacked from immutable `composer/runtime.b64`, then its actual `GenreExecutionAdapter().resolve("ROCK", mode="normal", creation_seed=0)` was exercised with the Stage3→4 shared router installed **in a temporary folder**. Status PASS, `shared_interpreter_handoff.genre=ROCK`, `shared_interpreter_handoff.link_state=CONNECTED_STAGE_3_TO_4_DATA_ROUTER`, **3,065 original note events** and four original instrument palette IDs retained. This is a stronger end-to-end symbolic Composer check than merely matching static code strings. It does not prove SFZ audio rendering or full 55-genre song generation.
+
+GitHub Actions **all steps successful:** https://github.com/mreeves1257-glitch/AI-Composition-Deployment/actions/runs/37942720638
+
 ## Scope boundary: DO NOT CONFUSE ROUTING WITH AUDIO
 This work CONNECTS the existing 55 style definitions to a real, callable **shared data router**. It does **not** magically install Yamaha/Korg proprietaries, Java25 JJazzLab, MMA or any of the separately archived GPL/MIT research engines as production music generators, nor does it mean all genres play natural full songs yet.
 - The shared handoff currently marks `arranger_backend_state=MUSICAL_EVENT_GENERATOR_NOT_ENABLED_OR_VERIFIED`, `musical_notes_authorized=false`, `live_genre_enabled=false` and `full_song_audio_verified=false`. This is deliberate and honest. Existing original Composer code continues composing events unchanged on this development branch.

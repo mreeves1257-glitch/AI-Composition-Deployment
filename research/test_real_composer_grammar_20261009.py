@@ -36,6 +36,15 @@ assert len(seed["symbolic_note_events"])>0
 assert seed["recorded_audio_authorized"] is False and seed["midi_authorized"] is False
 assert seed["source_pattern_contract"]["production_enabled"] is False
 assert "KICK" in {x["role"] for x in seed["symbolic_note_events"]}
+proposal=result["source_pattern_composer_handoff"]
+assert proposal["genre"]=="ROCK"
+assert proposal["requested_note_count"]==len(seed["symbolic_note_events"])
+assert proposal["original_events_count"]==len(result["events"])
+assert proposal["candidate_is_not_live_events"] is True
+assert proposal["audio_render_authorized"] is False
+assert proposal["original_composer_is_authoritative_for_audio"] is True
+assert proposal["status"] in ("CANDIDATE_STAGE4_EVENTS_READY_SOURCE_PREFLIGHT_PENDING",
+                             "BLOCKED_INCOMPLETE_EXACT_INSTRUMENT_MAPPING")
 print("PRESERVED_ORIGINAL_COMPOSER_DEVELOPMENT_GRAMMAR_HOOK_PASS",
       {"original_event_count":len(result["events"]),"genre":plan["genre"],
        "symbolic_layer_attached":True,"finished_music_claimed":False})

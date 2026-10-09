@@ -87,7 +87,7 @@ jobs:
             /tmp/AI_Comp_Salsa_4_4_8_Bars.mid
           retention-days: 90
           if-no-files-found: error
-composer_to_unmodified_mma_midi_one_genre:
+  composer_to_unmodified_mma_midi_one_genre:
     if: github.ref == 'refs/heads/uniform-55-genre-structure-20261009'
     runs-on: ubuntu-latest
     timeout-minutes: 15

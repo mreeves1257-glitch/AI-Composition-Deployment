@@ -29,6 +29,7 @@ def score():
                 events.append({"track_id":"LEAD","instrument_id":"lead_guitar",
                                "start_beat":4*bar+.65*j,"duration_beats":.4,
                                "midi":63+j,"velocity":82,"articulation":"genre_lead"})
+    events.sort(key=lambda e:(float(e["start_beat"]),str(e["track_id"]),int(e.get("midi",0))))
     return events,ctx
 
 class StoryV2Tests(unittest.TestCase):

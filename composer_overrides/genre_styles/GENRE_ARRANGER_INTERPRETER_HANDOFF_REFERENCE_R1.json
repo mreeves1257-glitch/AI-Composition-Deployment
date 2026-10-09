@@ -1,0 +1,58 @@
+{
+  "schema_version": "GENRE_ARRANGER_INTERPRETER_HANDOFF_R1",
+  "type": "RESEARCH_REFERENCE_NOT_LIVE_ROUTING",
+  "family_architecture": "PER_GENRE_SEVEN_STAGE_ORDER_IS_AUTHORITATIVE",
+  "scope": "All genre families may adopt their OWN genre-specific musical grammar; this file does not activate or impose Rock patterns on any other genre.",
+  "placement": {
+    "steps_preserved": [
+      "SELECT_GENRE",
+      "DEFINE_MUSICAL_STRUCTURE",
+      "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+      "COMPOSE_SEPARATE_PARTS",
+      "PERFORM_MUSICALLY",
+      "RENDER_SEPARATE_AUDIO_STEMS",
+      "GENRE_MIX_THEN_STANDALONE_3D_MIX"
+    ],
+    "arrangement_interpretation_boundary": "BETWEEN_STEP_03_AND_STEP_04",
+    "musical_inputs_from": "STEP_02_DEFINE_MUSICAL_STRUCTURE",
+    "resolved_instrument_inputs_from": "STEP_03_CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
+    "output_to": "STEP_04_COMPOSE_SEPARATE_PARTS",
+    "downstream_expression": "STEP_05_PERFORM_MUSICALLY",
+    "rationale": "Resolve what musicians should play after genre/song structure and actual instrument capabilities are known, before emitting individual notes, then convert note gestures into source-specific controls only at performance."
+  },
+  "required_input_fields": [
+    "genre_id",
+    "musical_structure",
+    "section_id",
+    "phrase_id",
+    "bar_index",
+    "meter",
+    "tempo_bpm",
+    "harmony",
+    "resolved_instrument_roles",
+    "available_recorded_resources"
+  ],
+  "output_schema": {
+    "arrangement_plan_id": "string",
+    "genre_id": "string",
+    "section_transitions": "array of structured SECTION_CHANGE intents",
+    "shared_groove": "typed subdivision, beat accent, anticipation, rests",
+    "synchronized_entries": "cross-part phrase/beat destinations",
+    "role_instructions": "one typed gesture plan per resolved track, distinguishing KICK SNARE HAT TOMS CRASH RIDE BASS HARMONY LEAD",
+    "safety": "FAIL_CLOSED_ON_UNKNOWN_TRACK_OR_INSTRUMENT_CAPABILITY",
+    "validation": "trace each role instruction to note events + exact resource + audible source stem"
+  },
+  "external_reference": {
+    "engine": "MMA — Musical MIDI Accompaniment",
+    "version": "25.05.0",
+    "receipt": "OFFICIAL_ARCHIVE_FETCHED_CHECKSUM_VERIFIED",
+    "status": "REFERENCE_ONLY_NOT_INSTALLED",
+    "access_rule": "Do not copy GPL source into Composer or silently activate original genre links; evaluate independent process / MIDI boundary and license obligations first."
+  },
+  "activation": {
+    "enabled": false,
+    "production_wiring_changed": false,
+    "original_genre_files_modified": false,
+    "samples_and_mixer_modified": false
+  }
+}

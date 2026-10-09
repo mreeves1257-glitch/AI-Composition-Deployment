@@ -36,7 +36,13 @@ def dispatch_stage3_to4_genre_owned(
     require(isinstance(genre, str) and genre in entries,
             "UNKNOWN_GENRE_NO_GENERIC_FALLBACK")
     entry = entries[genre]
-    slot = json.loads((ROOT.parent.parent / entry["slot_file"]).read_text())
+    # Works in the source checkout AND in the Composer runtime's copied
+    # genre_styles package. Never escape the chosen genre-family folder.
+    slot_ref = Path(entry["slot_file"])
+    require(slot_ref.parts[:3] == ("composer_overrides", "genre_styles",
+                                   route_to_shared_interpreter(genre)["family"]),
+            "GENRE_INTERPRETER_SLOT_PATH_ESCAPED_PACKAGE")
+    slot = json.loads((ROOT / Path(*slot_ref.parts[2:])).read_text(encoding="utf-8"))
     require(slot["genre_name"] == genre and
             slot["source_profile_id"] == entry["profile_id"],
             "GENRE_PROFILE_SOURCE_AUTHORITY_CHANGED")

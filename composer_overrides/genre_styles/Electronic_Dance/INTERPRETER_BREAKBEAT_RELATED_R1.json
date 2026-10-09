@@ -40,8 +40,8 @@
     "sfz_renderer_adapter",
     "independent_standalone_3d_mixer"
   ],
-  "backend_file": null,
-  "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED",
+  "backend_file": "composer_overrides/genre_styles/source_pattern_library.py",
+  "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
   "original_rock_midi_sha256": null,
   "source_specific_note_score_approved_for_production": false,
   "full_genre_audition_verified": false,
@@ -70,8 +70,8 @@
     "genre_interpreter_file": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_BREAKBEAT_RELATED_R1.json",
     "interpreter_entrypoint": "genre_styles.genre_owned_interpreter_dispatch.dispatch_stage3_to4_genre_owned",
     "shared_intent_gateway": "genre_styles.shared_interpreter_router.route_to_shared_interpreter",
-    "owned_backend": null,
-    "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED",
+    "owned_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+    "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
     "genre_mma_style_files": [],
     "mma_files_are_original_references_not_a_live_executable": true,
     "mma_shared_includes": [
@@ -144,6 +144,24 @@
     "preserve_original_genre_stages": true,
     "preserve_active_composer_events": true,
     "production_links_enabled": false,
-    "audio_render_verified_for_new_route": false
+    "audio_render_verified_for_new_route": false,
+    "musical_source": {
+      "file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "genre_key": "Breakbeat-related"
+    }
+  },
+  "genre_specific_executable_score": {
+    "source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+    "genre_key": "Breakbeat-related",
+    "musical_definition": {
+      "file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "json_pointer": "/profiles/Breakbeat-related/musical_definition"
+    },
+    "implementation": "genre_styles.source_pattern_library.compile_original_source_seed",
+    "preserve_per_genre_chord_phrase_meter_pulse_sections_roles": true,
+    "no_original_mma_source_code_import": true,
+    "recorded_sound_will_not_be_assumed": true,
+    "score_length_bars": 7,
+    "production_ready": false
   }
 }

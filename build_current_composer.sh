@@ -480,6 +480,15 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     # for the old Composer events and NOT an authorized audio render.
     from genre_styles.source_pattern_library import compile_original_source_seed
     developed['source_pattern_seed_plan'] = compile_original_source_seed(name)
+    # Convert exact genre-owned source notes into a separate Stage4 proposal.
+    # Fail closed for unknown recorded programs; NEVER override the original
+    # events/renderer or enable the independent final 3D mixer automatically.
+    from genre_styles.source_pattern_composer_handoff import prepare_source_pattern_composer_handoff
+    developed['source_pattern_composer_handoff'] = prepare_source_pattern_composer_handoff(
+        developed['source_pattern_seed_plan'],
+        original_stage3_result=result,
+        existing_events=events,
+    )
     if name == 'ROCK':
         # The legacy palette declares one generic "drums" instrument even
         # though developed Rock events use separate sample-backed kit members.

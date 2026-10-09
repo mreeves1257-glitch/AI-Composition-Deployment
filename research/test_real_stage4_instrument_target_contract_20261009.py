@@ -160,7 +160,7 @@ def verify_original_runtime_contract():
                 requested_outputs=(OutputType.MIDI,)))
             paths=write_output_package(written,Path(midi_folder))
             raw=Path(paths["MIDI"]).read_bytes()
-            insist(raw.startswith(b"MThd\\x00\\x00\\x00\\x06".replace(b"\\\\x00",b"\\x00").replace(b"\\\\x06",b"\\x06")),
+            insist(raw[:8]==b"MThd"+bytes((0,0,0,6)),
                    "ORIGINAL_EXECUTABLE_OUTPUT_CORE_DID_NOT_WRITE_MIDI")
             fmt,count,ppq=struct.unpack(">HHH",raw[8:14])
             insist(fmt==1 and count==len(tracks)+1 and ppq==480,

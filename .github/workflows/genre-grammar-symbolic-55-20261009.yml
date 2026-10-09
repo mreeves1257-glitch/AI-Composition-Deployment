@@ -28,6 +28,11 @@ jobs:
           python research/test_clean_shared_interpreter_all55_20261009.py
           python research/validate_uniform_genre_connections_20261009.py
           python research/validate_all_55_22_capability_procedures_20261009.py
+      - name: Execute preserved Composer with the real new symbolic grammar hook (no audio)
+        run: |
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python research/test_real_composer_grammar_20261009.py
       - name: Verify one genuine development-hook invocation and no playback activation
         run: |
           python - <<'PY'

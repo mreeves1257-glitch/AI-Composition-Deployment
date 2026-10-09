@@ -1,0 +1,48 @@
+name: Verify Rock Stage4 Original Instrument and Target Contract (No Deploy)
+on:
+  push:
+    branches:
+      - rock-stage4-identity-contract-20261009
+    paths:
+      - composer_overrides/genre_styles/source_pattern_composer_handoff.py
+      - research/test_source_pattern_recorded_resource_stage4_20261009.py
+      - research/test_real_stage4_instrument_target_contract_20261009.py
+      - .github/workflows/rock-stage4-real-instrument-target-contract-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-real-composer-stages-four-to-six-without-audio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run exact original Stage4 instrument/target/performance/MIDI code against corrected notes
+        run: python research/test_real_stage4_instrument_target_contract_20261009.py
+      - name: Check all 55 genre resource mapping and existing shared 22 handlers remain unchanged
+        run: |
+          python research/test_source_pattern_recorded_resource_stage4_20261009.py
+          python research/test_all55_source_pattern_library_20261009.py
+          python research/test_shared_22_capability_execution_20261009.py
+          python research/verify_entire_machine_map_20261009.py
+      - name: Validate existing real Composer call path untouched
+        run: |
+          mkdir -p /tmp/original-composer-runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C /tmp/original-composer-runtime
+          python research/test_real_composer_grammar_20261009.py
+      - name: No unapproved score/audio activation or deploy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path("composer_overrides/genre_styles/source_pattern_composer_handoff.py").read_text()
+          build=Path("build_current_composer.sh").read_text()
+          assert '"instrument_id":m["original_instrument_id"]' in s
+          assert '"expected_target_binding_id":m["binding_id"]' in s
+          assert '"audio_render_authorized":False' in s
+          assert "developed['events'] = events" in build
+          assert "developed['events'] = developed['source_pattern_composer_handoff']" not in build
+          print("SOURCE_SFZ_AND_PRODUCTION_EVENT_BOUNDARIES_PRESERVED_PASS")
+          PY

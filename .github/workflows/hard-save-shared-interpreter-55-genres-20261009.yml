@@ -1,0 +1,75 @@
+name: Hard Save All 55 Shared Interpreter Connections 2026-10-09
+on:
+  push:
+    branches:
+      - shared-interpreter-link-all55-20261009
+    paths:
+      - .github/workflows/hard-save-shared-interpreter-55-genres-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recovery-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate all 55 executable common router calls and protected music capability references
+        run: |
+          python research/test_shared_interpreter_router_all55_20261009.py
+          python research/validate_all_55_22_capability_procedures_20261009.py
+          python research/validate_all_55_genre_interpreter_references_20261008.py
+      - name: Assemble protected hard copy with actual shared router, all genre references, original Composer baseline and independent integrity hashes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from datetime import datetime,timezone
+          import hashlib, json,zipfile
+          root=Path(".")
+          name="AI_Composer_55_Genres_Shared_Interpreter_HARD_SAVE_2026-10-09_0916_CDT.zip"
+          destination=root/"research"/name
+          files=[
+              "build_current_composer.sh","composer/runtime.b64",
+              "composer_overrides/genre_styles/__init__.py",
+              "composer_overrides/genre_styles/index.json",
+              "composer_overrides/genre_styles/registry.py",
+              "composer_overrides/genre_styles/shared_interpreter_router.py",
+              "composer_overrides/genre_styles/GENRE_22_CAPABILITY_PROCEDURE_MASTER_R1.json",
+              "research/HARD_CHECKPOINT_ALL_55_LINKED_TO_ONE_SHARED_INTERPRETER_2026-10-09.md",
+              "research/test_shared_interpreter_router_all55_20261009.py",
+              "research/test_shared_interpreter_actual_composer_adapter_20261009.py",
+              "research/validate_all_55_22_capability_procedures_20261009.py",
+              "research/validate_all_55_genre_interpreter_references_20261008.py",
+          ]
+          for p in (root/"composer_overrides/genre_styles").glob("*/profile.json"):
+              files.append(str(p))
+          for p in (root/"composer_overrides/genre_styles").glob("*/GENRE_INTERPRETER_HANDOFF_R1.json"):
+              files.append(str(p))
+          for p in (root/"composer_overrides/genre_styles").glob("*/GENRE_22_CAPABILITY_PROCEDURE_R1.json"):
+              files.append(str(p))
+          files=sorted(set(files))
+          assert sum(p.endswith("/profile.json") for p in files)==13
+          assert sum(p.endswith("/GENRE_INTERPRETER_HANDOFF_R1.json") for p in files)==13
+          assert sum(p.endswith("/GENRE_22_CAPABILITY_PROCEDURE_R1.json") for p in files)==13
+          allhashes={p:dict(sha256=hashlib.sha256(Path(p).read_bytes()).hexdigest(),bytes=Path(p).stat().st_size) for p in files}
+          audit={"created_utc":datetime.now(timezone.utc).isoformat(),"exact_preserved_version":"2026-10-09 09:16 CDT","branch":"shared-interpreter-link-all55-20261009","core_status":"DATA_ROUTER_CONNECTED_NOT_FULL_MUSICAL_ARRANGER_BACKEND","genre_count":55,"family_count":13,"per_genre_capability_reference_count":22,"source_files_original_unchanged":True,"full_music_verified_for_all_55":False,"files":allhashes}
+          with zipfile.ZipFile(destination,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=8) as out:
+              for name in files:
+                  out.write(name,arcname=name)
+              out.writestr("FILE_MANIFEST_SHA256_2026-10-09.json",json.dumps(audit,indent=2)+"\n")
+          with zipfile.ZipFile(destination) as archive:
+              errors=archive.testzip()
+              assert errors is None,errors
+              assert len(archive.namelist())==len(files)+1
+          print("ONE_SHARED_ROUTER_ALL55_HARD_SAVE_ZIP_VERIFIED",json.dumps({"path":str(destination),"file_count":len(files),"archive_bytes":destination.stat().st_size,"genres":55,"stage3_to_4_links":55,"verified_music_backends":0}))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AI_Composer_55_Genres_Shared_Interpreter_HARD_SAVE_2026-10-09_0916_CDT
+          path: research/AI_Composer_55_Genres_Shared_Interpreter_HARD_SAVE_2026-10-09_0916_CDT.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: error

@@ -1,0 +1,40 @@
+name: 55 Genre Component Connections — Isolated No-Deploy Checkpoint
+on:
+  push:
+    branches:
+      - checkpoint-all55-component-handoffs-20261009
+    paths:
+      - composer_overrides/genre_styles/genre_owned_interpreter_dispatch.py
+      - composer_overrides/genre_styles/**/SOURCE_RESOURCE_BINDINGS_R1.json
+      - research/test_all55_component_handoffs_20261009.py
+      - .github/workflows/verify-component-handoffs-all55-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-original-55-genre-7-stage-connection-graph-no-live-audio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run real selected-genre interpreter to mapping to Stage4 and 22-performance-capability contracts
+        run: python research/test_all55_component_handoffs_20261009.py
+      - name: Verify exact recorded-source mapping and original Composer candidate non-activation
+        run: python research/test_source_pattern_recorded_resource_stage4_20261009.py
+      - name: Reject any output replacement or automatic live deployment
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('composer_overrides/genre_styles/genre_owned_interpreter_dispatch.py').read_text()
+          assert "def connect_selected_genre_components(" in source
+          assert "def connect_all_55_component_checkpoints(" in source
+          assert '"audio_render_authorized": False' in source
+          assert '"live_deployment_authorized": False' in source
+          build=Path("build_current_composer.sh").read_text()
+          assert "developed['events'] = events" in build
+          assert "developed['events'] = developed['source_pattern_composer_handoff']" not in build
+          print("REAL_CONNECTIONS_DEVELOPMENT_ONLY_ORIGINAL_EVENTS_PROTECTED")
+          PY

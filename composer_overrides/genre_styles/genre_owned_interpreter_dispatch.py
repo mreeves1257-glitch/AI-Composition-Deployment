@@ -21,7 +21,7 @@ def dispatch_stage3_to4_genre_owned(genre: str, *, source_midi_path: str|Path,
     require(isinstance(genre,str) and genre in entries,
             "UNKNOWN_GENRE_NO_GENERIC_FALLBACK")
     entry=entries[genre]
-    slot=json.loads((ROOT.parent.parent.parent/entry["slot_file"]).read_text())
+    slot=json.loads((ROOT.parent.parent/entry["slot_file"]).read_text())
     require(slot["genre_name"]==genre and
             slot["source_profile_id"]==entry["profile_id"],
             "GENRE_PROFILE_SOURCE_AUTHORITY_CHANGED")
@@ -64,8 +64,8 @@ def dispatch_stage3_to4_genre_owned(genre: str, *, source_midi_path: str|Path,
         status="GENRE_OWNED_SALSA_SYMBOLIC_NOT_MAPPED_TO_SFZ"
     else:
         raise StyleMidiInterfaceError("GENRE_BACKEND_MODULE_UNRECOGNIZED_NO_FALLBACK:"+genre)
-    require(notes and slot["source_profile_id"]==raw["profile_id"]
-            if genre!="ROCK" else bool(notes) and slot["source_profile_id"]=="ROCK_CORE_V2",
+    require(bool(notes) and (genre=="ROCK" or
+            slot["source_profile_id"]==raw["profile_id"]),
             "GENRE_OWNED_INTERPRETATION_OUTPUT_INVALID")
     return {
       "status":status,"genre":genre,"profile_id":slot["source_profile_id"],

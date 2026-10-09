@@ -30,6 +30,12 @@ assert plan["meter"]==result["meter"] and plan["tempo_bpm"]==result["tempo_bpm"]
 assert plan["symbolic_note_events"]==[]
 assert plan["midi_authorized"] is False and plan["recorded_audio_authorized"] is False
 assert len(plan["capability_status"])==22
+seed=result["source_pattern_seed_plan"]
+assert seed["genre"]=="ROCK" and seed["source_pattern_contract"]["genre_specific_seed"]=="ROCK"
+assert len(seed["symbolic_note_events"])>0
+assert seed["recorded_audio_authorized"] is False and seed["midi_authorized"] is False
+assert seed["source_pattern_contract"]["production_enabled"] is False
+assert "KICK" in {x["role"] for x in seed["symbolic_note_events"]}
 print("PRESERVED_ORIGINAL_COMPOSER_DEVELOPMENT_GRAMMAR_HOOK_PASS",
       {"original_event_count":len(result["events"]),"genre":plan["genre"],
        "symbolic_layer_attached":True,"finished_music_claimed":False})

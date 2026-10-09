@@ -1,0 +1,295 @@
+{
+  "schema_version": "AI_COMP_SOURCE_PATTERN_EXACT_INSTRUMENT_BINDINGS_R1",
+  "family": "Jazz",
+  "genres": [
+    {
+      "genre": "Swing",
+      "profile_id": "JAZZ_SWING_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_soft",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "RIDE": {
+          "original_instrument_id": "ride_cymbal",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Jazz Ballad",
+      "profile_id": "JAZZ_BALLAD_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "BRUSH": {
+          "original_instrument_id": "brush_snare",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CYMBAL": {
+          "original_instrument_id": "ride_cymbal",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Big Band",
+      "profile_id": "BIG_BAND_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "horn_section",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_soft",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "RIDE": {
+          "original_instrument_id": "ride_cymbal",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Jazz Waltz",
+      "profile_id": "JAZZ_WALTZ_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_soft",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "RIDE": {
+          "original_instrument_id": "ride_cymbal",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Bebop",
+      "profile_id": "BEBOP_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_soft",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "RIDE": {
+          "original_instrument_id": "ride_cymbal",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Cool Jazz",
+      "profile_id": "COOL_JAZZ_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_piano",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_soft",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "RIDE": {
+          "original_instrument_id": "ride_cymbal",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Dixieland",
+      "profile_id": "DIXIELAND_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "banjo",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_soft",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "RIDE": {
+          "original_instrument_id": "ride_cymbal",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-ride-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Jazz Fusion",
+      "profile_id": "JAZZ_FUSION_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_piano",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    }
+  ],
+  "live_audio_enabled": false,
+  "target_registry_authority": "composer/runtime/target_registry.json",
+  "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+}

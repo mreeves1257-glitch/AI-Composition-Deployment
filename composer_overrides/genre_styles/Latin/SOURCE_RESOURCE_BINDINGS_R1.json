@@ -1,0 +1,292 @@
+{
+  "schema_version": "AI_COMP_SOURCE_PATTERN_EXACT_INSTRUMENT_BINDINGS_R1",
+  "family": "Latin",
+  "genres": [
+    {
+      "genre": "Bossa Nova",
+      "profile_id": "BOSSA_NOVA_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "nylon_guitar",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Samba",
+      "profile_id": "SAMBA_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "nylon_guitar",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Salsa",
+      "profile_id": "SALSA_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Mambo",
+      "profile_id": "MAMBO_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Rumba",
+      "profile_id": "CUBAN_RUMBA_BASELINE_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "nylon_guitar",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Cha-Cha",
+      "profile_id": "CHA_CHA_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Bolero",
+      "profile_id": "LATIN_BOLERO_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "nylon_guitar",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    }
+  ],
+  "live_audio_enabled": false,
+  "target_registry_authority": "composer/runtime/target_registry.json",
+  "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+}

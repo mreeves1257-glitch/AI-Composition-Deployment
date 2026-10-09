@@ -1,0 +1,115 @@
+{
+  "schema_version": "AI_COMP_SOURCE_PATTERN_EXACT_INSTRUMENT_BINDINGS_R1",
+  "family": "Afrobeats_AfroLatin",
+  "genres": [
+    {
+      "genre": "Afrobeats",
+      "profile_id": "AFROBEATS_V2",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_guitar",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HAND_DRUM": {
+          "original_instrument_id": "hand_drum",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Afro-Latin / Afrobeats Fusion",
+      "profile_id": "AFRO_LATIN_AFROBEATS_FUSION_V2",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "piano",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "CONGA": {
+          "original_instrument_id": "conga",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "preferred_mapping": "composer-conga-five-strokes.sfz"
+        },
+        "CLAVE": {
+          "original_instrument_id": "clave",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Afro House",
+      "profile_id": "AFRO_HOUSE_V2",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "synth_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "synth_chord",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HAND_DRUM": {
+          "original_instrument_id": "hand_drum",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "SHAKER": {
+          "original_instrument_id": "shaker",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    }
+  ],
+  "live_audio_enabled": false,
+  "target_registry_authority": "composer/runtime/target_registry.json",
+  "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+}

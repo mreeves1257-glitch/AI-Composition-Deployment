@@ -1,0 +1,307 @@
+{
+  "schema_version": "AI_COMP_SOURCE_PATTERN_EXACT_INSTRUMENT_BINDINGS_R1",
+  "family": "R_and_B_Soul_Funk_Disco",
+  "genres": [
+    {
+      "genre": "Rhythm and Blues",
+      "profile_id": "RHYTHM_AND_BLUES_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_piano",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Soul",
+      "profile_id": "SOUL_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_piano",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Funk",
+      "profile_id": "FUNK_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_guitar",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Contemporary R&B",
+      "profile_id": "CONTEMPORARY_RNB_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "synth_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_piano",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "Neo-Soul-related",
+      "profile_id": "NEO_SOUL_RELATED_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_piano",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    },
+    {
+      "genre": "DISCO",
+      "profile_id": "DISCO_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_guitar",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    }
+  ],
+  "live_audio_enabled": false,
+  "target_registry_authority": "composer/runtime/target_registry.json",
+  "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+}

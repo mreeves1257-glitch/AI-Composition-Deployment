@@ -1,0 +1,61 @@
+{
+  "schema_version": "AI_COMP_SOURCE_PATTERN_EXACT_INSTRUMENT_BINDINGS_R1",
+  "family": "Rock",
+  "genres": [
+    {
+      "genre": "ROCK",
+      "profile_id": "ROCK_CORE_V2",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "electric_bass_guitar",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "preferred_mapping": "growlybass_clean.sfz"
+        },
+        "HARMONY": {
+          "original_instrument_id": "electric_guitar",
+          "lookup_policy": "EXACT_CONTEXTUAL",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "electric_guitar:RHYTHM_POWER_CHORDS",
+          "resource_id": "KARORYFER_SHINYGUITAR",
+          "preferred_mapping": "Programs/composer-electric.sfz"
+        },
+        "KICK": {
+          "original_instrument_id": "kick_drum_rock",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+        },
+        "SNARE": {
+          "original_instrument_id": "snare_drum",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+        },
+        "HAT": {
+          "original_instrument_id": "hi_hat",
+          "lookup_policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "source_files_preflight_complete": false,
+          "binding_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+        }
+      }
+    }
+  ],
+  "live_audio_enabled": false,
+  "target_registry_authority": "composer/runtime/target_registry.json",
+  "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+}

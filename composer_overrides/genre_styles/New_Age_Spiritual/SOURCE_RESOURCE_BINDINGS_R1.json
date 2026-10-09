@@ -1,0 +1,46 @@
+{
+  "schema_version": "AI_COMP_SOURCE_PATTERN_EXACT_INSTRUMENT_BINDINGS_R1",
+  "family": "New_Age_Spiritual",
+  "genres": [
+    {
+      "genre": "New Age",
+      "profile_id": "NEW_AGE_V2",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "synth_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "synth_pad",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    },
+    {
+      "genre": "Spiritual",
+      "profile_id": "SPIRITUAL_NONSECTARIAN_PROJECT_BASELINE_V1",
+      "role_bindings": {
+        "BASS": {
+          "original_instrument_id": "acoustic_bass",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        },
+        "HARMONY": {
+          "original_instrument_id": "choir_pad",
+          "lookup_policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "source_files_preflight_complete": false
+        }
+      }
+    }
+  ],
+  "live_audio_enabled": false,
+  "target_registry_authority": "composer/runtime/target_registry.json",
+  "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+}

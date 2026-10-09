@@ -88,7 +88,16 @@ def main():
     # source-identity resolver; source bank existence still unknown.
     assert '"preferred_mapping":"Programs/composer-electric.sfz"' in build
     assert '"preferred_mapping":"growlybass_clean.sfz"' in build
-    assert 'set_cc107=0' in build
+    # These are SFZ vendor defaults inherited by the authored Composer program,
+    # not literal settings printed by the builder.
+    grepo,gcommit,_=UPSTREAM["HARMONY"]
+    main_url=f"https://raw.githubusercontent.com/{grepo}/{gcommit}/Programs/main.sfz"
+    with urllib.request.urlopen(main_url,timeout=20) as response:
+        original_guitar_main=response.read(10000).decode("utf-8")
+    assert "set_cc100=0" in original_guitar_main
+    assert "set_cc107=0" in original_guitar_main
+    assert '#include "electric_one.sfz"' in original_guitar_main
+    assert 'src=src.replace("set_cc106=0", "set_cc106=32")' in build
     allowed.update(generated_drum_sfzs(build))
     assert set(notes)==set(allowed),"UNEXPECTED_ROCK_PATTERN_ROLE_NOT_SOURCE_CHECKED"
     rejected={role:sorted(set(seq)-allowed[role]) for role,seq in notes.items()}

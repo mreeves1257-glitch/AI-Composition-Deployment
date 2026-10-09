@@ -3,7 +3,7 @@
 **Date:** October 9, 2026  
 **Development branch:** `rock-stage4-identity-contract-20261009`  
 **Original frozen hard copy:** `hard-copy-ai-composer-2026-10-09-1128-CDT` (preserved, **not changed**)  
-**Successful verified CI:** https://github.com/mreeves1257-glitch/AI-Composition-Deployment/actions/runs/37976853690  
+**Successful verified CI:** https://github.com/mreeves1257-glitch/AI-Composition-Deployment/actions/runs/37977137766  
 **Earlier whole-machine connection map:** `research/VERIFIED_ENTIRE_MACHINE_CONNECTION_MAP_2026-10-09_1342_CDT.md`.
 
 ## Exact corrected boundary
@@ -18,7 +18,7 @@ With *explicit* source identity and licensing fixture values pinned to the Octob
 1. Actual original `InstrumentProgram.resolve_events` — PASS, five distinct parts.
 2. Actual original `TargetProgram.resolve` — PASS: correct recorded Growlybass, Shinyguitar rhythm-guitar, Big Rusty kick/snare/hat program IDs. These are **source identity fixtures**, not installed sample graph proof.
 3. Actual original `PerformanceExecutor.execute` — PASS, preserved all notes unmodified.
-4. Actual original `output_handoff.build_execution_package` and `CompositionExecutionPackage` construction — PASS, 102 events in five separate output tracks. Does NOT automatically generate a live audible file.
+4. Actual original `output_handoff.build_execution_package` plus `OutputManager.execute` and `write_output_package` — PASS, produced an actual isolated Standard MIDI file (Type 1, 480 ticks per quarter note) with 102 score notes in five separate instrument tracks and a conductor track. File header and track separation verified. **No recorded audio was rendered or routed to the Plug.**
 
 ## Authoritative source program pitch-zone check
 `research/test_rock_source_sfz_keyzone_authority_20261009.py` read public, commit-pinned original **SFZ program text** from:

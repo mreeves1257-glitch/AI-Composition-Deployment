@@ -32,7 +32,7 @@ for family,n in families.items():
         check(e["source_of_truth"]==o["source_of_truth"],"SOURCE_XREF:"+family+"/"+name)
         check(e["capability_ids"]==ids,"22_COVERAGE:"+family+"/"+name)
         check(e["original_seven_stage_count"]==7 and p["seven_stage_plan"]["stage_order"]==stages,"SEVEN_STAGE_ORDER:"+family+"/"+name)
-        check(not p["seven_stage_plan"]["enable_runtime_connections"] and not o["interpreter_stage_connected"],"UNAUTHORIZED_ACTIVATION:"+family+"/"+name)
+        check(not p["seven_stage_plan"]["enable_runtime_connections"] and not o.get("interpreter_stage_connected",False) and not old.get("original_connections_activated",False),"UNAUTHORIZED_ACTIVATION:"+family+"/"+name)
         check("CONDITIONAL" in e["applicability_at_runtime"],"ALL_INSTRUMENTS_ASSUMED:"+family+"/"+name)
         check(e["capability_implementation_verification"]=="NOT_VERIFIED_OR_ACTIVATED_BY_THIS_PROCEDURAL_REFERENCE","MISLEADING_COMPLETION:"+family+"/"+name)
         total+=1

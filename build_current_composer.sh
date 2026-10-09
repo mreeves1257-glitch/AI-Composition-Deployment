@@ -475,6 +475,11 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         name, meter=result['meter'], tempo_bpm=tempo_bpm, bars=bars,
         original_stage3_result=result,
     )
+    # Genre-owned original seed data enters the SAME Stage3->4 interpreter.
+    # These are separately auditionable symbolic patterns, NOT a replacement
+    # for the old Composer events and NOT an authorized audio render.
+    from genre_styles.source_pattern_library import compile_original_source_seed
+    developed['source_pattern_seed_plan'] = compile_original_source_seed(name)
     if name == 'ROCK':
         # The legacy palette declares one generic "drums" instrument even
         # though developed Rock events use separate sample-backed kit members.

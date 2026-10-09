@@ -489,6 +489,25 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         original_stage3_result=result,
         existing_events=events,
     )
+    # Staged seven-stage genre component connections: interpreter (Stage3->4),
+    # source-identity binding, original Stage4 candidate, shared 22 performance
+    # capabilities, separate-stem readiness, standalone 3D mixer gate.
+    # This is ONLY a diagnostic receipt. It never overwrites 'events',
+    # replaces the original Composer, renders samples or deploys anything.
+    from genre_styles.genre_owned_interpreter_dispatch import connect_selected_genre_components
+    from genre_styles.shared_interpreter_router import InterpreterConnectionError
+    try:
+        developed['genre_component_connection_receipt'] = connect_selected_genre_components(
+            name, original_stage3_result=result, original_composer_events=events,
+        )
+    except InterpreterConnectionError as issue:
+        developed['genre_component_connection_receipt'] = {
+            'status': 'BLOCKED_ORIGINAL_GENRE_COMPONENT_CONNECTION',
+            'genre': name, 'reason': str(issue),
+            'original_composer_events_unchanged': True,
+            'audio_render_authorized': False,
+            'live_deployment_authorized': False,
+        }
     if name == 'ROCK':
         # The legacy palette declares one generic "drums" instrument even
         # though developed Rock events use separate sample-backed kit members.

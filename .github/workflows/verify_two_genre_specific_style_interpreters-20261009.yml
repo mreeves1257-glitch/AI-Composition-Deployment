@@ -1,0 +1,86 @@
+name: Verify Genre-Specific Jazz Waltz & Salsa Arranger Interpreters (No Deploy)
+on:
+  push:
+    branches:
+      - genre-specific-interpreters-55-rock-restored-20261009
+    paths:
+      - composer_overrides/genre_styles/external_style_midi_reader.py
+      - composer_overrides/genre_styles/Jazz/jazz_waltz_genre_interpreter.py
+      - composer_overrides/genre_styles/Latin/salsa_genre_interpreter.py
+      - composer_overrides/genre_styles/Jazz/INTERPRETER_JAZZ_WALTZ_R1.json
+      - composer_overrides/genre_styles/Latin/INTERPRETER_SALSA_R1.json
+      - composer_overrides/genre_styles/GENRE_INTERPRETER_REGISTRY_R1.json
+      - research/test_two_distinct_downloaded_genre_interpreters_20261009.py
+      - research/verify_55_independent_genre_interpreter_placements_20261009.py
+      - .github/workflows/verify_two_genre_specific_style_interpreters-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  genre_specific_original_score_event_test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all 55 independent genre-owned slots and restored Rock unchanged
+        run: python research/verify_55_independent_genre_interpreter_placements_20261009.py
+      - name: Install only MIDI file reader, not new music renderer
+        run: python -m pip install 'mido==1.3.3'
+      - name: Obtain separately licensed official MMA 25.05 source (GPLv2) and verify SHA1
+        run: |
+          curl --fail --location --retry 3 --output /tmp/mma-official.tar.gz https://www.mellowood.ca/mma/mma-bin-25.05.0.tar.gz
+          echo '1af05064384c5c7e7d24b163639a414227d3ef6f  /tmp/mma-official.tar.gz' | sha1sum -c -
+          mkdir -p /tmp/external_mma
+          tar -xzf /tmp/mma-official.tar.gz -C /tmp/external_mma
+          test -f /tmp/external_mma/mma-bin-25.05.0/text/COPYING
+      - name: Run actual distinct Jazz Waltz 3/4 and Salsa 4/4 groove programs
+        run: |
+          cd /tmp/external_mma/mma-bin-25.05.0
+          PYTHONPATH="$PWD" python mma.py -G >/tmp/genre_mma_library_index.log
+          cat > /tmp/AI_Comp_Jazz_Waltz_3_4_8_Bars.mma <<'MMA'
+          // Research-only externally licensed Jazz Waltz groove
+          Tempo 156
+          Groove JazzWaltz
+          1 Dm7
+          2 G7
+          3 Cmaj7
+          4 A7
+          5 Dm7
+          6 G7
+          7 Cmaj7
+          8 Cmaj7
+          MMA
+          cat > /tmp/AI_Comp_Salsa_4_4_8_Bars.mma <<'MMA'
+          // Research-only externally licensed Salsa clave groove
+          Tempo 190
+          Groove Salsa
+          1 Dm
+          2 G7
+          3 C
+          4 A7
+          5 Dm
+          6 G7
+          7 C
+          8 C
+          MMA
+          PYTHONPATH="$PWD" python mma.py -f /tmp/AI_Comp_Jazz_Waltz_3_4_8_Bars.mid /tmp/AI_Comp_Jazz_Waltz_3_4_8_Bars.mma
+          PYTHONPATH="$PWD" python mma.py -f /tmp/AI_Comp_Salsa_4_4_8_Bars.mid /tmp/AI_Comp_Salsa_4_4_8_Bars.mma
+      - name: Run both actual genre-owned interpreters, reject cross-genre substitution and false SFZ
+        run: |
+          python research/test_two_distinct_downloaded_genre_interpreters_20261009.py /tmp/AI_Comp_Jazz_Waltz_3_4_8_Bars.mid /tmp/AI_Comp_Salsa_4_4_8_Bars.mid
+          python research/test_source_pattern_recorded_resource_stage4_20261009.py
+      - name: Download candidate sound-independent Stage4 note receipts (NOT complete audio)
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI_Composer_Jazz_Waltz_And_Salsa_Actual_Interpreted_MIDI_Notes_2026-10-09
+          path: |
+            research_artifacts/TWO_ACTUAL_GENRE_SPECIFIC_INTERPRETERS_JAZZ_WALTZ_SALSA_2026-10-09.zip
+            research_artifacts/two_unique_genre_interpreter_proofs_20261009/PROOF_MANIFEST.json
+            research_artifacts/two_unique_genre_interpreter_proofs_20261009/README.txt
+            /tmp/AI_Comp_Jazz_Waltz_3_4_8_Bars.mid
+            /tmp/AI_Comp_Salsa_4_4_8_Bars.mid
+          retention-days: 90
+          if-no-files-found: error

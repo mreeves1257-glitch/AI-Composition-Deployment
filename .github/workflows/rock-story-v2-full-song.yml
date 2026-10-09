@@ -1,0 +1,61 @@
+name: Rock Musical Story V2 Full Recorded A-B (Research Only)
+on:
+  push:
+    branches:
+      - rock-musical-storytelling-v2-20261008
+    paths:
+      - .github/workflows/rock-story-v2-full-song.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-rock-ensemble-storytelling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild original preserved recorded-instrument Composer, all new features OFF
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_ROCK_MELODY_V1: '0'
+          AI_COMP_ROCK_STORY_V2: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: bash build_current_composer.sh
+      - name: Reproduce verified complete Rock Melody R1 as the comparison reference
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_MELODY_V1: '1'
+          AI_COMP_ROCK_STORY_V2: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+        run: python research/run_rock_story_v2_full_song_ab.py --mode melody_r1
+      - name: Render full Rock musical narrative V2 using the same recorded instruments and 3D master
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_MELODY_V1: '1'
+          AI_COMP_ROCK_STORY_V2: '1'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+        run: python research/run_rock_story_v2_full_song_ab.py --mode story_v2
+      - name: Verify lead-only musical change, existing rests/entrances, full 3D stereo for both
+        run: python research/run_rock_story_v2_full_song_ab.py --mode compare
+      - name: Archive real stereo audio and audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-musical-story-v2-full-recorded-audio-20261008
+          path: |
+            research/rock_story_v2_full_song/melody_r1/result.json
+            research/rock_story_v2_full_song/melody_r1/score_events.json
+            research/rock_story_v2_full_song/melody_r1/ROCK_FULL_MELODY_R1_3D.wav
+            research/rock_story_v2_full_song/story_v2/result.json
+            research/rock_story_v2_full_song/story_v2/score_events.json
+            research/rock_story_v2_full_song/story_v2/ROCK_FULL_STORY_V2_3D.wav
+            research/rock_story_v2_full_song/COMPARISON.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 14

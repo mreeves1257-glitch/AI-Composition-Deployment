@@ -10,13 +10,33 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "nylon_guitar",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CONGA": {
           "original_instrument_id": "conga",
@@ -25,19 +45,55 @@
           "source_files_preflight_complete": false,
           "binding_id": "conga",
           "resource_id": "FREEPATS_WORLD_PERCUSSION",
-          "preferred_mapping": "composer-conga-five-strokes.sfz"
+          "preferred_mapping": "composer-conga-five-strokes.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              64,
+              64
+            ],
+            "authored_absolute_note_keys": [
+              64
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CLAVE": {
           "original_instrument_id": "clave",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              75,
+              75
+            ],
+            "authored_absolute_note_keys": [
+              75
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SHAKER": {
           "original_instrument_id": "shaker",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              70,
+              70
+            ],
+            "authored_absolute_note_keys": [
+              70
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -52,13 +108,33 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_bass_guitar",
           "resource_id": "KARORYFER_GROWLYBASS_V1_002",
-          "preferred_mapping": "growlybass_clean.sfz"
+          "preferred_mapping": "growlybass_clean.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "nylon_guitar",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CONGA": {
           "original_instrument_id": "conga",
@@ -67,19 +143,55 @@
           "source_files_preflight_complete": false,
           "binding_id": "conga",
           "resource_id": "FREEPATS_WORLD_PERCUSSION",
-          "preferred_mapping": "composer-conga-five-strokes.sfz"
+          "preferred_mapping": "composer-conga-five-strokes.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              64,
+              64
+            ],
+            "authored_absolute_note_keys": [
+              64
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CLAVE": {
           "original_instrument_id": "clave",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              75,
+              75
+            ],
+            "authored_absolute_note_keys": [
+              75
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SHAKER": {
           "original_instrument_id": "shaker",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              70,
+              70
+            ],
+            "authored_absolute_note_keys": [
+              70
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -94,13 +206,33 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_bass_guitar",
           "resource_id": "KARORYFER_GROWLYBASS_V1_002",
-          "preferred_mapping": "growlybass_clean.sfz"
+          "preferred_mapping": "growlybass_clean.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "piano",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CONGA": {
           "original_instrument_id": "conga",
@@ -109,19 +241,55 @@
           "source_files_preflight_complete": false,
           "binding_id": "conga",
           "resource_id": "FREEPATS_WORLD_PERCUSSION",
-          "preferred_mapping": "composer-conga-five-strokes.sfz"
+          "preferred_mapping": "composer-conga-five-strokes.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              64,
+              64
+            ],
+            "authored_absolute_note_keys": [
+              64
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CLAVE": {
           "original_instrument_id": "clave",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              75,
+              75
+            ],
+            "authored_absolute_note_keys": [
+              75
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SHAKER": {
           "original_instrument_id": "shaker",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              70,
+              70
+            ],
+            "authored_absolute_note_keys": [
+              70
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -133,13 +301,33 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "piano",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CONGA": {
           "original_instrument_id": "conga",
@@ -148,19 +336,55 @@
           "source_files_preflight_complete": false,
           "binding_id": "conga",
           "resource_id": "FREEPATS_WORLD_PERCUSSION",
-          "preferred_mapping": "composer-conga-five-strokes.sfz"
+          "preferred_mapping": "composer-conga-five-strokes.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              64,
+              64
+            ],
+            "authored_absolute_note_keys": [
+              64
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CLAVE": {
           "original_instrument_id": "clave",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              75,
+              75
+            ],
+            "authored_absolute_note_keys": [
+              75
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SHAKER": {
           "original_instrument_id": "shaker",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              70,
+              70
+            ],
+            "authored_absolute_note_keys": [
+              70
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -172,13 +396,33 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "nylon_guitar",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CONGA": {
           "original_instrument_id": "conga",
@@ -187,19 +431,55 @@
           "source_files_preflight_complete": false,
           "binding_id": "conga",
           "resource_id": "FREEPATS_WORLD_PERCUSSION",
-          "preferred_mapping": "composer-conga-five-strokes.sfz"
+          "preferred_mapping": "composer-conga-five-strokes.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              64,
+              64
+            ],
+            "authored_absolute_note_keys": [
+              64
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CLAVE": {
           "original_instrument_id": "clave",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              75,
+              75
+            ],
+            "authored_absolute_note_keys": [
+              75
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SHAKER": {
           "original_instrument_id": "shaker",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              70,
+              70
+            ],
+            "authored_absolute_note_keys": [
+              70
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -214,13 +494,33 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_bass_guitar",
           "resource_id": "KARORYFER_GROWLYBASS_V1_002",
-          "preferred_mapping": "growlybass_clean.sfz"
+          "preferred_mapping": "growlybass_clean.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "piano",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CONGA": {
           "original_instrument_id": "conga",
@@ -229,19 +529,55 @@
           "source_files_preflight_complete": false,
           "binding_id": "conga",
           "resource_id": "FREEPATS_WORLD_PERCUSSION",
-          "preferred_mapping": "composer-conga-five-strokes.sfz"
+          "preferred_mapping": "composer-conga-five-strokes.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              64,
+              64
+            ],
+            "authored_absolute_note_keys": [
+              64
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CLAVE": {
           "original_instrument_id": "clave",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              75,
+              75
+            ],
+            "authored_absolute_note_keys": [
+              75
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SHAKER": {
           "original_instrument_id": "shaker",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              70,
+              70
+            ],
+            "authored_absolute_note_keys": [
+              70
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -253,13 +589,33 @@
           "original_instrument_id": "acoustic_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "nylon_guitar",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CONGA": {
           "original_instrument_id": "conga",
@@ -268,19 +624,55 @@
           "source_files_preflight_complete": false,
           "binding_id": "conga",
           "resource_id": "FREEPATS_WORLD_PERCUSSION",
-          "preferred_mapping": "composer-conga-five-strokes.sfz"
+          "preferred_mapping": "composer-conga-five-strokes.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              64,
+              64
+            ],
+            "authored_absolute_note_keys": [
+              64
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "CLAVE": {
           "original_instrument_id": "clave",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              75,
+              75
+            ],
+            "authored_absolute_note_keys": [
+              75
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SHAKER": {
           "original_instrument_id": "shaker",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              70,
+              70
+            ],
+            "authored_absolute_note_keys": [
+              70
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     }
@@ -288,5 +680,765 @@
   "live_audio_enabled": false,
   "target_registry_authority": "composer/runtime/target_registry.json",
   "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
-  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof.",
+  "full_genre_track_sound_maps": {
+    "Bossa Nova": {
+      "genre": "Bossa Nova",
+      "profile_id": "BOSSA_NOVA_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "acoustic_guitar",
+        "electric_piano",
+        "conga"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "CONGA",
+        "CLAVE",
+        "SHAKER"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "recorded_sample_bank_library": "FreePats World Percussion",
+          "license": "CC0-1.0",
+          "sfz_path": "composer-conga-five-strokes.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "preflight_verified_for_this_genre": false
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ACOUSTIC_GUITAR",
+        "ELECTRIC_PIANO",
+        "CONGA"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Samba": {
+      "genre": "Samba",
+      "profile_id": "SAMBA_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_selected_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "conga",
+        "drums_latin"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "CONGA",
+        "CLAVE",
+        "SHAKER"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "recorded_sample_bank_library": "Karoryfer Growlybass",
+          "license": "CC0",
+          "sfz_path": "growlybass_clean.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_GROWLYBASS_V1_002",
+          "source_evidence": "EXPLICIT_ORIGINAL_RUNTIME_ALIAS_OF_electric_bass_guitar",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "recorded_sample_bank_library": "FreePats World Percussion",
+          "license": "CC0-1.0",
+          "sfz_path": "composer-conga-five-strokes.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "ELECTRIC_BASS",
+        "ELECTRIC_PIANO",
+        "CONGA",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Salsa": {
+      "genre": "Salsa",
+      "profile_id": "SALSA_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_selected_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "trumpet",
+        "conga",
+        "drums_latin"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "CONGA",
+        "CLAVE",
+        "SHAKER"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "recorded_sample_bank_library": "Karoryfer Growlybass",
+          "license": "CC0",
+          "sfz_path": "growlybass_clean.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_GROWLYBASS_V1_002",
+          "source_evidence": "EXPLICIT_ORIGINAL_RUNTIME_ALIAS_OF_electric_bass_guitar",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "recorded_sample_bank_library": "FreePats World Percussion",
+          "license": "CC0-1.0",
+          "sfz_path": "composer-conga-five-strokes.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "ELECTRIC_BASS",
+        "ELECTRIC_PIANO",
+        "TRUMPET",
+        "CONGA",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Mambo": {
+      "genre": "Mambo",
+      "profile_id": "MAMBO_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_selected_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "trumpet",
+        "conga",
+        "drums_latin"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "CONGA",
+        "CLAVE",
+        "SHAKER"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "recorded_sample_bank_library": "Karoryfer Growlybass",
+          "license": "CC0",
+          "sfz_path": "growlybass_clean.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_GROWLYBASS_V1_002",
+          "source_evidence": "EXPLICIT_ORIGINAL_RUNTIME_ALIAS_OF_electric_bass_guitar",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "recorded_sample_bank_library": "FreePats World Percussion",
+          "license": "CC0-1.0",
+          "sfz_path": "composer-conga-five-strokes.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "ELECTRIC_BASS",
+        "ELECTRIC_PIANO",
+        "TRUMPET",
+        "CONGA",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Rumba": {
+      "genre": "Rumba",
+      "profile_id": "CUBAN_RUMBA_BASELINE_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "acoustic_guitar",
+        "conga",
+        "flute"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "CONGA",
+        "CLAVE",
+        "SHAKER"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "recorded_sample_bank_library": "FreePats World Percussion",
+          "license": "CC0-1.0",
+          "sfz_path": "composer-conga-five-strokes.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ACOUSTIC_GUITAR",
+        "CONGA",
+        "FLUTE"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Cha-Cha": {
+      "genre": "Cha-Cha",
+      "profile_id": "CHA_CHA_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_selected_instrument_palette": [
+        "electric_bass",
+        "electric_piano",
+        "conga",
+        "drums_latin"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "CONGA",
+        "CLAVE",
+        "SHAKER"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "recorded_sample_bank_library": "Karoryfer Growlybass",
+          "license": "CC0",
+          "sfz_path": "growlybass_clean.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/KARORYFER_GROWLYBASS_V1_002",
+          "source_evidence": "EXPLICIT_ORIGINAL_RUNTIME_ALIAS_OF_electric_bass_guitar",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "recorded_sample_bank_library": "FreePats World Percussion",
+          "license": "CC0-1.0",
+          "sfz_path": "composer-conga-five-strokes.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "drums_latin",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "ELECTRIC_BASS",
+        "ELECTRIC_PIANO",
+        "CONGA",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Bolero": {
+      "genre": "Bolero",
+      "profile_id": "LATIN_BOLERO_V1",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_selected_instrument_palette": [
+        "double_bass",
+        "acoustic_guitar",
+        "flute",
+        "conga"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "CONGA",
+        "CLAVE",
+        "SHAKER"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "recorded_sample_bank_library": "FreePats World Percussion",
+          "license": "CC0-1.0",
+          "sfz_path": "composer-conga-five-strokes.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/FREEPATS_WORLD_PERCUSSION",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": [
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "preflight_verified_for_this_genre": false
+        }
+      ],
+      "requested_separate_stems": [
+        "DOUBLE_BASS",
+        "ACOUSTIC_GUITAR",
+        "FLUTE",
+        "CONGA"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    }
+  },
+  "sound_mapping_scope": "55_ORIGINAL_GENRE_PROFILES_PLUS_234_SYMBOLIC_ROLES_FULL_GENRE_TRACKS_DISTINCT",
+  "full_sound_map_status": "RECORDED_PROGRAM_IDENTITY_REFERENCES_ONLY_BLOCK_UNVERIFIED_AND_WRONG_GENRE_KITS",
+  "full_genre_audio_preflight_verified": false
 }

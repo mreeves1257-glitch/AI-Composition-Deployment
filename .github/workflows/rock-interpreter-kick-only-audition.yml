@@ -1,0 +1,51 @@
+name: Rock Interpreter Kick-Only Presence A-B (Original Sources, Research)
+on:
+  push:
+    branches:
+      - rock-kick-presence-research-20261008
+    paths:
+      - .github/workflows/rock-interpreter-kick-only-audition.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preserve-song-audition-kick-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated external standard MIDI reader
+        run: python -m pip install --disable-pip-version-check mido
+      - name: Build the exact existing original recorded instruments and unchanged 3D mixer
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_ROCK_MELODY_V1: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: bash build_current_composer.sh
+      - name: Reproduce the user's liked 16-bar MMA Rock with original recorded instruments
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/mma_rock_band_handoff_16bar_r1.py
+      - name: Analyze real recorded kick stem and remix ONLY kick/subkick gains using unchanged 3D mixer
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/rock_mma_kick_focused_remix_only_r1.py
+      - name: Archive original and two kick-only 3D stereo variants with diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-interpreter-original-vs-kick-presence-audio-20261008
+          path: |
+            research/mma_rock_handoff_r1_output/MMA_Rock_16Bar_Interpreted_Band_Fill_3D.wav
+            research/rock_kick_only_mix_audition_r1/Rock_Interpreter_kick_present_plus_6db.wav
+            research/rock_kick_only_mix_audition_r1/Rock_Interpreter_kick_present_plus_9db.wav
+            research/rock_kick_only_mix_audition_r1/KICK_RESTORATION_REPORT.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 21

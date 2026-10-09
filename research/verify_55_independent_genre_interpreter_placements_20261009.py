@@ -66,13 +66,23 @@ def check_contracts():
                  "RECOVERED_USER_PREFERRED_ROCK_BACKEND_NOT_OWNED_BY_ROCK")
             need(slot["original_rock_midi_sha256"]==PINNED_USER_LIKED_MMA_SHA256,
                  "USER_PREFERRED_ROCK_MIDI_FINGERPRINT_DRIFT")
+        elif genre in ("Jazz Waltz","Salsa"):
+            expected=("composer_overrides/genre_styles/Jazz/jazz_waltz_genre_interpreter.py"
+                       if genre=="Jazz Waltz" else
+                       "composer_overrides/genre_styles/Latin/salsa_genre_interpreter.py")
+            need(slot["backend_file"]==expected and
+                 (PROJECT/expected).is_file() and
+                 slot["backend_status"].endswith("_SOURCE_SFZ_UNVERIFIED") and
+                 slot["source_specific_note_score_approved_for_production"] is False,
+                 "NON_ROCK_BACKEND_PROGRAM_OR_SFZ_STATUS_WRONG:"+genre)
+            count["symbolic_nonrock"]+=1
         else:
             need(slot["backend_file"] is None and
                  slot["backend_status"]=="EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED",
                  "FALSE_NON_ROCK_INTERPRETER_CLAIM:"+genre)
             count["pending"]+=1
         originals[genre]=actual["profile_id"]
-    need(count["pending"]==54 and len(files)==55,"54_BLOCKED_GENRES_NOT_EXPLICIT")
+    need(count["pending"]==52 and count["symbolic_nonrock"]==2 and len(files)==55,"GENRE_PROGRAM_STATUS_WRONG")
     original=ROOT/"Rock"/"rock_pinned_mma_interpreter.py"
     archive=PROJECT/"research/archived_rock_20261009/original/rock_pinned_mma_interpreter.py"
     strum=ROOT/"Rock"/"rock_strum_phrase_performance.py"
@@ -84,6 +94,7 @@ def check_contracts():
       "independent_owned_interpreter_contracts":55,
       "family_folders":13,"functional_nonrock_backends_falsely_claimed":0,
       "pending_genre_specific_programs":count["pending"],
+      "new_symbolic_only_genre_interpreters":count["symbolic_nonrock"],
       "archived_rock_interpreter_byte_for_byte_restored":True,
       "rock_pinned_source_sha256":PINNED_USER_LIKED_MMA_SHA256,
       "rock_selected_beat_per_minute":TEMPO,

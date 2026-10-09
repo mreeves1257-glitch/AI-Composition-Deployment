@@ -43,30 +43,9 @@ jobs:
           python -c "import zipfile,pathlib; a=list(pathlib.Path('.').glob('*.whl')); assert len(a)==2; assert all(zipfile.ZipFile(p).testzip() is None for p in a); print('PYTHON_MUSIC_LIBRARY_PACKAGES_CHECKED',*[p.name for p in a])"
       - name: Prepare source provenance and research-only README
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          import hashlib,json
-          from datetime import datetime,timezone
-          root=Path("research/external_arranger_downloads_20261009")
-          files=sorted(p for p in root.rglob("*") if p.is_file())
-          artifacts=[dict(path=str(p.relative_to(root)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size) for p in files]
-          (root/"RESEARCH_FILES_CHECKSUM_MANIFEST_2026-10-09.json").write_text(json.dumps({"checked_at_utc":datetime.now(timezone.utc).isoformat(),"research_only":True,"not_installed_into_composer":True,"files":artifacts},indent=2)+"\n")
-          (root/"READ_ME_FIRST_2026-10-09.md").write_text('''# Downloaded research-only musical sequence engines and theory modules
-
-**Do not install these in the existing Composer, Plug or Control Panel without a separate compatibility and licensing review.** The original 7 stages, 55 genre profiles, original real SFZ sample programs, and standalone 3D mixer are untouched.
-
-1. JJazzLab Toolkit **5.2.1** official full compiled Java library plus original sources. Original upstream: https://github.com/jjazzboss/JJazzLabToolkit/releases/tag/5.2.1 . LGPL-2.1. The upstream README requires **Java 25 or later**; the current deployment stack has not been prepared/tested for this requirement. The Toolkit can help test chord/section-driven MIDI backing-track behavior and Yamaha-style parsing, not replace our recorded sample soundbank.
-2. **music21 10.5.0** verified PyPI wheel, https://pypi.org/project/music21/ , BSD-style licensing. It is a Python music-theory and analysis toolkit for chord timelines, score/form and voice-leading research, NOT a complete live arranger.
-3. **mingus 0.6.1** verified PyPI wheel, https://pypi.org/project/mingus/ , GPLv3. It covers chords/scales/progressions and MIDI/music notation. Keep a separately licensed research sandbox; do not silently copy GPL source into the core Composer.
-4. **MMA Musical MIDI Accompaniment Interpreter 25.05.0** was downloaded and checksum-verified in the **existing October 8 hard archive**, so this package does NOT duplicate that original binary/source. Preserve the source code and license notice already captured.
-5. Yamaha Genos2 SFF/NTR/NTT/RTR/MegaVoice/S.Art2, Korg Pa5X CV/Guitar Mode2/DNC, Roland Style Composer, Ketron Live Modeling and Casio chord/preset engines are hardware/manufacturer application capabilities; they are **NOT redistributable stand-alone modules** and are NOT included here.
-
-Only selected actual open-source distributables are in this research archive. They are independent references and require their own runtime/licensing verification. The separate 22-gate all-55 genre audit only proved the reference filing, NOT installed or executable functionality. Do not add an eighth stage; the interpreter/bridge slot belongs between Stage 3 and 4, Composer is Stage 4 and Performance is Stage 5.
-
-Protected original: Rock 16-bar MMA arrangement with user-preferred research-only -8 dB bass mix, dated 2026-10-08 21:17 CDT hard stop.
-''')
-          print("EXTERNAL_DOWNLOADS_VERIFIED",len(artifacts),json.dumps(artifacts))
-          PY
+          set -euxo pipefail
+          cp research/EXTERNAL_KEYBOARD_MUSIC_MODULES_README_2026-10-09.md research/external_arranger_downloads_20261009/READ_ME_FIRST_2026-10-09.md
+          python -c 'from pathlib import Path; import hashlib,json; from datetime import datetime,timezone; r=Path("research/external_arranger_downloads_20261009"); files=sorted(p for p in r.rglob("*") if p.is_file()); artifacts=[dict(path=str(p.relative_to(r)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size) for p in files]; (r/"CHECKSUM_MANIFEST_2026-10-09.json").write_text(json.dumps({"checked_at_utc":datetime.now(timezone.utc).isoformat(),"research_only":True,"not_installed_into_composer":True,"files":artifacts},indent=2)); print("EXTERNAL_DOWNLOADS_VERIFIED",len(artifacts),artifacts)'
       - uses: actions/upload-artifact@v4
         with:
           name: public-arranger-toolkit-and-theory-modules-research-2026-10-09

@@ -48,26 +48,7 @@
       "original_role_sound_map": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
       "behavior_authority": "ORIGINAL_GENRE_MUSICAL_DEFINITION_AND_GENRE_OWNED_SOURCE_PATTERN",
       "production_activated": false,
-      "requires_exact_sample_and_full_song_audition": true,
-      "full_arrangement_source_map": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json#/full_genre_track_sound_maps/ROCK",
-      "full_arrangement_connection_map": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json#/full_genre_track_sound_maps/ROCK/full_track_component_connections",
-      "original_nine_independent_track_roles": [
-        "HARMONY",
-        "LEAD",
-        "BASS",
-        "KICK",
-        "SNARE",
-        "HAT",
-        "TOMS",
-        "CRASH",
-        "RIDE"
-      ],
-      "development_handoff_entrypoint": "genre_styles.genre_owned_interpreter_dispatch.connect_selected_genre_components",
-      "development_connection_scope": "STAGE3_INTERPRETER_STAGE4_CANDIDATE_22_CAPABILITIES_SFZ_STEM_AND_3D_HANDOFF_REFERENCES",
-      "original_rock_instrument_behavior_and_backend_unchanged": true,
-      "no_repair_no_reset_no_test_performed": true,
-      "live_audio_connection_activated": false,
-      "no_change_to_original_recorded_audio": true
+      "requires_exact_sample_and_full_song_audition": true
     }
   ],
   "interpreter_files_reconciled_with_actual_55_genre_registry": true,

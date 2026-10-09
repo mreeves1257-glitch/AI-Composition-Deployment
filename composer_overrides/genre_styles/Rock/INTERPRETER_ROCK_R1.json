@@ -54,189 +54,104 @@
     "proprietary_Yamaha_Korg_sample_or_style_code_copied"
   ],
   "wiring_instruction": {
-    "schema": "AI_COMPOSER_55_GENRE_EXISTING_7_STAGE_WIRING_WITH_SOUND_MAP_2026_10_09",
-    "status": "ROCK_OWN_GENRE_SOURCE_RESET_STAGED_NO_LIVE_PRODUCTION",
-    "preserved_original_architecture": true,
-    "stage_order": [
-      {
-        "stage": 1,
-        "name": "SELECT_GENRE",
-        "source": "composer_overrides/genre_styles/Rock/profile.json"
-      },
-      {
-        "stage": 2,
-        "name": "DEFINE_MUSICAL_STRUCTURE",
-        "source": "composer_overrides/genre_styles/Rock/profile.json",
-        "output": "meter, tempo, harmony, form, section and phrase"
-      },
-      {
-        "stage": 3,
-        "name": "CHOOSE_INSTRUMENTS_AND_DRUM_KIT",
-        "source": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
-        "output": "actual selected roles and explicit sound references"
-      },
-      {
-        "between": "3_TO_4",
-        "name": "GENRE_OWNED_MUSICAL_INTERPRETER",
-        "entrypoint": "genre_styles.genre_owned_interpreter_dispatch.dispatch_stage3_to4_genre_owned",
-        "shared_gateway": "genre_styles.shared_interpreter_router.route_to_shared_interpreter",
-        "backend": "composer_overrides/genre_styles/source_pattern_library.py",
-        "output": "candidate instrument-specific section/groove/role instructions",
-        "live_enabled": false
-      },
-      {
-        "stage": 4,
-        "name": "COMPOSE_SEPARATE_PARTS",
-        "source": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
-        "output": "separate proposed note events; do not replace current Composer authoritative events"
-      },
-      {
-        "stage": 5,
-        "name": "PERFORM_MUSICALLY",
-        "source": "composer_overrides/genre_styles/Rock/GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json",
-        "output": "instrument-supported expression and articulations only"
-      },
-      {
-        "stage": 6,
-        "name": "RENDER_SEPARATE_AUDIO_STEMS",
-        "source": "existing original MIDI output core plus SFZ renderer",
-        "output": "one real recorded WAV per verified track; unverified roles blocked"
-      },
-      {
-        "stage": 7,
-        "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
-        "source": "existing independent standalone_3d_mixer",
-        "output": "final stereo WAV to original Plug/Control Panel"
-      }
+    "schema": "AI_COMPOSER_GENRE_WIRING_AND_SOUND_MAPPING_2026_10_09",
+    "state": "STAGED_REFERENCE_CONNECTIONS_NOT_LIVE",
+    "ordered_links": [
+      "01 SELECT_GENRE -> original family profile",
+      "02 DEFINE_MUSICAL_STRUCTURE -> original meter/tempo/form/harmony",
+      "03 CHOOSE_INSTRUMENTS_AND_DRUM_KIT -> original resource registry and genre sound map",
+      "03->04 GENRE INTERPRETER -> selected own backend, MMA styles and 22 capability router",
+      "04 COMPOSE_SEPARATE_PARTS -> existing genre source pattern and original composer",
+      "05 PERFORM_MUSICALLY -> instrument-specific articulations and expression",
+      "06 RENDER_SEPARATE_AUDIO_STEMS -> original MIDI -> verified SFZ recordings per track",
+      "07 GENRE_MIX_THEN_STANDALONE_3D_MIX -> independent mixer -> original Plug/Control Panel"
     ],
-    "mma_style_resources": {
-      "origin": "UNMODIFIED_OFFICIAL_MMA_25_05_0_STYLES_WITH_LICENSE",
-      "located_with_genre": true,
-      "candidate_file_paths": [
-        "composer_overrides/genre_styles/Rock/basicrock.mma",
-        "composer_overrides/genre_styles/Rock/60srock.mma",
-        "composer_overrides/genre_styles/Rock/rock-128.mma"
-      ],
-      "shared_include_root": "composer_overrides/genre_styles",
-      "shared_include_files": [
-        "stdpats.mma",
-        "stdpats34.mma",
-        "stdpats54.mma",
-        "stdpats68.mma"
-      ],
-      "matching_status": "SOURCE_STYLE_FILES_PRESENT_GENRE_MATCH_NOT_AUDIO_VERIFIED",
-      "independent_mma_executor_runtime_dependency": "UNVERIFIED_NOT_LIVE"
-    },
-    "sound_mapping": {
-      "source_of_truth_file": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
-      "source_genre_key": "ROCK",
-      "preserves_original_source_file": true,
-      "recorded_sound_files_untouched": true,
-      "role_bindings": {
-        "BASS": {
-          "original_instrument_id": "electric_bass_guitar",
-          "lookup_policy": "EXACT_ID",
-          "binding_id": "electric_bass_guitar",
-          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
-          "sfz_program": "growlybass_clean.sfz",
-          "verification_status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
-          "source_files_preflight_complete": false,
-          "active_audio_authorized": false
-        },
-        "HARMONY": {
-          "original_instrument_id": "electric_guitar",
-          "lookup_policy": "EXACT_CONTEXTUAL",
-          "binding_id": "electric_guitar:RHYTHM_POWER_CHORDS",
-          "resource_id": "KARORYFER_SHINYGUITAR",
-          "sfz_program": "Programs/composer-electric.sfz",
-          "verification_status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
-          "source_files_preflight_complete": false,
-          "active_audio_authorized": false
-        },
-        "KICK": {
-          "original_instrument_id": "kick_drum_rock",
-          "lookup_policy": "EXACT_ID",
-          "binding_id": "kick_drum_rock",
-          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "sfz_program": "Programs/composer-kick-lite.sfz",
-          "verification_status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
-          "source_files_preflight_complete": false,
-          "active_audio_authorized": false
-        },
-        "SNARE": {
-          "original_instrument_id": "snare_drum",
-          "lookup_policy": "EXACT_ID",
-          "binding_id": "snare_drum",
-          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "sfz_program": "Programs/composer-snare-lite.sfz",
-          "verification_status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
-          "source_files_preflight_complete": false,
-          "active_audio_authorized": false
-        },
-        "HAT": {
-          "original_instrument_id": "hi_hat",
-          "lookup_policy": "EXACT_ID",
-          "binding_id": "hi_hat",
-          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "sfz_program": "Programs/composer-hihat-lite.sfz",
-          "verification_status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
-          "source_files_preflight_complete": false,
-          "active_audio_authorized": false
-        }
-      },
-      "full_arrangement_source_of_truth": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
-      "full_arrangement_genre_pointer": "/full_genre_track_sound_maps/ROCK",
-      "complete_original_nine_track_connection_pointer": "/full_genre_track_sound_maps/ROCK/full_track_component_connections/instrument_and_render_links",
-      "stage3_original_palette_by_full_track": {
-        "HARMONY": "electric_guitar",
-        "LEAD": "lead_guitar",
-        "BASS": "electric_bass",
-        "KICK": "drums",
-        "SNARE": "drums",
-        "HAT": "drums",
-        "TOMS": "drums",
-        "CRASH": "drums",
-        "RIDE": "drums"
-      },
-      "all_nine_full_track_program_references_assigned": true,
-      "four_full_arrangement_roles_not_in_seven_bar_seed": [
-        "LEAD",
-        "TOMS",
-        "CRASH",
-        "RIDE"
-      ],
-      "all_audio_evidence_unverified": true
-    },
-    "file_connections": {
-      "genre_profile": "composer_overrides/genre_styles/Rock/profile.json",
-      "interpreter_slot": "composer_overrides/genre_styles/Rock/INTERPRETER_ROCK_R1.json",
-      "family_interpreter_handoff": "composer_overrides/genre_styles/Rock/GENRE_INTERPRETER_HANDOFF_R1.json",
-      "mma_style_folder": "composer_overrides/genre_styles/Rock",
-      "source_pattern": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
-      "source_resource_mapping": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
-      "capability_procedure": "composer_overrides/genre_styles/Rock/GENRE_22_CAPABILITY_PROCEDURE_R1.json",
-      "capability_binding": "composer_overrides/genre_styles/Rock/GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json",
-      "full_arrangement_program_map": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json#/full_genre_track_sound_maps/ROCK/full_track_component_connections",
-      "original_profile_nine_tracks": "composer_overrides/genre_styles/Rock/profile.json#/profiles/ROCK/individual_instrument_tracks"
-    },
-    "last_authorized_boundary": "STAGE3_TO_STAGE4_CONFIGURATION_ONLY",
-    "production_stage_links_enabled": false,
-    "source_specific_recorded_audio_ready": false,
-    "do_not_override_existing_composer_events": true,
+    "genre_profile_file": "composer_overrides/genre_styles/Rock/profile.json",
+    "genre_interpreter_file": "composer_overrides/genre_styles/Rock/INTERPRETER_ROCK_R1.json",
+    "interpreter_entrypoint": "genre_styles.genre_owned_interpreter_dispatch.dispatch_stage3_to4_genre_owned",
+    "shared_intent_gateway": "genre_styles.shared_interpreter_router.route_to_shared_interpreter",
     "owned_backend": "composer_overrides/genre_styles/source_pattern_library.py",
     "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
+    "genre_mma_style_files": [
+      "composer_overrides/genre_styles/Rock/basicrock.mma",
+      "composer_overrides/genre_styles/Rock/60srock.mma",
+      "composer_overrides/genre_styles/Rock/rock-128.mma"
+    ],
+    "mma_files_are_original_references_not_a_live_executable": true,
+    "mma_shared_includes": [
+      "stdpats.mma",
+      "stdpats34.mma",
+      "stdpats54.mma",
+      "stdpats68.mma"
+    ],
+    "file_links": {
+      "genre_handoff": "composer_overrides/genre_styles/Rock/GENRE_INTERPRETER_HANDOFF_R1.json",
+      "source_patterns": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
+      "sound_mapping": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "capability_procedure": "composer_overrides/genre_styles/Rock/GENRE_22_CAPABILITY_PROCEDURE_R1.json",
+      "capability_execution": "composer_overrides/genre_styles/Rock/GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json",
+      "output_core": "existing original output MIDI/SFZ and independent standalone 3D mixer"
+    },
+    "sound_mapping": {
+      "authority_file": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "genre_key": "ROCK",
+      "roles": {
+        "BASS": {
+          "instrument_id": "electric_bass_guitar",
+          "bank_id": "KARORYFER_GROWLYBASS_V1_002",
+          "program_binding": "electric_bass_guitar",
+          "sfz_file": "growlybass_clean.sfz",
+          "policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "recorded_audio_preflight_verified": false
+        },
+        "HARMONY": {
+          "instrument_id": "electric_guitar",
+          "bank_id": "KARORYFER_SHINYGUITAR",
+          "program_binding": "electric_guitar:RHYTHM_POWER_CHORDS",
+          "sfz_file": "Programs/composer-electric.sfz",
+          "policy": "EXACT_CONTEXTUAL",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "recorded_audio_preflight_verified": false
+        },
+        "KICK": {
+          "instrument_id": "kick_drum_rock",
+          "bank_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "program_binding": "kick_drum_rock",
+          "sfz_file": "Programs/composer-kick-lite.sfz",
+          "policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "recorded_audio_preflight_verified": false
+        },
+        "SNARE": {
+          "instrument_id": "snare_drum",
+          "bank_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "program_binding": "snare_drum",
+          "sfz_file": "Programs/composer-snare-lite.sfz",
+          "policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "recorded_audio_preflight_verified": false
+        },
+        "HAT": {
+          "instrument_id": "hi_hat",
+          "bank_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "program_binding": "hi_hat",
+          "sfz_file": "Programs/composer-hihat-lite.sfz",
+          "policy": "EXACT_ID",
+          "status": "REFERENCE_PINNED_NOT_AUDIO_VERIFIED",
+          "recorded_audio_preflight_verified": false
+        }
+      },
+      "do_not_duplicate_recordings": true,
+      "unmapped_roles_must_block": true
+    },
+    "preserve_original_genre_stages": true,
+    "preserve_active_composer_events": true,
+    "production_links_enabled": false,
+    "audio_render_verified_for_new_route": false,
     "musical_source": {
       "file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
       "genre_key": "ROCK"
-    },
-    "audio_render_verified_for_new_route": false,
-    "stage_3_to_4_connection": {
-      "source": "genre_styles.genre_owned_interpreter_dispatch.connect_selected_genre_components",
-      "rock_interpreter_backend_kept_intact": "composer_overrides/genre_styles/source_pattern_library.py",
-      "original_selected_instruments": "composer_overrides/genre_styles/Rock/profile.json#/profiles/ROCK/original_composer_instrument_palette",
-      "full_arrangement_program_reference": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json#/full_genre_track_sound_maps/ROCK/full_track_component_connections",
-      "output": "DEVELOPMENT_RECEIPT_AND_STAGE4_CANDIDATES_KEEP_LEGACY_COMPOSER_EVENTS_AUTHORITATIVE",
-      "original_stage_links_activated_in_production": false
     }
   },
   "genre_specific_executable_score": {
@@ -252,7 +167,5 @@
     "recorded_sound_will_not_be_assumed": true,
     "score_length_bars": 7,
     "production_ready": false
-  },
-  "old_pinned_145_bpm_rock_interpreter_retained_historically_not_active": true,
-  "rock_reset_mode": "START_FRESH_WITH_ORIGINAL_ROCK_SOURCE_PROFILE_AND_OWN_PATTERN_SAME_AS_OTHER_GENRES"
+  }
 }

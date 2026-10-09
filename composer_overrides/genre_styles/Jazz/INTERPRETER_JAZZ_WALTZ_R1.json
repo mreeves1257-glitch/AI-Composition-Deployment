@@ -53,9 +53,6 @@
     "eighth_or_ninth_global_stage",
     "proprietary_Yamaha_Korg_sample_or_style_code_copied"
   ],
-  "genre_specific_midi_style_source": "OFFICIAL_MMA_25_05_0_GPL_SEPARATE_EXECUTABLE_NOT_COPIED_INTO_COMPOSER",
-  "technical_midi_file_parsing": "genre_styles.external_style_midi_reader.read_arranger_style_midi",
-  "musical_events_interpreted_in_isolation_not_sample_rendered": true,
   "wiring_instruction": {
     "schema": "AI_COMPOSER_GENRE_WIRING_AND_SOUND_MAPPING_2026_10_09",
     "state": "STAGED_REFERENCE_CONNECTIONS_NOT_LIVE",
@@ -141,6 +138,24 @@
     "preserve_original_genre_stages": true,
     "preserve_active_composer_events": true,
     "production_links_enabled": false,
-    "audio_render_verified_for_new_route": false
+    "audio_render_verified_for_new_route": false,
+    "musical_source": {
+      "file": "composer_overrides/genre_styles/Jazz/SOURCE_PATTERN_LIBRARY_R1.json",
+      "genre_key": "Jazz Waltz"
+    }
+  },
+  "genre_specific_executable_score": {
+    "source_pattern_file": "composer_overrides/genre_styles/Jazz/SOURCE_PATTERN_LIBRARY_R1.json",
+    "genre_key": "Jazz Waltz",
+    "musical_definition": {
+      "file": "composer_overrides/genre_styles/Jazz/profile.json",
+      "json_pointer": "/profiles/Jazz Waltz/musical_definition"
+    },
+    "implementation": "genre_styles.Jazz.jazz_waltz_genre_interpreter.interpret_genre",
+    "preserve_per_genre_chord_phrase_meter_pulse_sections_roles": true,
+    "no_original_mma_source_code_import": true,
+    "recorded_sound_will_not_be_assumed": true,
+    "score_length_bars": null,
+    "production_ready": false
   }
 }

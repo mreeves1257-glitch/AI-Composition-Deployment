@@ -85,9 +85,9 @@ def get_mma():
     with tarfile.open(archive,"r:gz") as f:
         for member in f:
             rel=Path(member.name)
-            need(not rel.is_absolute() and ".." not in rel.parts and (member.isfile() or member.isdir() or member.issym()),
+            need(not rel.is_absolute() and ".." not in rel.parts and (member.isfile() or member.isdir() or member.issym() or member.islnk()),
                  "UNSAFE_EXTERNAL_ARCHIVE_ENTRY")
-            if member.issym():
+            if member.issym() or member.islnk():
                 continue  # External author's symbolic links not required to interpret.
             dest=(work/rel).resolve()
             need(dest.is_relative_to(work.resolve()),"EXTERNAL_ARCHIVE_PATH_ESCAPE")

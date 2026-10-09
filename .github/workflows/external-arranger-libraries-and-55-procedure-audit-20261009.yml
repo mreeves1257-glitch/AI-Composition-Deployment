@@ -1,0 +1,76 @@
+name: External Musical Arranger & Theory Libraries — Research Downloads + 55-Genre Audit
+on:
+  push:
+    branches:
+      - all-55-yamaha-korg-22-capability-procedure-20261009
+    paths:
+      - .github/workflows/external-arranger-libraries-and-55-procedure-audit-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  download-open-modules-and-check-original-genre-procedures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original seven stages plus all 22 procedure items across every one of 55 original genres
+        run: python research/validate_all_55_22_capability_procedures_20261009.py
+      - name: Download checksum-authenticated official JJazzLab Toolkit core engine plus its full source
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p research/external_arranger_downloads_20261009/jjazzlab_toolkit
+          cd research/external_arranger_downloads_20261009/jjazzlab_toolkit
+          curl --fail --location --retry 5 --retry-all-errors --max-time 250 --output jjazzlab-toolkit-5.2.1.jar https://github.com/jjazzboss/JJazzLabToolkit/releases/download/5.2.1/jjazzlab-toolkit-5.2.1.jar
+          curl --fail --location --retry 5 --retry-all-errors --max-time 250 --output jjazzlab-toolkit-5.2.1-sources.jar https://github.com/jjazzboss/JJazzLabToolkit/releases/download/5.2.1/jjazzlab-toolkit-5.2.1-sources.jar
+          echo '10c052d9463cc568ae17869160f6149a1f69e90923a9905a99492a8d8818ae54  jjazzlab-toolkit-5.2.1.jar' | sha256sum -c -
+          echo '3b2f9e3583c53645b345a8a43a678a5ee542ee3f90e35f28bf2e20091c9af773  jjazzlab-toolkit-5.2.1-sources.jar' | sha256sum -c -
+          jar tf jjazzlab-toolkit-5.2.1.jar | grep -q 'org/jjazz/' || (echo 'JJAZZLAB_MODULES_NOT_IN_ARCHIVE' && exit 1)
+          jar tf jjazzlab-toolkit-5.2.1-sources.jar | grep -q 'org/jjazz/' || (echo 'JJAZZLAB_SOURCE_MISSING' && exit 1)
+          echo 'JJAZZLAB_OFFICIAL_ENGINE_BINARY_AND_FULL_SOURCE_VERIFIED'
+      - name: Download verified public music-theory and MIDI sequencing libraries
+        run: |
+          set -euxo pipefail
+          mkdir -p research/external_arranger_downloads_20261009/music21_mingus
+          cd research/external_arranger_downloads_20261009/music21_mingus
+          python -m pip download --disable-pip-version-check --no-deps --only-binary=:all: --dest . music21==10.5.0 mingus==0.6.1
+          echo '9924eff5fbf58490e67cbf3b78a58ba53040e77c281930d354af32a747e94606  music21-10.5.0-py3-none-any.whl' | sha256sum -c -
+          echo '036a85b83d2f5542e2fe8fbfff77d2b29b82527360b1687f9ec7824fcd892f9f  mingus-0.6.1-py2.py3-none-any.whl' | sha256sum -c -
+          python -c "import zipfile,pathlib; a=list(pathlib.Path('.').glob('*.whl')); assert len(a)==2; assert all(zipfile.ZipFile(p).testzip() is None for p in a); print('PYTHON_MUSIC_LIBRARY_PACKAGES_CHECKED',*[p.name for p in a])"
+      - name: Prepare source provenance and research-only README
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          from datetime import datetime,timezone
+          root=Path("research/external_arranger_downloads_20261009")
+          files=sorted(p for p in root.rglob("*") if p.is_file())
+          artifacts=[dict(path=str(p.relative_to(root)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size) for p in files]
+          (root/"RESEARCH_FILES_CHECKSUM_MANIFEST_2026-10-09.json").write_text(json.dumps({"checked_at_utc":datetime.now(timezone.utc).isoformat(),"research_only":True,"not_installed_into_composer":True,"files":artifacts},indent=2)+"\n")
+          (root/"READ_ME_FIRST_2026-10-09.md").write_text('''# Downloaded research-only musical sequence engines and theory modules
+
+**Do not install these in the existing Composer, Plug or Control Panel without a separate compatibility and licensing review.** The original 7 stages, 55 genre profiles, original real SFZ sample programs, and standalone 3D mixer are untouched.
+
+1. JJazzLab Toolkit **5.2.1** official full compiled Java library plus original sources. Original upstream: https://github.com/jjazzboss/JJazzLabToolkit/releases/tag/5.2.1 . LGPL-2.1. The upstream README requires **Java 25 or later**; the current deployment stack has not been prepared/tested for this requirement. The Toolkit can help test chord/section-driven MIDI backing-track behavior and Yamaha-style parsing, not replace our recorded sample soundbank.
+2. **music21 10.5.0** verified PyPI wheel, https://pypi.org/project/music21/ , BSD-style licensing. It is a Python music-theory and analysis toolkit for chord timelines, score/form and voice-leading research, NOT a complete live arranger.
+3. **mingus 0.6.1** verified PyPI wheel, https://pypi.org/project/mingus/ , GPLv3. It covers chords/scales/progressions and MIDI/music notation. Keep a separately licensed research sandbox; do not silently copy GPL source into the core Composer.
+4. **MMA Musical MIDI Accompaniment Interpreter 25.05.0** was downloaded and checksum-verified in the **existing October 8 hard archive**, so this package does NOT duplicate that original binary/source. Preserve the source code and license notice already captured.
+5. Yamaha Genos2 SFF/NTR/NTT/RTR/MegaVoice/S.Art2, Korg Pa5X CV/Guitar Mode2/DNC, Roland Style Composer, Ketron Live Modeling and Casio chord/preset engines are hardware/manufacturer application capabilities; they are **NOT redistributable stand-alone modules** and are NOT included here.
+
+Only selected actual open-source distributables are in this research archive. They are independent references and require their own runtime/licensing verification. The separate 22-gate all-55 genre audit only proved the reference filing, NOT installed or executable functionality. Do not add an eighth stage; the interpreter/bridge slot belongs between Stage 3 and 4, Composer is Stage 4 and Performance is Stage 5.
+
+Protected original: Rock 16-bar MMA arrangement with user-preferred research-only -8 dB bass mix, dated 2026-10-08 21:17 CDT hard stop.
+''')
+          print("EXTERNAL_DOWNLOADS_VERIFIED",len(artifacts),json.dumps(artifacts))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: public-arranger-toolkit-and-theory-modules-research-2026-10-09
+          path: research/external_arranger_downloads_20261009/
+          compression-level: 0
+          retention-days: 21
+          if-no-files-found: error

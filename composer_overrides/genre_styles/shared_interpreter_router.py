@@ -76,7 +76,7 @@ def resolve(genre: str) -> dict:
     matching = [entry for entry in handoff["genres"] if entry["genre_name"] == genre]
     _check(len(matching) == 1 and
            matching[0]["profile_id"] == p["musical_definition"]["profile_id"] and
-           matching[0]["interpreter_stage_connected"] is False,
+           matching[0].get("interpreter_stage_connected", matching[0].get("connected")) is False,
            "GENRE_INTERPRETER_HANDOFF_MISMATCH")
     gates = [entry for entry in procedure["genre_records"] if entry["genre_name"] == genre]
     _check(len(gates) == 1 and tuple(gates[0]["capability_ids"]) == CAP_IDS,

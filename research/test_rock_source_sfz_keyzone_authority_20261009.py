@@ -70,7 +70,7 @@ def generated_drum_sfzs(build):
         sfz=match.group(1)
         if not re.search(r"(?m)^<global>\s+key="+str(key)+r"(?:\s|$)",sfz):
             raise AssertionError("DRUM_SOURCE_NOTE_NOT_EXACT:"+role)
-        if not re.search(r"(?m)^\s*sample=",sfz):
+        if not re.search(r"(?m)(?:^|\s)sample=",sfz):
             raise AssertionError("NO_REFERENCED_RECORDED_DRUM_SAMPLE:"+role)
         blocks[role]={key}
     return blocks

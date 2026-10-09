@@ -1,0 +1,130 @@
+{
+  "schema_version": "GENRE_INTERPRETER_FAMILY_XREF_R1",
+  "family_name": "Latin",
+  "source_profile_file": "composer_overrides/genre_styles/Latin/profile.json",
+  "profile_count": 7,
+  "original_7_stages_unmodified": true,
+  "reference_only": true,
+  "original_connections_activated": false,
+  "genres": [
+    {
+      "genre_name": "Bossa Nova",
+      "profile_id": "BOSSA_NOVA_V1",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Latin/profile.json",
+        "json_pointer": "/profiles/Bossa Nova/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    },
+    {
+      "genre_name": "Samba",
+      "profile_id": "SAMBA_V1",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Latin/profile.json",
+        "json_pointer": "/profiles/Samba/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    },
+    {
+      "genre_name": "Salsa",
+      "profile_id": "SALSA_V1",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Latin/profile.json",
+        "json_pointer": "/profiles/Salsa/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    },
+    {
+      "genre_name": "Mambo",
+      "profile_id": "MAMBO_V1",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Latin/profile.json",
+        "json_pointer": "/profiles/Mambo/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    },
+    {
+      "genre_name": "Rumba",
+      "profile_id": "CUBAN_RUMBA_BASELINE_V1",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Latin/profile.json",
+        "json_pointer": "/profiles/Rumba/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    },
+    {
+      "genre_name": "Cha-Cha",
+      "profile_id": "CHA_CHA_V1",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Latin/profile.json",
+        "json_pointer": "/profiles/Cha-Cha/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    },
+    {
+      "genre_name": "Bolero",
+      "profile_id": "LATIN_BOLERO_V1",
+      "source_of_truth": {
+        "file": "composer_overrides/genre_styles/Latin/profile.json",
+        "json_pointer": "/profiles/Bolero/musical_definition",
+        "read_original_values_at_runtime": true
+      },
+      "interpreter_slot": "BETWEEN_ORIGINAL_STAGE_03_AND_04",
+      "input_roles": "ORIGINAL_STAGE_03",
+      "form_meter_harmony": "ORIGINAL_STAGE_02",
+      "output": "ORIGINAL_STAGE_04_ROLE_PLANS",
+      "performance": "ORIGINAL_STAGE_05",
+      "backends": "GENRE_SPECIFIC_UNASSIGNED_NO_ROCK_FALLBACK",
+      "source_mapping_status": "PENDING_PER_GENRE_VERIFICATION",
+      "connected": false
+    }
+  ]
+}

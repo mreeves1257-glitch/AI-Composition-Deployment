@@ -28,6 +28,15 @@ PINNED={
  "tom_tom":("KARORYFER_BIG_RUSTY_DRUMS","Programs/composer-tom-lite.sfz"),
  "conga":("FREEPATS_WORLD_PERCUSSION","composer-conga-five-strokes.sfz")
 }
+# Source authority taken from composer_overrides/production_resource_policy.py.
+# Never accept a lookalike SFZ program with a changed bank or license.
+ORIGINAL_SOURCE_PROVENANCE={
+ "KARORYFER_GROWLYBASS_V1_002":("Karoryfer Growlybass","CC0"),
+ "KARORYFER_SHINYGUITAR":("Karoryfer Shinyguitar","CC0-1.0"),
+ "KARORYFER_BIG_RUSTY_DRUMS":("Karoryfer Big Rusty Drums","CC0-1.0"),
+ "GREG_SULLIVAN_E_PIANOS":("Greg Sullivan E-Pianos / Wurlitzer EP200","CC-BY-3.0"),
+ "FREEPATS_WORLD_PERCUSSION":("FreePats World Percussion","CC0-1.0"),
+}
 CONTEXT_PINNED={
  # Explicit authoring choice on ROCK harmony. This is *not* a fallback for
  # other genre electric guitars, acoustic guitars, or leads.
@@ -140,7 +149,9 @@ def map_source_roles(
         if not (resource.get("resource_id")==rid and
                 resource.get("preferred_mapping")==sfz and
                 resource.get("resource_type")=="SFZ_SAMPLE_LIBRARY" and
-                resource.get("fallback_policy")=="NO_SYNTHETIC_SUBSTITUTION"):
+                resource.get("fallback_policy")=="NO_SYNTHETIC_SUBSTITUTION" and
+                (resource.get("library"),resource.get("license"))==
+                     ORIGINAL_SOURCE_PROVENANCE[rid]):
             resolved.append({"role":name,"original_instrument_id":requested,
               "status":"BLOCKED_REGISTRY_SOURCE_MISMATCH",
               "binding_id":binding_id,"resource_id":rid,

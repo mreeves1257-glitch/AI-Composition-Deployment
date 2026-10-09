@@ -52,5 +52,71 @@
     "per_genre_duplicate_render_engine",
     "eighth_or_ninth_global_stage",
     "proprietary_Yamaha_Korg_sample_or_style_code_copied"
-  ]
+  ],
+  "wiring_instruction": {
+    "schema": "AI_COMPOSER_GENRE_WIRING_AND_SOUND_MAPPING_2026_10_09",
+    "state": "STAGED_REFERENCE_CONNECTIONS_NOT_LIVE",
+    "ordered_links": [
+      "01 SELECT_GENRE -> original family profile",
+      "02 DEFINE_MUSICAL_STRUCTURE -> original meter/tempo/form/harmony",
+      "03 CHOOSE_INSTRUMENTS_AND_DRUM_KIT -> original resource registry and genre sound map",
+      "03->04 GENRE INTERPRETER -> selected own backend, MMA styles and 22 capability router",
+      "04 COMPOSE_SEPARATE_PARTS -> existing genre source pattern and original composer",
+      "05 PERFORM_MUSICALLY -> instrument-specific articulations and expression",
+      "06 RENDER_SEPARATE_AUDIO_STEMS -> original MIDI -> verified SFZ recordings per track",
+      "07 GENRE_MIX_THEN_STANDALONE_3D_MIX -> independent mixer -> original Plug/Control Panel"
+    ],
+    "genre_profile_file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+    "genre_interpreter_file": "composer_overrides/genre_styles/Hybrid_Custom/INTERPRETER_GENRE_BREAKING_BORDERLESS_R1.json",
+    "interpreter_entrypoint": "genre_styles.genre_owned_interpreter_dispatch.dispatch_stage3_to4_genre_owned",
+    "shared_intent_gateway": "genre_styles.shared_interpreter_router.route_to_shared_interpreter",
+    "owned_backend": null,
+    "backend_status": "EXECUTABLE_GENRE_INTERPRETATION_NOT_YET_IMPLEMENTED",
+    "genre_mma_style_files": [],
+    "mma_files_are_original_references_not_a_live_executable": true,
+    "mma_shared_includes": [
+      "stdpats.mma",
+      "stdpats34.mma",
+      "stdpats54.mma",
+      "stdpats68.mma"
+    ],
+    "file_links": {
+      "genre_handoff": "composer_overrides/genre_styles/Hybrid_Custom/GENRE_INTERPRETER_HANDOFF_R1.json",
+      "source_patterns": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_PATTERN_LIBRARY_R1.json",
+      "sound_mapping": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "capability_procedure": "composer_overrides/genre_styles/Hybrid_Custom/GENRE_22_CAPABILITY_PROCEDURE_R1.json",
+      "capability_execution": "composer_overrides/genre_styles/Hybrid_Custom/GENRE_CAPABILITY_EXECUTION_BINDINGS_R1.json",
+      "output_core": "existing original output MIDI/SFZ and independent standalone 3D mixer"
+    },
+    "sound_mapping": {
+      "authority_file": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_RESOURCE_BINDINGS_R1.json",
+      "genre_key": "Genre-Breaking / Borderless",
+      "roles": {
+        "BASS": {
+          "instrument_id": "synth_bass",
+          "bank_id": null,
+          "program_binding": null,
+          "sfz_file": null,
+          "policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "recorded_audio_preflight_verified": false
+        },
+        "HARMONY": {
+          "instrument_id": "synth_pad",
+          "bank_id": null,
+          "program_binding": null,
+          "sfz_file": null,
+          "policy": "BLOCKED_UNVERIFIED",
+          "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
+          "recorded_audio_preflight_verified": false
+        }
+      },
+      "do_not_duplicate_recordings": true,
+      "unmapped_roles_must_block": true
+    },
+    "preserve_original_genre_stages": true,
+    "preserve_active_composer_events": true,
+    "production_links_enabled": false,
+    "audio_render_verified_for_new_route": false
+  }
 }

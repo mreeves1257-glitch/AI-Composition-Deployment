@@ -74,7 +74,8 @@ def main():
     actual_order=("self.genre.select","self.theory.create_new","self.instrument.resolve_events",
                   "self.target.resolve","self.performance.execute","execute_output_handoff",
                   "preflight_audio_resources","execute_audio_render")
-    observed=[engine.find(x) for x in actual_order]
+    run_body=engine.split("    def run(",1)[1]
+    observed=[run_body.find(x) for x in actual_order]
     check(all(x>=0 for x in observed) and observed==sorted(observed),
           "ORIGINAL_RUNTIME_COMPONENT_ORDER_CHANGED")
     check("theory['events']" in output and

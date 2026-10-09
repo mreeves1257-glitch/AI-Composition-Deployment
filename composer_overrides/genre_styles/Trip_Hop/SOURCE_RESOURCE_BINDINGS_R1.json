@@ -10,7 +10,17 @@
           "original_instrument_id": "synth_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "electric_piano",
@@ -19,7 +29,17 @@
           "source_files_preflight_complete": false,
           "binding_id": "electric_piano",
           "resource_id": "GREG_SULLIVAN_E_PIANOS",
-          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz"
+          "preferred_mapping": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_rock",
@@ -28,7 +48,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "kick_drum_rock",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+          "preferred_mapping": "Programs/composer-kick-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SNARE": {
           "original_instrument_id": "snare_drum",
@@ -37,7 +69,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "snare_drum",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+          "preferred_mapping": "Programs/composer-snare-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              38,
+              38
+            ],
+            "authored_absolute_note_keys": [
+              38
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HAT": {
           "original_instrument_id": "hi_hat",
@@ -46,7 +90,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "hi_hat",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              42,
+              42
+            ],
+            "authored_absolute_note_keys": [
+              42
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     },
@@ -58,13 +114,33 @@
           "original_instrument_id": "synth_bass",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              28,
+              86
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HARMONY": {
           "original_instrument_id": "synth_pad",
           "lookup_policy": "BLOCKED_UNVERIFIED",
           "status": "NEEDS_EXACT_RECORDED_RESOURCE_AND_STAGE3_AUTHORITY",
-          "source_files_preflight_complete": false
+          "source_files_preflight_complete": false,
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "CHORD_RELATIVE",
+            "declared_playable_midi_range": [
+              42,
+              104
+            ],
+            "authored_absolute_note_keys": [],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "KICK": {
           "original_instrument_id": "kick_drum_rock",
@@ -73,7 +149,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "kick_drum_rock",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-kick-lite.sfz"
+          "preferred_mapping": "Programs/composer-kick-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              36,
+              36
+            ],
+            "authored_absolute_note_keys": [
+              36
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "SNARE": {
           "original_instrument_id": "snare_drum",
@@ -82,7 +170,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "snare_drum",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-snare-lite.sfz"
+          "preferred_mapping": "Programs/composer-snare-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              38,
+              38
+            ],
+            "authored_absolute_note_keys": [
+              38
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         },
         "HAT": {
           "original_instrument_id": "hi_hat",
@@ -91,7 +191,19 @@
           "source_files_preflight_complete": false,
           "binding_id": "hi_hat",
           "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
-          "preferred_mapping": "Programs/composer-hihat-lite.sfz"
+          "preferred_mapping": "Programs/composer-hihat-lite.sfz",
+          "midi_note_contract": {
+            "symbolic_pattern_kind": "DRUM_ABSOLUTE",
+            "declared_playable_midi_range": [
+              42,
+              42
+            ],
+            "authored_absolute_note_keys": [
+              42
+            ],
+            "source_midi_keyzone_preflight_passed": false,
+            "exact_sample_graph_verified_for_this_genre": false
+          }
         }
       }
     }
@@ -99,5 +211,209 @@
   "live_audio_enabled": false,
   "target_registry_authority": "composer/runtime/target_registry.json",
   "recording_and_program_authority": "build_current_composer.sh plus recorded SFZ bank checks",
-  "rule": "No generic instrument substitutions. An exact program reference is not audio proof."
+  "rule": "No generic instrument substitutions. An exact program reference is not audio proof.",
+  "full_genre_track_sound_maps": {
+    "Trip-Hop": {
+      "genre": "Trip-Hop",
+      "profile_id": "TRIP_HOP_V2",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Trip_Hop/profile.json",
+      "original_selected_instrument_palette": [
+        "synth_bass",
+        "electric_piano",
+        "synth_pad",
+        "break_drums"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "RECORDED_PROGRAM_IDENTITY_REFERENCE_NOT_NEW_ROUTE_AUDIO_VERIFIED",
+          "registry_binding_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "recorded_sample_bank_library": "Greg Sullivan E-Pianos / Wurlitzer EP200",
+          "license": "CC-BY-3.0",
+          "sfz_path": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "expected_bank_root": "composer/runtime/sound_resources/GREG_SULLIVAN_E_PIANOS",
+          "source_evidence": "SOURCE_PINNED",
+          "supported_note_reference": null,
+          "preflight_verified_for_this_genre": false
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "break_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "break_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "break_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "SYNTH_BASS",
+        "ELECTRIC_PIANO",
+        "SYNTH_PAD",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    },
+    "Contemporary Trip-Hop / Trip-Hop Revival": {
+      "genre": "Contemporary Trip-Hop / Trip-Hop Revival",
+      "profile_id": "CONTEMPORARY_TRIP_HOP_V2",
+      "authoritative_original_genre_file": "composer_overrides/genre_styles/Trip_Hop/profile.json",
+      "original_selected_instrument_palette": [
+        "synth_bass",
+        "synth_chord",
+        "synth_pad",
+        "break_drums"
+      ],
+      "source_pattern_roles": [
+        "BASS",
+        "HARMONY",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "full_genre_tracks": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "original_instrument_id": "synth_chord",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "original_palette_group": null,
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Exact original instrument lacks a proven sound-library program mapping"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "original_palette_group": "break_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "original_palette_group": "break_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "original_palette_group": "break_drums",
+          "independent_audio_stem_required": true,
+          "mapping_state": "BLOCKED_NO_EXACT_PROGRAM_OR_CONTEXTUAL_KIT_MAPPING",
+          "registry_binding_id": null,
+          "resource_id": null,
+          "sfz_path": null,
+          "reason": "Original family kit selection must resolve exact recorded kit/program per track"
+        }
+      ],
+      "requested_separate_stems": [
+        "SYNTH_BASS",
+        "SYNTH_CHORD",
+        "SYNTH_PAD",
+        "KICK",
+        "SNARE",
+        "HAT"
+      ],
+      "source_pattern_notes_are_not_complete_song": true,
+      "all_recording_files_preserved": true,
+      "production_audio_enabled": false
+    }
+  },
+  "sound_mapping_scope": "55_ORIGINAL_GENRE_PROFILES_PLUS_234_SYMBOLIC_ROLES_FULL_GENRE_TRACKS_DISTINCT",
+  "full_sound_map_status": "RECORDED_PROGRAM_IDENTITY_REFERENCES_ONLY_BLOCK_UNVERIFIED_AND_WRONG_GENRE_KITS",
+  "full_genre_audio_preflight_verified": false
 }

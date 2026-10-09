@@ -229,6 +229,12 @@ def prove_original_composer_to_mma_only(mma_home):
             source_midi_path=midi,
         )
         handoff = receipt["interpreter_to_original_stage4"]
+        print("MIDI_TO_STAGE4_DIAGNOSTIC", json.dumps({
+            "mma_generated":result["midi_note_events"],
+            "interpreter_received":receipt["stage3_to_interpreter"],
+            "stage4":handoff,
+            "blockers":receipt["connection_blockers"],
+        }, sort_keys=True), flush=True)
         must(receipt["stage3_to_interpreter"]["musical_event_count"] ==
              result["midi_note_events"] == 233 and
              handoff["candidate_event_count"] > 0 and

@@ -61,7 +61,12 @@ def prepare_source_pattern_composer_handoff(
                     "INVALID_STAGE4_SCORE_NOTE")
             candidate.append({
                 "track_id":role,
-                "instrument_id":m["binding_id"],
+                # Existing InstrumentProgram accepts the physical instrument
+                # ID (electric_guitar), NOT the resource-registry key
+                # (electric_guitar:RHYTHM_POWER_CHORDS). That second key
+                # belongs to TargetProgram, which derives it from track role.
+                "instrument_id":m["original_instrument_id"],
+                "expected_target_binding_id":m["binding_id"],
                 "start_beat":float(start),
                 "duration_beats":float(duration),
                 "midi":note,
@@ -79,6 +84,15 @@ def prepare_source_pattern_composer_handoff(
         require(len(candidate)==len(symbolic),"PARTIAL_INSTRUMENT_OUTPUT_FORBIDDEN")
     outcome=("CANDIDATE_STAGE4_EVENTS_READY_SOURCE_PREFLIGHT_PENDING"
              if candidate else "BLOCKED_INCOMPLETE_EXACT_INSTRUMENT_MAPPING")
+    # Rock's actual recorded baseline has additional LEAD/TOMS/CRASH/RIDE
+    # tracks. The first seven-bar source seed is deliberately incomplete;
+    # never mislabel the five instrument parts as a complete Rock score.
+    old_rock_tracks=("BASS","HARMONY","KICK","SNARE","HAT",
+                     "LEAD","TOMS","CRASH","RIDE")
+    missing_rock_tracks=(
+        [role for role in old_rock_tracks
+         if role not in {r["role"] for r in mapping["roles"]}]
+        if genre=="ROCK" else [])
     # Composer's actual event list is preserved unchanged; this is a separate
     # candidate which the existing render path must not pick up implicitly.
     return {
@@ -88,6 +102,10 @@ def prepare_source_pattern_composer_handoff(
        "routing":mapping,"status":outcome,
        "candidate_stage4_events":candidate,
        "candidate_event_count":len(candidate),
+       "candidate_contains_all_original_rock_parts":(
+           not missing_rock_tracks if genre=="ROCK" else None),
+       "missing_original_rock_tracks":missing_rock_tracks,
+       "arrangement_scope":"SEVEN_BAR_SEED_NOT_COMPLETE_SONG",
        "requested_note_count":len(symbolic),
        "original_events_count":len(original_events),
        "existing_composer_events_unchanged":True,

@@ -1,0 +1,41 @@
+name: Verify One Shared Musical Interpreter Linked To All 55 Genres
+on:
+  push:
+    branches:
+      - shared-musical-interpreter-55-genre-links-20261009
+    paths:
+      - .github/workflows/verify-shared-musical-interpreter-55-genre-links-20261009.yml
+      - composer_overrides/genre_styles/shared_interpreter_router.py
+      - composer_overrides/genre_styles/SHARED_INTERPRETER_ALL_55_LINKS_R1.json
+      - research/verify_shared_interpreter_all55_links_20261009.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-one-interpreter-no-genre-duplication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preserve existing 55 genres and their original 7 stages
+        run: python composer_overrides/genre_styles/validate_profiles.py
+      - name: Confirm all 55 previously filed interpreter references remain unactivated
+        run: python research/validate_all_55_genre_interpreter_references_20261008.py
+      - name: Verify all 55 genre capability procedures still trace all 22 gates
+        run: python research/validate_all_55_22_capability_procedures_20261009.py
+      - name: Test callable shared router and explicit 55-genre Stage3-to-4 links and source-safe MIDI contract
+        run: python -m research.verify_shared_interpreter_all55_links_20261009
+      - name: Save exact test evidence
+        run: |
+          mkdir -p research/shared_interpreter_link_evidence_20261009
+          python -m research.verify_shared_interpreter_all55_links_20261009 > research/shared_interpreter_link_evidence_20261009/ALL_55_ROUTER_TEST_OUTPUT_2026-10-09.txt
+          cp composer_overrides/genre_styles/SHARED_INTERPRETER_ALL_55_LINKS_R1.json research/shared_interpreter_link_evidence_20261009/
+          cp composer_overrides/genre_styles/SHARED_INTERPRETER_EXTERNAL_BACKEND_CATALOG_R1.json research/shared_interpreter_link_evidence_20261009/
+          cp composer_overrides/genre_styles/shared_interpreter_router.py research/shared_interpreter_link_evidence_20261009/
+          cp research/verify_shared_interpreter_all55_links_20261009.py research/shared_interpreter_link_evidence_20261009/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Shared_Interpreter_55_Genre_Link_Verification_2026_10_09
+          path: research/shared_interpreter_link_evidence_20261009/
+          retention-days: 30
+          if-no-files-found: error

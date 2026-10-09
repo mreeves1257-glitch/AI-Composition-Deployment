@@ -3,9 +3,12 @@ on:
   push:
     branches:
       - genre-specific-interpreters-55-rock-restored-20261009
+      - genre-interpreter-behavior-55-20261009
     paths:
       - composer_overrides/genre_styles/**/INTERPRETER_*_R1.json
       - composer_overrides/genre_styles/GENRE_INTERPRETER_REGISTRY_R1.json
+      - composer_overrides/genre_styles/genre_owned_interpreter_dispatch.py
+      - composer_overrides/genre_styles/source_pattern_library.py
       - composer_overrides/genre_styles/Rock/rock_pinned_mma_interpreter.py
       - composer_overrides/genre_styles/Rock/rock_strum_phrase_performance.py
       - research/verify_55_independent_genre_interpreter_placements_20261009.py

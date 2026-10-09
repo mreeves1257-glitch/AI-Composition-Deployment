@@ -17,7 +17,7 @@ import wave
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / "composer" / "runtime"
 OUT = ROOT / "research" / "rock_melody_v1_full_song"
-SWITCH = "AI_COMP_ROCK_MELODY_V1"
+SWITCH = "AI_COMP_ROCK_CHORD_GRAMMAR_V1"
 
 
 def must(condition, reason):
@@ -57,6 +57,7 @@ def run():
     os.environ["AI_COMP_SFZ_RENDERER"]=str(ROOT/".composer_tools"/"bin"/"sfizz_render")
     os.environ["AI_COMP_ROCK_BASS_SUSTAIN_V1"]="0"
     os.environ["AI_COMP_AUTO_PHRASING_V1"]="0"
+    os.environ["AI_COMP_ROCK_MELODY_V1"]="0"  # original completed R1 strictly disabled
     os.environ[SWITCH]="0"
     sys.path.insert(0,str(RUNTIME))
     from engine import AICompositionEngine
@@ -103,7 +104,7 @@ def run():
     meta=json.loads(master.read_text())
     must(meta.get("authoritative_3d_master") is True and len(meta.get("audio_objects",[]))>=9,
          "INVALID_3D_MASTER")
-    saved=OUT/"ROCK_FULL_SONG_MELODY_R1_RECORDED_3D.wav"
+    saved=OUT/"ROCK_FULL_SONG_CHORD_GRAMMAR_RESEARCH_3D.wav"
     shutil.copyfile(wav,saved)
     source_stems=render.get("stems") or []
     stem_report=[{"track_id":s.get("track_id"),"note_count":s.get("note_count"),
@@ -111,7 +112,7 @@ def run():
                  for s in source_stems]
     result={
         "status":"REAL_FULL_ROCK_MELODIC_CANDIDATE_COMPLETE",
-        "study":"ROCK_THEME_RESPONSE_CHORD_TONE_GRAMMAR_R1",
+        "study":"ROCK_CHORD_ONLY_MELODIC_GRAMMAR_RESEARCH",
         "genre":"ROCK","tempo_bpm":theory.get("tempo_bpm"),
         "bars":theory.get("bars"),
         "original_event_count":len(old),"candidate_event_count":len(current),

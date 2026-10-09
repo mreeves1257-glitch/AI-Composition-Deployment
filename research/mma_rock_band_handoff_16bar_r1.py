@@ -114,6 +114,17 @@ def make_song(mma_py):
         lines.append(f"{i} {chord}")
     source.write_text("\n".join(lines)+"\n")
     midi=OUT/"MMA_Rock_16Bar_Two_Sections.mid"
+    preserved=os.environ.get("AI_COMP_MMA_PRESERVED_MIDI","").strip()
+    if preserved:
+        # Archive from the user's FAVORITE interpreter audio, not a new MMA
+        # stochastic score. Fail closed unless exact saved original SMF.
+        donor=Path(preserved).resolve()
+        need(donor.is_file(),"PRESERVED_USER_LIKED_MIDI_MISSING")
+        need(sha(donor)=="7253c3715299018dc540bdbaf29883bfbd7615ab7e5d943bde45f8d1b19555fe",
+             "USER_LIKED_MMA_SCORE_SHA256_MISMATCH")
+        shutil.copyfile(donor,midi)
+        print("EXACT_USER_LIKED_MMA_MIDI_RESTORED",sha(midi),flush=True)
+        return source,midi
     env=dict(os.environ);env["PYTHONPATH"]=str(mma_py.parent)
     # Generate the external MMA interpreter's named-style index in isolation.
     index=subprocess.run([sys.executable,str(mma_py),"-G"],cwd=mma_py.parent,

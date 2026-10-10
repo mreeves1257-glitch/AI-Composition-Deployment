@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "purpose": "Exact Jazz original-instrument connection readiness; no automatic aliases or substitutions",
+  "architecture": [
+    "COMPOSER",
+    "MIDI",
+    "GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ_RENDERER",
+    "APPROVED_3D_MIXER",
+    "FINISHED_MUSIC"
+  ],
+  "approved_mixer_unchanged": true,
+  "source_recordings_unchanged": true,
+  "genre_connections": [
+    {
+      "genre": "Swing",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "acoustic_bass",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "double_bass"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "piano",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "KICK",
+          "original_instrument_id": "kick_drum_soft",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "kick_drum_rock"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    },
+    {
+      "genre": "Jazz Ballad",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "acoustic_bass",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "double_bass"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "piano",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "BRUSH",
+          "original_instrument_id": "brush_snare",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "snare_drum"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "CYMBAL",
+          "original_instrument_id": "ride_cymbal",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    },
+    {
+      "genre": "Big Band",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "acoustic_bass",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "double_bass"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "horn_section",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "KICK",
+          "original_instrument_id": "kick_drum_soft",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "kick_drum_rock"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    },
+    {
+      "genre": "Jazz Waltz",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "acoustic_bass",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "double_bass"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "piano",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "KICK",
+          "original_instrument_id": "kick_drum_soft",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "kick_drum_rock"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    },
+    {
+      "genre": "Bebop",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "acoustic_bass",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "double_bass"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "piano",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "KICK",
+          "original_instrument_id": "kick_drum_soft",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "kick_drum_rock"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    },
+    {
+      "genre": "Cool Jazz",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "acoustic_bass",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "double_bass"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "electric_piano",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "KICK",
+          "original_instrument_id": "kick_drum_soft",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "kick_drum_rock"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    },
+    {
+      "genre": "Dixieland",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "acoustic_bass",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "double_bass"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "banjo",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "KICK",
+          "original_instrument_id": "kick_drum_soft",
+          "source_status": "BLOCKED_ORIGINAL_ID",
+          "recorded_candidates": [
+            "kick_drum_rock"
+          ],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    },
+    {
+      "genre": "Jazz Fusion",
+      "roles": [
+        {
+          "role": "BASS",
+          "original_instrument_id": "electric_bass_guitar",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HARMONY",
+          "original_instrument_id": "electric_piano",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "KICK",
+          "original_instrument_id": "kick_drum_rock",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "SNARE",
+          "original_instrument_id": "snare_drum",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        },
+        {
+          "role": "HAT",
+          "original_instrument_id": "hi_hat",
+          "source_status": "EXACT_REFERENCE_NOT_AUDIO_VERIFIED",
+          "recorded_candidates": [],
+          "automatic_rebinding": false
+        }
+      ]
+    }
+  ],
+  "next_gate": "Resolve exact instrument identities and verify actual audio for every required role before marking a genre fully connected"
+}

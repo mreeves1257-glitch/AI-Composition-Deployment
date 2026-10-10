@@ -10,6 +10,9 @@ from __future__ import annotations
 
 GENRE_NAME="Swing"
 GENRE_PROFILE_ID="JAZZ_SWING_V1"
+# The independent Swing harmonic arranger is still pending; do NOT activate an
+# invented style.chord_progression. The range bridge works independently.
+DEVELOPMENT_STATUS="NOT_STARTED"
 VERSION="SWING_ACTUAL_RECORDED_TRUMPET_REGISTER_CROSSWALK_R1"
 MIN_TRUMPET=60
 MAX_TRUMPET=83

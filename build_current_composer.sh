@@ -251,11 +251,8 @@ cp composer_overrides/test_rock_bass_sustain_policy_v1.py composer/runtime/test_
 # Composition quality research: OFF by default; preserves all source instruments.
 cp composer_overrides/rock_melodic_author_v1.py composer/runtime/rock_melodic_author_v1.py
 cp composer_overrides/test_rock_melodic_author_v1.py composer/runtime/test_rock_melodic_author_v1.py
-cp composer_overrides/AI_Comp_3D_Spatialization_Scene_Engine_009_RESTORED_2026-10-03.py composer/runtime/
-cp composer_overrides/AI_Comp_Object_Based_3D_Master_006_RESTORED_2026-10-03.py composer/runtime/
-cp composer_overrides/global_3d_output_gate.py composer/runtime/
-cp composer_overrides/spatial_master_handoff.py composer/runtime/
-cp composer_overrides/standalone_3d_mixer.py composer/runtime/
+# Final output is ordinary stereo from existing recorded stems; no 3D modules.
+cp composer_overrides/direct_stereo_output.py composer/runtime/
 cp composer_overrides/render_server.py composer/runtime/
 # Replay ONLY documented target-native initial MIDI controls into generated MIDI.
 # Leave the immutable runtime.b64 and original instrument libraries unchanged.
@@ -529,46 +526,25 @@ old="""    # Source stems cannot be promoted to a final master without the separ
             'source_audio_rendered':True,'stems':stems,'reason':'SPATIAL_MASTER_HANDOFF_REQUIRED',
             'next_stage':'EXTERNAL_3D_MASTER','fallback_policy':'NO_SYNTHETIC_SUBSTITUTION'}
 """
-new="""    # Composition and SFZ rendering are complete here. The 3D mixer is a
-    # separate final-stage process so it cannot alter composition or instrument
-    # rendering and does not share the Composer's audio working memory.
-    import subprocess, sys
+new="""    # Original SFZ stems -> simple ordinary stereo. No 3D mixer, spatial
+    # engine, object master, new instrument, or added pipeline stage.
+    from direct_stereo_output import finish_recorded_stems
     final_root = OUT / 'final_audio'
-    job_dir = OUT / package.package_id / 'three_d_mixer'
+    job_dir = OUT / package.package_id / 'direct_stereo'
     job_dir.mkdir(parents=True, exist_ok=True)
-    job_path = job_dir / 'job.json'
-    # Composer chooses the balance profile; the independent 3D mixer remains
-    # unchanged. This is a pure, Rock-only metadata overlay.
     from genre_styles.Rock.rock_balance_contract import apply_rock_balance
-    mixer_instructions = apply_rock_balance(engine_result)
+    stereo_instructions = apply_rock_balance(engine_result)
     from genre_styles.Jazz.jazz_ballad import balance_mix as apply_jazz_ballad_balance
-    mixer_instructions = apply_jazz_ballad_balance(mixer_instructions, stems)
-    # A separate recorded-kick derivative follows the same existing drum
-    # events as KICK. The independent 3D mixer remains entirely unchanged.
+    stereo_instructions = apply_jazz_ballad_balance(stereo_instructions, stems)
+    # Preserve the already-derived recorded kick's low-frequency layer.
     from genre_styles.Rock.recorded_subkick import prepare_recorded_subkick
-    mixer_instructions, mixer_stems = prepare_recorded_subkick(
-        mixer_instructions, stems, job_dir
+    stereo_instructions, stereo_stems = prepare_recorded_subkick(
+        stereo_instructions, stems, job_dir
     )
-    job_path.write_text(json.dumps({
-        'engine_result': mixer_instructions, 'stems': mixer_stems
-    }), encoding='utf-8')
-    cp = subprocess.run(
-        [sys.executable, str(ROOT / 'standalone_3d_mixer.py'), str(job_path), str(final_root)],
-        capture_output=True, text=True, timeout=240
-    )
-    try:
-        mixed = json.loads((cp.stdout or '').strip())
-    except json.JSONDecodeError:
-        return {'status':'AUDIO_3D_MIX_FAILED','audio_rendered':False,
-                'reason':'UNREADABLE_3D_MIXER_RESPONSE',
-                'mixer_stderr':(cp.stderr or '')[-800:]}
-    if cp.returncode != 0 or mixed.get('status') != 'AUDIO_RENDER_PASS':
-        mixed.setdefault('status','AUDIO_3D_MIX_FAILED')
-        mixed.setdefault('audio_rendered',False)
-        mixed['mixer_stderr']=(cp.stderr or '')[-800:]
-        return mixed
-    mixed['pipeline_order']=['COMPOSITION','REAL_INSTRUMENT_RENDER','STANDALONE_3D_FINAL_STAGE']
-    return mixed
+    finished = finish_recorded_stems(stereo_instructions, stereo_stems, final_root)
+    finished['pipeline_order']=['COMPOSITION','REAL_INSTRUMENT_RENDER',
+                                'DIRECT_STEREO_OUTPUT_NO_3D']
+    return finished
 """
 if old not in s: raise SystemExit("OUTPUT_HANDOFF_PATCH_TARGET_NOT_FOUND")
 p.write_text(s.replace(old,new))
@@ -663,7 +639,7 @@ PY
 
 python composer/runtime/production_resource_policy.py --self-test
 python composer/runtime/production_resource_policy.py --audit-registry composer/runtime/target_registry.json
-python -m py_compile composer/runtime/midi_initial_cc_bridge.py composer/runtime/expressive_gesture_bridge.py composer/runtime/musical_gesture_author.py composer/runtime/instrument_gesture_handoff.py composer/runtime/phrase_expression_decisions.py composer/runtime/automatic_phrase_handoff.py composer/runtime/AI_Comp_Executable_Output_Core_001.py composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/spatial_master_handoff.py composer/runtime/standalone_3d_mixer.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/genre_styles/Rock/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
+python -m py_compile composer/runtime/midi_initial_cc_bridge.py composer/runtime/expressive_gesture_bridge.py composer/runtime/musical_gesture_author.py composer/runtime/instrument_gesture_handoff.py composer/runtime/phrase_expression_decisions.py composer/runtime/automatic_phrase_handoff.py composer/runtime/AI_Comp_Executable_Output_Core_001.py composer/runtime/input_gateway.py composer/runtime/engine.py composer/runtime/output_handoff.py composer/runtime/direct_stereo_output.py composer/runtime/render_server.py composer/runtime/genre_development_patch.py composer/runtime/instrument_performance_contract.py composer/runtime/genre_styles/Rock/rock_balance_contract.py composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py
 
 # Verify routed harmony for all 55 without changing sample routing or sound.
 python - <<'PY'

@@ -57,7 +57,7 @@ def inspect_wav(path):
                 nonzero_regions+=1
     require((channels,width,sr)==(2,2,44100),
             "EXPECTED_44100_16BIT_STEREO_WAV")
-    require(frames/sr>=170,"FULL_ROCK_SONG_TOO_SHORT")
+    require(100<=frames/sr<=245,"NEW_ROCK2_SONG_OUTSIDE_VARIABLE_FORM_DURATION")
     require(nonzero_regions>=9,"STEREO_SONG_LARGELY_EMPTY")
     return {"channels":channels,"sample_width":width,"sample_rate":sr,
             "frames":frames,"duration_seconds":round(frames/sr,3),
@@ -125,17 +125,23 @@ def generate(song):
             "audio_reason":audio.get("reason")
         })
         require(len(events)>1000,"COMPOSER_NO_FULL_LENGTH_ROCK_SCORE")
+        require(70<=int(report["bars"])<=108
+                and int(report["tempo_bpm"]) in (117,124,131,139,143),
+                "OLD_127_BAR_145_BPM_ROCK_WAS_USED")
+        require(report["bars"]!=127 and report["tempo_bpm"]!=145,
+                "RETIRED_OOMPA_SONG_GOT_REUSED")
         require(result.get("audio_rendered") is True and
                 audio.get("status")=="AUDIO_RENDER_PASS",
                 "EXISTING_INSTRUMENTS_DID_NOT_RENDER_REAL_AUDIO:"+str(audio.get("reason")))
         require(audio.get("output_stage")=="DIRECT_STEREO_SUM_NO_3D",
                 "UNWANTED_3D_OR_WRONG_AUDIO_OUTPUT_STAGE")
-        require(len(audio.get("stems",[]))>=7,
-                "INSTRUMENT_STEMS_NOT_ALL_RENDERED")
+        require(len(audio.get("stems",[]))>=10,
+                "NEW_ROCK_ENSEMBLE_MISSING_STEMS")
         require(len(set(report["stems"]))==len(report["stems"]),
                 "DUPLICATE_INSTRUMENT_TRACK_IN_AUDIO")
-        require({"BASS","HARMONY","LEAD","KICK","SNARE","HAT"}.issubset(report["stems"]),
-                "ESSENTIAL_ROCK_INSTRUMENTS_MISSING")
+        require({"BASS","HARMONY","LEAD","KEYS","KICK","SNARE","HAT",
+                 "TOMS","CRASH","RIDE"}.issubset(report["stems"]),
+                "ESSENTIAL_NEW_ROCK2_ENSEMBLE_INSTRUMENT_MISSING")
         audio_file=Path(audio["wav_path"])
         report["finished_wav"]=inspect_wav(audio_file)
         manifest=json.loads(Path(audio["output_manifest_path"]).read_text())
@@ -176,8 +182,16 @@ def compare():
             "FINAL_STEREO_OUTPUT_IDENTICAL_FOR_DIFFERENT_SONGS")
     require(a["creation_seed"]!=b["creation_seed"],
             "COMPOSER_CREATION_SEED_REPEATED")
+    require(a["tempo_bpm"]!=145 and b["tempo_bpm"]!=145
+            and a["bars"]!=127 and b["bars"]!=127,
+            "RETIRED_OOMPA_SONG_FORM_FOUND")
+    require("KEYS" in a["stems"] and "KEYS" in b["stems"],
+            "ADDITIONAL_INDEPENDENT_RECORDED_INSTRUMENT_MISSING")
     summary={"status":"TWO_DIFFERENT_FULL_ROCK_SONGS_WITH_REAL_RECORDED_INSTRUMENT_AUDIO_PASS",
              "two_different_composer_scores":True,
+             "retired_song_never_reused":True,
+             "source_style":"MMA_ROCK2_HARD_DRIVING",
+             "separate_original_recorded_wurlitzer_role":True,
              "two_different_finished_wavs":True,
              "different_creation_seeds":True,
              "compositions":[{key:r[key] for key in

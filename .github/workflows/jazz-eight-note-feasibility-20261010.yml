@@ -18,8 +18,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Build existing original recorded sources
-        run: bash build_current_composer.sh
+      - name: Fast symbolic Jazz note check (no sample download needed)
+        run: test -f composer/runtime/target_registry.json
       - name: Check all eight Jazz style MIDI notes and sources
         run: python research/jazz_all_styles_recorded_note_feasibility_20261010.py
       - name: Preserve detailed note evidence

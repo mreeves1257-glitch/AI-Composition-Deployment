@@ -26,7 +26,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           source=Path("research/verify_composer_to_midi_wiring_step01_20261009.py").read_text()
-          assert "GENRE_INTERPRETER" not in source or "GENRE_INTERPRETER" in source
+          assert "genre_styles.shared_interpreter_router" not in source
           assert "shared_interpreter_router" not in source
           assert "GENRE_OWNED" not in source
           assert "build_current_composer.sh" not in source

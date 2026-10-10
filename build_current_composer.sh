@@ -663,6 +663,13 @@ python composer/runtime/real_conga_probe.py
 python composer/runtime/sample_bank_onboarding.py --install
 python composer/runtime/sample_bank_onboarding.py --apply
 AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" PYTHONPATH=composer/runtime python -m genre_styles.Jazz.jazz_ballad_recorded_resources
+# Opt-in isolated Swing source wiring: no existing instrument or mix setting
+# changed; the original recorded trumpet and ride note crosswalk are verified
+# before updating the target registry for this separate development audition.
+if [[ "${AI_COMP_SWING_ORIGINAL_AUDIO_AUDITION:-0}" == "1" ]]; then
+  AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" PYTHONPATH=composer/runtime python -m genre_styles.Jazz.swing_recorded_trumpet
+  AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" PYTHONPATH=composer/runtime python -m genre_styles.Jazz.swing_recorded_target_links
+fi
 
 # Resolve every Jazz Ballad instrument from its OWN genre file. This checks
 # links against the existing registry and on-disk sample bank, not duplicate

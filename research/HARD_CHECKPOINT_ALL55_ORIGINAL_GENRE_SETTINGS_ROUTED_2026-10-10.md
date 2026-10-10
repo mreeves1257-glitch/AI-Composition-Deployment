@@ -20,7 +20,7 @@
 - The original full-instrument catalog has **315** named tracks, of which **66** have exact pinned program references and **249** are not yet verified (must NOT be replaced by GM/fake sounds). Reference != installed audio; new settings do not claim sample playback for unverified tracks.
 - Previously verified isolated full recorded stereo: `ROCK` (new Rock2 development work) and `Jazz Ballad` (six original recorded SFZ stems, real Composer MIDI handoff). Those two are NOT certified live production ready by the settings registry.
 - Detailed per-genre mapping audit is CI artifact `ALL_55_GENRE_CONFIGURATION_AND_AUDIO_GATES_20261010` and generated `research_artifacts/55_GENRE_RUN_CONFIGURATION.json`.
-- Separate full Composer runtime build regression requested by `.github/workflows/verify-all55-runtime-composer-regression-20261010.yml`. Until successful, do not claim normal deployed Composer functionality of every selection is verified.
+- **The full existing Composer runtime build regression also PASSED:** https://github.com/mreeves1257-glitch/AI-Composition-Deployment/actions/runs/38028005654. The original engine generated independently selected Rock2 (3,968 notes, nine original profile tracks) and Jazz Ballad (1,304 notes, six original profile tracks) with the new genre-configuration loader installed. These normal-mode Composer composition checks are distinct from the 55 seven-bar MIDI ingress tests, and they do not demonstrate the remaining 53 genres' complete recorded audio or production activation.
 
 ## Readiness and live-service status — CRITICAL
 - ALL 55 are ACTIVE **for development configuration and MIDI identity routing only**. The setting `live_production_activated` remains false for each.

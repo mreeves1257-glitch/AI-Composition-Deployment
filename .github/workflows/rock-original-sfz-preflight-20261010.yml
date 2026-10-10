@@ -1,0 +1,51 @@
+name: Isolated Rock Original SFZ Sample Preflight (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - .github/workflows/rock-original-sfz-preflight-20261010.yml
+permissions:
+  contents: read
+jobs:
+  original-rock-sfz-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build original Composer and recorded SFZ banks
+        run: bash build_current_composer.sh
+      - name: Check exact original Rock programs and complete sample graphs
+        env:
+          PYTHONPATH: composer/runtime
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from genre_styles.source_pattern_library import compile_original_source_seed
+          from genre_styles.source_pattern_composer_handoff import prepare_source_pattern_composer_handoff
+          from sfz_renderer_adapter import preflight
+          registry=json.loads(Path("composer/runtime/target_registry.json").read_text())["targets"]["INTERNAL"]["instrument_bindings"]
+          plan=compile_original_source_seed("ROCK")
+          proposal=prepare_source_pattern_composer_handoff(plan,target_bindings=registry)
+          assert proposal["status"]=="CANDIDATE_STAGE4_EVENTS_READY_SOURCE_PREFLIGHT_PENDING",proposal["status"]
+          assert not proposal["audio_render_authorized"]
+          assert proposal["existing_composer_events_unchanged"]
+          routing=proposal["routing"]["roles"]
+          assert len(routing)==5
+          for role in routing:
+              assert role["status"]=="EXACT_PROGRAM_REFERENCE_ONLY",role
+              resource=registry[role["binding_id"]]
+              proof=preflight(resource)
+              assert proof["status"]=="SFZ_RENDER_READY"
+              assert proof["sample_references"]>0
+              print("ROCK_SFZ_SAMPLE_GRAPH_PASS",role["role"],proof["resource_id"],proof["sample_references"])
+          print("ROCK_ALL_FIVE_SOURCE_SAMPLE_GRAPHS_PASS; NOTE_ZONE_AND_AUDIO_STEMS_STILL_UNVERIFIED")
+          PY
+      - name: Verify original events cannot be replaced by candidate events
+        run: |
+          python research/test_source_pattern_recorded_resource_stage4_20261009.py

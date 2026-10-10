@@ -1,0 +1,38 @@
+name: Jazz Six Original Instrument Source Lanes
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_missing_original_instrument_queue_20261010.py
+      - .github/workflows/jazz-six-source-lanes-20261010.yml
+permissions:
+  contents: read
+jobs:
+  source-lane:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        instrument: [acoustic_bass, piano, kick_drum_soft, brush_snare, horn_section, banjo]
+    runs-on: ubuntu-latest
+    env:
+      INSTRUMENT: ${{ matrix.instrument }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_missing_original_instrument_queue_20261010.py
+      - name: Verify lane is isolated and original source remains gated
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          path=Path('jazz-six-original-instrument-lanes')/(os.environ['INSTRUMENT']+'.json')
+          row=json.loads(path.read_text())
+          assert row['required_original_instrument_id']==os.environ['INSTRUMENT']
+          assert row['binding_activation']=='BLOCKED_UNTIL_VERIFIED'
+          assert row['count']>0
+          print('ORIGINAL_SOURCE_LANE_ESTABLISHED',row['required_original_instrument_id'],row['count'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-original-source-${{ matrix.instrument }}
+          path: jazz-six-original-instrument-lanes/${{ matrix.instrument }}.json

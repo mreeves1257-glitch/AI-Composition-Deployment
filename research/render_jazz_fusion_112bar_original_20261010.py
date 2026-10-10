@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Render 112-bar Jazz Fusion draft with exact original SFZ programs and unchanged 3D mixer."""
 import json,hashlib,math,sys
+from fractions import Fraction
 from pathlib import Path
 from importlib.util import spec_from_file_location,module_from_spec
 sys.path.insert(0,'composer/runtime')
@@ -30,7 +31,7 @@ for r in roles:
   assert e['instrument_id']==original_id and 0<=e['midi']<=127
   if e['pattern_kind']=='DRUM_ABSOLUTE':
    assert e['midi'] in r['percussion_allowed_midi_notes']
-  candidate.append({'track_id':role,'instrument_id':r['binding_id'],'start_beat':float(e['start_beat']),'duration_beats':float(e['duration_beats']),'midi':e['midi'],'velocity':e['velocity']})
+  candidate.append({'track_id':role,'instrument_id':r['binding_id'],'start_beat':float(e['start_beat']),'duration_beats':float(Fraction(e['duration_beats'])),'midi':e['midi'],'velocity':e['velocity']})
  all_events.extend(candidate)
  midi=root/(role.lower()+'.mid');wav=root/(role.lower()+'.wav')
  midi.write_bytes(writer.midi_track(candidate,score['tempo_bpm']))

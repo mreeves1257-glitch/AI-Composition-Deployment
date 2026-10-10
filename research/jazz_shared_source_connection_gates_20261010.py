@@ -14,6 +14,13 @@ for g in bindings['genres']:
  path=packages/(slug+'.json')
  if not path.exists():errors.append(f'{name}: missing package');continue
  pkg=json.loads(path.read_text())
+ if name=='Jazz Ballad':
+  # Existing six-source recorded performance has a separate catalog-key schema.
+  expected={'HARMONY':'electric_piano_wurlitzer','LEAD':'clarinet_vsco','BASS':'double_bass_meatbass','KICK':'brush_kick_swirly','SNARE':'brush_snare_swirly','HAT':'brush_hat_swirly'}
+  for k,v in expected.items():
+   if pkg.get('roles',{}).get(k)!=v:errors.append(f'{name}/{k}: established recorded catalog key changed')
+  report.append({'genre':name,'role_count':len(expected),'recorded_audition_schema':'CATALOG_KEY_V2','fully_connected':False})
+  continue
  for role,spec in g['role_bindings'].items():
   role_entry=pkg.get('roles',{}).get(role)
   if not role_entry:

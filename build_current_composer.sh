@@ -457,6 +457,11 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         # bass/clarinet playable ranges and limit overlapping brush one-shots.
         # The existing output engine, Rock and all other styles are unchanged.
         events = _arrange_jazz_ballad(events, ctx, creation_seed)
+    if name == 'Swing':
+        # Keep every Swing rhythm/velocity/mix setting unchanged. Only place
+        # out-of-range trumpet pitches into original VSCO recorded note zones.
+        from genre_styles.Jazz.swing import fit_original_trumpet_register
+        events = fit_original_trumpet_register(events)
 
     developed = dict(result)
     developed['theory_request'] = req

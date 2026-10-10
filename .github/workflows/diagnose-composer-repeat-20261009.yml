@@ -1,0 +1,21 @@
+name: Diagnose Composer Repeated Songs, Original Runtime (No Deploy)
+on:
+  push:
+    branches: [diagnose-composer-song-repetition-20261009]
+    paths:
+      - research/diagnose_composer_repeat_creation_seed_20261009.py
+      - .github/workflows/diagnose-composer-repeat-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-original-creation-history-and-seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Print actual original Composer creation and repeatability behavior
+        run: python research/diagnose_composer_repeat_creation_seed_20261009.py

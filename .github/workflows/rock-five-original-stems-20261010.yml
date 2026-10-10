@@ -1,0 +1,33 @@
+name: Isolated Rock Five Original Recorded Stems (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - research/render_isolated_rock_recorded_stems_20261010.py
+      - .github/workflows/rock-five-original-stems-20261010.yml
+permissions:
+  contents: read
+jobs:
+  render-rock-stems:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build unchanged Composer and original recorded instrument programs
+        run: bash build_current_composer.sh
+      - name: Render all five actual Rock parts from original recordings
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_SFZ_RENDERER: .composer_tools/bin/sfizz_render
+        run: python research/render_isolated_rock_recorded_stems_20261010.py
+      - name: Keep diagnostic WAV and MIDI stems available for approved mixer handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: rock-five-original-recorded-stems-diagnostic
+          path: rock-diagnostic-audio/
+          retention-days: 14

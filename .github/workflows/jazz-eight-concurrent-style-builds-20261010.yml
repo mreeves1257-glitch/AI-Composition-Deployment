@@ -1,0 +1,47 @@
+name: Jazz Eight Concurrent Style Builds (No Deploy)
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - .github/workflows/jazz-eight-concurrent-style-builds-20261010.yml
+permissions:
+  contents: read
+jobs:
+  eight-style-build:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        style: [Swing, Jazz Ballad, Big Band, Jazz Waltz, Bebop, Cool Jazz, Dixieland, Jazz Fusion]
+    runs-on: ubuntu-latest
+    env:
+      JAZZ_STYLE: ${{ matrix.style }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate complete parameter packs
+        run: python research/jazz_all_eight_parallel_runtime_parameters_20261010.py
+      - name: Generate all 112 bar score drafts
+        run: python research/jazz_all_styles_full_length_scores_20261010.py
+      - name: Validate all score drafts
+        run: python research/jazz_eight_score_quality_gates_20261010.py
+      - name: Preserve individual style configuration and score
+        run: |
+          python - <<'PY'
+          import json,os,shutil
+          from pathlib import Path
+          style=os.environ['JAZZ_STYLE']
+          name=style.lower().replace(' ','_')+'.json'
+          root=Path('jazz-parallel-style-output');root.mkdir(exist_ok=True)
+          shutil.copy2(Path('composer_overrides/genre_styles/Jazz/parallel_parameter_packs')/name,root/'parameters.json')
+          shutil.copy2(Path('jazz-eight-full-length-scores')/name,root/'score.json')
+          pack=json.loads((root/'parameters.json').read_text())
+          score=json.loads((root/'score.json').read_text())
+          assert pack['genre']==style==score['genre']
+          pending=[k for k,v in pack['roles'].items() if v['recorded_source_status'].startswith('PENDING')]
+          (root/'status.json').write_text(json.dumps({'genre':style,'parameter_pack_established':True,'112_bar_score_established':True,'pending_original_recorded_roles':pending,'audio_rendered':False,'production_unchanged':True},indent=2)+'\n')
+          print('STYLE_ESTABLISHED',style,'PENDING',pending)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-style-${{ matrix.strategy.job-index }}
+          path: jazz-parallel-style-output/

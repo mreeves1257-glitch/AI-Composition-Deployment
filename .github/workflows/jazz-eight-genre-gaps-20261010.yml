@@ -1,0 +1,32 @@
+name: Jazz Eight Genres Original Instrument Gap Audit (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - research/audit_jazz_original_instrument_gaps_20261010.py
+      - .github/workflows/jazz-eight-genre-gaps-20261010.yml
+permissions:
+  contents: read
+jobs:
+  audit-jazz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build original instrument registry without modifying genres
+        run: bash build_current_composer.sh
+      - name: Enumerate exact missing Jazz source identities
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/audit_jazz_original_instrument_gaps_20261010.py
+      - name: Preserve Jazz original instrument gaps
+        uses: actions/upload-artifact@v4
+        with:
+          name: jazz-eight-genres-exact-original-source-gaps
+          path: jazz-original-source-audit/
+          retention-days: 14

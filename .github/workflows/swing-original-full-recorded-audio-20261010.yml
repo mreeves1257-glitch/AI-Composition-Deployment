@@ -7,6 +7,9 @@ on:
       - composer_overrides/genre_styles/Jazz/swing_recorded_target_links.py
       - research/verify_full_swing_original_stereo_20261010.py
       - build_current_composer.sh
+      - composer_overrides/genre_styles/genre_owned_midi_inlet.py
+      - composer_overrides/genre_styles/Jazz/composer_midi_handoff.py
+      - composer_overrides/genre_styles/Jazz/swing.py
   workflow_dispatch:
 permissions:
   contents: read

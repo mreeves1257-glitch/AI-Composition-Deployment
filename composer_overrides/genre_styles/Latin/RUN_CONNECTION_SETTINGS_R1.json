@@ -1,0 +1,520 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "Latin",
+  "genre_count": 7,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "Bossa Nova",
+      "profile_id": "BOSSA_NOVA_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_definition_pointer": "/profiles/Bossa Nova/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Latin/INTERPRETER_BOSSA_NOVA_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Latin/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        80,
+        145
+      ],
+      "original_groove_behavior": "understated syncopated Brazilian bossa pulse; guitar/piano rhythm and percussion interlock without heavy backbeat",
+      "original_phrase_behavior": "smooth 4/8-bar melodic phrases with syncopated entries and relaxed cadences",
+      "original_ensemble_behavior": "parts remain restrained and interlocking, with melody floating over pulse",
+      "recorded_role_bindings": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "sfz_program": "composer-conga-five-strokes.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Samba",
+      "profile_id": "SAMBA_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_definition_pointer": "/profiles/Samba/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Latin/INTERPRETER_SAMBA_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Latin/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "2/4",
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        90,
+        130
+      ],
+      "original_groove_behavior": "layered syncopated Brazilian samba-derived percussion with continuous forward motion",
+      "original_phrase_behavior": "repeating phrase cells with call-response and sectional lift; melodic phrases ride across percussion grid",
+      "original_ensemble_behavior": "percussion layers interlock; ensemble accents and breaks coordinated",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "sfz_program": "composer-conga-five-strokes.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Salsa",
+      "profile_id": "SALSA_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_definition_pointer": "/profiles/Salsa/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Latin/INTERPRETER_SALSA_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/Latin/salsa_genre_interpreter.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Latin/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        145,
+        220
+      ],
+      "original_groove_behavior": "clave-organized dance groove with tumbao/montuno relationships; 2-3 or 3-2 orientation must be explicit per composition",
+      "original_phrase_behavior": "8-bar phrase cycles with breaks, call-response, coro/lead-like exchanges and horn figures",
+      "original_ensemble_behavior": "all parts align to clave orientation while retaining role-specific syncopation",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "sfz_program": "composer-conga-five-strokes.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Mambo",
+      "profile_id": "MAMBO_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_definition_pointer": "/profiles/Mambo/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Latin/INTERPRETER_MAMBO_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Latin/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        155,
+        235
+      ],
+      "original_groove_behavior": "clave-organized Afro-Cuban-derived dance pulse with strong syncopation and ensemble hits",
+      "original_phrase_behavior": "short rhythmic motifs, horn riffs and call-response over 8-bar cycles",
+      "original_ensemble_behavior": "horn section articulates as unit; rhythm section preserves clave relationship",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "sfz_program": "composer-conga-five-strokes.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Rumba",
+      "profile_id": "CUBAN_RUMBA_BASELINE_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_definition_pointer": "/profiles/Rumba/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Latin/INTERPRETER_RUMBA_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Latin/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        75,
+        125
+      ],
+      "original_groove_behavior": "percussion-led Afro-Cuban rumba-derived framework with clave relationship and layered hand-drum interaction",
+      "original_phrase_behavior": "call-response and repeating phrase cycles with space for lead/ensemble exchange",
+      "original_ensemble_behavior": "interlocking percussion and call-response relationships drive ensemble",
+      "recorded_role_bindings": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "sfz_program": "composer-conga-five-strokes.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Cha-Cha",
+      "profile_id": "CHA_CHA_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_definition_pointer": "/profiles/Cha-Cha/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Latin/INTERPRETER_CHA_CHA_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Latin/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        100,
+        135
+      ],
+      "original_groove_behavior": "clave-related Cuban dance groove with characteristic cha-cha rhythmic articulation and steady dance pulse",
+      "original_phrase_behavior": "regular 4/8-bar dance phrases with call-response figures",
+      "original_ensemble_behavior": "ensemble aligns dance rhythm and horn/piano figures",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "sfz_program": "composer-conga-five-strokes.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Bolero",
+      "profile_id": "LATIN_BOLERO_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Latin/profile.json",
+      "original_definition_pointer": "/profiles/Bolero/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Latin/INTERPRETER_BOLERO_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Latin/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "2/4"
+      ],
+      "tempo_bpm_range": [
+        55,
+        100
+      ],
+      "original_groove_behavior": "slow romantic Latin bolero pulse with gentle syncopation and supportive accompaniment",
+      "original_phrase_behavior": "long lyrical phrases, expressive cadences and instrumental responses",
+      "original_ensemble_behavior": "accompaniment follows lead breath and expressive rubato",
+      "recorded_role_bindings": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "CONGA",
+          "original_instrument_id": "conga",
+          "resource_id": "FREEPATS_WORLD_PERCUSSION",
+          "sfz_program": "composer-conga-five-strokes.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    }
+  ]
+}

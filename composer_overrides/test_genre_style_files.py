@@ -99,18 +99,28 @@ class GenreStyleFileTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "JAZZ_INSTRUMENT_LINK_MISMATCH"):
             validate_instrument_links(bindings)
 
-    def test_other_seven_packages_empty(self):
+    def test_other_seven_packages_preserve_original_source_ids(self):
+        source = json.loads((JAZZ_ROOT / "SOURCE_RESOURCE_BINDINGS_R1.json").read_text())
+        by_genre = {item["genre"]: item for item in source["genres"]}
         for genre, module_name in GENRE_STYLE_MODULES.items():
             if genre in ("ROCK", "Jazz Ballad"):
                 continue
             style_id = module_name.rsplit(".", 1)[-1]
             manifest = JAZZ_ROOT / "instrument_packages" / (style_id + ".json")
             with manifest.open(encoding="utf-8") as f:
-                stub = json.load(f)
-            self.assertEqual(stub["genre"], genre)
-            self.assertEqual(stub["binding_status"], "NOT_STARTED")
-            self.assertEqual(stub["roles"], {})
-            self.assertEqual(stub["library"], "../instrument_library.json")
+                package = json.load(f)
+            self.assertEqual(package["genre"], genre)
+            self.assertEqual(package["library"], "../instrument_library.json")
+            self.assertFalse(package["production_enabled"])
+            self.assertTrue(package["approved_3d_mixer_unchanged"])
+            original = by_genre[genre]["role_bindings"]
+            self.assertEqual(set(package["roles"]), set(original))
+            for role, binding in original.items():
+                self.assertEqual(package["roles"][role]["instrument_id"],
+                                 binding["original_instrument_id"])
+                if binding["lookup_policy"] != "EXACT_ID":
+                    self.assertEqual(package["roles"][role]["source_binding_status"],
+                                     "BLOCKED_UNVERIFIED")
 
     def test_undeveloped_jazz_does_not_change_existing_theory(self):
         context = {"harmony": {"chords": []}, "meter": {"numerator": 4, "denominator": 4}}

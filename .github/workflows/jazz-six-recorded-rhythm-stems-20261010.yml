@@ -1,0 +1,37 @@
+name: Six Jazz Styles Recorded Rhythm Stem Auditions
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_six_recorded_rhythm_stems_20261010.py
+      - .github/workflows/jazz-six-recorded-rhythm-stems-20261010.yml
+permissions:
+  contents: read
+jobs:
+  recorded-rhythm:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        style: [Swing, Big Band, Jazz Waltz, Bebop, Cool Jazz, Dixieland]
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      JAZZ_STYLE: ${{ matrix.style }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prepare original recorded SFZ libraries
+        run: bash build_current_composer.sh
+      - name: Prepare independent 112 bar MIDI arrangements
+        run: python research/jazz_all_styles_full_length_scores_20261010.py
+      - name: Render genuine recorded rhythm stems
+        run: |
+          AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" PYTHONPATH=composer/runtime python research/jazz_six_recorded_rhythm_stems_20261010.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jazz-recorded-rhythm-${{ matrix.strategy.job-index }}
+          path: jazz-six-recorded-rhythm-stems/

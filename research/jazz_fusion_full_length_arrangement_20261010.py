@@ -5,6 +5,7 @@ Musical development is provisional and isolated: no live event promotion,
 no instrument substitution, no approved mixer changes.
 """
 import json,sys
+from fractions import Fraction
 from pathlib import Path
 sys.path.insert(0,'composer_overrides')
 from genre_styles.source_pattern_library import compile_original_source_seed
@@ -21,7 +22,7 @@ for act_index,(act,transpose,offset,energy) in enumerate(acts):
   for source in original:
    note=dict(source)
    role=note['role']
-   local_bar=int(float(note['start_beat'])//beats_per_bar)
+   local_bar=int(float(Fraction(note['start_beat']))//beats_per_bar)
    # Preserve percussion pitches. Register changes are confined to pitched parts.
    if note['pattern_kind']!='DRUM_ABSOLUTE':
     delta=transpose if role=='HARMONY' else (12 if act_index==3 and phrase==2 and role=='BASS' else 0)
@@ -29,7 +30,7 @@ for act_index,(act,transpose,offset,energy) in enumerate(acts):
     declared=next(r.get('playable_midi_range', [0,127]) for r in plan['roles'] if r['role']==role)
     if declared[0]<=proposed<=declared[1]:note['midi']=proposed
    if act_index==2 and role in ('KICK','SNARE') and local_bar%2==1 and phrase%2==0:continue
-   start=float(source['start_beat'])+((act_index*4+phrase)*phrase_bars)*beats_per_bar
+   start=float(Fraction(source['start_beat']))+((act_index*4+phrase)*phrase_bars)*beats_per_bar
    note['start_beat']=round(start,5)
    note['velocity']=max(1,min(127,round(int(note['velocity'])*energy+(phrase%2)*3)))
    note['development_act']=act

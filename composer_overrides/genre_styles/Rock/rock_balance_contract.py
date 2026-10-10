@@ -1,7 +1,7 @@
 """Composer-side Rock-only relative gains for preserved sampled stereo stems.
 
 Production defaults remain unchanged; ROCK2_ENSEMBLE_AUDITION is opt-in and
-changes only rhythm-guitar and recorded-Wurlitzer gains for comparison.
+changes only the recorded Wurlitzer gain for comparison.
 """
 from __future__ import annotations
 
@@ -66,12 +66,12 @@ def apply_rock_balance(engine_result: dict) -> dict:
     }
 
     # The listener liked the original clean instrument separation. Only an
-    # isolated opt-in audition may lift the rhythm guitar and real Wurlitzer.
+    # isolated opt-in audition may lift ONLY the real Wurlitzer.
     # No stem or source sample is changed and no other genre is affected.
     audition = os.environ.get("AI_COMP_ROCK2_ENSEMBLE_AUDITION", "") == "1"
     trims = dict(ROCK_GAIN_TRIMS_DB)
     if audition:
-        trims.update({"HARMONY": -0.5, "KEYS": +4.0})
+        trims.update({"KEYS": +4.0})
     changed = []
     edited = []
     for record in resolved:
@@ -114,7 +114,7 @@ def apply_rock_balance(engine_result: dict) -> dict:
         "composer_mix_instruction": {
             "name": CONTRACT_VERSION + ("_ENSEMBLE_AUDITION" if audition else ""),
             "adjusted_tracks": changed,
-            "rhythm_and_keys_only_option": audition,
+            "keyboard_only_option": audition,
             "kick_depth_note": "NO_SUBKICK_OR_LOW_FREQUENCY_PROCESSING_IN_THIS_RELEASE",
         },
     }

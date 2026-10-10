@@ -5,7 +5,7 @@ mkdir -p composer/runtime
 base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
 TOOLS_DIR="$PWD/.composer_tools"
 mkdir -p "$TOOLS_DIR/bin"
-python -m pip install numpy
+python -m pip install numpy mido==1.3.3
 if ! command -v sfizz_render >/dev/null 2>&1 && [ ! -x "$TOOLS_DIR/bin/sfizz_render" ]; then
   rm -rf "$TOOLS_DIR/sfizz-src" "$TOOLS_DIR/sfizz-build"
   mkdir -p "$TOOLS_DIR/sfizz-src"
@@ -551,6 +551,38 @@ new="""    # Original SFZ stems -> simple ordinary stereo. No 3D mixer, spatial
 """
 if old not in s: raise SystemExit("OUTPUT_HANDOFF_PATCH_TARGET_NOT_FOUND")
 p.write_text(s.replace(old,new))
+PY
+# Jazz only: actual Original Composer MIDI is verified by the Jazz family's
+# OWN genre slot BEFORE the existing SFZ render runs. No alternate renderer,
+# Rock-style substitution, global arranger or 3D engine is introduced.
+cat >> composer/runtime/output_handoff.py <<'PY'
+
+# --- Jazz-family per-genre Composer MIDI execution gate, Oct 10 ---
+_original_recorded_execute_audio_render = execute_audio_render
+
+def execute_audio_render(*args, **kwargs):
+    from inspect import signature
+    from pathlib import Path
+    import os
+    bound = signature(_original_recorded_execute_audio_render).bind(*args, **kwargs)
+    engine_result = bound.arguments.get('engine_result')
+    if isinstance(engine_result, dict) and engine_result.get('genre') in (
+        'Swing', 'Jazz Ballad', 'Big Band', 'Jazz Waltz',
+        'Bebop', 'Cool Jazz', 'Dixieland', 'Jazz Fusion'
+    ):
+        from genre_styles.Jazz.composer_midi_handoff import (
+            jazz_midi_to_original_renderer_gate,
+        )
+        package = bound.arguments.get('package')
+        if package is None:
+            raise RuntimeError('JAZZ_COMPOSER_MIDI_PACKAGE_NOT_PRESENT_AT_RENDER_BOUNDARY')
+        root = Path(os.environ.get('AI_COMP_OUTPUT_ROOT', 'output'))
+        folder = root / 'jazz_genre_midi_handoffs' / str(package.package_id)
+        jazz_midi_to_original_renderer_gate(
+            engine_result=engine_result, execution_package=package,
+            output_root=folder
+        )
+    return _original_recorded_execute_audio_render(*args, **kwargs)
 PY
 test -f "$BANK/KARORYFER_GROWLYBASS_V1_002/growlybass_clean.sfz"
 test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer-electric.sfz"

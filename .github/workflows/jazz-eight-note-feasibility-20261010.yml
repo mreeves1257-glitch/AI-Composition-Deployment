@@ -19,7 +19,9 @@ jobs:
         with:
           python-version: '3.11'
       - name: Check all eight Jazz style MIDI notes and sources
-        run: python research/jazz_all_styles_recorded_note_feasibility_20261010.py
+        run: |
+          mkdir -p jazz-source-feasibility
+          python research/jazz_all_styles_recorded_note_feasibility_20261010.py > jazz-source-feasibility/execution.log 2>&1 || { cat jazz-source-feasibility/execution.log; exit 1; }
       - name: Preserve detailed note evidence
         if: always()
         uses: actions/upload-artifact@v4

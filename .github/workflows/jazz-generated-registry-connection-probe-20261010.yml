@@ -5,6 +5,7 @@ on:
     paths:
       - 'research/jazz_generated_registry_connection_probe_20261010.py'
       - '.github/workflows/jazz-generated-registry-connection-probe-20261010.yml'
+      - 'composer_overrides/test_genre_style_files.py'
   workflow_dispatch:
 permissions:
   contents: read

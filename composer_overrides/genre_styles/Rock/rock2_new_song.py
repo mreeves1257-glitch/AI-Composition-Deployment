@@ -76,7 +76,7 @@ def read_original_rock2()->dict:
         for pattern in patterns:
             hits=[]
             for term in pattern.split(";"):
-                bits=term.strip().split()
+                bits=term.replace(chr(92), " ").strip().split()  # MMA line continuation
                 if not bits:
                     continue
                 if any(not re.fullmatch(r"(?:\d+\.?\d*|\.\d+)",z) for z in bits):

@@ -1,0 +1,29 @@
+name: Preserve All 55 Genre Published Instructions and One Continuity Index
+on:
+  push:
+    branches: [source-controlled-genre-instructions-all55-20261010]
+    paths:
+      - research/AI_COMPOSER_GENRE_INSTRUCTIONS_START_HERE.md
+      - research/ALL55_PUBLISHED_GENRE_STYLE_SOURCE_CATALOG_2026-10-10.json
+      - research/genre_reference_sources/mma/**
+      - research/verify_all55_published_style_archive_20261010.py
+      - .github/workflows/verify-all55-saved-genre-instructions-20261010.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-style-source-and-continuity-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check 55 individual genres, original instructions, source hashes and preserved license
+        run: python research/verify_all55_published_style_archive_20261010.py
+      - name: Archive the single-genre-reference-integrity receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ALL55_SAVED_INSTRUCTIONS_AND_CONTINUITY_20261010
+          path: research_artifacts/ALL55_SAVED_INSTRUCTIONS_ARCHIVE_AUDIT.json
+          retention-days: 30
+          if-no-files-found: warn

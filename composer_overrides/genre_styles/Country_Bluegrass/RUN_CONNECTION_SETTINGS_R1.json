@@ -1,0 +1,538 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "Country_Bluegrass",
+  "genre_count": 7,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "Traditional Country",
+      "profile_id": "TRADITIONAL_COUNTRY_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Country_Bluegrass/profile.json",
+      "original_definition_pointer": "/profiles/Traditional Country/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Country_Bluegrass/INTERPRETER_TRADITIONAL_COUNTRY_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Country_Bluegrass/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "2/4"
+      ],
+      "tempo_bpm_range": [
+        75,
+        145
+      ],
+      "original_groove_behavior": "two-beat or four-beat country pulse; boom-chick/alternating bass and shuffle variants available",
+      "original_phrase_behavior": "clear 4/8-bar song phrases with pickups, fills and cadence turnarounds",
+      "original_ensemble_behavior": "accompaniment supports melody and lyric-like phrasing; fills answer rather than crowd",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "VIOLIN",
+          "original_instrument_id": "violin",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Country Rock",
+      "profile_id": "COUNTRY_ROCK_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Country_Bluegrass/profile.json",
+      "original_definition_pointer": "/profiles/Country Rock/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Country_Bluegrass/INTERPRETER_COUNTRY_ROCK_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Country_Bluegrass/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        95,
+        155
+      ],
+      "original_groove_behavior": "rock backbeat fused with country guitar/bass phrasing and occasional two-beat influence",
+      "original_phrase_behavior": "verse/chorus phrases with guitar fills, turnarounds and larger chorus energy",
+      "original_ensemble_behavior": "guitars split rhythm/lead roles; country fills occupy vocal gaps",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Country Ballad",
+      "profile_id": "COUNTRY_BALLAD_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Country_Bluegrass/profile.json",
+      "original_definition_pointer": "/profiles/Country Ballad/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Country_Bluegrass/INTERPRETER_COUNTRY_BALLAD_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Country_Bluegrass/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "6/8",
+        "3/4"
+      ],
+      "tempo_bpm_range": [
+        50,
+        90
+      ],
+      "original_groove_behavior": "slow straight, 6/8 or gentle waltz pulse with sparse accompaniment",
+      "original_phrase_behavior": "long lyrical phrases with fills after cadence points",
+      "original_ensemble_behavior": "accompaniment follows lead breath and leaves space",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "VIOLIN",
+          "original_instrument_id": "violin",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Country Shuffle",
+      "profile_id": "COUNTRY_SHUFFLE_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Country_Bluegrass/profile.json",
+      "original_definition_pointer": "/profiles/Country Shuffle/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Country_Bluegrass/INTERPRETER_COUNTRY_SHUFFLE_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Country_Bluegrass/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "12/8"
+      ],
+      "tempo_bpm_range": [
+        85,
+        145
+      ],
+      "original_groove_behavior": "triplet/shuffle subdivision with country backbeat and alternating-bass motion",
+      "original_phrase_behavior": "4/8-bar danceable phrases with turnarounds",
+      "original_ensemble_behavior": "all parts share shuffle subdivision",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Two-Step",
+      "profile_id": "COUNTRY_TWO_STEP_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Country_Bluegrass/profile.json",
+      "original_definition_pointer": "/profiles/Two-Step/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Country_Bluegrass/INTERPRETER_TWO_STEP_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Country_Bluegrass/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "2/4",
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        110,
+        185
+      ],
+      "original_groove_behavior": "steady dance pulse with strong alternating-bass/two-beat drive; faster variants may feel in 2",
+      "original_phrase_behavior": "regular 4/8-bar dance phrases with predictable cadential turns",
+      "original_ensemble_behavior": "ensemble prioritizes consistent dance pulse over rubato",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "VIOLIN",
+          "original_instrument_id": "violin",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Country Waltz",
+      "profile_id": "COUNTRY_WALTZ_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Country_Bluegrass/profile.json",
+      "original_definition_pointer": "/profiles/Country Waltz/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Country_Bluegrass/INTERPRETER_COUNTRY_WALTZ_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Country_Bluegrass/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "3/4"
+      ],
+      "tempo_bpm_range": [
+        65,
+        120
+      ],
+      "original_groove_behavior": "strong first beat with lighter beats two/three; country waltz rather than generic classical waltz",
+      "original_phrase_behavior": "4/8-bar lyrical phrases and turnarounds",
+      "original_ensemble_behavior": "ensemble emphasizes three-beat dance flow and melody support",
+      "recorded_role_bindings": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "VIOLIN",
+          "original_instrument_id": "violin",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Bluegrass-related",
+      "profile_id": "BLUEGRASS_RELATED_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Country_Bluegrass/profile.json",
+      "original_definition_pointer": "/profiles/Bluegrass-related/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Country_Bluegrass/INTERPRETER_BLUEGRASS_RELATED_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Country_Bluegrass/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "2/4",
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        105,
+        190
+      ],
+      "original_groove_behavior": "driving acoustic subdivision with strong offbeat/chop relationships and forward momentum",
+      "original_phrase_behavior": "short 4/8-bar phrases, breaks, turnarounds and solo exchanges",
+      "original_ensemble_behavior": "acoustic instruments interlock; solo breaks rotate while rhythm maintains drive",
+      "recorded_role_bindings": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "VIOLIN",
+          "original_instrument_id": "violin",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "MARIMBA",
+          "original_instrument_id": "marimba",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    }
+  ]
+}

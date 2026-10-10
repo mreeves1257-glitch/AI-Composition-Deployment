@@ -4,6 +4,8 @@ on:
     branches: [new-rock-compositions-replace-retired-song-20261009]
     paths:
       - .github/workflows/new-rock2-original-instruments-audition-20261009.yml
+      - composer_overrides/genre_styles/Rock/rock2_new_song.py
+      - research/verify_two_distinct_full_rock_stereo_songs_20261009.py
   workflow_dispatch:
 permissions:
   contents: read

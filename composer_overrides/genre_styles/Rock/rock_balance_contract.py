@@ -1,10 +1,11 @@
-"""Composer-side, genre-scoped gain instructions to the external 3D mixer.
+"""Composer-side Rock-only relative gains for preserved sampled stereo stems.
 
-The mixer's audio algorithm, object/scene architecture, and source stems stay
-untouched. This changes only the gain metadata on an isolated copy of the
-composition handoff for the current ROCK audition. Other genres unchanged.
+Production defaults remain unchanged; ROCK2_ENSEMBLE_AUDITION is opt-in and
+changes only rhythm-guitar and recorded-Wurlitzer gains for comparison.
 """
 from __future__ import annotations
+
+import os
 
 CONTRACT_VERSION = "ROCK_ARRANGEMENT_BALANCE_R1"
 
@@ -25,6 +26,7 @@ ROCK_GAIN_TRIMS_DB = {
 # Protect against accidental gain changes if the genre instrumentation changes.
 ROCK_EXPECTED_INSTRUMENTS = {
     "HARMONY": "electric_guitar",
+    "KEYS": "electric_piano",
     "LEAD": "electric_guitar",
     "BASS": "electric_bass_guitar",
     "KICK": "kick_drum_rock",
@@ -63,6 +65,13 @@ def apply_rock_balance(engine_result: dict) -> dict:
         for p in profiles if isinstance(p, dict)
     }
 
+    # The listener liked the original clean instrument separation. Only an
+    # isolated opt-in audition may lift the rhythm guitar and real Wurlitzer.
+    # No stem or source sample is changed and no other genre is affected.
+    audition = os.environ.get("AI_COMP_ROCK2_ENSEMBLE_AUDITION", "") == "1"
+    trims = dict(ROCK_GAIN_TRIMS_DB)
+    if audition:
+        trims.update({"HARMONY": -0.5, "KEYS": +4.0})
     changed = []
     edited = []
     for record in resolved:
@@ -71,7 +80,7 @@ def apply_rock_balance(engine_result: dict) -> dict:
             continue
         track = str(record.get("track_id", "")).upper()
         resource = record.get("resource")
-        if (track not in ROCK_GAIN_TRIMS_DB or
+        if (track not in trims or
                 identities.get(track) != ROCK_EXPECTED_INSTRUMENTS.get(track) or
                 not isinstance(resource, dict)):
             edited.append(record)
@@ -80,13 +89,13 @@ def apply_rock_balance(engine_result: dict) -> dict:
         if not isinstance(original, (int, float)) or isinstance(original, bool):
             edited.append(record)
             continue
-        gain = float(original) + ROCK_GAIN_TRIMS_DB[track]
+        gain = float(original) + trims[track]
         # The current 3D mixer normalizes the entire stereo master.
         # These trims are relative, not a promise of final loudness or kick EQ.
         new_resource = dict(resource)
         new_resource["target_gain_db"] = gain
-        new_resource["rock_gain_offset_db"] = ROCK_GAIN_TRIMS_DB[track]
-        new_resource["mix_profile"] = CONTRACT_VERSION
+        new_resource["rock_gain_offset_db"] = trims[track]
+        new_resource["mix_profile"] = (CONTRACT_VERSION + "_ENSEMBLE_AUDITION" if audition else CONTRACT_VERSION)
         edited.append({**record, "resource": new_resource})
         changed.append(track)
 
@@ -103,8 +112,9 @@ def apply_rock_balance(engine_result: dict) -> dict:
             },
         },
         "composer_mix_instruction": {
-            "name": CONTRACT_VERSION,
+            "name": CONTRACT_VERSION + ("_ENSEMBLE_AUDITION" if audition else ""),
             "adjusted_tracks": changed,
+            "rhythm_and_keys_only_option": audition,
             "kick_depth_note": "NO_SUBKICK_OR_LOW_FREQUENCY_PROCESSING_IN_THIS_RELEASE",
         },
     }

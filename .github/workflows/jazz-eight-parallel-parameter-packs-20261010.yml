@@ -1,0 +1,19 @@
+name: Establish All Eight Jazz Genre Parameters Simultaneously
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_all_eight_parallel_runtime_parameters_20261010.py
+      - .github/workflows/jazz-eight-parallel-parameter-packs-20261010.yml
+permissions:
+  contents: read
+jobs:
+  install-parameters:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_all_eight_parallel_runtime_parameters_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-all-eight-established-parameter-packs
+          path: jazz-eight-parameter-packs/

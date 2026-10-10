@@ -1,0 +1,33 @@
+name: Composer New Song Always New, Normal and Test (No Deploy)
+on:
+  push:
+    branches: [diagnose-composer-song-repetition-20261009]
+    paths:
+      - composer_overrides/enable_fresh_song_seed.py
+      - build_current_composer.sh
+      - research/test_composer_fresh_song_defaults_20261009.py
+      - .github/workflows/test-composer-fresh-song-defaults-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-new-composer-song-every-time:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Normal and quick/test mode both produce new music on every default request
+        run: python research/test_composer_fresh_song_defaults_20261009.py
+      - name: Guard no genre interpreter, instrument source or output mixer changes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('composer_overrides/enable_fresh_song_seed.py').read_text()
+          assert 'shared_interpreter' not in s
+          assert 'standalone_3d_mixer' not in s
+          assert 'target_registry' not in s
+          print('FRESH_SONG_ONLY_NO_OTHER_COMPONENT_MODIFICATIONS_PASS')
+          PY

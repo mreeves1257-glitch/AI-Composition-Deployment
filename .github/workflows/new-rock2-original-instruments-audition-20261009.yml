@@ -1,0 +1,52 @@
+name: Real New Rock2 Recordings - Never Retired Oompa
+on:
+  push:
+    branches: [new-rock-compositions-replace-retired-song-20261009]
+    paths:
+      - .github/workflows/new-rock2-original-instruments-audition-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-distinct-rock2-with-original-sampled-instruments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Confirm replacement MMA Rock2 musical source, not retired score
+        run: python research/verify_new_rock2_songs_distinct_20261009.py
+      - name: Build existing original SFZ recording renderer with New Rock2 score
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+          AI_COMP_ROCK_MELODY_V1: '0'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+        run: bash build_current_composer.sh
+      - name: New Rock2 composition one, true recorded samples
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/verify_two_distinct_full_rock_stereo_songs_20261009.py --song one
+      - name: New Rock2 composition two, not same tune
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/verify_two_distinct_full_rock_stereo_songs_20261009.py --song two
+      - name: Verify completed stereo audio files and different songs
+        run: python research/verify_two_distinct_full_rock_stereo_songs_20261009.py --song compare
+      - name: Preserve direct playable complete song WAVs and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: NEW_ROCK2_TOTALLY_DIFFERENT_SONGS_REAL_SFZ_20261009
+          path: |
+            research_artifacts/fresh_rock_real_stereo/one/RESULT.json
+            research_artifacts/fresh_rock_real_stereo/one/ROCK_NEW_SONG_ONE_DIRECT_STEREO.wav
+            research_artifacts/fresh_rock_real_stereo/one/ROCK_NEW_SONG_ONE_18SEC_PREVIEW.wav
+            research_artifacts/fresh_rock_real_stereo/two/RESULT.json
+            research_artifacts/fresh_rock_real_stereo/two/ROCK_NEW_SONG_TWO_DIRECT_STEREO.wav
+            research_artifacts/fresh_rock_real_stereo/two/ROCK_NEW_SONG_TWO_18SEC_PREVIEW.wav
+            research_artifacts/fresh_rock_real_stereo/COMPARISON.json
+          retention-days: 30
+          if-no-files-found: warn

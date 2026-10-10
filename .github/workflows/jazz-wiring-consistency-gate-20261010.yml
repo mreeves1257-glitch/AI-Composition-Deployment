@@ -1,0 +1,18 @@
+name: Jazz wiring consistency gate
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - 'composer_overrides/genre_styles/Jazz/instrument_packages/**'
+      - 'composer_overrides/genre_styles/Jazz/SOURCE_RESOURCE_BINDINGS_R1.json'
+      - 'composer_overrides/genre_styles/Jazz/JAZZ_CONNECTION_READINESS_R1.json'
+      - 'research/jazz_shared_source_connection_gates_20261010.py'
+      - '.github/workflows/jazz-wiring-consistency-gate-20261010.yml'
+  workflow_dispatch:
+jobs:
+  jazz-wiring-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Jazz original instrument routing
+        run: python research/jazz_shared_source_connection_gates_20261010.py

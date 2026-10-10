@@ -1,0 +1,171 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "Trip_Hop",
+  "genre_count": 2,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "Trip-Hop",
+      "profile_id": "TRIP_HOP_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Trip_Hop/profile.json",
+      "original_definition_pointer": "/profiles/Trip-Hop/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Trip_Hop/INTERPRETER_TRIP_HOP_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Trip_Hop/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        60,
+        100
+      ],
+      "original_groove_behavior": "downtempo broken-beat logic with heavy groove, deliberate space and loop variation",
+      "original_phrase_behavior": "long moody phrases, sparse hooks and textural transitions",
+      "original_ensemble_behavior": "foreground often sparse over dense atmospheric background",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Contemporary Trip-Hop / Trip-Hop Revival",
+      "profile_id": "CONTEMPORARY_TRIP_HOP_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Trip_Hop/profile.json",
+      "original_definition_pointer": "/profiles/Contemporary Trip-Hop ~1 Trip-Hop Revival/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Trip_Hop/INTERPRETER_CONTEMPORARY_TRIP_HOP_TRIP_HOP_REVIVAL_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Trip_Hop/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        60,
+        105
+      ],
+      "original_groove_behavior": "Trip-Hop core with modern sub-bass, digital/electronic drum layers and current transient treatment",
+      "original_phrase_behavior": "moody long phrases plus more abrupt modern production transitions",
+      "original_ensemble_behavior": "old/new layers deliberately contrasted without erasing base identity",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "original_instrument_id": "synth_chord",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    }
+  ]
+}

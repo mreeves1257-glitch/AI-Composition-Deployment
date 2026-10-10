@@ -379,15 +379,6 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     if mode != 'normal' or result.get('status') != 'PASS':
         return result
 
-    # One central, genre-specific musical interpreter data handoff for all 55
-    # named genres, preserving legacy stage-4 note generation unchanged.
-    # This is not an activated external MMA/JJazzLab engine or extra stage.
-    from genre_styles.shared_interpreter_router import route_to_shared_interpreter
-    result = dict(result)
-    result['shared_interpreter_handoff'] = route_to_shared_interpreter(
-        name, runtime_profile=profile, original_stage3_result=result
-    )
-
     req = dict(result['theory_request'])
     bars = int(result['bars'])
     tempo_bpm = int(result['tempo_bpm'])

@@ -1,0 +1,20 @@
+name: Jazz All Eight Real MIDI Stem Exports
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_eight_midi_stem_exports_20261010.py
+      - .github/workflows/jazz-eight-midi-stems-20261010.yml
+permissions:
+  contents: read
+jobs:
+  midi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_all_styles_full_length_scores_20261010.py
+      - run: python research/jazz_eight_midi_stem_exports_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-eight-real-midi-stems
+          path: jazz-eight-midi-stems/

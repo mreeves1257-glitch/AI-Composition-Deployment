@@ -1,0 +1,117 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "Rock",
+  "genre_count": 1,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "ROCK",
+      "profile_id": "ROCK_CORE_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Rock/profile.json",
+      "original_definition_pointer": "/profiles/ROCK/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Rock/INTERPRETER_ROCK_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        100,
+        145
+      ],
+      "original_groove_behavior": "straight or lightly syncopated eighth-note rock pulse; backbeat remains structural but fills and pushes vary by section",
+      "original_phrase_behavior": "4- or 8-bar phrases with verse/chorus contrast, fills into boundaries, and selective lead call/response",
+      "original_ensemble_behavior": "rhythm section shares groove hierarchy; lead phrases leave space and answer vocal/melodic gaps",
+      "recorded_role_bindings": [
+        {
+          "track_id": "HARMONY",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": "KARORYFER_SHINYGUITAR",
+          "sfz_program": "Programs/composer-electric.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "LEAD",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": "KARORYFER_SHINYGUITAR",
+          "sfz_program": "Programs/composer-electric-lead.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "BASS",
+          "original_instrument_id": "electric_bass_guitar",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": "kick_drum_rock",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "sfz_program": "Programs/composer-kick-lite.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": "snare_drum",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "sfz_program": "Programs/composer-snare-lite.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": "hi_hat",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "sfz_program": "Programs/composer-hihat-lite.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "TOMS",
+          "original_instrument_id": "tom_tom",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "sfz_program": "Programs/composer-tom-lite.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "CRASH",
+          "original_instrument_id": "crash_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "sfz_program": "Programs/composer-crash-lite.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "RIDE",
+          "original_instrument_id": "ride_cymbal",
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "sfz_program": "Programs/composer-ride-lite.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "VERIFIED_ISOLATED_FULL_STEREO",
+        "all_original_recorded_tracks_have_exact_bank_references": true,
+        "full_genre_specific_performance": "ROCK2_SEPARATE_REFERENCE_COMPOSER_AUDITION",
+        "production_enabled": false
+      }
+    }
+  ]
+}

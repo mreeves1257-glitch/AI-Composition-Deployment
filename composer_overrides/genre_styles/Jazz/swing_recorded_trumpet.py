@@ -59,7 +59,7 @@ def fetch_one(item):
     def check_bytes(raw):
         if len(raw)!=item["byte_length"]:
             fail("PINNED_SAMPLE_SIZE_MISMATCH:"+relative)
-        sha=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\\0"+raw).hexdigest()
+        sha=hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
         if sha!=item["blob_sha"] or raw[:4]!=b"RIFF" or raw[8:12]!=b"WAVE":
             fail("PINNED_SAMPLE_IDENTITY_MISMATCH:"+relative)
     if output.is_file():
@@ -97,7 +97,7 @@ def write_sfz():
                          +" pitch_keycenter="+str(center)+" lovel="+str(lv)+" hivel="+str(hv))
     output=BANK/BANK_ID/SFZ
     output.parent.mkdir(parents=True,exist_ok=True)
-    data="\\n".join(lines)+"\\n"
+    data="\n".join(lines)+"\n"
     if output.exists() and output.read_text()!=data:
         fail("DO_NOT_OVERWRITE_UNKNOWN_SFZ")
     output.write_text(data,encoding="utf-8")
@@ -116,9 +116,9 @@ def preflight():
             for vel in (50,100):
                 path=Path(tmp)/f"note_{note}_{vel}.mid"
                 # format0/480ppq native note on and note-off after one beat
-                track=(b"\\x00\\x90"+bytes((note,vel))+
-                       b"\\x83\\x60\\x80"+bytes((note,0))+
-                       b"\\x00\\xff\\x2f\\x00")
+                track=(b"\x00\x90"+bytes((note,vel))+
+                       b"\x83\x60\x80"+bytes((note,0))+
+                       b"\x00\xff\x2f\x00")
                 path.write_bytes(b"MThd"+struct.pack(">IHHH",6,0,1,480)+
                                  b"MTrk"+struct.pack(">I",len(track))+track)
                 wav=path.with_suffix(".wav")
@@ -151,7 +151,7 @@ def main():
     report=preflight()
     dest=ROOT/"output"/"swing_verified_recorded_trumpet.json"
     dest.parent.mkdir(parents=True,exist_ok=True)
-    dest.write_text(json.dumps(report,indent=2)+"\\n")
+    dest.write_text(json.dumps(report,indent=2)+"\n")
     print("SWING_REAL_TRUMPET_PINNED_SFZ_AUDITION_PASS",json.dumps(report),flush=True)
 
 if __name__=="__main__":

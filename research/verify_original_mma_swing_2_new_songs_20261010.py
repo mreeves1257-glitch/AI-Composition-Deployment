@@ -63,6 +63,9 @@ def write_song(name:str)->Path:
         "Time 4",
         "TimeSig 4 4",
         "MIDIFile SMF=1",
+        # The original MMA interpreter requires its named groove library to be
+        # loaded before GROOVE; do not fake a missing global groove database.
+        "Use swing",
     ]
     for groove,chords in CHORDS[name]:
         require(groove in GROOVES,"INVALID_GROOVE_NAME")

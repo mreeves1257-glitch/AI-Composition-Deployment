@@ -1,0 +1,410 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "Hybrid_Custom",
+  "genre_count": 5,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "Regional Electronic Hybrids",
+      "profile_id": "REGIONAL_ELECTRONIC_HYBRID_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+      "original_definition_pointer": "/profiles/Regional Electronic Hybrids/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Hybrid_Custom/INTERPRETER_REGIONAL_ELECTRONIC_HYBRIDS_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "6/8"
+      ],
+      "tempo_bpm_range": [
+        70,
+        160
+      ],
+      "original_groove_behavior": "groove is derived from explicitly named regional source + electronic profile, never from a generic world-music placeholder",
+      "original_phrase_behavior": "phrasing preserves source tradition/scene structure where documented while allowing electronic sectional development",
+      "original_ensemble_behavior": "cross-cultural layers remain traceable and non-tokenizing",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Genre-Breaking / Borderless",
+      "profile_id": "BORDERLESS_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+      "original_definition_pointer": "/profiles/Genre-Breaking ~1 Borderless/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Hybrid_Custom/INTERPRETER_GENRE_BREAKING_BORDERLESS_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "6/8",
+        "7/8"
+      ],
+      "tempo_bpm_range": [
+        50,
+        180
+      ],
+      "original_groove_behavior": "no fixed groove; every imported rhythmic component retains source identity and transformation rule",
+      "original_phrase_behavior": "phrasing may change by section but transitions must be intentional and traceable",
+      "original_ensemble_behavior": "ensemble interactions follow component assignments rather than generic mashup",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Custom Hybrid",
+      "profile_id": "CUSTOM_HYBRID_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+      "original_definition_pointer": "/profiles/Custom Hybrid/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Hybrid_Custom/INTERPRETER_CUSTOM_HYBRID_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "6/8",
+        "7/8"
+      ],
+      "tempo_bpm_range": [
+        40,
+        200
+      ],
+      "original_groove_behavior": "derived from user-selected component genres; no default groove without component declaration",
+      "original_phrase_behavior": "phrase behavior inherited/resolved from dominant and section-specific components",
+      "original_ensemble_behavior": "ensemble behavior resolved with source provenance",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Custom Style",
+      "profile_id": "CUSTOM_STYLE_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+      "original_definition_pointer": "/profiles/Custom Style/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Hybrid_Custom/INTERPRETER_CUSTOM_STYLE_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "6/8",
+        "7/8"
+      ],
+      "tempo_bpm_range": [
+        40,
+        200
+      ],
+      "original_groove_behavior": "user-defined",
+      "original_phrase_behavior": "user-defined",
+      "original_ensemble_behavior": "user-defined",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Controlled Custom Style Profile",
+      "profile_id": "CONTROLLED_CUSTOM_STYLE_PROFILE_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Hybrid_Custom/profile.json",
+      "original_definition_pointer": "/profiles/Controlled Custom Style Profile/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Hybrid_Custom/INTERPRETER_CONTROLLED_CUSTOM_STYLE_PROFILE_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Hybrid_Custom/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "6/8",
+        "7/8"
+      ],
+      "tempo_bpm_range": [
+        40,
+        200
+      ],
+      "original_groove_behavior": "loaded from saved controlled custom profile",
+      "original_phrase_behavior": "loaded from saved controlled custom profile",
+      "original_ensemble_behavior": "loaded from saved controlled custom profile",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    }
+  ]
+}

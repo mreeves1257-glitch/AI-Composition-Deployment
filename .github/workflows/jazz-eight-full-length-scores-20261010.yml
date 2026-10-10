@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python research/jazz_all_styles_full_length_scores_20261010.py
+      - name: Validate all eight scores and disclose repeated phrases
+        run: python research/jazz_eight_score_quality_gates_20261010.py
       - uses: actions/upload-artifact@v4
         with:
           name: jazz-eight-112-bar-unrendered-score-drafts

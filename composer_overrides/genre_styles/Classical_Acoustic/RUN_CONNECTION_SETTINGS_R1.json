@@ -1,0 +1,188 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "Classical_Acoustic",
+  "genre_count": 3,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "Classical",
+      "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
+      "original_definition_file": "composer_overrides/genre_styles/Classical_Acoustic/profile.json",
+      "original_definition_pointer": "/profiles/Classical/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Classical_Acoustic/INTERPRETER_CLASSICAL_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Classical_Acoustic/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "2/4",
+        "6/8"
+      ],
+      "tempo_bpm_range": [
+        55,
+        150
+      ],
+      "original_groove_behavior": "meter hierarchy and phrase rhythm drive motion; no modern groove is imposed unless explicitly hybridized",
+      "original_phrase_behavior": "balanced phrase structures with motivic development, cadence hierarchy and sectional contrast",
+      "original_ensemble_behavior": "ensemble follows score-like dynamic/articulation relationships and shared rubato",
+      "recorded_role_bindings": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "VIOLIN",
+          "original_instrument_id": "violin",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "CLARINET",
+          "original_instrument_id": "clarinet",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "WALTZ",
+      "profile_id": "WALTZ_GENERIC_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Classical_Acoustic/profile.json",
+      "original_definition_pointer": "/profiles/WALTZ/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Classical_Acoustic/INTERPRETER_WALTZ_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Classical_Acoustic/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "3/4"
+      ],
+      "tempo_bpm_range": [
+        60,
+        180
+      ],
+      "original_groove_behavior": "three-beat meter with beat-one hierarchy; accompaniment pattern depends on selected style rather than automatic oom-pah-pah",
+      "original_phrase_behavior": "4/8-bar phrases with cadence emphasis and possible rubato",
+      "original_ensemble_behavior": "ensemble shares triple-meter hierarchy",
+      "recorded_role_bindings": [
+        {
+          "track_id": "DOUBLE_BASS",
+          "original_instrument_id": "double_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ACOUSTIC_GUITAR",
+          "original_instrument_id": "acoustic_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "VIOLIN",
+          "original_instrument_id": "violin",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "PIANIST",
+      "profile_id": "PIANIST_SOLO_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Classical_Acoustic/profile.json",
+      "original_definition_pointer": "/profiles/PIANIST/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Classical_Acoustic/INTERPRETER_PIANIST_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Classical_Acoustic/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "6/8"
+      ],
+      "tempo_bpm_range": [
+        45,
+        160
+      ],
+      "original_groove_behavior": "rhythmic behavior derived from chosen composition; no arranger backing required by default",
+      "original_phrase_behavior": "piano-centered phrasing with right/left-hand independence and pedal-aware release",
+      "original_ensemble_behavior": "single-performer coherence across melody/harmony/bass roles",
+      "recorded_role_bindings": [
+        {
+          "track_id": "PIANO",
+          "original_instrument_id": "piano",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    }
+  ]
+}

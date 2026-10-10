@@ -1,0 +1,41 @@
+name: Finished Original Rock Song Playback - Isolated No Deploy
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - .github/workflows/finished-original-rock-playback-20261010.yml
+permissions:
+  contents: read
+jobs:
+  finished-original-rock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build existing Composer and original SFZ recorded instruments
+        env:
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: "0"
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: bash build_current_composer.sh
+      - name: Render complete original Rock through existing Composer and independent 3D mixer
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: "0"
+          AI_COMP_AUTO_PHRASING_V1: "0"
+        run: python research/run_real_full_rock_song_v1.py --mode original
+      - name: Preserve only completed playback and diagnostic status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: finished-original-rock-playable-wav
+          path: |
+            research/rock_complete_song_validation/original/ROCK_FULL_SONG_ORIGINAL_3D.wav
+            research/rock_complete_song_validation/original/result.json
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 14

@@ -1,0 +1,19 @@
+name: Jazz Original Recorded Source Crosscheck All Eight
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_parallel_source_candidate_crosscheck_20261010.py
+      - .github/workflows/jazz-source-crosscheck-20261010.yml
+permissions:
+  contents: read
+jobs:
+  crosscheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_parallel_source_candidate_crosscheck_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-original-recorded-source-crosscheck
+          path: jazz-source-crosscheck/

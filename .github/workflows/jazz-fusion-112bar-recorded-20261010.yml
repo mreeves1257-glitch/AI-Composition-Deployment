@@ -23,7 +23,7 @@ jobs:
       - name: Render five original SFZ stems and unchanged 3D mixer
         run: |
           mkdir -p jazz-fusion-112bar-recorded-audio
-          PYTHONPATH=composer/runtime python research/render_jazz_fusion_112bar_original_20261010.py > jazz-fusion-112bar-recorded-audio/build.log 2>&1 || { cat jazz-fusion-112bar-recorded-audio/build.log; exit 1; }
+          AI_COMP_SFZ_RENDERER="$PWD/.composer_tools/bin/sfizz_render" PYTHONPATH=composer/runtime python research/render_jazz_fusion_112bar_original_20261010.py > jazz-fusion-112bar-recorded-audio/build.log 2>&1 || { cat jazz-fusion-112bar-recorded-audio/build.log; exit 1; }
       - name: Preserve full-length original audio evidence
         if: always()
         uses: actions/upload-artifact@v4

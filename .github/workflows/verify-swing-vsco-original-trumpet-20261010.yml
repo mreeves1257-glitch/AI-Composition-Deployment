@@ -1,0 +1,37 @@
+name: Swing Real Original VSCO Trumpet SFZ Recorded Source
+on:
+  push:
+    branches: [connect-swing-original-recorded-jazz-20261010]
+    paths:
+      - .github/workflows/verify-swing-vsco-original-trumpet-20261010.yml
+      - composer_overrides/genre_styles/Jazz/swing_recorded_trumpet.py
+      - composer_overrides/production_resource_policy.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-pinned-swing-trumpet-independent-audition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build original SFZ renderer and untouched Jazz Ballad sample banks
+        run: bash build_current_composer.sh
+      - name: Verify original trumpet WAV pins, build independent native SFZ, and render all note zones
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_SFZ_RENDERER: .composer_tools/bin/sfizz_render
+        run: python -m genre_styles.Jazz.swing_recorded_trumpet
+      - name: Preserve true Swing sample mapping and native rendered trumpet proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SWING_RECORDED_TRUMPET_SFZ_PROGRAM_AND_PROOF_20261010
+          path: |
+            composer/runtime/output/swing_verified_recorded_trumpet.json
+            composer/runtime/sound_resources/JAZZ_VSCO_TRUMPET_SWING_PINNED/Programs/swing-original-vsco-trumpet.sfz
+          if-no-files-found: warn
+          retention-days: 30

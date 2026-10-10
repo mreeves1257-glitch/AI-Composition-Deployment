@@ -1,0 +1,19 @@
+name: Jazz Existing Recorded Source Identity Feasibility
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_recorded_source_alias_feasibility_20261010.py
+      - .github/workflows/jazz-recorded-source-feasibility-20261010.yml
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_recorded_source_alias_feasibility_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-recorded-source-identity-feasibility
+          path: jazz-source-identity-feasibility/

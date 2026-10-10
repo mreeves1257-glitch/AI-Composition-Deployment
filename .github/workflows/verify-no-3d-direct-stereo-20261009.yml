@@ -1,0 +1,38 @@
+name: Verify No 3D Mixer - Direct Stereo Output (No Deploy)
+on:
+  push:
+    branches: [wiring-no-3d-direct-stereo-20261009]
+    paths:
+      - composer_overrides/direct_stereo_output.py
+      - composer_overrides/genre_styles/Rock/INTERPRETER_ROCK_R1.json
+      - build_current_composer.sh
+      - research/verify_direct_stereo_no_3d_20261009.py
+      - .github/workflows/verify-no-3d-direct-stereo-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verified-direct-stereo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install stereo array dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Check output combines separate tracks to ordinary stereo with no 3D mixer
+        run: python research/verify_direct_stereo_no_3d_20261009.py
+      - name: Check original Source/Composer bridge remains readable
+        run: |
+          python -m py_compile composer_overrides/direct_stereo_output.py
+          python -m py_compile composer_overrides/genre_styles/Rock/rock_midi_interpreter.py
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('build_current_composer.sh').read_text()
+          assert "cp composer_overrides/direct_stereo_output.py composer/runtime/" in source
+          assert "from direct_stereo_output import finish_recorded_stems" in source
+          assert "cp composer_overrides/standalone_3d_mixer.py composer/runtime/" not in source
+          print("NO_3D_MIXER_IN_ACTIVE_WIRING_PASS")
+          PY

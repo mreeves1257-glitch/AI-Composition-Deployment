@@ -384,6 +384,13 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     result['shared_interpreter_handoff'] = route_to_shared_interpreter(
         name, runtime_profile=profile, original_stage3_result=result
     )
+    # Activate each genre's OWN existing settings at Composer selection.
+    # This is common routing, not common Rock rhythm or sample replacement.
+    # All 55 independently validate against immutable musical/source profiles.
+    from genre_styles.genre_run_settings import selected_composer_configuration
+    result['active_original_genre_settings'] = selected_composer_configuration(
+        name, profile, result
+    )
 
     req = dict(result['theory_request'])
     bars = int(result['bars'])

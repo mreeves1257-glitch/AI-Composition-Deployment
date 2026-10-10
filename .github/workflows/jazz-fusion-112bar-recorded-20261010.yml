@@ -1,0 +1,31 @@
+name: Jazz Fusion Full Length Original Recorded 3D (No Deploy)
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/render_jazz_fusion_112bar_original_20261010.py
+      - .github/workflows/jazz-fusion-112bar-recorded-20261010.yml
+permissions:
+  contents: read
+jobs:
+  recorded:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build pinned original instrument recordings
+        run: bash build_current_composer.sh
+      - name: Generate 112 bar original Jazz Fusion score
+        run: python research/jazz_fusion_full_length_arrangement_20261010.py
+      - name: Render five original SFZ stems and unchanged 3D mixer
+        run: PYTHONPATH=composer/runtime python research/render_jazz_fusion_112bar_original_20261010.py
+      - name: Preserve full-length original audio evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: jazz-fusion-112bar-original-recorded-3d
+          path: |
+            jazz-fusion-112bar-recorded-audio/JAZZ_FUSION_112BAR_ORIGINAL_RECORDED_3D.wav
+            jazz-fusion-112bar-recorded-audio/manifest.json

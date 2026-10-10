@@ -26,7 +26,7 @@ for act_index,(act,transpose,offset,energy) in enumerate(acts):
    if note['pattern_kind']!='DRUM_ABSOLUTE':
     delta=transpose if role=='HARMONY' else (12 if act_index==3 and phrase==2 and role=='BASS' else 0)
     proposed=int(note['midi'])+delta
-    declared=next(r['playable_midi_range'] for r in plan['roles'] if r['role']==role)
+    declared=next(r.get('playable_midi_range', [0,127]) for r in plan['roles'] if r['role']==role)
     if declared[0]<=proposed<=declared[1]:note['midi']=proposed
    if act_index==2 and role in ('KICK','SNARE') and local_bar%2==1 and phrase%2==0:continue
    start=float(source['start_beat'])+((act_index*4+phrase)*phrase_bars)*beats_per_bar

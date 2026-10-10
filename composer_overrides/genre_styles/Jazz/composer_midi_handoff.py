@@ -48,9 +48,17 @@ def jazz_midi_to_original_renderer_gate(*, engine_result:dict,
     paths=write_output_package(issued,output_dir)
     midi_path=Path(paths["MIDI"])
     source_before=hashlib.sha256(midi_path.read_bytes()).hexdigest()
+    # Stage4 native Composer labels differ from the original independent
+    # Swing catalog roles. Map NAMES only; audio, MIDI pitch and groove stay.
+    swing_original_role_aliases = (
+        {"BASS":"DOUBLE_BASS","HARMONY":"ELECTRIC_PIANO",
+         "LEAD":"TRUMPET","KICK":"KICK","SNARE":"SNARE","HAT":"HAT"}
+        if genre=="Swing" else None
+    )
     receipt=receive_genre_midi(
         midi_path,selected_genre=genre,
-        composer_genre=genre,source_kind="COMPOSER")
+        composer_genre=genre,source_kind="COMPOSER",
+        original_role_aliases=swing_original_role_aliases)
     if receipt["status"]!="GENRE_SPECIFIC_MIDI_ARRIVED_AT_CORRECT_INTERPRETER_SLOT":
         raise InterpreterConnectionError("JAZZ_OWN_INTERPRETER_NEVER_RECEIVED_REAL_MIDI")
     if not receipt["original_source_midi_byte_identical"] or (

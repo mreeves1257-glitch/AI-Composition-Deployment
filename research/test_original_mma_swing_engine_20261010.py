@@ -101,6 +101,16 @@ def main():
         fail("GENERATED_SWING_UNEXPECTED_METER:"+repr(meters))
     if not any(abs(t-132)<.1 for t in tempos):
         fail("MMA_GENERATED_SWING_TEMPO_NOT_132:"+repr(tempos))
+    # Transport-only clock conversion to the Composer's required 480 PPQ.
+    # DO NOT invent instrument bindings for MMA's optional guitar/sax.
+    sys.path.insert(0,str(ROOT/"composer_overrides"))
+    from genre_styles.external_mma_midi_bridge import normalize_original_mma_midi
+    normalized_path=OUT/"swing_original_mma_28bar_accompaniment_480ppq.mid"
+    normalized=normalize_original_mma_midi(midi,normalized_path)
+    if normalized["original_note_on_events_retained"]!=sum(counts.values()):
+        fail("ORIGINAL_SWING_MMA_NOTES_LOST_AT_480PPQ")
+    if normalized["number_of_tracks"]!=len(parsed.tracks):
+        fail("ORIGINAL_SWING_MMA_TRACKS_LOST")
     report={
        "status":"ORIGINAL_PUBLISHED_MMA_SWING_ENGINE_GENERATED_MULTITRACK_MIDI_PASS",
        "upstream_repo":"infojunkie/mma","upstream_commit":PIN,
@@ -118,6 +128,10 @@ def main():
        "total_note_on_events":sum(counts.values()),
        "output_midi":midi.name,
        "generated_midi_sha256":hashlib.sha256(midi.read_bytes()).hexdigest(),
+       "original_mma_midi_480ppq_clock_handoff":normalized,
+       "normalized_midi_output":normalized_path.name,
+       "published_optional_voice_traces_unmapped":["Chord-Guitar","Chord-Sax"],
+       "original_swing_profile_trumpet_lead_still_requires_composer_merge":True,
        "original_recorded_instruments_connected":False,
        "composer_chord_and_lead_merge_not_yet_verified":True,
        "production_ready":False,"original_rock2_and_jazz_ballad_untouched":True,

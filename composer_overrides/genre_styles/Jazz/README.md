@@ -2,7 +2,7 @@
 
 This folder is the **only Jazz family home** in the Composer's 13-family organization. Its `profile.json` defines **Swing, Jazz Ballad, Big Band, Jazz Waltz, Bebop, Cool Jazz, Dixieland, and Jazz Fusion**, each with its distinct musical definition, instrument-track reference, individual mix metadata, and seven-stage planning sequence.
 
-**Operational status: DYSFUNCTIONAL.** Neither the Jazz work attempted previously nor Jazz Ballad delivered a reliable finished, playable full song. The code is preserved because it contains work we may investigate—not because it is an approved reference for other genres.
+**Operational status (2026-10-10 development checkpoint):** Jazz Ballad now passes an isolated full-length Composer MIDI → its own Jazz slot → original recorded SFZ instruments → ordinary stereo WAV test with six original tracks and 931 Composer notes (GitHub Actions run 38027121172). Musical quality remains subject to listening and the live control panel has NOT been deployed or verified. The other seven Jazz subgenres retain verified identity/MIDI inlet connections only; their own complete instrument sources and finished genre audio remain unverified. Preserve past work rather than assuming all eight styles are finished.
 
 ## Gathered under this single home
 - `jazz_ballad.py`, `harmony.py`, `jazz_arranger_style.py`: prior composition and musical-performance efforts, not proven functional.

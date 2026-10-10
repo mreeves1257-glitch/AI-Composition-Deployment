@@ -22,6 +22,7 @@ jobs:
       - name: Check exact original Rock programs and complete sample graphs
         env:
           PYTHONPATH: composer/runtime
+          AI_COMP_SFZ_RENDERER: .composer_tools/bin/sfizz_render
         run: |
           python - <<'PY'
           import json

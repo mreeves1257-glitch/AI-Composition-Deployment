@@ -1,0 +1,36 @@
+name: All 55 Shared Interpreter Connection Verification
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - '.github/workflows/all-55-shared-interpreter-connection-20261010.yml'
+      - 'research/all_55_genre_connection_inventory_20261010.py'
+      - 'composer_overrides/genre_styles/shared_interpreter_router.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shared-routing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check all family/profile files
+        run: python research/all_55_genre_connection_inventory_20261010.py
+      - name: Execute all 55 existing interpreter handoffs
+        run: |
+          PYTHONPATH=composer_overrides python - <<'PY'
+          import json
+          from genre_styles.shared_interpreter_router import connect_all_genres
+          routes=connect_all_genres()
+          assert len(routes)==55
+          assert all(x["link_state"]=="CONNECTED_STAGE_3_TO_4_DATA_ROUTER" for x in routes.values())
+          assert all(not x["live_genre_enabled"] for x in routes.values())
+          print(json.dumps({"verified_stage3_to_4_routes":len(routes),"full_audio_claim":False},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: all-55-genre-connection-inventory
+          path: all-55-genre-connection-inventory/

@@ -1,0 +1,35 @@
+name: Jazz Ballad Original Recorded End to End (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - research/jazz_ballad_real_end_to_end_20261010.py
+      - .github/workflows/jazz-ballad-real-end-to-end-20261010.yml
+permissions:
+  contents: read
+jobs:
+  jazz-ballad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build preserved Composer and pinned Jazz recorded samples
+        run: bash build_current_composer.sh
+      - name: Run real Jazz Ballad composition and original renderer
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_SFZ_RENDERER: .composer_tools/bin/sfizz_render
+        run: python research/jazz_ballad_real_end_to_end_20261010.py
+      - name: Preserve Jazz Ballad result and audio if available
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jazz-ballad-end-to-end-proof
+          path: |
+            research/jazz_ballad_real_output/
+          retention-days: 14

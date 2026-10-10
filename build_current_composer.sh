@@ -392,21 +392,15 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
         f"{profile['profile_id']}:{creation_seed}".encode()
     ).hexdigest()[:8], 16)
 
-    # Rock was landing at 125 BPM for the baseline seed, which is too relaxed
-    # for the driving test the Control Panel is using. Stay inside the approved
-    # ROCK profile (100-145) but bias normal Rock into its faster band.
+    # New independently varied Rock2 song instead of retired 145 BPM/127 bars.
     if name == 'ROCK':
-        approved = profile.get('tempo_bpm_range') or [tempo_bpm, tempo_bpm]
-        profile_lo, profile_hi = int(approved[0]), int(approved[-1])
-        tempo_bpm = profile_hi
-        # The preserved Output Core builds the MIDI execution package from
-        # theory['tempo_bpm'], so write the selected Rock tempo back into the
-        # theory request before rebuilding composition context.
+        from genre_styles.Rock.rock2_new_song import choose_new_song_shape
+        rock_shape = choose_new_song_shape(creation_seed)
+        tempo_bpm, bars = rock_shape['tempo_bpm'], rock_shape['bars']
+        lo, hi = profile['tempo_bpm_range']
+        if not int(lo) <= tempo_bpm <= int(hi):
+            raise ValueError('NEW_ROCK_TEMPO_OUTSIDE_APPROVED_PROFILE')
         req['tempo_bpm'] = tempo_bpm
-
-        num, den = map(int, str(result['meter']).split('/'))
-        beats_per_bar = float(num) * 4.0 / float(den)
-        bars = max(24, min(320, round(210.0 * tempo_bpm / (60.0 * beats_per_bar))))
         req['bars'] = bars
 
     jazz_progression = _build_jazz_progression(name, profile, req['mode'], bars, seedv)
@@ -433,20 +427,19 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     # the existing event generator realizes the notes.
     ctx = _realize_jazz_voicings(ctx, name, profile)
 
-    events = generate_events(
-        name,
-        result['execution_template'],
-        profile,
-        ctx,
-        tempo_bpm,
-        creation_seed,
-    )
-    events = _develop_full_length(
-        events,
-        ctx,
-        result['execution_template'],
-        creation_seed,
-    )
+    if name == 'ROCK':
+        # Full replacement score from external hard-driving Rock2 patterns:
+        # NEVER layer extra legacy kick/snare or recycle original lead tune.
+        from genre_styles.Rock.rock2_new_song import compose_new_rock_song
+        events = compose_new_rock_song(ctx, creation_seed)
+    else:
+        events = generate_events(
+            name, result['execution_template'], profile, ctx,
+            tempo_bpm, creation_seed,
+        )
+        events = _develop_full_length(
+            events, ctx, result['execution_template'], creation_seed,
+        )
     # Jazz phrasing is a shared chord gesture, not per-note timing jitter.
     meter_beats = float(ctx['meter']['numerator']) * 4.0 / float(ctx['meter']['denominator'])
     events = _apply_jazz_phrase_expression(
@@ -506,17 +499,20 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
             'live_deployment_authorized': False,
         }
     if name == 'ROCK':
-        # The legacy palette declares one generic "drums" instrument even
-        # though developed Rock events use separate sample-backed kit members.
-        # Keep the completeness guard: declare the required real instruments.
-        declared = []
-        for instrument in result['palette']:
-            if instrument == 'drums':
-                declared.extend(('kick_drum_rock', 'snare_drum', 'hi_hat'))
-            else:
-                declared.append(instrument)
+        # Every real score instrument is separately mapped to its own existing
+        # SFZ bank; the added Wurlitzer is a genuine separate sample library.
+        from genre_styles.Rock.rock2_new_song import ROLES
+        declared = list(dict.fromkeys(ROLES[part] for part in ROLES))
+        if not {'electric_piano', 'electric_guitar', 'lead_guitar',
+                'electric_bass_guitar', 'kick_drum_rock',
+                'snare_drum', 'hi_hat'} <= set(declared):
+            raise ValueError('NEW_ROCK_REQUIRED_INSTRUMENT_MISSING')
         developed['palette'] = declared
-    developed['development_model'] = 'FULL_LENGTH_SECTIONAL_V2'
+        developed['selected_style_source'] = 'MMA_ROCK2_HARD_DRIVING'
+    developed['development_model'] = (
+        'INDEPENDENT_SOURCE_ROCK2_NEW_SONG_R1' if name == 'ROCK'
+        else 'FULL_LENGTH_SECTIONAL_V2'
+    )
     return developed
 """
 adapter.write_text(a + "\n" + override + "\n")

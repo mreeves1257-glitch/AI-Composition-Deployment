@@ -1,0 +1,32 @@
+name: Audit All 55 Genres Against Original Recorded Sources (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - research/audit_all_55_genre_recorded_sources_20261010.py
+      - .github/workflows/audit-55-genre-original-sources-20261010.yml
+permissions:
+  contents: read
+jobs:
+  audit-original-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build preserved Composer and original recorded source registry
+        run: bash build_current_composer.sh
+      - name: Audit exact original source identities across all 55 genres
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/audit_all_55_genre_recorded_sources_20261010.py
+      - name: Save exact source gaps without activating genres
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-55-genres-original-source-audit
+          path: rock-diagnostic-audio/ALL_55_GENRES_RECORDED_SOURCE_AUDIT.json
+          retention-days: 14

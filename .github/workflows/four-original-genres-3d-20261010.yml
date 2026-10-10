@@ -1,0 +1,33 @@
+name: Four Original Recorded Genres Through 3D Mixer (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - research/render_four_original_recorded_genres_20261010.py
+      - .github/workflows/four-original-genres-3d-20261010.yml
+permissions:
+  contents: read
+jobs:
+  render-four-genres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build unchanged Composer and original recorded instruments
+        run: bash build_current_composer.sh
+      - name: Render and 3D-mix four genres without activating candidate scores
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_SFZ_RENDERER: .composer_tools/bin/sfizz_render
+        run: python research/render_four_original_recorded_genres_20261010.py
+      - name: Save original recorded diagnostic audio for four genres
+        uses: actions/upload-artifact@v4
+        with:
+          name: four-original-recorded-genres-3d-diagnostic
+          path: four-genre-diagnostic-audio/
+          retention-days: 14

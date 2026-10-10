@@ -1,0 +1,31 @@
+{
+  "enabled": true,
+  "sample_rate": 44100,
+  "duration_seconds": 3,
+  "level_dbfs": -22,
+  "attack_ms": 6,
+  "release_ms": 160,
+  "events": [
+    {
+      "start_seconds": 0.2,
+      "duration_seconds": 0.34,
+      "frequency_hz": 40,
+      "sweep_hz": 25,
+      "velocity": 0.8
+    },
+    {
+      "start_seconds": 1.2,
+      "duration_seconds": 0.34,
+      "frequency_hz": 40,
+      "sweep_hz": 25,
+      "velocity": 0.8
+    },
+    {
+      "start_seconds": 2.2,
+      "duration_seconds": 0.34,
+      "frequency_hz": 40,
+      "sweep_hz": 25,
+      "velocity": 0.8
+    }
+  ]
+}

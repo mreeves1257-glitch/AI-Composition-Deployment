@@ -38,7 +38,7 @@
     "original_target_program",
     "original_midi_output_core",
     "sfz_renderer_adapter",
-    "independent_standalone_3d_mixer"
+    "direct_stereo_output"
   ],
   "backend_file": "composer_overrides/genre_styles/source_pattern_library.py",
   "backend_status": "GENRE_OWNED_ORIGINAL_SEVEN_SECTION_SOURCE_INTERPRETER_SYMBOLIC_EXECUTABLE_AUDIO_UNVERIFIED",
@@ -104,9 +104,10 @@
       },
       {
         "stage": 7,
-        "name": "GENRE_MIX_THEN_STANDALONE_3D_MIX",
-        "source": "existing independent standalone_3d_mixer",
-        "output": "final stereo WAV to original Plug/Control Panel"
+        "name": "FINISHED_STEREO_OUTPUT_NO_3D",
+        "source": "existing original audio stems plus direct_stereo_output.finish_recorded_stems",
+        "output": "ordinary stereo playback WAV for the existing Plug/Control Panel",
+        "three_d_mixer_in_path": false
       }
     ],
     "mma_style_resources": {
@@ -263,5 +264,13 @@
     "renderer_connected_to_new_path": false,
     "live_deployed": false,
     "next_connection": "ROCK_SPECIFIC_INTERPRETER_TO_EXISTING_INSTRUMENT_RENDERER"
+  },
+  "output_route_update": {
+    "status": "ISOLATED_DEVELOPMENT_ONLY",
+    "removed_active_component": "standalone_3d_mixer",
+    "output_file_contract_preserved": "final_audio/composition_*/stereo_derivative.wav",
+    "final_output": "DIRECT_STEREO_SUM_NO_3D",
+    "no_new_interpreter": true,
+    "live_deployed": false
   }
 }

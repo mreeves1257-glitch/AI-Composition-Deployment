@@ -1,9 +1,34 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "genre": "Jazz Fusion",
   "link_mode": "JAZZ_INSTRUMENT_POOL_LINK",
   "library": "../instrument_library.json",
-  "binding_status": "NOT_STARTED",
-  "roles": {},
-  "note": "Reserved filename only. No instruments, arrangement or style framework assigned. Jazz Ballad must be finished and approved before this is populated."
+  "source_of_truth": "../SOURCE_RESOURCE_BINDINGS_R1.json",
+  "binding_status": "RECORDED_AUDITION_RENDERED_NOT_PRODUCTION_APPROVED",
+  "roles": {
+    "BASS": {
+      "instrument_id": "electric_bass_guitar",
+      "source_binding_status": "REFERENCE_PINN_AUDIO_CHECK_REQUIRED"
+    },
+    "HARMONY": {
+      "instrument_id": "electric_piano",
+      "source_binding_status": "REFERENCE_PINN_AUDIO_CHECK_REQUIRED"
+    },
+    "KICK": {
+      "instrument_id": "kick_drum_rock",
+      "source_binding_status": "REFERENCE_PINN_AUDIO_CHECK_REQUIRED"
+    },
+    "SNARE": {
+      "instrument_id": "snare_drum",
+      "source_binding_status": "REFERENCE_PINN_AUDIO_CHECK_REQUIRED"
+    },
+    "HAT": {
+      "instrument_id": "hi_hat",
+      "source_binding_status": "REFERENCE_PINN_AUDIO_CHECK_REQUIRED"
+    }
+  },
+  "original_instrument_ids_preserved": true,
+  "approved_3d_mixer_unchanged": true,
+  "production_enabled": false,
+  "note": "Full-length recorded SFZ audition previously rendered; package now documents existing original IDs, not a new instrument assignment."
 }

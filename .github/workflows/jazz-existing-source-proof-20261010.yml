@@ -1,0 +1,29 @@
+name: Jazz Existing Original Source Evidence (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - research/jazz_existing_source_registry_proof_20261010.py
+      - .github/workflows/jazz-existing-source-proof-20261010.yml
+permissions:
+  contents: read
+jobs:
+  jazz-source-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build original recorded instrument bank
+        run: bash build_current_composer.sh
+      - name: Verify actual installed Jazz program references
+        run: python research/jazz_existing_source_registry_proof_20261010.py
+      - name: Preserve report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jazz-existing-recorded-program-evidence
+          path: jazz-existing-sources-report/

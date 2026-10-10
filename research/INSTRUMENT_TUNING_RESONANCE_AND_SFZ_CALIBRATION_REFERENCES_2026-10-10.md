@@ -18,7 +18,7 @@ A sampled clarinet, trumpet, acoustic bass, piano, or drum **already has a recor
 - Filters' cutoff, in Hz: https://sfzformat.com/opcodes/cutoff/
 - Filter resonance, in dB: https://sfzformat.com/opcodes/resonance/
 - ADSR envelopes / sustain / release: https://sfzformat.com/tutorials/sfz-1-egs/
-- Sustained note mapping: https://sfzformat.com/tutorials/sustained-note-basics/
+- Sustained note mapping: https://sfzformat.com/tutorials/sustained_note_basics/
 - More tutorials for vibrato, legato, sympathetic resonance, drums, cymbal muting and brush stirs from https://sfzformat.com/ (these are HOW-TO references, not mandatory DSP treatments).
 
 **2 — Yamaha's own instrument editing and keyboard tuning references (architectural, not project sound files)**

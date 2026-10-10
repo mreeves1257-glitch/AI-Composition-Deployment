@@ -26,7 +26,8 @@ def check(ok:bool, code:str):
         raise InterpreterConnectionError("GENRE_SPECIFIC_MIDI_INLET:"+code)
 
 def receive_genre_midi(path: str|Path, *, selected_genre:str,
-                       composer_genre:str, source_kind:str="SEED_PREVIEW")->dict:
+                       composer_genre:str, source_kind:str="SEED_PREVIEW",
+                       original_role_aliases:dict[str,str]|None=None)->dict:
     """Read immutable multitrack MIDI into EXACT selected genre's own slot."""
     check(selected_genre==composer_genre and bool(selected_genre),
           "SELECTED_GENRE_AND_MIDI_SOURCE_DIFFER")
@@ -63,6 +64,20 @@ def receive_genre_midi(path: str|Path, *, selected_genre:str,
     else:
         permitted={t["track_id"]:t.get("instrument_id")
                    for t in profile["individual_instrument_tracks"]}
+        if original_role_aliases is not None:
+            # The original Swing Composer MIDI calls its performance tracks
+            # BASS/HARMONY/LEAD; the immutable Swing full-profile identities
+            # are DOUBLE_BASS/ELECTRIC_PIANO/TRUMPET. Translate role names
+            # only, not MIDI notes or recorded source instruments.
+            check(genre=="Swing" and source_kind=="COMPOSER",
+                  "TRACK_ALIAS_USED_OUTSIDE_ORIGINAL_SWING")
+            required={"BASS":"DOUBLE_BASS","HARMONY":"ELECTRIC_PIANO",
+                      "LEAD":"TRUMPET","KICK":"KICK","SNARE":"SNARE","HAT":"HAT"}
+            check(original_role_aliases==required and
+                  set(required.values())==set(permitted),
+                  "ORIGINAL_SWING_FULL_TRACK_IDENTITY_CROSSWALK_DRIFT")
+            permitted={original:permitted[role] for original,role
+                       in original_role_aliases.items()}
         expected_conductor="Conductor"
         note_origin="ORIGINAL_COMPOSER_FULL_TRACK_IDENTITIES"
     check(permitted,"SELECTED_GENRE_HAS_NO_TRACKS")
@@ -133,6 +148,8 @@ def receive_genre_midi(path: str|Path, *, selected_genre:str,
         "individual_musical_backend":entry["backend_file"],
         "actual_midi_sha256":hashlib.sha256(original).hexdigest(),
         "source_kind":source_kind,"notes_origin":note_origin,
+        "original_full_profile_track_role_crosswalk":
+            dict(original_role_aliases) if original_role_aliases is not None else None,
         "midi_tracks_received":len(roles),"notes_received":all_notes,
         "individual_instrument_tracks":roles,
         "full_original_track_count":len(full),

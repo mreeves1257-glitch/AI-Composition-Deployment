@@ -1,0 +1,28 @@
+name: Jazz Generated Registry Connection Probe
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - 'research/jazz_generated_registry_connection_probe_20261010.py'
+      - '.github/workflows/jazz-generated-registry-connection-probe-20261010.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  jazz-recorded-registry-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build existing Composer recorded instrument registry
+        run: bash build_current_composer.sh
+      - name: Inspect exact original and candidate Jazz source files
+        run: python research/jazz_generated_registry_connection_probe_20261010.py
+      - name: Save connection evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: jazz-generated-registry-connection-evidence
+          path: jazz-generated-registry-connection-probe/

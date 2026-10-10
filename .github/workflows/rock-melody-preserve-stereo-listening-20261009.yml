@@ -1,0 +1,51 @@
+name: Rock Composition Melody A-B (Keep Original Recorded Instruments, Direct Stereo)
+on:
+  push:
+    branches: [rock-composition-melody-isolated-listening-20261009]
+    paths:
+      - research/rock_melody_preserve_stereo_listening_20261009.py
+      - .github/workflows/rock-melody-preserve-stereo-listening-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audition-original-recorded-instruments-unchanged:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build original SFZ Composer and direct stereo playback - no deployment
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_ROCK_BASS_SUSTAIN_V1: '0'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+        run: bash build_current_composer.sh
+      - name: Full original Composer Rock music into recorded sound - Baseline
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/rock_melody_preserve_stereo_listening_20261009.py --mode baseline
+      - name: Full same Rock music with experimental chord-aware lead melody only
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/rock_melody_preserve_stereo_listening_20261009.py --mode melodic_v1
+      - name: Verify every NON-lead audio track unchanged byte for byte
+        run: python research/rock_melody_preserve_stereo_listening_20261009.py --mode compare
+      - name: Preserve listenable complete separate WAV recordings and independent evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ROCK_MELODY_A_B_PRESERVED_INSTRUMENT_SEPARATION_20261009
+          path: |
+            research_artifacts/rock_melody_listening_ab_20261009/baseline/RESULT.json
+            research_artifacts/rock_melody_listening_ab_20261009/baseline/SCORE.json
+            research_artifacts/rock_melody_listening_ab_20261009/baseline/ROCK_BASELINE_UNALTERED_STEREO.wav
+            research_artifacts/rock_melody_listening_ab_20261009/melodic_v1/RESULT.json
+            research_artifacts/rock_melody_listening_ab_20261009/melodic_v1/SCORE.json
+            research_artifacts/rock_melody_listening_ab_20261009/melodic_v1/ROCK_MELODIC_V1_UNALTERED_STEREO.wav
+            research_artifacts/rock_melody_listening_ab_20261009/A_B_COMPARISON.json
+          retention-days: 30
+          if-no-files-found: warn
+          compression-level: 0

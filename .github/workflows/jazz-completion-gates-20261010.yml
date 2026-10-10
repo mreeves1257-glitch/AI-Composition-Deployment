@@ -1,0 +1,20 @@
+name: Jazz Eight Style Completion Gates (No Deploy)
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_eight_styles_completion_gates_20261010.py
+      - .github/workflows/jazz-completion-gates-20261010.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all Jazz original genre packages and recorded-source gates
+        run: python research/jazz_eight_styles_completion_gates_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-eight-completion-gates
+          path: jazz-completion-gates/report.json

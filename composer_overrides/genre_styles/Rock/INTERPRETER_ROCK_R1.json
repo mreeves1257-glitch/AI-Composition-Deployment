@@ -222,5 +222,46 @@
     "production_ready": false
   },
   "old_pinned_145_bpm_rock_interpreter_retained_historically_not_active": true,
-  "rock_reset_mode": "START_FRESH_WITH_ORIGINAL_ROCK_SOURCE_PROFILE_AND_OWN_PATTERN_SAME_AS_OTHER_GENRES"
+  "rock_reset_mode": "START_FRESH_WITH_ORIGINAL_ROCK_SOURCE_PROFILE_AND_OWN_PATTERN_SAME_AS_OTHER_GENRES",
+  "composer_midi_inbound": {
+    "connection_id": "WIRING_STEP02_COMPOSER_MIDI_TO_ROCK_OWN_INTERPRETER",
+    "owner_genre": "ROCK",
+    "entrypoint": "genre_styles.Rock.rock_midi_interpreter.receive_composer_midi",
+    "module_file": "composer_overrides/genre_styles/Rock/rock_midi_interpreter.py",
+    "source": "ORIGINAL_COMPOSER_TYPE1_MIDI_FROM_STEP01",
+    "accepted_track_roles": [
+      "BASS",
+      "HARMONY",
+      "LEAD",
+      "KICK",
+      "SNARE",
+      "HAT",
+      "TOMS",
+      "CRASH",
+      "RIDE"
+    ],
+    "role_program_authority": "composer_overrides/genre_styles/Rock/SOURCE_RESOURCE_BINDINGS_R1.json",
+    "genre_profile_authority": "composer_overrides/genre_styles/Rock/profile.json",
+    "shared_interpreter_used": false,
+    "tested_in_isolated_github_action": true,
+    "verified_midi_note_handoff": 2504,
+    "track_roles_in_test": [
+      "BASS",
+      "HARMONY",
+      "HAT",
+      "KICK",
+      "SNARE",
+      "LEAD"
+    ],
+    "unwritten_optional_parts_in_test": [
+      "TOMS",
+      "CRASH",
+      "RIDE"
+    ],
+    "score_modified": false,
+    "full_musical_behavior_applied": false,
+    "renderer_connected_to_new_path": false,
+    "live_deployed": false,
+    "next_connection": "ROCK_SPECIFIC_INTERPRETER_TO_EXISTING_INSTRUMENT_RENDERER"
+  }
 }

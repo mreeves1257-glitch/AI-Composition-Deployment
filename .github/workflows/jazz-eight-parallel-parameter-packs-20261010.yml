@@ -16,4 +16,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: jazz-all-eight-established-parameter-packs
-          path: jazz-eight-parameter-packs/
+          path: composer_overrides/genre_styles/Jazz/parallel_parameter_packs/

@@ -46,6 +46,15 @@ def main():
                         ("creation_seed","history","def run(","get_creation","fingerprint"))
         relevant_source(target,"input_gateway.py",
                         ("compose_request","result=AICompositionEngine","request_id","creation_seed"))
+        adapter_file=target/"AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
+        adapter_lines=adapter_file.read_text().splitlines()
+        print("ORIGINAL_ADAPTER_CREATE_NEW_DETAIL")
+        for i in range(330,min(407,len(adapter_lines))):
+            print(f"ADAPTER:{i+1}: {adapter_lines[i][:220]}")
+        print("ENGINE_CONSTRUCTOR_AND_RUN_DETAILS")
+        engine_lines=(target/"engine.py").read_text().splitlines()
+        for i in range(min(73,len(engine_lines))):
+            print(f"ENGINE:{i+1}: {engine_lines[i][:220]}")
         relevant_source(target,
                         "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
                         ("creation_seed","def resolve(","def generate_events("),0)

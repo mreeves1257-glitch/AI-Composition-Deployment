@@ -22,6 +22,8 @@ APPROVED_SAMPLE_BANKS.update({
     "JAZZ_MEATBASS_PINNED": {"library": "Karoryfer Meatbass / recorded pizzicato", "license": "CC0-1.0"},
     "JAZZ_VSCO_CLARINET_PINNED": {"library": "VSCO 2 Community Edition / recorded clarinet", "license": "CC0-1.0"},
     "JAZZ_SWIRLY_BRUSH_PINNED": {"library": "Karoryfer Swirly Drums / recorded brush kit", "license": "CC0-1.0"},
+    # Swing audition ONLY: 10 VSCO unmodified trumpet WAVs verified against pinned Git blob hashes.
+    "JAZZ_VSCO_TRUMPET_SWING_PINNED": {"library": "VSCO 2 Community Edition / original trumpet", "license": "CC0-1.0"},
 })
 
 # New banks enter this allowlist only through the checked-in, SHA-pinned

@@ -21,11 +21,15 @@ jobs:
       - name: Generate 112 bar original Jazz Fusion score
         run: python research/jazz_fusion_full_length_arrangement_20261010.py
       - name: Render five original SFZ stems and unchanged 3D mixer
-        run: PYTHONPATH=composer/runtime python research/render_jazz_fusion_112bar_original_20261010.py
+        run: |
+          mkdir -p jazz-fusion-112bar-recorded-audio
+          PYTHONPATH=composer/runtime python research/render_jazz_fusion_112bar_original_20261010.py > jazz-fusion-112bar-recorded-audio/build.log 2>&1 || { cat jazz-fusion-112bar-recorded-audio/build.log; exit 1; }
       - name: Preserve full-length original audio evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: jazz-fusion-112bar-original-recorded-3d
           path: |
             jazz-fusion-112bar-recorded-audio/JAZZ_FUSION_112BAR_ORIGINAL_RECORDED_3D.wav
             jazz-fusion-112bar-recorded-audio/manifest.json
+            jazz-fusion-112bar-recorded-audio/build.log

@@ -1,0 +1,689 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "Electronic_Dance",
+  "genre_count": 9,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "House",
+      "profile_id": "HOUSE_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/House/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_HOUSE_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        118,
+        130
+      ],
+      "original_groove_behavior": "four-on-floor kick, offbeat/open-hat relationships, syncopated percussion and repeating dance groove",
+      "original_phrase_behavior": "8/16-bar phrase blocks with gradual layer changes and clear transitions",
+      "original_ensemble_behavior": "parts are grid-coherent but groove/humanization may vary by substyle",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "original_instrument_id": "synth_chord",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "original_instrument_id": "synth_lead",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Techno",
+      "profile_id": "TECHNO_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Techno/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_TECHNO_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        125,
+        150
+      ],
+      "original_groove_behavior": "persistent four-on-floor drive with evolving percussion/timbre and repetitive hypnotic cells",
+      "original_phrase_behavior": "long 8/16/32-bar evolution; phrase identity often comes from texture/automation rather than melody",
+      "original_ensemble_behavior": "layer entrances/exits and automation create development",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_PULSE",
+          "original_instrument_id": "synth_pulse",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "NOISE_FX",
+          "original_instrument_id": "noise_fx",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Trance",
+      "profile_id": "TRANCE_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Trance/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_TRANCE_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        126,
+        145
+      ],
+      "original_groove_behavior": "steady four-on-floor drive with rolling bass, arpeggiation and long tension/release cycles",
+      "original_phrase_behavior": "16/32-bar phrases with intro, build, breakdown, rise and return/drop-like peak",
+      "original_ensemble_behavior": "layered electronic ensemble develops by automation and register",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_ARP",
+          "original_instrument_id": "synth_arp",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Ambient Electronic",
+      "profile_id": "AMBIENT_ELECTRONIC_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Ambient Electronic/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_AMBIENT_ELECTRONIC_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "free"
+      ],
+      "tempo_bpm_range": [
+        40,
+        95
+      ],
+      "original_groove_behavior": "pulse may be absent, soft or slowly repeating; texture evolution is primary",
+      "original_phrase_behavior": "very long arcs with gradual timbral/registral motion and extended silence/space",
+      "original_ensemble_behavior": "layers behave as evolving fields with foreground events emerging selectively",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_ARP",
+          "original_instrument_id": "synth_arp",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "FLUTE",
+          "original_instrument_id": "flute",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "NOISE_FX",
+          "original_instrument_id": "noise_fx",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Downtempo",
+      "profile_id": "DOWNTEMPO_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Downtempo/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_DOWNTEMPO_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "6/8"
+      ],
+      "tempo_bpm_range": [
+        65,
+        110
+      ],
+      "original_groove_behavior": "laid-back electronic/breakbeat groove with spacious subdivision and restrained tempo",
+      "original_phrase_behavior": "8/16-bar loops with evolving textures and melodic fragments",
+      "original_ensemble_behavior": "parts emphasize pocket and atmosphere over density",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Breakbeat-related",
+      "profile_id": "BREAKBEAT_RELATED_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Breakbeat-related/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_BREAKBEAT_RELATED_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        90,
+        145
+      ],
+      "original_groove_behavior": "syncopated broken drum patterns rather than mandatory four-on-floor; chopped/accented subdivisions define groove",
+      "original_phrase_behavior": "4/8/16-bar loops with fills, edits and pattern mutations",
+      "original_ensemble_behavior": "rhythm layers interact through syncopation; fills preserve phrase direction",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "original_instrument_id": "synth_chord",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "NOISE_FX",
+          "original_instrument_id": "noise_fx",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Garage-related",
+      "profile_id": "GARAGE_RELATED_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Garage-related/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_GARAGE_RELATED_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        124,
+        140
+      ],
+      "original_groove_behavior": "shuffled/syncopated garage-derived groove; 2-step kick placement available instead of continuous four-on-floor",
+      "original_phrase_behavior": "8/16-bar dance phrases with vocal/lead chops and quick transitions",
+      "original_ensemble_behavior": "layers share shuffle/swing grid while retaining syncopation",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_CHORD",
+          "original_instrument_id": "synth_chord",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "original_instrument_id": "synth_lead",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Experimental Electronic",
+      "profile_id": "EXPERIMENTAL_ELECTRONIC_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Experimental Electronic/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_EXPERIMENTAL_ELECTRONIC_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "3/4",
+        "6/8",
+        "7/8",
+        "free"
+      ],
+      "tempo_bpm_range": [
+        40,
+        180
+      ],
+      "original_groove_behavior": "no single mandatory groove; composition must declare pulse, free-time, additive grouping or algorithmic timing explicitly",
+      "original_phrase_behavior": "phrase/section logic may be textural, algorithmic, motivic or conventional but must be declared and traceable",
+      "original_ensemble_behavior": "relationships defined per component map; no generic randomization as substitute for design",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "NOISE_FX",
+          "original_instrument_id": "noise_fx",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Chugg / #chugg",
+      "profile_id": "CHUGG_SCENE_V1",
+      "original_definition_file": "composer_overrides/genre_styles/Electronic_Dance/profile.json",
+      "original_definition_pointer": "/profiles/Chugg ~1 #chugg/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/Electronic_Dance/INTERPRETER_CHUGG_CHUGG_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/Electronic_Dance/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        115,
+        165
+      ],
+      "original_groove_behavior": "plugg-derived emerging groove within the Mexican reggaeton scene; sparse syncopation, trap/plugg textures and local scene variation expected",
+      "original_phrase_behavior": "short repetitive motifs/hook cells with abrupt edits or beat changes permitted",
+      "original_ensemble_behavior": "minimal layers can create space; production edits may function as arrangement events",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SYNTH_LEAD",
+          "original_instrument_id": "synth_lead",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "NOISE_FX",
+          "original_instrument_id": "noise_fx",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    }
+  ]
+}

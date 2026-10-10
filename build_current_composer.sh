@@ -573,9 +573,14 @@ def execute_audio_render(*args, **kwargs):
         from genre_styles.Jazz.composer_midi_handoff import (
             jazz_midi_to_original_renderer_gate,
         )
+        # The ORIGINAL engine passes (engine_result, output_handoff),
+        # not the package itself. Regenerate the SAME canonical output package
+        # from that original engine result before accepting Jazz MIDI.
         package = bound.arguments.get('package')
         if package is None:
-            raise RuntimeError('JAZZ_COMPOSER_MIDI_PACKAGE_NOT_PRESENT_AT_RENDER_BOUNDARY')
+            package = build_execution_package(engine_result)
+        if not hasattr(package, 'package_id'):
+            raise RuntimeError('JAZZ_CANONICAL_MIDI_EXECUTION_PACKAGE_MISSING')
         root = Path(os.environ.get('AI_COMP_OUTPUT_ROOT', 'output'))
         folder = root / 'jazz_genre_midi_handoffs' / str(package.package_id)
         jazz_midi_to_original_renderer_gate(

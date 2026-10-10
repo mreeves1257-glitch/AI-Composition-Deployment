@@ -43,6 +43,16 @@ Exactly **23 original MMA files** have been copied into our repository and verif
 
 All source/distribution usage must respect MMA's GPL v2 license and independently verified upstream sources. Yamaha/JJazzLab/Korg documents explain architecture; a Yamaha/Korg file is not automatically executable in our independent SFZ environment.
 
+## New verified executable Swing checkpoint — 2026-10-10
+
+**Development continuation:** [Swing original MMA engine proof](https://github.com/mreeves1257-glitch/AI-Composition-Deployment/actions/runs/38054987885) on branch `swing-official-mma-engine-proof-20261010`.
+
+- The REAL upstream MMA program from immutable Git commit `c52943c31aa1e64fa9b5313620d5065f91c22773` executed the archived byte-identical `lib/stdlib/swing.mma` musical style. Tested published grooves `SwingIntro`, `SwingWalk`, `Swing1Walk`, `SwingFill`, `Swing2`, `SwingEnd`, generating actual distinct named instrument MIDI tracks (bass, walking bass, piano chords, guitar, sax, drums) from an independently authored 28-bar chord chart.
+- The original MMA output is Type-1 MIDI at 192 PPQ. The tested **common transport-only** converter `composer_overrides/genre_styles/external_mma_midi_bridge.py` produces a valid Type-1 **480-PPQ** copy with every note/event, velocity, drum channel, program change, tempo, meter and separate original track retained; position error at most half an output tick. This is NOT a fake music interpreter and NOT an instrument sound adjustment.
+- Test source and real MIDI archives: `research/test_original_mma_swing_engine_20261010.py`; CI artifact `ORIGINAL_MMA_SWING_ENGINE_28BAR_GENERATED_MIDI_20261010`. The source file, raw original MMA MIDI, and 480-PPQ normalized MIDI are all preserved in the CI run artifact.
+- **Still required:** Composer's new-song chord timeline and lead trumpet merge, approved mapping of MMA's separate roles into Swing's SIX original recorded instrument parts. The MMA source includes guitar and sax patterns that have no automatic approved target in the present Swing six-part scheme; they MUST NOT disappear without an explicit decision/verified sample. Existing original Swing bass, recorded trumpet and ride/cymbal mapping must each pass actual source and note-range checks; the final original SFZ stereo rendering/listener acceptance remains pending.
+- All 55 original project settings, licensed reference library files, Rock2, Jazz Ballad, source instrument sounds, balances, and the live control panel remain unchanged. **Do not claim Swing has full audio or 55 genres are live.**
+
 ## Where we actually stopped
 
 - **Rock2:** new hard-driving arrangement was auditioned by the user and judged workable; its sounds and clearer separation are protected. Fine arrangement/lead tuning deferred.

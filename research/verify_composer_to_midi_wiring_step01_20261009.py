@@ -102,6 +102,10 @@ def main():
         check(len(notes)==len(events),
               "SERIALIZED_MIDI_NOTES_DO_NOT_MATCH_COMPOSER")
         check(len(mf.tracks)>2,"COMPOSER_MIDI_MISSING_INSTRUMENT_TRACKS")
+        track_details=[
+            {"index":i,"track_names":[m.name for m in t if m.type=="track_name"],
+             "note_ons":sum(m.type=="note_on" and m.velocity>0 for m in t)}
+            for i,t in enumerate(mf.tracks)]
         print("STEP01_COMPOSER_TO_MIDI_PASS",json.dumps({
             "composer":"ORIGINAL_PRESERVED_RUNTIME",
             "genre":"ROCK",
@@ -109,6 +113,7 @@ def main():
             "midi_note_ons":len(notes),
             "midi_format":mf.type,
             "midi_tracks":len(mf.tracks),
+            "midi_track_details":track_details,
             "midi_ppq":mf.ticks_per_beat,
             "composer_tempo_bpm":composed["tempo_bpm"],
             "genre_interpreter_called":False,

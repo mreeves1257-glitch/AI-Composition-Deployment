@@ -96,7 +96,7 @@ def install():
     original_ride=bindings["ride_cymbal"]
     swing_ride=source_binding(original_ride,RIDE_SWING)
     verify=[
-        ("trumpet_c",native_trumpet,10),
+        ("trumpet_c:trumpet",native_trumpet,10),
         ("ride_cymbal:drums_ride",swing_ride,12),
         ("kick_drum_rock:drums_ride",bindings["kick_drum_rock"],16),
         ("snare_drum:drums_ride",bindings["snare_drum"],16)
@@ -147,7 +147,7 @@ def install():
     # Three drum instrument ids and Swing-only trumpet must not be used by
     # Jazz Ballad. Add only distinct context-qualified keys + trumpet_c.
     for k in bindings:
-        if k not in ("trumpet_c","ride_cymbal:drums_ride",
+        if k not in ("trumpet_c:trumpet","ride_cymbal:drums_ride",
                      "kick_drum_rock:drums_ride","snare_drum:drums_ride"):
             need(bindings[k]==candidates[k],"SOME_OTHER_GENRE_SETTING_CHANGED:"+k)
     TARGET.write_text(json.dumps(staged,indent=2)+"\n")

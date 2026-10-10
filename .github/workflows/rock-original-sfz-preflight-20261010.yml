@@ -47,6 +47,44 @@ jobs:
               print("ROCK_SFZ_SAMPLE_GRAPH_PASS",role["role"],proof["resource_id"],proof["sample_references"])
           print("ROCK_ALL_FIVE_SOURCE_SAMPLE_GRAPHS_PASS; NOTE_ZONE_AND_AUDIO_STEMS_STILL_UNVERIFIED")
           PY
+      - name: Render every requested Rock pitch as isolated recorded-source audio
+        env:
+          PYTHONPATH: composer/runtime
+          AI_COMP_SFZ_RENDERER: .composer_tools/bin/sfizz_render
+        run: |
+          python - <<'PY'
+          import json, tempfile
+          from pathlib import Path
+          from genre_styles.source_pattern_library import compile_original_source_seed
+          from genre_styles.source_pattern_composer_handoff import prepare_source_pattern_composer_handoff
+          from sfz_renderer_adapter import render_midi
+          registry=json.loads(Path("composer/runtime/target_registry.json").read_text())["targets"]["INTERNAL"]["instrument_bindings"]
+          proposal=prepare_source_pattern_composer_handoff(compile_original_source_seed("ROCK"),target_bindings=registry)
+          assert proposal["candidate_is_not_live_events"] and not proposal["audio_render_authorized"]
+          roles={r["role"]:r for r in proposal["routing"]["roles"]}
+          events=proposal["candidate_stage4_events"]
+          assert len(roles)==5 and events
+          def varlen(n):
+              parts=[n&127]; n >>= 7
+              while n: parts.insert(0,(n&127)|128); n >>= 7
+              return bytes(parts)
+          def midi_bytes(note,velocity):
+              track=b"\x00\x90"+bytes([note,velocity])+varlen(480)+b"\x80"+bytes([note,0])+b"\x00\xff\x2f\x00"
+              return b"MThd"+(6).to_bytes(4,"big")+b"\x00\x00\x00\x01\x01\xe0"+b"MTrk"+len(track).to_bytes(4,"big")+track
+          with tempfile.TemporaryDirectory() as d:
+              root=Path(d)
+              for role,entry in roles.items():
+                  selected=[e for e in events if e["track_id"]==role]
+                  assert selected,"SILENT_ROLE:"+role
+                  notes=sorted({(e["midi"],e["velocity"]) for e in selected})
+                  for i,(note,vel) in enumerate(notes):
+                      mid=root/f"{role}-{i}.mid"; wav=root/f"{role}-{i}.wav"
+                      mid.write_bytes(midi_bytes(note,vel))
+                      result=render_midi(registry[entry["binding_id"]],mid,wav,sample_rate=22050)
+                      assert result["audio_rendered"] and result["peak_linear"]>0,(role,note,result)
+                  print("ROCK_RECORDED_NOTE_AUDIO_PASS",role,"note_velocity_pairs",len(notes),flush=True)
+          print("ROCK_FIVE_ROLES_NOTE_AUDIO_PASS; FULL_SONG_MIX_AND_LISTENING_NOT_VERIFIED")
+          PY
       - name: Verify original events cannot be replaced by candidate events
         run: |
           python research/test_source_pattern_recorded_resource_stage4_20261009.py

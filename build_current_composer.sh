@@ -520,6 +520,13 @@ def build_setup(name, profile, mode='quick', creation_seed=0):
     return developed
 """
 adapter.write_text(a + "\n" + override + "\n")
+# New composition means new music: the original create_new default depended on
+# persisted history count, which can reset with an ephemeral deployment.
+# Preserve explicit .resolve(creation_seed=...) for reproducible controlled A/B.
+import sys
+sys.path.insert(0, str(Path("composer_overrides").resolve()))
+from enable_fresh_song_seed import install as _install_fresh_song_seed
+_install_fresh_song_seed(adapter)
 p=Path("composer/runtime/output_handoff.py"); s=p.read_text()
 old="""    # Source stems cannot be promoted to a final master without the separate 3D module.
     return {'status':'AUDIO_STEMS_READY_MASTER_REQUIRED','audio_rendered':False,

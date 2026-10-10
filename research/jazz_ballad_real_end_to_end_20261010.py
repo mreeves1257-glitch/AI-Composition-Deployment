@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Isolated actual Jazz Ballad full engine audio proof. Never deploy."""
-import json,os,sys,traceback
+import json,os,sys,traceback,shutil,hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 runtime=root/'composer'/'runtime'
@@ -18,6 +18,14 @@ try:
  report['reason']=result.get('reason')
  report['keys']=list(result)
  report['audio_render']=result.get('audio_render')
+ if result.get('audio_rendered') and result.get('audio_render',{}).get('status')=='AUDIO_RENDER_PASS':
+  source=Path(result['audio_render']['wav_path'])
+  if not source.is_file(): raise RuntimeError('JAZZ_BALLAD_RENDERED_WAV_MISSING')
+  target=output/'JAZZ_BALLAD_ORIGINAL_RECORDED_3D.wav'
+  shutil.copyfile(source,target)
+  report['copied_wav']=target.name
+  report['wav_bytes']=target.stat().st_size
+  report['wav_sha256']=hashlib.sha256(target.read_bytes()).hexdigest()
  report['audio_resource_preflight']=result.get('audio_resource_preflight')
  report['output_handoff']=result.get('output_handoff')
 except Exception as exc:

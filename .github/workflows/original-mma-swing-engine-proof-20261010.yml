@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/original-mma-swing-engine-proof-20261010.yml
       - research/test_original_mma_swing_engine_20261010.py
+      - composer_overrides/genre_styles/external_mma_midi_bridge.py
   workflow_dispatch:
 permissions:
   contents: read
@@ -42,5 +43,6 @@ jobs:
             project/research_artifacts/swing_mma_original_engine/RESULT.json
             project/research_artifacts/swing_mma_original_engine/swing_original_mma_28bar_score.mma
             project/research_artifacts/swing_mma_original_engine/swing_original_mma_28bar_accompaniment.mid
+            project/research_artifacts/swing_mma_original_engine/swing_original_mma_28bar_accompaniment_480ppq.mid
           retention-days: 30
           if-no-files-found: warn

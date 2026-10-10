@@ -1,0 +1,23 @@
+name: New Different Rock2 Songs - Reject Retired Oompa Pattern
+on:
+  push:
+    branches: [new-rock-compositions-replace-retired-song-20261009]
+    paths:
+      - composer_overrides/genre_styles/Rock/rock2_new_song.py
+      - build_current_composer.sh
+      - research/verify_new_rock2_songs_distinct_20261009.py
+      - .github/workflows/verify-independent-rock2-new-songs-20261009.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ensure-musically-new-rock2-ensemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify new Rock2 source-derived different songs, non-oompa kick, piano and guitar
+        run: python research/verify_new_rock2_songs_distinct_20261009.py

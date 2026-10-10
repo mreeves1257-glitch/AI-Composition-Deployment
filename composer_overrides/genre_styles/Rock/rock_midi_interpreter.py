@@ -46,6 +46,12 @@ def receive_composer_midi(midi_path:str|Path, *, genre:str="ROCK")->dict[str,Any
     require(slot["activated_in_live_composer"] is False
             and slot["source_specific_note_score_approved_for_production"] is False,
             "ROCK_PRODUCTION_GATE_UNEXPECTEDLY_ENABLED")
+    inbound=slot.get("composer_midi_inbound",{})
+    require(inbound.get("entrypoint")==
+            "genre_styles.Rock.rock_midi_interpreter.receive_composer_midi"
+            and inbound.get("shared_interpreter_used") is False
+            and inbound.get("live_deployed") is False,
+            "ROCK_OWN_INTERPRETER_MIDI_CONNECTION_NOT_REGISTERED")
     tracks=profile["individual_instrument_tracks"]
     mapping=refs["full_genre_track_sound_maps"][EXPECTED_GENRE]
     require(mapping["profile_id"]==slot["source_profile_id"],

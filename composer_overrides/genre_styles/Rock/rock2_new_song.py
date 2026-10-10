@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import math
+import os
 from pathlib import Path
 import re
 from typing import Any
@@ -148,6 +149,9 @@ def compose_new_rock_song(ctx:dict[str,Any],creation_seed:int)->list[dict[str,An
     composition requests choose fresh seeds automatically.
     """
     source=read_original_rock2()
+    # Isolated listening audition only. The user-approved Rock2 rhythm section,
+    # recorded instruments and original stereo blend must stay byte-identical.
+    fuller_lead = os.environ.get("AI_COMP_ROCK2_LEAD_PRESENCE_AUDITION", "") == "1"
     shape=choose_new_song_shape(creation_seed)
     bars=shape["bars"]
     if ctx.get("meter",{}).get("numerator")!=4 or ctx["meter"]["denominator"]!=4:
@@ -229,7 +233,18 @@ def compose_new_rock_song(ctx:dict[str,Any],creation_seed:int)->list[dict[str,An
         if bar>=4 and not ending:
             phrase=bar//4
             style_number=_rand(creation_seed,"melodic_style",phrase//2)%6
-            solo_allowed=(section_kind in (1,3) or bar%8 in (2,3,6,7))
+            # In the initial Rock2 trial, section kinds 0/2 had lead in just
+            # 3 of every 8 bars; musicians heard it as too sparse. This opt-in
+            # audition keeps the 4-bar intro, 8th-bar response rests and last
+            # two ending bars, but brings lead into 6 of 8 bars in verse-like
+            # sections. Section kinds 1/3 already have 7 of 8 bars.
+            if fuller_lead:
+                solo_allowed = (
+                    bar % 8 in (0,1,2,3,4,6) if section_kind in (0,2)
+                    else bar % 8 != 7
+                )
+            else:
+                solo_allowed = (section_kind in (1,3) or bar%8 in (2,3,6,7))
             if solo_allowed and (bar%8)!=7:
                 patterns=(
                     ((.0,0),(.75,1),(1.5,2),(3.0,1)),

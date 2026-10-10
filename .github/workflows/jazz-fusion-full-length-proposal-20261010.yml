@@ -12,8 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python research/jazz_fusion_full_length_arrangement_20261010.py
-      - uses: actions/upload-artifact@v4
+      - run: |
+          mkdir -p jazz-fusion-full-length-proposal
+          python research/jazz_fusion_full_length_arrangement_20261010.py > jazz-fusion-full-length-proposal/build.log 2>&1 || { cat jazz-fusion-full-length-proposal/build.log; exit 1; }
+      - if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: jazz-fusion-112-bar-isolated-score
           path: jazz-fusion-full-length-proposal/

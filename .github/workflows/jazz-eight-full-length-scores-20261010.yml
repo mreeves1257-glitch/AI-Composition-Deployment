@@ -1,0 +1,19 @@
+name: Jazz All Eight Full Length Score Drafts (No Deploy)
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_all_styles_full_length_scores_20261010.py
+      - .github/workflows/jazz-eight-full-length-scores-20261010.yml
+permissions:
+  contents: read
+jobs:
+  scores:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_all_styles_full_length_scores_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-eight-112-bar-unrendered-score-drafts
+          path: jazz-eight-full-length-scores/

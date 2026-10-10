@@ -9,7 +9,7 @@ sys.path.insert(0,'composer_overrides')
 from genre_styles.source_pattern_library import compile_original_source_seed
 root=Path('composer_overrides/genre_styles/Jazz')
 bindings=json.loads((root/'SOURCE_RESOURCE_BINDINGS_R1.json').read_text())
-out=Path('jazz-eight-parameter-packs');out.mkdir(exist_ok=True)
+out=Path('composer_overrides/genre_styles/Jazz/parallel_parameter_packs');out.mkdir(parents=True,exist_ok=True)
 summary=[]
 for row in bindings['genres']:
  genre=row['genre']

@@ -88,8 +88,7 @@ def write_sfz():
     """Use only vanilla VSCO natural sustained waveforms, not a synth."""
     lines=["// Source: Versilian Studios VSCO2 Community Edition, CC0 1.0",
            "// Original unaltered trumpet/sus WAV; MIDI 60..83.",
-           "// No equalizer, invented vibrato, transposition offset or mixer modification.",
-           "<global> ampeg_attack=0.015 ampeg_release=0.18"]
+           "// No equalizer, envelope adjustment, invented vibrato or mixer modification."]
     for name,low,high,center,*_ in SAMPLES:
         for layer,lv,hv in ((1,1,63),(3,64,127)):
             rel="../Brass/Trumpet/sus/Sum_SHTrumpet_sus_"+name+"_v"+str(layer)+"_rr1.wav"

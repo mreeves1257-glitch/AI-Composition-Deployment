@@ -1,9 +1,33 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "genre": "Big Band",
   "link_mode": "JAZZ_INSTRUMENT_POOL_LINK",
   "library": "../instrument_library.json",
-  "binding_status": "NOT_STARTED",
-  "roles": {},
-  "note": "Reserved filename only. No instruments, arrangement or style framework assigned. Jazz Ballad must be finished and approved before this is populated."
+  "source_of_truth": "../SOURCE_RESOURCE_BINDINGS_R1.json",
+  "binding_status": "PARTIAL_SOURCE_ROUTING_NOT_LIVE",
+  "roles": {
+    "BASS": {
+      "instrument_id": "acoustic_bass",
+      "source_binding_status": "BLOCKED_UNVERIFIED"
+    },
+    "HARMONY": {
+      "instrument_id": "horn_section",
+      "source_binding_status": "BLOCKED_UNVERIFIED"
+    },
+    "KICK": {
+      "instrument_id": "kick_drum_soft",
+      "source_binding_status": "BLOCKED_UNVERIFIED"
+    },
+    "RIDE": {
+      "instrument_id": "ride_cymbal",
+      "source_binding_status": "REFERENCE_PINN_AUDIO_CHECK_REQUIRED",
+      "recorded_binding_id": "ride_cymbal",
+      "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+      "preferred_mapping": "Programs/composer-ride-lite.sfz"
+    }
+  },
+  "original_instrument_ids_preserved": true,
+  "synthetic_substitution_allowed": false,
+  "approved_3d_mixer_unchanged": true,
+  "production_enabled": false
 }

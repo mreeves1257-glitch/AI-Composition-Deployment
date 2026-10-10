@@ -1,0 +1,19 @@
+name: Jazz All Styles Recorded Source Onboarding Tickets
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_parallel_original_source_next_steps_20261010.py
+      - .github/workflows/jazz-parallel-source-tickets-20261010.yml
+permissions:
+  contents: read
+jobs:
+  tickets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_parallel_original_source_next_steps_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-eight-original-recording-source-tickets
+          path: jazz-parallel-source-tickets/

@@ -1,0 +1,19 @@
+name: Jazz Fusion 112 Bar Score Proposal (No Deploy)
+on:
+  push:
+    branches: [rock-sfz-preflight-isolated-20261010]
+    paths:
+      - research/jazz_fusion_full_length_arrangement_20261010.py
+      - .github/workflows/jazz-fusion-full-length-proposal-20261010.yml
+permissions:
+  contents: read
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/jazz_fusion_full_length_arrangement_20261010.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jazz-fusion-112-bar-isolated-score
+          path: jazz-fusion-full-length-proposal/

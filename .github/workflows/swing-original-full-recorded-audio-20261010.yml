@@ -1,0 +1,44 @@
+name: Swing Actual Composer to Recorded Instruments to Complete Stereo
+on:
+  push:
+    branches: [connect-swing-original-recorded-jazz-20261010]
+    paths:
+      - .github/workflows/swing-original-full-recorded-audio-20261010.yml
+      - composer_overrides/genre_styles/Jazz/swing_recorded_target_links.py
+      - research/verify_full_swing_original_stereo_20261010.py
+      - build_current_composer.sh
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-swing-real-original-instruments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build original Composer, Swing-only original recordings and real trumpet/ride source maps
+        env:
+          PIP_DISABLE_PIP_VERSION_CHECK: '1'
+          AI_COMP_AUTO_PHRASING_V1: '0'
+          AI_COMP_SWING_ORIGINAL_AUDIO_AUDITION: '1'
+        run: bash build_current_composer.sh
+      - name: Compose real full Swing with original six recorded instruments through MIDI and separate stereo stems
+        env:
+          PYTHONPATH: composer/runtime
+        run: python research/verify_full_swing_original_stereo_20261010.py
+      - name: Preserve verified original sampled Swing stereo and full instrument provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SWING_ORIGINAL_TRUMPET_PIANO_BASS_RIDE_FULL_STEREO_20261010
+          path: |
+            research_artifacts/swing_original_full_stereo/SWING_ORIGINAL_SIX_INSTRUMENTS_STEREO.wav
+            research_artifacts/swing_original_full_stereo/RESULT.json
+            composer/runtime/output/swing_verified_recorded_trumpet.json
+            composer/runtime/output/swing_original_sample_target_links.json
+            research_artifacts/swing_original_full_stereo/original_render/jazz_genre_midi_handoffs
+          if-no-files-found: warn
+          retention-days: 30

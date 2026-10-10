@@ -2,7 +2,8 @@
 """Isolated Jazz source note-range feasibility; never changes original arrangements."""
 import json,sys
 from pathlib import Path
-sys.path.insert(0,'composer_overrides')\nsys.path.insert(0,'composer/runtime')
+sys.path.insert(0,'composer_overrides')
+sys.path.insert(0,'composer/runtime')
 from genre_styles.source_pattern_library import compile_original_source_seed
 registry={} # Symbolic-only fast pass; installed sources verified separately in recorded-bank CI
 candidates={'acoustic_bass':('double_bass',35,55),'kick_drum_soft':('kick_drum_rock:brush_drums',36,36),'brush_snare':('snare_drum:brush_drums',38,38),'electric_piano':('electric_piano',0,127),'ride_cymbal':('ride_cymbal',51,51)}

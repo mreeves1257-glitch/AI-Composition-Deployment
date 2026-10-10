@@ -25,7 +25,7 @@ jobs:
           PYTHONPATH: composer/runtime
           AI_COMP_SFZ_RENDERER: .composer_tools/bin/sfizz_render
         run: python research/render_isolated_rock_recorded_stems_20261010.py
-      - name: Keep diagnostic WAV and MIDI stems available for approved mixer handoff
+      - name: Mix five recorded stems through the unchanged standalone 3D mixer\n        env:\n          PYTHONPATH: composer/runtime\n        run: python research/mix_isolated_rock_original_stems_20261010.py\n      - name: Keep diagnostic WAV and MIDI stems available for approved mixer handoff
         uses: actions/upload-artifact@v4
         with:
           name: rock-five-original-recorded-stems-diagnostic

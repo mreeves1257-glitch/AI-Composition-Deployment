@@ -1,0 +1,475 @@
+{
+  "schema": "AI_COMP_55_INDIVIDUAL_GENRE_RUNTIME_SETTINGS_R1",
+  "family": "R_and_B_Soul_Funk_Disco",
+  "genre_count": 6,
+  "purpose": "ORIGINAL_GENRE_ROUTING_AND_CONFIGURATION_NOT_SYNTHETIC_PLAYBACK",
+  "shared_route": [
+    "COMPOSER",
+    "ORIGINAL_TYPE1_MIDI",
+    "OWN_GENRE_INTERPRETER",
+    "ORIGINAL_RECORDED_SFZ",
+    "STANDARD_STEREO",
+    "OPTIONAL_STANDALONE_3D_MIXER_LAST"
+  ],
+  "common_transport_module": "genre_styles.genre_owned_midi_inlet.receive_genre_midi",
+  "authoritative_genre_profiles_unmodified": true,
+  "original_recorded_instrument_library_unmodified": true,
+  "original_mixes_and_dynamics_unmodified": true,
+  "no_general_midi_fallback": true,
+  "per_genre": [
+    {
+      "genre": "Rhythm and Blues",
+      "profile_id": "RHYTHM_AND_BLUES_V1",
+      "original_definition_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
+      "original_definition_pointer": "/profiles/Rhythm and Blues/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/INTERPRETER_RHYTHM_AND_BLUES_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "12/8"
+      ],
+      "tempo_bpm_range": [
+        70,
+        135
+      ],
+      "original_groove_behavior": "backbeat-centered groove; straight, shuffle or triplet-derived feel depending profile",
+      "original_phrase_behavior": "4/8-bar vocal/instrumental phrases with turnarounds and call-response",
+      "original_ensemble_behavior": "rhythm section pocket supports lead; responses occupy gaps rather than overlap constantly",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Soul",
+      "profile_id": "SOUL_V1",
+      "original_definition_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
+      "original_definition_pointer": "/profiles/Soul/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/INTERPRETER_SOUL_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "12/8"
+      ],
+      "tempo_bpm_range": [
+        60,
+        125
+      ],
+      "original_groove_behavior": "deep backbeat pocket with gospel/blues inflection and possible triplet feel",
+      "original_phrase_behavior": "vocal-like arcs, call-response and rising emotional intensity across sections",
+      "original_ensemble_behavior": "ensemble breathes around lead; horn/string responses reinforce section peaks",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "TRUMPET",
+          "original_instrument_id": "trumpet",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Funk",
+      "profile_id": "FUNK_V1",
+      "original_definition_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
+      "original_definition_pointer": "/profiles/Funk/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/INTERPRETER_FUNK_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        88,
+        125
+      ],
+      "original_groove_behavior": "sixteenth-note syncopated pocket with strong one, interlocking drums/bass/guitar and intentional rests",
+      "original_phrase_behavior": "short riff-based phrases, breaks, vamps and call-response cells",
+      "original_ensemble_behavior": "all rhythm parts interlock; no one part fills every subdivision",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "CLAV",
+          "original_instrument_id": "clav",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Contemporary R&B",
+      "profile_id": "CONTEMPORARY_RNB_V1",
+      "original_definition_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
+      "original_definition_pointer": "/profiles/Contemporary R&B/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/INTERPRETER_CONTEMPORARY_R_B_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "6/8"
+      ],
+      "tempo_bpm_range": [
+        55,
+        110
+      ],
+      "original_groove_behavior": "laid-back pocket with syncopated or half-time drum programming; trap-derived subdivisions may appear without defining all tracks",
+      "original_phrase_behavior": "melodic/vocal-like phrases with space, repetition-with-variation and pre-chorus/chorus contrast",
+      "original_ensemble_behavior": "lead-centered production; accompaniment supports negative space and sectional layering",
+      "recorded_role_bindings": [
+        {
+          "track_id": "SYNTH_BASS",
+          "original_instrument_id": "synth_bass",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "SYNTH_PAD",
+          "original_instrument_id": "synth_pad",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "Neo-Soul-related",
+      "profile_id": "NEO_SOUL_RELATED_V1",
+      "original_definition_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
+      "original_definition_pointer": "/profiles/Neo-Soul-related/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/INTERPRETER_NEO_SOUL_RELATED_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4",
+        "6/8"
+      ],
+      "tempo_bpm_range": [
+        60,
+        105
+      ],
+      "original_groove_behavior": "deep laid-back pocket with syncopation, swung/straight ambiguity and nuanced subdivision",
+      "original_phrase_behavior": "elastic phrase entrances, behind-beat lead feel and longer harmonic phrases",
+      "original_ensemble_behavior": "ensemble sits deeply in one pocket while harmonic instruments voice sparsely",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_PIANO",
+          "original_instrument_id": "electric_piano",
+          "resource_id": "GREG_SULLIVAN_E_PIANOS",
+          "sfz_program": "Wurlitzer EP200/composer-wurlitzer.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    },
+    {
+      "genre": "DISCO",
+      "profile_id": "DISCO_V1",
+      "original_definition_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/profile.json",
+      "original_definition_pointer": "/profiles/DISCO/musical_definition",
+      "genre_midi_interpreter_slot": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/INTERPRETER_DISCO_R1.json",
+      "genre_specific_interpreter_backend": "composer_overrides/genre_styles/source_pattern_library.py",
+      "genre_source_pattern_file": "composer_overrides/genre_styles/R_and_B_Soul_Funk_Disco/SOURCE_PATTERN_LIBRARY_R1.json",
+      "meter_options": [
+        "4/4"
+      ],
+      "tempo_bpm_range": [
+        112,
+        132
+      ],
+      "original_groove_behavior": "four-on-floor kick, offbeat hi-hat, syncopated bass and steady dance pulse",
+      "original_phrase_behavior": "8/16-bar song/dance phrases with string/horn/guitar hooks and breakdowns",
+      "original_ensemble_behavior": "rhythm guitar/bass/drums interlock; orchestral colors support hooks",
+      "recorded_role_bindings": [
+        {
+          "track_id": "ELECTRIC_BASS",
+          "original_instrument_id": "electric_bass",
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "sfz_program": "growlybass_clean.sfz",
+          "sound_source_status": "EXACT_REFERENCE_NEEDS_RUNTIME_AUDIO_PREFLIGHT"
+        },
+        {
+          "track_id": "ELECTRIC_GUITAR",
+          "original_instrument_id": "electric_guitar",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "STRINGS",
+          "original_instrument_id": "strings",
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "KICK",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "SNARE",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        },
+        {
+          "track_id": "HAT",
+          "original_instrument_id": null,
+          "resource_id": null,
+          "sfz_program": null,
+          "sound_source_status": "BLOCKED_UNVERIFIED_RECORDED_SOURCE"
+        }
+      ],
+      "status": {
+        "genre_identity_routing": "ACTIVE_IN_DEVELOPMENT",
+        "midi_inlet": "ACTIVE_IN_DEVELOPMENT",
+        "own_musical_profile": "ORIGINAL_DEFINITION_LOADED",
+        "original_tempo_meter_groove": "PRESERVED",
+        "original_mix_and_instrument_settings": "UNMODIFIED",
+        "source_seven_bar_seed": "PRESERVED_NOT_PROMOTED_TO_FULL_SONG",
+        "full_recorded_audio_development_proof": "NOT_YET_VERIFIED",
+        "all_original_recorded_tracks_have_exact_bank_references": false,
+        "full_genre_specific_performance": "NOT_VERIFIED",
+        "production_enabled": false
+      }
+    }
+  ]
+}

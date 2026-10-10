@@ -105,7 +105,18 @@ def original_mma_render(name:str,mma_root:Path)->dict:
             "NO_FULL_SEPARATE_SWING_ACCOMPANIMENT")
     used=set(g for g,_ in CHORDS[name])
     require(set(GROOVES)==used,"INTRO_MAIN_FILL_END_ARE_NOT_ALL_EXERCISED")
+    # Independently standardize the published MIDI's timing to the 480-PPQ
+    # Composer handoff; never modify the original arranger output.
+    from standardize_mma_midi_480ppq import original_mma_to_original_composer_ppq
+    normalized=original_mma_to_original_composer_ppq(
+        target, PROOF/("Original_MMA_Swing_"+name+"_Composer480.mid"))
+    require(normalized["musical_note_on_events"]==count
+            and normalized["input_ppq"]==timing
+            and normalized["output_ppq"]==480
+            and normalized["source_file_untouched"],
+            "MMA_480_CLOCK_CROSSWALK_DAMAGED_NOTES")
     return {"name":name,"tempo":TEMPOS[name],
+            "midi_timing_bridge":normalized,
             "length_bars":sum(len(b) for _,b in CHORDS[name]),
             "published_grooves_in_order":[g for g,_ in CHORDS[name]],
             "midi_type":midi.type,"actual_ppq":timing,

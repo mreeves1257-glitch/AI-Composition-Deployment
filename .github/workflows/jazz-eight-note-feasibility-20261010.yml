@@ -1,0 +1,30 @@
+name: Jazz Eight Styles Original Source Note Feasibility (No Deploy)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - rock-sfz-preflight-isolated-20261010
+    paths:
+      - research/jazz_all_styles_recorded_note_feasibility_20261010.py
+      - .github/workflows/jazz-eight-note-feasibility-20261010.yml
+permissions:
+  contents: read
+jobs:
+  jazz-note-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build existing original recorded sources
+        run: bash build_current_composer.sh
+      - name: Check all eight Jazz style MIDI notes and sources
+        run: python research/jazz_all_styles_recorded_note_feasibility_20261010.py
+      - name: Preserve detailed note evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jazz-eight-source-note-feasibility
+          path: jazz-source-feasibility/

@@ -17,6 +17,28 @@ PY
 python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
 python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
 cp connected_http_server.py composer/runtime/render_server.py
+# Match native dependencies to the deployment host instead of the saved workstation.
+# Rootless Debian package extraction keeps the sound resources and engine intact.
+NATIVE="$PWD/composer/runtime/runtime_linux/lib"
+mkdir -p "$PWD/.native_debs" "$PWD/.native_root"
+python - <<'NATIVEPY'
+import subprocess,re
+from pathlib import Path
+text=subprocess.check_output(['apt-cache','depends','--recurse','--no-recommends','--no-suggests','--no-conflicts','--no-breaks','--no-replaces','--no-enhances','libfluidsynth3'],text=True)
+names=sorted({line for line in text.splitlines() if re.fullmatch(r'[a-z0-9][a-z0-9+.-]*',line) and line not in {'libc6','libc-bin'}})
+assert 'libfluidsynth3' in names
+subprocess.run(['apt-get','download',*names],cwd='.native_debs',check=True)
+for deb in Path('.native_debs').glob('*.deb'):
+ subprocess.run(['dpkg-deb','-x',str(deb),'.native_root'],check=True)
+import shutil
+native=Path('composer/runtime/runtime_linux/lib')
+shutil.rmtree(native);native.mkdir(parents=True)
+for file in Path('.native_root').rglob('*'):
+ if file.is_file() and '.so' in file.name:
+  shutil.copyfile(file,native/file.name)
+assert (native/'libfluidsynth.so.3').is_file()
+print('HOST_NATIVE_DEPENDENCIES_READY',flush=True)
+NATIVEPY
 export LD_LIBRARY_PATH="$PWD/composer/runtime/runtime_linux/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export AI_COMP_FLUIDSYNTH_LIBRARY="$PWD/composer/runtime/runtime_linux/lib/libfluidsynth.so.3"
 PYTHONPATH=composer/runtime python - <<'PY'

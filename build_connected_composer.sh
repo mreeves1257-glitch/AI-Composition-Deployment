@@ -24,10 +24,13 @@ mkdir -p "$PWD/.native_debs" "$PWD/.native_root"
 python - <<'NATIVEPY'
 import subprocess,re
 from pathlib import Path
-text=subprocess.check_output(['apt-cache','depends','--recurse','--no-recommends','--no-suggests','--no-conflicts','--no-breaks','--no-replaces','--no-enhances','libfluidsynth3'],text=True)
+apt_options=['-o','Dir::State::lists='+str(Path('.apt_lists').resolve())]
+Path('.apt_lists/partial').mkdir(parents=True,exist_ok=True)
+subprocess.run(['apt-get',*apt_options,'update'],check=True)
+text=subprocess.check_output(['apt-cache',*apt_options,'depends','--recurse','--no-recommends','--no-suggests','--no-conflicts','--no-breaks','--no-replaces','--no-enhances','libfluidsynth3'],text=True)
 names=sorted({line for line in text.splitlines() if re.fullmatch(r'[a-z0-9][a-z0-9+.-]*',line) and line not in {'libc6','libc-bin'}})
 assert 'libfluidsynth3' in names
-subprocess.run(['apt-get','download',*names],cwd='.native_debs',check=True)
+subprocess.run(['apt-get',*apt_options,'download',*names],cwd='.native_debs',check=True)
 for deb in Path('.native_debs').glob('*.deb'):
  subprocess.run(['dpkg-deb','-x',str(deb),'.native_root'],check=True)
 import shutil

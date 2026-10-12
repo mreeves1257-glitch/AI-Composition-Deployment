@@ -39,6 +39,19 @@ jobs:
           test -n "$RENDERER"
           echo "RENDERER=$RENDERER" >> "$GITHUB_ENV"
           "$RENDERER" --help | tee sfizz-render-help.txt
+          mkdir -p sfizz-portable
+          cp "$RENDERER" sfizz-portable/sfizz_render
+          chmod +x sfizz-portable/sfizz_render
+          ldd "$RENDERER" | tee sfizz-portable/ldd.txt
+          sha256sum "$RENDERER" | tee sfizz-portable/SHA256SUMS.txt
+
+      - name: Upload sfizz renderer binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfizz-render-linux-x86_64-recovery
+          path: sfizz-portable
+          retention-days: 1
+          compression-level: 6
 
       - name: Download and verify official Karoryfer releases
         shell: bash
@@ -90,14 +103,12 @@ jobs:
           test -f "$SHINY_ROOT/Programs/main.sfz"
           test -f "$BIG_ROOT/Programs/01-full.sfz"
 
-          # Record whether sfizz can see the ARIA-bank define when main.sfz is loaded directly.
           set +e
           "$RENDERER" --sfz "$SHINY_ROOT/Programs/main.sfz" --midi shiny.mid --wav shiny-direct.wav --samplerate 44100 > shiny-direct.log 2>&1
           DIRECT_RC=$?
           set -e
           echo "$DIRECT_RC" > shiny-direct-return-code.txt
 
-          # Preserve every original file. The wrapper only supplies the bank Define to a standalone sfizz load.
           cat > "$SHINY_ROOT/Programs/main_sfizz_wrapper.sfz" <<'EOF'
           #define $sample_dir ../Samples
           #include "main.sfz"
@@ -146,7 +157,7 @@ jobs:
       - name: Upload compact proof
         uses: actions/upload-artifact@v4
         with:
-          name: karoryfer-sfizz-fidelity-proof
+          name: karoryfer-sfizz-fidelity-proof-run2
           path: |
             KARORYFER_SFIZZ_FIDELITY_PROOF.json
             shiny-direct-return-code.txt

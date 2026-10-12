@@ -37,19 +37,20 @@ class EnsemblePlan:
 def plan_classical_ensemble(*, musical_intent, composition_seed, available_instruments):
     """Select instrumentation from intent, not a fixed four-instrument palette.
 
-    This opt-in prototype accepts explicit ensemble intention from upstream.
+    The orchestral upper limit is the verified candidate library, not 20.\n    This opt-in prototype accepts explicit ensemble intention from upstream.
     Unknown intention is rejected rather than guessed; no silent fallback.
     """
     if musical_intent not in ("chamber", "expanded_chamber", "small_orchestra", "orchestra"):
         raise EnsembleError("MUSICAL_INTENT_REQUIRED")
     target = {"chamber":(3,6),"expanded_chamber":(5,9),
-              "small_orchestra":(9,15),"orchestra":(16,20)}[musical_intent]
+              "small_orchestra":(9,15),"orchestra":(16,None)}[musical_intent]
     available = set(available_instruments)
     eligible = [(i,role) for i,role in CLASSICAL_ROLES if i in available]
     if len(eligible)<target[0]:
         raise EnsembleError("INSUFFICIENT_VERIFIED_INSTRUMENTS: "+str(len(eligible)))
     seed = int(hashlib.sha256(str(composition_seed).encode()).hexdigest()[:8],16)
-    size = target[0] + seed % (min(target[1],len(eligible))-target[0]+1)
+    maximum = len(eligible) if target[1] is None else min(target[1], len(eligible))
+    size = target[0] + seed % (maximum-target[0]+1)
     # Rotate choices to avoid the same lineup for every composition; retain
     # bass and melody when possible. Ordering is a proposal for the interpreter.
     anchors = [x for x in eligible if x[0] in ("violin","double_bass")]

@@ -37,7 +37,7 @@ def recognize_genre(name, genre_root, *, allowed_genres=frozenset({"Classical"})
         raise GenrePipelineError("MISSING_PROFILE_ID")
     return RecognizedGenre(name, profile["family_name"], definition["profile_id"], definition, profile)
 
-def execute_genre(recognized, interpreter, composer, *, creation_seed):
+def execute_genre(recognized, interpreter, composer, *, creation_seed, available_instruments=None):
     """Strict ordered handoff: recognized -> existing interpreter -> composer.
 
     interpreter(recognized.definition, recognized.source_profile) must return a
@@ -55,4 +55,7 @@ def execute_genre(recognized, interpreter, composer, *, creation_seed):
         raise GenrePipelineError("INCOMPLETE_CLASSICAL_PLAN")
     if not callable(composer):
         raise GenrePipelineError("COMPOSER_ADAPTER_REQUIRED")
-    return composer(plan, creation_seed=creation_seed)
+    if available_instruments is None:
+        raise GenrePipelineError("VERIFIED_INSTRUMENT_LIBRARY_REQUIRED")
+    from universal_arrangement_handoff import handoff_interpreter_arrangement
+    return handoff_interpreter_arrangement(recognized.name, plan, available_instruments, composer, creation_seed=creation_seed)

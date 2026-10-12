@@ -1,0 +1,62 @@
+name: Karoryfer Original Release Recovery
+
+on:
+  push:
+    branches:
+      - karoryfer-original-recovery-2026-10-12
+    paths:
+      - .github/workflows/karoryfer-original-recovery.yml
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Download official releases
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p recovery
+          curl -L --fail --retry 5 --retry-delay 2 --output recovery/Karoryfer.Shinyguitar.v1.002.zip \
+            https://github.com/sfzinstruments/karoryfer.shinyguitar/releases/download/v1.002/Karoryfer.Shinyguitar.v1.002.zip
+          curl -L --fail --retry 5 --retry-delay 2 --output recovery/Big_Rusty_Drums_1100.zip \
+            https://github.com/sfzinstruments/karoryfer.big-rusty-drums/releases/download/v1.100/Big_Rusty_Drums_1100.zip
+
+      - name: Verify exact sizes and ZIP integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(stat -c%s recovery/Karoryfer.Shinyguitar.v1.002.zip)" = "368411844"
+          test "$(stat -c%s recovery/Big_Rusty_Drums_1100.zip)" = "619600370"
+          unzip -tqq recovery/Karoryfer.Shinyguitar.v1.002.zip
+          unzip -tqq recovery/Big_Rusty_Drums_1100.zip
+          sha256sum recovery/Karoryfer.Shinyguitar.v1.002.zip recovery/Big_Rusty_Drums_1100.zip | tee recovery/SHA256SUMS.txt
+          {
+            echo "Shinyguitar_bytes=$(stat -c%s recovery/Karoryfer.Shinyguitar.v1.002.zip)"
+            echo "Big_Rusty_Drums_bytes=$(stat -c%s recovery/Big_Rusty_Drums_1100.zip)"
+          } > recovery/VERIFIED_SIZES.txt
+
+      - name: Upload Shinyguitar
+        uses: actions/upload-artifact@v4
+        with:
+          name: karoryfer-shinyguitar-v1-002-original
+          path: |
+            recovery/Karoryfer.Shinyguitar.v1.002.zip
+            recovery/SHA256SUMS.txt
+            recovery/VERIFIED_SIZES.txt
+          compression-level: 0
+          retention-days: 1
+
+      - name: Upload Big Rusty Drums
+        uses: actions/upload-artifact@v4
+        with:
+          name: karoryfer-big-rusty-drums-v1-100-original
+          path: |
+            recovery/Big_Rusty_Drums_1100.zip
+            recovery/SHA256SUMS.txt
+            recovery/VERIFIED_SIZES.txt
+          compression-level: 0
+          retention-days: 1

@@ -25,7 +25,7 @@ jobs:
           curl -L --fail --retry 5 --retry-delay 2 --output recovery/Big_Rusty_Drums_1100.zip \
             https://github.com/sfzinstruments/karoryfer.big-rusty-drums/releases/download/v1.100/Big_Rusty_Drums_1100.zip
 
-      - name: Verify exact sizes and ZIP integrity
+      - name: Verify and split Big Rusty Drums
         shell: bash
         run: |
           set -euo pipefail
@@ -38,11 +38,13 @@ jobs:
             echo "Shinyguitar_bytes=$(stat -c%s recovery/Karoryfer.Shinyguitar.v1.002.zip)"
             echo "Big_Rusty_Drums_bytes=$(stat -c%s recovery/Big_Rusty_Drums_1100.zip)"
           } > recovery/VERIFIED_SIZES.txt
+          split -b 300000000 -d -a 3 --additional-suffix=.bin recovery/Big_Rusty_Drums_1100.zip recovery/Big_Rusty_Drums_1100.zip.part.
+          sha256sum recovery/Big_Rusty_Drums_1100.zip.part.*.bin > recovery/BIG_RUSTY_PART_SHA256SUMS.txt
 
       - name: Upload Shinyguitar
         uses: actions/upload-artifact@v4
         with:
-          name: karoryfer-shinyguitar-v1-002-original
+          name: karoryfer-shinyguitar-v1-002-original-run2
           path: |
             recovery/Karoryfer.Shinyguitar.v1.002.zip
             recovery/SHA256SUMS.txt
@@ -50,13 +52,37 @@ jobs:
           compression-level: 0
           retention-days: 1
 
-      - name: Upload Big Rusty Drums
+      - name: Upload Big Rusty part 000
         uses: actions/upload-artifact@v4
         with:
-          name: karoryfer-big-rusty-drums-v1-100-original
+          name: big-rusty-original-part-000
+          path: recovery/Big_Rusty_Drums_1100.zip.part.000.bin
+          compression-level: 0
+          retention-days: 1
+
+      - name: Upload Big Rusty part 001
+        uses: actions/upload-artifact@v4
+        with:
+          name: big-rusty-original-part-001
+          path: recovery/Big_Rusty_Drums_1100.zip.part.001.bin
+          compression-level: 0
+          retention-days: 1
+
+      - name: Upload Big Rusty part 002
+        uses: actions/upload-artifact@v4
+        with:
+          name: big-rusty-original-part-002
+          path: recovery/Big_Rusty_Drums_1100.zip.part.002.bin
+          compression-level: 0
+          retention-days: 1
+
+      - name: Upload Big Rusty verification metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: big-rusty-original-verification
           path: |
-            recovery/Big_Rusty_Drums_1100.zip
             recovery/SHA256SUMS.txt
             recovery/VERIFIED_SIZES.txt
+            recovery/BIG_RUSTY_PART_SHA256SUMS.txt
           compression-level: 0
           retention-days: 1

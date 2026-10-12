@@ -20,6 +20,11 @@ CLASSICAL_ROLES = (
     ("piccolo", "high_woodwind"), ("english_horn", "woodwind_color"),
     ("bass_clarinet", "low_woodwind"), ("glockenspiel", "pitched_percussion"),
     ("triangle", "percussion_color"),
+    ("snare_drum", "orchestral_percussion"),
+    ("suspended_cymbal", "orchestral_percussion"),
+    ("xylophone", "pitched_percussion"),
+    ("tubular_bells", "pitched_percussion"),
+    ("bass_drum_orchestral", "orchestral_percussion"),
 )
 @dataclass(frozen=True)
 class EnsemblePlan:

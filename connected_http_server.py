@@ -17,13 +17,15 @@ OUTPUT = ROOT / 'connected_outputs'
 LOCK = threading.Lock()
 GENRES = json.loads((COMPOSER / 'AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json').read_text())['profiles']
 
-def worker(genre, destination, mode):
+def worker(genre, destination, mode, tuning_reference_hz="440"):
     sys.path.insert(0, str(COMPOSER))
+    from musical_tuning import validate_reference
+    tuning_reference_hz=validate_reference(float(tuning_reference_hz))
     from engine import AICompositionEngine
     import output_handoff
     output_handoff.OUT = Path(destination)
     result = AICompositionEngine(history_path=OUTPUT/'composition_history.json').run(
-        genre, mode=mode, analyze_audio=False)
+        genre, mode=mode, analyze_audio=False,tuning_reference_hz=tuning_reference_hz)
     result.pop('modules', None)
     result['analysis'] = {'status':'AVAILABLE_OFFLINE', 'reason':'Advisory analysis is separate from the memory-bounded HTTP audio delivery worker.'}
     Path(destination, 'result.json').write_text(json.dumps(result))
@@ -54,7 +56,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == '/health':
             return self.json(200, {'status':'BRIDGE_READY', 'audio_ready':True,
                 'resource_ready':True, 'genre_count':len(GENRES),
-                'deployment':'OCT11_CONNECTED_PACKAGE', 'verification':'All genre resource preflights checked at build; each returned WAV verified separately.'})
+                'deployment':'OCT12_TUNING_REPAIR', 'supported_tuning_references_hz':[440,432], 'verification':'All genre resource preflights checked at build; each returned WAV verified separately.'})
         match = re.fullmatch(r'/audio/([a-f0-9]{32})/finished.wav', path)
         if not match: return self.json(404, {'status':'NOT_FOUND'})
         file = OUTPUT/match.group(1)/'finished.wav'
@@ -100,11 +102,12 @@ class Handler(BaseHTTPRequestHandler):
             if genre not in GENRES: raise ValueError('UNKNOWN_GENRE')
             if mode not in ('normal','quick'): raise ValueError('INPUT_MODE_INVALID')
             if payload.get('target','INTERNAL')!='INTERNAL': raise ValueError('INTERNAL_TARGET_REQUIRED')
-            if payload.get('tuning_reference_hz',440)!=440: raise ValueError('HOSTED_TUNING_440_ONLY')
+            from musical_tuning import validate_reference
+            tuning=validate_reference(payload.get('tuning_reference_hz',440))
             if not LOCK.acquire(timeout=10): return self.json(503, {'status':'COMPOSER_BUSY','reason':'Another composition is rendering; retry when it finishes.'})
             try:
                 job=uuid.uuid4().hex; destination=OUTPUT/job; destination.mkdir(parents=True)
-                p=subprocess.run([sys.executable,__file__,'--worker',genre,str(destination),mode],
+                p=subprocess.run([sys.executable,__file__,'--worker',genre,str(destination),mode,str(tuning)],
                     capture_output=True,text=True,timeout=350)
                 (destination/'worker.log').write_text(p.stdout+'\n'+p.stderr)
                 report_file=destination/'result.json'

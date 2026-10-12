@@ -14,6 +14,7 @@ dest=Path('composer/runtime');dest.mkdir(parents=True,exist_ok=True)
 tarfile.open(fileobj=io.BytesIO(archive),mode='r:gz').extractall(dest,filter='data')
 print('CONNECTED_PACKAGE_EXTRACTED',manifest['source_package'],flush=True)
 PY
+cp tuning_runtime_overrides/*.py composer/runtime/
 python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
 python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
 cp connected_http_server.py composer/runtime/render_server.py
@@ -70,5 +71,19 @@ with tempfile.TemporaryDirectory() as tmp:
             assert any(samples), (genre,'SILENT_WAV')
         print('CONNECTED_BUILD_AUDIO_PASS',genre,frames,flush=True)
 PY
+PYTHONPATH=composer/runtime python - <<'TUNINGPY'
+from musical_tuning import validate_reference
+assert validate_reference(432)==432 and validate_reference(440)==440
+from engine import AICompositionEngine
+import tempfile
+from pathlib import Path
+import output_handoff
+with tempfile.TemporaryDirectory() as tmp:
+    output_handoff.OUT=Path(tmp)/'outputs'
+    engine=AICompositionEngine(history_path=Path(tmp)/'history.json')
+    result=engine.run('Country Rock',mode='quick',analyze_audio=False,tuning_reference_hz=432)
+    assert result.get('audio_rendered') and result.get('tuning_reference_hz')==432,result
+print('BUILD_432_FINISHED_AUDIO_PASS')
+TUNINGPY
 python -m py_compile composer/runtime/render_server.py
 echo 'CONNECTED COMPOSER READY'

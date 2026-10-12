@@ -11,11 +11,11 @@ class EnsembleError(ValueError): pass
 # IDs must be verified against the actual instrument library before use.
 CLASSICAL_ROLES = (
     ("violin", "melody"), ("viola", "inner_voice"), ("cello", "countermelody"),
-    ("double_bass", "bass"), ("flute", "woodwind_color"),
-    ("clarinet", "woodwind_color"), ("oboe", "woodwind_countermelody"),
-    ("bassoon", "low_woodwind"), ("horn", "brass_harmony"),
-    ("trumpet", "brass_accent"), ("trombone", "brass_support"),
-    ("tuba", "low_brass"), ("timpani", "percussion"),
+    ("double_bass", "bass"), ("concert_flute", "woodwind_color"),
+    ("clarinet_bb", "woodwind_color"), ("oboe", "woodwind_countermelody"),
+    ("bassoon", "low_woodwind"), ("horn_f", "brass_harmony"),
+    ("trumpet_c", "brass_accent"), ("tenor_trombone", "brass_support"),
+    ("bass_tuba", "low_brass"), ("timpani", "percussion"),
     ("harp", "arpeggio"), ("piano", "keyboard"),
     ("piccolo", "high_woodwind"), ("english_horn", "woodwind_color"),
     ("bass_clarinet", "low_woodwind"), ("glockenspiel", "pitched_percussion"),

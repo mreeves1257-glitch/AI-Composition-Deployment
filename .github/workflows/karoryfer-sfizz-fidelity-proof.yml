@@ -1,0 +1,160 @@
+name: Karoryfer SFZ Renderer Fidelity Proof
+
+on:
+  push:
+    branches:
+      - karoryfer-original-recovery-2026-10-12
+    paths:
+      - .github/workflows/karoryfer-sfizz-fidelity-proof.yml
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends cmake ninja-build g++ git libsndfile1-dev ca-certificates curl unzip
+
+      - name: Build sfizz_render
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --recursive --depth 1 --branch develop https://github.com/sfztools/sfizz.git sfizz
+          cmake -S sfizz -B sfizz/build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DSFIZZ_JACK=OFF \
+            -DSFIZZ_RENDER=ON \
+            -DSFIZZ_SHARED=OFF \
+            -DSFIZZ_TESTS=OFF \
+            -DSFIZZ_DEMOS=OFF \
+            -DSFIZZ_BENCHMARKS=OFF \
+            -DSFIZZ_USE_SNDFILE=ON
+          cmake --build sfizz/build --parallel 2
+          RENDERER="$(find sfizz/build -type f -name sfizz_render -perm -111 | head -1)"
+          test -n "$RENDERER"
+          echo "RENDERER=$RENDERER" >> "$GITHUB_ENV"
+          "$RENDERER" --help | tee sfizz-render-help.txt
+
+      - name: Download and verify official Karoryfer releases
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p packs
+          curl -L --fail --retry 5 --retry-delay 2 -o packs/Shiny.zip \
+            https://github.com/sfzinstruments/karoryfer.shinyguitar/releases/download/v1.002/Karoryfer.Shinyguitar.v1.002.zip
+          curl -L --fail --retry 5 --retry-delay 2 -o packs/BigRusty.zip \
+            https://github.com/sfzinstruments/karoryfer.big-rusty-drums/releases/download/v1.100/Big_Rusty_Drums_1100.zip
+          test "$(stat -c%s packs/Shiny.zip)" = "368411844"
+          test "$(stat -c%s packs/BigRusty.zip)" = "619600370"
+          echo "23cf4030cbf9ce9e2c84d7cbb1c022fbca124bfff0ad118a14eda7cf6c921d7b  packs/Shiny.zip" | sha256sum -c -
+          echo "d4a9990acd19376d91ce446dae415c81428728b5adebb6a88eddbb3a6aac8744  packs/BigRusty.zip" | sha256sum -c -
+          unzip -q packs/Shiny.zip -d packs/shiny
+          unzip -q packs/BigRusty.zip -d packs/big
+
+      - name: Create deterministic probe MIDI files
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          def vlq(n):
+              out=[n&0x7f]; n >>= 7
+              while n:
+                  out.append(0x80|(n&0x7f)); n >>= 7
+              return bytes(reversed(out))
+          def midi(path,note,ccs=()):
+              ev=bytearray()
+              ev += b'\x00\xff\x51\x03\x07\xa1\x20'
+              for cc,val in ccs:
+                  ev += bytes([0,0xB0,cc,val])
+              ev += bytes([0,0x90,note,100])
+              ev += vlq(960)+bytes([0x80,note,0])
+              ev += b'\x00\xff\x2f\x00'
+              data=b'MThd'+(6).to_bytes(4,'big')+(0).to_bytes(2,'big')+(1).to_bytes(2,'big')+(480).to_bytes(2,'big')
+              data+=b'MTrk'+len(ev).to_bytes(4,'big')+ev
+              Path(path).write_bytes(data)
+          midi('shiny.mid',60,[(100,0),(107,0)])
+          midi('rusty.mid',36,[])
+          PY
+
+      - name: Render original mappings and wrapper
+        shell: bash
+        run: |
+          set -euo pipefail
+          SHINY_ROOT="packs/shiny/Shinyguitar"
+          BIG_ROOT="packs/big"
+          test -f "$SHINY_ROOT/Programs/main.sfz"
+          test -f "$BIG_ROOT/Programs/01-full.sfz"
+
+          # Record whether sfizz can see the ARIA-bank define when main.sfz is loaded directly.
+          set +e
+          "$RENDERER" --sfz "$SHINY_ROOT/Programs/main.sfz" --midi shiny.mid --wav shiny-direct.wav --samplerate 44100 > shiny-direct.log 2>&1
+          DIRECT_RC=$?
+          set -e
+          echo "$DIRECT_RC" > shiny-direct-return-code.txt
+
+          # Preserve every original file. The wrapper only supplies the bank Define to a standalone sfizz load.
+          cat > "$SHINY_ROOT/Programs/main_sfizz_wrapper.sfz" <<'EOF'
+          #define $sample_dir ../Samples
+          #include "main.sfz"
+          EOF
+          "$RENDERER" --sfz "$SHINY_ROOT/Programs/main_sfizz_wrapper.sfz" --midi shiny.mid --wav shiny-wrapper.wav --samplerate 44100 2>&1 | tee shiny-wrapper.log
+          "$RENDERER" --sfz "$BIG_ROOT/Programs/01-full.sfz" --midi rusty.mid --wav rusty.wav --samplerate 44100 2>&1 | tee rusty.log
+
+      - name: Audit rendered WAVs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, math, wave, hashlib
+          from pathlib import Path
+          def audit(path):
+              p=Path(path)
+              with wave.open(str(p),'rb') as w:
+                  ch=w.getnchannels(); sw=w.getsampwidth(); sr=w.getframerate(); n=w.getnframes()
+                  data=w.readframes(n)
+              if sw != 2: raise SystemExit(f'{path}: expected PCM16')
+              vals=[int.from_bytes(data[i:i+2],'little',signed=True) for i in range(0,len(data),2)]
+              peak=max((abs(x) for x in vals),default=0)
+              rms=math.sqrt(sum(x*x for x in vals)/max(1,len(vals)))
+              if peak == 0 or rms < 1.0: raise SystemExit(f'{path}: silent')
+              return {'path':path,'bytes':p.stat().st_size,'channels':ch,'sample_width':sw,'sample_rate':sr,'frames':n,
+                      'duration_seconds':n/sr,'peak_pcm16':peak,'rms_pcm16':rms,
+                      'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
+          direct=Path('shiny-direct.wav')
+          report={
+              'sfizz_renderer':'built_from_sfztools/sfizz develop',
+              'official_release_sha256':{
+                  'KARORYFER_SHINYGUITAR':'23cf4030cbf9ce9e2c84d7cbb1c022fbca124bfff0ad118a14eda7cf6c921d7b',
+                  'KARORYFER_BIG_RUSTY_DRUMS':'d4a9990acd19376d91ce446dae415c81428728b5adebb6a88eddbb3a6aac8744'},
+              'shiny_direct_return_code':int(Path('shiny-direct-return-code.txt').read_text()),
+              'shiny_direct_wav_exists':direct.is_file(),
+              'shiny_wrapper':audit('shiny-wrapper.wav'),
+              'big_rusty':audit('rusty.wav'),
+          }
+          if direct.is_file():
+              try: report['shiny_direct']=audit('shiny-direct.wav')
+              except Exception as exc: report['shiny_direct_audit_error']=str(exc)
+          Path('KARORYFER_SFIZZ_FIDELITY_PROOF.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          PY
+
+      - name: Upload compact proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: karoryfer-sfizz-fidelity-proof
+          path: |
+            KARORYFER_SFIZZ_FIDELITY_PROOF.json
+            shiny-direct-return-code.txt
+            shiny-direct.log
+            shiny-wrapper.log
+            rusty.log
+            sfizz-render-help.txt
+            shiny-wrapper.wav
+            rusty.wav
+          retention-days: 1
+          compression-level: 6

@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-14",
+  "workflow_run_id": 38291225603,
+  "workflow_run_attempt": 2,
+  "workflow_conclusion": "success",
+  "renderer": {
+    "artifact_name": "sfizz-render-linux-x86_64-recovery",
+    "binary_sha256": "8258275d92961231528e69e52b360fe2288176facf89aca833bb7e96ee080605",
+    "artifact_zip_sha256": "a523df03f3108e281ce3a522e1878ec2fbb8693dc207f7c7b09da048a7421b04"
+  },
+  "replacement_release_inputs": {
+    "Shinyguitar_sha256": "23cf4030cbf9ce9e2c84d7cbb1c022fbca124bfff0ad118a14eda7cf6c921d7b",
+    "Big_Rusty_Drums_sha256": "d4a9990acd19376d91ce446dae415c81428728b5adebb6a88eddbb3a6aac8744"
+  },
+  "fidelity_probe": {
+    "shiny_direct_return_code": 0,
+    "shiny_wrapper_wav": {
+      "peak_pcm16": 6865,
+      "rms_pcm16": 355.06312754814576,
+      "sha256": "145c379147ec96c32a91072e43d56923814f5e3fe33bb4def3fd4ff0d932feb4"
+    },
+    "big_rusty_wav": {
+      "peak_pcm16": 4190,
+      "rms_pcm16": 273.61920353233006,
+      "sha256": "ce5399ae80dbd6b6f3e82444a64e548140e618949497849288ed0d76b2e164f0"
+    }
+  },
+  "proof_artifact_zip_sha256": "6e2cd61d7fef2a349d145bdd67d71d9a4fa9c37581390282a81611dcc3a08f39",
+  "clarification": "Shinyguitar and Big Rusty Drums are replacement libraries in the AI Composer lineage; 'original' in the upstream workflow refers to manufacturer-original release packages, not the lost original Composer resources."
+}

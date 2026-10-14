@@ -11,17 +11,40 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p recovered
+          mkdir -p recovered/split
           curl -L --fail --retry 5 --retry-delay 3 -o recovered/Karoryfer.Shinyguitar.v1.002.zip "https://github.com/sfzinstruments/karoryfer.shinyguitar/releases/download/v1.002/Karoryfer.Shinyguitar.v1.002.zip"
           curl -L --fail --retry 5 --retry-delay 3 -o recovered/Big_Rusty_Drums_1100.zip "https://github.com/sfzinstruments/karoryfer.big-rusty-drums/releases/download/v1.100/Big_Rusty_Drums_1100.zip"
           test "$(stat -c%s recovered/Karoryfer.Shinyguitar.v1.002.zip)" = "368411844"
           test "$(stat -c%s recovered/Big_Rusty_Drums_1100.zip)" = "619600370"
           echo "23cf4030cbf9ce9e2c84d7cbb1c022fbca124bfff0ad118a14eda7cf6c921d7b  recovered/Karoryfer.Shinyguitar.v1.002.zip" | sha256sum -c -
           echo "d4a9990acd19376d91ce446dae415c81428728b5adebb6a88eddbb3a6aac8744  recovered/Big_Rusty_Drums_1100.zip" | sha256sum -c -
-      - name: Upload verified resource archives
+          split -b 300000000 -d -a 2 recovered/Big_Rusty_Drums_1100.zip recovered/split/Big_Rusty_Drums_1100.zip.part
+          ls -l recovered/split/
+      - name: Upload Shinyguitar
         uses: actions/upload-artifact@v4
         with:
-          name: composer-original-resources-verified
-          path: recovered/
+          name: composer-shinyguitar-verified
+          path: recovered/Karoryfer.Shinyguitar.v1.002.zip
+          compression-level: 0
+          retention-days: 1
+      - name: Upload Big Rusty part 00
+        uses: actions/upload-artifact@v4
+        with:
+          name: composer-big-rusty-part00
+          path: recovered/split/Big_Rusty_Drums_1100.zip.part00
+          compression-level: 0
+          retention-days: 1
+      - name: Upload Big Rusty part 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: composer-big-rusty-part01
+          path: recovered/split/Big_Rusty_Drums_1100.zip.part01
+          compression-level: 0
+          retention-days: 1
+      - name: Upload Big Rusty part 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: composer-big-rusty-part02
+          path: recovered/split/Big_Rusty_Drums_1100.zip.part02
           compression-level: 0
           retention-days: 1

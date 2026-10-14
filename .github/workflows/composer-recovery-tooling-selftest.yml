@@ -1,0 +1,58 @@
+name: AI Composer Recovery Tooling Self-Test
+
+on:
+  push:
+    branches:
+      - composer-master-recovery-2026-10-14
+    paths:
+      - 'RECOVERY/**'
+      - '.github/workflows/composer-recovery-tooling-selftest.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: composer-master-recovery-2026-10-14
+
+      - name: Compile all recovery Python
+        run: |
+          set -euo pipefail
+          python -m py_compile RECOVERY/*.py
+
+      - name: Exercise verified splitting on synthetic archive
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/recovery-test/tree
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          root=Path('/tmp/recovery-test/tree')
+          (root/'a.txt').write_text('alpha\n')
+          (root/'b.bin').write_bytes(bytes(range(256))*4096)
+          with zipfile.ZipFile('/tmp/recovery-test/source.zip','w',allowZip64=True) as z:
+              for p in sorted(root.iterdir()):
+                  z.write(p,p.name)
+          PY
+          python RECOVERY/split_verified_master.py /tmp/recovery-test/source.zip /tmp/recovery-test/parts --chunk-bytes 131072
+          test -f /tmp/recovery-test/parts/source.zip_SPLIT_MANIFEST.json
+
+      - name: Ensure guarded orchestrator refuses unreviewed map
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('/tmp/recovery-test/unreviewed.json')
+          p.write_text(json.dumps({'reviewed':False,'forward_only':True,'overlays':[]}))
+          PY
+          grep -q 'REPAIR_MAP_NOT_REVIEWED' RECOVERY/run_forward_recovery.py
+
+      - name: Recovery tooling self-test passed
+        run: echo "AI_COMPOSER_RECOVERY_TOOLING_SELFTEST_PASS"

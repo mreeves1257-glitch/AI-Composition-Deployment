@@ -12,7 +12,7 @@
   "known_unresolved": [
     "Salsa arrangement execution"
   ],
-  "approved_audio_pipeline_sha256": "7ca38179e2a8056c93e0b57c39bcd1483b05635e629af0a80dc6fe3f8d8a839a",
+  "approved_audio_pipeline_sha256": "f453c76a7d148a93216826e061ef2b1503a0a4d71347b649e8c3010b3098fa38",
   "runtime_files": [
     "engine.py",
     "genre_interpreter_linkage.py",
@@ -46,5 +46,7 @@
     "verify_instrument_separator_55.py",
     "verify_genre_recognition_55.py",
     "verify_performance_realization_55.py"
-  ]
+  ],
+  "classical_checkpoint_prior_pipeline_sha256": "7ca38179e2a8056c93e0b57c39bcd1483b05635e629af0a80dc6fe3f8d8a839a",
+  "approved_audio_pipeline_hash_basis": "Final active-master bytes after October 19 Big Band golden-recipe approval; prior Classical-only checkpoint hash retained separately as provenance."
 }

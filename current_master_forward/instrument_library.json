@@ -1,0 +1,1000 @@
+{
+  "library_id": "AI_COMPOSITION_INSTRUMENT_ACOUSTICS_LIBRARY",
+  "revision": "R1",
+  "save_timestamp_local": "2026-09-27 16:46:51 CDT",
+  "timezone": "America/Chicago",
+  "purpose": "Research-backed instrument behavior layer for the AI Composition program.",
+  "tuning_reference": "A4=440 Hz for nominal pitch-to-Hz calculations; alternate tunings may be applied by the composition engine.",
+  "governing_rule": "Instrument identity is not a waveform label. Render from researched range + excitation method + spectral/resonance behavior + time envelope + technique + sample provenance.",
+  "asset_policy": {
+    "embed_preferred": [
+      "CC0",
+      "public domain",
+      "explicit unrestricted-use recordings"
+    ],
+    "reference_only_until_license_review": [
+      "libraries that allow musical use but restrict redistribution of raw samples"
+    ],
+    "do_not_assume": "A web-downloadable sample is not automatically distributable inside the program."
+  },
+  "source_hierarchy": [
+    "Peer-reviewed / university musical-acoustics research",
+    "Professional instrumentology / performance-practice references",
+    "Open or unrestricted sample libraries",
+    "Production references used only as secondary engineering guidance"
+  ],
+  "sources": [
+    {
+      "id": "UNSW_MUSIC_ACOUSTICS",
+      "name": "University of New South Wales Music Acoustics",
+      "url": "https://www.phys.unsw.edu.au/music/",
+      "role": "research_acoustics",
+      "notes": "University research site covering spectra, resonances, impedance, string, wind, brass, guitar, violin and didgeridoo acoustics."
+    },
+    {
+      "id": "VSL_ACADEMY",
+      "name": "Vienna Symphonic Library Academy / Instrumentology",
+      "url": "https://www.vsl.co.at/academy",
+      "role": "performance_and_instrumentology",
+      "notes": "Ranges, sound production, register character, performance techniques, damping, articulation and orchestral practice."
+    },
+    {
+      "id": "IOWA_MIS",
+      "name": "University of Iowa Musical Instrument Samples",
+      "url": "https://theremin.music.uiowa.edu/MIS.html",
+      "role": "audio_reference_and_samples",
+      "license": "Site states recordings may be downloaded and used for any projects without restrictions.",
+      "notes": "Chromatic note-by-note recordings, often pp/mf/ff, with some alternate techniques; widely used in published research."
+    },
+    {
+      "id": "VSCO2_CE",
+      "name": "VSCO 2 Community Edition",
+      "url": "https://versilian-studios.com/vsco-community/",
+      "role": "distributable_sample_source",
+      "license": "CC0 / public domain",
+      "notes": "Raw WAV and SFZ orchestral material; suitable for building custom instruments."
+    },
+    {
+      "id": "VCSL",
+      "name": "Versilian Community Sample Library",
+      "url": "https://versilian-studios.com/vcsl/",
+      "role": "distributable_sample_source",
+      "license": "CC0 / public domain",
+      "notes": "Over 4,000 samples; includes didgeridoo, bass drums, snares, toms, hi-hat, marimba, cymbals, timpani, conga family, darbuka, frame drums and more."
+    },
+    {
+      "id": "SOS_BASS_DRUM",
+      "name": "Sound On Sound \u2014 Synthesizing Drums: The Bass Drum",
+      "url": "https://www.soundonsound.com/techniques/synthesizing-drums-bass-drum",
+      "role": "acoustic_modeling_reference",
+      "notes": "Discusses coupled bass-drum modes; example orchestral partials near 50, 93, 136 and 179 Hz, plus dense mid-frequency partials and pitch decay."
+    },
+    {
+      "id": "JASA_DJEMBE",
+      "name": "Russell & Haveman \u2014 Acoustic and modal analysis of an African djembe drum",
+      "url": "https://doi.org/10.1121/1.4743633",
+      "role": "research_acoustics",
+      "notes": "JASA abstract reports djembe shell/cavity/membrane coupling and a strong Helmholtz bass component around 75 Hz."
+    },
+    {
+      "id": "HYPERPHYSICS_GUITAR",
+      "name": "HyperPhysics \u2014 Acoustic Guitar",
+      "url": "https://hyperphysics.phy-astr.gsu.edu/hbase/Music/guita.html",
+      "role": "reference_acoustics",
+      "notes": "Standard six-string tuning E2 A2 D3 G3 B3 E4 at A440."
+    },
+    {
+      "id": "BASS_STANDARD_TUNING_REF",
+      "name": "Standard Bass Tuning Reference",
+      "url": "https://www.tuneuniversal.com/en/guides/standard-bass-tuning",
+      "role": "reference_tuning",
+      "notes": "Standard 4-string bass tuning E1 A1 D2 G2 at A440."
+    },
+    {
+      "id": "BERKLEE_BIG_BAND",
+      "name": "Berklee College of Music \u2014 Writing for Big Band",
+      "url": "https://college.berklee.edu/courses/cw-311",
+      "role": "ensemble_instrumentation_reference",
+      "notes": "Big-band writing treats trumpets, trombones, saxophones/selected woodwinds, and rhythm section as distinct sections."
+    },
+    {
+      "id": "LOC_BLUEGRASS",
+      "name": "Library of Congress \u2014 Bluegrass Music",
+      "url": "https://www.loc.gov/collections/dolly-parton-and-the-roots-of-country-music/articles-and-essays/bluegrass-music/",
+      "role": "genre_instrumentation_reference",
+      "notes": "Bluegrass string-band instrumentation includes guitar, double bass, fiddle, five-string banjo, mandolin, steel guitar/Dobro; players take turns on lead."
+    },
+    {
+      "id": "FREEPATS_TENOR_SAX",
+      "name": "FreePats \u2014 Tenor Saxophone",
+      "url": "https://freepats.zenvoid.org/Reed/saxophone.html",
+      "role": "open_sample_source",
+      "license": "CC0",
+      "notes": "CC0 tenor saxophone SFZ/SF2 assembled from VCSL samples; resource candidate, not installed by this record."
+    },
+    {
+      "id": "VIRTUOSITY_DRUMS",
+      "name": "Versilian Studios / Karoryfer \u2014 Virtuosity Drums",
+      "url": "https://versilian-studios.com/virtuosity-drums/",
+      "role": "open_sample_source",
+      "license": "CC0",
+      "notes": "Open-source SFZ jazz drum library with auxiliary bongo, conga, timbale, agogo, shaker, claves and other percussion; resource candidate, not installed by this record."
+    },
+    {
+      "id": "COUNTRY_HALL_INSTRUMENTS",
+      "name": "Country Music Hall of Fame \u2014 History of Country Music Instruments",
+      "url": "https://countrymusichalloffame.org/learn/family-and-community-resources/history-of-country-music-instruments",
+      "role": "performance_and_instrumentation_reference",
+      "notes": "Documents pedal steel, fiddle, bass, acoustic/electric guitar, piano and other country instrument roles; pedal steel uses pedals/mechanism to alter pitches and smoothly voice/modulate chords."
+    },
+    {
+      "id": "UMICH_SAMBA_RESIDENCY",
+      "name": "University of Michigan LACS \u2014 Samba Residency",
+      "url": "https://ii.umich.edu/lacs/about-us/brazil-initiative/arts-and-culture-network/samba-residency.html",
+      "role": "genre_percussion_reference",
+      "notes": "Demonstrates samba timeline, surdo pulse, pandeiro subdivisions, tamborim, agogo and shaker roles."
+    },
+    {
+      "id": "SMITHSONIAN_SAMBA",
+      "name": "Smithsonian Folkways \u2014 Dan\u00e7a! Movement and Music of Brazil",
+      "url": "https://folkways.si.edu/danca-movement-brazil/samba/music/tools-for-teaching/smithsonian",
+      "role": "genre_percussion_reference",
+      "notes": "Describes carnival samba bateria roles including pandeiro, agogo, ganza, caixa, cuica, repinique and surdo."
+    }
+  ],
+  "instruments": [
+    {
+      "id": "bass_drum_orchestral",
+      "name": "Orchestral / Concert Bass Drum",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Large soft beater strikes batter head; two heads, shell and enclosed air are coupled resonators.",
+      "spectral_or_resonance_behavior": "Low quasi-harmonic/inharmonic coupled modes; Sound On Sound example partials ~50, 93, 136, 179 Hz plus dense 250 Hz\u20131 kHz inharmonic content. VSL emphasizes indefinite pitch and very deep resonance.",
+      "time_behavior": "Attack is brief/noise-like; resonance decays after strike. VSL reports resonance around 3\u20134 s at mezzoforte, but short notes are damped and center strikes reduce resonance.",
+      "performance_techniques": [
+        "single stroke",
+        "center/darker low-resonance stroke",
+        "near-rim/brighter more resonant stroke",
+        "secco/immediate damping",
+        "coperto/damped",
+        "roll",
+        "soft/medium/hard beater"
+      ],
+      "implementation_guidance": "Model as strong initial thump + decaying modal tail, not sustained sine. Separate drum resonance from room reflections.",
+      "source_ids": [
+        "VSL_ACADEMY",
+        "SOS_BASS_DRUM"
+      ],
+      "sample_sources": [
+        "VCSL",
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "high_priority_verified_seed"
+    },
+    {
+      "id": "snare_drum",
+      "name": "Snare Drum",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Batter and snare heads coupled through shell/air; snares vibrate sympathetically against lower head.",
+      "spectral_or_resonance_behavior": "Dense inharmonic partials/noise-like spectrum; snares add bright metallic hissing/crisp component. Sound On Sound notes low drum modes including examples near ~180 and ~330 Hz before snare contribution.",
+      "time_behavior": "Very fast attack; short single-stroke decay unless rolled; snare-wire response extends/bristles after membrane strike.",
+      "performance_techniques": [
+        "single stroke",
+        "double stroke",
+        "flam",
+        "drag",
+        "paradiddle",
+        "press/open/single-stroke roll",
+        "rim shot",
+        "stick-on-stick"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "VCSL",
+        "IOWA_MIS"
+      ],
+      "status": "verified_seed"
+    },
+    {
+      "id": "suspended_cymbal",
+      "name": "Suspended Cymbal / Cymbal",
+      "family": "percussion_idiophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Metal plate struck with stick/mallet; pair cymbals use glancing plate-to-plate impact.",
+      "spectral_or_resonance_behavior": "Broad dense inharmonic metallic spectrum rather than harmonic note series.",
+      "time_behavior": "Attack can be sharp or soft depending implement; natural sustain is long unless hand/body damping is applied.",
+      "performance_techniques": [
+        "single stroke",
+        "secco/damped",
+        "roll",
+        "bowed rim",
+        "pair-cymbal broad/glancing stroke"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "VCSL",
+        "IOWA_MIS"
+      ],
+      "status": "verified_seed"
+    },
+    {
+      "id": "timpani",
+      "name": "Timpani",
+      "family": "percussion_membranophone",
+      "pitch_type": "pitched_percussion",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Tuned membrane over kettle resonator, struck with mallets.",
+      "spectral_or_resonance_behavior": "Approximately harmonic tuned percussion spectrum compared with untuned drums; resonant decay is prominent.",
+      "time_behavior": "Marked resonance makes rapid scales atypical; damping/secco and coperto explicitly control ring.",
+      "performance_techniques": [
+        "single stroke",
+        "roll",
+        "secco",
+        "coperto",
+        "hand stroke",
+        "repetitions"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "VCSL",
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "verified_seed_range_pending"
+    },
+    {
+      "id": "djembe",
+      "name": "Djembe",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch_with_distinct_bass_tone",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Goatskin membrane over open goblet-shaped cavity; shell, cavity and membrane modes couple.",
+      "spectral_or_resonance_behavior": "Published JASA abstract reports strong Helmholtz bass component around 75 Hz; shell has bell/wineglass modes near membrane modes.",
+      "time_behavior": "Different hand strokes excite different modal balances; exact attack/decay remains profile-expansion work.",
+      "performance_techniques": [
+        "bass stroke",
+        "tone stroke",
+        "slap stroke"
+      ],
+      "source_ids": [
+        "JASA_DJEMBE"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_sample_source_pending"
+    },
+    {
+      "id": "marimba",
+      "name": "Marimba",
+      "family": "percussion_idiophone",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "C2",
+        "C7"
+      ],
+      "nominal_range_hz_A440": [
+        65.4064,
+        2093.0045
+      ],
+      "sound_production": "Bars struck with mallets; resonators reinforce bar modes.",
+      "spectral_or_resonance_behavior": "Tuned percussion with approximately harmonic pitch structure but bar/resonator modes shape timbre.",
+      "time_behavior": "Single notes comprise attack + resonance; VSL notes low notes may ring 2\u20133 seconds.",
+      "performance_techniques": [
+        "single note",
+        "repetition",
+        "roll/tremolo",
+        "dead stroke"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "VCSL",
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "concert_flute",
+      "name": "Concert Flute",
+      "family": "woodwind_edge_blown",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "B3",
+        "D7"
+      ],
+      "nominal_range_hz_A440": [
+        246.9417,
+        2349.3181
+      ],
+      "sound_production": "Air jet at embouchure edge excites resonances in cylindrical air column.",
+      "spectral_or_resonance_behavior": "Approximately complete harmonic series; soft notes approach sine-like tone, higher harmonics become stronger at higher dynamics.",
+      "time_behavior": "Sustained while air is supplied; transient shaped by tongue/air attack and breath noise.",
+      "performance_techniques": [
+        "single tonguing",
+        "double/triple tonguing",
+        "legato",
+        "staccato",
+        "vibrato",
+        "harmonics",
+        "flutter tongue"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS",
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "clarinet_bb",
+      "name": "Clarinet in Bb",
+      "family": "woodwind_single_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "D3",
+        "Bb6"
+      ],
+      "nominal_range_hz_A440": [
+        146.8324,
+        1864.655
+      ],
+      "sound_production": "Single reed excites approximately cylindrical bore; clarinet overblows at the twelfth.",
+      "spectral_or_resonance_behavior": "Low/chalumeau register strongly favors odd harmonics; UNSW note spectra show first several odd harmonics stronger than even. Dynamic level changes harmonic balance substantially.",
+      "time_behavior": "Sustained while blown; attack depends on tonguing and reed contact; can fade to near silence at pianissimo.",
+      "performance_techniques": [
+        "single tonguing",
+        "legato",
+        "staccato",
+        "trills",
+        "tremolo",
+        "glissando",
+        "multiphonics",
+        "pitch bend",
+        "flutter tongue"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS",
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": "Range entered from VSL register coverage; for score import preserve Bb transposition semantics separately from sounding-frequency generation."
+    },
+    {
+      "id": "oboe",
+      "name": "Oboe",
+      "family": "woodwind_double_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "Bb3",
+        "G6"
+      ],
+      "nominal_range_hz_A440": [
+        233.0819,
+        1567.9817
+      ],
+      "sound_production": "Double reed acts as oscillating valve driving conical air column.",
+      "spectral_or_resonance_behavior": "Low harmonics are all strong; some can exceed fundamental. UNSW gives approximate bore cutoff near 1.5 kHz; harmonics generally fall above cutoff.",
+      "time_behavior": "Continuous driven tone; attack/reed transient and register strongly affect spectral character.",
+      "performance_techniques": [
+        "single tonguing",
+        "legato",
+        "vibrato",
+        "double/triple tonguing",
+        "flutter tongue",
+        "trills",
+        "harmonics",
+        "multiphonics"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS",
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "bassoon",
+      "name": "Bassoon",
+      "family": "woodwind_double_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "Bb1",
+        "Eb5"
+      ],
+      "nominal_range_hz_A440": [
+        58.2705,
+        622.254
+      ],
+      "sound_production": "Double reed drives long conical folded bore.",
+      "spectral_or_resonance_behavior": "Low harmonics are strong; bassoon formant regions reported around 440\u2013500 Hz and 1220\u20131280 Hz. Approximate bore cutoff ~600 Hz.",
+      "time_behavior": "Continuous driven tone; low register full/sonorous, upper register carries fewer overtones and sounds more compressed.",
+      "performance_techniques": [
+        "single tonguing",
+        "legato",
+        "staccato",
+        "vibrato",
+        "double tonguing",
+        "flutter tongue",
+        "multiphonics",
+        "glissando"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS",
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "didgeridoo",
+      "name": "Didgeridoo / Yidaki",
+      "family": "lip_reed_aerophone",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "A1",
+        "F2"
+      ],
+      "nominal_range_hz_A440": [
+        55.0,
+        87.3071
+      ],
+      "sound_production": "Lip vibration drives long bore; player's vocal tract strongly alters spectral envelope and formants.",
+      "spectral_or_resonance_behavior": "UNSW reports preferred instrument pitch range ~A1\u2013F2; player vocal tract can create/shape strong formants, notably in ~1\u20132 kHz region. Tongue position can suppress around 1.5 and 2.0 kHz, leaving strong energy near ~1.8 kHz.",
+      "time_behavior": "Drone is sustained by breath/circular breathing; timbre evolves continuously with tongue, glottis and vocalization.",
+      "performance_techniques": [
+        "drone",
+        "circular breathing",
+        "tongue/formant shaping",
+        "vocalization"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": "Cultural provenance should be retained; do not flatten yidaki/didgeridoo traditions into a generic effect."
+    },
+    {
+      "id": "trumpet_c",
+      "name": "Trumpet in C",
+      "family": "brass_lip_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "F#3",
+        "C6"
+      ],
+      "nominal_range_hz_A440": [
+        184.9972,
+        1046.5023
+      ],
+      "sound_production": "Lip reed excites approximately cylindrical/brass resonator; valves select different harmonic series.",
+      "spectral_or_resonance_behavior": "Brass spectra contain a complete harmonic series structure; higher dynamics can emphasize upper partials before spectral rolloff. Narrower bore/shallow cup contributes bright high-partial content.",
+      "time_behavior": "Sustained while air is supplied; fast articulated attacks possible.",
+      "performance_techniques": [
+        "single/double/triple tonguing",
+        "legato",
+        "staccato",
+        "vibrato",
+        "sforzato",
+        "mutes"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS",
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "horn_f",
+      "name": "Horn in F",
+      "family": "brass_lip_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "B1",
+        "F5"
+      ],
+      "nominal_range_hz_A440": [
+        61.7354,
+        698.4565
+      ],
+      "sound_production": "Lip reed drives long predominantly conical tube; valves select tube length/harmonic series.",
+      "spectral_or_resonance_behavior": "Conical bore favors mellower/darker partial balance than trumpet; lowest notes respond slowly because of long air column.",
+      "time_behavior": "Sustained tone; response is slower/ponderous in deepest register.",
+      "performance_techniques": [
+        "single tonguing",
+        "legato",
+        "vibrato",
+        "stopped horn",
+        "muted horn",
+        "sforzato"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "tenor_trombone",
+      "name": "Tenor Trombone",
+      "family": "brass_lip_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "E2",
+        "F5"
+      ],
+      "nominal_range_hz_A440": [
+        82.4069,
+        698.4565
+      ],
+      "sound_production": "Lip reed drives long cylindrical tube; slide changes acoustic length continuously.",
+      "spectral_or_resonance_behavior": "Brass harmonic series with strong projection; pedals E1\u2013Bb1 are special low extension. Timbre remains relatively homogeneous across registers.",
+      "time_behavior": "Sustained tone; slide travel limits some fast distant-position passages.",
+      "performance_techniques": [
+        "single/double/triple tonguing",
+        "legato",
+        "staccato",
+        "glissando",
+        "flutter tongue",
+        "vibrato",
+        "mutes"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "bass_tuba",
+      "name": "Bass Tuba",
+      "family": "brass_lip_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "D1",
+        "G4"
+      ],
+      "nominal_range_hz_A440": [
+        36.7081,
+        391.9954
+      ],
+      "sound_production": "Lip reed drives very wide conical bore; valves lengthen tube.",
+      "spectral_or_resonance_behavior": "Wide conical bore favors deep partials and mellow spectrum; pedal tones require large airflow and are softer/ponderous.",
+      "time_behavior": "Sustained while blown; lowest pedals respond with difficulty and large air demand.",
+      "performance_techniques": [
+        "single/double tonguing",
+        "legato",
+        "staccato",
+        "vibrato",
+        "sforzato"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "violin",
+      "name": "Violin",
+      "family": "bowed_string",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "G3",
+        "A7"
+      ],
+      "nominal_range_hz_A440": [
+        195.9977,
+        3520.0
+      ],
+      "sound_production": "Bow stick-slip continuously drives string; bridge/body radiate string energy.",
+      "spectral_or_resonance_behavior": "Rich harmonic spectrum maintained by bow. UNSW notes bridge transmits strongly around ~1\u20134 kHz and a broad bridge resonance around ~2.5 kHz; body has multiple resonances below 1 kHz.",
+      "time_behavior": "Bowed notes sustain while energy is supplied; pizzicato decays rapidly. Bow position/pressure/speed change partial balance.",
+      "performance_techniques": [
+        "arco",
+        "pizzicato",
+        "legato",
+        "d\u00e9tach\u00e9",
+        "martel\u00e9",
+        "tremolo",
+        "sul ponticello",
+        "sul tasto",
+        "harmonics",
+        "mute"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS",
+        "VSL_ACADEMY"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "viola",
+      "name": "Viola",
+      "family": "bowed_string",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "C3",
+        "A6"
+      ],
+      "nominal_range_hz_A440": [
+        130.8128,
+        1760.0
+      ],
+      "sound_production": "Bowed/plucked strings coupled through bridge to body resonator.",
+      "spectral_or_resonance_behavior": "Same core string physics as violin but body is proportionally small for tuning, contributing darker/statelier timbre; mute reduces higher partials above ~2 kHz per VSL.",
+      "time_behavior": "Bowed sustain vs plucked decay; bow position alters brightness/partial count.",
+      "performance_techniques": [
+        "arco",
+        "pizzicato",
+        "legato",
+        "d\u00e9tach\u00e9",
+        "martel\u00e9",
+        "tremolo",
+        "sul ponticello",
+        "sul tasto",
+        "harmonics",
+        "mute"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "cello",
+      "name": "Cello",
+      "family": "bowed_string",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "C2",
+        "A5"
+      ],
+      "nominal_range_hz_A440": [
+        65.4064,
+        880.0
+      ],
+      "sound_production": "Bowed/plucked strings coupled through bridge/body; four strings C2 G2 D3 A3.",
+      "spectral_or_resonance_behavior": "Rich harmonic bowed spectrum; strong body/bridge coloration. Low C string dark/weighty, A string bright/penetrating.",
+      "time_behavior": "Bowed sustain; pizzicato decays and can be strongly resonant on lower strings.",
+      "performance_techniques": [
+        "arco",
+        "pizzicato",
+        "legato",
+        "d\u00e9tach\u00e9",
+        "martel\u00e9",
+        "tremolo",
+        "sul ponticello",
+        "sul tasto",
+        "harmonics",
+        "mute"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "double_bass",
+      "name": "Double Bass",
+      "family": "bowed_string",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "B0",
+        "G4"
+      ],
+      "nominal_range_hz_A440": [
+        30.8677,
+        391.9954
+      ],
+      "sound_production": "Long bowed/plucked strings coupled through large body; standard 4-string E1 A1 D2 G2, five-string may extend to B0.",
+      "spectral_or_resonance_behavior": "Low-frequency string spectrum with strong body radiation; bowed sound mode-locks harmonics, pizzicato retains slight inharmonicity and decays.",
+      "time_behavior": "Bowed sustain; pizzicato/plucked decay; low strings slower and more massive in response.",
+      "performance_techniques": [
+        "arco",
+        "pizzicato",
+        "walking/slap bass",
+        "legato",
+        "d\u00e9tach\u00e9",
+        "tremolo",
+        "sul ponticello",
+        "sul tasto",
+        "harmonics"
+      ],
+      "source_ids": [
+        "VSL_ACADEMY",
+        "UNSW_MUSIC_ACOUSTICS"
+      ],
+      "sample_sources": [
+        "IOWA_MIS",
+        "VSCO2_CE"
+      ],
+      "status": "seed_profile_research_backed",
+      "notes": ""
+    },
+    {
+      "id": "acoustic_guitar",
+      "name": "Acoustic Guitar",
+      "family": "plucked_string",
+      "pitch_type": "pitched",
+      "standard_open_strings": {
+        "E2": 82.4069,
+        "A2": 110.0,
+        "D3": 146.8324,
+        "G3": 195.9977,
+        "B3": 246.9417,
+        "E4": 329.6276
+      },
+      "nominal_range_notes": [
+        "E2",
+        "approximately E6 depending instrument/fretboard"
+      ],
+      "nominal_range_hz_A440": [
+        82.4069,
+        1318.5102
+      ],
+      "sound_production": "Plucked strings transfer energy through bridge into soundboard/body; body acts as acoustic radiator.",
+      "spectral_or_resonance_behavior": "Plucked strings are almost harmonic but slightly inharmonic; higher-frequency components decay faster, so tone becomes mellower after the pluck. Body/soundboard resonances color different notes.",
+      "time_behavior": "Sharp pluck attack followed by decaying string/body response; high harmonics decay more quickly than low components.",
+      "performance_techniques": [
+        "finger pluck",
+        "pick",
+        "strum",
+        "harmonics",
+        "muting",
+        "position-dependent pluck"
+      ],
+      "source_ids": [
+        "UNSW_MUSIC_ACOUSTICS",
+        "HYPERPHYSICS_GUITAR"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending"
+    },
+    {
+      "id": "hi_hat",
+      "name": "Hi-Hat",
+      "family": "percussion_idiophone",
+      "pitch_type": "varies_or_indefinite",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Pending detailed research profile.",
+      "spectral_or_resonance_behavior": "Pending detailed research profile.",
+      "time_behavior": "Pending detailed research profile.",
+      "performance_techniques": [],
+      "source_ids": [
+        "VCSL"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "sample_asset_confirmed_acoustics_pending",
+      "notes": "VCSL has CC0 hi-hat samples; detailed modal/decay research profile pending."
+    },
+    {
+      "id": "tom_tom",
+      "name": "Tom-Tom",
+      "family": "percussion_membranophone",
+      "pitch_type": "varies_or_indefinite",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Pending detailed research profile.",
+      "spectral_or_resonance_behavior": "Pending detailed research profile.",
+      "time_behavior": "Pending detailed research profile.",
+      "performance_techniques": [],
+      "source_ids": [
+        "VCSL"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "sample_asset_confirmed_acoustics_pending",
+      "notes": "VCSL has CC0 tom samples; detailed membrane/cavity modal profile pending."
+    },
+    {
+      "id": "conga_family",
+      "name": "Conga / Quinto / Tumba",
+      "family": "percussion_membranophone",
+      "pitch_type": "varies_or_indefinite",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Pending detailed research profile.",
+      "spectral_or_resonance_behavior": "Pending detailed research profile.",
+      "time_behavior": "Pending detailed research profile.",
+      "performance_techniques": [],
+      "source_ids": [
+        "VCSL"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "sample_asset_confirmed_acoustics_pending",
+      "notes": "VCSL has CC0 samples; detailed stroke/acoustic research profile pending."
+    },
+    {
+      "id": "darbuka",
+      "name": "Darbuka",
+      "family": "percussion_membranophone",
+      "pitch_type": "varies_or_indefinite",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Pending detailed research profile.",
+      "spectral_or_resonance_behavior": "Pending detailed research profile.",
+      "time_behavior": "Pending detailed research profile.",
+      "performance_techniques": [],
+      "source_ids": [
+        "VCSL"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "sample_asset_confirmed_acoustics_pending",
+      "notes": "VCSL has CC0 samples; detailed stroke/acoustic research profile pending."
+    },
+    {
+      "id": "frame_drum",
+      "name": "Frame Drum",
+      "family": "percussion_membranophone",
+      "pitch_type": "varies_or_indefinite",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Pending detailed research profile.",
+      "spectral_or_resonance_behavior": "Pending detailed research profile.",
+      "time_behavior": "Pending detailed research profile.",
+      "performance_techniques": [],
+      "source_ids": [
+        "VCSL"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "sample_asset_confirmed_acoustics_pending",
+      "notes": "VCSL has CC0 samples; detailed modal/acoustic research profile pending."
+    },
+    {
+      "id": "electric_bass_guitar",
+      "name": "Electric Bass Guitar",
+      "family": "plucked_electric_string",
+      "pitch_type": "pitched",
+      "standard_open_strings": {
+        "E1": 41.2034,
+        "A1": 55.0,
+        "D2": 73.4162,
+        "G2": 97.9989
+      },
+      "nominal_range_notes": [
+        "E1",
+        "G4 depending fret count"
+      ],
+      "nominal_range_hz_A440": [
+        41.2034,
+        391.9954
+      ],
+      "sound_production": "Plucked metal strings sensed by magnetic or piezo pickup and reproduced through an amplifier/speaker or modeled equivalent.",
+      "spectral_or_resonance_behavior": "Strong low fundamental and lower harmonics with string/pickup harmonics above; attack brightness depends on plucking position, string type, and technique.",
+      "time_behavior": "Defined pluck attack followed by controllable sustain/decay; muting shortens decay while held notes sustain through amplification.",
+      "performance_techniques": [
+        "fingerstyle",
+        "pick",
+        "palm mute",
+        "staccato",
+        "legato",
+        "hammer-on",
+        "pull-off",
+        "slide",
+        "octave playing"
+      ],
+      "performance_profile": {
+        "comfortable_working_register": [
+          "E1",
+          "E3"
+        ],
+        "structural_bass_role": true,
+        "preferred_note_density": "quarter_to_eighth_note",
+        "clarity_rule": "preserve note separation in dense rock passages"
+      },
+      "implementation_guidance": "Keep the fundamental and first few harmonics clearly audible. Avoid masking the 70\u2013180 Hz body with rhythm-guitar energy.",
+      "source_ids": [
+        "BASS_STANDARD_TUNING_REF"
+      ],
+      "sample_sources": [
+        "KARORYFER_GROWLYBASS_V1_002"
+      ],
+      "status": "controlled_working_profile_real_sample_resource_bound",
+      "production_resource_status": "BOUND_TO_REAL_SAMPLE_LIBRARY",
+      "resource_binding": {
+        "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+        "library": "Karoryfer Growlybass",
+        "version": "1.002",
+        "format": "SFZ + WAV",
+        "license": "CC0",
+        "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION"
+      }
+    },
+    {
+      "id": "electric_guitar",
+      "name": "Electric Guitar",
+      "family": "plucked_electric_string",
+      "pitch_type": "pitched",
+      "standard_open_strings": {
+        "E2": 82.4069,
+        "A2": 110.0,
+        "D3": 146.8324,
+        "G3": 195.9977,
+        "B3": 246.9417,
+        "E4": 329.6276

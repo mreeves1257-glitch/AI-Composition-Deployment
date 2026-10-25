@@ -48,5 +48,7 @@
     "verify_performance_realization_55.py"
   ],
   "classical_checkpoint_prior_pipeline_sha256": "7ca38179e2a8056c93e0b57c39bcd1483b05635e629af0a80dc6fe3f8d8a839a",
-  "approved_audio_pipeline_hash_basis": "Final active-master bytes after October 19 Big Band golden-recipe approval; prior Classical-only checkpoint hash retained separately as provenance."
+  "approved_audio_pipeline_hash_basis": "Final active-master bytes after October 19 Big Band golden-recipe approval; prior Classical-only checkpoint hash retained separately as provenance.",
+  "deployment_engine_contract": "OCT19_ENGINE_API_APPROVED_SF2_HOSTED_V1",
+  "deployment_verification": "55 structural/separator checks; approved Classical and Big Band anchor renders; 432 Hz render proof"
 }

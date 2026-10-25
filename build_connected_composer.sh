@@ -15,6 +15,23 @@ tarfile.open(fileobj=io.BytesIO(archive),mode='r:gz').extractall(dest,filter='da
 print('CONNECTED_PACKAGE_EXTRACTED',manifest['source_package'],flush=True)
 PY
 cp tuning_runtime_overrides/*.py composer/runtime/
+python - <<'FORWARDPY'
+import hashlib,json,shutil
+from pathlib import Path
+overlay=Path('current_master_forward')
+runtime=Path('composer/runtime')
+manifest=json.loads((overlay/'CURRENT_MASTER_SYNC.json').read_text())
+assert manifest['master_policy']=='ONE_MASTER_FORWARD_ONLY'
+assert manifest['genre_count']==55
+for name in manifest['runtime_files']:
+    src=overlay/name
+    assert src.is_file(), f'CURRENT_MASTER_FORWARD_FILE_MISSING:{name}'
+    shutil.copy2(src,runtime/name)
+ap=runtime/'approved_audio_pipeline.py'
+assert hashlib.sha256(ap.read_bytes()).hexdigest()==manifest['approved_audio_pipeline_sha256'], 'APPROVED_AUDIO_PIPELINE_HASH_MISMATCH'
+(runtime/'CURRENT_MASTER_SYNC.json').write_text(json.dumps(manifest,indent=2)+'\\n')
+print('CURRENT_MASTER_FORWARD_SYNC_APPLIED',manifest['source_checkpoint'],len(manifest['runtime_files']),flush=True)
+FORWARDPY
 python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
 python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
 cp connected_http_server.py composer/runtime/render_server.py
@@ -60,8 +77,10 @@ with tempfile.TemporaryDirectory() as tmp:
         result=engine.run(genre,mode='quick',render_audio=False,analyze_audio=False)
         check=result.get('audio_resource_preflight',{})
         assert result['status']=='MIDI_READY_AUDIO_NOT_REQUESTED' and not check.get('missing'), (genre,result)
+        assert 'INSTRUMENT_SEPARATOR' in result.get('order',[]), (genre,'SEPARATOR_STAGE_MISSING')
+        assert result.get('genre_communication_order'), (genre,'GENRE_COMMUNICATION_BLUEPRINT_MISSING')
     print('CONNECTED_ALL_55_RESOURCE_PREFLIGHT_PASS',flush=True)
-    for genre in ['Country Rock','Classical','Custom Hybrid']:
+    for genre in ['Country Rock','Classical','Big Band','Custom Hybrid']:
         result=engine.run(genre,mode='quick',analyze_audio=False)
         assert result.get('audio_rendered'), (genre,result.get('reason'))
         with wave.open(result['audio_render']['wav_path'],'rb') as wav:

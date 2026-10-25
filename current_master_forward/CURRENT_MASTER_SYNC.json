@@ -1,0 +1,50 @@
+{
+  "schema": "AI_COMPOSER_DEPLOYMENT_SYNC_V1",
+  "deployment_role": "MIRROR_OF_SINGLE_ACTIVE_MASTER_NOT_AN_ALTERNATE_MASTER",
+  "source_active_master": "/Working File/INTEGRATED_WORKING_COPY",
+  "source_checkpoint": "2026-10-19",
+  "master_policy": "ONE_MASTER_FORWARD_ONLY",
+  "genre_count": 55,
+  "protected_golden_references": [
+    "Classical",
+    "Big Band"
+  ],
+  "known_unresolved": [
+    "Salsa arrangement execution"
+  ],
+  "approved_audio_pipeline_sha256": "7ca38179e2a8056c93e0b57c39bcd1483b05635e629af0a80dc6fe3f8d8a839a",
+  "runtime_files": [
+    "engine.py",
+    "genre_interpreter_linkage.py",
+    "genre_communication_blueprint.py",
+    "instrument_separator.py",
+    "genre_recognition_fingerprints.py",
+    "genre_performance_realization.py",
+    "genre_performance_capability_requirements.py",
+    "genre_pre_generation_compiler.py",
+    "AI_Comp_Executable_Output_Core_001.py",
+    "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
+    "ensemble_architecture.py",
+    "classical_composition.py",
+    "output_handoff.py",
+    "approved_audio_pipeline.py",
+    "genre_mix_prominence_plan.py",
+    "controlled_genre_input.py",
+    "instrument_program.py",
+    "target_program.py",
+    "target_registry.json",
+    "instrument_library.json",
+    "AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json",
+    "genre_registry_WORKING_GENRE_COMPLETE_2026-10-02_182810_CDT.json",
+    "performance_executor.py",
+    "genre_selector.py",
+    "production_resource_resolver.py",
+    "substitute_resource_gate.py",
+    "substitute_live_bridge.py",
+    "render_substitute_universal.py",
+    "original_mixer_adapter.py",
+    "verify_instrument_separator_55.py",
+    "verify_genre_recognition_55.py",
+    "verify_performance_realization_55.py"
+  ]
+}

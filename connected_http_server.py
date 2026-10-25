@@ -56,7 +56,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == '/health':
             return self.json(200, {'status':'BRIDGE_READY', 'audio_ready':True,
                 'resource_ready':True, 'genre_count':len(GENRES),
-                'deployment':'OCT12_TUNING_REPAIR', 'supported_tuning_references_hz':[440,432], 'verification':'All genre resource preflights checked at build; each returned WAV verified separately.'})
+                'deployment':'CURRENT_MASTER_SYNCED', 'master_checkpoint':'2026-10-19', 'supported_tuning_references_hz':[440,432], 'verification':'55-profile build preflight plus forward master overlay; finished audio build proofs include Classical and Big Band.'})
         match = re.fullmatch(r'/audio/([a-f0-9]{32})/finished.wav', path)
         if not match: return self.json(404, {'status':'NOT_FOUND'})
         file = OUTPUT/match.group(1)/'finished.wav'

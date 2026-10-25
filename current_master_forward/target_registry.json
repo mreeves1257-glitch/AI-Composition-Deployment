@@ -1,0 +1,222 @@
+{
+  "registry_id": "AI_COMP_TARGET_PROGRAM_REGISTRY_001",
+  "checkpoint": "2026-09-27_171159_CDT",
+  "targets": {
+    "YAMAHA_GENOS2": {
+      "manufacturer": "Yamaha",
+      "model": "Genos2",
+      "behavior_authority": "Yamaha_Keyboard_Voice_Spec_Master_R1_WORKING_2026-09-26_1805_CDT.xlsx",
+      "reference_authority": "AI_Comp_Manufacturer_Control_Reference_Library_001_WORKING_2026-09-27_100712_CDT.md",
+      "adapter_package": "AI_Comp_Yamaha_Genos2_Performance_Adapter_002A_WORKING_AUDITED_PACKAGE_2026-09-26_220542_CDT.zip",
+      "rule": "MANUFACTURER PROGRAM RESOLVES NATIVE PARAMETERS; ENGINE DOES NOT",
+      "drum_kit_system": {
+        "profile_ref": "AI_Comp_Yamaha_Genos2_Global_Drum_Kit_System_WORKING_2026-09-27_164651_CDT.json",
+        "capabilities": {
+          "preset_drum_sfx_kits": 75,
+          "ambient_drum_sfx": 11,
+          "revo_drum_sfx": 11,
+          "per_note_native_controls": true
+        },
+        "selection_policy": "Resolve exact kit name/MSB/LSB/Program/key-map only from direct Genos2 Data List; BLOCK rather than guess.",
+        "exact_inventory_status": "PENDING_DIRECT_GENOS2_DATA_LIST_EXTRACTION"
+      }
+    },
+    "INTERNAL": {
+      "manufacturer": "AI Composition",
+      "model": "Internal Target",
+      "behavior_authority": "AI_Comp_Internal_Voice_Resource_Registry_003A_AUDITED_2026-09-26_221222_CDT.json",
+      "adapter_package": "AI_Comp_Internal_Target_Adapter_002A_WORKING_AUDITED_PACKAGE_2026-09-26_220927_CDT.zip",
+      "runtime_package": "AI_Comp_Internal_Voice_Resource_Articulation_Runtime_003A_WORKING_AUDITED_PACKAGE_2026-09-26_221222_CDT.zip",
+      "rule": "INTERNAL RESOURCE/RUNTIME RESOLVES PLAYABLE RESOURCE; ENGINE DOES NOT SYNTHESIZE OR SUBSTITUTE TIMBRE",
+      "instrument_bindings": {
+        "electric_bass_guitar": {
+          "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "library": "Karoryfer Growlybass",
+          "version": "1.002",
+          "preferred_mapping": "growlybass_vicious.sfz",
+          "available_mappings": [
+            "growlybass_clean.sfz",
+            "growlybass_dirty.sfz",
+            "growlybass_angry.sfz",
+            "growlybass_excessive.sfz",
+            "growlybass_shifty.sfz",
+            "growlybass_strange.sfz",
+            "growlybass_vicious.sfz"
+          ],
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "sample_format": "24-bit 44.1 kHz WAV",
+          "license": "CC0",
+          "articulation_policy": "PRESERVE_SFZ_VELOCITY_ROUND_ROBIN_AND_ARTICULATION",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "target_gain_db": 0.0,
+          "binding_status": "SALVAGED_TEST_MAPPING_SAMPLE_GRAPH_READY_86_OF_86_FIDELITY_NOT_CERTIFIED",
+          "production_preferred_mapping": "growlybass_clean.sfz",
+          "production_preferred_mapping_status": "PENDING_COMPLETE_SUSTAIN_SAMPLE_SET",
+          "test_scope": "REAL_SAMPLE_BASS_RENDERER_VALIDATION_ONLY",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED"
+        },
+        "electric_guitar:RHYTHM_POWER_CHORDS": {
+          "resource_id": "KARORYFER_SHINYGUITAR",
+          "target_gain_db": -5.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/composer_electric.sfz",
+          "library": "Karoryfer Shinyguitar",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "original_fragment_mapping": "Programs/electric_one.sfz",
+          "factory_program": "Programs/main.sfz",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "wrapper_sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
+        },
+        "electric_guitar:LEAD_MELODY": {
+          "resource_id": "KARORYFER_SHINYGUITAR",
+          "target_gain_db": -6.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/composer_electric.sfz",
+          "library": "Karoryfer Shinyguitar",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "original_fragment_mapping": "Programs/electric_one.sfz",
+          "factory_program": "Programs/main.sfz",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "wrapper_sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
+        },
+        "kick_drum_rock": {
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "target_gain_db": -1.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/01-full.sfz",
+          "library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+        },
+        "snare_drum": {
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "target_gain_db": -5.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/01-full.sfz",
+          "library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+        },
+        "hi_hat": {
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "target_gain_db": -9.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/01-full.sfz",
+          "library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+        },
+        "ride_cymbal": {
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "target_gain_db": -8.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/01-full.sfz",
+          "library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+        },
+        "crash_cymbal": {
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "target_gain_db": -8.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/01-full.sfz",
+          "library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+        },
+        "tom_drum": {
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "target_gain_db": -4.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/01-full.sfz",
+          "library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+        },
+        "tom_tom": {
+          "resource_id": "KARORYFER_BIG_RUSTY_DRUMS",
+          "target_gain_db": -4.0,
+          "resource_type": "SFZ_SAMPLE_LIBRARY",
+          "preferred_mapping": "Programs/01-full.sfz",
+          "library": "Karoryfer Big Rusty Drums",
+          "license": "CC0-1.0",
+          "renderer_requirement": "SFZ_COMPATIBLE_SAMPLE_RENDERER",
+          "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION",
+          "current_resource_presence": "MAPPING_PATH_PRESENT_2026-10-17",
+          "production_fidelity_status": "NOT_YET_CERTIFIED",
+          "binding_status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+        }
+      },
+      "drum_kit_system": {
+        "profile_id": "INT_COMPLETE_DRUM_KIT_SYSTEM_001",
+        "current_verified_core_members": [
+          "KICK",
+          "SNARE",
+          "HI_HAT"
+        ],
+        "extended_member_profiles_available": [
+          "TOMS",
+          "CRASH",
+          "RIDE"
+        ],
+        "extended_internal_resource_binding_status": "BINDINGS_PRESENT_SAMPLE_GRAPH_READY_FIDELITY_NOT_CERTIFIED",
+        "rule": "A composition may use only kit members with resolved internal resources; no silent substitution."
+      },
+      "resource_resolution_policy": "NO_SILENT_DOWNGRADE",
+      "resource_truth_checkpoint": "2026-10-17_CURRENT_ACTIVE_MASTER",
+      "resource_truth_summary": {
+        "declared_binding_count": 10,
+        "declared_binding_paths_present": 10,
+        "sample_graph_validation_basis": "ORIGINAL_RESOURCE_PREFLIGHT_2026-10-12 + current Library path verification 2026-10-17",
+        "production_fidelity_certified": false,
+        "rule": "MAPPING/SAMPLE PRESENCE DOES NOT EQUAL EXPRESSIVE FIDELITY CERTIFICATION"
+      }
+    }
+  },
+  "unknown_target_policy": "BLOCK_NO_GUESS",
+  "global_percussion_system": {
+    "architecture_ref": "AI_Comp_Percussion_Architecture_001_WORKING_2026-09-27_171159_CDT.json",
+    "yamaha_ref": "AI_Comp_Yamaha_Genos2_Percussion_System_WORKING_2026-09-27_171159_CDT.json",
+    "internal_ref": "AI_Comp_Internal_Percussion_Resource_Matrix_WORKING_2026-09-27_171159_CDT.json",
+    "rule": "Target must return exact playable percussion resource or BLOCK."
+  },
+  "recovered_proof_resource_options": {
+    "status": "DISABLED_NO_SYNTHETIC_SUBSTITUTION",
+    "instruments": {}
+  },
+  "recovered_proof_resource_source": "Historical proof options intentionally disabled in active registry; NO_SYNTHETIC_SUBSTITUTION."
+}

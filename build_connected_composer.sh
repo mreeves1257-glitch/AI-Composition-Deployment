@@ -62,24 +62,18 @@ print('HOST_NATIVE_DEPENDENCIES_READY',flush=True)
 NATIVEPY
 export LD_LIBRARY_PATH="$PWD/composer/runtime/runtime_linux/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export AI_COMP_FLUIDSYNTH_LIBRARY="$PWD/composer/runtime/runtime_linux/lib/libfluidsynth.so.3"
+PYTHONPATH=composer/runtime python composer/runtime/verify_genre_recognition_55.py
+PYTHONPATH=composer/runtime python composer/runtime/verify_performance_realization_55.py
+PYTHONPATH=composer/runtime python composer/runtime/verify_instrument_separator_55.py
+echo 'CONNECTED_ALL_55_MASTER_VERIFICATIONS_PASS'
 PYTHONPATH=composer/runtime python - <<'PY'
-import json,tempfile,wave
+import tempfile,wave
 from pathlib import Path
 from engine import AICompositionEngine
 import output_handoff
-root=Path('composer/runtime').resolve()
-profiles=json.loads((root/'AI_Comp_Genre_Performance_Registry_002_WORKING_COMPLETE_2026-10-02_182810_CDT.json').read_text())['profiles']
-assert len(profiles)==55
 with tempfile.TemporaryDirectory() as tmp:
     engine=AICompositionEngine(history_path=Path(tmp)/'history.json')
     output_handoff.OUT=Path(tmp)/'outputs'
-    for genre in profiles:
-        result=engine.run(genre,mode='quick',audio_backend='PRESERVED')
-        assert result.get('status')!='BLOCKED', (genre,result)
-        assert 'INSTRUMENT_SEPARATOR' in result.get('order',[]), (genre,'SEPARATOR_STAGE_MISSING')
-        if genre!='Classical':
-            assert result.get('genre_communication_order'), (genre,'GENRE_COMMUNICATION_BLUEPRINT_MISSING')
-    print('CONNECTED_ALL_55_STRUCTURAL_SEPARATOR_PREFLIGHT_PASS',flush=True)
     for genre in ['Classical','Big Band']:
         result=engine.run(genre,mode='quick',audio_backend='APPROVED_SF2')
         assert result.get('status')=='AUDIO_RENDER_PASS' and result.get('audio_rendered'), (genre,result.get('reason'))

@@ -1,4 +1,4 @@
-"""HTTP delivery adapter for the saved October 11 composer; no musical edits."""
+"""HTTP delivery adapter for the synchronized October 19 Composer Master; no musical edits."""
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -25,7 +25,7 @@ def worker(genre, destination, mode, tuning_reference_hz="440"):
     import output_handoff
     output_handoff.OUT = Path(destination)
     result = AICompositionEngine(history_path=OUTPUT/'composition_history.json').run(
-        genre, mode=mode, analyze_audio=False,tuning_reference_hz=tuning_reference_hz)
+        genre, mode=mode, audio_backend='APPROVED_SF2', tuning_reference_hz=tuning_reference_hz)
     result.pop('modules', None)
     result['analysis'] = {'status':'AVAILABLE_OFFLINE', 'reason':'Advisory analysis is separate from the memory-bounded HTTP audio delivery worker.'}
     Path(destination, 'result.json').write_text(json.dumps(result))
@@ -55,8 +55,8 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         if path == '/health':
             return self.json(200, {'status':'BRIDGE_READY', 'audio_ready':True,
-                'resource_ready':True, 'genre_count':len(GENRES),
-                'deployment':'CURRENT_MASTER_SYNCED', 'master_checkpoint':'2026-10-19', 'supported_tuning_references_hz':[440,432], 'verification':'55-profile build preflight plus forward master overlay; finished audio build proofs include Classical and Big Band.'})
+                'resource_ready':True, 'resource_mode':'APPROVED_SF2_AUDITION', 'production_resource_complete':False, 'genre_count':len(GENRES),
+                'deployment':'CURRENT_MASTER_SYNCED', 'master_checkpoint':'2026-10-19', 'supported_tuning_references_hz':[440,432], 'verification':'55-profile structural/separator build preflight plus forward master overlay; finished audio build proofs include the approved Classical and Big Band anchors.'})
         match = re.fullmatch(r'/audio/([a-f0-9]{32})/finished.wav', path)
         if not match: return self.json(404, {'status':'NOT_FOUND'})
         file = OUTPUT/match.group(1)/'finished.wav'

@@ -998,3 +998,1217 @@
         "G3": 195.9977,
         "B3": 246.9417,
         "E4": 329.6276
+      },
+      "nominal_range_notes": [
+        "E2",
+        "approximately E6 depending fret count"
+      ],
+      "nominal_range_hz_A440": [
+        82.4069,
+        1318.5102
+      ],
+      "sound_production": "Plucked metal strings sensed by magnetic pickup and reproduced through amplifier/speaker or modeled equivalent.",
+      "spectral_or_resonance_behavior": "Harmonic-rich plucked-string spectrum; pickup position, picking, amp gain and speaker response strongly alter brightness and harmonic density.",
+      "time_behavior": "Fast pick/finger attack with string decay and amplifier sustain; muting shortens notes and gain can extend sustain.",
+      "performance_techniques": [
+        "pick",
+        "strum",
+        "power chord",
+        "palm mute",
+        "legato",
+        "hammer-on",
+        "pull-off",
+        "slide",
+        "bend",
+        "vibrato",
+        "sustained lead"
+      ],
+      "performance_profile": {
+        "rhythm_working_register": [
+          "E2",
+          "E5"
+        ],
+        "lead_working_register": [
+          "E3",
+          "E6"
+        ],
+        "power_chord_support": true,
+        "clarity_rule": "avoid unnecessary upper-register stacking when rhythm part is dense"
+      },
+      "implementation_guidance": "Preserve transient definition and midrange identity. Use target-specific gain/amp behavior downstream; do not bake amp distortion into the base engine.",
+      "source_ids": [
+        "HYPERPHYSICS_GUITAR"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_research_tuning_verified"
+    },
+    {
+      "id": "kick_drum_rock",
+      "name": "Rock Kick Drum",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch_with_low_resonant_body",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Foot-pedal beater strikes a damped bass-drum head; shell, heads and enclosed air form a short low-frequency resonant system.",
+      "spectral_or_resonance_behavior": "Short low-frequency body plus higher-frequency beater transient for definition.",
+      "time_behavior": "Fast attack with controlled short decay suitable for repeated backbeat/groove patterns.",
+      "performance_techniques": [
+        "single stroke",
+        "double stroke",
+        "damped hit"
+      ],
+      "performance_profile": {
+        "role": "rock_pulse_foundation",
+        "clarity_rule": "short controlled decay; retain beater definition without masking bass guitar"
+      },
+      "source_ids": [
+        "SOS_BASS_DRUM"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "controlled_working_profile"
+    },
+    {
+      "id": "kick_drum_kit_acoustic",
+      "name": "Acoustic Drum-Kit Kick / Bass Drum",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch_with_low_resonant_body",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Foot-pedal beater strikes a drum-kit bass-drum head; shell, heads, damping and enclosed air produce a low resonant body plus beater transient.",
+      "spectral_or_resonance_behavior": "Low-frequency body with a higher-frequency attack component; exact balance is kit/resource dependent and belongs to the selected target resource.",
+      "time_behavior": "Fast attack; decay varies by tuning, damping, shell and target kit.",
+      "performance_techniques": [
+        "single pedal stroke",
+        "double stroke",
+        "dynamic accent",
+        "feathered stroke"
+      ],
+      "role_capabilities": [
+        "pulse foundation",
+        "low-frequency drum anchor",
+        "groove accent"
+      ],
+      "manufacturer_behavior_note": "Manufacturer/target program chooses the actual kit sample/voice and native parameters.",
+      "sample_sources": [],
+      "status": "controlled_working_profile"
+    },
+    {
+      "id": "crash_cymbal",
+      "name": "Crash Cymbal",
+      "family": "percussion_idiophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Suspended cymbal struck to excite a broad inharmonic spectrum.",
+      "spectral_or_resonance_behavior": "Broad bright inharmonic spectrum with long decaying resonance; target resource determines exact timbre.",
+      "time_behavior": "Fast attack with medium-to-long decay.",
+      "performance_techniques": [
+        "edge crash",
+        "accent crash",
+        "choke"
+      ],
+      "role_capabilities": [
+        "section accent",
+        "transition accent",
+        "climax accent"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile"
+    },
+    {
+      "id": "ride_cymbal",
+      "name": "Ride Cymbal",
+      "family": "percussion_idiophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Cymbal struck repeatedly with stick tip or shoulder; bell and bow regions produce different balances of ping and wash.",
+      "spectral_or_resonance_behavior": "Bright inharmonic spectrum with sustained wash and attack definition.",
+      "time_behavior": "Fast repeated attack with overlapping sustained decay.",
+      "performance_techniques": [
+        "bow ride",
+        "bell ride",
+        "accent",
+        "wash"
+      ],
+      "role_capabilities": [
+        "timekeeping",
+        "swing/ride pattern",
+        "section lift"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile"
+    },
+    {
+      "id": "drum_kit_complete",
+      "name": "Complete Drum Kit",
+      "family": "percussion_kit_composite",
+      "pitch_type": "multi_source_per_note",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Composite instrument made of independently addressable drum and cymbal members.",
+      "spectral_or_resonance_behavior": "Composite; each member retains its own acoustic profile and target-resource behavior.",
+      "time_behavior": "Composite; timing and articulation are member-specific.",
+      "performance_techniques": [
+        "kick/snare groove",
+        "hi-hat patterns",
+        "tom fills",
+        "ride patterns",
+        "crash accents",
+        "cymbal choke"
+      ],
+      "role_capabilities": [
+        "complete genre drum kit",
+        "groove foundation",
+        "fills",
+        "transitions",
+        "section dynamics"
+      ],
+      "composite": true,
+      "member_role_defaults": {
+        "KICK": "kick_drum_kit_acoustic",
+        "SNARE": "snare_drum",
+        "HI_HAT": "hi_hat",
+        "TOMS": "tom_tom",
+        "CRASH": "crash_cymbal",
+        "RIDE": "ride_cymbal"
+      },
+      "required_core_roles": [
+        "KICK",
+        "SNARE",
+        "HI_HAT"
+      ],
+      "standard_extended_roles": [
+        "TOMS",
+        "CRASH",
+        "RIDE"
+      ],
+      "selection_rule": "Theory requests kit intent and required roles; Instrument Program validates/expands members; Manufacturer/Target Program selects the actual complete kit resource. Engine may not alter kit membership or balance.",
+      "status": "controlled_working_composite_profile"
+    },
+    {
+      "id": "bongo_family",
+      "name": "Bongo Family",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_or_quasi_pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "open tone",
+        "mute",
+        "slap",
+        "heel/toe"
+      ],
+      "role_capabilities": [
+        "groove",
+        "fills",
+        "syncopation"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "shaker",
+      "name": "Shaker",
+      "family": "percussion_idiophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "forward/back stroke",
+        "accent",
+        "continuous shake"
+      ],
+      "role_capabilities": [
+        "timekeeping",
+        "subdivision",
+        "texture"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "tambourine",
+      "name": "Tambourine",
+      "family": "percussion_frame_idiophone_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "shake",
+        "tap",
+        "accent",
+        "roll"
+      ],
+      "role_capabilities": [
+        "timekeeping",
+        "accent",
+        "texture"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "tambourine_orchestral",
+      "name": "Orchestral Tambourine",
+      "family": "percussion_frame_idiophone_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "tap",
+        "thumb roll",
+        "shake roll",
+        "accent"
+      ],
+      "role_capabilities": [
+        "orchestral accent",
+        "roll",
+        "color"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "cowbell",
+      "name": "Cowbell",
+      "family": "percussion_idiophone",
+      "pitch_type": "quasi_pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "tip strike",
+        "shoulder strike",
+        "muted strike"
+      ],
+      "role_capabilities": [
+        "pulse",
+        "clave-like pattern",
+        "accent"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "claves",
+      "name": "Claves",
+      "family": "percussion_idiophone",
+      "pitch_type": "quasi_pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "open strike",
+        "muted strike"
+      ],
+      "role_capabilities": [
+        "timeline pattern",
+        "pulse",
+        "accent"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "woodblock",
+      "name": "Woodblock",
+      "family": "percussion_idiophone",
+      "pitch_type": "quasi_pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "center strike",
+        "edge strike"
+      ],
+      "role_capabilities": [
+        "pulse",
+        "accent",
+        "orchestral color"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "triangle",
+      "name": "Triangle",
+      "family": "percussion_idiophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "single strike",
+        "roll",
+        "damped strike"
+      ],
+      "role_capabilities": [
+        "accent",
+        "sustain color",
+        "orchestral texture"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "xylophone",
+      "name": "Xylophone",
+      "family": "percussion_mallet_idiophone",
+      "pitch_type": "pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "single stroke",
+        "roll",
+        "two-mallet passage"
+      ],
+      "role_capabilities": [
+        "melody",
+        "ostinato",
+        "accent"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "vibraphone",
+      "name": "Vibraphone",
+      "family": "percussion_mallet_idiophone",
+      "pitch_type": "pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "single stroke",
+        "roll",
+        "pedal sustain",
+        "motor vibrato where available"
+      ],
+      "role_capabilities": [
+        "melody",
+        "chords",
+        "texture"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "glockenspiel",
+      "name": "Glockenspiel",
+      "family": "percussion_mallet_idiophone",
+      "pitch_type": "pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "single stroke",
+        "roll"
+      ],
+      "role_capabilities": [
+        "high-register accent",
+        "melody",
+        "orchestral color"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "tubular_bells",
+      "name": "Tubular Bells",
+      "family": "percussion_tuned_idiophone",
+      "pitch_type": "pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "single strike",
+        "damped strike"
+      ],
+      "role_capabilities": [
+        "accent",
+        "ceremonial color",
+        "orchestral punctuation"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "electronic_kick",
+      "name": "Electronic Kick",
+      "family": "percussion_electronic",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "single hit",
+        "accented hit"
+      ],
+      "role_capabilities": [
+        "electronic pulse",
+        "dance foundation",
+        "sub/punch"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "sub_kick",
+      "name": "Sub Kick",
+      "family": "percussion_electronic",
+      "pitch_type": "indefinite_pitch_with_sub_bass",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "single hit",
+        "accented hit"
+      ],
+      "role_capabilities": [
+        "sub-bass reinforcement",
+        "electronic foundation"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "electronic_snare",
+      "name": "Electronic Snare",
+      "family": "percussion_electronic",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "hit",
+        "rim-like variant",
+        "clap-layer variant"
+      ],
+      "role_capabilities": [
+        "backbeat",
+        "accent"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "electronic_hat",
+      "name": "Electronic Hi-Hat",
+      "family": "percussion_electronic",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "closed",
+        "open",
+        "accent"
+      ],
+      "role_capabilities": [
+        "timekeeping",
+        "subdivision"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "cymbal_swell",
+      "name": "Cymbal Swell",
+      "family": "percussion_effect",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "roll swell",
+        "reverse-like transition only if target resource supports it"
+      ],
+      "role_capabilities": [
+        "transition",
+        "crescendo"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "percussion_impact",
+      "name": "Percussion Impact",
+      "family": "percussion_effect",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "impact"
+      ],
+      "role_capabilities": [
+        "transition",
+        "downbeat accent"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "scrape_texture",
+      "name": "Percussive Scrape Texture",
+      "family": "percussion_effect",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical percussion profile; detailed acoustic characterization remains resource/instrument specific.",
+      "spectral_or_resonance_behavior": "Instrument-specific; do not infer target waveform from category alone.",
+      "time_behavior": "Technique- and resource-dependent attack/decay behavior.",
+      "performance_techniques": [
+        "scrape",
+        "drag"
+      ],
+      "role_capabilities": [
+        "texture",
+        "transition"
+      ],
+      "sample_sources": [],
+      "status": "controlled_working_profile_resource_binding_required",
+      "notes": "Actual recorded/verified playable resource required before internal acoustic rendering."
+    },
+    {
+      "id": "percussion_palette",
+      "name": "Genre Percussion Palette",
+      "family": "percussion_composite_palette",
+      "pitch_type": "mixed",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Composite logical palette resolved into real percussion instruments.",
+      "spectral_or_resonance_behavior": "Composite; each selected member retains its own profile.",
+      "time_behavior": "Composite; member-specific.",
+      "performance_techniques": [
+        "palette selection",
+        "member-specific techniques"
+      ],
+      "role_capabilities": [
+        "genre rhythm architecture",
+        "percussion color",
+        "pulse",
+        "fills",
+        "accents",
+        "texture"
+      ],
+      "composite": true,
+      "status": "controlled_working_composite_profile",
+      "selection_rule": "Theory specifies percussion intent; Percussion Program chooses canonical members; target resolves playable resources."
+    },
+    {
+      "id": "piano",
+      "name": "Piano",
+      "family": "keyboard",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "electric_piano",
+      "name": "Electric piano",
+      "family": "keyboard",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "clav",
+      "name": "Clavinet",
+      "family": "keyboard",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "strings",
+      "name": "String ensemble",
+      "family": "ensemble",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "choir",
+      "name": "Choir",
+      "family": "voice_ensemble",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "synth_bass",
+      "name": "Synth bass",
+      "family": "synthesis",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "synth_chord",
+      "name": "Synth chord voice",
+      "family": "synthesis",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "synth_lead",
+      "name": "Synth lead",
+      "family": "synthesis",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "synth_pad",
+      "name": "Synth pad",
+      "family": "synthesis",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "synth_pulse",
+      "name": "Synth pulse",
+      "family": "synthesis",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "synth_arp",
+      "name": "Synth arpeggio voice",
+      "family": "synthesis",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "noise_fx",
+      "name": "Noise texture",
+      "family": "synthesis",
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "provenance": "October 2 Genre Execution Adapter 002 declared palette; not a researched acoustics profile",
+      "implementation_guidance": "Preserve the requested instrument identity. A target resource and its supported articulations must be resolved before audio rendering.",
+      "production_resource_status": "RESOURCE_REQUIRED"
+    },
+    {
+      "id": "alto_sax",
+      "name": "Alto Saxophone",
+      "family": "woodwind_single_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "Db3",
+        "Ab5"
+      ],
+      "nominal_range_hz_A440": [
+        138.5913,
+        830.6094
+      ],
+      "sound_production": "Single reed drives a conical brass resonator; written pitch transposes for Eb instrument.",
+      "spectral_or_resonance_behavior": "Reed-driven harmonic spectrum varies strongly with register, dynamic and embouchure; retain saxophone identity rather than substituting clarinet or brass.",
+      "time_behavior": "Breath-driven sustain with tongued or connected attacks; phrasing depends on breath and articulation.",
+      "performance_techniques": [
+        "legato",
+        "single tonguing",
+        "staccato",
+        "accent",
+        "subtone",
+        "vibrato",
+        "growl",
+        "falls"
+      ],
+      "source_ids": [
+        "BERKLEE_BIG_BAND"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Range stored at concert pitch; preserve Eb transposition separately in score import/export."
+    },
+    {
+      "id": "tenor_sax",
+      "name": "Tenor Saxophone",
+      "family": "woodwind_single_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "Ab2",
+        "Eb5"
+      ],
+      "nominal_range_hz_A440": [
+        103.8262,
+        622.254
+      ],
+      "sound_production": "Single reed drives a conical resonator; written pitch transposes for Bb tenor saxophone.",
+      "spectral_or_resonance_behavior": "Full reed spectrum with register-dependent brightness and strong formant character; do not substitute clarinet.",
+      "time_behavior": "Breath-driven sustain with tongued/legato attacks and expressive dynamic shaping.",
+      "performance_techniques": [
+        "legato",
+        "single tonguing",
+        "staccato",
+        "accent",
+        "subtone",
+        "vibrato",
+        "growl",
+        "falls"
+      ],
+      "source_ids": [
+        "BERKLEE_BIG_BAND"
+      ],
+      "sample_sources": [
+        "FREEPATS_TENOR_SAX"
+      ],
+      "status": "research_seed_open_sample_candidate",
+      "notes": "Concert-pitch range; FreePats CC0 candidate identified but not installed."
+    },
+    {
+      "id": "baritone_sax",
+      "name": "Baritone Saxophone",
+      "family": "woodwind_single_reed",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "C2",
+        "Ab4"
+      ],
+      "nominal_range_hz_A440": [
+        65.4064,
+        415.3047
+      ],
+      "sound_production": "Single reed drives a long conical resonator; written pitch transposes for Eb baritone saxophone.",
+      "spectral_or_resonance_behavior": "Low, reedy spectrum with strong body and upper harmonics; provides distinct low sax-section color.",
+      "time_behavior": "Breath-driven sustain; low attacks require realistic tongue/air onset rather than instantaneous synth attack.",
+      "performance_techniques": [
+        "legato",
+        "single tonguing",
+        "staccato",
+        "accent",
+        "subtone",
+        "vibrato",
+        "growl",
+        "falls"
+      ],
+      "source_ids": [
+        "BERKLEE_BIG_BAND"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Concert-pitch range including low-A baritone capability; resource not yet installed."
+    },
+    {
+      "id": "banjo",
+      "name": "Five-string Banjo",
+      "family": "plucked_string",
+      "pitch_type": "pitched",
+      "standard_open_strings": {
+        "G4": 392.0,
+        "D3": 146.8324,
+        "G3": 195.9977,
+        "B3": 246.9417,
+        "D4": 293.6648
+      },
+      "nominal_range_notes": [
+        "D3",
+        "G5"
+      ],
+      "nominal_range_hz_A440": [
+        146.8324,
+        783.9909
+      ],
+      "sound_production": "Plucked strings drive a membrane head through the bridge; short fifth string supplies a high drone in common open-G tuning.",
+      "spectral_or_resonance_behavior": "Bright, fast-decaying pluck with strong attack and membrane/resonator coloration; repeated roll notes require variation to avoid machine-gun effect.",
+      "time_behavior": "Sharp transient and relatively short decay; bluegrass rolls interlock thumb/finger attacks around the beat.",
+      "performance_techniques": [
+        "three-finger roll",
+        "forward roll",
+        "backward roll",
+        "pinch",
+        "strum",
+        "slide",
+        "hammer-on",
+        "pull-off"
+      ],
+      "source_ids": [
+        "LOC_BLUEGRASS"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Open-G tuning gDGBD represented; sample source must preserve five-string/drone character."
+    },
+    {
+      "id": "mandolin",
+      "name": "Mandolin",
+      "family": "plucked_string",
+      "pitch_type": "pitched",
+      "standard_open_strings": {
+        "G3": 196.0,
+        "D4": 293.6648,
+        "A4": 440.0,
+        "E5": 659.2551
+      },
+      "nominal_range_notes": [
+        "G3",
+        "E7"
+      ],
+      "nominal_range_hz_A440": [
+        195.9977,
+        2637.0205
+      ],
+      "sound_production": "Four doubled courses are plucked/picked; paired unison strings create characteristic shimmer.",
+      "spectral_or_resonance_behavior": "Bright pick transient and paired-course beating; chop chords are short and percussive while tremolo sustains melodic lines.",
+      "time_behavior": "Fast pick attack; chop articulation is deliberately short; tremolo creates sustained illusion through rapid repetition.",
+      "performance_techniques": [
+        "alternate picking",
+        "chop chord",
+        "tremolo",
+        "crosspicking",
+        "double stop",
+        "slide"
+      ],
+      "source_ids": [
+        "LOC_BLUEGRASS"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Standard G3-D4-A4-E5 tuning; dedicated open sample resource pending."
+    },
+    {
+      "id": "timbales",
+      "name": "Timbales",
+      "family": "percussion_membranophone",
+      "pitch_type": "varies_or_indefinite",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Shallow single-headed drums struck with sticks; shell/rim may also be used for c\u00e1scara patterns.",
+      "spectral_or_resonance_behavior": "Bright, cutting membrane attack with strong shell/rim transients; high/low drums remain distinguishable.",
+      "time_behavior": "Very fast attack and short ringing decay; rolls/fills and shell patterns require repeated-stroke variation.",
+      "performance_techniques": [
+        "high drum",
+        "low drum",
+        "rim/shell c\u00e1scara",
+        "roll",
+        "fill"
+      ],
+      "source_ids": [
+        "VIRTUOSITY_DRUMS"
+      ],
+      "sample_sources": [
+        "VIRTUOSITY_DRUMS"
+      ],
+      "status": "research_seed_open_sample_candidate",
+      "notes": "CC0 Virtuosity Drums includes high/low timbale samples; resource not yet installed."
+    },
+    {
+      "id": "pedal_steel_guitar",
+      "name": "Pedal Steel Guitar",
+      "family": "electric_string",
+      "pitch_type": "pitched",
+      "nominal_range_notes": [
+        "B2",
+        "F#5"
+      ],
+      "nominal_range_hz_A440": [
+        123.4708,
+        739.9888
+      ],
+      "sound_production": "Electrified steel guitar played with a bar; pedals and knee levers alter selected string pitches while notes sustain.",
+      "spectral_or_resonance_behavior": "Sustaining bright string tone with pickup coloration; characteristic identity comes strongly from smooth pitch-changing voice leading and glissando/bar behavior.",
+      "time_behavior": "Sustained notes can overlap while pedals/levers move individual chord voices; attack may be picked cleanly and followed by long sustain.",
+      "performance_techniques": [
+        "pedal bend",
+        "knee-lever bend",
+        "bar glissando",
+        "volume-pedal swell",
+        "harmonics",
+        "single-note fill",
+        "sustained chord voice-leading"
+      ],
+      "source_ids": [
+        "COUNTRY_HALL_INSTRUMENTS"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "E9-style nominal span entered as a working reference; setups vary. A real pedal-steel resource with bend/transition control is required for production."
+    },
+    {
+      "id": "surdo",
+      "name": "Surdo",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Large double-headed bass drum struck with a beater, often with open/muted contrast.",
+      "spectral_or_resonance_behavior": "Deep low-frequency pulse with membrane/body resonance; individual surdo sizes may occupy different low registers.",
+      "time_behavior": "Strong low attack followed by resonant decay; muting shortens the decay and clarifies alternating pulse roles.",
+      "performance_techniques": [
+        "open stroke",
+        "muted stroke",
+        "accent"
+      ],
+      "source_ids": [
+        "UMICH_SAMBA_RESIDENCY",
+        "SMITHSONIAN_SAMBA"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Samba low-pulse identity; dedicated sample resource pending."
+    },
+    {
+      "id": "caixa",
+      "name": "Caixa",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Samba snare drum with wire response, struck with sticks.",
+      "spectral_or_resonance_behavior": "Bright noisy transient and snare-wire buzz supporting rapid subdivisions.",
+      "time_behavior": "Fast attack and short decay suited to continuous subdivision patterns.",
+      "performance_techniques": [
+        "samba subdivision",
+        "accent",
+        "roll"
+      ],
+      "source_ids": [
+        "SMITHSONIAN_SAMBA"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Dedicated samba-caixa resource pending; do not silently substitute a rock snare."
+    },
+    {
+      "id": "repinique",
+      "name": "Repinique",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "High, cutting samba drum used for calls, cues and ensemble accents.",
+      "spectral_or_resonance_behavior": "Bright penetrating membrane tone that projects above the bateria.",
+      "time_behavior": "Fast attack with short ringing decay; phrase calls may use rapid strokes.",
+      "performance_techniques": [
+        "call",
+        "cue",
+        "support pulse",
+        "roll"
+      ],
+      "source_ids": [
+        "UMICH_SAMBA_RESIDENCY",
+        "SMITHSONIAN_SAMBA"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Dedicated repinique resource pending."
+    },
+    {
+      "id": "tamborim",
+      "name": "Tamborim",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Small high-pitched frame drum struck with a stick/beater.",
+      "spectral_or_resonance_behavior": "Sharp high-frequency attack and compact ring, allowing fast timeline figures to cut through dense percussion.",
+      "time_behavior": "Very fast transient and short decay.",
+      "performance_techniques": [
+        "teleco-teco/timeline figure",
+        "accent",
+        "virado-style rapid pattern"
+      ],
+      "source_ids": [
+        "UMICH_SAMBA_RESIDENCY",
+        "SMITHSONIAN_SAMBA"
+      ],
+      "sample_sources": [],
+      "status": "research_seed_open_sample_source_pending",
+      "notes": "Dedicated tamborim resource pending."
+    },
+    {
+      "id": "agogo_bells",
+      "name": "Agog\u00f4 Bells",
+      "family": "percussion_idiophone",
+      "pitch_type": "quasi_pitched",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Two or more bells struck with a stick, producing contrasting high/low pitches.",
+      "spectral_or_resonance_behavior": "Bright inharmonic metallic spectra with clearly differentiated bell pitches.",
+      "time_behavior": "Immediate attack with ringing decay; alternating high/low patterns create timeline color.",
+      "performance_techniques": [
+        "high bell",
+        "low bell",
+        "alternating pattern",
+        "accent"
+      ],
+      "source_ids": [
+        "UMICH_SAMBA_RESIDENCY",
+        "SMITHSONIAN_SAMBA"
+      ],
+      "sample_sources": [
+        "VCSL"
+      ],
+      "status": "research_seed_open_sample_candidate",
+      "notes": "VCSL is a CC0 candidate source; playable binding is not yet installed."
+    }
+  ],
+  "next_research_queue": [
+    "Complete hi-hat/cymbal modal and decay profile",
+    "Complete tom-tom membrane/cavity modes",
+    "Add detailed piano profile",
+    "Add saxophone family",
+    "Add harp",
+    "Add electric bass and bass guitar",
+    "Add djembe stroke-specific spectra and decay",
+    "Find clearly redistributable guitar samples",
+    "Expand instrument profiles to dynamic layers (pp/mf/ff) and articulations",
+    "Measure imported samples with existing BP3 analyzer and compare against researched profiles"
+  ],
+  "working_boundary_fix": {
+    "checkpoint": "2026-09-27_121050_CDT",
+    "status": "WORKING_AUTHORITY_BOUNDARY_FIXED",
+    "original_source_preserved": "AI_Composition_Instrument_Acoustics_Library_R1_HARD_COPY_2026-09-26_1953_CDT.json",
+    "ownership": "ALL_REAL_INSTRUMENT_BEHAVIOR_AND_FUTURE_INSTRUMENT_MODIFICATIONS",
+    "engine_rule": "ENGINE_MAY_RETRIEVE_AND_VALIDATE_ONLY; ENGINE_MAY_NOT_EDIT_OR_OVERRIDE_INSTRUMENT_BEHAVIOR",
+    "performance_rule": "PERFORMANCE_EXECUTOR_MAY_NOT INVENT INSTRUMENT-SPECIFIC NUMERIC OR SEMANTIC BEHAVIOR",
+    "manufacturer_rule": "MANUFACTURER/TARGET-SPECIFIC CONTROLS DO NOT BELONG HERE",
+    "missing_value_policy": "BLOCK_OR_MARK_RESOURCE_REQUIRED; NEVER GUESS",
+    "instrument_behavior_authority": "ALL_INSTRUMENT_BEHAVIOR_CHANGES_LIVE_HERE_NOT_ENGINE",
+    "rock_extension_timestamp": "2026-09-27_122214_CDT",
+    "global_drum_kit_system_added": true,
+    "engine_modified": false
+  },
+  "drum_kit_system": {
+    "system_id": "AI_COMP_GLOBAL_DRUM_KIT_SYSTEM_001",
+    "checkpoint": "2026-09-27_164651_CDT",
+    "authority": "INSTRUMENT_LIBRARY",
+    "scope": "ALL_GENRES_WHEN_THEORY_REQUESTS_DRUM_KIT",
+    "canonical_profile_id": "drum_kit_complete",
+    "core_member_roles": [
+      "KICK",
+      "SNARE",
+      "HI_HAT"
+    ],
+    "extended_member_roles": [
+      "TOMS",
+      "CRASH",
+      "RIDE"
+    ],
+    "rules": [
+      "DRUM_KIT_IS_A_COMPOSITE_INSTRUMENT_NOT_A_SINGLE_KICK_SNARE_HAT_PATCH",
+      "EACH_MEMBER_REMAINS_INDEPENDENTLY_ADDRESSABLE",
+      "THEORY_DEFINES_GROOVE_AND_KIT_INTENT",
+      "INSTRUMENT_LIBRARY_DEFINES_MEMBER_BEHAVIOR",
+      "MANUFACTURER_OR_INTERNAL_TARGET_SELECTS_ACTUAL_KIT_RESOURCE",
+      "ENGINE_DOES_NOT_BALANCE_OR_SOUND_SHAPE_DRUMS",
+      "MISSING_REQUIRED_KIT_MEMBER_BLOCKS_EXECUTION",
+      "OPTIONAL_MEMBER_MAY_REMAIN_UNUSED_BY_A_COMPOSITION"
+    ],
+    "target_expectations": {
+      "YAMAHA": "Resolve to a verified Yamaha Drum/SFX Kit and preserve per-note controls.",
+      "INTERNAL": "Resolve to a complete internal kit resource or member resources; do not silently substitute an unrelated percussion set."
+    }
+  },
+  "percussion_system": {
+    "system_id": "AI_COMP_PERCUSSION_ARCHITECTURE_001",
+    "checkpoint": "2026-09-27_171159_CDT",
+    "architecture_file": "AI_Comp_Percussion_Architecture_001_WORKING_2026-09-27_171159_CDT.json",
+    "family_ids": [
+      "DRUM_KIT",
+      "ORCHESTRAL_PERCUSSION",
+      "HAND_WORLD_PERCUSSION",
+      "AUXILIARY_PERCUSSION",
+      "TUNED_MALLET_PERCUSSION",
+      "ELECTRONIC_HYBRID_PERCUSSION",
+      "PERCUSSION_EFFECTS_TEXTURE"
+    ],
+    "generic_palette_id": "percussion_palette",
+    "drum_kit_branch_id": "drum_kit_complete",
+    "hard_rules": [
+      "PERCUSSION_IS_GLOBAL_CAPABILITY_FOR_ALL_GENRES",
+      "EVERY_EXECUTABLE_GENRE_DECLARES_REQUIRED_OPTIONAL_OR_NONE_INTENTIONAL",
+      "ACOUSTIC_PERCUSSION_REQUIRES_REAL_RECORDED_OR_VERIFIED_PLAYABLE_RESOURCE",
+      "NO_SYNTHETIC_FALLBACK_FOR_ACOUSTIC_PERCUSSION",
+      "ELECTRONIC_PERCUSSION_MAY_USE_SYNTHESIS_ONLY_WHEN_EXPLICITLY_REQUESTED",
+      "THEORY_DOES_NOT_CHOOSE_MANUFACTURER_PATCHES",
+      "ENGINE_DOES_NOT_CHOOSE_OR_BALANCE_PERCUSSION"
+    ]
+  }
+}

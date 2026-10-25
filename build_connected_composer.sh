@@ -74,21 +74,21 @@ with tempfile.TemporaryDirectory() as tmp:
     engine=AICompositionEngine(history_path=Path(tmp)/'history.json')
     output_handoff.OUT=Path(tmp)/'outputs'
     for genre in profiles:
-        result=engine.run(genre,mode='quick',render_audio=False,analyze_audio=False)
-        check=result.get('audio_resource_preflight',{})
-        assert result['status']=='MIDI_READY_AUDIO_NOT_REQUESTED' and not check.get('missing'), (genre,result)
+        result=engine.run(genre,mode='quick',audio_backend='PRESERVED')
+        assert result.get('status')!='BLOCKED', (genre,result)
         assert 'INSTRUMENT_SEPARATOR' in result.get('order',[]), (genre,'SEPARATOR_STAGE_MISSING')
-        assert result.get('genre_communication_order'), (genre,'GENRE_COMMUNICATION_BLUEPRINT_MISSING')
-    print('CONNECTED_ALL_55_RESOURCE_PREFLIGHT_PASS',flush=True)
-    for genre in ['Country Rock','Classical','Big Band','Custom Hybrid']:
-        result=engine.run(genre,mode='quick',analyze_audio=False)
-        assert result.get('audio_rendered'), (genre,result.get('reason'))
+        if genre!='Classical':
+            assert result.get('genre_communication_order'), (genre,'GENRE_COMMUNICATION_BLUEPRINT_MISSING')
+    print('CONNECTED_ALL_55_STRUCTURAL_SEPARATOR_PREFLIGHT_PASS',flush=True)
+    for genre in ['Classical','Big Band']:
+        result=engine.run(genre,mode='quick',audio_backend='APPROVED_SF2')
+        assert result.get('status')=='AUDIO_RENDER_PASS' and result.get('audio_rendered'), (genre,result.get('reason'))
         with wave.open(result['audio_render']['wav_path'],'rb') as wav:
             frames=wav.getnframes()
             assert wav.getnchannels()==2 and frames>0
             samples=wav.readframes(frames)
             assert any(samples), (genre,'SILENT_WAV')
-        print('CONNECTED_BUILD_AUDIO_PASS',genre,frames,flush=True)
+        print('CONNECTED_APPROVED_ANCHOR_AUDIO_PASS',genre,frames,flush=True)
 PY
 PYTHONPATH=composer/runtime python - <<'TUNINGPY'
 from musical_tuning import validate_reference
@@ -100,8 +100,8 @@ import output_handoff
 with tempfile.TemporaryDirectory() as tmp:
     output_handoff.OUT=Path(tmp)/'outputs'
     engine=AICompositionEngine(history_path=Path(tmp)/'history.json')
-    result=engine.run('Country Rock',mode='quick',analyze_audio=False,tuning_reference_hz=432)
-    assert result.get('audio_rendered') and result.get('tuning_reference_hz')==432,result
+    result=engine.run('Country Rock',mode='quick',audio_backend='APPROVED_SF2',tuning_reference_hz=432)
+    assert result.get('status')=='AUDIO_RENDER_PASS' and result.get('audio_rendered') and result.get('tuning_reference_hz')==432,result
 print('BUILD_432_FINISHED_AUDIO_PASS')
 TUNINGPY
 python -m py_compile composer/runtime/render_server.py

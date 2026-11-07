@@ -1,0 +1,3868 @@
+{
+  "genre_count": 55,
+  "genres": {
+    "Afro House": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Afro House",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Deep bass interlocks with kick/percussion; low-end behavior changes by subgenre."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, deconstruction, fade or final hit."
+        },
+        "development_model": {
+          "rule": "Develop through percussion layers, bass state, atmosphere, melody and energy contour."
+        },
+        "form_model": {
+          "rule": "Long-form build/break/return dance structure with subgenre-specific phrase lengths and peaks."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_AFRO_HOUSE_SUBGENRE",
+          "rule": "Loop-based tonal/modal/atmospheric harmony by variant."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal/texture is selective; groove may remain primary identity."
+        },
+        "percussion_model": {
+          "rule": "Organic/hand percussion roles remain differentiated and share a coherent groove map."
+        },
+        "phrase_model": {
+          "rule": "Percussion and atmosphere evolve by section; lead enters selectively."
+        },
+        "rhythm_groove_model": {
+          "rule": "House-derived dance pulse plus resolved organic/polyrhythmic or 3Step behavior; no generic pan-African percussion overlay."
+        },
+        "transition_model": {
+          "rule": "Layer subtraction/addition, percussion setups, filters and FX by subgenre."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "percussive detail + sustained atmospheric layers",
+        "continuous_performance_control": "filter/level/spatial automation",
+        "dynamic_behavior": "gradual energy automation",
+        "interaction_rules": [
+          "Stable core pulse with human relational percussion.",
+          "No generic random percussion layering."
+        ],
+        "timing_humanization_behavior": "microtimed percussion around stable four-beat foundation"
+      },
+      "production": {
+        "mix_prominence_intent": "kick/bass clear, percussion wide, lead selective",
+        "production_mastering_intent": "club-capable warm master with percussion detail",
+        "sound_effects_intent": "reverb/delay/filter common but controlled",
+        "spatial_presentation": {
+          "rule": "Focused kick/bass, wider organic percussion and atmosphere, selective lead foreground.",
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "AFRO_HOUSE_V2",
+      "research_status": "V3_UPDATED__CURRENT_SUBGENRE_LAYER_MODEL",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Core Afro House",
+          "Afro / Latin",
+          "3Step",
+          "Afro Melodic"
+        ],
+        "hard_rule": "Amapiano remains a separate neighboring genre; do not silently substitute it for Afro House.",
+        "parent_family": "Afro House",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Afro-Latin / Afrobeats Fusion": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Afro-Latin / Afrobeats Fusion",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "One bass authority per state unless an explicit compatible composite rule is validated."
+        },
+        "cadence_ending_model": {
+          "rule": "Ending authority must be assigned to one component or explicit fusion rule."
+        },
+        "development_model": {
+          "rule": "Develop by controlled component exchange/transformation, not feature accumulation."
+        },
+        "form_model": {
+          "rule": "Resolved from source forms with explicit section ownership/handoffs."
+        },
+        "harmony_model": {
+          "authority": "COMPONENT_ASSIGNMENT",
+          "rule": "No automatic averaging of Afrobeats and Latin harmony systems."
+        },
+        "melody_model": {
+          "rule": "Lead/hook language follows declared component or explicit fusion rule."
+        },
+        "percussion_model": {
+          "rule": "Percussion layers retain source identity; stacking all source percussion is forbidden."
+        },
+        "phrase_model": {
+          "rule": "Phrase behavior follows active component authority."
+        },
+        "rhythm_groove_model": {
+          "rule": "Each rhythmic layer names its source; incompatible groove grids require section handoff or explicit reconciliation."
+        },
+        "transition_model": {
+          "rule": "Handoffs between source components must be musically explicit and provenance-preserving."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "articulation follows component source",
+        "continuous_performance_control": "expression/automation with provenance",
+        "dynamic_behavior": "energy shaped by layer introduction/removal",
+        "interaction_rules": [
+          "Component timing systems must be reconciled explicitly.",
+          "No tokenizing/regional placeholder instruments.",
+          "Conflicting rules trigger resolver failure rather than generic fallback."
+        ],
+        "timing_humanization_behavior": "timing grids must be reconciled explicitly; no blind quantization"
+      },
+      "production": {
+        "mix_prominence_intent": "groove clarity and low-end separation primary",
+        "production_mastering_intent": "hybrid master preserves percussion detail",
+        "sound_effects_intent": "effects selected by component and overall production",
+        "spatial_presentation": {
+          "status": "RESOLVE_FROM_COMPONENTS_WITH_COLLISION_CHECK"
+        }
+      },
+      "profile_id": "AFRO_LATIN_AFROBEATS_FUSION_V2",
+      "research_status": "V3_UPDATED__CONTROLLED_FUSION_RESOLVER",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "The phrase Afro-Latin cannot stand in for an unnamed rhythm. Name the actual source tradition/genre.",
+        "parent_family": "Afro-Latin / Afrobeats Fusion",
+        "status": "MANDATORY_COMPONENT_RESOLUTION"
+      }
+    },
+    "Afrobeats": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Afrobeats",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Syncopated melodic bass follows groove/percussion rather than root-only behavior."
+        },
+        "cadence_ending_model": {
+          "rule": "Loop deconstruction, tag, fade or arranged stop by variant."
+        },
+        "development_model": {
+          "rule": "Develop through groove variation, hook recurrence, percussion layering, bass and instrumental motifs."
+        },
+        "form_model": {
+          "rule": "Verse/hook/bridge or loop-evolving forms with production contrast and strong hook recurrence."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_AFROBEATS_VARIANT",
+          "rule": "Tonal/modal loop harmony may draw from pop/R&B/highlife and other verified influences."
+        },
+        "melody_model": {
+          "rule": "Lead/hook and guitar/keys motifs interact with groove without overcrowding."
+        },
+        "percussion_model": {
+          "rule": "Electronic/acoustic hybrid layers have distinct roles and humanized relational timing."
+        },
+        "phrase_model": {
+          "rule": "Lead/hook, guitar/keys and percussion responses occupy complementary gaps."
+        },
+        "rhythm_groove_model": {
+          "rule": "Layered syncopation and percussion/bass interlock resolved by variant; no universal Afrobeats drum pattern."
+        },
+        "transition_model": {
+          "rule": "Production drops, percussion/bass state changes, fills and hook transitions according to variant."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "percussive guitar/keys, articulated bass and layered percussion",
+        "continuous_performance_control": "expression + production automation",
+        "dynamic_behavior": "section-based energy changes rather than constant maximum level",
+        "interaction_rules": [
+          "Humanized timing is relational.",
+          "Percussion layers have distinct roles.",
+          "No imported neighbor genre may erase Afrobeats base without resolver change."
+        ],
+        "timing_humanization_behavior": "humanized groove timing controlled per layer"
+      },
+      "production": {
+        "mix_prominence_intent": "groove foundation clear with lead/hook foreground",
+        "production_mastering_intent": "punchy warm master; low end controlled",
+        "sound_effects_intent": "reverb/delay/filter/saturation used selectively",
+        "spatial_presentation": {
+          "rule": "Groove foundation clear, percussion distributed, hook/lead foreground.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "AFROBEATS_V2",
+      "research_status": "V3_UPDATED__BROAD_FAMILY_VARIANT_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Pop-forward Afrobeats",
+          "Highlife-influenced",
+          "R&B-influenced",
+          "Hip-hop/trap-influenced",
+          "Amapiano-influenced Afrobeats",
+          "Street/rave-influenced contemporary variants",
+          "Alté-adjacent"
+        ],
+        "hard_rule": "Afrobeats must not resolve to 1970s Afrobeat; Amapiano, Alté, Afropop and Afro R&B remain distinguishable source/neighbor categories.",
+        "parent_family": "Afrobeats",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Ambient Electronic": {
+      "family": "Electronic",
+      "genre_name": "Ambient Electronic",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Drone/sub field, sparse support or absence; avoid unnecessary low-end permanence."
+        },
+        "cadence_ending_model": {
+          "rule": "Fade, dissipation, unresolved field or deliberate tonal closure by substyle."
+        },
+        "development_model": {
+          "rule": "Develop through change rate, texture, density, register, spatial depth and rare foreground events."
+        },
+        "form_model": {
+          "rule": "Through-composed/long-form fields with explicit state transitions; no forced verse/chorus."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_AMBIENT_SUBSTYLE",
+          "rule": "Modal/drone/cluster/slow tonal/spectral fields according to substyle; cadence optional."
+        },
+        "melody_model": {
+          "rule": "Sparse foreground events may emerge and recede; continuous melody not required."
+        },
+        "percussion_model": {
+          "rule": "Optional minimal/textural percussion with low event density unless substyle says otherwise."
+        },
+        "phrase_model": {
+          "rule": "Phrase may be defined by texture evolution, breath, register or spectral change rather than bar-count."
+        },
+        "rhythm_groove_model": {
+          "rule": "Pulse state may be NONE, SOFT, REPEATING or METERED; free-time must be explicit."
+        },
+        "transition_model": {
+          "rule": "Crossfade, spectral/timbral change, silence, field emergence and spatial movement."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "soft attacks, sustained tones, granular/textural articulations",
+        "continuous_performance_control": "filter/envelope/spatial/modulation automation central",
+        "dynamic_behavior": "slow fades/swells over long spans",
+        "interaction_rules": [
+          "Slow shared evolution.",
+          "Silence is valid material.",
+          "Random motion cannot substitute for designed texture."
+        ],
+        "timing_humanization_behavior": "timing can float; when pulse exists, humanization is slow and coherent"
+      },
+      "production": {
+        "mix_prominence_intent": "depth and width prioritized; no constant foreground requirement",
+        "production_mastering_intent": "high dynamic headroom, low harshness, preserve tails",
+        "sound_effects_intent": "reverb/delay/granular/spatial effects may be structural",
+        "spatial_presentation": {
+          "rule": "Depth/width/spatial choreography are compositional parameters, not post-processing decoration.",
+          "status": "CORE_IDENTITY"
+        }
+      },
+      "profile_id": "AMBIENT_ELECTRONIC_V1",
+      "research_status": "V3_UPDATED__TEXTURE_STATE_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Drone ambient",
+          "Textural ambient",
+          "Pulse ambient",
+          "Dark ambient",
+          "Melodic ambient",
+          "Electro-acoustic ambient"
+        ],
+        "parent_family": "Ambient Electronic",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Bebop": {
+      "family": "Jazz",
+      "genre_name": "Bebop",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Continuous or near-continuous walking with chord-tone targets and passing approaches, adapting under breaks/solos."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, arranged heads, breaks or held endings by tune/variant."
+        },
+        "development_model": {
+          "rule": "Develop through improvisational chorus variation, motivic transformation and rhythm-section interaction."
+        },
+        "form_model": {
+          "rule": "Head-solos-head baseline with compact ensemble statements, intros/tags and chorus-based improvisational form."
+        },
+        "harmony_model": {
+          "authority": "BEBOP_HARMONY_ENGINE",
+          "rule": "Fast-moving extended harmony, ii-V chains, secondary dominants, substitutions and chromatic approaches; chord-scale/voice-leading logic must remain coherent at tempo."
+        },
+        "melody_model": {
+          "rule": "Angular/syncopated bop lines with chord-tone targeting and chromatic approach behavior; not generic diatonic melody."
+        },
+        "percussion_model": {
+          "rule": "Ride/hi-hat time plus interactive snare/kick comping; accents converse with soloist."
+        },
+        "phrase_model": {
+          "rule": "Phrase density, pickups, enclosures/approaches and rests vary by tempo and solo context."
+        },
+        "rhythm_groove_model": {
+          "rule": "Fast swing with ride-led time; drums comp interactively and do not become rock backbeat."
+        },
+        "transition_model": {
+          "rule": "Turnarounds, breaks, setups and compact fills; chorus boundaries remain musically legible."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "clean fast tonguing/legato alternation, ghosted notes and rhythmic accents as target permits",
+        "continuous_performance_control": "articulation and accent control prioritized over heavy effects",
+        "dynamic_behavior": "accent-driven line shaping rather than large sustained swells",
+        "interaction_rules": [
+          "High interaction without random timing.",
+          "Comping responds to solo phrases.",
+          "Drums converse while preserving time."
+        ],
+        "timing_humanization_behavior": "swing microtiming tightens at faster tempos; ensemble relational timing only"
+      },
+      "production": {
+        "mix_prominence_intent": "melody and bass clarity prioritized over dense pads",
+        "production_mastering_intent": "fast transients, controlled cymbals and headroom",
+        "sound_effects_intent": "dry-to-natural room; little masking",
+        "spatial_presentation": {
+          "rule": "Small-combo clarity with localized soloist and cohesive rhythm section.",
+          "status": "FORMATION_DEPENDENT"
+        }
+      },
+      "profile_id": "BEBOP_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Quartet",
+          "Quintet with two horns",
+          "Piano-less small combo",
+          "Guitar-led bop combo"
+        ],
+        "parent_family": "Bebop",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Big Band": {
+      "family": "Jazz",
+      "genre_name": "Big Band",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Walking or riff-based bass coordinates with drums/ensemble figures without duplicating every hit."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific tags, held endings, ensemble hits and arranged codas."
+        },
+        "development_model": {
+          "rule": "Develop head material through section transfer, backgrounds, solo support, density and voicing changes."
+        },
+        "form_model": {
+          "rule": "Support introductions, ensemble choruses, solo features, backgrounds, shout/climactic returns and endings; variant determines sequence/probability.",
+          "status": "PARTIAL_RETAIN_AND_EXPAND"
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BIG_BAND_JAZZ_VARIANT",
+          "rule": "Extended tonal/jazz harmony and voice-leading appropriate to variant; section voicings remain chord-aware."
+        },
+        "melody_model": {
+          "rule": "Lead chair/section owns foreground; other chairs harmonize or answer rather than becoming parallel equal leads."
+        },
+        "percussion_model": {
+          "rule": "Ride/timekeeping, hi-hat, kick/snare support and setup fills follow section function and ensemble figures."
+        },
+        "phrase_model": {
+          "rule": "Section figures phrase as units; call/response and background figures leave room for the active foreground owner."
+        },
+        "rhythm_groove_model": {
+          "rule": "Swing/variant pocket is shared across rhythm and horn phrasing; swing ratio and articulation vary by tempo/style."
+        },
+        "transition_model": {
+          "rule": "Setups, fills, breaks and ensemble hits prepare sectional boundaries; no generic fill pasted across variants."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "tight staccato/accented figures contrasted with legato section pads",
+        "continuous_performance_control": "section expression and articulation controls plus solo-feature dynamics",
+        "dynamic_behavior": "large sectional contrasts with controlled crescendos into ensemble hits",
+        "interaction_rules": [
+          "Horn sections phrase as coordinated units.",
+          "Lead chair is not duplicated by every chair.",
+          "Backgrounds answer/support rather than mask solos.",
+          "Rhythm section and horn accents coordinate structurally."
+        ],
+        "timing_humanization_behavior": "section-coherent placement; brass/reed attacks align with intentional pushes/lays"
+      },
+      "production": {
+        "mix_prominence_intent": "rhythm section foundation; featured section/solo foreground; backgrounds subordinate",
+        "production_mastering_intent": "retain punch and brass detail without harshness",
+        "sound_effects_intent": "natural room with limited enhancement; avoid smearing ensemble attacks",
+        "spatial_presentation": {
+          "rule": "Distinct section stage positions and depth; preserve lead-chair localization and rhythm-section cohesion.",
+          "status": "UPGRADE_REQUIRED"
+        }
+      },
+      "profile_id": "BIG_BAND_V1",
+      "research_status": "V3_FORMATION_AND_ROLE_ARCHITECTURE_STRONG__QUANTITATIVE_SECTION_ACTIVITY_CORPUS_PENDING",
+      "runtime_mode": "METADATA_ONLY_PROTECTED_ANCHOR",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Swing-era dance band",
+          "Modern/contemporary big band",
+          "Big-band ballad",
+          "Blues/shout-chorus oriented",
+          "Latin big band",
+          "Vocal-feature big band"
+        ],
+        "parent_family": "Big Band",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Bluegrass-related": {
+      "family": "Country",
+      "genre_name": "Bluegrass-related",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Acoustic/upright two-beat or walking support; avoid sustained sub-bass."
+        },
+        "cadence_ending_model": {
+          "rule": "Traditional tags, ensemble stops or pickup/turnaround-based endings."
+        },
+        "development_model": {
+          "rule": "Develop through break rotation, harmony/vocal changes, instrumental response and dynamic interaction."
+        },
+        "form_model": {
+          "rule": "Strophic song/tune forms with rotating breaks, instrumental returns and variant-specific vocal sections."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BLUEGRASS_VARIANT",
+          "rule": "Direct tonal I/IV/V-centered harmony with modal/blues color; harmonic complexity remains subordinate to drive and melody."
+        },
+        "melody_model": {
+          "rule": "Lead vocal/fiddle/banjo/mandolin/guitar breaks rotate; backup parts reconfigure under each featured instrument."
+        },
+        "percussion_model": {
+          "rule": "Traditional pilot uses no drum kit; hybrid variants must explicitly request drums and keep them restrained."
+        },
+        "phrase_model": {
+          "rule": "Breaks and fills rotate; backup instruments leave room for featured lines."
+        },
+        "rhythm_groove_model": {
+          "rule": "Driving acoustic subdivision with guitar pulse, mandolin chop and banjo/fiddle/other roles interlocking; no generic drum groove."
+        },
+        "transition_model": {
+          "rule": "Turnarounds, pickup notes and break handoffs rather than drum fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "fast picking/bowing/chop articulation and crisp note release",
+        "continuous_performance_control": "velocity/articulation and limited expression; preserve fast note clarity",
+        "dynamic_behavior": "acoustic dynamic accents with solo-feature lift",
+        "interaction_rules": [
+          "Players listen/respond in real time.",
+          "Backup is sparse enough not to drown featured instrument.",
+          "Timing is shared acoustic drive, not random jitter."
+        ],
+        "timing_humanization_behavior": "tight shared pulse with natural acoustic push"
+      },
+      "production": {
+        "mix_prominence_intent": "acoustic midrange clarity with bass audible but not sub-heavy",
+        "production_mastering_intent": "dynamic acoustic master, minimal compression",
+        "sound_effects_intent": "natural room only; avoid heavy synthetic processing",
+        "spatial_presentation": {
+          "rule": "Natural acoustic ensemble spread; bass anchored, featured break localized, backup instruments individually intelligible."
+        }
+      },
+      "profile_id": "BLUEGRASS_RELATED_V1",
+      "research_status": "V3_UPDATED__BLUEGRASS_SEPARATION_REINFORCED__TRADITIONAL_FIVE_PILOT_RETAINED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Traditional five-piece bluegrass",
+          "Dobro-added six-piece",
+          "Modern/progressive bluegrass",
+          "Vocal-harmony bluegrass",
+          "Instrumental bluegrass"
+        ],
+        "parent_family": "Bluegrass-related",
+        "status": "REQUIRED_BEFORE_FULL_RUNTIME"
+      }
+    },
+    "Bolero": {
+      "family": "Latin",
+      "genre_name": "Bolero",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Sparse roots/chord tones and melodic approaches; low end must not become overactive."
+        },
+        "cadence_ending_model": {
+          "rule": "Expressive tags, sustained endings or arranged cadences; variant-specific."
+        },
+        "development_model": {
+          "rule": "Develop through melodic variation, accompaniment color, arpeggiation, instrumental handoff and dynamic contour."
+        },
+        "form_model": {
+          "rule": "Romantic song forms including ABA/verse-chorus/through-composed; intros and endings are often arranged and expressive."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BOLERO_VARIANT",
+          "rule": "Harmony follows romantic song/variant practice with expressive voice-leading; avoid generic pop fallback."
+        },
+        "melody_model": {
+          "rule": "Lead line owns broad expressive space; accompaniment follows phrasing and breath."
+        },
+        "percussion_model": {
+          "rule": "Light hand percussion/brush/claves/bongo/maraca roles depend on variant and should not dominate."
+        },
+        "phrase_model": {
+          "rule": "Long expressive phrases with rubato and accompaniment breathing."
+        },
+        "rhythm_groove_model": {
+          "rule": "Slow pulse with gentle syncopation; percussion remains supportive and optional."
+        },
+        "transition_model": {
+          "rule": "Use harmonic, melodic or light rhythmic preparation; avoid abrupt generic fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato melody, gentle guitar/piano attacks, restrained percussion",
+        "continuous_performance_control": "continuous expression and tempo curves",
+        "dynamic_behavior": "strong emotional swells within generally moderate level",
+        "interaction_rules": [
+          "Accompaniment follows lead breath.",
+          "Rubato is shared.",
+          "Low-end and percussion remain restrained."
+        ],
+        "timing_humanization_behavior": "phrase rubato and behind-beat expression within stable pulse"
+      },
+      "production": {
+        "mix_prominence_intent": "lead intimate and prominent; accompaniment soft",
+        "production_mastering_intent": "warm dynamic master",
+        "sound_effects_intent": "warm reverb/room; avoid excessive brightness",
+        "spatial_presentation": {
+          "rule": "Intimate lead-forward depth with soft accompaniment layers.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "LATIN_BOLERO_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Latin romantic bolero",
+          "Guitar-led bolero",
+          "Piano-led bolero",
+          "Orchestrated bolero",
+          "Spanish-derived variant"
+        ],
+        "hard_rule": "Do not conflate Latin bolero with orchestral Ravel-style bolero.",
+        "parent_family": "Bolero",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Bossa Nova": {
+      "family": "Latin",
+      "genre_name": "Bossa Nova",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Sparse syncopated root/chord-tone motion; supportive, warm and independent from percussion."
+        },
+        "cadence_ending_model": {
+          "rule": "Intimate tags, held endings or arranged song endings; avoid generic pop stop unless variant requires it."
+        },
+        "development_model": {
+          "rule": "Develop through comping variation, reharmonization where variant permits, register change, instrumental handoff and selective solo space."
+        },
+        "form_model": {
+          "rule": "Song/ABA/through-composed structures with restrained transitions; variant determines instrumental interludes and solo space."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BOSSA_VARIANT",
+          "rule": "Use variant-appropriate Brazilian/jazz harmonic vocabulary and smooth voice-leading; no generic pop fallback."
+        },
+        "melody_model": {
+          "rule": "Melody remains relaxed and breathable; accompaniment yields rather than competes."
+        },
+        "percussion_model": {
+          "rule": "Light percussion/brush/shaker/conga-family roles are optional and subordinate to groove clarity."
+        },
+        "phrase_model": {
+          "rule": "Longer breath-shaped phrases with accompaniment space and selective fills."
+        },
+        "rhythm_groove_model": {
+          "rule": "Guitar/piano and light percussion create the bossa pulse through complementary syncopation; no heavy backbeat."
+        },
+        "transition_model": {
+          "rule": "Transitions use harmonic, textural or light rhythmic preparation rather than heavy fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "soft guitar attack, legato lead, light percussion articulation",
+        "continuous_performance_control": "expression and subtle timing control",
+        "dynamic_behavior": "soft-to-medium, intimate, low-aggression dynamics",
+        "interaction_rules": [
+          "Comping instruments interlock rather than mirror each other.",
+          "Lead breath governs accompaniment density.",
+          "Microtiming remains shared and relaxed, not randomly delayed."
+        ],
+        "timing_humanization_behavior": "relaxed behind-the-beat feel must remain ensemble-coherent"
+      },
+      "production": {
+        "mix_prominence_intent": "melody/guitar clear; percussion soft; bass warm",
+        "production_mastering_intent": "smooth, low-harshness master",
+        "sound_effects_intent": "warm room/reverb, restrained processing",
+        "spatial_presentation": {
+          "rule": "Intimate stage with clear lead/comping/bass/percussion separation.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "BOSSA_NOVA_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED__GUITARSET_ROLE_REFERENCE_ADDED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Intimate guitar-led bossa",
+          "Piano-led bossa",
+          "Jazz-bossa small combo",
+          "Vocal bossa",
+          "Contemporary bossa hybrid"
+        ],
+        "hard_rule": "Do not collapse bossa into Samba or generic Latin.",
+        "parent_family": "Bossa Nova",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Breakbeat-related": {
+      "family": "Electronic",
+      "genre_name": "Breakbeat-related",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass syncopates around broken kick and may use sub/synth/electric timbre by variant."
+        },
+        "cadence_ending_model": {
+          "rule": "Break deconstruction, final hit, fade or DJ outro."
+        },
+        "development_model": {
+          "rule": "Develop through break transformation, bass variation, samples, density and effects."
+        },
+        "form_model": {
+          "rule": "Loop-evolving sectional form with breakdowns, drops and pattern transformations."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BREAKBEAT_VARIANT",
+          "rule": "Tonal/modal/minimal harmony according to subgenre; rhythm remains primary identifier."
+        },
+        "melody_model": {
+          "rule": "Lead/sample/synth material arranged around break rather than forcing constant melody."
+        },
+        "percussion_model": {
+          "rule": "Break can be sampled-style, chopped or originally programmed; transformations preserve groove identity."
+        },
+        "phrase_model": {
+          "rule": "Break mutation and fills follow phrase direction, not arbitrary edits."
+        },
+        "rhythm_groove_model": {
+          "rule": "Broken kick/snare architecture is central; chopping, ghosting and subdivision vary by subgenre."
+        },
+        "transition_model": {
+          "rule": "Break edits, stops, fills, FX and layer changes mark sections."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "sharp drum edits, ghost notes, stutters where controlled",
+        "continuous_performance_control": "filter/edit/modulation/level automation",
+        "dynamic_behavior": "accent-driven energy and dropouts",
+        "interaction_rules": [
+          "Ghost notes/fills preserve pocket.",
+          "Break edits are phrase-aware.",
+          "Low end follows broken kick rather than four-on-floor assumptions."
+        ],
+        "timing_humanization_behavior": "groove/swing offsets may be important; preserve pattern feel"
+      },
+      "production": {
+        "mix_prominence_intent": "drums/bass prominent; melodic material arranged around break",
+        "production_mastering_intent": "punchy transient master with sub control",
+        "sound_effects_intent": "delay/filter/distortion/chop effects available",
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "BREAKBEAT_RELATED_V1",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Breaks",
+          "UK Bass-related breaks",
+          "Glitch Hop-related",
+          "Old-school breakbeat",
+          "Hybrid electronic breaks"
+        ],
+        "parent_family": "Breakbeat-related",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Cha-Cha": {
+      "family": "Latin",
+      "genre_name": "Cha-Cha",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Syncopated supportive bass; do not turn into rock-root repetition."
+        },
+        "cadence_ending_model": {
+          "rule": "Arranged dance-band endings/tags appropriate to variant."
+        },
+        "development_model": {
+          "rule": "Develop through horn responses, piano variation, percussion density and lead/ensemble exchange."
+        },
+        "form_model": {
+          "rule": "Dance-song sectional forms with breaks, responses and arranged transitions; variant-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_CHA_CHA_VARIANT",
+          "rule": "Harmony supports dance groove and lead/horn writing without generic fallback."
+        },
+        "melody_model": {
+          "rule": "Lead/horn phrases sit clearly above precise rhythm section; response figures are selective."
+        },
+        "percussion_model": {
+          "rule": "Guiro/hand percussion/conga/timbales-family roles remain distinct and light enough for dance clarity."
+        },
+        "phrase_model": {
+          "rule": "Short dance phrases and responses align to groove and section cues."
+        },
+        "rhythm_groove_model": {
+          "rule": "Characteristic cha-cha articulation and steady pulse shared by piano, bass and percussion."
+        },
+        "transition_model": {
+          "rule": "Breaks and percussion/horn setups are groove-specific; avoid generic drum fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "short precise percussion and piano attacks, horn stabs",
+        "continuous_performance_control": "articulation/velocity and lead expression",
+        "dynamic_behavior": "steady medium dynamics with accented figures",
+        "interaction_rules": [
+          "Precise shared dance pulse.",
+          "Percussion roles remain differentiated.",
+          "Horn/piano figures align with groove."
+        ],
+        "timing_humanization_behavior": "tight dance timing with subtle human layer offsets"
+      },
+      "production": {
+        "mix_prominence_intent": "dance groove clear; lead/horns sit above rhythm",
+        "production_mastering_intent": "clean, lively master",
+        "sound_effects_intent": "clean room/plate; preserve rhythmic clarity",
+        "spatial_presentation": {
+          "rule": "Compact, clear dance-band separation with focused lead/horns.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "CHA_CHA_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Compact dance ensemble",
+          "Horn-section cha-cha",
+          "Vocal cha-cha",
+          "Latin-jazz cha-cha"
+        ],
+        "parent_family": "Cha-Cha",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Chugg / #chugg": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Chugg / #chugg",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "808/sub with slides/sustains only when supported by selected composition."
+        },
+        "cadence_ending_model": {
+          "rule": "Compact scene-appropriate ending; no fixed canonical rule yet."
+        },
+        "development_model": {
+          "rule": "Develop by motif, bass/drum variation and sparse layer edits."
+        },
+        "form_model": {
+          "rule": "Compact loop-evolving/verse-hook behavior inherited from scene unless new evidence supersedes it."
+        },
+        "harmony_model": {
+          "authority": "PROVISIONAL_PLUGG_DERIVED_COMPONENT",
+          "rule": "Loop-based minor/modal/synth-motif focus; no unsupported harmonic claims."
+        },
+        "melody_model": {
+          "rule": "Bright/airy synth/sample motif and lead/vocal-like role may carry identity."
+        },
+        "percussion_model": {
+          "rule": "Trap/plugg-derived electronic percussion; avoid freezing one pattern as canonical."
+        },
+        "phrase_model": {
+          "rule": "Sparse loop/motif development."
+        },
+        "rhythm_groove_model": {
+          "rule": "Plugg-derived emerging groove with sparse syncopation; exact pattern remains scene-specific."
+        },
+        "transition_model": {
+          "rule": "Production edits and layer changes; details remain provisional."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "short programmed attacks, stutters/chops and sustained synth tails as selected",
+        "continuous_performance_control": "pitch/filter/envelope/level automation",
+        "dynamic_behavior": "drop/entry contrasts rather than orchestral dynamic curves",
+        "interaction_rules": [
+          "No invented complexity beyond evidence.",
+          "Scene update may revise this contract."
+        ],
+        "timing_humanization_behavior": "grid-based with controlled microtiming; do not invent a universal chugg swing"
+      },
+      "production": {
+        "mix_prominence_intent": "sub and lead motif prioritized with sparse midrange",
+        "production_mastering_intent": "modern low-end-forward master with clipping prevention",
+        "sound_effects_intent": "reverb/delay/distortion/digital texture available as scene components",
+        "spatial_presentation": {
+          "status": "PROVISIONAL"
+        }
+      },
+      "profile_id": "CHUGG_SCENE_V1",
+      "research_status": "V3_UPDATED__PROVISIONAL_2026_SCENE",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "#chugg inherits only verified scene relationships; do not invent a complete grammar where evidence is absent.",
+        "status": "PROVISIONAL_SCENE_INHERITANCE"
+      }
+    },
+    "Classical": {
+      "family": "Classical",
+      "genre_name": "Classical",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Low strings/bassoon/keyboard support harmonic function; density must respond to orchestration rather than remain continuously heavy."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific cadential/ending grammar; current common-practice pilot retains authentic/half-cadence logic."
+        },
+        "development_model": {
+          "rule": "Develop existing material through motivic transformation, redistribution, register, texture and harmony before introducing unrelated material."
+        },
+        "form_model": {
+          "status": "PARTIAL_RETAIN_AND_EXPAND"
+        },
+        "harmony_model": {
+          "authority": "GENRE_VARIANT_HARMONY_ENGINE"
+        },
+        "percussion_model": {
+          "rule": "Structurally motivated and variant-dependent; never constant merely because percussion resources exist."
+        },
+        "phrase_model": {
+          "rule": "Phrase/cadence hierarchy with development and breathing space; foreground ownership may transfer among sections."
+        },
+        "rhythm_groove_model": {
+          "rule": "Meter hierarchy and phrase rhythm; no generic modern groove."
+        },
+        "transition_model": {
+          "rule": "Transitions arise from cadence, orchestration, register, dynamics and thematic transformation; no generic fill logic."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato/staccato/tenuto/accent/bow/breath intent passed to instrument authority",
+        "continuous_performance_control": "expression, breath/bow/pedal and tempo curves preserved",
+        "dynamic_behavior": "wide phrase-shaped dynamics including crescendos, diminuendos and terraced contrasts where appropriate",
+        "interaction_rules": [
+          "Shared phrase-level timing; no independent random jitter.",
+          "Foreground windows must be achieved first through orchestration/interaction, not post-mix boosting.",
+          "Population realization should create section richness/width through controlled variation, not identical-note cloning or linear gain."
+        ],
+        "timing_humanization_behavior": "shared rubato at phrase/cadence level rather than random note displacement"
+      },
+      "production": {
+        "mix_prominence_intent": "Preserve orchestral mass while keeping current foreground, counterline, harmony and bass functions independently intelligible.",
+        "production_mastering_intent": "retain dynamic range; avoid overcompression and excessive brightness",
+        "sound_effects_intent": "naturalistic room/depth baseline; effects do not replace orchestration",
+        "spatial_presentation": {
+          "rule": "Resolved Classical variant supplies explicit section positions and depth; reasoning plans space before rendering and the shared 3D mixer realizes it after stems exist.",
+          "status": "UPGRADE_REQUIRED"
+        }
+      },
+      "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
+      "research_status": "V3_CLASSICAL_LISTENING_FAIL__SOURCE_GENRE_CONTRACT_REVISION_REQUIRED",
+      "runtime_mode": "METADATA_ONLY_PROTECTED_ANCHOR",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Baroque ensemble/orchestral",
+          "Classical-period chamber",
+          "Classical-period orchestral",
+          "Romantic orchestral",
+          "Late-Romantic/expanded orchestral",
+          "Impressionist/early-modern orchestral",
+          "Modern/contemporary tonal",
+          "Chamber ensemble",
+          "Full symphonic"
+        ],
+        "parent_family": "Classical",
+        "status": "EVIDENCE_BACKED_CANDIDATE_VARIANTS_DEFINED__LISTENING_VALIDATION_PENDING"
+      }
+    },
+    "Contemporary R&B": {
+      "family": "R&B",
+      "genre_name": "Contemporary R&B",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Sub/electric bass may sustain, pulse or syncopate; interaction with kick must be stateful rather than constant duplication."
+        },
+        "cadence_ending_model": {
+          "rule": "Sparse tags, loop deconstruction, fades or arranged endings by production variant."
+        },
+        "development_model": {
+          "rule": "Develop by layer activation, harmony/voicing, bass/drum state, texture and lead intensity."
+        },
+        "form_model": {
+          "rule": "Verse/pre/chorus/bridge or loop-evolving sectional forms; production layers can appear/disappear across sections."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_CONTEMPORARY_RNB_VARIANT",
+          "rule": "Extended tonal harmony, modal mixture/chromatic colors and loop-based progressions according to variant."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal-like line owns foreground and negative space; instrumental fills are sparse."
+        },
+        "percussion_model": {
+          "rule": "Hybrid electronic/acoustic drums with detailed hats/claps/snare and variant-specific low-end kick behavior."
+        },
+        "phrase_model": {
+          "rule": "Negative space around lead is structural; fills and textures answer selectively."
+        },
+        "rhythm_groove_model": {
+          "rule": "Contemporary R&B may range from tightly programmed grid behavior to deliberate inter-layer microtiming. The resolved production variant must choose the timing model explicitly."
+        },
+        "transition_model": {
+          "rule": "Layer drops, filtered transitions, drum/harmony changes and textural swells by production variant."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "soft attacks, vocal-like bends, muted guitar/keys, detailed programmed percussion",
+        "continuous_performance_control": "continuous expression, filter automation, modulation and vocal-like pitch expression where appropriate",
+        "dynamic_behavior": "intimate verses with larger chorus layers; automated swells common",
+        "interaction_rules": [
+          "Pocket is intentionally laid back.",
+          "Live/hybrid elements share one timing concept.",
+          "Negative space is preserved.",
+          "Contemporary R&B timing may be grid-tight or relationally displaced depending on production variant; resolve this explicitly.",
+          "Live/hybrid microtiming must preserve a coherent shared pulse."
+        ],
+        "timing_humanization_behavior": "laid-back pocket and quantized-plus-human hybrid timing"
+      },
+      "production": {
+        "mix_prominence_intent": "lead and low end foreground; pads/effects placed behind",
+        "production_mastering_intent": "modern low-end controlled master with clear transient/vocal space",
+        "sound_effects_intent": "delay/reverb/filter/texture are active production components",
+        "spatial_presentation": {
+          "rule": "Lead center/front, controlled low-end focus, pads/effects deeper, optional wide guitars/keys.",
+          "status": "PRODUCTION_VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "CONTEMPORARY_RNB_V1",
+      "research_status": "V3_UPDATED__CONTEMPORARY_RNB_TIMING_AND_TAXONOMY_AUTHORITY_ADDED__INSTRUMENT_SUBSTYLE_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Sparse modern R&B",
+          "Live-band contemporary R&B",
+          "Trap-influenced R&B",
+          "6/8 contemporary R&B",
+          "Electronic/ambient R&B"
+        ],
+        "parent_family": "Contemporary R&B",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Contemporary Trip-Hop / Trip-Hop Revival": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Contemporary Trip-Hop / Trip-Hop Revival",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Modern sub layer added with headroom and envelope separation from break."
+        },
+        "cadence_ending_model": {
+          "rule": "Inherited base ending plus optional modern deconstruction/FX."
+        },
+        "development_model": {
+          "rule": "Contrast inherited analog/sample-like atmosphere with controlled modern layers."
+        },        "form_model": {
+          "rule": "Inherit Trip-Hop form, then allow modern production-layer transformations."
+        },
+        "harmony_model": {
+          "authority": "TRIP_HOP_BASE_PLUS_EXPLICIT_MODERN_OVERLAY"
+        },
+        "melody_model": {
+          "rule": "Retain sparse foreground principle; modern digital textures remain support unless explicitly featured."
+        },
+        "percussion_model": {
+          "rule": "Breakbeat core plus controlled electronic reinforcement."
+        },
+        "phrase_model": {
+          "rule": "Base phrasing retained; overlay layers activate/deactivate by section."
+        },
+        "rhythm_groove_model": {
+          "rule": "Trip-Hop break core remains; contemporary electronic reinforcement must not convert groove into unrelated modern genre."
+        },
+        "transition_model": {
+          "rule": "Modern FX/granular/filter transitions allowed while preserving base identity."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "mixed soft/dirty/precise articulations",
+        "continuous_performance_control": "modern automation and spatial control",
+        "dynamic_behavior": "wider production-driven dynamic contrast",
+        "interaction_rules": [
+          "Overlay follows base timing/form.",
+          "No identity replacement by modern reinforcement."
+        ],
+        "timing_humanization_behavior": "base Trip-Hop looseness preserved beneath precise modern layers"
+      },
+      "production": {
+        "mix_prominence_intent": "sub and lead protected; width increased selectively",
+        "production_mastering_intent": "modern low-end and transient control with dark atmospheric balance",
+        "sound_effects_intent": "wider space, granular/digital texture, modern delays",
+        "spatial_presentation": {
+          "rule": "Base deep atmosphere retained; modern width/transient enhancement is selective."
+        }
+      },
+      "profile_id": "CONTEMPORARY_TRIP_HOP_V2",
+      "research_status": "V3_UPDATED__OVERLAY_AUTHORITY",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "Overlay cannot remove broken-beat/atmospheric Trip-Hop core; if it does, resolve to another genre.",
+        "status": "INHERIT_BASE_THEN_OVERLAY"
+      }
+    },
+    "Controlled Custom Style Profile": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Controlled Custom Style Profile",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "cadence_ending_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "development_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "form_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "harmony_model": {
+          "authority": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "melody_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "percussion_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "phrase_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "rhythm_groove_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "transition_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        }
+      },
+      "performance": {
+        "articulation_behavior": "loaded from saved controlled custom profile",
+        "continuous_performance_control": "loaded from saved controlled custom profile",
+        "dynamic_behavior": "loaded from saved controlled custom profile",
+        "interaction_rules": [
+          "Loaded profile is authoritative after validation."
+        ],
+        "timing_humanization_behavior": "loaded from saved controlled custom profile"
+      },
+      "production": {
+        "mix_prominence_intent": "loaded from saved controlled custom profile",
+        "production_mastering_intent": "loaded from saved controlled custom profile",
+        "sound_effects_intent": "loaded from saved controlled custom profile",
+        "spatial_presentation": {
+          "status": "LOAD_FROM_VALIDATED_PROFILE"
+        }
+      },
+      "profile_id": "CONTROLLED_CUSTOM_STYLE_PROFILE_V2",
+      "research_status": "V3_UPDATED__SAVED_PROFILE_EXECUTOR",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "No saved valid controlled profile = no generation.",
+        "status": "SAVED_PROFILE_REQUIRED"
+      }
+    },
+    "Cool Jazz": {
+      "family": "Jazz",
+      "genre_name": "Cool Jazz",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Walking or sparse melodic bass with softer attack and more space."
+        },
+        "cadence_ending_model": {
+          "rule": "Understated tags, held endings or arranged cadences."
+        },
+        "development_model": {
+          "rule": "Develop through voicing, register, chamber color, solo exchange and textural restraint."
+        },
+        "form_model": {
+          "rule": "ABA/head-solo or through-composed forms with textural restraint; variant may include arranged chamber-like sections."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COOL_JAZZ_VARIANT",
+          "rule": "Extended/modal harmony with transparent voicings and controlled chromaticism."
+        },
+        "melody_model": {
+          "rule": "Lyrical/linear lead with space and lighter attack; not merely slowed bebop."
+        },
+        "percussion_model": {
+          "rule": "Brushes/light kit and cymbal color; percussion deliberately leaves air."
+        },
+        "phrase_model": {
+          "rule": "Conversational phrasing with rests and longer arcs."
+        },
+        "rhythm_groove_model": {
+          "rule": "Restrained swing or straight feel; pocket remains present while attack and density are reduced."
+        },
+        "transition_model": {
+          "rule": "Subtle setups, textural shifts and harmonic transitions rather than aggressive fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "soft attacks, legato lines, understated accents",
+        "continuous_performance_control": "continuous expression and breath shaping",
+        "dynamic_behavior": "restrained dynamics with subtle swells",
+        "interaction_rules": [
+          "Lower attack and density are coordinated.",
+          "Comping responds sparingly.",
+          "No section overwhelms texture."
+        ],
+        "timing_humanization_behavior": "laid-back but coherent shared pocket"
+      },
+      "production": {
+        "mix_prominence_intent": "transparent mix with bass and melody both clear",
+        "production_mastering_intent": "low-compression, warm master",
+        "sound_effects_intent": "natural ambience; subtle plate/room if target uses effects",
+        "spatial_presentation": {
+          "rule": "Transparent spread with clear local sources and generous air.",
+          "status": "FORMATION_DEPENDENT"
+        }
+      },
+      "profile_id": "COOL_JAZZ_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Small-combo cool",
+          "West Coast/chamber-influenced",
+          "Piano-less cool combo",
+          "Vibraphone-led cool"
+        ],
+        "parent_family": "Cool Jazz",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Country Ballad": {
+      "family": "Country",
+      "genre_name": "Country Ballad",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Long roots/fifths or melodic approaches; low activity by default."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, ritardandi, held endings or country turnarounds by variant."
+        },
+        "development_model": {
+          "rule": "Develop through gradual layer growth, instrumental color and dynamic contour."
+        },
+        "form_model": {
+          "rule": "Verse/chorus or ABA with gradual orchestration growth; meter-specific phrasing."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_BALLAD_VARIANT",
+          "rule": "Simple tonal core with tasteful suspensions, secondary dominants and passing chords."
+        },
+        "melody_model": {
+          "rule": "Lead phrasing controls accompaniment density and color entrances."
+        },
+        "percussion_model": {
+          "rule": "Brushes/light kit or delayed drum entrance; fills restrained."
+        },
+        "phrase_model": {
+          "rule": "Long lead phrases with clear breath and fill windows."
+        },
+        "rhythm_groove_model": {
+          "rule": "4/4, 6/8 and 3/4 are distinct resolved pulse grammars; do not normalize them into one grid."
+        },
+        "transition_model": {
+          "rule": "Orchestration growth, light fills, steel/fiddle/piano pickups and harmonic transitions."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato lead colors, gentle strum/pick, brush articulation",
+        "continuous_performance_control": "expression/pedal and phrase dynamics",
+        "dynamic_behavior": "soft-to-medium arc with emotional peak late",
+        "interaction_rules": [
+          "Lead breath controls fills.",
+          "Rubato/pulse breathing is shared.",
+          "Dynamics grow gradually."
+        ],
+        "timing_humanization_behavior": "rubato at phrase edges; stable pulse within sections"
+      },
+      "production": {
+        "mix_prominence_intent": "lead intimate; accompaniment wide/soft",
+        "production_mastering_intent": "warm and dynamic with restrained high end",
+        "sound_effects_intent": "warm room/reverb; no heavy processing",
+        "spatial_presentation": {
+          "rule": "Lead forward; color instruments wider/deeper as arrangement grows.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "COUNTRY_BALLAD_V1",
+      "research_status": "V3_UPDATED__COUNTRY_EVIDENCE_LAYER_LINKED__BALLAD_VARIANT_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "4/4 country ballad",
+          "6/8 country ballad",
+          "3/4 country ballad",
+          "Piano-led ballad",
+          "Acoustic-guitar-led ballad",
+          "Orchestrated country ballad"
+        ],
+        "parent_family": "Country Ballad",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Country Rock": {
+      "family": "Country",
+      "genre_name": "Country Rock",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Electric bass locks with kick while using country-style approaches and fills."
+        },
+        "cadence_ending_model": {
+          "rule": "Rock stops/fades or country tags/turnarounds according to blend."
+        },
+        "development_model": {
+          "rule": "Develop through guitar texture, instrumental features, density and country/rock emphasis shifts."
+        },
+        "form_model": {
+          "rule": "Verse/chorus/bridge with solo/breakdown; blend controls section intensity."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_ROCK_BLEND",
+          "rule": "Country tonal syntax may combine with rock power/blues vocabulary according to blend."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal-like melody foreground; lead guitar/fiddle/steel features receive explicit windows."
+        },
+        "percussion_model": {
+          "rule": "Rock kit foundation with country-style fills; no generic constant crash density."
+        },
+        "phrase_model": {
+          "rule": "Country fills answer lead gaps over a rock-derived pulse."
+        },
+        "rhythm_groove_model": {
+          "rule": "Rock backbeat foundation with country phrasing/two-beat influence only when resolved."
+        },
+        "transition_model": {
+          "rule": "Rock drum/guitar builds plus country fill/turnaround devices by blend."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "clean-to-driven guitar attacks, bends, slides, drum backbeat",
+        "continuous_performance_control": "guitar expression/drive, dynamics and articulation",
+        "dynamic_behavior": "chorus and solo sections increase density and drive",
+        "interaction_rules": [
+          "Rock pocket and country fills share one timing concept.",
+          "Lead/rhythm guitars remain distinct."
+        ],
+        "timing_humanization_behavior": "tight groove with human pushes into section boundaries"
+      },
+      "production": {
+        "mix_prominence_intent": "bass/kick/rhythm clear; lead guitar/fiddle foreground when featured",
+        "production_mastering_intent": "punchy rock-country master without masking acoustic detail",
+        "sound_effects_intent": "amp/room/reverb and selective delay",
+        "spatial_presentation": {
+          "status": "BLEND_DEPENDENT"
+        }
+      },
+      "profile_id": "COUNTRY_ROCK_V1",
+      "research_status": "V3_UPDATED__COUNTRY_AND_ROCK_EVIDENCE_LAYERS_LINKED__BLEND_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Country-forward rock band",
+          "Rock-forward country band",
+          "Southern/country rock",
+          "Acoustic-electric country rock"
+        ],
+        "parent_family": "Country Rock",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Country Shuffle": {
+      "family": "Country",
+      "genre_name": "Country Shuffle",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Alternating root/fifth plus walking approaches, locked to shuffle feel."
+        },
+        "cadence_ending_model": {
+          "rule": "Shuffle tags, stops or turnarounds."
+        },
+        "development_model": {
+          "rule": "Develop through fill rotation, instrumental breaks and density while maintaining shuffle identity."
+        },
+        "form_model": {
+          "rule": "Strophic/verse-chorus dance-song forms with shuffle-specific turnarounds."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_SHUFFLE_VARIANT",
+          "rule": "I/IV/V-centered tonal harmony with blues/dominant color according to variant."
+        },
+        "melody_model": {
+          "rule": "Lead phrasing and fills share shuffle subdivision."
+        },
+        "percussion_model": {
+          "rule": "Shuffle snare/ride/hat pattern; fills preserve triplet subdivision."
+        },
+        "phrase_model": {
+          "rule": "Fiddle/steel/guitar/piano fills answer lead gaps within shuffle grid."
+        },
+        "rhythm_groove_model": {
+          "rule": "Triplet/shuffle subdivision is structural; 4/4 and 12/8 remain distinct meter representations."
+        },
+        "transition_model": {
+          "rule": "Shuffle-preserving drum and instrumental turnarounds."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "short guitar comping, fiddle/piano fills, shuffle drum articulation",
+        "continuous_performance_control": "velocity/articulation control",
+        "dynamic_behavior": "steady medium dynamics with fills and chorus lifts",
+        "interaction_rules": [
+          "All parts share triplet feel.",
+          "Fills do not straighten subdivision.",
+          "Country drum corpus can validate human fill/pocket behavior, but the shuffle subdivision remains contract authority and must not be straightened by generic Country examples."
+        ],
+        "timing_humanization_behavior": "swing/shuffle timing shared across ensemble"
+      },
+      "production": {
+        "mix_prominence_intent": "bass/shuffle pulse clear; fills secondary",
+        "production_mastering_intent": "punchy but not overcompressed",
+        "sound_effects_intent": "natural/amp room color",
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "COUNTRY_SHUFFLE_V1",
+      "research_status": "V3_UPDATED__COUNTRY_DRUM_REFERENCE_LINKED__SHUFFLE_SPECIFIC_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "4/4 country shuffle",
+          "12/8 country shuffle",
+          "Western-swing-adjacent shuffle",
+          "Slow shuffle"
+        ],
+        "parent_family": "Country Shuffle",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Country Waltz": {
+      "family": "Country",
+      "genre_name": "Country Waltz",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Root/strong foundation on beat one with fifth/approach support later in bar."
+        },
+        "cadence_ending_model": {
+          "rule": "Country-waltz tags, held beat-one endings or arranged 3/4 closes."
+        },
+        "development_model": {
+          "rule": "Develop through color-instrument entries, melody variation and dynamics."
+        },
+        "form_model": {
+          "rule": "Strophic/verse-chorus/ABA in 3/4 with variant-specific intros/turnarounds/endings."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_WALTZ_VARIANT",
+          "rule": "Simple tonal country harmony with controlled secondary-dominant/passing color."
+        },
+        "melody_model": {
+          "rule": "Melody stays forward; fiddle/steel/piano/flute-like colors answer selectively."
+        },
+        "percussion_model": {
+          "rule": "Light waltz kit/brushes or none; support 3-beat dance flow."
+        },
+        "phrase_model": {
+          "rule": "Fills fit 3/4 phrase windows and do not overcrowd melody."
+        },
+        "rhythm_groove_model": {
+          "rule": "Strong beat one with lighter two/three; avoid generic orchestral waltz or jazz-waltz behavior."
+        },
+        "transition_model": {
+          "rule": "3/4 turnarounds, light fills and instrumental pickups."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "smooth strum, legato fiddle/steel, soft drum articulation",
+        "continuous_performance_control": "expression and phrase dynamics",
+        "dynamic_behavior": "gentle phrase swells",
+        "interaction_rules": [
+          "Shared 3/4 flow.",
+          "Fills fit meter.",
+          "No generic classical-waltz phrasing."
+        ],
+        "timing_humanization_behavior": "subtle rubato without losing dance pulse"
+      },
+      "production": {
+        "mix_prominence_intent": "melody forward, bass beat-one foundation supportive",
+        "production_mastering_intent": "warm, open master",
+        "sound_effects_intent": "warm natural ambience",
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "COUNTRY_WALTZ_V1",
+      "research_status": "V3_UPDATED__COUNTRY_EVIDENCE_LAYER_LINKED__WALTZ_VARIANT_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Traditional country waltz",
+          "Slow country waltz",
+          "Fiddle/steel-feature waltz",
+          "Orchestrated country waltz"
+        ],
+        "parent_family": "Country Waltz",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Custom Hybrid": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Custom Hybrid",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Resolved."
+        },
+        "cadence_ending_model": {
+          "rule": "Explicitly assigned."
+        },
+        "development_model": {
+          "rule": "Resolved from component map."
+        },
+        "form_model": {
+          "rule": "Resolved from user component map."
+        },
+        "harmony_model": {
+          "authority": "USER_COMPONENT_MAP"
+        },
+        "melody_model": {
+          "rule": "Resolved."
+        },
+        "percussion_model": {
+          "rule": "Resolved."
+        },
+        "phrase_model": {
+          "rule": "Resolved."
+        },
+        "rhythm_groove_model": {
+          "rule": "Resolved; no default."
+        },
+        "transition_model": {
+          "rule": "Explicit component handoffs/morphs."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "articulation inherited/resolved",
+        "continuous_performance_control": "continuous controls inherited/resolved",
+        "dynamic_behavior": "dynamic behavior inherited/resolved",
+        "interaction_rules": [
+          "No unspecified defaults.",
+          "Conflicts must be resolved before composition."
+        ],
+        "timing_humanization_behavior": "timing behavior inherited/resolved"
+      },
+      "production": {
+        "mix_prominence_intent": "mix hierarchy explicitly assigned",
+        "production_mastering_intent": "mastering follows resolved hybrid intent",
+        "sound_effects_intent": "effects inherited/resolved",
+        "spatial_presentation": {
+          "status": "USER_COMPONENT_MAP"
+        }
+      },
+      "profile_id": "CUSTOM_HYBRID_V2",
+      "research_status": "V3_UPDATED__USER_COMPONENT_RESOLVER",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "No generation from Custom Hybrid label alone.",
+        "status": "USER_COMPONENTS_REQUIRED"
+      }
+    },
+    "Custom Style": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Custom Style",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "cadence_ending_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "development_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "form_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "harmony_model": {
+          "authority": "USER_DEFINED_REQUIRED"
+        },
+        "melody_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "percussion_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "phrase_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "rhythm_groove_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "transition_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        }
+      },
+      "performance": {
+        "articulation_behavior": "user-defined",
+        "continuous_performance_control": "user-defined",
+        "dynamic_behavior": "user-defined",
+        "interaction_rules": [
+          "Must be supplied by valid custom definition."
+        ],
+        "timing_humanization_behavior": "user-defined"
+      },
+      "production": {
+        "mix_prominence_intent": "user-defined",
+        "production_mastering_intent": "user-defined",
+        "sound_effects_intent": "user-defined",
+        "spatial_presentation": {
+          "status": "USER_DEFINED_REQUIRED"
+        }
+      },
+      "profile_id": "CUSTOM_STYLE_V2",
+      "research_status": "V3_UPDATED__USER_DEFINED_CONTAINER",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "Custom Style label alone cannot compose.",
+        "status": "USER_DEFINITION_REQUIRED"
+      }
+    },
+    "DISCO": {
+      "family": "Dance",
+      "genre_name": "DISCO",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Syncopated melodic bass is a primary hook/foundation layer, not merely sub support."
+        },
+        "cadence_ending_model": {
+          "rule": "Dance fade, final hits, tags or arranged ending by variant."
+        },
+        "development_model": {
+          "rule": "Develop through orchestral-color entries, bass variation, guitar rhythm, breaks and hook recurrence."
+        },
+        "form_model": {
+          "rule": "Verse/chorus plus dance breaks/instrumental sections with extended groove passages."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_DISCO_VARIANT",
+          "rule": "Tonal pop/funk harmony with repeating progressions and extended colors."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead hook remains clear over active rhythm section and orchestral colors."
+        },
+        "percussion_model": {
+          "rule": "Kick, snare/clap, hats and fills sustain dance drive; percussion may augment band groove."
+        },
+        "phrase_model": {
+          "rule": "Bass/guitar/string/horn hooks occupy complementary rhythmic and register lanes."
+        },
+        "rhythm_groove_model": {
+          "rule": "Four-on-floor, offbeat/open hats, backbeat and guitar/percussion subdivision interlock."
+        },
+        "transition_model": {
+          "rule": "Breaks, string/horn lifts, fills and dance-section changes."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "short guitar chanks, crisp hats, sustained strings, horn stabs",
+        "continuous_performance_control": "velocity/expression plus filter/FX where electronic target used",
+        "dynamic_behavior": "steady dance energy with breakdown/rebuild contrast",
+        "interaction_rules": [
+          "Dance pulse remains stable.",
+          "Bass/guitar/drums interlock.",
+          "Orchestral colors support hook/peaks."
+        ],
+        "timing_humanization_behavior": "tight dance grid with controlled human groove"
+      },
+      "production": {
+        "mix_prominence_intent": "bass/kick prominent, strings/horns wide, melody clear",
+        "production_mastering_intent": "bright/punchy dance master with controlled low end",
+        "sound_effects_intent": "room/plate/chorus and dance production effects",
+        "spatial_presentation": {
+          "rule": "Focused rhythm center with wider strings/horns and clear lead.",
+          "status": "ERA_VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "DISCO_V1",
+      "research_status": "V3_UPDATED__ERA_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Classic 1970s band/orchestral disco",
+          "Minimal/funk-forward disco",
+          "Hi-NRG-adjacent disco",
+          "Studio/orchestrated disco"
+        ],
+        "hard_rule": "Current Beatport Nu Disco/Disco is a modern marketplace category and must not silently replace classic Disco grammar.",
+        "parent_family": "Disco",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Dixieland": {
+      "family": "Jazz",
+      "genre_name": "Dixieland",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass/tuba role may use two-beat roots/fifths or four-beat motion by formation/section."
+        },
+        "cadence_ending_model": {
+          "rule": "Traditional tags, breaks, ensemble stops or arranged endings by variant."
+        },
+        "development_model": {
+          "rule": "Develop through strain changes, collective/solo alternation, breaks and front-line interaction."
+        },
+        "form_model": {
+          "rule": "Multiple strains, breaks, ensemble returns and solo/collective passages; variant-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TRADITIONAL_JAZZ_VARIANT",
+          "rule": "Functional/blues/ragtime-related harmony with dominant motion and turnarounds."
+        },
+        "melody_model": {
+          "rule": "Cornet/trumpet lead, clarinet obbligato/counterline and trombone counter-support remain simultaneous but functionally differentiated."
+        },
+        "percussion_model": {
+          "rule": "Period-appropriate snare/bass drum/cymbal behavior; energetic but style-specific."
+        },
+        "phrase_model": {
+          "rule": "Collective front-line counterpoint remains readable through role separation and register."
+        },
+        "rhythm_groove_model": {
+          "rule": "Two-beat or four-beat early-jazz pulse with collective lift; no modern rock backbeat."
+        },
+        "transition_model": {
+          "rule": "Breaks, stop-time, pickups and ensemble cues rather than generic fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "brisk tonguing, gliss/falls where supported, crisp rhythm accompaniment",
+        "continuous_performance_control": "articulation and breath controls",
+        "dynamic_behavior": "lively accents and collective builds",
+        "interaction_rules": [
+          "Front-line parts remain differentiated.",
+          "Collective lift is shared.",
+          "Breaks/stop-time are coordinated."
+        ],
+        "timing_humanization_behavior": "ensemble push tied to two-beat/four-beat pulse"
+      },
+      "production": {
+        "mix_prominence_intent": "front line clear with rhythm foundation supportive",
+        "production_mastering_intent": "preserve acoustic transient character",
+        "sound_effects_intent": "small-room/live-band character; avoid heavy modern processing",
+        "spatial_presentation": {
+          "rule": "Front line must be spatially separable; rhythm section cohesive behind/under it.",
+          "status": "FORMATION_DEPENDENT"
+        }
+      },
+      "profile_id": "DIXIELAND_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "New Orleans/traditional small ensemble",
+          "Chicago/Dixieland small ensemble",
+          "Revival-style ensemble"
+        ],
+        "parent_family": "Early/Traditional Jazz",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Downtempo": {
+      "family": "Electronic",
+      "genre_name": "Downtempo",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Warm sub/electric bass leaves space around kick and lead."
+        },
+        "cadence_ending_model": {
+          "rule": "Fade, deconstruction, soft stop or song ending by subgenre."
+        },
+        "development_model": {
+          "rule": "Develop through texture, drum/bass states, harmony, sample/lead recurrence and spatial change."
+        },
+        "form_model": {
+          "rule": "Loop-evolving sectional or verse/chorus hybrid; subgenre controls density and vocal/lead structure."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_DOWNTEMPO_VARIANT",
+          "rule": "Tonal/modal loops, extended chords or sparse fields."
+        },
+        "melody_model": {
+          "rule": "Lead/sample/guitar/textural hooks remain spacious."
+        },
+        "percussion_model": {
+          "rule": "Electronic/acoustic hybrid drums with softer transient profile unless subgenre says otherwise."
+        },
+        "phrase_model": {
+          "rule": "Pocket and atmosphere define phrase; repetition evolves through texture and timing."
+        },
+        "rhythm_groove_model": {
+          "rule": "Laid-back electronic/breakbeat pulse with restrained tempo; groove type resolves by subgenre."
+        },
+        "transition_model": {
+          "rule": "Layer subtraction, filtering, samples, fills and ambience changes."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "softened drum attacks, sustained textures, selective accents",
+        "continuous_performance_control": "filter/expression/FX automation",
+        "dynamic_behavior": "moderate dynamics with gradual automation",
+        "interaction_rules": [
+          "Laid-back timing is shared.",
+          "Hybrid drums and live parts coexist in one pocket.",
+          "Negative space is preserved."
+        ],
+        "timing_humanization_behavior": "laid-back placement with controlled swing/microtiming"
+      },
+      "production": {
+        "mix_prominence_intent": "low end warm, lead/textures spacious",
+        "production_mastering_intent": "smooth master with preserved groove dynamics",
+        "sound_effects_intent": "reverb/delay/saturation texture common as controlled options",
+        "spatial_presentation": {
+          "rule": "Warm focused low end with broad/deep atmosphere.",
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "DOWNTEMPO_V1",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Electronic downtempo",
+          "Organic downtempo",
+          "Chillout",
+          "Beat-driven downtempo",
+          "Song-oriented downtempo"
+        ],
+        "parent_family": "Downtempo",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Eclectic New Indie": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Eclectic New Indie",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Electric/acoustic/programmed sub selected by component; no default palette."
+        },
+        "cadence_ending_model": {
+          "rule": "Scene-dependent stop/fade/beat deconstruction/acoustic ending."
+        },
+        "development_model": {
+          "rule": "Develop through component emphasis, texture, hook recurrence and live/programmed contrast."
+        },
+        "form_model": {
+          "rule": "Short scene-driven verse/chorus or through-composed forms; component emphasis can change by section."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SCENE_COMPONENT_MAP",
+          "rule": "Indie/alt-rock/R&B/plugg-adjacent harmonic language may coexist only through explicit section/component assignment."
+        },
+        "melody_model": {
+          "rule": "Lead intimacy is central; vocal/lead/guitar/synth hooks compete for foreground only through explicit handoffs."
+        },
+        "percussion_model": {
+          "rule": "Live, drum-machine or hybrid behavior must be explicitly selected and may change by section."
+        },
+        "phrase_model": {
+          "rule": "Raw/acoustic and programmed sections can contrast while retaining recognizable thematic identity."
+        },
+        "rhythm_groove_model": {
+          "rule": "Live indie/rock/folk pulse and programmed hip-hop/jerk-derived behavior can coexist, but timing system must be resolved per section."
+        },
+        "transition_model": {
+          "rule": "Component handoffs, beat switches, raw-to-electronic contrast and texture edits are scene-appropriate tools."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "raw guitar/vocal-like articulation, lo-fi textures, programmed transients as selected",
+        "continuous_performance_control": "expression plus lo-fi/FX automation",
+        "dynamic_behavior": "intimate-to-explosive section contrast",
+        "interaction_rules": [
+          "Hybrid timing is section-aware.",
+          "Rawness is not random sloppiness.",
+          "Programmed precision cannot erase live-feel component when selected."
+        ],
+        "timing_humanization_behavior": "human/live timing or programmed grid chosen by component, not averaged blindly"
+      },
+      "production": {
+        "mix_prominence_intent": "lead intimacy prioritized; production artifacts are supporting identity",
+        "production_mastering_intent": "avoid over-polishing away DIY dynamics",
+        "sound_effects_intent": "chorus, distortion, saturation, digital artifacts and room tone may be deliberate",
+        "spatial_presentation": {
+          "status": "SCENE_COMPONENT_DEPENDENT"
+        }
+      },
+      "profile_id": "ECLECTIC_NEW_INDIE_V2",
+      "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Guitar/pop-punk-forward",
+          "Bedroom-acoustic-forward",
+          "Jerk/hip-hop-influenced",
+          "Electronic/indie hybrid",
+          "Balanced eclectic"
+        ],
+        "hard_rule": "Do not hard-code one permanent grammar; scene definition must be periodically revalidated.",
+        "parent_family": "Eclectic New Indie",
+        "status": "SCENE_COMPONENT_MAP_REQUIRED"
+      }
+    },
+    "Experimental Electronic": {
+      "family": "Electronic",
+      "genre_name": "Experimental Electronic",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass role must be declared as absent/tonal/textural/rhythmic/sub-field."
+        },
+        "cadence_ending_model": {
+          "rule": "Ending condition declared by component contract: resolution, process exhaustion, stop, fade, dissipation or other explicit rule."
+        },
+        "development_model": {
+          "rule": "Development follows transformation graph and parameter changes, not unbounded randomness."
+        },
+        "form_model": {
+          "rule": "Component/state graph with explicit transformation rules; through-composed by default but sections allowed when declared."
+        },
+        "harmony_model": {
+          "authority": "DECLARED_COMPONENT_CONTRACT",
+          "rule": "Tonal/modal/atonal/spectral/drone/process systems permitted only when explicitly selected."
+        },
+        "melody_model": {
+          "rule": "Melody may be absent, generated, fragmented or conventional according to component map."
+        },
+        "percussion_model": {
+          "rule": "Conventional/electronic/found-sound/absent percussion must be explicitly declared."
+        },
+        "phrase_model": {
+          "rule": "Phrase/grouping definition comes from component map."
+        },
+        "rhythm_groove_model": {
+          "rule": "Pulse/free-time/additive/algorithmic timing must be explicitly declared; randomness cannot replace design."
+        },
+        "transition_model": {
+          "rule": "Transformation edges between component states must be declared or rule-generated under constraints."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "articulation derived from chosen resources/processes",
+        "continuous_performance_control": "automation/process control is first-class",
+        "dynamic_behavior": "dynamic behavior declared per section/process",
+        "interaction_rules": [
+          "No generic randomization.",
+          "All stochastic behavior must be bounded by declared constraints.",
+          "Conflicting components require explicit resolution."
+        ],
+        "timing_humanization_behavior": "timing transformation must be intentional and reproducible"
+      },
+      "production": {
+        "mix_prominence_intent": "mix hierarchy explicitly declared rather than assumed",
+        "production_mastering_intent": "mastering preserves intended extremes without clipping",
+        "sound_effects_intent": "effects may be compositional processes, with parameters traceable",
+        "spatial_presentation": {
+          "rule": "Spatial hierarchy/movement is part of composition contract when used.",
+          "status": "DECLARED_COMPONENT_AUTHORITY"
+        }
+      },
+      "profile_id": "EXPERIMENTAL_ELECTRONIC_V1",
+      "research_status": "V3_UPDATED__COMPONENT_CONTRACT_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Algorithmic/constraint-based",
+          "Glitch/process-based",
+          "Electro-acoustic",
+          "Noise/textural",
+          "Experimental beat-based",
+          "Spectral/drone electronic"
+        ],
+        "hard_rule": "Variant label alone is insufficient; explicit component map is mandatory.",
+        "parent_family": "Experimental Electronic",
+        "status": "COMPONENT_MAP_REQUIRED"
+      }
+    },
+    "Funk": {
+      "family": "R&B",
+      "genre_name": "Funk",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Highly syncopated electric bass with ghost/rest space; strong kick relationship without full duplication."
+        },
+        "cadence_ending_model": {
+          "rule": "Vamp cuts, ensemble hits, breakdowns or fades by variant."
+        },
+        "development_model": {
+          "rule": "Develop by subtraction/addition, rhythmic-slot redistribution, bass/guitar variation, horn entries and break structure."
+        },
+        "form_model": {
+          "rule": "Vamps, breaks, riff sections, horn hits and density changes; long harmonic forms are optional."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_FUNK_VARIANT",
+          "rule": "Static/vamp-based dominant/minor-seventh and other variant colors; groove outranks unnecessary chord churn."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/horn/riff material occupies explicit slots in the groove."
+        },
+        "percussion_model": {
+          "rule": "Tight kick/snare/hats with ghost notes and fills that preserve pocket; human timing can derive from GMD."
+        },
+        "phrase_model": {
+          "rule": "Riffs and responses are rhythmically concise; silence/rest is structural."
+        },
+        "rhythm_groove_model": {
+          "rule": "Sixteenth-note interlock with strong one and intentional rests; each instrument owns different subdivisions."
+        },
+        "transition_model": {
+          "rule": "Breaks, one-beat stops, drum setups, bass/guitar pickups and horn hits preserve pocket."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "short guitar attacks, bass accents, horn stabs, tight drum articulation",
+        "continuous_performance_control": "velocity/articulation and filter/modulation where target resources support them",
+        "dynamic_behavior": "sharp accents and dynamic drops/breaks",
+        "interaction_rules": [
+          "Microtiming is relational.",
+          "Ghost notes and rests are intentional.",
+          "Instrument slots interlock.",
+          "Funk drum fills must preserve pocket identity and return to the one coherently.",
+          "Guitar comping and guitar solo states require different rhythmic-slot behavior."
+        ],
+        "timing_humanization_behavior": "microtiming shared by pocket; often slightly laid-back subdivisions without random drift"
+      },
+      "production": {
+        "mix_prominence_intent": "bass and kick prominent; guitar/keys occupy separate rhythmic slots",
+        "production_mastering_intent": "punchy, dry-to-warm master; preserve transient contrast",
+        "sound_effects_intent": "dry/tight core with selective wah/filter/room effects",
+        "spatial_presentation": {
+          "rule": "Keep bass/kick focused; spread guitar/keys/horns enough to reveal interlock.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "FUNK_V1",
+      "research_status": "V3_UPDATED__GMD_GUITARSET_AND_JAMENDO_REFERENCES_ADDED__QUANT_TIMING_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Classic band funk",
+          "Horn funk",
+          "P-Funk-related",
+          "Jazz-funk",
+          "Minimalist groove funk",          "Modern funk"
+        ],
+        "parent_family": "Funk",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Garage-related": {
+      "family": "Electronic",
+      "genre_name": "Garage-related",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Sub/bassline syncopates with sparse kick; slides/movement only when variant supports them."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, fade, final bass/drum stop or song ending."
+        },
+        "development_model": {
+          "rule": "Develop through kick-pattern variation, bass movement, chord/sample activation and breakdowns."
+        },
+        "form_model": {
+          "rule": "Intro/main/break/return or song-hybrid dance structure; subgenre-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_GARAGE_SUBGENRE",
+          "rule": "House/R&B-influenced loops/stabs with subgenre-specific voicing."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/sample roles use syncopated windows around drums and bass."
+        },
+        "percussion_model": {
+          "rule": "Shuffled hats, claps/snares, ghost percussion and syncopated kicks; subdivision is structural."
+        },
+        "phrase_model": {
+          "rule": "Vocal chops/leads and chord stabs occupy gaps in the shuffled grid."
+        },
+        "rhythm_groove_model": {
+          "rule": "Shuffled/syncopated grid with explicit kick-pattern state; 2-step and speed-garage behavior differ."
+        },
+        "transition_model": {
+          "rule": "Drum drops, bass switches, vocal chops, fills and FX by subgenre."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "short stabs, chopped lead articulation, tight percussion",
+        "continuous_performance_control": "filter/level/pitch-envelope automation",
+        "dynamic_behavior": "energy lifts by percussion/bass density and vocal/lead entries",
+        "interaction_rules": [
+          "Shuffle grid is shared.",
+          "Kick/bass relationship adapts to 2-step/full-step state.",
+          "Ghost percussion fills gaps."
+        ],
+        "timing_humanization_behavior": "shuffle microtiming is structural and shared"
+      },
+      "production": {
+        "mix_prominence_intent": "sub and snare/clap clear; chords/lead do not mask them",
+        "production_mastering_intent": "tight dance master with controlled sub",
+        "sound_effects_intent": "reverb/delay/chop and bass processing as controlled tools",
+        "spatial_presentation": {
+          "rule": "Focused sub/snare with wider chords/vocals/FX.",
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "GARAGE_RELATED_V1",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "UK Garage",
+          "2-Step",
+          "Speed Garage",
+          "Bassline"
+        ],
+        "hard_rule": "Do not use continuous four-on-floor unless selected subgenre requires it.",
+        "parent_family": "Garage-related",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Genre-Breaking / Borderless": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Genre-Breaking / Borderless",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Assigned per state/component."
+        },
+        "cadence_ending_model": {
+          "rule": "Ending authority explicitly assigned."
+        },
+        "development_model": {
+          "rule": "Develop through controlled component graph, not accumulation."
+        },
+        "form_model": {
+          "rule": "Section/state graph with explicit source ownership and morph transitions."
+        },
+        "harmony_model": {
+          "authority": "COMPONENT_GRAPH"
+        },
+        "melody_model": {
+          "rule": "Each melodic state names its source grammar or explicit transformation."
+        },
+        "percussion_model": {
+          "rule": "Assigned per state/component."
+        },
+        "phrase_model": {
+          "rule": "Inherited or explicitly transformed."
+        },
+        "rhythm_groove_model": {
+          "rule": "No fixed groove; imported rhythms retain source identity until explicitly transformed."
+        },
+        "transition_model": {
+          "rule": "Morph edges declare what changes and what remains invariant."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "articulation changes follow selected style/instrument",
+        "continuous_performance_control": "automation may mediate cross-style transitions",
+        "dynamic_behavior": "dynamic transitions coordinate style changes",
+        "interaction_rules": [
+          "Maximum active authorities enforced.",
+          "Source timing/performance rules stay traceable.",
+          "Conflicts cannot fall back to generic generator."
+        ],
+        "timing_humanization_behavior": "timing transformations are explicit, not random"
+      },
+      "production": {
+        "mix_prominence_intent": "mix hierarchy can shift by section with traceability",
+        "production_mastering_intent": "mastering preserves intentional contrasts",
+        "sound_effects_intent": "effects support transitions but do not define genre by themselves",
+        "spatial_presentation": {
+          "status": "COMPONENT_GRAPH_AUTHORITY"
+        }
+      },
+      "profile_id": "BORDERLESS_V2",
+      "research_status": "V3_UPDATED__CONTROLLED_COMPONENT_ARCHITECTURE",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "Borderless is an architecture, not permission to blend everything.",
+        "status": "MANDATORY_COMPONENT_GRAPH"
+      }
+    },
+    "House": {
+      "family": "Electronic",
+      "genre_name": "House",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Sub/synth bass interlocks with kick using section-aware rhythmic/sidechain states rather than constant overlap."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, fade, final drop/stop or song ending according to resolved use case."
+        },
+        "development_model": {
+          "rule": "Develop by timbre, automation, layer density, bass/drum variation, hook recurrence and breakdown/return."
+        },
+        "form_model": {
+          "rule": "DJ/track-oriented intro-build-main-break-return-outro or song-hybrid structure; subgenre controls phrase lengths and peak density."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_HOUSE_SUBGENRE",
+          "rule": "Loop-based tonal/modal/stab/pad vocabulary selected by subgenre; timbre may carry development."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal/sample/synth hooks use explicit windows; not every House track requires a melodic foreground."
+        },
+        "percussion_model": {
+          "rule": "Kick/clap/snare/hats/percussion layers evolve by section; fills/risers are transition tools, not random decoration."
+        },
+        "phrase_model": {
+          "rule": "Loop identity develops through layer activation, microvariation and automation."
+        },
+        "rhythm_groove_model": {
+          "rule": "Four-on-floor baseline only for subgenres that require it; swing, percussion and offbeat relationships resolve by subgenre."
+        },
+        "transition_model": {
+          "rule": "Risers, filter/automation, drum subtraction/addition and fills mark transitions; exact devices are subgenre-specific."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "short percussive stabs, sustained pads, programmed drum articulations",
+        "continuous_performance_control": "filter, envelope, modulation, sidechain and level automation central",
+        "dynamic_behavior": "long-form automation and section lifts rather than random note dynamics",
+        "interaction_rules": [
+          "Grid coherence with subgenre-specific swing/humanization.",
+          "Layer activation follows form.",
+          "Kick/bass relationship is stateful."
+        ],
+        "timing_humanization_behavior": "quantized core with controlled swing/microtiming where profile calls for it"
+      },
+      "production": {
+        "mix_prominence_intent": "kick/sub relationship protected; lead/pads occupy separate frequency/space",
+        "production_mastering_intent": "club-capable low end with controlled transients and headroom",
+        "sound_effects_intent": "delay/reverb/filter/drive/sidechain are production tools, not decorations",
+        "spatial_presentation": {
+          "rule": "Low end focused; pads/FX/perc can widen; lead/hook placement follows production style.",
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "HOUSE_V1",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "House core",
+          "Acid house",
+          "Soulful house",
+          "Latin house",
+          "Deep house",
+          "Funky house",
+          "Progressive house",
+          "Tech house",
+          "Minimal/deep-tech-adjacent"
+        ],
+        "parent_family": "House",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Jazz Ballad": {
+      "family": "Jazz",
+      "genre_name": "Jazz Ballad",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Sparse roots/tenths/melodic motion or walking fragments; avoid continuous density unless section requires it."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, ritardandi, held cadences, rubato endings or arranged resolutions by variant."
+        },
+        "development_model": {
+          "rule": "Develop by reharmonization where appropriate, register, solo exchange, texture and dynamic contour."
+        },
+        "form_model": {
+          "rule": "ABA/AABA/through-composed or song forms with gradual arc; variant controls intro/interlude/solo/ending."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_JAZZ_BALLAD_VARIANT",
+          "rule": "Extended harmony with slow harmonic rhythm, substitutions and altered dominants as expressive options, not obligations."
+        },
+        "melody_model": {
+          "rule": "Lead phrasing and breath govern accompaniment density and harmonic pacing."
+        },
+        "percussion_model": {
+          "rule": "Brushes/light kit/cymbal swells are selective; silence is valid."
+        },
+        "phrase_model": {
+          "rule": "Long breath-shaped phrases with accompaniment yielding at exposed line endings."
+        },
+        "rhythm_groove_model": {
+          "rule": "Can move among rubato, slow swing and straight ballad states; transitions between states must be explicit and shared."
+        },
+        "transition_model": {
+          "rule": "Use rubato, harmonic anticipation, cymbal/brush setup or sparse fills; no generic transition fill."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato, breathy/soft attacks, restrained accents",
+        "continuous_performance_control": "expression and tempo curves are essential",
+        "dynamic_behavior": "wide soft-to-medium range with intimate swells",
+        "interaction_rules": [
+          "Rubato is shared, not instrument-by-instrument random drift.",
+          "Comping responds to phrase breath.",
+          "Fills are sparse and conversational."
+        ],
+        "timing_humanization_behavior": "shared rubato and laid-back placement tied to phrase"
+      },
+      "production": {
+        "mix_prominence_intent": "lead intimate and forward; accompaniment soft and uncluttered",
+        "production_mastering_intent": "warm, dynamic, low-harshness master",
+        "sound_effects_intent": "warm room/reverb; delay only when stylistically chosen",
+        "spatial_presentation": {
+          "rule": "Intimate lead-forward depth with uncluttered accompaniment.",
+          "status": "FORMATION_DEPENDENT"
+        }
+      },
+      "profile_id": "JAZZ_BALLAD_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Piano-trio ballad",
+          "Horn-led ballad",
+          "Vocal ballad",
+          "Guitar-led ballad",
+          "Chamber/orchestrated jazz ballad"
+        ],
+        "parent_family": "Jazz Ballad",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Jazz Fusion": {
+      "family": "Jazz",
+      "genre_name": "Jazz Fusion",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Electric bass can be syncopated, melodic, slapped, picked or pedal-based by variant/section."
+        },
+        "cadence_ending_model": {
+          "rule": "Riff tags, ensemble hits, vamp fades or composed endings according to variant."
+        },
+        "development_model": {
+          "rule": "Develop through riff transformation, solo development, meter, timbre, harmony and density."
+        },
+        "form_model": {
+          "rule": "Riff sections, solos, breakdowns, metric/harmonic developments and climactic returns; variant-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_FUSION_VARIANT",
+          "rule": "Extended/modal jazz harmony may combine with vamps, pedals and rock/funk harmony; no generic jazz substitution set."
+        },
+        "melody_model": {
+          "rule": "Solo/lead may float over dense groove but must remain rhythmically/harmonically integrated."
+        },
+        "percussion_model": {
+          "rule": "Dense technically active kit allowed, but fills/meter shifts must preserve groove continuity."
+        },
+        "phrase_model": {
+          "rule": "Riff and solo phrasing can cross meters/sections while maintaining grouping cues."
+        },
+        "rhythm_groove_model": {
+          "rule": "Straight or swung syncopation, funk/rock precision and odd-meter grouping as explicitly resolved; meter changes require grouping logic."
+        },
+        "transition_model": {
+          "rule": "Metric setups, fills, riff breaks, synth/guitar transitions and harmonic pivots are variant-specific."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "clean/fused articulation: legato leads, accented riffs, guitar sustain, crisp drums",
+        "continuous_performance_control": "expression, modulation, pitch bend and target-specific effects may be prominent",
+        "dynamic_behavior": "broad dynamic range from atmospheric openings to high-energy sections",
+        "interaction_rules": [
+          "Rhythm section interlocks tightly.",
+          "Odd-meter accents are shared.",
+          "Solo space and dense groove are negotiated dynamically."
+        ],
+        "timing_humanization_behavior": "humanized within tight pocket; odd-meter groupings remain stable"
+      },
+      "production": {
+        "mix_prominence_intent": "bass/drums strong but melodic lead remains intelligible",
+        "production_mastering_intent": "modern full-range master with controlled density",
+        "sound_effects_intent": "delay/chorus/drive/synth effects allowed as controlled style components",
+        "spatial_presentation": {
+          "rule": "Electric ensemble width/depth must preserve lead clarity and low-end focus.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "JAZZ_FUSION_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Jazz-rock fusion",
+          "Funk-fusion",
+          "Electric/modal fusion",
+          "Latin fusion",
+          "Modern progressive fusion"
+        ],
+        "parent_family": "Jazz Fusion",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Jazz Waltz": {
+      "family": "Jazz",
+      "genre_name": "Jazz Waltz",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Walking-in-3, roots/fifths or melodic bass depending section/variant."
+        },
+        "cadence_ending_model": {
+          "rule": "Jazz tags, held endings, turnarounds or arranged hits in 3/4."
+        },
+        "development_model": {
+          "rule": "Develop by accent redistribution, solo/background exchange, comping variation and harmonic motion."
+        },
+        "form_model": {
+          "rule": "Head/solo/return, ABA/AABA-like or through-composed 3/4 forms; intros/endings may be arranged."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_JAZZ_WALTZ_VARIANT",
+          "rule": "Extended/modal/functional jazz harmony according to variant; cadence not mandatory."
+        },
+        "melody_model": {
+          "rule": "Lead phrases exploit 3-beat grouping, cross-accent and breath without collapsing into a ballroom waltz pattern."
+        },
+        "percussion_model": {
+          "rule": "Ride/brush patterns adapt to 3/4 with interactive fills and accents."
+        },
+        "phrase_model": {
+          "rule": "3/4 phrasing may span barlines and use hemiola/cross-accent where variant supports it."
+        },
+        "rhythm_groove_model": {
+          "rule": "3/4 jazz pulse with tempo-dependent swing/straight subdivision and elastic accents; no automatic beat-1 bass/2-3 chord template."
+        },
+        "transition_model": {
+          "rule": "Use 3/4-specific fills, turnarounds and textural changes."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato horn phrasing, responsive comping, brush/stick variation",
+        "continuous_performance_control": "expression and tempo breathing",
+        "dynamic_behavior": "phrase arcs with dynamic lift into phrase 3 or 4",
+        "interaction_rules": [
+          "Shared 3/4 pocket.",
+          "Accent variation is coordinated.",
+          "Fills do not reset groove identity."
+        ],
+        "timing_humanization_behavior": "subtle swing placement and phrase rubato"
+      },
+      "production": {
+        "mix_prominence_intent": "bass and cymbal pulse clear without dominating melody",
+        "production_mastering_intent": "dynamic master with controlled cymbal brightness",
+        "sound_effects_intent": "natural room/reverb",
+        "spatial_presentation": {
+          "status": "FORMATION_DEPENDENT"
+        }
+      },
+      "profile_id": "JAZZ_WALTZ_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Small-combo jazz waltz",
+          "Piano-trio jazz waltz",
+          "Horn-led jazz waltz",
+          "Modern/modal jazz waltz"
+        ],
+        "parent_family": "Jazz Waltz",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Mambo": {
+      "family": "Latin",
+      "genre_name": "Mambo",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Syncopated tumbao-role bass coordinates with percussion but retains independent motion."
+        },
+        "cadence_ending_model": {
+          "rule": "Arranged ensemble hits, breaks, tags or climactic endings appropriate to variant."
+        },
+        "development_model": {
+          "rule": "Develop via riff transformation, section exchange, solo/background contrast and density changes."
+        },
+        "form_model": {
+          "rule": "Riff sections, breaks, solo features, background figures and ensemble returns; variant determines sequence and density."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_MAMBO_VARIANT",
+          "rule": "Harmony/voicing supports Afro-Cuban/Latin-jazz variant while rhythmic organization remains primary."
+        },
+        "melody_model": {
+          "rule": "Lead/solo material alternates with brass/sax figures; ensemble hits are not continuous foreground."
+        },
+        "percussion_model": {
+          "rule": "Maracas, bongos, congas and timbales retain independent functions; drum kit, when present, does not replace them."
+        },
+        "phrase_model": {
+          "rule": "Horn riffs, breaks and responses are tightly articulated around rhythmic orientation."
+        },
+        "rhythm_groove_model": {
+          "rule": "Clave-organized rhythmic system shared by piano, bass, percussion and horns."
+        },
+        "transition_model": {
+          "rule": "Percussion setups, breaks and horn figures drive transitions."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "tight horn stabs, percussive piano and crisp percussion attacks",
+        "continuous_performance_control": "horn expression/articulation and percussion velocity controls",
+        "dynamic_behavior": "high-energy accents and sudden breaks",
+        "interaction_rules": [
+          "Horn sections articulate as units.",
+          "Percussion roles remain independent.",
+          "Lead/solo windows control background density."
+        ],
+        "timing_humanization_behavior": "collective groove timing; ensemble hits may anticipate beat intentionally"
+      },
+      "production": {
+        "mix_prominence_intent": "horns and percussion prominent while bass remains defined",
+        "production_mastering_intent": "punchy, lively master with controlled brass harshness",
+        "sound_effects_intent": "room/plate with high transient clarity",
+        "spatial_presentation": {
+          "rule": "Distinct horn/rhythm/percussion zones with solo localization and coherent low-end center."
+        }
+      },
+      "profile_id": "MAMBO_V1",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Afro-Cuban big-band mambo",
+          "Small-ensemble mambo",
+          "Latin-jazz mambo",
+          "Vocal-feature mambo"
+        ],
+        "parent_family": "Mambo",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Mexican Reggaeton": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Mexican Reggaeton",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "808/sub/synth bass follows resolved beat state with slides only when supported."
+        },
+        "cadence_ending_model": {
+          "rule": "Compact stop, loop deconstruction, beat-switch close or fade."
+        },
+        "development_model": {
+          "rule": "Develop through component switching, hook recurrence, sub/drum state and production texture."
+        },
+        "form_model": {
+          "rule": "Compact verse/hook/beat-switch or loop-evolving form with scene-specific production edits."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SCENE_COMPONENT_MAP",
+          "rule": "Loop-based minor/modal/tonal harmony; simplicity may leave room for rhythm and texture."
+        },
+        "melody_model": {
+          "rule": "Voice/lead or synth motif owns clear foreground over sub-heavy production."
+        },
+        "percussion_model": {
+          "rule": "Electronic percussion components are provenance-tagged as dembow/trap/plugg/jerk-derived."
+        },
+        "phrase_model": {
+          "rule": "Hooks, beat edits and sparse motifs define phrase identity."
+        },
+        "rhythm_groove_model": {
+          "rule": "Dembow-derived pulse may combine with trap/plugg/jerk only via explicit component state; no pan-Latin fallback."
+        },
+        "transition_model": {
+          "rule": "Beat switches, mutes, FX, bass state and texture edits are core tools."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "programmed transients, vocal-like lead articulation and sample chops",
+        "continuous_performance_control": "filter/pitch/envelope/level automation central",
+        "dynamic_behavior": "strong drops and hook lifts; dynamic contrast often production-driven",
+        "interaction_rules": [
+          "Beat components share one timing map per state.",
+          "Slides/edits are intentional, not generic effects."
+        ],
+        "timing_humanization_behavior": "grid-based with genre-component swing/jerk offsets when intentionally selected"
+      },
+      "production": {
+        "mix_prominence_intent": "sub/kick and lead/vocal-like role protected from masking",
+        "production_mastering_intent": "modern loud but unclipped master with sub control",
+        "sound_effects_intent": "distortion, reverb, delay, clipping-style texture only as controlled production choices",
+        "spatial_presentation": {
+          "rule": "Focused sub/lead with selective width for textures/alternative components.",
+          "status": "SCENE_COMPONENT_DEPENDENT"
+        }
+      },
+      "profile_id": "MEXICAN_REGGAETON_SCENE_V2",
+      "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Dembow-forward",
+          "Plugg-forward",
+          "Trap/alternative-forward",
+          "Jerk-influenced",
+          "Guitar/alternative hybrid"
+        ],
+        "hard_rule": "Do not treat Beatport Reggaeton, Dembow or Regional Mexican categories as interchangeable with this SoundCloud scene.",
+        "parent_family": "Mexican Reggaeton",
+        "status": "SCENE_COMPONENT_MAP_REQUIRED"
+      }
+    },
+    "Neo-Soul-related": {
+      "family": "R&B",
+      "genre_name": "Neo-Soul-related",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Melodic, pocket-first bass with intentional space and dialogue with kick/lead."
+        },
+        "cadence_ending_model": {
+          "rule": "Vamp endings, tags, fades or composed harmonic resolutions by variant."
+        },
+        "development_model": {
+          "rule": "Develop through harmonic voicing, bass variation, pocket density, guitar/keys exchange and dynamic contour."
+        },
+        "form_model": {
+          "rule": "Verse/chorus or through-composed forms with extended groove sections and harmonic/texture development."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_NEO_SOUL_VARIANT",
+          "rule": "Rich extensions, altered colors, chromatic voice leading and gospel/jazz influence; voicing motion is central."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal-like phrasing floats over deep pocket; accompaniment responds sparsely."
+        },
+        "percussion_model": {
+          "rule": "Live/hybrid drums with ghost notes and subtle dynamics; pocket over density."
+        },
+        "phrase_model": {
+          "rule": "Lead breath and pocket determine fill/comping density."
+        },
+        "rhythm_groove_model": {
+          "rule": "Laid-back groove may use deliberate inter-layer onset asynchrony while maintaining a coherent shared pulse. Microtiming is a relationship among drums, bass, guitar/keys and other layers, not independent random delay."
+        },
+        "transition_model": {
+          "rule": "Groove subtraction, voicing changes, fills and texture shifts rather than generic transitions."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "soft/rounded attacks, ghost notes, expressive lead articulation",
+        "continuous_performance_control": "expression, pedal and nuanced velocity response",
+        "dynamic_behavior": "subtle dynamic shading rather than constant loudness",
+        "interaction_rules": [
+          "Microtiming is relational.",
+          "Harmonic instruments voice sparsely.",
+          "Ghost notes/rests support pocket.",
+          "Neo-Soul microtiming is relational: layers may intentionally disagree at the micro level while agreeing on the macro pulse.",
+          "Beat placement can have a perceptual width/shape; the Composer must reason about coupled layer timing rather than a single rigid timestamp."
+        ],
+        "timing_humanization_behavior": "behind-beat and swung microtiming controlled at ensemble level"
+      },
+      "production": {
+        "mix_prominence_intent": "bass/lead clear, chords wide but not masking",
+        "production_mastering_intent": "warm, dynamic, low-fatigue master",
+        "sound_effects_intent": "warm saturation/room/chorus may support keys/guitar",
+        "spatial_presentation": {
+          "rule": "Warm low end, clear lead, wide but non-masking chords and natural/hybrid depth.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "NEO_SOUL_RELATED_V1",
+      "research_status": "V3_UPDATED__NEO_SOUL_RELATIONAL_MICROTIMING_AUTHORITY_ADDED__HARMONY_QUANT_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Live-band neo-soul",
+          "Keys-led neo-soul",
+          "Guitar-led neo-soul",
+          "Funk-influenced neo-soul",
+          "Contemporary hybrid neo-soul"
+        ],
+        "parent_family": "Neo-Soul-related",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "New Age": {
+      "family": "New Age",
+      "genre_name": "New Age",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Long-tone/pedal/gentle motion or absence; avoid rigid repetitive low-end templates."
+        },
+        "cadence_ending_model": {
+          "rule": "Resolution, fade, dissipation or open ending according to variant."
+        },
+        "development_model": {
+          "rule": "Develop by orchestration, register, motif transformation, texture and space rather than loop repetition."
+        },
+        "form_model": {
+          "rule": "Through-composed/ABA/journey-like development with variant-specific pacing and recurrence."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_NEW_AGE_VARIANT",
+          "rule": "Spacious tonal/modal/open harmony; dissonance/consonance and harmonic motion depend on variant rather than one relaxation formula."
+        },
+        "melody_model": {
+          "rule": "Long arcs, sparse motifs or solo-instrument foreground according to variant; silence can be structural."
+        },
+        "percussion_model": {
+          "rule": "Optional and usually light; subtype may authorize stronger rhythmic behavior."
+        },
+        "phrase_model": {
+          "rule": "Long breath/release arcs with gradual entrances/exits."
+        },
+        "rhythm_groove_model": {
+          "rule": "Pulse can be absent, flowing, arpeggiated or gently rhythmic; no compulsory backbeat."
+        },
+        "transition_model": {
+          "rule": "Texture, harmony, register, silence and ambience drive transitions."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato and sustained articulation favored, with soft attacks where the selected instrument supports them",
+        "continuous_performance_control": "continuous expression, pedal, attack/release and ambience controls when target supports them",
+        "dynamic_behavior": "long crescendos/diminuendos and section-scale breathing",
+        "interaction_rules": [
+          "Shared phrase breathing.",
+          "Continuous expression is compositional.",
+          "Silence and low density are valid."
+        ],
+        "timing_humanization_behavior": "phrase-level microtiming and tempo breathing; repetition must evolve"
+      },
+      "production": {
+        "mix_prominence_intent": "clear foreground/background depth with broad spatial field",
+        "production_mastering_intent": "smooth, open, low-harshness master; transient restraint unless subtype requires more activity",
+        "sound_effects_intent": "reverb/depth intentional; avoid washing out foreground definition",
+        "spatial_presentation": {
+          "rule": "Broad depth/width with protected foreground; ambience must not erase articulation.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "NEW_AGE_V2",
+      "research_status": "V3_UPDATED__SUBGENRE_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Contemporary instrumental",
+          "Piano/New Age",
+          "Guitar/New Age",
+          "Flute/New Age",
+          "Harp/New Age",
+          "Neo-Classical New Age",
+          "Progressive Electronic New Age",
+          "Ambient-leaning New Age",
+          "Environmental/Nature-oriented",
+          "Solo instrumental"
+        ],
+        "hard_rule": "New Age may overlap ambient or spiritual-use contexts, but must not silently resolve to Ambient Electronic or project-defined Spiritual.",
+        "parent_family": "New Age",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "PIANIST": {
+      "family": "Pianist",
+      "genre_name": "PIANIST",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Left-hand bass/arpeggio/chord support within piano unless variant explicitly adds secondary texture."
+        },
+        "cadence_ending_model": {
+          "rule": "Inherited harmony plus pianistic release/pedal/voicing."
+        },
+        "development_model": {
+          "rule": "Develop within one instrument through voicing, register, texture, motif and dynamics."
+        },
+        "form_model": {
+          "rule": "Inherited from resolved composition style and adapted to single-piano realization."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_PARENT_STYLE"
+        },
+        "melody_model": {
+          "rule": "Right/left/cross-hand roles coordinated as one performer."
+        },
+        "percussion_model": {
+          "rule": "Absent by default."
+        },
+        "phrase_model": {
+          "rule": "Single-performer phrase timing and pedaling remain coherent across voices."
+        },
+        "rhythm_groove_model": {
+          "rule": "Derived from resolved composition; no arranger backing."
+        },
+        "transition_model": {
+          "rule": "Pianistic register, voicing, rhythm, dynamics and pedal transitions."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato, staccato, accent, arpeggio and pedal behavior",
+        "continuous_performance_control": "velocity, sustain pedal, soft pedal/expression where supported",
+        "dynamic_behavior": "wide velocity and pedal-shaped dynamic range",
+        "interaction_rules": [
+          "Pedal/timing/dynamics shared across internal voices.",
+          "No accompaniment generator."
+        ],
+        "timing_humanization_behavior": "human timing follows phrase/rubato and hand coordination"
+      },
+      "production": {
+        "mix_prominence_intent": "piano foreground full-range; avoid unnecessary competing layers",
+        "production_mastering_intent": "preserve dynamic range and natural transients",
+        "sound_effects_intent": "room/reverb supports piano body without masking attack",
+        "spatial_presentation": {
+          "rule": "One coherent piano source with natural stereo/full-range presentation."
+        }
+      },
+      "profile_id": "PIANIST_SOLO_V1",
+      "research_status": "V3_UPDATED__INSTRUMENTAL_STYLE_CONTRACT",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Solo piano + Classical variant",
+          "Solo piano + Jazz variant",
+          "Solo piano + New Age variant",
+          "Solo piano + Pop/Rock song variant",
+          "User-defined solo piano"
+        ],
+        "hard_rule": "Pianist defines instrumentation/performance mode, not the harmonic genre by itself.",
+        "parent_family": "Pianist",
+        "status": "REQUIRED"
+      }
+    },
+    "ROCK": {
+      "family": "Rock",
+      "genre_name": "ROCK",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass locks with drums while retaining independent line shape, pickups and fills; root/fifth behavior is only one variant."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, stops, sustained hits, fades or composed endings by subgenre."
+        },
+        "development_model": {
+          "rule": "Develop through riff transformation, guitar texture, dynamics, register, harmony and section contrast."
+        },
+        "form_model": {
+          "rule": "Verse/chorus, through-composed, riff-based or progressive forms by subgenre; transitions and builds must be subgenre-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_ROCK_SUBGENRE",
+          "rule": "Power-chord, triadic, modal, blues-derived and extended vocabularies are selected by variant rather than mixed indiscriminately."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/guitar melody occupies explicit foreground windows; hooks and riffs can carry structural identity."
+        },
+        "percussion_model": {
+          "rule": "Kick/snare/hats/ride/toms/crashes follow subgenre and section intensity; human timing/fill behavior can be derived from groove data."
+        },
+        "phrase_model": {
+          "rule": "Riffs, vocal lines and lead fills share space; accompaniment does not answer every gap."
+        },
+        "rhythm_groove_model": {
+          "rule": "Backbeat/eighth/sixteenth feel, syncopation and subdivision are subgenre-specific; fills and pushes follow sections."
+        },
+        "transition_model": {
+          "rule": "Drum fills, guitar texture shifts, stops, pickups and harmonic/riff changes are variant-specific."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "guitar attacks, sustains, mutes, accents and slides follow role; drums use distinct backbeat/fill articulation",
+        "continuous_performance_control": "velocity + expression + note length + target articulation controls",
+        "dynamic_behavior": "firm but section-shaped; choruses may lift, breakdowns reduce density",
+        "interaction_rules": [
+          "Groove timing is relational.",
+          "Fills support section boundaries.",
+          "Guitar/bass/drums do not all fill the same subdivision.",
+          "Rock drum beat and fill states are distinct performance behaviors.",
+          "Rhythm guitar and lead guitar are role states with different phrase/density behavior, not duplicated copies."
+        ],
+        "timing_humanization_behavior": "shared groove offsets and phrase pushes; no independent random jitter"
+      },
+      "production": {
+        "mix_prominence_intent": "kick/bass/rhythm foundation clear; lead present selectively rather than constantly",
+        "production_mastering_intent": "punchy transients, controlled low-end, no automatic loudness flattening",
+        "sound_effects_intent": "amp/drive/reverb/delay are style resources, not mandatory; preserve bass clarity",
+        "spatial_presentation": {
+          "rule": "Width/distortion/room and guitar placement follow resolved production style.",
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "ROCK_CORE_V2",
+      "research_status": "V3_UPDATED__GMD_GUITARSET_AND_JAMENDO_REFERENCES_ADDED__SUBGENRE_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Classic rock",
+          "Hard rock",
+          "Soft rock",
+          "Alternative rock",
+          "Southern rock",
+          "Progressive rock",
+          "Punk-related rock",
+          "Blues rock",
+          "Singer-songwriter rock"
+        ],
+        "hard_rule": "Do not let broad Rock baseline stand in for a resolved subgenre when cues are available.",
+        "parent_family": "Rock",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Regional Electronic Hybrids": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Regional Electronic Hybrids",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass authority assigned explicitly; do not overwrite source low-end logic automatically."
+        },
+        "cadence_ending_model": {
+          "rule": "Assigned to source/electronic component or explicit hybrid rule."
+        },
+        "development_model": {
+          "rule": "Develop through sourced transformation and electronic production without tokenizing source material."
+        },
+        "form_model": {
+          "rule": "Source-tradition and electronic form are assigned by section/state, not automatically averaged."
+        },
+        "harmony_model": {
+          "authority": "DOCUMENTED_SOURCE_PLUS_ELECTRONIC_COMPONENT_MAP"
+        },
+        "melody_model": {
+          "rule": "Regional melodic systems remain source-specific; electronic transformation cannot rewrite them into generic Western melody."
+        },
+        "percussion_model": {
+          "rule": "Traditional/regional percussion identities remain canonical and sourced."
+        },
+        "phrase_model": {
+          "rule": "Phrase grammar follows active source contract."
+        },
+        "rhythm_groove_model": {
+          "rule": "Regional rhythmic identities retain provenance; electronic grid must adapt or hand off explicitly."
+        },
+        "transition_model": {
+          "rule": "Cross-system transitions require explicit transformation rules."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "articulation follows verified instruments and electronic resources",
+        "continuous_performance_control": "automation + performance controls from both component systems",
+        "dynamic_behavior": "dynamic behavior follows selected source/electronic profiles",
+        "interaction_rules": [
+          "No unsourced cultural signifiers.",
+          "Instrument identities and performance practices retain provenance.",
+          "Electronic quantization cannot silently erase source timing."
+        ],
+        "timing_humanization_behavior": "timing relationships reconciled intentionally"
+      },
+      "production": {
+        "mix_prominence_intent": "mix preserves source-specific detail",
+        "production_mastering_intent": "mastering avoids flattening acoustic/organic dynamics",
+        "sound_effects_intent": "effects may connect components but cannot erase provenance",
+        "spatial_presentation": {
+          "status": "SOURCE_AND_ELECTRONIC_COMPONENT_RESOLUTION"
+        }
+      },
+      "profile_id": "REGIONAL_ELECTRONIC_HYBRID_V2",
+      "research_status": "V3_UPDATED__PROVENANCE_RESOLVER",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "hard_rule": "No 'world' or regional placeholder may reach generation without a documented source tradition.",
+        "status": "MANDATORY_SOURCED_COMPONENTS"
+      }
+    },
+    "Rhythm and Blues": {
+      "family": "R&B",
+      "genre_name": "Rhythm and Blues",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Groove-oriented bass relates to kick but uses fills/approaches at phrase boundaries."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, turnarounds, stops, fades or arranged horn endings."
+        },
+        "development_model": {
+          "rule": "Develop via response density, groove variation, horn figures, bridge/section contrast and lead dynamics."
+        },
+        "form_model": {
+          "rule": "Verse/chorus, blues-derived or sectional song forms; era/variant determines breaks, horn sections and bridges."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_RNB_VARIANT",
+          "rule": "Blues/gospel-derived tonal harmony, dominant color and repeated progressions with controlled variation."
+        },
+        "melody_model": {
+          "rule": "Lead line and horn/guitar responses occupy alternating windows; responses avoid constant overlap."
+        },
+        "percussion_model": {
+          "rule": "Firm backbeat with variant-specific shuffle/straight details and human fill behavior."
+        },
+        "phrase_model": {
+          "rule": "Lead phrases create response gaps for horns/guitar/keys."
+        },
+        "rhythm_groove_model": {
+          "rule": "Straight, shuffle or triplet-derived backbeat pocket resolved by variant."
+        },
+        "transition_model": {
+          "rule": "Horn pickups, drum fills, stops and turnarounds are variant-specific."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "expressive bends/scoops, guitar accents and strong drum backbeat",
+        "continuous_performance_control": "expression and articulation curves for lead plus rhythm-section dynamics",
+        "dynamic_behavior": "medium-to-strong groove dynamics with chorus lift",
+        "interaction_rules": [
+          "Pocket is shared.",
+          "Responses answer rather than overlap.",
+          "Bass/drums coordinate fills at phrase boundaries."
+        ],
+        "timing_humanization_behavior": "pocket may sit slightly behind/around beat but remains ensemble-coherent"
+      },
+      "production": {
+        "mix_prominence_intent": "lead and bass clear; backbeat present but not crushing",
+        "production_mastering_intent": "warm/punchy master with dynamic vocal or lead space",
+        "sound_effects_intent": "warm amp/room/reverb; saturation optional",
+        "spatial_presentation": {
+          "status": "ERA_VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "RHYTHM_AND_BLUES_V1",
+      "research_status": "V3_UPDATED__DIRECT_RNB_INSTRUMENT_PRIOR_AND_VARIANT_TAXONOMY_ADDED__ERA_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Early/classic R&B",
+          "Horn-driven R&B",
+          "Blues-shuffle R&B",
+          "Modern band R&B",
+          "12/8 R&B ballad"
+        ],
+        "parent_family": "Rhythm and Blues",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Rumba": {
+      "family": "Latin",
+      "genre_name": "Rumba",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass may be absent, sparse or fusion-specific; never assumed."        },
+        "cadence_ending_model": {
+          "rule": "Substyle-specific stop, cue or cyclical closure; no generic pop cadence."
+        },
+        "development_model": {
+          "rule": "Develop through call/response variation, percussion interaction, density and improvisatory exchange."
+        },
+        "form_model": {
+          "rule": "Cyclical/sectional call-response form driven by percussion/vocal interaction; exact structure is substyle-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_RUMBA_SUBSTYLE",
+          "rule": "Do not impose functional chord motion where the selected rumba practice is primarily rhythmic/vocal."
+        },
+        "melody_model": {
+          "rule": "Lead/response roles follow substyle; voice-like call/response may be structurally primary."
+        },
+        "percussion_model": {
+          "rule": "Hand percussion roles must remain distinct; no generic Latin percussion bus at composition stage."
+        },
+        "phrase_model": {
+          "rule": "Phrasing emerges from calls, responses, cyclical groove and substyle-specific rhythmic cues."
+        },
+        "rhythm_groove_model": {
+          "rule": "Layered percussion and clave relationship are primary; parts interlock rather than merge into one pattern."
+        },
+        "transition_model": {
+          "rule": "Use rhythmic/vocal cues and density changes, not generic fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "distinct hand-drum strokes and vocal-like responses",
+        "continuous_performance_control": "percussion dynamics + lead expression",
+        "dynamic_behavior": "dynamic energy shaped by call-response and percussion density",
+        "interaction_rules": [
+          "Percussion parts interlock.",
+          "Call/response timing is shared.",
+          "No generic drum-kit substitution."
+        ],
+        "timing_humanization_behavior": "collective timing and groove; no mechanical quantization of all percussion"
+      },
+      "production": {
+        "mix_prominence_intent": "percussion detail foreground; other parts avoid masking it",
+        "production_mastering_intent": "preserve transient and hand-drum differentiation",
+        "sound_effects_intent": "natural/live spatial character",
+        "spatial_presentation": {
+          "rule": "Preserve distinct hand-percussion sources and clear call/response space.",
+          "status": "SUBSTYLE_DEPENDENT"
+        }
+      },
+      "profile_id": "CUBAN_RUMBA_BASELINE_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Guaguancó-oriented",
+          "Yambú-oriented",
+          "Columbia-oriented",
+          "Contemporary fusion"
+        ],
+        "hard_rule": "Ballroom rumba is a different system and must never resolve here.",
+        "parent_family": "Cuban Rumba",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Salsa": {
+      "family": "Latin",
+      "genre_name": "Salsa",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass locks to the variant's tumbao/Latin bass logic and interacts with piano/percussion; it must not simply duplicate kick-like accents."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific arranged endings, breaks, hits or tags; preserve rhythmic orientation through the ending."
+        },
+        "development_model": {
+          "rule": "Develop through montuno/piano variation, percussion interaction, horn responses, density change and section exchange rather than generic repetition."
+        },
+        "form_model": {
+          "rule": "Sectional dance-band form with intros, body sections, montuno/coro-like development where variant permits, breaks, fills and endings; exact sequence is variant-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SALSA_VARIANT",
+          "rule": "Harmony must support the selected salsa/son-derived variant and preserve rhythmic placement; no generic Western pop progression imposed by fallback."
+        },
+        "melody_model": {
+          "rule": "Melodic lead and horn figures interact with clave-aware rhythmic phrasing; call/response and sectional writing are variant-dependent."
+        },
+        "percussion_model": {
+          "note": "The six-role percussion inventory is supported by salsa-specific research; exact player assignment remains formation/variant dependent.",
+          "rule": "Conga, bongo, timbales and auxiliary percussion roles interlock; no generic drum-kit substitution unless the selected variant explicitly includes it."
+        },
+        "phrase_model": {
+          "rule": "Phrases respond to clave orientation, horn hits, vocal/lead space and percussion setup; rests are part of the groove."
+        },
+        "rhythm_groove_model": {
+          "rule": "Clave is structural where the resolved Salsa variant requires it; piano, bass, percussion and brass figures align to the same rhythmic orientation rather than operating independently."
+        },
+        "transition_model": {
+          "rule": "Use percussion setups, horn figures, breaks and fills that preserve clave orientation; do not paste generic fills across section boundaries."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "percussive piano/horn attacks, articulated bass and differentiated hand percussion",
+        "continuous_performance_control": "expression on lead/horns, articulation/velocity on rhythm parts",
+        "dynamic_behavior": "dance energy with pronounced sectional breaks and ensemble lifts",
+        "interaction_rules": [
+          "Clave orientation is shared across ensemble decisions.",
+          "Piano/bass/percussion parts interlock instead of duplicating one generic rhythm.",
+          "Horn figures must respect rhythmic orientation and leave room for lead/vocal material."
+        ],
+        "timing_humanization_behavior": "layer-specific timing within a stable clave framework"
+      },
+      "production": {
+        "mix_prominence_intent": "bass/piano/percussion interlock clear; horns/lead foreground during figures",
+        "production_mastering_intent": "energetic full-range master without crushing percussion dynamics",
+        "sound_effects_intent": "lively room/plate; preserve percussion definition",
+        "spatial_presentation": {
+          "rule": "Separate rhythm, percussion and horn areas while preserving dance-band cohesion; featured lines can move forward without collapsing other sections."
+        }
+      },
+      "profile_id": "SALSA_V1",
+      "research_status": "V3_SALSA_CLAVE_AND_PERCUSSION_AUTHORITY_CORRECTED__ACTIVITY_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Core contemporary salsa",
+          "Son montuno-oriented",
+          "Mambo-influenced salsa",
+          "Guajiro-oriented",
+          "Songo-oriented",
+          "Bomba-influenced",
+          "Vocal-feature salsa"
+        ],
+        "hard_rule": "Do not treat all salsa-family rhythmic styles as interchangeable.",
+        "parent_family": "Salsa",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Samba": {
+      "family": "Latin",
+      "genre_name": "Samba",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Bass supports the selected contemporary/jazz samba variant and does not replace surdo function when bateria architecture is active."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific breaks, ensemble stops, tags or arranged endings; do not apply a generic pop ending."
+        },
+        "development_model": {
+          "rule": "Develop through layering, subtraction, response, accent redistribution, melodic/harmonic change and percussion-role interaction."
+        },
+        "form_model": {
+          "rule": "Variant-specific sectional form; intros, fills, breaks and endings may be arranged, but the groove identity must remain continuous."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SAMBA_VARIANT",
+          "rule": "Harmony follows the chosen Brazilian/jazz/contemporary variant; percussion grammar remains independent of harmonic density."
+        },
+        "melody_model": {
+          "rule": "Melody/lead floats over an interlocking rhythmic bed; accompaniment must create windows without dismantling the groove."
+        },
+        "percussion_model": {
+          "rule": "Surdo 1/2/3, caixa, repinique, tamborim, agogo and ganza are independent functions; no single 'samba percussion' track."
+        },
+        "phrase_model": {
+          "rule": "Rhythmic density and accents breathe with form; individual percussion functions can drop/re-enter without losing ensemble pulse."
+        },
+        "rhythm_groove_model": {
+          "rule": "Three surdo functions plus caixa/repinique/tamborim/agogo/ganza operate as differentiated interlocking roles where the bateria variant is selected."
+        },
+        "transition_model": {
+          "rule": "Use repinique/ensemble setups, breaks, fills and density changes appropriate to variant rather than generic drum fills."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "crisp percussion differentiation and accented ensemble figures",
+        "continuous_performance_control": "percussion dynamics and expression on melodic parts",
+        "dynamic_behavior": "energetic but with clear section-level dynamics",
+        "interaction_rules": [
+          "Percussion timing is relational and interlocking, not independently randomized.",
+          "Surdo roles remain distinct.",
+          "Rhythm-section and bateria parts must negotiate density rather than stack continuously."
+        ],
+        "timing_humanization_behavior": "human microtiming is collective and layer-specific"
+      },
+      "production": {
+        "mix_prominence_intent": "percussion/bass foundation clear without masking melody",
+        "production_mastering_intent": "punchy, lively master with controlled high percussion",
+        "sound_effects_intent": "mostly natural/room plus controlled production",
+        "spatial_presentation": {
+          "rule": "Preserve a coherent low-end center/foundation while distributing higher bateria roles and melodic/rhythm-section elements for separation."
+        }
+      },
+      "profile_id": "SAMBA_V1",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Contemporary rhythm-section samba",
+          "Bateria/batucada-centered",
+          "Small ensemble samba",
+          "Jazz-samba hybrid",
+          "Samba with contemporary band"
+        ],
+        "hard_rule": "Do not force one fixed percussion formation onto every Samba variant.",
+        "parent_family": "Samba",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Soul": {
+      "family": "R&B",
+      "genre_name": "Soul",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Melodic supportive bass locks with drums and answers phrases without crowding lead."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, vamp endings, gospel-style repetitions, stops or fades by variant."
+        },
+        "development_model": {
+          "rule": "Develop toward emotional peaks through response layers, register, dynamics and groove intensity."
+        },
+        "form_model": {
+          "rule": "Verse/chorus/bridge or sectional song forms with emotional build; variant controls response sections and orchestration."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SOUL_VARIANT",
+          "rule": "Gospel/blues/tonal harmony with dominant, plagal and chromatic colors according to variant."
+        },
+        "melody_model": {
+          "rule": "Lead owns emotional foreground; horns/strings/organ/guitar answer and reinforce peaks."
+        },
+        "percussion_model": {
+          "rule": "Backbeat kit plus variant-specific tambourine/hand percussion; fills reinforce emotional contour."
+        },
+        "phrase_model": {
+          "rule": "Call/response and lead breath shape accompaniment."
+        },
+        "rhythm_groove_model": {
+          "rule": "Deep backbeat pocket with straight/triplet/gospel inflection by variant."
+        },
+        "transition_model": {
+          "rule": "Builds use drum/tambourine density, horn pickups, organ/guitar texture and harmony."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "expressive lead bends/scoops, sustained keys, guitar fills, horn accents",
+        "continuous_performance_control": "continuous lead expression and ensemble swells",
+        "dynamic_behavior": "strong dynamic storytelling; choruses and bridges may expand orchestration",
+        "interaction_rules": [
+          "Pocket remains deep and shared.",
+          "Response layers enter purposefully.",
+          "Dynamics follow emotional arc.",
+          "Soul drum beat and fill states are separate, phrase-aware behaviors.",
+          "Humanized pocket must remain relational to bass and accompaniment."
+        ],
+        "timing_humanization_behavior": "laid-back pocket with shared phrase pushes"
+      },
+      "production": {
+        "mix_prominence_intent": "lead foreground, rhythm section warm and present, responses secondary",
+        "production_mastering_intent": "warm, rounded, dynamic master",
+        "sound_effects_intent": "warm reverb/saturation optional; avoid overprocessing expressive lead",
+        "spatial_presentation": {
+          "rule": "Lead-forward center with warm rhythm bed and expandable response/orchestral width.",
+          "status": "ERA_VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "SOUL_V1",
+      "research_status": "V3_UPDATED__GMD_DRUM_PLUS_JAMENDO_INSTRUMENT_PRIOR_ADDED__VARIANT_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Southern soul",
+          "Motown-influenced soul",
+          "Gospel-inflected soul",
+          "Orchestrated soul",
+          "Funk-influenced soul",
+          "Soul ballad"
+        ],
+        "parent_family": "Soul",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Spiritual": {
+      "family": "Spiritual",
+      "genre_name": "Spiritual",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Simple sustained/melodic support; no culturally specific bass pattern inferred."
+        },
+        "cadence_ending_model": {
+          "rule": "Gentle resolution/open ending/fade according to composition."
+        },
+        "development_model": {
+          "rule": "Develop through texture, register, choir/string/piano/flute interaction and space."
+        },
+        "form_model": {
+          "rule": "Project-neutral ABA/through-composed gradual development unless an explicit sourced tradition supplies another form."
+        },
+        "harmony_model": {
+          "authority": "PROJECT_NEUTRAL_OR_EXPLICIT_SOURCED_TRADITION",
+          "rule": "Neutral tonal/modal/open harmony by default; no religious/cultural scale system inferred."
+        },
+        "melody_model": {
+          "rule": "Clear contemplative lead with space; culturally specific melodic language requires explicit source."
+        },
+        "percussion_model": {
+          "rule": "Optional light neutral percussion only; tradition-specific drums require explicit sourced variant."
+        },
+        "phrase_model": {
+          "rule": "Long contemplative phrasing and space by project baseline."
+        },
+        "rhythm_groove_model": {
+          "rule": "Gentle/moderate/absent pulse by composition; no ritual rhythm inferred."
+        },
+        "transition_model": {
+          "rule": "Gradual texture/dynamic/harmony transitions."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato/sustained articulation favored; stronger rhythm only if explicitly requested",
+        "continuous_performance_control": "continuous expression and ambience",
+        "dynamic_behavior": "soft-to-moderate expressive arc",
+        "interaction_rules": [
+          "Shared slow phrase breathing.",
+          "No culturally specific articulation inferred without source.",
+          "Space is structural."
+        ],
+        "timing_humanization_behavior": "phrase breathing and shared rubato; no stereotyped sacred timing"
+      },
+      "production": {
+        "mix_prominence_intent": "melody/lead clear with spacious support",
+        "production_mastering_intent": "warm, dynamic, non-aggressive master",
+        "sound_effects_intent": "warm room/reverb may support spaciousness without implying ritual acoustics",
+        "spatial_presentation": {
+          "rule": "Spacious neutral presentation; explicit cultural acoustics require sourced tradition.",
+          "status": "FORMATION_DEPENDENT"
+        }
+      },
+      "profile_id": "SPIRITUAL_NONSECTARIAN_PROJECT_BASELINE_V1",
+      "research_status": "V3_UPDATED__NONSECTARIAN_PROJECT_CONTRACT",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Project-neutral contemplative instrumental",
+          "Project-neutral choir/strings",
+          "Explicit user-specified sourced tradition"
+        ],
+        "hard_rule": "Never infer a religion, Indigenous tradition, chant, sacred rhythm, scale or cultural signifier from the word Spiritual alone.",
+        "parent_family": "Spiritual",
+        "status": "PROJECT_BASELINE_OR_EXPLICIT_NAMED_TRADITION"
+      }
+    },
+    "Swing": {
+      "family": "Jazz",
+      "genre_name": "Swing",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Walking bass or variant-appropriate two-feel/sparser bass targets chord tones and approaches while coordinating with ride/comping."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific tags, turnarounds, held endings or arranged hits."
+        },
+        "development_model": {
+          "rule": "Develop through solo/background exchange, comping variation, walking/two-feel changes, register, dynamics and ensemble figures."
+        },
+        "form_model": {
+          "rule": "Variant-specific head/solo/head, ABA/AABA-like or sectional jazz forms with intros/endings and density changes."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SWING_JAZZ_VARIANT",
+          "rule": "Extended tonal jazz harmony, turnarounds and substitutions are available according to variant; do not force one progression."
+        },
+        "melody_model": {
+          "rule": "Lead phrases retain swing articulation and leave room for response/comping; solos are not duplicated by accompaniment instruments."
+        },
+        "percussion_model": {
+          "rule": "Ride/hi-hat/kick/snare behavior follows tempo and ensemble size; drums interact with phrases rather than repeat a fixed backbeat."
+        },
+        "phrase_model": {
+          "rule": "4/8-bar phrasing, pickups, turnarounds, call/response and breathing space are variant-aware."
+        },
+        "rhythm_groove_model": {
+          "rule": "Swing feel is tempo- and performance-dependent; ride, bass, comping and accents share one pocket."
+        },
+        "transition_model": {
+          "rule": "Setups, fills, turnarounds and breaks prepare structural boundaries; intensity follows ensemble/solo context."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato/tongued horn lines, comping stabs, bass sustain, brush/stick differentiation",
+        "continuous_performance_control": "expression, articulation, breath and comping-density controls",
+        "dynamic_behavior": "interactive accents and phrase crescendos rather than static velocity",
+        "interaction_rules": [
+          "Shared pocket; no independent random jitter.",
+          "Comping listens/responds to lead/solo activity.",
+          "Ride and walking bass maintain time feel without masking foreground."
+        ],
+        "timing_humanization_behavior": "microtiming is relational to swing pulse and ensemble role; no random jitter"
+      },
+      "production": {
+        "mix_prominence_intent": "bass/ride time feel clear; melody and comping leave mutual space",
+        "production_mastering_intent": "preserve transient nuance and dynamic headroom",
+        "sound_effects_intent": "room/reverb restrained; target tone may be warm/natural",
+        "spatial_presentation": {
+          "rule": "Small combo, organ combo, vocal swing and dance-band formations require different footprints.",
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "JAZZ_SWING_V1",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Small jazz combo swing",
+          "Piano-trio-plus-horn swing",
+          "Guitar combo swing",
+          "Organ combo swing",
+          "Vocal swing",
+          "Dance-band swing"
+        ],
+        "parent_family": "Swing",
+        "status": "BLOCKING_REQUIREMENT_BEFORE_PERCENTAGES"
+      }
+    },
+    "Techno": {
+      "family": "Electronic",
+      "genre_name": "Techno",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Sub/low pulse shares low-end space with kick through timing, envelope and section states."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, gradual deconstruction or composed stop depending use case."
+        },
+        "development_model": {
+          "rule": "Develop through mutation rate, timbral evolution, layer entrances/exits, spatial motion and energy contour."
+        },
+        "form_model": {
+          "rule": "Long-form evolution through layer/mutation/energy states; subgenre controls peak/break architecture."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TECHNO_SUBGENRE",
+          "rule": "Minimal/modal/nonfunctional/spectral or tonal content as subgenre requires; timbral motion may replace chord motion."
+        },
+        "melody_model": {
+          "rule": "Melodic foreground optional; motifs/cells/noise/timbre may carry identity."
+        },
+        "percussion_model": {
+          "rule": "Electronic percussion evolves through controlled pattern mutation and density."
+        },
+        "phrase_model": {
+          "rule": "Repetition requires measurable micro/macro change rather than exact indefinite looping."
+        },
+        "rhythm_groove_model": {
+          "rule": "Kick pattern, brokenness, swing and percussion density resolve by Techno subgenre."
+        },
+        "transition_model": {
+          "rule": "Automation, filtering, subtraction, noise, fills and rhythmic mutation by subgenre."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "precise programmed attacks with occasional texture tails",
+        "continuous_performance_control": "filter/envelope/modulation/drive/level automation essential",
+        "dynamic_behavior": "automation-driven energy curve with controlled drops",
+        "interaction_rules": [
+          "Automation and pattern change are structured.",
+          "Low-end envelopes interlock.",
+          "Randomness cannot substitute for design."
+        ],
+        "timing_humanization_behavior": "mostly grid-stable with deliberate groove offsets only"
+      },
+      "production": {
+        "mix_prominence_intent": "kick/low-end dominant but not clipped; textures layered around it",
+        "production_mastering_intent": "club-oriented, controlled loudness and transient shape",
+        "sound_effects_intent": "delay/reverb/distortion/filter used structurally",
+        "spatial_presentation": {
+          "rule": "Focused low end with evolving depth/width and controlled spatial automation.",
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "TECHNO_V1",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Peak Time/Driving",
+          "Raw",
+          "Deep/Hypnotic",
+          "Dub",
+          "Broken techno",
+          "Psy-Techno",
+          "Hard Techno"
+        ],
+        "hard_rule": "Do not treat all Techno as peak-time four-on-floor.",
+        "parent_family": "Techno",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Traditional Country": {
+      "family": "Country",
+      "genre_name": "Traditional Country",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Alternating root/fifth or walking approaches by section/variant."
+        },
+        "cadence_ending_model": {
+          "rule": "Turnarounds, tags, stops, held endings or classic country finishes by variant."
+        },
+        "development_model": {
+          "rule": "Develop through fill rotation, instrumental breaks, harmony color, density and register."
+        },
+        "form_model": {
+          "rule": "Strophic, verse/chorus or bridge forms with instrumental turnarounds and fills; era-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_VARIANT",
+          "rule": "Direct tonal country syntax informed by corpus evidence; I/IV/V centrality may coexist with vi/ii/secondary-dominant and passing colors."
+        },
+        "melody_model": {
+          "rule": "Lead/lyric-like melody owns foreground; fiddle/steel/guitar/piano fills answer in gaps."
+        },
+        "percussion_model": {
+          "rule": "Simple kit, brushes or shuffle support; fills at phrase boundaries rather than constant activity."
+        },
+        "phrase_model": {
+          "rule": "Lead phrases define answer windows for fills."
+        },
+        "rhythm_groove_model": {
+          "rule": "Two-beat, four-beat, boom-chick, shuffle or variant-specific country pulse."
+        },
+        "transition_model": {
+          "rule": "Instrumental turnarounds, drum fills, steel/fiddle/guitar pickups and stops by variant."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "guitar strum/pick articulation, fiddle-like legato, clean backbeat",
+        "continuous_performance_control": "expression and articulation, limited pedal/amp controls",
+        "dynamic_behavior": "clear sectional lifts with moderate dynamic range",
+        "interaction_rules": [
+          "Consistent ensemble pulse.",
+          "Fills listen to lead gaps.",
+          "No random independent timing."
+        ],
+        "timing_humanization_behavior": "human timing follows two-step/shuffle pocket rather than randomization"
+      },
+      "production": {
+        "mix_prominence_intent": "lead/melody forward; bass and guitars separated",
+        "production_mastering_intent": "clear midrange, controlled brightness, moderate compression",
+        "sound_effects_intent": "natural room/slapback/amp color optional",
+        "spatial_presentation": {
+          "status": "ERA_VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "TRADITIONAL_COUNTRY_V1",
+      "research_status": "V3_UPDATED__COUNTRY_FAMILY_INSTRUMENT_PRIOR_AND_HUMAN_DRUM_REFERENCE_ADDED__ERA_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Honky-tonk/traditional",
+          "Nashville-style traditional",
+          "Western/cowboy-related",
+          "Old-time country band",
+          "Traditional country with fiddle/steel emphasis"
+        ],
+        "parent_family": "Traditional Country",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "Trance": {
+      "family": "Electronic",
+      "genre_name": "Trance",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Rolling/offbeat/sequence bass interacts with kick by envelope/timing states and section intensity."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, final peak/resolve or fade by use case."
+        },
+        "development_model": {
+          "rule": "Develop through tension curve, layer activation, arpeggio/lead transformation, harmony and energy."
+        },
+        "form_model": {
+          "rule": "Long build/breakdown/peak/outro cycles with subgenre-specific phrase lengths and number of peaks."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TRANCE_SUBGENRE",
+          "rule": "Tonal/modal progression, pad/arpeggio/lead vocabulary by subgenre; tension/release governs harmonic pacing."
+        },
+        "melody_model": {
+          "rule": "Lead hook/vocal/arpeggio foreground is subgenre-dependent; breakdown may expose melody/harmony before peak return."
+        },
+        "percussion_model": {
+          "rule": "Kick/hats/claps/risers and percussion density expand/retract with tension cycle."
+        },
+        "phrase_model": {
+          "rule": "Long phrase arcs support anticipation and release; hook recurrence is controlled."
+        },
+        "rhythm_groove_model": {
+          "rule": "Four-on-floor baseline with subgenre-specific percussion and drive; not all Trance uses identical kick/hats."
+        },
+        "transition_model": {
+          "rule": "Risers, snare builds, filters, silence, impacts and harmonic preparation by subgenre."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "sustained pads, gated/arpeggiated textures, bright lead articulation",
+        "continuous_performance_control": "filter cutoff, resonance, envelopes, modulation, sidechain and expression essential",
+        "dynamic_behavior": "large section-scale crescendos and breakdown contrast",
+        "interaction_rules": [
+          "Layer automation follows shared tension curve.",
+          "Kick/bass states remain coherent.",
+          "Peak density does not erase lead."
+        ],
+        "timing_humanization_behavior": "grid-stable core with controlled groove; phrase timing driven by long sections"
+      },
+      "production": {
+        "mix_prominence_intent": "kick/bass protected; lead and pads wide but controlled",
+        "production_mastering_intent": "wide, bright, energetic master with harshness control",
+        "sound_effects_intent": "delay/reverb/sidechain/riser effects structural",
+        "spatial_presentation": {
+          "rule": "Focused low end; expansive pads/FX; lead/vocal clear at foreground.",
+          "status": "SUBGENRE_DEPENDENT"
+        }
+      },
+      "profile_id": "TRANCE_V1",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Progressive Trance",
+          "Tech Trance",
+          "Hard Trance",
+          "Uplifting Trance",
+          "Vocal Trance",
+          "Raw Trance",
+          "Deep Trance",
+          "Hypnotic Trance"
+        ],
+        "parent_family": "Trance",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Trip-Hop": {
+      "family": "Emerging / Hybrid",
+      "genre_name": "Trip-Hop",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Substantial bass weight, sustained or syncopated around break; low end must preserve break detail."
+        },
+        "cadence_ending_model": {
+          "rule": "Fade, deconstruction, unresolved atmosphere or composed stop."
+        },
+        "development_model": {
+          "rule": "Develop through break mutation, atmosphere, bass state, harmonic color and foreground recurrence."
+        },
+        "form_model": {
+          "rule": "Loop-evolving sectional or verse/chorus hybrid with atmospheric development and breakdowns."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TRIP_HOP_VARIANT",
+          "rule": "Minor/modal/jazz/soul-inflected or sparse loop harmony according to production variant."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/sample/guitar/strings may occupy sparse foreground windows over atmospheric field."
+        },
+        "percussion_model": {
+          "rule": "Sample-like or programmed break behavior with humanized variation; exact-copy looping is not sufficient."
+        },
+        "phrase_model": {
+          "rule": "Sparse foreground over dense/atmospheric background; negative space is intentional."
+        },
+        "rhythm_groove_model": {
+          "rule": "Downtempo broken beat with deliberate looseness, ghosting and loop variation; no four-on-floor fallback."
+        },
+        "transition_model": {
+          "rule": "Break edits, texture changes, filtering, silence, samples and low-end state changes."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "soft/dirty drum texture, sustained pads, intimate lead articulation",
+        "continuous_performance_control": "filter/FX/level automation",
+        "dynamic_behavior": "restrained-to-heavy contrast; atmosphere can swell independently",
+        "interaction_rules": [
+          "Break looseness is relational, not random.",
+          "Atmosphere responds to form.",
+          "Foreground remains sparse by design."
+        ],
+        "timing_humanization_behavior": "controlled looseness and laid-back microtiming"
+      },
+      "production": {
+        "mix_prominence_intent": "bass and lead remain clear through atmospheric layers",
+        "production_mastering_intent": "dark/warm master with controlled sub and transients",
+        "sound_effects_intent": "reverb/delay/saturation/grain/lo-fi texture are valid structural components",
+        "spatial_presentation": {
+          "rule": "Deep/wide atmosphere with focused bass/break and clearly localized foreground."
+        }
+      },
+      "profile_id": "TRIP_HOP_V2",
+      "research_status": "V3_UPDATED__VARIANT_LAYER_MODEL_REQUIRED",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Vocal-centered atmospheric",
+          "Instrumental/sample-driven",
+          "Dark/cinematic",
+          "Dub-influenced",
+          "Rock/guitar-inflected"
+        ],
+        "hard_rule": "Do not collapse into generic Downtempo; sampled/broken-beat identity and atmospheric tension remain defining constraints.",
+        "parent_family": "Trip-Hop",
+        "status": "REQUIRED_BEFORE_RUNTIME"
+      }
+    },
+    "Two-Step": {
+      "family": "Country",
+      "genre_name": "Two-Step",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Alternating root/fifth structural drive with approaches at changes."
+        },
+        "cadence_ending_model": {
+          "rule": "Dance-band tags, stops or turnarounds."
+        },
+        "development_model": {
+          "rule": "Develop through fill rotation and instrumental breaks without destabilizing dance groove."
+        },
+        "form_model": {
+          "rule": "Strophic/verse-chorus with instrumental turnarounds; dance continuity is primary."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TWO_STEP_VARIANT",
+          "rule": "Clear tonal functional cycles; harmonic complexity cannot disrupt dance pulse."
+        },
+        "melody_model": {
+          "rule": "Melody and fiddle/steel/guitar fills ride over a consistent dance foundation."
+        },
+        "percussion_model": {
+          "rule": "Steady kick/snare or light kit supports dance pulse; fills cannot interrupt floor continuity."
+        },
+        "phrase_model": {
+          "rule": "Turnarounds and fills fit dance phrase lengths."
+        },
+        "rhythm_groove_model": {
+          "rule": "2/4 and 4/4-felt-in-2 are explicit resolved pulse states; no ambiguous meter conversion."
+        },
+        "transition_model": {
+          "rule": "Short instrumental turnarounds and fills maintain pulse."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "crisp strums/picks and clean rhythmic articulation",
+        "continuous_performance_control": "limited continuous control; articulation and velocity central",
+        "dynamic_behavior": "stable dynamics with modest chorus/solo lift",
+        "interaction_rules": [
+          "Consistent dance timing.",
+          "No independent rubato.",
+          "Fills preserve pulse.",
+          "Human Country drum evidence is secondary to resolved dance-pulse authority; fills cannot interrupt two-step continuity."
+        ],
+        "timing_humanization_behavior": "tight ensemble timing with small human feel"
+      },
+      "production": {
+        "mix_prominence_intent": "dance pulse and melody both clear",
+        "production_mastering_intent": "even, punchy master",
+        "sound_effects_intent": "natural/amp ambience",
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT"
+        }
+      },
+      "profile_id": "COUNTRY_TWO_STEP_V1",
+      "research_status": "V3_UPDATED__COUNTRY_DRUM_REFERENCE_LINKED__REGIONAL_TWO_STEP_STATS_PENDING",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "2/4 traditional two-step",
+          "4/4 felt-in-2 dance two-step",
+          "Western/Texas two-step-related",
+          "Fast modern country two-step"
+        ],
+        "parent_family": "Country Two-Step",
+        "status": "REQUIRED_BEFORE_PERCENTAGES"
+      }
+    },
+    "WALTZ": {
+      "family": "Waltz",
+      "genre_name": "WALTZ",
+      "musical_grammar": {
+        "bass_model": {
+          "rule": "Inherited from context."
+        },
+        "cadence_ending_model": {
+          "rule": "Inherited from context."
+        },
+        "development_model": {
+          "rule": "Inherited from context."
+        },
+        "form_model": {
+          "rule": "Inherited from resolved Waltz context."
+        },
+        "harmony_model": {
+          "authority": "INHERIT_RESOLVED_WALTZ_CONTEXT"
+        },
+        "melody_model": {
+          "rule": "Inherited."
+        },
+        "percussion_model": {
+          "rule": "Inherited from context."
+        },
+        "phrase_model": {
+          "rule": "Inherited from context."
+        },
+        "rhythm_groove_model": {
+          "rule": "3/4 hierarchy is shared; accompaniment/accent behavior belongs to resolved context."
+        },
+        "transition_model": {
+          "rule": "Inherited from context."
+        }
+      },
+      "performance": {
+        "articulation_behavior": "legato or dance articulation according to substyle",
+        "continuous_performance_control": "expression and tempo curves",
+        "dynamic_behavior": "phrase-level swells and cadence shaping",
+        "interaction_rules": [
+          "Triple-meter hierarchy inherited plus resolved-context behavior."
+        ],
+        "timing_humanization_behavior": "rubato allowed at phrase level; three-beat hierarchy stable"
+      },
+      "production": {
+        "mix_prominence_intent": "beat hierarchy clear without over-accenting",
+        "production_mastering_intent": "mastering inherited from selected style",
+        "sound_effects_intent": "effects inherited from selected style",
+        "spatial_presentation": {
+          "status": "INHERIT_RESOLVED_CONTEXT"
+        }
+      },
+      "profile_id": "WALTZ_GENERIC_V1",
+      "research_status": "V3_UPDATED__STYLE_RESOLVER_ONLY",
+      "runtime_mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+      "variant_resolution": {
+        "candidate_variants": [
+          "Country Waltz",
+          "Jazz Waltz",
+          "Classical/Viennese Waltz",
+          "Folk/Regional Waltz",
+          "Custom 3/4 style"
+        ],
+        "hard_rule": "WALTZ cannot reach composition stage until a musical context is resolved.",
+        "parent_family": "Waltz",
+        "status": "MANDATORY"
+      }
+    }
+  },
+  "mode": "SAFE_QUALITATIVE_SUPPLEMENT",
+  "overlay_id": "GENRE_V3_SAFE_QUALITATIVE_OVERLAY_2026-11-07",
+  "rules": {
+    "experimental_render_harnesses_excluded": true,
+    "legacy_profile_fields_remain_authoritative_for_compatibility": true,
+    "protected_anchor_behavior_change": false,
+    "protected_anchor_profiles": [
+      "Classical",
+      "Big Band"
+    ],
+    "quantitative_research_fields_excluded": true,
+    "reasoning_engine_not_connected": true,
+    "research_evidence_payload_excluded": true
+  },
+  "source_commit": "e9a27cebfb4ba41c4fa7c9e0acd07653e923d03e",
+  "source_snapshot_branch": "snapshot-genre-contract-v3-pre-resurrection-2026-11-07"
+}

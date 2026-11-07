@@ -32,6 +32,50 @@ assert hashlib.sha256(ap.read_bytes()).hexdigest()==manifest['approved_audio_pip
 (runtime/'CURRENT_MASTER_SYNC.json').write_text(json.dumps(manifest,indent=2)+'\\n')
 print('CURRENT_MASTER_FORWARD_SYNC_APPLIED',manifest['source_checkpoint'],len(manifest['runtime_files']),flush=True)
 FORWARDPY
+python - <<'REASONINGFORWARDPY'
+import json, shutil
+from pathlib import Path
+
+source=Path('reasoning_forward')
+runtime=Path('composer/runtime')
+files=[p for p in source.rglob('*') if p.is_file()]
+assert len(files)==12, f'ALL55_REASONING_FORWARD_FILE_COUNT:{len(files)}'
+for src in files:
+    rel=src.relative_to(source)
+    dst=runtime/rel
+    dst.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(src,dst)
+
+required={
+    'AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py':'dedicated_genre_arranger_manifest',
+    'classical_composition.py':'CLASSICAL_REASONING_V0_1_USER_PREFERRED_TRIAL_BASELINE',
+    'controlled_genre_input.py':'musical_reasoning_bridge',
+    'approved_audio_pipeline.py':'genre_style_sound_maps.json',
+    'genre_arranger_packages.py':'reasoning_bridge_active',
+    'genre_reasoning_bridge.py':'GENRE_REASONING_BRIDGE_V1_ALL_55',
+    'genre_v3_overlay.py':'augment_profiles',
+    'genre_v3_safe_overlay.json':'Classical',
+    'genre_style_sound_maps.json':'Big Band',
+    'genre_selector.py':'genre_v3_overlay',
+    'genre_pre_generation_compiler.py':'v3_safe_grammar',
+    'experimental_reasoning/reasoning_engine_v0_1.py':'COMPOSER_MUSICAL_REASONING_ENGINE_V0_1',
+}
+for rel,marker in required.items():
+    p=runtime/rel
+    assert p.is_file(), f'ALL55_REASONING_FORWARD_MISSING:{rel}'
+    assert marker in p.read_text(), f'ALL55_REASONING_FORWARD_MARKER_MISSING:{rel}:{marker}'
+
+(runtime/'ALL55_REASONING_DEPLOYMENT.json').write_text(json.dumps({
+    'status':'ALL55_REASONING_WIRED',
+    'checkpoint':'2026-11-07',
+    'source':'reasoning_forward',
+    'file_count':len(files),
+    'protected_anchors':['Classical','Big Band'],
+    'reasoning_engine':'COMPOSER_MUSICAL_REASONING_ENGINE_V0_1',
+    'reasoning_bridge':'GENRE_REASONING_BRIDGE_V1_ALL_55',
+},indent=2)+'\n')
+print('ALL55_REASONING_FORWARD_APPLIED',len(files),flush=True)
+REASONINGFORWARDPY
 python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
 python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
 cp connected_http_server.py composer/runtime/render_server.py
@@ -66,6 +110,23 @@ PYTHONPATH=composer/runtime python composer/runtime/verify_genre_recognition_55.
 PYTHONPATH=composer/runtime python composer/runtime/verify_performance_realization_55.py
 PYTHONPATH=composer/runtime python composer/runtime/verify_instrument_separator_55.py
 echo 'CONNECTED_ALL_55_MASTER_VERIFICATIONS_PASS'
+PYTHONPATH=composer/runtime python - <<'REASONINGPY'
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path('composer/runtime/experimental_reasoning').resolve()))
+from reasoning_engine_v0_1 import ComposerState, reason, validate, ENGINE_ID
+packet=reason(state=ComposerState(
+    genre='Classical',
+    profile_id='CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2',
+    section='Verse',
+    active_instruments=('violin_1','cello','double_bass')
+))
+validate(packet)
+assert ENGINE_ID=='COMPOSER_MUSICAL_REASONING_ENGINE_V0_1'
+from genre_reasoning_bridge import BRIDGE_ID
+assert 'REASONING' in BRIDGE_ID
+print('ALL55_REASONING_ENGINE_SMOKE_PASS',ENGINE_ID,BRIDGE_ID,flush=True)
+REASONINGPY
 PYTHONPATH=composer/runtime python - <<'PY'
 import tempfile,wave
 from pathlib import Path

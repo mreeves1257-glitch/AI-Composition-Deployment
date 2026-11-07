@@ -1,0 +1,92 @@
+name: Genre V3 Symbolic Runtime Instrument Resolution
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - "current_master_forward/**"
+      - "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json"
+      - "genre_contract_v3_research/verify_v3_runtime_symbolic_instrument_resolution.py"
+      - "composer_overrides/genre_styles/*/SOURCE_PATTERN_LIBRARY_R1.json"
+      - ".github/workflows/genre-v3-symbolic-runtime-resolution.yml"
+  workflow_dispatch:
+
+jobs:
+  runtime-symbolic-resolution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct preserved Composer runtime package
+        run: |
+          python - <<'PY'
+          import base64,hashlib,io,json,tarfile
+          from pathlib import Path
+          root=Path("connected_package")
+          manifest=json.loads((root/"manifest.json").read_text())
+          archive=bytearray()
+          for part in manifest["parts"]:
+              data=base64.b64decode((root/part["name"]).read_text(),validate=True)
+              assert hashlib.sha256(data).hexdigest()==part["sha256"]
+              archive.extend(data)
+          assert hashlib.sha256(archive).hexdigest()==manifest["archive_sha256"]
+          dest=Path("composer/runtime")
+          dest.mkdir(parents=True,exist_ok=True)
+          tarfile.open(fileobj=io.BytesIO(archive),mode="r:gz").extractall(dest,filter="data")
+          print("PRESERVED_RUNTIME_RECONSTRUCTED")
+          PY
+          cp tuning_runtime_overrides/*.py composer/runtime/
+
+      - name: Apply current diagnostic master overlay
+        run: |
+          python - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          overlay=Path("current_master_forward")
+          runtime=Path("composer/runtime")
+          manifest=json.loads((overlay/"CURRENT_MASTER_SYNC.json").read_text())
+          assert manifest["master_policy"]=="ONE_MASTER_FORWARD_ONLY"
+          assert manifest["genre_count"]==55
+          assert manifest.get("diagnostic_v3_runtime_sync",{}).get("reasoning_engine_included") is False
+          for name in manifest["runtime_files"]:
+              src=overlay/name
+              assert src.is_file(), "CURRENT_MASTER_FORWARD_FILE_MISSING:"+name
+              shutil.copy2(src,runtime/name)
+          (runtime/"CURRENT_MASTER_SYNC.json").write_text(json.dumps(manifest,indent=2)+"\n")
+          print("V3_DIAGNOSTIC_OVERLAY_APPLIED",len(manifest["runtime_files"]))
+          PY
+
+      - name: Install pinned Python runtime dependencies
+        run: |
+          python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
+          python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
+
+      - name: Verify diagnostic modules compile
+        run: |
+          python -m py_compile \
+            composer/runtime/engine.py \
+            composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py \
+            composer/runtime/genre_contract_v3_execution_bridge.py \
+            composer/runtime/genre_v3_instrument_authority.py \
+            composer/runtime/genre_v3_source_pattern_bridge.py \
+            composer/runtime/genre_v3_symbolic_pattern_executor.py
+
+      - name: Resolve V3 symbolic events through current instrument library
+        env:
+          PYTHONPATH: ${{ github.workspace }}/composer/runtime
+        run: |
+          python genre_contract_v3_research/verify_v3_runtime_symbolic_instrument_resolution.py
+          test -s genre_contract_v3_research/V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json
+
+      - name: Upload integration audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: V3_Runtime_Symbolic_Instrument_Resolution_Audit
+          path: genre_contract_v3_research/V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json
+          if-no-files-found: error

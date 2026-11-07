@@ -279,6 +279,22 @@ def _structural_transform_notes(
         working[0]["beat"]="1/2"
         transforms.append("INTRO_HAT_RECURRENT_OFFBEAT")
 
+    # Pitched source-pattern notes may not spill into the next bar's planned
+    # harmony without an explicit tie rule. Recurrent pickup motion can otherwise
+    # move a half-beat note to 3.75 and accidentally carry it across the chord change.
+    if role in ("BASS","HARMONY"):
+        for note in working:
+            beat=_frac(note["beat"])
+            duration=_frac(note["duration"])
+            remaining=Fraction(4)-beat
+            if duration>remaining:
+                if remaining<=0:
+                    raise RockV3CoreDevelopmentExecutorError(
+                        "PITCHED_NOTE_HAS_NO_TIME_BEFORE_HARMONY_BOUNDARY"
+                    )
+                note["duration"]=str(remaining)
+                transforms.append("PITCHED_NOTE_CAPPED_AT_HARMONY_BOUNDARY")
+
     # Section energy shapes velocity only after a structural/timing plan exists.
     factor=ENERGY_FACTOR[epoch]
     for note in working:

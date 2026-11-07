@@ -103,8 +103,12 @@ jobs:
               enc.set_in_sample_rate(rate)
               enc.set_channels(channels)
               enc.set_quality(2)
-              mp3=enc.encode(pcm)+enc.flush()
-              dst.write_bytes(mp3)
+              chunk_bytes=1152*channels*2*100
+              out=bytearray()
+              for offset in range(0,len(pcm),chunk_bytes):
+                  out.extend(enc.encode(pcm[offset:offset+chunk_bytes]))
+              out.extend(enc.flush())
+              dst.write_bytes(bytes(out))
               if dst.stat().st_size<=0:
                   raise RuntimeError("ROLE_STEM_MP3_EMPTY::"+stem)
               print(stem,dst.stat().st_size)
@@ -135,7 +139,12 @@ jobs:
               enc.set_in_sample_rate(rate)
               enc.set_channels(channels)
               enc.set_quality(2)
-              dst.write_bytes(enc.encode(pcm)+enc.flush())
+              chunk_bytes=1152*channels*2*100
+              out=bytearray()
+              for offset in range(0,len(pcm),chunk_bytes):
+                  out.extend(enc.encode(pcm[offset:offset+chunk_bytes]))
+              out.extend(enc.flush())
+              dst.write_bytes(bytes(out))
               if dst.stat().st_size<=0:
                   raise RuntimeError("INTRO_MP3_EMPTY::"+stem)
               print(stem,seconds,dst.stat().st_size)

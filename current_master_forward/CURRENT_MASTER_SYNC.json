@@ -138,7 +138,7 @@
       "performance_realization_applied_in_candidate": true
     },
     "rock_core_performance_path": {
-      "status": "MODE_A_STRUCTURAL_AUDIT_PENDING_RUNTIME_ACTIVATION",
+      "status": "MODE_A_CANONICAL_EXECUTOR_STRUCTURAL_AUDIT__RUNTIME_PREFLIGHT_PENDING",
       "mode": "A_GUITAR_DURATION_ONLY",
       "changes": [
         "electric_guitar.duration_beats"
@@ -159,7 +159,7 @@
       "live_promotion_approved": false,
       "modules": [
         "rock_v3_core_performance_plan.py",
-        "rock_v3_core_performance_a.py"
+        "rock_v3_core_performance_executor.py"
       ]
     }
   }

@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__ABSTRACT_PERIOD_GRAMMAR_PASS__VOICE_LEADING_NEXT",
+      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__ABSTRACT_GRAMMAR_PASS__VOICE_LEADING_PASS__GRAMMAR_AUDIO_NEXT",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2650,6 +2650,58 @@
             "No live Composer code is modified or activated."
           ],
           "next_gate": "PITCH_AND_VOICE_LEADING_REALIZATION"
+        },
+        "voice_leading_harness_checkpoint": {
+          "status": "PASS__EXACT_COMMITTED_BRANCH_LOGIC",
+          "date": "2026-11-06",
+          "harness": "genre_contract_v3_research/classical_voice_leading_validation.py",
+          "harness_commit": "55ea5c615efd9352074f43962b56aff14f84d408",
+          "test": "genre_contract_v3_research/test_classical_voice_leading_validation.py",
+          "test_commit": "cb43339e5a96f7eac5e67eb5f567d3182e3935fb",
+          "execution_note": "Exact committed branch logic was reconstructed from GitHub connector content and executed locally. Unit tests passed 3/3 across 32 seeds per variant.",
+          "voice_model": "ABSTRACT_SATB",
+          "seed_count_per_variant": 32,
+          "variants": {
+            "CLASSICAL_PERIOD_TONAL": {
+              "mean_voice_crossings": 0,
+              "mean_parallel_perfect_5_8": 0,
+              "full_essential_coverage_percent": 100,
+              "bass_inversion_accuracy_percent": 100,
+              "doubled_leading_tone_event_percent": 0,
+              "mean_leap_semitones": 1.752,
+              "mean_p95_leap_semitones": 5.094,
+              "average_max_leap_semitones": 9.25,
+              "worst_case_max_leap_semitones": 10,
+              "worst_case_p95_leap_semitones": 6,
+              "minimum_common_tone_transition_percent": 66.07,
+              "leading_tone_resolution_percent": 98.41,
+              "dominant_seventh_resolution_percent": 66.67
+            },
+            "ROMANTIC_TONAL_EXPANDED": {
+              "mean_voice_crossings": 0,
+              "mean_parallel_perfect_5_8": 0,
+              "full_essential_coverage_percent": 100,
+              "bass_inversion_accuracy_percent": 100,
+              "doubled_leading_tone_event_percent": 0,
+              "mean_leap_semitones": 1.802,
+              "mean_p95_leap_semitones": 5.906,
+              "average_max_leap_semitones": 8.469,
+              "worst_case_max_leap_semitones": 11,
+              "worst_case_p95_leap_semitones": 6,
+              "minimum_common_tone_transition_percent": 50,
+              "leading_tone_resolution_percent": 80.88,
+              "dominant_seventh_resolution_percent": 78.48
+            }
+          },
+          "bug_caught_before_commit": "Dominant-ninth parser originally omitted the seventh from the pitch-class set; corrected before the harness was committed.",
+          "interpretation": "The richer period grammar can be realized as playable four-part harmony without crossings, parallel perfect intervals, missing essential tones or incorrect inversion basses under the current validation model.",
+          "guardrails": [
+            "This validates an abstract SATB realization, not instrument-specific orchestration.",
+            "Passing tones, suspensions, non-chord tones and melodic counterpoint remain outside this gate.",
+            "A structurally legal voicing is not automatically a musically satisfying composition.",
+            "Live Composer remains untouched."
+          ],
+          "next_gate": "CONTROLLED_GRAMMAR_AUDIO"
         }
       },
       "safeguards": {
@@ -18040,13 +18092,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Build a research-only pitch/voice-leading realization layer for the period grammar plans.",
-    "Resolve local-key Roman numerals into playable chord tones while preserving inversions, tendency-tone resolutions and chromatic/common-tone voice leading.",
-    "Validate melodic and bass continuity, forbidden leaps, doubled tendency tones, cadence resolution, and instrument range before rendering.",
-    "Only after voice-leading structural validation should new grammar audio be compared with the existing orchestration-only A/B."
+    "Render a controlled grammar-only listening pair using identical instrumentation, tempo, mix and seed for both period grammars.",
+    "Keep the validated orchestration-variant layer disabled so harmony/voice-leading is the controlled difference.",
+    "Evaluate whether Classical-period and Romantic tonal-expanded grammar sound meaningfully different without relying on orchestral color.",
+    "Only after grammar listening validation should period grammar and period orchestration be combined."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_ABSTRACT_PERIOD_GRAMMAR_VALIDATION_PASS__VOICE_LEADING_REALIZATION_NEXT",
+  "quantitative_phase_status": "CLASSICAL_VOICE_LEADING_VALIDATION_PASS__CONTROLLED_GRAMMAR_AUDIO_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

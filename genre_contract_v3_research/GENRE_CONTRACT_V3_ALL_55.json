@@ -835,7 +835,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_QUANTITATIVE_FOREGROUND_ACTIVITY_AND_CROSS_PERIOD_TEXTURE_EVIDENCE_ADDED__FULL_PERIOD_TARGETS_PENDING",
+      "research_status": "V3_QUANTITATIVE_FOREGROUND_PERIOD_SPLIT_ADDED__ACTIVITY_PERIOD_SPLIT_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -926,9 +926,9 @@
           "Derive activity percentages by period/variant from score/activity corpora.",
           "Separate Baroque, Classical-period, Romantic, chamber and later orchestral variants before runtime approval.",
           "Define tuba/percussion population by variant rather than forcing one universal orchestra.",
-          "Derive foreground ownership priors separately by period/composer/variant instead of treating the aggregate corpus as universal.",
           "Derive full activity percentages from score/activity data; Hauptstimme measures main-theme foreground, not total playing time.",
-          "Extract exact activity percentages from the public activity annotation archive when raw archive access is available; filter instrumental/orchestral subsets before runtime priors."
+          "Extract exact activity percentages from the public activity annotation archive when raw archive access is available; filter instrumental/orchestral subsets before runtime priors.",
+          "Derive period/variant-specific total activity occupancy from score CSVs; keep it separate from Hauptstimme foreground ownership."
         ]
       },
       "musical_grammar": {
@@ -1547,6 +1547,260 @@
             "Do not convert these percentages directly into gain, population or runtime quotas.",
             "Use them to validate section-role-state behavior and period/variant differentiation."
           ]
+        },
+        "period_foreground_empirical_reference": {
+          "source": "OpenScore Orchestra / Hauptstimme",
+          "methodology": "Duration-weighted qstamp-to-next-annotation intervals, using the same instrumental-only corpus policy as the existing 70-movement foreground reference. Final trailing annotation segment in each file is omitted because no following qstamp boundary is available.",
+          "coverage": {
+            "movement_files": 70,
+            "total_annotated_qstamp_duration": 68058.458,
+            "exclusions": [
+              "Bach B Minor Mass, BWV.232 (choral work excluded from this instrumental period split)",
+              "Brahms Ein Deutsches Requiem, Op.45 (choral work excluded)",
+              "Beethoven Symphony No.9 movement 4 (choral foreground excluded by removing the movement from this split)"
+            ]
+          },
+          "cohort_policy": "These are repertoire/composer cohorts used to expose stylistic variation. They are not universal period definitions and must not be converted directly into runtime quotas.",
+          "cohorts": {
+            "BAROQUE_BACH_BRANDENBURG": {
+              "movement_files": 6,
+              "total_qstamp": 2595,
+              "family_foreground_percent": {
+                "STRINGS": 67.75,
+                "WOODWINDS": 32.21,
+                "BRASS": 0,
+                "PERCUSSION": 0,
+                "KEYBOARD_CONTINUO": 0.04
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 51.74,
+                "FLUTE": 32.21,
+                "VIOLA": 11.14,
+                "CELLO": 4.87,
+                "HARPSICHORD": 0.04
+              },
+              "qualification": "Two Brandenburg concertos only; useful Baroque orchestral/concerto evidence, not a universal Baroque prior."
+            },
+            "CLASSICAL_HAYDN_SAMPLE": {
+              "movement_files": 1,
+              "total_qstamp": 1160,
+              "family_foreground_percent": {
+                "STRINGS": 64.27,
+                "WOODWINDS": 34.44,
+                "BRASS": 1.29,
+                "PERCUSSION": 0
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 58.06,
+                "FLUTE": 25.52,
+                "OBOE": 7.89,
+                "VIOLA": 6.21,
+                "HORN": 1.29,
+                "BASSOON": 1.03
+              },
+              "qualification": "Single movement of Haydn Symphony No.104; validation sample only."
+            },
+            "EARLY_BEETHOVEN_SYMPHONIES_1_2": {
+              "movement_files": 8,
+              "total_qstamp": 6332.375,
+              "family_foreground_percent": {
+                "STRINGS": 54.82,
+                "WOODWINDS": 43.27,
+                "BRASS": 1.9,
+                "PERCUSSION": 0
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 51.58,
+                "FLUTE": 21.07,
+                "OBOE": 14.55,
+                "CLARINET": 4,
+                "BASSOON": 3.65,
+                "VIOLA": 2.11,
+                "CELLO": 1.14,
+                "HORN": 1.02,
+                "TRUMPET": 0.88
+              },
+              "qualification": "Early Beethoven cohort retained separately because it sits near the Classical-to-Romantic transition."
+            },
+            "MIDDLE_BEETHOVEN_SYMPHONIES_3_6": {
+              "movement_files": 17,
+              "total_qstamp": 16640.5,
+              "family_foreground_percent": {
+                "STRINGS": 58.09,
+                "WOODWINDS": 38.45,
+                "BRASS": 3.4,
+                "PERCUSSION": 0.06
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 51.94,
+                "FLUTE": 16.24,
+                "OBOE": 10.63,
+                "CLARINET": 7.11,
+                "VIOLA": 3,
+                "CELLO": 2.95,
+                "BASSOON": 2.81,
+                "HORN": 2.66,
+                "PICCOLO": 1.66,
+                "TRUMPET": 0.74,
+                "DOUBLE_BASS": 0.19,
+                "TIMPANI": 0.06
+              },
+              "qualification": "Middle Beethoven cohort; do not generalize it to the whole Classical family."
+            },
+            "LATE_BEETHOVEN_SYMPHONIES_7_9_INSTRUMENTAL": {
+              "movement_files": 11,
+              "total_qstamp": 11953.75,
+              "family_foreground_percent": {
+                "STRINGS": 49.6,
+                "WOODWINDS": 47.15,
+                "BRASS": 3.05,
+                "PERCUSSION": 0.2
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 45.88,
+                "FLUTE": 29.57,
+                "OBOE": 10.47,
+                "CLARINET": 5.65,
+                "HORN": 2.72,
+                "VIOLA": 2.41,
+                "BASSOON": 1.46,
+                "CELLO": 1.22,
+                "TRUMPET": 0.33,
+                "TIMPANI": 0.2,
+                "DOUBLE_BASS": 0.1
+              },
+              "qualification": "Symphonies 7-9 with Symphony 9 movement 4 excluded because of choral foreground."
+            },
+            "EARLY_ROMANTIC_SCHUBERT_SAMPLE": {
+              "movement_files": 1,
+              "total_qstamp": 1180,
+              "family_foreground_percent": {
+                "STRINGS": 68.73,
+                "WOODWINDS": 31.27,
+                "BRASS": 0,
+                "PERCUSSION": 0
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 66.02,
+                "FLUTE": 29.24,
+                "OBOE": 2.03,
+                "VIOLA": 1.36,
+                "CELLO": 1.36
+              },
+              "qualification": "Single movement of Schubert Symphony No.5; too small for a general Early-Romantic prior."
+            },
+            "ROMANTIC_BRAHMS": {
+              "movement_files": 16,
+              "total_qstamp": 15457.333,
+              "family_foreground_percent": {
+                "STRINGS": 48.07,
+                "WOODWINDS": 44.75,
+                "BRASS": 7.14,
+                "PERCUSSION": 0.04
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 45.44,
+                "FLUTE": 24.4,
+                "OBOE": 10.71,
+                "CLARINET": 7.1,
+                "HORN": 6.15,
+                "BASSOON": 2.48,
+                "CELLO": 1.63,
+                "TROMBONE": 0.88,
+                "VIOLA": 0.88,
+                "DOUBLE_BASS": 0.12,
+                "TRUMPET": 0.1,
+                "PICCOLO": 0.06,
+                "TIMPANI": 0.04
+              },
+              "qualification": "All four Brahms symphonies in the corpus; stronger Romantic cohort but still composer-specific."
+            },
+            "LATE_ROMANTIC_BRUCKNER": {
+              "movement_files": 5,
+              "total_qstamp": 6763,
+              "family_foreground_percent": {
+                "WOODWINDS": 40.02,
+                "STRINGS": 35.56,
+                "BRASS": 24.42,
+                "PERCUSSION": 0
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 28.83,
+                "FLUTE": 25.1,
+                "HORN": 12.46,
+                "TRUMPET": 9.43,
+                "OBOE": 6.69,
+                "CLARINET": 5.79,
+                "CELLO": 3.55,
+                "VIOLA": 3.17,
+                "TROMBONE": 2.53,
+                "BASSOON": 2.43,
+                "DOUBLE_BASS": 0.01
+              },
+              "qualification": "Bruckner Symphony No.5 only; demonstrates expanded brass/woodwind foreground behavior but is not a universal late-Romantic target."
+            },
+            "LATE_ROMANTIC_BEACH": {
+              "movement_files": 4,
+              "total_qstamp": 5364.5,
+              "family_foreground_percent": {
+                "STRINGS": 41.51,
+                "WOODWINDS": 35.67,
+                "BRASS": 22.82,
+                "PERCUSSION": 0
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 35.21,
+                "FLUTE": 15.97,
+                "HORN": 10.24,
+                "CLARINET": 9.02,
+                "TRUMPET": 8.97,
+                "OBOE": 8.39,
+                "CELLO": 5.27,
+                "TROMBONE": 3.61,
+                "BASSOON": 1.74,
+                "VIOLA": 0.98,
+                "PICCOLO": 0.55,
+                "DOUBLE_BASS": 0.06
+              },
+              "qualification": "Amy Beach Gaelic Symphony; composer/work-specific late-Romantic evidence."
+            },
+            "EARLY_MODERN_BOULANGER": {
+              "movement_files": 1,
+              "total_qstamp": 612,
+              "family_foreground_percent": {
+                "WOODWINDS": 55.56,
+                "STRINGS": 33.58,
+                "BRASS": 10.87,
+                "PERCUSSION": 0
+              },
+              "instrument_foreground_percent": {
+                "VIOLIN": 31.13,
+                "FLUTE": 22.26,
+                "OBOE": 11.72,
+                "CLARINET": 11.64,
+                "HORN": 8.91,
+                "BASSOON": 7.48,
+                "VIOLA": 2.45,
+                "PICCOLO": 2.45,
+                "TRUMPET": 1.96
+              },
+              "qualification": "Single Boulanger work; useful early-modern color/role evidence, not a universal early-modern prior."
+            }
+          },
+          "findings": [
+            "Foreground ownership is not stable across historical/style cohorts; one universal Classical foreground prior is unsupported.",
+            "Woodwinds retain substantial foreground ownership in every cohort and approach or exceed string foreground in several later samples.",
+            "Brass foreground share is low in the Haydn and Beethoven cohorts but rises sharply in the Beach and Bruckner samples, supporting variant-specific brass agency.",
+            "The Boulanger sample is woodwind-led at family level, reinforcing the need for early-modern orchestration behavior distinct from common-practice Classical baselines.",
+            "Beethoven itself changes enough across early, middle and late symphonies that a single Beethoven-derived Classical prior would hide meaningful internal variation."
+          ],
+          "runtime_guardrails": [
+            "Do not use cohort percentages as gain values, population values, or fixed composition quotas.",
+            "Resolve period/ensemble/style variant before foreground-role probabilities are selected.",
+            "Small cohorts remain validation evidence only until corroborated by additional repertoire.",
+            "Composer imbalance in the source corpus must not be silently converted into a family-wide prior.",
+            "Foreground period splitting remains separate from total activity/occupancy period splitting."
+          ]
         }
       },
       "performance": {
@@ -1670,7 +1924,7 @@
         "evidence_backed_requirement": "Role-state probabilities and orchestration behavior must vary by resolved Classical period/ensemble variant; no single universal Classical role distribution."
       },
       "quantitative_evidence_status": {
-        "foreground_reference": "RESEARCH_REFERENCE_AVAILABLE",
+        "foreground_reference": "PERIOD_SPLIT_RESEARCH_REFERENCE_AVAILABLE",
         "activity_reference": "SOURCE_REGISTERED_OR_REFERENCE_AVAILABLE",
         "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
         "runtime_numeric_authority": "NOT_APPROVED"
@@ -15869,13 +16123,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Derive Classical total-activity statistics separately from foreground ownership.",
-    "Split Classical foreground/activity references by period/variant before runtime targets are selected.",
+    "Derive Classical total-activity statistics by period/variant from score CSVs, separately from foreground ownership.",
+    "Use period-split foreground plus activity evidence to define candidate Classical variant role-state priors without turning corpus averages into quotas.",
     "Continue quantitative evidence extraction for the remaining genre families.",
     "Build compact runtime extraction only after structural and listening validation."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED__ACTIVITY_DATASET_REGISTERED__MTG_PRESENCE_CROSSCHECK_ADDED",
+  "quantitative_phase_status": "CLASSICAL_FOREGROUND_PERIOD_SPLIT_ADDED__ACTIVITY_PERIOD_SPLIT_PENDING",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

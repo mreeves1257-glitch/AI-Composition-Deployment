@@ -1127,6 +1127,46 @@ Listening workflow:
 run `42396840622`
 - first 16 bars
 - expected 56 duration changes
-- expected 12 pitch corrections
+- actual 14 pitch corrections in the 16-bar rendered window
 - same Growlybass Vicious mapping in A/B
 - same approved HARMONY strum + treated LEAD
+
+
+## Rock bass all-offbeat coherence listening render completed
+
+Workflow:
+`Rock V3 Bass Offbeat Coherence Listening AB`
+successful run:
+`42397167804`
+
+Artifact:
+`13583961867`
+Digest:
+`sha256:c82f7a7ad8989a41a8159b0bab2c914a60048c78719f9d3a1d0e6dff42c4da6e`
+
+Verified 16-bar render:
+- 56 bass events
+- all 56 bass durations use the measured 0.20-beat damping gate
+- 14 bass pitches corrected in the rendered window
+- 0 different-pitch offbeats remain after the candidate
+- bass onset unchanged
+- bass velocity unchanged
+- event count unchanged
+- exact same Growlybass Vicious mapping in A and B
+- exact same approved HARMONY 2.8 + safe strum
+- exact same treated LEAD
+- no drums
+- no reasoning engine
+- no canonical/main/live promotion
+
+Important count clarification:
+The initial static audit found 12 source off-beat pitch changes in the first 16 bars. The sequential all-offbeat coherence rule produces 14 actual pitch corrections because once an early off-beat is normalized to the established strong-beat tone, later off-beats in the same run must also remain on that tone. This is intended behavior, not an error.
+
+Full-form symbolic verifier remains:
+- 77 off-beat bass events
+- 40 full-form off-beat pitch normalizations
+- 0 different-pitch offbeats remain
+- strong-beat pitch changes remain allowed
+
+Active gate:
+Human listening of clearly labeled Current Bass vs Corrected Bass.

@@ -423,3 +423,19 @@ Human full-40 listening comparison of 2.0 vs 2.8. Do not change the canonical po
 
 Infrastructure note:
 A reusable cached pinned-sfizz composite action was added at `.github/actions/setup-pinned-sfizz/action.yml` for future diagnostics so repeated renderer compiles can be avoided.
+
+
+## Blind human listening gate prepared
+
+To reduce expectation bias, exact byte-for-byte copies of the verified full-40 and focused 2.0-vs-2.8 comparisons were created under neutral A/B names.
+
+No remix, normalization, transcoding or audio modification was performed. SHA256 hashes match the verified originals exactly.
+
+Blind mapping is recorded in:
+`ROCK_MODE_A_CAP_2_0_BLIND_LISTENING_MAP_2026-11-07.json`
+
+Active gate:
+- User listens to Blind A and Blind B without seeing the cap identity.
+- User judges which version sounds more natural across the full form and/or focused montage.
+- Only after that judgment should the mapping be revealed.
+- No canonical policy change before blind judgment.

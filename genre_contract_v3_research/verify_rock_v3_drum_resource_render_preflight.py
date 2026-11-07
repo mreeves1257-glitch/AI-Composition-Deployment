@@ -35,7 +35,7 @@ if str(FORWARD) not in sys.path:
     sys.path.insert(0,str(FORWARD))
 
 from rock_v3_approved_performance_package import build as build_package
-from sfz_renderer_adapter import render_midi, validate_sfz_samples
+from sfz_renderer_adapter import probe_original_sfz, validate_sfz_samples
 
 SCHEMA="ROCK_V3_DRUM_RESOURCE_RENDER_PREFLIGHT_001"
 RESOURCE_ID="KARORYFER_BIG_RUSTY_DRUMS"
@@ -230,9 +230,11 @@ def main()->None:
         midi_path=out/(role+".mid")
         wav_path=out/(role+".wav")
         midi_path.write_bytes(midi)
-        rr=render_midi(binding,midi_path,wav_path,SAMPLE_RATE)
-        if rr.get("status")!="AUDIO_RENDER_PASS":
-            raise PreflightError("RENDER_FAIL::"+role)
+        rr=probe_original_sfz(binding,midi_path,wav_path,SAMPLE_RATE)
+        if rr.get("status")!="DIAGNOSTIC_AUDIO_ONLY_NOT_CERTIFIED":
+            raise PreflightError("DIAGNOSTIC_PROBE_FAIL::"+role)
+        if rr.get("production_gate")!="UNCHANGED_BLOCKED":
+            raise PreflightError("PRODUCTION_GATE_CHANGED::"+role)
 
         stats=_audio_stats(wav_path)
         role_reports[role]={
@@ -250,8 +252,8 @@ def main()->None:
             "render_report":{
                 "status":rr.get("status"),
                 "frames":rr.get("frames"),
-                "channels":rr.get("channels"),
-                "sample_rate":rr.get("sample_rate"),
+                "production_gate":rr.get("production_gate"),
+                "sfz_path":rr.get("sfz_path"),
             },
             "audio_stats":stats,
         }

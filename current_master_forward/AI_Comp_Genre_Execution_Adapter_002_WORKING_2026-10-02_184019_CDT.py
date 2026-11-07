@@ -221,9 +221,16 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
         from classical_composition import build_classical_setup
         classical_v3_package=resolve_classical_v3_variant(
             profile, 'CLASSICAL_PERIOD_ORCHESTRAL')
+        classical_v3_piece_intent={
+            'intent_id':'DIAGNOSTIC_CLASSICAL_PERIOD_ALLEGRO_MODERATO_001',
+            'tempo_bpm':112,
+            'meter':'4/4',
+            'diagnostic_only':True,
+        }
         setup=build_classical_setup(
             profile, mode, creation_seed,
-            v3_variant_package=classical_v3_package)
+            v3_variant_package=classical_v3_package,
+            v3_piece_intent=classical_v3_piece_intent)
         setup['genre_contract_v3_execution_packet']=v3_packet
         setup['classical_v3_variant_package']=classical_v3_package
         return setup

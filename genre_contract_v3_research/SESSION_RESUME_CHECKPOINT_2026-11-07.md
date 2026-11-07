@@ -232,3 +232,40 @@ Saved report:
 `ROCK_MODE_A_COMPONENT_AUDIO_DIFFERENCE_REPORT_2026-11-07.json`
 
 No new performance variable was added. Active gate remains human listening before changing the HARMONY duration policy.
+
+
+## Rock Mode A HARMONY sustain-cap sweep started
+
+Purpose: isolate the one parameter now strongly implicated by the component analysis — maximum rhythm-guitar ringing duration — without changing any other performance behavior.
+
+Canonical current HARMONY maximum:
+- `max_ringing_beats = 2.8`
+
+Diagnostic listening brackets:
+- BASELINE: no Mode A HARMONY duration realization
+- CAP_1_4: same Mode A HARMONY policy, positive extensions capped at 1.4 beats
+- CAP_2_0: same Mode A HARMONY policy, positive extensions capped at 2.0 beats
+- CURRENT_2_8: canonical Mode A HARMONY control
+
+Existing Mode A shortenings remain unchanged in capped candidates. Pitch, onset, velocity, voicing, event count, lead, bass, drums and reasoning remain untouched.
+
+First 8-bar symbolic forecast:
+- 10 affected rhythm-guitar chord gestures.
+- Canonical after-duration distribution: six at 2.8 beats, two at 1.68, one at 1.26, one at 1.05.
+- 1.4 cap trims 8 of 10 gestures.
+- 2.0 cap trims only the six extreme 2.8-beat gestures.
+
+Full 40-bar symbolic forecast:
+- 62 affected HARMONY chord gestures.
+- 26 gestures currently reach 2.8 beats.
+- 2.0 cap therefore targets only those 26 extreme gestures.
+- 1.4 cap also trims the 1.68- and 1.47-beat groups, for 39 gestures total.
+
+Files:
+- `render_rock_mode_a_harmony_cap_sweep.py`
+- `ROCK_MODE_A_HARMONY_CAP_SWEEP_SYMBOLIC_FORECAST_2026-11-07.json`
+- workflow `Rock Mode A Harmony Cap Sweep`
+
+Workflow run `42391402408` is active. Exact Shinyguitar restore and 846-sample graph validation have passed; pinned sfizz build is the current stage.
+
+No live promotion and no canonical duration-policy modification has been made.

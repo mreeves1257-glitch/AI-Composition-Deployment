@@ -1335,3 +1335,88 @@ Objective mix check:
 
 Active gate:
 Single short human listening clip only. Do not generate variant stack unless this integrated result reveals a specific musical problem.
+
+
+## Reusable approved Rock role-performance architecture checkpoint
+
+User constraint:
+Minimize human listening burden. No new musical variables during this architecture pass.
+
+Reusable role registry:
+`current_master_forward/instrument_role_performance_profiles.py`
+
+Approved diagnostic Rock role profiles:
+- HARMONY electric guitar:
+  - 2.8-beat max ringing
+  - safe note-off-preserving strum
+  - Shinyguitar `Programs/composer_electric.sfz`
+- LEAD electric guitar:
+  - treated melodic duration behavior
+  - no random jitter
+  - Shinyguitar `Programs/composer_electric.sfz`
+- BASS D:
+  - strong-beat-only held bass
+  - no offbeat re-attacks
+  - no offbeat pitch changes
+  - body: Growlybass Clean
+  - transient: Growlybass Vicious
+  - attack gate 0.20 beat
+  - attack gain -9 dB
+  - same onset/pitch/velocity as held body
+
+Role-profile verification:
+run `42400917257` — PASS
+artifact `13584673796`
+digest `sha256:01ae758292527b09edaa72833fe212ebc5f124b6b96bbd9e382e07f2ec50c621`
+
+Reusable Rock package:
+`current_master_forward/rock_v3_approved_performance_package.py`
+
+Package behavior:
+- one score source for the approved HARMONY / LEAD / BASS treatments
+- render layers:
+  1. BASS_BODY
+  2. BASS_ATTACK
+  3. HARMONY
+  4. LEAD
+- drums deliberately excluded from approved render layers and marked as a separate future gate
+- no new rhythm from the bass attack layer
+- no new performance variables
+
+Approved-package verification:
+run `42401065178` — PASS
+artifact `13585825047`
+digest `sha256:0cdadafc96482cababc26cca4e78045f56bfd2efaab864e65da2fec93850c7e5`
+
+Legacy-plan bookkeeping corrected:
+- safe strum now marked human-approved diagnostic but still NOT auto-enabled inside legacy Mode A
+- prior bass sustain-extension candidate marked rejected/superseded by approved held-tone Bass D profile
+- legacy Mode A remains separate and unchanged in musical scope
+
+Diagnostic runtime sync:
+`CURRENT_MASTER_SYNC.json` now includes:
+- `instrument_role_performance_profiles.py`
+- `rock_v3_approved_performance_package.py`
+
+Full reconstructed-runtime verification:
+`Genre V3 Symbolic Runtime Instrument Resolution`
+run `42401174609` — PASS
+artifact `13585602000`
+digest `sha256:7e34237ed34efba54f220d9495a11ac400a0eae286fe3b008d3d52382c82dac6`
+
+The end-to-end PASS includes:
+- preserved Composer runtime reconstruction
+- current diagnostic overlay
+- module compilation
+- all-55 V3 symbolic instrument resolution
+- canonical Rock Core Mode A audit
+- exact pinned Rock real-sample acquisition
+- Rock contextual target-resource preflight
+- 40-bar Rock Mode A resource/capability preflight
+
+No main/live promotion.
+Reasoning engine remains excluded.
+No production-fidelity claim.
+
+Practical consequence:
+Do not rediscover the approved Rock guitar/lead/bass performance behaviors through repeated listening. Reuse the role profiles/package. Human listening should be reserved for genuinely new musical decisions or unresolved roles (for example drums/kick integration).

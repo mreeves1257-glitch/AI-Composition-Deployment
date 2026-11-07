@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "V3_GENRE_SPECIFIC_FOREGROUND_EXECUTION__NO_GENERIC_MELODY__NO_AUDIO",
+  "next_phase": "ROCK_VARIANT_MUSICAL_PACKAGES_AND_FORM_EXPANSION__NO_AUDIO__NO_REASONING_ENGINE",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -748,7 +748,7 @@
     "automatic_legacy_instrument_fallback_genres": 0,
     "controlled_component_genres": 7,
     "classical_specialized_genres": 1,
-    "next_gap": "Build separate genre-specific V3 foreground ownership/phrase/contour/rhythm/note execution; do not reuse one generic melody-cell generator.",
+    "next_gap": "Build explicit evidence-backed Rock variant musical packages and expand the seven-bar seed into variant-valid song form before any audio.",
     "v3_governed_source_pattern_genres": 40,
     "latest_positive_wiring_audit_run_id": 42379201319,
     "latest_positive_wiring_audit_status": "PASS",
@@ -861,6 +861,46 @@
         "Only broad lyrical/space/energetic switches materially changed melodic behavior."
       ],
       "consequence": "Legacy generic melody generator is not V3 execution authority and must not be reactivated as the foreground solution."
-    }
+    },
+    "latest_runtime_resource_context_run_id": 42380638599,
+    "latest_runtime_resource_context_status": "PASS",
+    "latest_runtime_resource_context_artifact_id": 13577512268,
+    "latest_runtime_resource_context_artifact_sha256": "a939f392fc119c5240bd5e350d17caf7b688d54d304c9bb8bd4ee9d2fe8f6a19",
+    "rock_foreground_runtime_status": "STRUCTURAL_RESEARCH_CANDIDATE_PASS",
+    "rock_foreground_event_count": 16,
+    "rock_source_pattern_runtime_event_count": 112,
+    "rock_variant_gate_status": "ROCK_VARIANT_REQUIRED",
+    "rock_resolved_variant": null,
+    "rock_finished_composition_authority": false,
+    "rock_audio_rendered": false,
+    "rock_target_resource_context_status": "PASS_NO_AUDIO",
+    "rock_target_resource_contexts": {
+      "rhythm_guitar": {
+        "instrument_id": "electric_guitar",
+        "role": "RHYTHM_POWER_CHORDS",
+        "resource_id": "KARORYFER_SHINYGUITAR",
+        "preferred_mapping": "Programs/composer_electric.sfz",
+        "target_gain_db": -5,
+        "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION"
+      },
+      "lead_guitar": {
+        "instrument_id": "electric_guitar",
+        "role": "LEAD_MELODY",
+        "resource_id": "KARORYFER_SHINYGUITAR",
+        "preferred_mapping": "Programs/composer_electric.sfz",
+        "target_gain_db": -6,
+        "fallback_policy": "NO_SYNTHETIC_SUBSTITUTION"
+      },
+      "bass_resource_id": "KARORYFER_GROWLYBASS_V1_002",
+      "drum_resource_id": "KARORYFER_BIG_RUSTY_DRUMS"
+    },
+    "recovered_shinyguitar_wrapper": {
+      "path": "Programs/composer_electric.sfz",
+      "size_bytes": 109,
+      "sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35",
+      "recovery_source": "/Working File/INTEGRATED_WORKING_COPY Library record dated 2026-10-17",
+      "exact_content": "// Composer wrapper; original SFZ/sample files unchanged.\\n#define $sample_dir ../Samples\\n#include \\\"main.sfz\\\"\\n"
+    },
+    "rock_variant_behavior_evidence_file": "genre_contract_v3_research/ROCK_VARIANT_BEHAVIOR_EVIDENCE_2026-11-07.json"
   }
 }

@@ -918,3 +918,56 @@ A/B uses current Growlybass Vicious mapping and approved guitar context:
 - B = narrow pitch-coherence repair
 
 Do not promote the blanket 0.20-beat damping candidate unless the narrower repair still sounds too resonant.
+
+
+## Rock bass diagnosis revised from sustain to downbeat coherence
+
+Human listening clarified the bass problem:
+- the downbeat attack itself is good;
+- bass resonance lasts too long and begins to read like an upbeat;
+- pitch also changes on some upbeats;
+- if bass carries into an upbeat, the sustained tone should remain the same pitch.
+
+The prior bass sustain A/B is therefore rejected as the wrong repair direction.
+
+Measured exact-resource evidence on Growlybass v1.002 / `growlybass_vicious.sfz`:
+- workflow `Growlybass Vicious Decay Grid`
+- run `42395436023`
+- artifact `13583455938`
+- at 123 BPM, half-beat upbeat occurs at 0.243902 s
+- 0.20-beat MIDI gate: acoustic active end ≈ 0.22 s / 0.451 beat, clears upbeat
+- 0.25-beat gate: active end ≈ 0.24 s, does not preserve desired pre-upbeat margin
+- 0.30-beat and longer gates cross the upbeat
+- selected measured maximum gate: **0.20 beat**
+
+Upbeat pitch analysis:
+- run `42395484055`
+- artifact `13583207989`
+- 147 bass events total
+- 29 half-beat upbeat bass attacks
+- 26 already same pitch as preceding same-bar bass tone
+- 3 change pitch
+
+Verified direct candidate:
+`current_master_forward/rock_v3_bass_downbeat_coherence_candidate.py`
+- cap all bass durations to 0.20 beat
+- preserve all onsets/velocities/event count
+- normalize only the 3 different-pitch half-beat upbeats to the preceding same-bar bass pitch
+- all 29 half-beat upbeats become same-tone
+- approved guitar context preserved: 2.8 HARMONY sustain + safe strum + treated LEAD
+- no reasoning engine
+- no live/main promotion
+
+Symbolic verification:
+`Rock V3 Bass Downbeat Coherence Verify`
+run `42395657057` — PASS
+artifact `13582939126`
+digest `sha256:52f4412e36692af65b9db44f0b4440dfffa0c5446d8d007e512195459f44689a`
+
+Listening gate launched:
+`Rock V3 Bass Downbeat Coherence Listening AB`
+run `42395850331`
+
+A = current bass on current Vicious mapping.
+B = measured 0.20-beat damping + same-tone half-beat upbeat guard on the exact same mapping.
+Both use identical approved guitars. No drums in this gate.

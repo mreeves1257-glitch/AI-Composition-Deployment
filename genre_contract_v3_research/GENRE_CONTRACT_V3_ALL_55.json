@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_QUANTITATIVE_FOREGROUND_AND_ACTIVITY_PERIOD_SPLITS_ADDED__VARIANT_ROLE_PRIORS_PENDING",
+      "research_status": "V3_CLASSICAL_VARIANT_ROLE_CANDIDATES_DEFINED__LISTENING_AND_RUNTIME_EXTRACTION_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -1113,7 +1113,7 @@
           "Define tuba/percussion population by variant rather than forcing one universal orchestra.",
           "Derive full activity percentages from score/activity data; Hauptstimme measures main-theme foreground, not total playing time.",
           "Extract exact activity percentages from the public activity annotation archive when raw archive access is available; filter instrumental/orchestral subsets before runtime priors.",
-          "Derive candidate variant role-state priors from the paired period foreground/activity evidence, with minimum-sample and composer-bias safeguards."
+          "Add broader Baroque, Classical-period, Early-Romantic and Early-Modern repertoire before those variants can receive stronger cross-composer runtime authority."
         ]
       },
       "musical_grammar": {
@@ -2358,7 +2358,9 @@
           "Activity occupancy and foreground ownership must remain separate runtime variables.",
           "If a small-section foreground owner is masked while a high-activity family continues underneath, the arranger must first attempt orchestration-level anti-masking actions.",
           "Resolved Classical variant must be able to alter role-state probabilities; a universal flute/violin/horn role mix is forbidden.",
-          "Family activity occupancy must be a temporal union over active member parts; summing overlapping member percentages is forbidden."
+          "Family activity occupancy must be a temporal union over active member parts; summing overlapping member percentages is forbidden.",
+          "A VALIDATION_ONLY cohort may not directly set runtime probabilities or family-wide role weights.",
+          "A COMPOSER_STYLE_REFERENCE may constrain or validate a variant but may not be silently promoted to an era-wide default."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
@@ -2371,7 +2373,8 @@
           "During a flute-led passage, verify strings can remain present without masking the flute through density/register/articulation changes.",
           "Verify a large string mass still sounds larger than a single wind even when the wind owns the foreground.",
           "During flute-led passages, verify strings can remain present yet perceptually subordinate through orchestration rather than simply muting them.",
-          "Compare woodwind-led and string-led passages for clear role change without destroying orchestral continuity."
+          "Compare woodwind-led and string-led passages for clear role change without destroying orchestral continuity.",
+          "Compare candidate Classical-period and Late-Romantic variants using the same thematic seed; verify that role handoffs, brass agency, density and section interaction change audibly without changing the underlying seed identity."
         ],
         "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE",
         "approved_for_runtime": false
@@ -2383,7 +2386,7 @@
         "no_live_merge_without_review": true
       },
       "variant_resolution": {
-        "status": "REQUIRED_BEFORE_RUNTIME",
+        "status": "EVIDENCE_BACKED_CANDIDATE_VARIANTS_DEFINED__LISTENING_VALIDATION_PENDING",
         "parent_family": "Classical",
         "default_policy": "DO_NOT_TREAT_ALL_CLASSICAL_AS_ONE_FORMATION",
         "candidate_variants": [
@@ -2398,7 +2401,231 @@
           "Full symphonic"
         ],
         "note": "Candidate families only; each requires evidence-backed rules before activation.",
-        "evidence_backed_requirement": "Role-state probabilities and orchestration behavior must vary by resolved Classical period/ensemble variant; no single universal Classical role distribution."
+        "evidence_backed_requirement": "Role-state probabilities and orchestration behavior must vary by resolved Classical period/ensemble variant; no single universal Classical role distribution.",
+        "evidence_threshold_policy": {
+          "purpose": "Prevent small or composer-skewed samples from becoming family-wide runtime rules.",
+          "levels": {
+            "VARIANT_CANDIDATE": {
+              "minimum_guideline": "Prefer at least 2 composers, 2 works and 8 movements/sections with paired foreground + activity evidence.",
+              "allowed_use": "May define a candidate broad variant role-state profile for later listening validation.",
+              "not_allowed": "Still may not become live runtime authority without structural/listening validation."
+            },
+            "COMPOSER_STYLE_REFERENCE": {
+              "minimum_guideline": "Substantial multi-work evidence from one composer, or a strong coherent single-composer corpus.",
+              "allowed_use": "May define composer/style tendency references and help bound a broader variant.",
+              "not_allowed": "May not be treated as universal for an era."
+            },
+            "VALIDATION_ONLY": {
+              "condition": "Single movement/work, very small sample, unusual instrumentation, or otherwise narrow evidence.",
+              "allowed_use": "May confirm/refute a proposed rule or expose missing capabilities.",
+              "not_allowed": "May not set runtime probabilities."
+            }
+          },
+          "current_classification": {
+            "CLASSICAL_SYMPHONIC_BASELINE": "VARIANT_CANDIDATE",
+            "LATE_ROMANTIC_EXPANDED_ORCHESTRA": "VARIANT_CANDIDATE",
+            "BEETHOVEN_EXPANDED_TRANSITION": "COMPOSER_STYLE_REFERENCE",
+            "BRAHMS_ROMANTIC_SYMPHONIC": "COMPOSER_STYLE_REFERENCE",
+            "BAROQUE_BACH_BRANDENBURG": "COMPOSER_STYLE_REFERENCE",
+            "CLASSICAL_HAYDN_SAMPLE": "VALIDATION_ONLY",
+            "EARLY_ROMANTIC_SCHUBERT_SAMPLE": "VALIDATION_ONLY",
+            "EARLY_MODERN_BOULANGER": "VALIDATION_ONLY"
+          }
+        },
+        "candidate_role_state_priors": {
+          "status": "RESEARCH_CANDIDATES__NOT_RUNTIME_APPROVED",
+          "interpretation": "These are qualitative role-state tendencies derived from paired activity and foreground evidence. They are not fixed quotas, gain settings, or literal per-piece percentages.",
+          "variants": {
+            "BAROQUE_CONCERTO_ORCHESTRAL_REFERENCE": {
+              "evidence_level": "COMPOSER_STYLE_REFERENCE",
+              "evidence_basis": [
+                "6 Brandenburg-concerto movements across two works",
+                "Paired foreground and activity evidence"
+              ],
+              "active_mass_tendency": {
+                "STRINGS": "VERY_HIGH",
+                "WOODWINDS": "MODERATE",
+                "KEYBOARD_HARP_CONTINUO": "HIGH",
+                "BRASS": "ABSENT_IN_THIS_SAMPLE",
+                "PERCUSSION": "ABSENT_IN_THIS_SAMPLE"
+              },
+              "foreground_tendency": {
+                "STRINGS": "HIGH",
+                "WOODWINDS": "SUBSTANTIAL",
+                "KEYBOARD_HARP_CONTINUO": "SUPPORT_DOMINANT_NOT_FOREGROUND_TARGET"
+              },
+              "role_rules": [
+                "Continuo/harpsichord should function as persistent harmonic/foundation support when the resolved Baroque variant calls for it.",
+                "Strings may remain highly active while solo/featured winds take foreground.",
+                "Do not import later symphonic brass/percussion behavior into this reference."
+              ]
+            },
+            "CLASSICAL_SYMPHONIC_BASELINE": {
+              "evidence_level": "VARIANT_CANDIDATE",
+              "evidence_basis": [
+                "Haydn Symphony No.104 movement 1 plus Beethoven Symphonies 1-2",
+                "9 movements across 2 composers and 3 works"
+              ],
+              "pooled_family_foreground_percent": {
+                "STRINGS": 56.28,
+                "WOODWINDS": 41.9,
+                "BRASS": 1.81,
+                "PERCUSSION": 0
+              },
+              "pooled_family_active_percent": {
+                "STRINGS": 92.78,
+                "WOODWINDS": 74.23,
+                "BRASS": 46.76,
+                "PERCUSSION": 17.85
+              },
+              "active_mass_tendency": {
+                "STRINGS": "VERY_HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "MODERATE",
+                "PERCUSSION": "LOW_TO_MODERATE_STRUCTURAL"
+              },
+              "foreground_tendency": {
+                "STRINGS": "HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "RARE_TO_OCCASIONAL",
+                "PERCUSSION": "STRUCTURAL_ACCENT_NOT_MELODIC_DEFAULT"
+              },
+              "role_rules": [
+                "Strings normally provide the largest continuous mass, but woodwind foreground handoffs are expected and must remain clearly audible.",
+                "Brass may be active without owning foreground; use harmonic/rhythmic reinforcement before melodic promotion.",
+                "Percussion should remain structurally motivated rather than continuously active."
+              ]
+            },
+            "BEETHOVEN_EXPANDED_TRANSITION": {
+              "evidence_level": "COMPOSER_STYLE_REFERENCE",
+              "evidence_basis": [
+                "Beethoven Symphonies 3-9 instrumental movements",
+                "28 movements across 7 works; one composer"
+              ],
+              "pooled_family_foreground_percent": {
+                "STRINGS": 54.54,
+                "WOODWINDS": 42.09,
+                "BRASS": 3.25,
+                "PERCUSSION": 0.12
+              },
+              "pooled_family_active_percent": {
+                "STRINGS": 89.94,
+                "WOODWINDS": 77.01,
+                "BRASS": 54.85,
+                "PERCUSSION": 19.98
+              },
+              "active_mass_tendency": {
+                "STRINGS": "VERY_HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "MODERATE_TO_HIGH",
+                "PERCUSSION": "LOW_TO_MODERATE"
+              },
+              "foreground_tendency": {
+                "STRINGS": "HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "OCCASIONAL",
+                "PERCUSSION": "STRUCTURAL"
+              },
+              "role_rules": [
+                "Woodwinds and strings should exchange foreground more freely than a string-dominant generic profile would allow.",
+                "Brass activity can increase substantially without implying equal foreground ownership.",
+                "Dense multi-family activity requires orchestration-level anti-masking rather than permanent gain boosting."
+              ]
+            },
+            "BRAHMS_ROMANTIC_SYMPHONIC": {
+              "evidence_level": "COMPOSER_STYLE_REFERENCE",
+              "evidence_basis": [
+                "All four Brahms symphonies",
+                "16 movements; one composer"
+              ],
+              "active_mass_tendency": {
+                "STRINGS": "VERY_HIGH",
+                "WOODWINDS": "VERY_HIGH",
+                "BRASS": "HIGH",
+                "PERCUSSION": "LOW"
+              },
+              "foreground_tendency": {
+                "STRINGS": "HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "SECONDARY_BUT_REAL",
+                "PERCUSSION": "STRUCTURAL"
+              },
+              "role_rules": [
+                "Cello/viola/bassoon participation is unusually persistent in the observed corpus and should not be reduced to background filler.",
+                "High brass activity still normally supports rather than replaces string/woodwind thematic leadership.",
+                "Inner voices require independent audibility and contrapuntal/harmonic agency."
+              ]
+            },
+            "LATE_ROMANTIC_EXPANDED_ORCHESTRA": {
+              "evidence_level": "VARIANT_CANDIDATE",
+              "evidence_basis": [
+                "Amy Beach Gaelic Symphony plus Bruckner Symphony No.5",
+                "9 movements across 2 composers and 2 works"
+              ],
+              "pooled_family_foreground_percent": {
+                "STRINGS": 38.19,
+                "WOODWINDS": 38.1,
+                "BRASS": 23.71,
+                "PERCUSSION": 0
+              },
+              "pooled_family_active_percent": {
+                "STRINGS": 91.88,
+                "WOODWINDS": 70.12,
+                "BRASS": 62.19,
+                "PERCUSSION": 24.47
+              },
+              "active_mass_tendency": {
+                "STRINGS": "VERY_HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "HIGH",
+                "PERCUSSION": "MODERATE_STRUCTURAL"
+              },
+              "foreground_tendency": {
+                "STRINGS": "HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "SUBSTANTIAL",
+                "PERCUSSION": "STRUCTURAL_ACCENT"
+              },
+              "role_rules": [
+                "Brass receives genuine foreground eligibility rather than being restricted to support.",
+                "Strings remain highly active even when they no longer dominate foreground ownership.",
+                "Woodwind and brass foreground windows require thinning/revoicing of active strings rather than simple muting.",
+                "The arranger must support large dynamic and registral contrasts without collapsing the orchestra into a constant full tutti."
+              ]
+            },
+            "EARLY_MODERN_COLORISTIC_REFERENCE": {
+              "evidence_level": "VALIDATION_ONLY",
+              "evidence_basis": [
+                "Lili Boulanger D'un matin de printemps",
+                "1 movement/work; unusual continuous piano presence"
+              ],
+              "active_mass_tendency": {
+                "STRINGS": "VERY_HIGH",
+                "WOODWINDS": "HIGH",
+                "BRASS": "MODERATE",
+                "PERCUSSION": "MODERATE",
+                "KEYBOARD_HARP_CONTINUO": "VERY_HIGH_IN_THIS_SCORE_ONLY"
+              },
+              "foreground_tendency": {
+                "WOODWINDS": "VERY_HIGH_IN_SAMPLE",
+                "STRINGS": "HIGH",
+                "BRASS": "SECONDARY"
+              },
+              "role_rules": [
+                "Use only to validate coloristic role flexibility and mixed-family activity.",
+                "Continuous piano in this score must not become a generic early-modern rule.",
+                "More repertoire is required before this can define an early-modern runtime variant."
+              ]
+            }
+          },
+          "universal_guardrails": [
+            "Active mass is not foreground authority.",
+            "Foreground authority is not gain.",
+            "Population is not activity.",
+            "A section may remain active while yielding perceptual space through register, density, rhythm, articulation and spatial depth.",
+            "Qualitative role bands remain provisional until listening validation against approved references."
+          ]
+        }
       },
       "quantitative_evidence_status": {
         "foreground_reference": "PERIOD_SPLIT_RESEARCH_REFERENCE_AVAILABLE",
@@ -17146,13 +17373,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Derive candidate Classical variant role-state priors from paired period foreground and activity evidence, with explicit sample-size safeguards.",
-    "Define minimum evidence thresholds for when a cohort may influence runtime behavior versus validation-only behavior.",
-    "Continue quantitative evidence extraction for the remaining genre families.",
-    "Build compact runtime extraction only after structural and listening validation."
+    "Build isolated listening-validation extracts for the Classical-period symphonic baseline and Late-Romantic expanded-orchestra candidate variants.",
+    "Use the same thematic seed across variants so orchestration/role behavior can be compared directly.",
+    "Do not merge these candidates into live runtime until the listening tests pass.",
+    "Continue quantitative evidence extraction for remaining genre families after the Classical pilot validation."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_FOREGROUND_AND_ACTIVITY_PERIOD_SPLITS_ADDED__VARIANT_ROLE_PRIORS_NEXT",
+  "quantitative_phase_status": "CLASSICAL_CANDIDATE_VARIANT_ROLE_PRIORS_DEFINED__LISTENING_VALIDATION_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

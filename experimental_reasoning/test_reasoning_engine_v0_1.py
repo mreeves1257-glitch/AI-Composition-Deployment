@@ -7,6 +7,7 @@ from reasoning_engine_v0_1 import (
     ComposerState,
     InstrumentMemory,
     MusicalIdeaMemory,
+    SpatialSceneMemory,
     MusicalGoal,
     reason,
     validate,
@@ -327,6 +328,47 @@ def test_kick_and_bass_have_distinct_low_end_jobs():
     assert "TIGHT_CONTROLLED" in s["kick_spatial_rule"]["width"]
 
 
+def test_chorus_spatial_scene_expands_from_verse_without_random_motion():
+    state = ComposerState(
+        genre="Soul",
+        profile_id="SOUL_PROFILE",
+        section="Chorus",
+        previous_section="Verse",
+        active_instruments=("kick", "bass", "guitar", "keys"),
+        spatial_history=(
+            SpatialSceneMemory(section="Verse", width="MEDIUM", depth="MEDIUM_DEEP", intimacy="CLOSE"),
+        ),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    s = packet["decisions"]["spatial_choreography"]
+    assert s["target_scene"]["width"] == "WIDE"
+    assert "EXPAND_WIDTH_AND_DEPTH" in s["transition"]
+    assert "RANDOM_PANNING" in s["continuity_rule"]
+    assert "KICK_AND_BASS_REMAIN_SPATIALLY_STABLE" in s["low_end_anchor_rule"]
+
+
+def test_spatial_choreography_uses_clarity_before_loudness_for_underserved_instrument():
+    state = ComposerState(
+        genre="Country",
+        profile_id="COUNTRY_PROFILE",
+        section="Verse",
+        active_instruments=("kick", "bass", "guitar", "fiddle"),
+        instrument_history=(
+            InstrumentMemory("kick", meaningful_windows=4, total_windows=4, last_role="groove"),
+            InstrumentMemory("bass", meaningful_windows=4, total_windows=4, last_role="foundation"),
+            InstrumentMemory("guitar", meaningful_windows=4, total_windows=4, last_role="harmony"),
+            InstrumentMemory("fiddle", meaningful_windows=1, total_windows=4, last_role="rest"),
+        ),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    s = packet["decisions"]["spatial_choreography"]
+    assert s["underserved_instruments"] == ["fiddle"]
+    assert "CLEARER SPACE" in s["underserved_instrument_rule"]
+    assert "BEFORE GAIN" in s["clarity_over_loudness_rule"]
+
+
 def test_hash_detects_mutation():
     state = ComposerState(
         genre="Country",
@@ -359,6 +401,8 @@ if __name__ == "__main__":
         test_3d_bass_position_preserves_depth_without_more_importance,
         test_kick_defaults_to_maximum_pronounced_impact_without_higher_importance,
         test_kick_and_bass_have_distinct_low_end_jobs,
+        test_chorus_spatial_scene_expands_from_verse_without_random_motion,
+        test_spatial_choreography_uses_clarity_before_loudness_for_underserved_instrument,
         test_hash_detects_mutation,
     ]
     for fn in tests:

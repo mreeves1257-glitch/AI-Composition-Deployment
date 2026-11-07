@@ -1,0 +1,113 @@
+name: Rock V3 Preferred Bass Guitar Integration
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/rock-v3-preferred-bass-guitar-integration.yml"
+      - ".github/actions/setup-pinned-sfizz/action.yml"
+      - "genre_contract_v3_research/render_rock_v3_preferred_bass_guitar_integration.py"
+      - "genre_contract_v3_research/install_pinned_growlybass_v1002.sh"
+      - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
+      - "current_master_forward/rock_v3_bass_held_tone_candidate.py"
+      - "current_master_forward/rock_v3_strum_candidate_executor.py"
+      - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/official_sfz_compatibility.py"
+  workflow_dispatch:
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --disable-pip-version-check --no-input numpy
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Restore exact pinned Growlybass v1.002
+        run: |
+          bash genre_contract_v3_research/install_pinned_growlybass_v1002.sh current_master_forward
+
+      - name: Validate bass mappings
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from sfz_renderer_adapter import validate_sfz_samples
+          bank=Path("current_master_forward/sound_resources/KARORYFER_GROWLYBASS_V1_002").resolve()
+          assert validate_sfz_samples(bank/"growlybass_clean.sfz",allowed_root=bank)=={
+            "sample_references":240,"unique_samples":240,"sfz_files_validated":1
+          }
+          assert validate_sfz_samples(bank/"growlybass_vicious.sfz",allowed_root=bank)=={
+            "sample_references":86,"unique_samples":86,"sfz_files_validated":1
+          }
+          print("BASS_MAPPING_VALIDATION_PASS")
+          PY
+
+      - name: Restore exact pinned Shinyguitar
+        run: |
+          bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh current_master_forward
+
+      - name: Validate Shinyguitar
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from sfz_renderer_adapter import validate_sfz_samples
+          pack=Path("current_master_forward/sound_resources/KARORYFER_SHINYGUITAR").resolve()
+          report=validate_sfz_samples(pack/"Programs/composer_electric.sfz",allowed_root=pack)
+          assert report=={"sample_references":6798,"unique_samples":846,"sfz_files_validated":16},report
+          print(report)
+          PY
+
+      - name: Setup pinned sfizz
+        id: sfizz
+        uses: ./.github/actions/setup-pinned-sfizz
+
+      - name: Render preferred bass and guitar stems
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+          AI_COMP_SFIZZ_PIN: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+          AI_COMP_SFZ_RENDERER: ${{ steps.sfizz.outputs.renderer }}
+        run: |
+          python genre_contract_v3_research/render_rock_v3_preferred_bass_guitar_integration.py
+
+      - name: Build one integrated MP3
+        run: |
+          set -euo pipefail
+          folder="genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration"
+          ffmpeg -hide_banner -loglevel error -y             -i "$folder/BASS_HELD_BODY.wav"             -i "$folder/BASS_CRISP_ATTACK.wav"             -i "$folder/HARMONY_APPROVED.wav"             -i "$folder/LEAD_TREATED.wav"             -filter_complex "[0:a]volume=0dB[bb];[1:a]volume=-9dB[ba];[2:a]volume=-5dB[h];[3:a]volume=-6dB[l];[bb][ba][h][l]amix=inputs=4:duration=longest:normalize=0[m]"             -map "[m]" -codec:a libmp3lame -b:a 256k             "$folder/ROCK_PREFERRED_BASS_PLUS_GUITARS.mp3"
+
+      - name: Validate MP3
+        run: |
+          set -euo pipefail
+          f="genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration/ROCK_PREFERRED_BASS_PLUS_GUITARS.mp3"
+          codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "$f")"
+          rate="$(ffprobe -v error -select_streams a:0 -show_entries stream=sample_rate -of default=nw=1:nk=1 "$f")"
+          channels="$(ffprobe -v error -select_streams a:0 -show_entries stream=channels -of default=nw=1:nk=1 "$f")"
+          duration="$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "$f")"
+          python -c 'import sys; d=float(sys.argv[1]); assert 12<d<30; assert sys.argv[2]=="mp3"; assert int(sys.argv[3])==44100; assert int(sys.argv[4])==2; print("VALID",d)' "$duration" "$codec" "$rate" "$channels"
+
+      - name: Upload integration package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_V3_Preferred_Bass_Guitar_Integration
+          path: |
+            genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration/ROCK_PREFERRED_BASS_PLUS_GUITARS.mp3
+            genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration/BASS_HELD_BODY.wav
+            genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration/BASS_CRISP_ATTACK.wav
+            genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration/HARMONY_APPROVED.wav
+            genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration/LEAD_TREATED.wav
+            genre_contract_v3_research/rock_v3_preferred_bass_guitar_integration/ROCK_V3_PREFERRED_BASS_GUITAR_INTEGRATION_REPORT.json
+          if-no-files-found: error

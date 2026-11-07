@@ -16,7 +16,8 @@ from rock_v3_core_development_executor import execute, CHORDS
 from rock_v3_core_form_plan import build as build_form
 
 
-EXPECTED_ROLES={"BASS","HARMONY","KICK","SNARE","HAT","LEAD"}
+EXPECTED_ROLES={"BASS","HARMONY","KICK","SNARE","HAT","LEAD_GUITAR"}
+EXPECTED_TRACK_IDS={"BASS","HARMONY","KICK","SNARE","HAT","LEAD"}
 EXPECTED_INSTRUMENTS={
     "electric_bass_guitar","electric_guitar",
     "kick_drum_rock","snare_drum","hi_hat",
@@ -91,6 +92,11 @@ def main():
         raise RuntimeError(
             "ROCK_DEVELOPED_ROLE_SET_WRONG::"+json.dumps(sorted(roles))
         )
+    track_ids={e["track_id"] for e in events}
+    if track_ids!=EXPECTED_TRACK_IDS:
+        raise RuntimeError(
+            "ROCK_DEVELOPED_TRACK_ID_SET_WRONG::"+json.dumps(sorted(track_ids))
+        )
     instruments={e["instrument_id"] for e in events}
     if instruments!=EXPECTED_INSTRUMENTS:
         raise RuntimeError(
@@ -147,7 +153,7 @@ def main():
 
     # Lead must follow the form-plan foreground owner exactly.
     for bar in range(40):
-        has_lead=any(e["role"]=="LEAD" for e in events_by_bar[bar])
+        has_lead=any(e["track_id"]=="LEAD" and e["role"]=="LEAD_GUITAR" for e in events_by_bar[bar])
         expected=form_by_bar[bar]["foreground_owner"]=="LEAD_GUITAR"
         if has_lead!=expected:
             raise RuntimeError(
@@ -218,7 +224,7 @@ def main():
     lead_bar_count=0
     for bar in range(40):
         lead=sorted(
-            [e for e in events_by_bar[bar] if e["role"]=="LEAD"],
+            [e for e in events_by_bar[bar] if e["track_id"]=="LEAD" and e["role"]=="LEAD_GUITAR"],
             key=lambda x:x["start_beat"]
         )
         if not lead:
@@ -300,6 +306,7 @@ def main():
         "duration_seconds":round(result["duration_seconds"],3),
         "event_count":len(events),
         "role_count":len(roles),
+        "track_id_count":len(track_ids),
         "instrument_count":len(instruments),
         "rhythm_guitar_attack_count":len(harmony_attacks),
         "minimum_rhythm_guitar_attack_pitch_count":min(harmony_attack_sizes),

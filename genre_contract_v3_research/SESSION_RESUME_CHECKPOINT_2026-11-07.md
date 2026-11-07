@@ -971,3 +971,49 @@ run `42395850331`
 A = current bass on current Vicious mapping.
 B = measured 0.20-beat damping + same-tone half-beat upbeat guard on the exact same mapping.
 Both use identical approved guitars. No drums in this gate.
+
+
+## Rock bass pitch-coherence blind listening gate completed
+
+Workflow:
+`Rock V3 Bass Pitch Coherence Listening AB`
+Run:
+`42395776007`
+Artifact:
+`13582444349`
+Digest:
+`sha256:bb34eba27d3e4876c9ba0fb517ad1587ca393a22358bd9f72d98bb5785d1b0e5`
+
+16-bar verified A/B:
+- Growlybass Vicious mapping fixed in both;
+- approved HARMONY 2.8 sustain fixed;
+- safe strum fixed;
+- treated LEAD fixed;
+- no drums;
+- A = current bass;
+- B = narrow pitch-coherence repair.
+
+Repair changes in 16-bar window:
+- 56 bass events total
+- 17 prior-note duration shortenings
+- 5 ultra-close pitch locks to the prior tone
+- 0 duration extensions
+- 0 onset changes
+- 0 velocity changes
+- guitars unchanged
+
+Full-40 symbolic verifier previously passed:
+- 36 duration shortenings
+- 22 pitch locks
+- zero remaining different-pitch coherence violations
+
+Blind mapping is recorded in:
+`ROCK_V3_BASS_PITCH_COHERENCE_BLIND_MAP_2026-11-07.json`
+
+Blind 1 = repaired candidate.
+Blind 2 = current bass control.
+
+The blanket 0.20-beat damping candidate remains fallback only because it shortens 146/147 bass notes and is substantially more invasive.
+
+Active gate:
+User blind judgment on the pitch-coherence A/B. Do not reveal mapping until user chooses Blind 1, Blind 2, no difference, or both wrong.

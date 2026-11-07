@@ -439,3 +439,39 @@ Active gate:
 - User judges which version sounds more natural across the full form and/or focused montage.
 - Only after that judgment should the mapping be revealed.
 - No canonical policy change before blind judgment.
+
+
+## Blind sustain-cap result and next Rock candidate
+
+Blind human result:
+- User preferred **Blind B**.
+- Blind B maps to the **current 2.8-beat HARMONY sustain ceiling**.
+- The 2.0-beat replacement candidate is therefore rejected.
+- No canonical change was required because 2.8 was already the current Mode A setting.
+
+Decision record:
+`ROCK_MODE_A_CAP_2_0_HUMAN_LISTENING_DECISION_2026-11-07.json`
+
+Next disabled Rock performance candidate inspected:
+- `ROCK_SHINYGUITAR_STRUM_ATTACK_TIMING_V1`
+- note gap: 0.038 beat
+- max strum span: 0.14 beat
+- alternating direction: true
+- default enabled: false
+- listening approved: false
+
+Provenance finding:
+The branch contains the strum candidate parameters but no dedicated strum renderer/verifier/listening artifact. Older instrument-performance code groups near-simultaneous electric-guitar notes as one gesture for duration logic but does not actually stagger their attacks. The strum candidate is therefore unvalidated research, not an already-proven implementation.
+
+A symbolic-only safety verifier has been added:
+`verify_rock_v3_strum_candidate_safety.py`
+
+Workflow:
+`Rock V3 Strum Candidate Safety`
+
+Run:
+`42393038398`
+
+The verifier asks whether 0.038-beat string staggering can be applied as a pure onset change without causing next-gesture overlap or bar-boundary violations. If not, it separately checks whether preserving original note-off times would be mechanically safe before any implementation is considered.
+
+No audio, no strum enablement, no canonical policy mutation, no live promotion, and no reasoning-engine involvement.

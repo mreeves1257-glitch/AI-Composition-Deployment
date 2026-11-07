@@ -8,11 +8,13 @@ on:
       - "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json"
       - "genre_contract_v3_research/verify_v3_execution_wiring.py"
       - "genre_contract_v3_research/verify_v3_structured_pre_generation.py"
+      - "genre_contract_v3_research/verify_v3_source_pattern_bridge.py"
       - "current_master_forward/genre_contract_v3_execution_bridge.py"
       - "current_master_forward/genre_v3_instrument_authority.py"
       - "current_master_forward/classical_v3_variant_package.py"
       - "current_master_forward/genre_selector.py"
       - "current_master_forward/genre_pre_generation_compiler.py"
+      - "current_master_forward/genre_v3_source_pattern_bridge.py"
       - "current_master_forward/engine.py"
       - "current_master_forward/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
       - "current_master_forward/classical_composition.py"
@@ -45,6 +47,13 @@ jobs:
           python genre_contract_v3_research/verify_v3_structured_pre_generation.py
           test -s genre_contract_v3_research/V3_STRUCTURED_PREGEN_AUDIT.json
 
+      - name: Audit all 55 V3-compatible symbolic source patterns
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/verify_v3_source_pattern_bridge.py
+          test -s genre_contract_v3_research/V3_SOURCE_PATTERN_COMPATIBILITY_AUDIT.json
+
       - name: Upload wiring audits
         uses: actions/upload-artifact@v4
         with:
@@ -52,4 +61,5 @@ jobs:
           path: |
             genre_contract_v3_research/V3_EXECUTION_WIRING_AUDIT.json
             genre_contract_v3_research/V3_STRUCTURED_PREGEN_AUDIT.json
+            genre_contract_v3_research/V3_SOURCE_PATTERN_COMPATIBILITY_AUDIT.json
           if-no-files-found: error

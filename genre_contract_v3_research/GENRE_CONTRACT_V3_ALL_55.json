@@ -556,7 +556,7 @@
       "source_profile_id": "JAZZ_SWING_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "JAZZ_SWING_V1",
@@ -598,62 +598,176 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already captures swung eighth feel, ride-led pulse, flexible comping and walking bass.",
+          "Current profile recognizes head/solo/head or sectional forms and density changes under solos.",
+          "Articulation, accents and relational microtiming are already described well."
+        ],
+        "current_profile_gaps": [
+          "Swing is treated as one profile despite multiple ensemble formations and eras.",
+          "No fixed formation is defensible until the variant is resolved.",
+          "No executable swing-ratio/tempo relationship or comping-density model.",
+          "No population/activity/foreground percentages by formation."
+        ],
+        "external_sources_considered": [
+          "Current AI Composer Swing profile",
+          "MMA Swing library",
+          "Berklee Arranging 1 rhythm-section materials",
+          "Weimar Jazz Database",
+          "Berklee jazz ensemble/performance references"
+        ],
+        "retained_current_fields": [
+          "swung eighth feel",
+          "walking bass",
+          "ride-led timekeeping",
+          "flexible comping",
+          "head/solo/head possibility",
+          "interactive accents",
+          "relational microtiming"
+        ],
+        "upgraded_fields": [
+          "variant/formation resolver",
+          "tempo-dependent swing behavior",
+          "walking-vs-two-feel behavior",
+          "solo/background foreground windows",
+          "intro/fill/ending variation",
+          "formation-specific percentages"
+        ],
         "conflicts": [],
-        "unresolved_questions": []
+        "unresolved_questions": [
+          "Resolve small-combo versus dance-band versus organ/guitar/vocal swing formations.",
+          "Derive formation-specific population and activity percentages.",
+          "Quantify tempo-dependent swing ratio and ride/bass/comping behavior from performance datasets."
+        ]
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Variant-specific head/solo/head, ABA/AABA-like or sectional jazz forms with intros/endings and density changes."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SWING_JAZZ_VARIANT",
+          "rule": "Extended tonal jazz harmony, turnarounds and substitutions are available according to variant; do not force one progression."
+        },
+        "melody_model": {
+          "rule": "Lead phrases retain swing articulation and leave room for response/comping; solos are not duplicated by accompaniment instruments."
+        },
+        "rhythm_groove_model": {
+          "rule": "Swing feel is tempo- and performance-dependent; ride, bass, comping and accents share one pocket.",
+          "external_pattern_evidence": "MMA demonstrates multiple swing, walking-bass, triplet-fill, clarinet-color and intro/ending variants; use as structural evidence, not direct pattern copying."
+        },
+        "bass_model": {
+          "rule": "Walking bass or variant-appropriate two-feel/sparser bass targets chord tones and approaches while coordinating with ride/comping."
+        },
+        "percussion_model": {
+          "rule": "Ride/hi-hat/kick/snare behavior follows tempo and ensemble size; drums interact with phrases rather than repeat a fixed backbeat."
+        },
+        "phrase_model": {
+          "rule": "4/8-bar phrasing, pickups, turnarounds, call/response and breathing space are variant-aware."
+        },
+        "transition_model": {
+          "rule": "Setups, fills, turnarounds and breaks prepare structural boundaries; intensity follows ensemble/solo context."
+        },
+        "development_model": {
+          "rule": "Develop through solo/background exchange, comping variation, walking/two-feel changes, register, dynamics and ensemble figures."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific tags, turnarounds, held endings or arranged hits."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Solo/lead, bass, drums and comping can each carry major musical responsibility independent of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Solo/lead windows require accompaniment to thin or become more responsive.",
+          "Walking bass and ride remain audible structural anchors without becoming permanent foreground.",
+          "Comping activity adapts to the solo/lead rather than filling every gap."
+        ],
+        "role_handoff_rules": [
+          "Foreground transfers between head melody, soloists and ensemble figures.",
+          "Accompaniment shifts between support, response and space.",
+          "Drums may set up transitions without becoming a generic fill machine."
+        ],
+        "register_occupancy": {
+          "rule": "Lead, comping and bass registers must remain separated enough for conversational clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_SWING_FORMATION",
+          "note": "Do not reuse Big Band headcounts for Swing."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato/tongued horn lines, comping stabs, bass sustain, brush/stick differentiation",
+        "dynamic_behavior": "interactive accents and phrase crescendos rather than static velocity",
+        "timing_humanization_behavior": "microtiming is relational to swing pulse and ensemble role; no random jitter",
+        "continuous_performance_control": "expression, articulation, breath and comping-density controls",
+        "interaction_rules": [
+          "Shared pocket; no independent random jitter.",
+          "Comping listens/responds to lead/solo activity.",
+          "Ride and walking bass maintain time feel without masking foreground."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT",
+          "rule": "Small combo, organ combo, vocal swing and dance-band formations require different footprints."
+        },
+        "mix_prominence_intent": "bass/ride time feel clear; melody and comping leave mutual space",
+        "sound_effects_intent": "room/reverb restrained; target tone may be warm/natural",
+        "production_mastering_intent": "preserve transient nuance and dynamic headroom"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Swing profile",
+          "MMA Swing library",
+          "Berklee Arranging 1",
+          "Weimar Jazz Database",
+          "Berklee jazz performance/arranging references"
+        ],
+        "source_confidence": {
+          "core_swing_behavior": "HIGH",
+          "single_universal_formation": "REJECTED",
+          "variant_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal_project_sources": "PROJECT_INTERNAL",
+          "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE",
+          "Berklee": "REFERENCE_ONLY",
+          "Weimar": "REVIEW_CURRENT_DATA_LICENSE"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "No population percentages are accepted until a Swing variant/formation is resolved.",
+          "Big Band formation cannot be silently substituted for Swing.",
+          "Solo foreground and accompaniment hierarchy must be explicit.",
+          "Walking/two-feel behavior must be variant- and section-aware."
+        ],
+        "listening_tests": [
+          "Pocket remains coherent across bass, ride and comping.",
+          "Solo/lead is audible without accompaniment disappearing.",
+          "Swing variation sounds developmental rather than looped.",
+          "Different resolved formations sound materially different."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -662,6 +776,19 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "BLOCKING_REQUIREMENT_BEFORE_PERCENTAGES",
+        "parent_family": "Swing",
+        "candidate_variants": [
+          "Small jazz combo swing",
+          "Piano-trio-plus-horn swing",
+          "Guitar combo swing",
+          "Organ combo swing",
+          "Vocal swing",
+          "Dance-band swing"
+        ],
+        "note": "Big Band remains a separate top-level Composer genre; Swing must not silently inherit the 17-player Big Band formation."
       }
     },
     "Jazz Ballad": {
@@ -3121,7 +3248,7 @@
       "source_profile_id": "SAMBA_V1",
       "family": "Latin",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SAMBA_V1",
@@ -3164,62 +3291,205 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Current Composer already has three differentiated surdo functions plus caixa, repinique, tamborim, agogo and ganza/shaker.",
+          "Current formation preserves a bateria concept instead of reducing Samba to drum kit plus shaker.",
+          "Piano and bass are already separated as contemporary rhythm-section support."
+        ],
+        "current_profile_gaps": [
+          "No explicit distinction between batucada/bateria-centered samba and contemporary rhythm-section samba variants.",
+          "No percentage model in the genre contract.",
+          "No activity/foreground model for percussion roles.",
+          "No explicit interaction rules among the three surdo functions and higher percussion."
+        ],
+        "external_sources_considered": [
+          "Current AI Composer 55-profile registry",
+          "Current Composer Samba bateria formation",
+          "Berklee Arranging and Producing Contemporary Music Styles",
+          "MMA Samba library"
+        ],
+        "retained_current_fields": [
+          "three-surdo architecture",
+          "caixa/repinique/tamborim/agogo/ganza separation",
+          "bass and harmonic rhythm-section support",
+          "Brazilian-specific groove identity"
+        ],
+        "upgraded_fields": [
+          "variant resolution",
+          "bateria population percentages",
+          "percussion interaction rules",
+          "activity/foreground distinction",
+          "intro/fill/ending transformation",
+          "spatial bateria footprint"
+        ],
         "conflicts": [],
-        "unresolved_questions": []
+        "unresolved_questions": [
+          "Research formation-size ranges for samba bateria variants without inventing universal headcounts.",
+          "Derive activity shares for surdo/caixa/repinique/tamborim/agogo/ganza by variant.",
+          "Separate dance-band/contemporary samba from large bateria practice."
+        ]
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Variant-specific sectional form; intros, fills, breaks and endings may be arranged, but the groove identity must remain continuous."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SAMBA_VARIANT",
+          "rule": "Harmony follows the chosen Brazilian/jazz/contemporary variant; percussion grammar remains independent of harmonic density."
+        },
+        "melody_model": {
+          "rule": "Melody/lead floats over an interlocking rhythmic bed; accompaniment must create windows without dismantling the groove."
+        },
+        "rhythm_groove_model": {
+          "rule": "Three surdo functions plus caixa/repinique/tamborim/agogo/ganza operate as differentiated interlocking roles where the bateria variant is selected.",
+          "meter_note": "Do not assume a generic 4/4 pop-grid interpretation; preserve samba pulse/accent behavior appropriate to variant."
+        },
+        "bass_model": {
+          "rule": "Bass supports the selected contemporary/jazz samba variant and does not replace surdo function when bateria architecture is active."
+        },
+        "percussion_model": {
+          "rule": "Surdo 1/2/3, caixa, repinique, tamborim, agogo and ganza are independent functions; no single 'samba percussion' track."
+        },
+        "phrase_model": {
+          "rule": "Rhythmic density and accents breathe with form; individual percussion functions can drop/re-enter without losing ensemble pulse."
+        },
+        "transition_model": {
+          "rule": "Use repinique/ensemble setups, breaks, fills and density changes appropriate to variant rather than generic drum fills."
+        },
+        "development_model": {
+          "rule": "Develop through layering, subtraction, response, accent redistribution, melodic/harmonic change and percussion-role interaction."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific breaks, ensemble stops, tags or arranged endings; do not apply a generic pop ending."
+        }
       },
       "ensemble": {
-        "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "instrument_roster": [
+          "PIANO",
+          "BASS",
+          "SURDO_1",
+          "SURDO_2",
+          "SURDO_3",
+          "CAIXA_1",
+          "REPINIQUE_1",
+          "TAMBORIM_1",
+          "AGOGO_1",
+          "GANZA_1"
+        ],
+        "population_mass_percent": {
+          "PIANO": 10,
+          "BASS": 10,
+          "SURDO": 30,
+          "CAIXA": 10,
+          "REPINIQUE": 10,
+          "TAMBORIM": 10,
+          "AGOGO": 10,
+          "GANZA": 10
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Bateria roles can have high activity, but individual parts must retain differentiated density."
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Percussion roles may be structurally essential without all becoming equal foreground."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Lead/melodic foreground receives space through selective percussion density/register and not by silencing the rhythmic identity."
+        },
+        "foreground_window_rules": [
+          "Repinique or other percussion may temporarily become a featured call while other bateria roles maintain support.",
+          "Melodic foreground requires density management rather than flattening the bateria.",
+          "Three surdo functions remain differentiated rather than cloned."
+        ],
+        "role_handoff_rules": [
+          "Percussion calls/responses can move among repinique, tamborim, agogo and other roles.",
+          "Rhythm-section instruments may move forward in contemporary variants without replacing bateria identity.",
+          "Density changes should be role-specific."
+        ],
+        "register_occupancy": {
+          "rule": "Separate low surdo/bass energy from mid/high percussion and melodic register to avoid masking."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Bateria is a distributed ensemble footprint; low surdo focus should remain coherent while higher percussion spreads appropriately."
+        },
+        "section_population_reference": {
+          "reference_id": "SAMBA_BATERIA_10_PLAYER_COMPOSER_REFERENCE",
+          "total_physical_players": 10,
+          "counts": {
+            "PIANO": 1,
+            "BASS": 1,
+            "SURDO": 3,
+            "CAIXA": 1,
+            "REPINIQUE": 1,
+            "TAMBORIM": 1,
+            "AGOGO": 1,
+            "GANZA": 1
+          },
+          "aggregate_sections": {
+            "RHYTHM": 2,
+            "BATERIA": 8
+          },
+          "qualification": "Composer pilot formation, not a universal samba headcount."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "crisp percussion differentiation and accented ensemble figures",
+        "dynamic_behavior": "energetic but with clear section-level dynamics",
+        "timing_humanization_behavior": "human microtiming is collective and layer-specific",
+        "continuous_performance_control": "percussion dynamics and expression on melodic parts",
+        "interaction_rules": [
+          "Percussion timing is relational and interlocking, not independently randomized.",
+          "Surdo roles remain distinct.",
+          "Rhythm-section and bateria parts must negotiate density rather than stack continuously."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "rule": "Preserve a coherent low-end center/foundation while distributing higher bateria roles and melodic/rhythm-section elements for separation."
+        },
+        "mix_prominence_intent": "percussion/bass foundation clear without masking melody",
+        "sound_effects_intent": "mostly natural/room plus controlled production",
+        "production_mastering_intent": "punchy, lively master with controlled high percussion"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Samba profile",
+          "Current Composer SAMBA_BATERIA_10_PLAYER_COMPOSER_REFERENCE",
+          "Berklee Contemporary Music Styles samba/bossa curriculum",
+          "MMA Samba library"
+        ],
+        "source_confidence": {
+          "pilot_bateria_structure": "HIGH_FOR_PROJECT_PILOT",
+          "three_surdo_role_distinction": "HIGH",
+          "variant_population_activity_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal_project_sources": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY",
+          "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Pilot formation population percentages sum to 100.",
+          "Three surdo functions remain separate identities.",
+          "No generic percussion collapse.",
+          "Resolved variant determines whether full bateria architecture is active."
+        ],
+        "listening_tests": [
+          "Low-end surdo/bass remains powerful without burying higher percussion.",
+          "Repinique/tamborim/agogo/ganza remain individually perceptible.",
+          "Melodic foreground remains audible without destroying rhythmic mass.",
+          "Transitions sound samba-specific rather than generic drum fills."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -3228,6 +3498,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Samba",
+        "candidate_variants": [
+          "Contemporary rhythm-section samba",
+          "Bateria/batucada-centered",
+          "Small ensemble samba",
+          "Jazz-samba hybrid",
+          "Samba with contemporary band"
+        ],
+        "hard_rule": "Do not force one fixed percussion formation onto every Samba variant."
       }
     },
     "Salsa": {
@@ -3236,7 +3518,7 @@
       "source_profile_id": "SALSA_V1",
       "family": "Latin",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SALSA_V1",
@@ -3278,62 +3560,222 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already distinguishes piano, bass, horns and Afro-Caribbean percussion roles.",
+          "Current Composer ensemble architecture has a concrete 10-player pilot formation.",
+          "Current formation preserves separate conga, bongo and timbales identities instead of collapsing percussion."
+        ],
+        "current_profile_gaps": [
+          "No explicit variant resolver for son montuno, mambo-influenced salsa, songo, guajiro, bomba-related or other salsa-family practices.",
+          "Clave orientation and section-level response behavior are not executable enough in the current profile.",
+          "Population proportions, activity share and foreground ownership are not encoded in the genre contract.",
+          "Shared auxiliary percussion such as clave/cowbell is not distinguished from additional physical players in the genre file."
+        ],
+        "external_sources_considered": [
+          "Current AI Composer 55-profile registry",
+          "Current Composer 10-player Salsa formation",
+          "Berklee Writing in Salsa Styles",
+          "Berklee clave materials",
+          "MMA Salsa library",
+          "Latin Music Database"
+        ],
+        "retained_current_fields": [
+          "piano/bass/percussion/horn separation",
+          "clave-aware rhythmic identity",
+          "Latin bass relationship to other instruments",
+          "sectional horn writing",
+          "percussion as interlocking roles rather than one generic drum part"
+        ],
+        "upgraded_fields": [
+          "variant resolution",
+          "formation percentages",
+          "clave authority",
+          "shared auxiliary-player policy",
+          "foreground windows",
+          "interlocking percussion-role rules",
+          "intro/fill/ending/section transformation rules"
+        ],
         "conflicts": [],
-        "unresolved_questions": []
+        "unresolved_questions": [
+          "Derive activity/foreground percentages by salsa variant.",
+          "Determine variant-specific horn formations and optional flute usage.",
+          "Separate salsa-family styles that Berklee treats distinctly rather than flattening them into one profile."
+        ]
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Sectional dance-band form with intros, body sections, montuno/coro-like development where variant permits, breaks, fills and endings; exact sequence is variant-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SALSA_VARIANT",
+          "rule": "Harmony must support the selected salsa/son-derived variant and preserve rhythmic placement; no generic Western pop progression imposed by fallback."
+        },
+        "melody_model": {
+          "rule": "Melodic lead and horn figures interact with clave-aware rhythmic phrasing; call/response and sectional writing are variant-dependent."
+        },
+        "rhythm_groove_model": {
+          "rule": "Clave is structural where the resolved variant requires it; piano, bass, percussion and brass figures must align to the same rhythmic orientation rather than operate independently.",
+          "clave_options": [
+            "son 2-3",
+            "son 3-2",
+            "rumba 2-3",
+            "rumba 3-2",
+            "variant-specific/explicit"
+          ]
+        },
+        "bass_model": {
+          "rule": "Bass locks to the variant's tumbao/Latin bass logic and interacts with piano/percussion; it must not simply duplicate kick-like accents."
+        },
+        "percussion_model": {
+          "rule": "Conga, bongo, timbales and shared auxiliary roles interlock; no generic drum-kit substitution unless the selected variant explicitly includes it."
+        },
+        "phrase_model": {
+          "rule": "Phrases respond to clave orientation, horn hits, vocal/lead space and percussion setup; rests are part of the groove."
+        },
+        "transition_model": {
+          "rule": "Use percussion setups, horn figures, breaks and fills that preserve clave orientation; do not paste generic fills across section boundaries."
+        },
+        "development_model": {
+          "rule": "Develop through montuno/piano variation, percussion interaction, horn responses, density change and section exchange rather than generic repetition."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific arranged endings, breaks, hits or tags; preserve rhythmic orientation through the ending."
+        }
       },
       "ensemble": {
-        "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "instrument_roster": [
+          "FLUTE_1",
+          "TRUMPET_1",
+          "TRUMPET_2",
+          "TENOR_SAX_1",
+          "TROMBONE_1",
+          "PIANO",
+          "BASS",
+          "CONGA_1",
+          "BONGO_1",
+          "TIMBALES_1",
+          "PERCUSSION_SHARED_CLAVE_COWBELL"
+        ],
+        "population_mass_percent": {
+          "FLUTE": 10,
+          "TRUMPETS": 20,
+          "TENOR_SAX": 10,
+          "TROMBONE": 10,
+          "PIANO": 10,
+          "BASS": 10,
+          "CONGA": 10,
+          "BONGO": 10,
+          "TIMBALES": 10
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT",
+          "note": "Do not infer universal salsa presence from one 10-player formation."
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Percussion may sustain high activity while horns/flute use more selective windows; activity is not population."
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Piano, bass, percussion, horns and lead voices can all carry essential structural information without equal loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Horn/flute/lead windows must be created through density and register management, not brute-force gain."
+        },
+        "foreground_window_rules": [
+          "When a horn or flute carries a featured phrase, piano/percussion density may simplify while clave integrity remains intact.",
+          "Percussion may remain structurally active without masking melodic/horn foreground.",
+          "Shared auxiliary percussion is timing authority/support, not automatic foreground."
+        ],
+        "role_handoff_rules": [
+          "Lead material may transfer between horns, flute, piano and vocal/lead roles according to variant.",
+          "Outgoing foreground parts convert to response, support or rest.",
+          "Percussion roles remain interlocked while their density changes."
+        ],
+        "register_occupancy": {
+          "rule": "Keep montuno/piano, bass and horn registers differentiated enough that rhythmic clarity survives dense sections."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Percussion cluster, rhythm section and horn line require distinct but coherent stage footprints."
+        },
+        "section_population_reference": {
+          "reference_id": "SALSA_BERKLEE_EGUIE_CASTRILLO_10_INSTRUMENTAL",
+          "total_physical_players": 10,
+          "counts": {
+            "FLUTE": 1,
+            "TRUMPETS": 2,
+            "TENOR_SAX": 1,
+            "TROMBONE": 1,
+            "PIANO": 1,
+            "BASS": 1,
+            "CONGA": 1,
+            "BONGO": 1,
+            "TIMBALES": 1
+          },
+          "shared_auxiliary_roles": [
+            "claves",
+            "cowbell"
+          ],
+          "qualification": "Pilot formation only. Shared auxiliary roles do not add fake players; variant-specific formations may differ."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "percussive piano/horn attacks, articulated bass and differentiated hand percussion",
+        "dynamic_behavior": "dance energy with pronounced sectional breaks and ensemble lifts",
+        "timing_humanization_behavior": "layer-specific timing within a stable clave framework",
+        "continuous_performance_control": "expression on lead/horns, articulation/velocity on rhythm parts",
+        "interaction_rules": [
+          "Clave orientation is shared across ensemble decisions.",
+          "Piano/bass/percussion parts interlock instead of duplicating one generic rhythm.",
+          "Horn figures must respect rhythmic orientation and leave room for lead/vocal material."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "rule": "Separate rhythm, percussion and horn areas while preserving dance-band cohesion; featured lines can move forward without collapsing other sections."
+        },
+        "mix_prominence_intent": "bass/piano/percussion interlock clear; horns/lead foreground during figures",
+        "sound_effects_intent": "lively room/plate; preserve percussion definition",
+        "production_mastering_intent": "energetic full-range master without crushing percussion dynamics"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Salsa profile",
+          "Current Composer SALSA_BERKLEE_EGUIE_CASTRILLO_10_INSTRUMENTAL formation",
+          "Berklee Writing in Salsa Styles",
+          "Berklee clave materials",
+          "MMA Salsa library",
+          "Latin Music Database"
+        ],
+        "source_confidence": {
+          "pilot_formation": "HIGH_FOR_NAMED_FORMATION",
+          "clave_structural_role": "HIGH",
+          "variant_activity_foreground_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal_project_sources": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY",
+          "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE",
+          "Latin_Music_Database": "RESEARCH_TERMS_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Pilot formation population percentages sum to 100.",
+          "Shared clave/cowbell roles do not inflate physical player count.",
+          "Resolved variant must define clave/orientation policy.",
+          "No generic percussion collapse."
+        ],
+        "listening_tests": [
+          "Percussion layers remain distinct.",
+          "Bass/piano interlock without masking horns.",
+          "Featured horn/flute phrases remain audible without artificial permanent gain.",
+          "Transitions preserve rhythmic identity."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -3342,6 +3784,20 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Salsa",
+        "candidate_variants": [
+          "Core contemporary salsa",
+          "Son montuno-oriented",
+          "Mambo-influenced salsa",
+          "Guajiro-oriented",
+          "Songo-oriented",
+          "Bomba-influenced",
+          "Vocal-feature salsa"
+        ],
+        "hard_rule": "Do not treat all salsa-family rhythmic styles as interchangeable."
       }
     },
     "Mambo": {
@@ -6670,6 +7126,9 @@
   "last_research_update": "2026-11-06",
   "pilot_updates": [
     "Classical",
-    "Big Band"
+    "Big Band",
+    "Salsa",
+    "Samba",
+    "Swing"
   ]
 }

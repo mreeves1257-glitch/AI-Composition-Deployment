@@ -113,44 +113,44 @@
     },
     {
       "genre_name": "Traditional Country",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Rock",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Ballad",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Shuffle",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Two-Step",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Waltz",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Bluegrass-related",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__TRADITIONAL_FIVE_PILOT",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {

@@ -41,9 +41,9 @@ on:
       - "current_master_forward/rock_v3_core_development_executor.py"
       - "genre_contract_v3_research/verify_rock_v3_core_development_executor.py"
       - "current_master_forward/rock_v3_core_performance_plan.py"
-      - "current_master_forward/rock_v3_core_performance_a.py"
+      - "current_master_forward/rock_v3_core_performance_executor.py"
       - "genre_contract_v3_research/verify_rock_v3_core_performance_plan.py"
-      - "genre_contract_v3_research/verify_rock_v3_core_performance_a.py"
+      - "genre_contract_v3_research/verify_rock_v3_core_performance_mode_a.py"
       - ".github/workflows/genre-v3-execution-wiring-audit.yml"
   workflow_dispatch:
 
@@ -149,12 +149,12 @@ jobs:
           python genre_contract_v3_research/verify_rock_v3_core_performance_plan.py
           test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_PLAN_AUDIT.json
 
-      - name: Audit Rock Core V3 performance candidate A
+      - name: Audit Rock Core V3 canonical performance Mode A
         env:
           PYTHONPATH: ${{ github.workspace }}/current_master_forward
         run: |
-          python genre_contract_v3_research/verify_rock_v3_core_performance_a.py
-          test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_A_AUDIT.json
+          python genre_contract_v3_research/verify_rock_v3_core_performance_mode_a.py
+          test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_MODE_A_AUDIT.json
 
       - name: Upload wiring audits
         uses: actions/upload-artifact@v4
@@ -172,7 +172,7 @@ jobs:
             genre_contract_v3_research/ROCK_V3_CORE_HARMONY_PLAN_AUDIT.json
             genre_contract_v3_research/ROCK_V3_CORE_DEVELOPED_EVENT_AUDIT.json
             genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_PLAN_AUDIT.json
-            genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_A_AUDIT.json
+            genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_MODE_A_AUDIT.json
             genre_contract_v3_research/ROCK_V3_VARIANT_PACKAGE_AUDIT.json
             genre_contract_v3_research/ROCK_V3_FORM_PLANNER_AUDIT.json
           if-no-files-found: error

@@ -13,6 +13,7 @@ on:
       - "current_master_forward/instrument_role_performance_profiles.py"
       - "current_master_forward/target_registry.json"
       - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/sfz_sample_graph.py"
       - "current_master_forward/official_sfz_compatibility.py"
   workflow_dispatch:
 
@@ -29,6 +30,10 @@ jobs:
 
       - name: Install Python dependency
         run: python -m pip install --disable-pip-version-check --no-input numpy
+
+      - name: Verify recovered Oct 17 SFZ graph validator
+        run: |
+          echo "39e5484053f317237d07a466af5aa61935d6951510e03e8d6e72163bae0b0e98  current_master_forward/sfz_sample_graph.py" | sha256sum -c -
 
       - name: Restore exact complete pinned Big Rusty resource
         run: |

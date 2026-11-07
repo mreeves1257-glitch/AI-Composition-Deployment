@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "ROCK_VARIANT_MUSICAL_PACKAGES_AND_FORM_EXPANSION__NO_AUDIO__NO_REASONING_ENGINE",
+  "next_phase": "ROCK_FAMILY_BASELINE_FORM_EXPANSION__NO_AUDIO__VARIANT_CUES_GATED",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -901,6 +901,30 @@
       "recovery_source": "/Working File/INTEGRATED_WORKING_COPY Library record dated 2026-10-17",
       "exact_content": "// Composer wrapper; original SFZ/sample files unchanged.\\n#define $sample_dir ../Samples\\n#include \\\"main.sfz\\\"\\n"
     },
-    "rock_variant_behavior_evidence_file": "genre_contract_v3_research/ROCK_VARIANT_BEHAVIOR_EVIDENCE_2026-11-07.json"
+    "rock_variant_behavior_evidence_file": "genre_contract_v3_research/ROCK_VARIANT_BEHAVIOR_EVIDENCE_2026-11-07.json",
+    "rock_foreground_resource_checkpoint": {
+      "status": "PASS_NO_AUDIO",
+      "runtime_workflow_run_id": 42381024844,
+      "artifact_id": 13577857135,
+      "artifact_sha256": "aee65fd527951a5fa066a177dec5ea04c3da48d18c5d096f5695764f7198d628",
+      "source_pattern_genres_runtime_resolution": "PASS_40",
+      "rock_foreground_candidate": "STRUCTURAL_PASS",
+      "rock_variant_gate": "FAMILY_BASELINE_ALLOWED_ONLY_WHEN_NO_SUBGENRE_CUES__RESOLVE_VARIANT_WHEN_CUES_AVAILABLE",
+      "resource_acquisition": "PASS_PINNED_SHINYGUITAR_AND_BIG_RUSTY",
+      "shinyguitar_wrapper": {
+        "size_bytes": 109,
+        "sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35",
+        "policy": "ADD_ROUTING_WRAPPER_ONLY__PUBLISHER_FILES_UNCHANGED"
+      },
+      "guitar_contexts": {
+        "rhythm": "electric_guitar:RHYTHM_POWER_CHORDS",
+        "lead": "electric_guitar:LEAD_MELODY",
+        "shared_resource": "KARORYFER_SHINYGUITAR",
+        "synthetic_fallback": false
+      },
+      "audio_rendered": false,
+      "live_runtime_promoted": false,
+      "next_gate": "BUILD_AND_VALIDATE_NEUTRAL_ROCK_CORE_FAMILY_FORM_WITHOUT_CLAIMING_SUBGENRE"
+    }
   }
 }

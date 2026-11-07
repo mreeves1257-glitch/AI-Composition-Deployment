@@ -37,91 +37,18 @@ def resolve_sfz(resource: dict) -> Path:
 
 
 def validate_sfz_samples(sfz_path: Path, allowed_root: Path|None=None) -> dict:
-    """Validate SFZ sample references with nested includes, default_path and #define macros.
+    """Validate the original SFZ graph using the recovered Oct-17 stream-order parser.
 
-    This remains read-only. Macro expansion is required for real SFZ programs such as
-    Karoryfer Shinyguitar, whose wrapper defines $sample_dir and whose included main
-    program uses that variable in default_path.
+    The Oct-17 working master validated Big Rusty through sfz_sample_graph.py,
+    which preserves SFZ stream-order semantics for #define, #include and
+    default_path and separately recognizes intentional *silence choke regions.
+    This remains read-only and never substitutes samples.
     """
-    visited=set(); refs=[]; missing=[]
-    allowed=Path(allowed_root).resolve() if allowed_root is not None else None
-    # SFZ #include is textual preprocessing: paths inside included files are
-    # interpreted from the main instrument SFZ directory, not from each
-    # included file's own directory.
-    instrument_base=Path(sfz_path).resolve().parent
-
-    def expand(raw: str, macros: dict[str,str]) -> str:
-        value=raw.strip().strip('"').replace('\\','/')
-        for _ in range(16):
-            before=value
-            for key,replacement in macros.items():
-                value=value.replace(key,replacement)
-            if value==before:
-                break
-        unresolved=re.findall(r'\$[A-Za-z_][A-Za-z0-9_]*',value)
-        if unresolved:
-            raise SFZRendererError('SFZ_UNRESOLVED_MACRO:'+','.join(sorted(set(unresolved))))
-        return value
-
-    def within_allowed(path: Path) -> bool:
-        if allowed is None:
-            return True
-        try:
-            path.resolve().relative_to(allowed)
-            return True
-        except ValueError:
-            return False
-
-    def walk(path: Path, inherited_default: Path|None=None,
-             inherited_macros: dict[str,str]|None=None):
-        path=path.resolve()
-        if path in visited:
-            return
-        if not path.is_file():
-            missing.append('INCLUDE:'+str(path)); return
-        if not within_allowed(path):
-            missing.append('INCLUDE_OUTSIDE_ALLOWED_ROOT:'+str(path)); return
-        visited.add(path)
-        text=path.read_text(errors='strict')
-        text=re.sub(r'//[^\n]*', '', text)
-        macros=dict(inherited_macros or {})
-
-        for name,value in re.findall(
-            r'(?m)^\s*#define\s+(\$[A-Za-z_][A-Za-z0-9_]*)\s+(.+?)\s*$',
-            text,
-        ):
-            macros[name]=expand(value,macros)
-
-        default=inherited_default
-        dm=re.search(r'(?:^|\s)default_path=([^\s<]+)', text)
-        if dm:
-            raw_default=expand(dm.group(1),macros)
-            default=(instrument_base/raw_default).resolve()
-            if not within_allowed(default):
-                missing.append('DEFAULT_PATH_OUTSIDE_ALLOWED_ROOT:'+str(default))
-
-        for inc in re.findall(r'#include\s+["<]([^">]+)[">]', text):
-            rel=expand(inc,macros)
-            walk((instrument_base/rel).resolve(), default, macros)
-
-        for match in re.finditer(r'(?:^|\s)sample=(.*?)(?=\s+\w+=|\s*<|$)', text, re.S):
-            ref=expand(match.group(1),macros)
-            refs.append(ref)
-            base=default if default is not None else instrument_base
-            candidate=(base/ref).resolve()
-            if not within_allowed(candidate) or not candidate.is_file():
-                missing.append(ref)
-
-    walk(Path(sfz_path))
-    if not refs:
-        raise SFZRendererError('SFZ_NO_SAMPLE_REFERENCES')
-    if missing:
-        preview="|".join(str(x) for x in missing[:20])
-        raise SFZRendererError(
-            f'SFZ_SAMPLE_SET_INCOMPLETE:{len(missing)}_MISSING::{preview}'
-        )
-    return {'sample_references':len(refs),'unique_samples':len(set(refs)),
-            'sfz_files_validated':len(visited)}
+    from sfz_sample_graph import validate_graph, SampleGraphError
+    try:
+        return validate_graph(sfz_path, allowed_root=allowed_root)
+    except SampleGraphError as exc:
+        raise SFZRendererError(str(exc)) from exc
 
 def resolve_renderer() -> str:
     explicit=os.environ.get(RENDERER_ENV)

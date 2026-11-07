@@ -317,8 +317,8 @@
     },
     {
       "genre_name": "Salsa",
-      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_SALSA_CLAVE_AND_PERCUSSION_AUTHORITY_CORRECTED__ACTIVITY_STATS_PENDING",
+      "comparison_status": "CLAVE_AND_PERCUSSION_AUTHORITY_CORRECTED__QUANT_ACTIVITY_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

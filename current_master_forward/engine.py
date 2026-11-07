@@ -37,6 +37,9 @@ class AICompositionEngine:
         from musical_tuning import validate_reference
         tuning_reference_hz = validate_reference(tuning_reference_hz)
         selection = self.genre.select(genre_name)
+        from genre_contract_v3_execution_bridge import snapshot_for as v3_snapshot_for, execution_packet as v3_execution_packet
+        selection = dict(selection, profile=v3_snapshot_for(genre_name), profile_source='GENRE_CONTRACT_V3_ALL_55')
+        v3_contract_packet = v3_execution_packet(genre_name)
         audio_backend = audio_backend or os.environ.get('AI_COMP_AUDIO_BACKEND', 'PRESERVED')
         if audio_backend not in ('PRESERVED', 'APPROVED_SF2'):
             raise ValueError('UNKNOWN_AUDIO_BACKEND')
@@ -121,14 +124,17 @@ class AICompositionEngine:
             raise ValueError('PERFORMANCE_EVENT_LOSS')
         modules = {'genre': selection, 'theory': theory, 'instrument': instruments,
                    'target': target, 'performance': performance,
-                   'genre_recognition_fingerprint': recognition_fingerprint}
+                   'genre_recognition_fingerprint': recognition_fingerprint,
+                   'genre_contract_v3_execution_packet': v3_contract_packet}
         # Commit history only after a successful complete internal handoff.
         result = {'status': ('PERFORMANCE_READY_RESOURCE_REQUIRED' if target.get('status')=='RESOURCE_REQUIRED' else 'READY_FOR_OUTPUT_HANDOFF'), 'genre': genre_name,
                 'resource_requirements':target.get('missing',[]),
                 'order': ['GENRE_SELECTION', 'THEORY', 'MUSICAL_PERFORMANCE_REALIZATION', 'INSTRUMENT_SEPARATOR', 'GENRE_MIX_PROMINENCE_PLAN', 'PERFORMANCE_CAPABILITY_REQUIREMENTS', 'INSTRUMENT', 'TARGET', 'PERFORMANCE_VALIDATION', 'OUTPUT_HANDOFF'],
                 'module_hashes': {key: self._hash(value) for key, value in modules.items()},
                 'modules': modules, 'engine_manipulation': False,
-                'audio_rendered': False, 'tuning_reference_hz': tuning_reference_hz}
+                'audio_rendered': False, 'tuning_reference_hz': tuning_reference_hz,
+                'genre_profile_source': 'GENRE_CONTRACT_V3_ALL_55',
+                'genre_contract_v3_execution_packet': v3_contract_packet}
         if blueprint is not None:
             result['communication_blueprint']=blueprint
             result['genre_communication_order']=list(SEQUENCE)

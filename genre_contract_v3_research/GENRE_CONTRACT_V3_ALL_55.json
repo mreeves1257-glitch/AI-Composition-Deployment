@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__GRAMMAR_VOICE_LEADING_AND_MELODY_GATES_READY__BINDING_NEXT",
+      "research_status": "V3_CLASSICAL_COMPOSITION_LAYERS_BOUND__COMBINED_PIANO_AUDIO_READY__ORCHESTRATION_BINDING_NOT_YET_APPROVED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2823,7 +2823,7 @@
           "variants": {
             "CLASSICAL_PERIOD_TOPLINE": {
               "duration_seconds": 69.642449,
-              "listening_mp3_sha256": "pending_master_sync_from_container",
+              "listening_mp3_sha256": "1a651da992446972904dcb00043ed77571ff05bcd179ea6efc0f07097beb73c8",
               "seed0_notes_per_qb": 2.25,
               "seed0_step_percent": 49.47,
               "seed0_leap_5plus_percent": 19.15,
@@ -2832,7 +2832,7 @@
             },
             "ROMANTIC_TONAL_TOPLINE": {
               "duration_seconds": 69.668571,
-              "listening_mp3_sha256": "pending_master_sync_from_container",
+              "listening_mp3_sha256": "ed14641ed0c437fd1c9a3f7037a58b4fa32bc814d5c2bfe3938037239525830b",
               "seed0_notes_per_qb": 1.655,
               "seed0_step_percent": 44.2,
               "seed0_leap_5plus_percent": 27.54,
@@ -2851,6 +2851,103 @@
           },
           "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
           "live_runtime_modified": false
+        },
+        "melody_grammar_binding_checkpoint": {
+          "status": "STRUCTURAL_PROTOTYPE_PASS__REGRESSION_TEST_COMMITTED",
+          "date": "2026-11-06",
+          "harness": "genre_contract_v3_research/classical_melody_grammar_binding_validation.py",
+          "harness_commit": "331127c59538c35d8a72b8a0b10ed313763aeaca",
+          "test": "genre_contract_v3_research/test_classical_melody_grammar_binding_validation.py",
+          "test_commit": "426eed1d55483a172a322071e70c2d80d4336d68",
+          "orchestration_enabled": false,
+          "seed_count_per_variant": 32,
+          "aggregate_prototype": {
+            "CLASSICAL_PERIOD_TOPLINE": {
+              "notes_per_qb": 2.18,
+              "mean_abs_interval_semitones": 2.825,
+              "repeat_percent": 6.38,
+              "step_percent": 56.289,
+              "third_percent": 19.412,
+              "leap_5plus_percent": 17.919,
+              "large_7plus_percent": 9.775,
+              "direction_change_percent": 61.724,
+              "structural_chord_tone_percent": 100,
+              "nonchord_step_resolution_percent": 76.108,
+              "cadence_chord_tone_percent": 100,
+              "motif_return_bucket_match_percent": 88.795,
+              "large_leap_recovery_percent": 84.502,
+              "worst_max_interval_semitones": 12
+            },
+            "ROMANTIC_TONAL_TOPLINE": {
+              "notes_per_qb": 1.675,
+              "mean_abs_interval_semitones": 3.284,
+              "repeat_percent": 7.917,
+              "step_percent": 45.687,
+              "third_percent": 19.722,
+              "leap_5plus_percent": 26.674,
+              "large_7plus_percent": 16.54,
+              "direction_change_percent": 61.658,
+              "structural_chord_tone_percent": 100,
+              "nonchord_step_resolution_percent": 66.271,
+              "cadence_chord_tone_percent": 100,
+              "motif_return_bucket_match_percent": 81.198,
+              "large_leap_recovery_percent": 77.495,
+              "worst_max_interval_semitones": 11
+            }
+          },
+          "interpretation": "Generating melody inside the active period harmony preserves the main Classical-vs-Romantic contour/rhythm contrast while preventing structurally important melody notes from ignoring chord changes.",
+          "nonchord_resolution_policy": "A non-chord tone may resolve by step into a chord tone on the next melodic event even when that resolution crosses a harmony boundary; this permits suspension/anticipation behavior.",
+          "guardrails": [
+            "Binding remains piano/abstract and has no orchestration authority.",
+            "Aggregate prototype metrics are broad validation evidence, not per-piece quotas.",
+            "Human listening remains required before promotion.",
+            "Live Composer remains untouched."
+          ]
+        },
+        "combined_grammar_melody_audio_checkpoint": {
+          "status": "LOCAL_RENDER_COMPLETE__HUMAN_LISTENING_PENDING",
+          "date": "2026-11-06",
+          "seed": 0,
+          "tempo_bpm": 76,
+          "instrumentation": "Single acoustic-grand piano. Bound melody uses higher velocity; A/T/B voice-leading realization supplies lower accompaniment. Orchestration disabled.",
+          "monitoring": "Identical +18 dB global monitoring gain for both variants.",
+          "variants": {
+            "CLASSICAL_PERIOD_COMBINED": {
+              "duration_seconds": 69.642449,
+              "listening_mp3_sha256": "dfd51e0d791b74aa0ed025da061d011b9556c9e4e5ca3d8082a424776763f91f",
+              "seed0_notes_per_qb": 2.167,
+              "seed0_mean_abs_interval_semitones": 2.851,
+              "seed0_step_percent": 54.7,
+              "seed0_leap_5plus_percent": 17.68,
+              "seed0_structural_chord_tone_percent": 100,
+              "seed0_cadence_chord_tone_percent": 100,
+              "seed0_max_interval_semitones": 12
+            },
+            "ROMANTIC_TONAL_COMBINED": {
+              "duration_seconds": 69.668571,
+              "listening_mp3_sha256": "a0b658ac0b8f6fd8fb0768c6fee403e8cd047dac04fff10abd2b81e3e0a5226c",
+              "seed0_notes_per_qb": 1.655,
+              "seed0_mean_abs_interval_semitones": 3.268,
+              "seed0_step_percent": 50.72,
+              "seed0_leap_5plus_percent": 27.54,
+              "seed0_structural_chord_tone_percent": 100,
+              "seed0_cadence_chord_tone_percent": 100,
+              "seed0_max_interval_semitones": 10
+            }
+          },
+          "ab_comparison": {
+            "duration_seconds": 140.8,
+            "sha256": "32cd6581f9747c5a41b5f5d5156149710c4a0d419c5ee479d3094b0ed3e211ac",
+            "order": [
+              "CLASSICAL_PERIOD_COMBINED",
+              "1.5_SECOND_GAP",
+              "ROMANTIC_TONAL_COMBINED"
+            ]
+          },
+          "conclusion": "Period harmony and period melody can operate together without orchestration and retain a measurable period contrast. This is the first combined composition-layer audition, not yet an orchestral Composer candidate.",
+          "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
+          "live_runtime_modified": false,
+          "next_gate": "HUMAN_LISTENING_THEN_PERIOD_PACKAGE_ORCHESTRATION_BINDING"
         }
       },
       "safeguards": {
@@ -18357,13 +18454,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Bind each period melody variant to its corresponding period grammar while orchestration remains disabled.",
-    "Require chord-tone anchoring at structural harmonic onsets and explicit resolution for non-chord tones.",
-    "Preserve the period interval/rhythm contrast after harmonic binding.",
-    "Render combined grammar+melody piano auditions only after structural binding tests pass."
+    "Listen to the combined grammar+melody piano A/B before adding orchestral color.",
+    "If the composition-layer contrast is musically convincing, bind the validated composition package to Classical-period and Late-Romantic orchestration variants.",
+    "Keep the earlier orchestration-only A/B as a separate control so orchestration and composition changes remain auditable.",
+    "Do not integrate into the live Composer until combined orchestral listening validation passes."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_MELODY_GATE_READY__MELODY_TO_GRAMMAR_BINDING_NEXT",
+  "quantitative_phase_status": "CLASSICAL_GRAMMAR_MELODY_BINDING_READY__HUMAN_LISTENING_GATE",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

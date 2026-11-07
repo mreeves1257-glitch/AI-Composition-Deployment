@@ -1017,3 +1017,63 @@ The blanket 0.20-beat damping candidate remains fallback only because it shorten
 
 Active gate:
 User blind judgment on the pitch-coherence A/B. Do not reveal mapping until user chooses Blind 1, Blind 2, no difference, or both wrong.
+
+
+## Rock bass downbeat-coherence A/B completed and blinded
+
+Human diagnosis:
+- downbeat attack good
+- bass resonance carries too long and reads as an upbeat
+- pitch changes on some upbeats
+- sustained bass should remain the same tone
+
+Measured resource basis:
+- Growlybass Vicious decay-grid run `42395436023`
+- artifact `13583455938`
+- selected gate: 0.20 beat
+- measured active end: ~0.22 s / 0.451 beat
+- half-beat upbeat: ~0.2439 s
+- 0.20 beat is the longest tested gate retaining ~20 ms pre-upbeat margin
+
+Upbeat pitch basis:
+- run `42395484055`
+- artifact `13583207989`
+- 29 half-beat upbeat bass attacks
+- 26 already same pitch
+- 3 different pitch
+
+Verified coherence candidate:
+`current_master_forward/rock_v3_bass_downbeat_coherence_candidate.py`
+- max bass duration 0.20 beat
+- all 29 half-beat upbeats same tone
+- only 3 bass pitches normalized
+- no onset/velocity/event-count/non-bass mutation
+- approved guitars preserved
+
+Symbolic verification:
+run `42395657057` — PASS
+artifact `13582939126`
+digest `sha256:52f4412e36692af65b9db44f0b4440dfffa0c5446d8d007e512195459f44689a`
+
+Listening workflow:
+`Rock V3 Bass Downbeat Coherence Listening AB`
+run `42395850331` — PASS
+artifact `13583163853`
+digest `sha256:960bb39fa270a8b9beb151feedf4d42628387a83287d552a35dea2d4dcd90e0e`
+
+16-bar render:
+- 56 bass events
+- all 56 duration-gated in candidate
+- 3 pitch changes normalized
+- exact same Growlybass Vicious mapping in A and B
+- exact same approved HARMONY strum + treated LEAD
+- no drums
+- no clipping
+
+Blind map:
+`ROCK_V3_BASS_DOWNBEAT_COHERENCE_BLIND_MAP_2026-11-07.json`
+
+Active gate:
+User chooses Blind 1, Blind 2, no difference, or both wrong.
+Do not reveal mapping before judgment.
+Do not enable candidate live or merge to main before approval.

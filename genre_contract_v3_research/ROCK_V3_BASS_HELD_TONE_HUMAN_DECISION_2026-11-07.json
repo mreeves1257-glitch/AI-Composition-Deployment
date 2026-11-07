@@ -1,0 +1,31 @@
+{
+  "schema": "ROCK_V3_BASS_HELD_TONE_HUMAN_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "user_judgment": "C_CLEAN_HELD_TONE_PREFERRED_FOR_BASS_FUNCTION",
+  "preferred_candidate": {
+    "symbolic_candidate": "ROCK_V3_BASS_HELD_TONE_CANDIDATE_001",
+    "mapping": "growlybass_clean.sfz",
+    "offbeat_reattacks_removed": true,
+    "strong_beat_only": true,
+    "max_hold_beats": 1.5,
+    "release_gap_beats": 0.2,
+    "sustain_body": "PREFERRED"
+  },
+  "remaining_problem": {
+    "attack": "DOWNBEAT_NOT_CRISP_ENOUGH",
+    "sustain": "GOOD",
+    "unwanted_upbeat": "ABSENT"
+  },
+  "next_repair_direction": [
+    "Preserve C held-tone writing and sustain exactly.",
+    "Do not restore offbeat re-attacks.",
+    "Add a same-pitch, same-onset short transient layer only on strong-beat bass attacks.",
+    "Use growlybass_vicious.sfz for the short attack layer and growlybass_clean.sfz for the held body.",
+    "No pitch/onset/rhythm change."
+  ],
+  "canonical_policy_modified": false,
+  "live_runtime_promoted": false,
+  "reasoning_engine_used": false,
+  "next_gate": "BASS_ONLY_C_VS_HYBRID_CRISP_ATTACK_PLUS_HELD_BODY"
+}

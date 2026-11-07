@@ -1,0 +1,36 @@
+name: Rock V3 Strum Candidate Safety
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/rock-v3-strum-candidate-safety.yml"
+      - "genre_contract_v3_research/verify_rock_v3_strum_candidate_safety.py"
+      - "current_master_forward/rock_v3_core_performance_executor.py"
+      - "current_master_forward/rock_v3_core_performance_plan.py"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run symbolic strum safety analysis
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/verify_rock_v3_strum_candidate_safety.py
+          test -s genre_contract_v3_research/ROCK_V3_STRUM_CANDIDATE_SAFETY.json
+
+      - name: Upload strum safety report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_V3_Strum_Candidate_Safety
+          path: genre_contract_v3_research/ROCK_V3_STRUM_CANDIDATE_SAFETY.json
+          if-no-files-found: error

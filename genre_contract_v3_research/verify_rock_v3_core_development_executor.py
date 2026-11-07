@@ -97,6 +97,33 @@ def main():
             "ROCK_DEVELOPED_INSTRUMENT_SET_WRONG::"+json.dumps(sorted(instruments))
         )
 
+
+    # Rhythm guitar must be actual vertical harmony, not a single-note line
+    # mislabeled as HARMONY. Group simultaneous HARMONY events by attack.
+    harmony_attacks=defaultdict(list)
+    for e in events:
+        if e["role"]=="HARMONY":
+            harmony_attacks[(round(float(e["start_beat"]),6),e["section"])].append(e)
+    if not harmony_attacks:
+        raise RuntimeError("ROCK_DEVELOPED_HARMONY_ATTACKS_EMPTY")
+    harmony_attack_sizes=[len(rows) for rows in harmony_attacks.values()]
+    if min(harmony_attack_sizes)<3:
+        raise RuntimeError(
+            "ROCK_DEVELOPED_SINGLE_NOTE_OR_DYAD_RHYTHM_GUITAR::"+
+            json.dumps(sorted(set(harmony_attack_sizes)))
+        )
+    for rows in harmony_attacks.values():
+        if any(e.get("vertical_voicing") is not True for e in rows):
+            raise RuntimeError("ROCK_DEVELOPED_HARMONY_ATTACK_NOT_VERTICAL")
+        if len({int(e["midi"]) for e in rows})<3:
+            raise RuntimeError("ROCK_DEVELOPED_HARMONY_VOICING_COLLAPSED")
+        if any(int(e.get("voicing_size",0))<3 for e in rows):
+            raise RuntimeError("ROCK_DEVELOPED_HARMONY_VOICING_SIZE_FLAG_WRONG")
+    if result.get("rhythm_guitar_vertical_voicing_used") is not True:
+        raise RuntimeError("ROCK_DEVELOPED_VERTICAL_VOICING_RESULT_FLAG_MISSING")
+    if result.get("single_note_rhythm_guitar_attack_allowed") is not False:
+        raise RuntimeError("ROCK_DEVELOPED_SINGLE_NOTE_RHYTHM_GUITAR_ALLOWED")
+
     # Every bar is populated and nothing escapes the 40-bar grid.
     events_by_bar=defaultdict(list)
     for e in events:
@@ -274,6 +301,10 @@ def main():
         "event_count":len(events),
         "role_count":len(roles),
         "instrument_count":len(instruments),
+        "rhythm_guitar_attack_count":len(harmony_attacks),
+        "minimum_rhythm_guitar_attack_pitch_count":min(harmony_attack_sizes),
+        "maximum_rhythm_guitar_attack_pitch_count":max(harmony_attack_sizes),
+        "single_note_rhythm_guitar_attack_present":False,
         "lead_foreground_bar_count":lead_bar_count,
         "recurrent_bar_count_checked":recurrence_count,
         "all_recurrent_bars_structurally_transformed":True,
@@ -293,9 +324,10 @@ def main():
         "result":(
             "The Rock Core pilot now expands to a 40-bar symbolic composition candidate "
             "using V3-governed form, harmony, source-pattern and foreground development. "
-            "Repeated cells are structurally transformed, kick/snare source timing is "
-            "preserved, and no generic development shortcuts are active. It is not yet "
-            "performance-realized or listening-approved."
+            "Repeated cells are structurally transformed, rhythm guitar is realized as "
+            "true vertical voicings, kick/snare source timing is preserved, and no generic "
+            "development shortcuts are active. It is not yet performance-realized or "
+            "listening-approved."
         ),
         "next_gate":"ROCK_CORE_PERFORMANCE_REALIZATION_PLAN__STILL_NO_AUDIO",
         "execution_sha256":result["execution_sha256"],

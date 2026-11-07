@@ -236,7 +236,7 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
     generation_plan=compile_generation_plan(profile,baseline,creation_seed)
     from genre_communication_blueprint import build as build_communication_blueprint
     communication_blueprint=build_communication_blueprint(
-        name,profile,parts,interpreted,generation_plan)
+        name,profile,parts,interpreted,generation_plan,v3_execution_packet=v3_packet)
     meter=generation_plan['meter']; bpm=generation_plan['tempo_bpm']; form=generation_plan['form']
     semantic_seed=int(generation_plan['variation_seed'])
     major_keys=['C','D','Eb','E','F','G','A','Bb']; minor_keys=['A','C','D','E','F','G']

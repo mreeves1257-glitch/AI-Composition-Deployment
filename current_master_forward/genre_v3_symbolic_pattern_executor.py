@@ -102,6 +102,145 @@ def _tempo(genre_name: str, seed: dict[str, Any], selected_tempo_bpm: int | None
     return value
 
 
+
+def parse_chord(symbol: str) -> dict[str, Any]:
+    """Public read-only chord parser for V3 symbolic scheduling layers."""
+    return dict(_parse_chord(symbol))
+
+
+def realize_variation_bar(
+    genre_name: str,
+    *,
+    variation_by_role: dict[str, str],
+    chord_symbol: str,
+    destination_bar: int,
+    section_name: str,
+) -> list[dict[str, Any]]:
+    """Realize one approved source-pattern variation set on one approved chord.
+
+    This is the scheduling primitive used by higher-level form compilers.
+    It never chooses a variation, chord, section, instrument, or form on its own.
+    """
+    if type(destination_bar) is not int or destination_bar < 0:
+        raise GenreV3SymbolicExecutionError("INVALID_DESTINATION_BAR")
+    if not isinstance(variation_by_role, dict) or not variation_by_role:
+        raise GenreV3SymbolicExecutionError("VARIATION_BY_ROLE_REQUIRED")
+    if not section_name:
+        raise GenreV3SymbolicExecutionError("SECTION_NAME_REQUIRED")
+
+    seed = load_seed(genre_name)
+    role_authority = resolve_source_roles(genre_name)
+    if role_authority.get("status") != "PASS":
+        raise GenreV3SymbolicExecutionError(
+            "SOURCE_ROLE_MAPPING_NOT_READY::" + genre_name
+        )
+
+    meter = seed["meter"]
+    beats_per_bar = _beats_per_bar(meter)
+    chord = _parse_chord(chord_symbol)
+    mappings = {x["role"]: x for x in role_authority["role_mappings"]}
+    source_roles = {x["role"]: x for x in seed["roles"]}
+    patterns = {x["role"]: x for x in seed["patterns"]}
+
+    if set(variation_by_role) != set(source_roles):
+        raise GenreV3SymbolicExecutionError(
+            "VARIATION_ROLE_SET_MISMATCH::" + genre_name
+        )
+
+    events = []
+    bar_start = Fraction(destination_bar) * beats_per_bar
+    bar_end = bar_start + beats_per_bar
+
+    for role_name, source_role in source_roles.items():
+        mapping = mappings[role_name]
+        pattern = patterns[role_name]
+        variation = variation_by_role[role_name]
+        variations = pattern.get("variations") or {}
+        if variation not in variations:
+            raise GenreV3SymbolicExecutionError(
+                f"UNKNOWN_SOURCE_VARIATION::{genre_name}::{role_name}::{variation}"
+            )
+
+        for note in variations[variation]:
+            offset = _fraction(note.get("beat"), "PATTERN_BEAT")
+            duration = _fraction(note.get("duration"), "PATTERN_DURATION")
+            if not (0 <= offset < beats_per_bar and duration > 0):
+                raise GenreV3SymbolicExecutionError("PATTERN_TIMING_INVALID")
+            start = bar_start + offset
+            end = start + duration
+
+            if pattern["kind"] == "CHORD_RELATIVE":
+                degree = note.get("degree")
+                octave = note.get("octave")
+                if type(degree) is not int or not 1 <= degree <= 7:
+                    raise GenreV3SymbolicExecutionError("INVALID_CHORD_DEGREE")
+                if type(octave) is not int or not -1 <= octave <= 9:
+                    raise GenreV3SymbolicExecutionError("INVALID_NOTE_OCTAVE")
+                midi = (
+                    (octave + 1) * 12
+                    + chord["root_pc"]
+                    + SCALES[chord["quality"]][degree - 1]
+                )
+                if pattern["retrigger"] == "STOP_AT_CHORD":
+                    end = min(end, bar_end)
+            elif pattern["kind"] == "DRUM_ABSOLUTE":
+                midi = note.get("midi")
+                if type(midi) is not int or not 0 <= midi <= 127:
+                    raise GenreV3SymbolicExecutionError("INVALID_DRUM_MIDI")
+                end = min(end, bar_end)
+            else:
+                raise GenreV3SymbolicExecutionError(
+                    "PATTERN_KIND_NOT_SUPPORTED_BY_V3_EXECUTOR"
+                )
+
+            if end <= start or end > bar_end:
+                raise GenreV3SymbolicExecutionError("EVENT_DURATION_OUTSIDE_BAR")
+
+            playable = source_role.get("playable_midi_range")
+            if (
+                isinstance(playable, list)
+                and len(playable) == 2
+                and not (int(playable[0]) <= midi <= int(playable[1]))
+            ):
+                raise GenreV3SymbolicExecutionError(
+                    f"EVENT_OUTSIDE_SOURCE_ROLE_RANGE::{genre_name}::{role_name}"
+                )
+
+            velocity = note.get("velocity")
+            if type(velocity) is not int or not 1 <= velocity <= 127:
+                raise GenreV3SymbolicExecutionError("INVALID_VELOCITY")
+
+            event = {
+                "track_id": role_name,
+                "role": role_name,
+                "instrument_id": mapping["instrument_id"],
+                "source_instrument_id": mapping["source_instrument_id"],
+                "instrument_mapping_kind": mapping["mapping_kind"],
+                "start_beat": float(start),
+                "duration_beats": float(end - start),
+                "midi": int(midi),
+                "velocity": int(velocity),
+                "section": section_name,
+                "variation": variation,
+                "source_seed_id": seed["seed_id"],
+                "source_pattern_kind": pattern["kind"],
+                "source_rule": "V3_GOVERNED_ORIGINAL_SYMBOLIC_SOURCE_PATTERN_SCHEDULED",
+                "scheduled_chord_symbol": chord_symbol,
+                "destination_bar": destination_bar,
+                "symbolic_only": True,
+            }
+            if mapping.get("performance_intent"):
+                event["performance_intent"] = mapping["performance_intent"]
+            events.append(event)
+
+    events.sort(key=lambda x: (x["start_beat"], x["track_id"], x["midi"]))
+    if {x["role"] for x in events} != set(source_roles):
+        raise GenreV3SymbolicExecutionError(
+            "SCHEDULED_BAR_SILENT_ROLE::" + genre_name
+        )
+    return events
+
+
 def compile_seed(
     genre_name: str,
     *,

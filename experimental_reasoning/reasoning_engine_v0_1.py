@@ -85,6 +85,22 @@ class InstrumentMemory:
 
 
 @dataclass(frozen=True)
+class MusicalIdeaMemory:
+    idea_id: str
+    origin_section: str
+    origin_instrument: Optional[str] = None
+    contour_signature: str = ""
+    rhythm_signature: str = ""
+    harmonic_relation: str = ""
+    expressive_character: str = ""
+    introduced_bar: int = 0
+    last_seen_bar: int = 0
+    appearances: int = 1
+    transformations: int = 0
+    last_carrier: Optional[str] = None
+
+
+@dataclass(frozen=True)
 class ComposerState:
     genre: str
     profile_id: str
@@ -102,6 +118,7 @@ class ComposerState:
     recent_sections: Sequence[SectionMemory] = field(default_factory=tuple)
     active_instruments: Sequence[str] = field(default_factory=tuple)
     instrument_history: Sequence[InstrumentMemory] = field(default_factory=tuple)
+    musical_idea_history: Sequence[MusicalIdeaMemory] = field(default_factory=tuple)
 
 
 @dataclass(frozen=True)
@@ -376,6 +393,106 @@ def _instrument_interaction_plan(state: ComposerState, density: int, importance_
     }
 
 
+def _musical_memory_plan(
+    state: ComposerState,
+    generation_plan: Mapping[str, Any],
+    importance_plan: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Plan recall and development of prior musical ideas without literal copying.
+
+    Musical memory stores identity descriptors, not executable notes.  The
+    existing generator may later realize a selected transformation, but v0.1
+    only decides whether an idea should be recalled, answered, transformed,
+    left dormant, or retired.
+    """
+    ideas = [x for x in state.musical_idea_history if x.idea_id]
+    if not ideas:
+        return {
+            "status": "NO_PRIOR_IDEAS",
+            "policy": "INTRODUCE_A_CLEAR_IDEA_THAT_CAN_BE_REMEMBERED_LATER",
+            "memory_unit": "ABSTRACT_MUSICAL_IDENTITY_NOT_EXACT_NOTE_SEQUENCE",
+            "literal_copy_requested": False,
+            "new_idea_allowed": True,
+        }
+
+    reuse_after = max(16, int(generation_plan.get("literal_melody_reuse_after_bars", 16) or 16))
+    section = _norm_section(state.section)
+    priority_instruments = list(importance_plan.get("priority_for_next_window", []))
+
+    candidates = []
+    for idea in ideas:
+        age = max(0, int(state.bars_elapsed) - int(idea.last_seen_bar))
+        same_section_family = _norm_section(idea.origin_section) == section
+        exact_recall_eligible = age >= reuse_after
+        development_need = max(0, 3 - int(idea.transformations))
+        score = (age * 2) + (development_need * 5) + (3 if same_section_family else 0)
+        candidates.append({
+            "idea_id": idea.idea_id,
+            "origin_section": idea.origin_section,
+            "origin_instrument": idea.origin_instrument,
+            "last_carrier": idea.last_carrier,
+            "age_bars": age,
+            "appearances": int(idea.appearances),
+            "transformations": int(idea.transformations),
+            "same_section_family": same_section_family,
+            "exact_recall_eligible": exact_recall_eligible,
+            "development_priority_score": score,
+            "identity": {
+                "contour_signature": idea.contour_signature,
+                "rhythm_signature": idea.rhythm_signature,
+                "harmonic_relation": idea.harmonic_relation,
+                "expressive_character": idea.expressive_character,
+            },
+        })
+
+    candidates.sort(key=lambda x: (-x["development_priority_score"], x["idea_id"]))
+    chosen = candidates[0]
+
+    if state.section_occurrence > 1 and chosen["same_section_family"]:
+        action = "TRANSFORM_AND_RECALL"
+    elif chosen["age_bars"] >= 8:
+        action = "RECALL_AS_RESPONSE_OR_COUNTER_IDEA"
+    elif chosen["transformations"] == 0:
+        action = "DEVELOP_BEFORE_INTRODUCING_ANOTHER_MAJOR_IDEA"
+    else:
+        action = "LEAVE_DORMANT_AND_CREATE_SPACE"
+
+    preferred_carrier = None
+    for instrument_id in priority_instruments:
+        if instrument_id != chosen.get("last_carrier"):
+            preferred_carrier = instrument_id
+            break
+    if preferred_carrier is None and priority_instruments:
+        preferred_carrier = priority_instruments[0]
+
+    transformation_choices = [
+        "RHYTHMIC_RESHAPING",
+        "CONTOUR_VARIATION",
+        "REGISTER_SHIFT",
+        "CALL_AND_RESPONSE",
+        "FRAGMENTATION_OR_EXTENSION",
+        "HARMONIC_RECONTEXTUALIZATION_IF_GENRE_ALLOWS",
+        "TRANSFER_TO_ANOTHER_COMPATIBLE_INSTRUMENT",
+    ]
+
+    return {
+        "status": "PASS",
+        "memory_unit": "ABSTRACT_MUSICAL_IDENTITY_NOT_EXACT_NOTE_SEQUENCE",
+        "selected_idea_id": chosen["idea_id"],
+        "selected_idea": chosen,
+        "action": action,
+        "preferred_next_carrier": preferred_carrier,
+        "carrier_rule": "WHEN_MUSICALLY_COMPATIBLE_PASS_IDEAS_BETWEEN_INSTRUMENTS_TO_CREATE_CONVERSATION_WITHOUT_CREATING_HIERARCHY",
+        "transformation_choices": transformation_choices,
+        "literal_copy_requested": False,
+        "exact_recall_eligible": bool(chosen["exact_recall_eligible"]),
+        "development_rule": "RECALL_SHOULD_PRESERVE_RECOGNIZABLE_IDENTITY_WHILE CHANGING_AT_LEAST_ONE_MUSICAL_DIMENSION",
+        "dormancy_rule": "NOT_EVERY_IDEA_MUST_RETURN_IMMEDIATELY_MEMORY_GAINS_MEANING_FROM_ABSENCE_AS_WELL_AS_RECALL",
+        "new_idea_rule": "INTRODUCE_NEW_MAJOR_IDEAS_ONLY_WHEN_EXISTING_MATERIAL_HAS_ROOM_TO_BREATHE_OR_DEVELOP",
+        "all_candidates": candidates,
+    }
+
+
 def _rhythm_intent(tags: set[str], energy_motion: str, section: str) -> dict[str, Any]:
     behavior = "PRESERVE_GENRE_GROOVE"
     detail: list[str] = []
@@ -538,6 +655,7 @@ def reason(
         "instrument_balance": _instrument_balance_intent(goal),
         "instrument_importance_plan": importance_plan,
         "instrument_interaction_plan": _instrument_interaction_plan(state, density, importance_plan),
+        "musical_memory": _musical_memory_plan(state, generation_plan, importance_plan),
         "rhythm": _rhythm_intent(tags, energy_motion, section),
         "harmony": _harmony_intent(tags, state),
         "melody": _melody_intent(state, generation_plan),
@@ -552,6 +670,8 @@ def reason(
             "DO_NOT_USE_NOTE_COUNT_LOUDNESS_OR_FOREGROUND_TIME_AS_A_PROXY_FOR_INSTRUMENT_IMPORTANCE",
             "DO_NOT_ALLOW_CHRONIC_INSTRUMENT_NEGLECT_ACROSS_THE_COMPOSITION",
             "DO_NOT_SOLVE_INSTRUMENT_COLLISIONS_BY_DECLARING_ONE_PART_UNIMPORTANT",
+            "DO_NOT_EQUATE_MUSICAL_MEMORY_WITH_LITERAL_NOTE_COPYING",
+            "DO_NOT_REINTRODUCE_EVERY_REMEMBERED_IDEA_IMMEDIATELY",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",
         ],
     }

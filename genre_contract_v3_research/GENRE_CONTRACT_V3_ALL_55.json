@@ -9033,7 +9033,7 @@
       "source_profile_id": "ECLECTIC_NEW_INDIE_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_EMERGING_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "ECLECTIC_NEW_INDIE_V2",
@@ -9077,62 +9077,161 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already time-stamped as a 2026 emerging scene rather than universal mature genre.",
+          "Correctly allows guitar-led or guitar-less arrangements, live/programmed coexistence and indie/rock/folk/hip-hop components.",
+          "DIY/raw character plus precise digital production is a useful scene distinction."
+        ],
+        "current_profile_gaps": [
+          "Scene is evolving quickly and should not be frozen into one groove.",
+          "No component-weight or activity model.",
+          "No explicit version/date authority for future refreshes.",
+          "No resolver for acoustic/pop-punk/jerk/alternative-electronic emphasis."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "SoundCloud Music Intelligence Report 2026"
+        ],
+        "retained_current_fields": [
+          "scene status",
+          "pop-punk/bedroom-acoustic/newer hip-hop coexistence",
+          "live/programmed hybrid",
+          "DIY intimacy",
+          "component-map flexibility"
+        ],
+        "upgraded_fields": [
+          "time-stamped scene authority",
+          "component proportions",
+          "scene refresh policy",
+          "foreground/layer activity",
+          "variant emphasis resolver"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Short scene-driven verse/chorus or through-composed forms; component emphasis can change by section."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SCENE_COMPONENT_MAP",
+          "rule": "Indie/alt-rock/R&B/plugg-adjacent harmonic language may coexist only through explicit section/component assignment."
+        },
+        "melody_model": {
+          "rule": "Lead intimacy is central; vocal/lead/guitar/synth hooks compete for foreground only through explicit handoffs."
+        },
+        "rhythm_groove_model": {
+          "rule": "Live indie/rock/folk pulse and programmed hip-hop/jerk-derived behavior can coexist, but timing system must be resolved per section."
+        },
+        "bass_model": {
+          "rule": "Electric/acoustic/programmed sub selected by component; no default palette."
+        },
+        "percussion_model": {
+          "rule": "Live, drum-machine or hybrid behavior must be explicitly selected and may change by section."
+        },
+        "phrase_model": {
+          "rule": "Raw/acoustic and programmed sections can contrast while retaining recognizable thematic identity."
+        },
+        "transition_model": {
+          "rule": "Component handoffs, beat switches, raw-to-electronic contrast and texture edits are scene-appropriate tools."
+        },
+        "development_model": {
+          "rule": "Develop through component emphasis, texture, hook recurrence and live/programmed contrast."
+        },
+        "cadence_ending_model": {
+          "rule": "Scene-dependent stop/fade/beat deconstruction/acoustic ending."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "FORMATION_OR_LAYER_MODEL_REQUIRED",
+          "note": "Emerging hybrid scene; physical headcount is not stable."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SCENE_OR_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_rules": [
+          "Lead intimacy remains protected across raw and programmed layers.",
+          "Dense electronic/rock sections must create room for smaller acoustic/lead elements."
+        ],
+        "role_handoff_rules": [
+          "Foreground can transfer among lead, guitar, programmed motif and acoustic texture while component provenance remains traceable."
+        ],
+        "register_occupancy": {
+          "rule": "Avoid stacking distorted guitar, dense synth and lead in the same midrange without explicit contrast purpose."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "component_weight_percent": {
+          "status": "TO_BE_RESOLVED_PER_COMPOSITION"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "raw guitar/vocal-like articulation, lo-fi textures, programmed transients as selected",
+        "dynamic_behavior": "intimate-to-explosive section contrast",
+        "timing_humanization_behavior": "human/live timing or programmed grid chosen by component, not averaged blindly",
+        "continuous_performance_control": "expression plus lo-fi/FX automation",
+        "interaction_rules": [
+          "Hybrid timing is section-aware.",
+          "Rawness is not random sloppiness.",
+          "Programmed precision cannot erase live-feel component when selected."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SCENE_COMPONENT_DEPENDENT"
+        },
+        "mix_prominence_intent": "lead intimacy prioritized; production artifacts are supporting identity",
+        "sound_effects_intent": "chorus, distortion, saturation, digital artifacts and room tone may be deliberate",
+        "production_mastering_intent": "avoid over-polishing away DIY dynamics"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current project profile",
+          "SoundCloud Music Intelligence Report 2026"
+        ],
+        "source_confidence": {
+          "2026_scene_existence": "HIGH",
+          "stable_long_term_grammar": "LOW_BY_DESIGN"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "SoundCloud": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Scene vintage/date retained.",
+          "Component map required.",
+          "No single permanent groove."
+        ],
+        "listening_tests": [
+          "Hybrid sounds intentional.",
+          "Lead intimacy survives.",
+          "Different scene emphases sound materially different."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -9141,6 +9240,19 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "SCENE_COMPONENT_MAP_REQUIRED",
+        "parent_family": "Eclectic New Indie",
+        "scene_vintage": "2026",
+        "candidate_variants": [
+          "Guitar/pop-punk-forward",
+          "Bedroom-acoustic-forward",
+          "Jerk/hip-hop-influenced",
+          "Electronic/indie hybrid",
+          "Balanced eclectic"
+        ],
+        "hard_rule": "Do not hard-code one permanent grammar; scene definition must be periodically revalidated."
       }
     },
     "Mexican Reggaeton": {
@@ -9149,7 +9261,7 @@
       "source_profile_id": "MEXICAN_REGGAETON_SCENE_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_EMERGING_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "MEXICAN_REGGAETON_SCENE_V2",
@@ -9190,62 +9302,163 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already time-stamped to the 2026 Mexico City emerging scene.",
+          "Correctly includes reggaeton/dembow plus trap, plugg, jerk and alternative components.",
+          "Beat-switch/compact forms and protected sub/lead are appropriate."
+        ],
+        "current_profile_gaps": [
+          "No explicit component-weight model.",
+          "No separation between scene-specific Mexican Reggaeton and general Reggaeton/Dembow/Regional Mexican categories.",
+          "No activity/foreground percentages.",
+          "No scene refresh policy."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "SoundCloud Music Intelligence Report 2026",
+          "Beatport 2026 Latin taxonomy"
+        ],
+        "retained_current_fields": [
+          "dembow-derived core",
+          "trap/plugg/jerk component flexibility",
+          "808/sub",
+          "compact hook/beat-switch form",
+          "scene-specific scope"
+        ],
+        "upgraded_fields": [
+          "scene-vintage authority",
+          "component weights",
+          "taxonomy boundary",
+          "beat-state resolver",
+          "layer percentages"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Compact verse/hook/beat-switch or loop-evolving form with scene-specific production edits."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SCENE_COMPONENT_MAP",
+          "rule": "Loop-based minor/modal/tonal harmony; simplicity may leave room for rhythm and texture."
+        },
+        "melody_model": {
+          "rule": "Voice/lead or synth motif owns clear foreground over sub-heavy production."
+        },
+        "rhythm_groove_model": {
+          "rule": "Dembow-derived pulse may combine with trap/plugg/jerk only via explicit component state; no pan-Latin fallback."
+        },
+        "bass_model": {
+          "rule": "808/sub/synth bass follows resolved beat state with slides only when supported."
+        },
+        "percussion_model": {
+          "rule": "Electronic percussion components are provenance-tagged as dembow/trap/plugg/jerk-derived."
+        },
+        "phrase_model": {
+          "rule": "Hooks, beat edits and sparse motifs define phrase identity."
+        },
+        "transition_model": {
+          "rule": "Beat switches, mutes, FX, bass state and texture edits are core tools."
+        },
+        "development_model": {
+          "rule": "Develop through component switching, hook recurrence, sub/drum state and production texture."
+        },
+        "cadence_ending_model": {
+          "rule": "Compact stop, loop deconstruction, beat-switch close or fade."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "FORMATION_OR_LAYER_MODEL_REQUIRED",
+          "note": "Emerging production scene; virtual layers more meaningful than physical player count."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SCENE_OR_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_rules": [
+          "Lead/vocal-like role protected from sub/kick and dense synth texture.",
+          "Alternative guitar/acoustic elements receive explicit windows when selected."
+        ],
+        "role_handoff_rules": [
+          "Foreground transfers lead↔motif↔beat feature while sub/drums remain controlled foundation."
+        ],
+        "register_occupancy": {
+          "rule": "Protect vocal/lead midrange and separate sub/808 from kick."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "component_weight_percent": {
+          "status": "TO_BE_RESOLVED_PER_COMPOSITION"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "programmed transients, vocal-like lead articulation and sample chops",
+        "dynamic_behavior": "strong drops and hook lifts; dynamic contrast often production-driven",
+        "timing_humanization_behavior": "grid-based with genre-component swing/jerk offsets when intentionally selected",
+        "continuous_performance_control": "filter/pitch/envelope/level automation central",
+        "interaction_rules": [
+          "Beat components share one timing map per state.",
+          "Slides/edits are intentional, not generic effects."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SCENE_COMPONENT_DEPENDENT",
+          "rule": "Focused sub/lead with selective width for textures/alternative components."
+        },
+        "mix_prominence_intent": "sub/kick and lead/vocal-like role protected from masking",
+        "sound_effects_intent": "distortion, reverb, delay, clipping-style texture only as controlled production choices",
+        "production_mastering_intent": "modern loud but unclipped master with sub control"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current project profile",
+          "SoundCloud Music Intelligence Report 2026",
+          "Beatport 2026 taxonomy boundary"
+        ],
+        "source_confidence": {
+          "2026_scene_existence": "HIGH",
+          "long_term_fixed_grammar": "LOW_BY_DESIGN"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "SoundCloud_Beatport": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Scene vintage retained.",
+          "Component provenance required.",
+          "No generic Reggaeton replacement."
+        ],
+        "listening_tests": [
+          "Scene components feel coherent rather than mashed together.",
+          "Sub/lead remain clear.",
+          "Beat switches retain identity."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -9254,6 +9467,19 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "SCENE_COMPONENT_MAP_REQUIRED",
+        "parent_family": "Mexican Reggaeton",
+        "scene_vintage": "2026",
+        "candidate_variants": [
+          "Dembow-forward",
+          "Plugg-forward",
+          "Trap/alternative-forward",
+          "Jerk-influenced",
+          "Guitar/alternative hybrid"
+        ],
+        "hard_rule": "Do not treat Beatport Reggaeton, Dembow or Regional Mexican categories as interchangeable with this SoundCloud scene."
       }
     },
     "Chugg / #chugg": {
@@ -9262,7 +9488,7 @@
       "source_profile_id": "CHUGG_SCENE_V1",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_EMERGING_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__PROVISIONAL_2026_SCENE",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CHUGG_SCENE_V1",
@@ -9304,62 +9530,157 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Current profile is appropriately provisional and flexible.",
+          "Already ties #chugg to plugg-derived Mexican-reggaeton scene rather than claiming a mature universal genre.",
+          "Sparse layers, airy/bright textures and 808/sub are useful provisional traits."
+        ],
+        "current_profile_gaps": [
+          "Evidence base is still thin.",
+          "No stable corpus or mature grammar.",
+          "Must avoid overfitting one moment in a fast-moving scene."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "SoundCloud Music Intelligence Report 2026"
+        ],
+        "retained_current_fields": [
+          "provisional status",
+          "plugg-derived relationship",
+          "Mexican-reggaeton scene context",
+          "sparse syncopation",
+          "bright/airy textures",
+          "808/sub"
+        ],
+        "upgraded_fields": [
+          "strict provisional authority",
+          "scene-vintage refresh requirement",
+          "component inheritance",
+          "confidence flags"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Compact loop-evolving/verse-hook behavior inherited from scene unless new evidence supersedes it."
+        },
+        "harmony_model": {
+          "authority": "PROVISIONAL_PLUGG_DERIVED_COMPONENT",
+          "rule": "Loop-based minor/modal/synth-motif focus; no unsupported harmonic claims."
+        },
+        "melody_model": {
+          "rule": "Bright/airy synth/sample motif and lead/vocal-like role may carry identity."
+        },
+        "rhythm_groove_model": {
+          "rule": "Plugg-derived emerging groove with sparse syncopation; exact pattern remains scene-specific."
+        },
+        "bass_model": {
+          "rule": "808/sub with slides/sustains only when supported by selected composition."
+        },
+        "percussion_model": {
+          "rule": "Trap/plugg-derived electronic percussion; avoid freezing one pattern as canonical."
+        },
+        "phrase_model": {
+          "rule": "Sparse loop/motif development."
+        },
+        "transition_model": {
+          "rule": "Production edits and layer changes; details remain provisional."
+        },
+        "development_model": {
+          "rule": "Develop by motif, bass/drum variation and sparse layer edits."
+        },
+        "cadence_ending_model": {
+          "rule": "Compact scene-appropriate ending; no fixed canonical rule yet."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "FORMATION_OR_LAYER_MODEL_REQUIRED",
+          "note": "Provisional scene; no defensible fixed formation."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SCENE_OR_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_rules": [
+          "Sparse midrange protects lead/motif by default.",
+          "Sub cannot dominate the entire spectrum."
+        ],
+        "role_handoff_rules": [
+          "Inherited from Mexican Reggaeton scene component map."
+        ],
+        "register_occupancy": {
+          "rule": "Preserve sparse midrange and bright/airy motif space."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "component_weight_percent": {
+          "status": "COMPOSITION_SPECIFIC"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "short programmed attacks, stutters/chops and sustained synth tails as selected",
+        "dynamic_behavior": "drop/entry contrasts rather than orchestral dynamic curves",
+        "timing_humanization_behavior": "grid-based with controlled microtiming; do not invent a universal chugg swing",
+        "continuous_performance_control": "pitch/filter/envelope/level automation",
+        "interaction_rules": [
+          "No invented complexity beyond evidence.",
+          "Scene update may revise this contract."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "PROVISIONAL"
+        },
+        "mix_prominence_intent": "sub and lead motif prioritized with sparse midrange",
+        "sound_effects_intent": "reverb/delay/distortion/digital texture available as scene components",
+        "production_mastering_intent": "modern low-end-forward master with clipping prevention"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current project profile",
+          "SoundCloud Music Intelligence Report 2026"
+        ],
+        "source_confidence": {
+          "scene_relationship": "HIGH",
+          "complete_music_grammar": "LOW_PROVISIONAL"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "SoundCloud": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Provisional flag cannot be removed without stronger evidence.",
+          "Must inherit Mexican Reggaeton scene context."
+        ],
+        "listening_tests": [
+          "Sparse scene identity retained.",
+          "Does not sound like generic trap/plugg preset."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -9368,6 +9689,12 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "PROVISIONAL_SCENE_INHERITANCE",
+        "base_contract": "Mexican Reggaeton",
+        "scene_vintage": "2026",
+        "hard_rule": "#chugg inherits only verified scene relationships; do not invent a complete grammar where evidence is absent."
       }
     },
     "Afrobeats": {
@@ -9376,7 +9703,7 @@
       "source_profile_id": "AFROBEATS_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_BROAD_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__BROAD_FAMILY_VARIANT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "AFROBEATS_V2",
@@ -9418,62 +9745,169 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already explicitly distinguishes Afrobeats from Afrobeat.",
+          "Groove-first percussion/bass interlock and broad pop/R&B/highlife/hip-hop influence model are appropriate.",
+          "Current profile correctly says there is no single universal pattern."
+        ],
+        "current_profile_gaps": [
+          "Afrobeats is broad and fluid, so one automatic grammar is unsafe.",
+          "No regional/era/component resolver.",
+          "No percussion/guitar/keys presence/activity statistics.",
+          "No boundary against Amapiano, Alté, Afropop and Afro R&B categories."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "GRAMMY Afrobeats evolution coverage",
+          "GRAMMY African Music category taxonomy",
+          "Beatport African taxonomy",
+          "MTG-Jamendo future statistics"
+        ],
+        "retained_current_fields": [
+          "distinct from Afrobeat",
+          "groove-first syncopation",
+          "melodic bass",
+          "hybrid percussion",
+          "guitar/keys/synth",
+          "loop-evolving form"
+        ],
+        "upgraded_fields": [
+          "family resolver",
+          "era/component provenance",
+          "taxonomy boundaries",
+          "presence/activity percentages",
+          "low-end/percussion interaction"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/hook/bridge or loop-evolving forms with production contrast and strong hook recurrence."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_AFROBEATS_VARIANT",
+          "rule": "Tonal/modal loop harmony may draw from pop/R&B/highlife and other verified influences."
+        },
+        "melody_model": {
+          "rule": "Lead/hook and guitar/keys motifs interact with groove without overcrowding."
+        },
+        "rhythm_groove_model": {
+          "rule": "Layered syncopation and percussion/bass interlock resolved by variant; no universal Afrobeats drum pattern."
+        },
+        "bass_model": {
+          "rule": "Syncopated melodic bass follows groove/percussion rather than root-only behavior."
+        },
+        "percussion_model": {
+          "rule": "Electronic/acoustic hybrid layers have distinct roles and humanized relational timing."
+        },
+        "phrase_model": {
+          "rule": "Lead/hook, guitar/keys and percussion responses occupy complementary gaps."
+        },
+        "transition_model": {
+          "rule": "Production drops, percussion/bass state changes, fills and hook transitions according to variant."
+        },
+        "development_model": {
+          "rule": "Develop through groove variation, hook recurrence, percussion layering, bass and instrumental motifs."
+        },
+        "cadence_ending_model": {
+          "rule": "Loop deconstruction, tag, fade or arranged stop by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "FORMATION_OR_LAYER_MODEL_REQUIRED",
+          "note": "Afrobeats spans live and programmed formations; a universal physical headcount is inappropriate."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SCENE_OR_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_rules": [
+          "Lead/hook stays clear over complex groove.",
+          "Guitar/keys/regional colors receive selective windows.",
+          "Percussion complexity must not become equal-frequency clutter."
+        ],
+        "role_handoff_rules": [
+          "Foreground can pass among lead/hook, guitar/keys motif and rhythmic feature."
+        ],
+        "register_occupancy": {
+          "rule": "Separate bass/kick/percussion foundation from lead and melodic guitar/keys."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "groove_component_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "percussive guitar/keys, articulated bass and layered percussion",
+        "dynamic_behavior": "section-based energy changes rather than constant maximum level",
+        "timing_humanization_behavior": "humanized groove timing controlled per layer",
+        "continuous_performance_control": "expression + production automation",
+        "interaction_rules": [
+          "Humanized timing is relational.",
+          "Percussion layers have distinct roles.",
+          "No imported neighbor genre may erase Afrobeats base without resolver change."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT",
+          "rule": "Groove foundation clear, percussion distributed, hook/lead foreground."
+        },
+        "mix_prominence_intent": "groove foundation clear with lead/hook foreground",
+        "sound_effects_intent": "reverb/delay/filter/saturation used selectively",
+        "production_mastering_intent": "punchy warm master; low end controlled"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Afrobeats profile",
+          "GRAMMY Afrobeats evolution",
+          "GRAMMY African Music taxonomy",
+          "Beatport African taxonomy"
+        ],
+        "source_confidence": {
+          "broad_family_identity": "HIGH",
+          "single_universal_grammar": "REJECTED"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "GRAMMY_Beatport": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Afrobeat/Afrobeats distinction enforced.",
+          "Variant required.",
+          "No universal drum template."
+        ],
+        "listening_tests": [
+          "Groove is layered but clear.",
+          "Hook remains audible.",
+          "Variants sound distinct while retaining Afrobeats family identity."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -9482,6 +9916,20 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Afrobeats",
+        "candidate_variants": [
+          "Pop-forward Afrobeats",
+          "Highlife-influenced",
+          "R&B-influenced",
+          "Hip-hop/trap-influenced",
+          "Amapiano-influenced Afrobeats",
+          "Street/rave-influenced contemporary variants",
+          "Alté-adjacent"
+        ],
+        "hard_rule": "Afrobeats must not resolve to 1970s Afrobeat; Amapiano, Alté, Afropop and Afro R&B remain distinguishable source/neighbor categories."
       }
     },
     "Afro-Latin / Afrobeats Fusion": {
@@ -9604,7 +10052,7 @@
       "source_profile_id": "AFRO_HOUSE_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__CURRENT_SUBGENRE_LAYER_MODEL",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "AFRO_HOUSE_V2",
@@ -9645,62 +10093,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good house foundation plus organic/polyrhythmic percussion and deep bass.",
+          "Current profile already preserves human-flow percussion over stable dance pulse."
+        ],
+        "current_profile_gaps": [
+          "Current marketplace taxonomy now exposes Afro/Latin, 3Step and Afro Melodic variants.",
+          "No explicit subgenre resolver.",
+          "No layer/activity percentages.",
+          "No boundary with Amapiano or generic House."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport 2026 Afro House taxonomy",
+          "Beatport current Afro House catalog"
+        ],
+        "retained_current_fields": [
+          "house foundation",
+          "organic/hand percussion",
+          "deep bass",
+          "atmospheric harmony",
+          "human-flow percussion"
+        ],
+        "upgraded_fields": [
+          "current subgenre resolver",
+          "layer percentages",
+          "3Step handling",
+          "Amapiano boundary",
+          "percussion spatial footprint"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Long-form build/break/return dance structure with subgenre-specific phrase lengths and peaks."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_AFRO_HOUSE_SUBGENRE",
+          "rule": "Loop-based tonal/modal/atmospheric harmony by variant."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal/texture is selective; groove may remain primary identity."
+        },
+        "rhythm_groove_model": {
+          "rule": "House-derived dance pulse plus resolved organic/polyrhythmic or 3Step behavior; no generic pan-African percussion overlay."
+        },
+        "bass_model": {
+          "rule": "Deep bass interlocks with kick/percussion; low-end behavior changes by subgenre."
+        },
+        "percussion_model": {
+          "rule": "Organic/hand percussion roles remain differentiated and share a coherent groove map."
+        },
+        "phrase_model": {
+          "rule": "Percussion and atmosphere evolve by section; lead enters selectively."
+        },
+        "transition_model": {
+          "rule": "Layer subtraction/addition, percussion setups, filters and FX by subgenre."
+        },
+        "development_model": {
+          "rule": "Develop through percussion layers, bass state, atmosphere, melody and energy contour."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, deconstruction, fade or final hit."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "FORMATION_OR_LAYER_MODEL_REQUIRED",
+          "note": "Electronic/organic hybrid dance production; physical headcount is not primary."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SCENE_OR_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_rules": [
+          "Percussion remains rich but leaves room for lead/vocal.",
+          "Kick/bass focus cannot erase organic percussion detail."
+        ],
+        "role_handoff_rules": [
+          "Foreground can shift groove↔percussion feature↔lead/texture."
+        ],
+        "register_occupancy": {
+          "rule": "Protect low-end center while distributing percussion and atmospheric layers."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "percussion_layer_activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "percussive detail + sustained atmospheric layers",
+        "dynamic_behavior": "gradual energy automation",
+        "timing_humanization_behavior": "microtimed percussion around stable four-beat foundation",
+        "continuous_performance_control": "filter/level/spatial automation",
+        "interaction_rules": [
+          "Stable core pulse with human relational percussion.",
+          "No generic random percussion layering."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT",
+          "rule": "Focused kick/bass, wider organic percussion and atmosphere, selective lead foreground."
+        },
+        "mix_prominence_intent": "kick/bass clear, percussion wide, lead selective",
+        "sound_effects_intent": "reverb/delay/filter common but controlled",
+        "production_mastering_intent": "club-capable warm master with percussion detail"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Afro House profile",
+          "Beatport 2026 genre/subgenre taxonomy",
+          "Beatport Afro House catalog"
+        ],
+        "source_confidence": {
+          "current_taxonomy": "HIGH",
+          "quantitative_layer_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Subgenre required.",
+          "Amapiano boundary enforced.",
+          "Percussion roles remain differentiated."
+        ],
+        "listening_tests": [
+          "Organic percussion is audible around strong low end.",
+          "3Step/Afro Melodic/Core variants differ.",
+          "Does not collapse to generic House."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -9709,6 +10257,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Afro House",
+        "candidate_variants": [
+          "Core Afro House",
+          "Afro / Latin",
+          "3Step",
+          "Afro Melodic"
+        ],
+        "hard_rule": "Amapiano remains a separate neighboring genre; do not silently substitute it for Afro House."
       }
     },
     "Trip-Hop": {
@@ -11634,6 +12193,11 @@
     "DISCO",
     "WALTZ",
     "PIANIST",
-    "Spiritual"
+    "Spiritual",
+    "Eclectic New Indie",
+    "Mexican Reggaeton",
+    "Chugg / #chugg",
+    "Afrobeats",
+    "Afro House"
   ]
 }

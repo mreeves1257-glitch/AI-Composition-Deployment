@@ -1,0 +1,29 @@
+name: Research Classical Variant Structural Validation
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-research
+    paths:
+      - "genre_contract_v3_research/classical_variant_validation.py"
+      - "genre_contract_v3_research/test_classical_variant_validation.py"
+      - ".github/workflows/research-classical-variant-validation.yml"
+  workflow_dispatch:
+
+jobs:
+  validate-classical-variants:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run structural tests
+        run: python -m unittest genre_contract_v3_research/test_classical_variant_validation.py -v
+      - name: Emit validation summary
+        run: python genre_contract_v3_research/classical_variant_validation.py > genre_contract_v3_research/classical_variant_validation_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: classical-variant-structural-validation
+          path: genre_contract_v3_research/classical_variant_validation_summary.json
+          if-no-files-found: error

@@ -40,7 +40,7 @@ def candidate_variants()->list[str]:
     return candidates
 
 
-def resolve(variant_name:str|None=None)->dict[str,Any]:
+def resolve(variant_name:str|None=None, *, variant_cues_present:bool=False)->dict[str,Any]:
     contract=contract_for("ROCK")
     snapshot=snapshot_for("ROCK")
     vr=contract.get("variant_resolution") or {}
@@ -53,20 +53,32 @@ def resolve(variant_name:str|None=None)->dict[str,Any]:
         raise RockV3VariantResolutionError("ROCK_V3_VARIANT_HARD_RULE_MISSING")
 
     if variant_name is None:
+        if variant_cues_present:
+            status="ROCK_VARIANT_REQUIRED_BY_AVAILABLE_CUES"
+            family_baseline_music_allowed=False
+            next_gate="RESOLVE_VARIANT_FROM_AVAILABLE_CUES"
+        else:
+            status="ROCK_CORE_BASELINE_ALLOWED__NO_VARIANT_CUES"
+            family_baseline_music_allowed=True
+            next_gate="FAMILY_BASELINE_FORM_AND_MUSICAL_VALIDATION"
         packet={
             "schema":SCHEMA,
-            "status":"ROCK_VARIANT_REQUIRED",
+            "status":status,
             "genre":"ROCK",
             "profile_id":snapshot.get("profile_id"),
             "selected_variant":None,
             "candidate_variants":candidates,
             "hard_rule":hard_rule,
+            "variant_cues_present":bool(variant_cues_present),
+            "family_baseline_music_allowed":family_baseline_music_allowed,
+            "family_baseline_identity":"ROCK_CORE_V2",
+            "family_baseline_must_not_claim_subgenre":True,
             "variant_specific_music_ready":False,
-            "broad_rock_may_not_stand_in_for_variant":True,
+            "broad_rock_may_not_stand_in_for_variant_when_cues_available":True,
             "audio_authority":False,
             "live_runtime_authority":False,
             "reasoning_engine_used":False,
-            "next_gate":"EXPLICIT_VARIANT_SELECTION_OR_EVIDENCE_BACKED_VARIANT_RESOLVER",
+            "next_gate":next_gate,
         }
         packet["variant_packet_sha256"]=_sha(packet)
         return packet
@@ -89,7 +101,10 @@ def resolve(variant_name:str|None=None)->dict[str,Any]:
         "hard_rule":hard_rule,
         "variant_specific_music_ready":False,
         "selection_is_identity_only":True,
-        "broad_rock_may_not_stand_in_for_variant":True,
+        "variant_cues_present":True,
+        "family_baseline_music_allowed":False,
+        "family_baseline_must_not_claim_subgenre":True,
+        "broad_rock_may_not_stand_in_for_variant_when_cues_available":True,
         "musical_grammar":deepcopy(contract.get("musical_grammar")),
         "audio_authority":False,
         "live_runtime_authority":False,

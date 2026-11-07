@@ -7,10 +7,11 @@ Source:
 Repair rule:
 - preserve every bass onset, pitch, velocity, and event;
 - same-pitch succession is left alone;
-- before any later BASS attack of a DIFFERENT pitch, cap the earlier note so it
-  releases before the new pitch attacks;
-- use a small release gap so two different bass pitches never overlap;
-- never extend any note.
+- before a later BASS attack of a DIFFERENT pitch, cap the earlier note so it
+  releases with enough acoustic space before the new pitch attacks;
+- if the different-pitch attack is ultra-close (<= 0.30 beat), keep the later
+  event on the same pitch instead of creating a pitch flip inside the ringing tail;
+- never extend any note and never move an onset.
 
 This is an articulation/pitch-coherence repair, not a sustain enhancement.
 Diagnostic only. No live authority.
@@ -25,8 +26,9 @@ from typing import Any
 from rock_v3_strum_candidate_executor import execute as execute_preferred_guitar
 
 SCHEMA="ROCK_V3_BASS_PITCH_COHERENCE_CANDIDATE_001"
-MODE="RELEASE_BEFORE_DIFFERENT_PITCH_ATTACK"
-RELEASE_GAP_BEATS=0.05
+MODE="RELEASE_AND_LOCK_CLOSE_DIFFERENT_PITCH_ATTACKS"
+RELEASE_GAP_BEATS=0.25
+ULTRA_CLOSE_PITCH_LOCK_BEATS=0.30
 
 
 class BassPitchCoherenceError(RuntimeError):
@@ -55,43 +57,70 @@ def execute()->dict[str,Any]:
         raise BassPitchCoherenceError("NO_BASS_EVENTS")
 
     changes=[]
+    pitch_locks=[]
     same_pitch_pairs=0
     different_pitch_pairs=0
 
+    # Work sequentially on the mutable bass events so an ultra-close pitch lock
+    # becomes the pitch reference for the following pair.
     for pos,i in enumerate(bass_indices[:-1]):
         j=bass_indices[pos+1]
-        before=result[i]
+        current=result[i]
         nxt=result[j]
 
-        start=float(before["start_beat"])
-        duration=float(before["duration_beats"])
+        start=float(current["start_beat"])
+        duration=float(current["duration_beats"])
         end=start+duration
         next_start=float(nxt["start_beat"])
+        spacing=next_start-start
 
-        if int(before["midi"])==int(nxt["midi"]):
+        if int(current["midi"])==int(nxt["midi"]):
             same_pitch_pairs+=1
             continue
 
         different_pitch_pairs+=1
-        if end<=next_start-RELEASE_GAP_BEATS+1e-9:
+
+        # There is not enough acoustic time for a clean pitch change this close.
+        # Preserve the later attack but keep the ringing bass on one tone.
+        if spacing<=ULTRA_CLOSE_PITCH_LOCK_BEATS+1e-9:
+            old_pitch=int(nxt["midi"])
+            new_pitch=int(current["midi"])
+            nxt["pre_pitch_coherence_midi"]=old_pitch
+            nxt["midi"]=new_pitch
+            nxt["bass_pitch_coherence_mode"]=MODE
+            nxt["bass_pitch_lock_reason"]="ULTRA_CLOSE_DIFFERENT_PITCH_ATTACK"
+            nxt["bass_pitch_lock_spacing_beats"]=round(spacing,6)
+            pitch_locks.append({
+                "event_index":j,
+                "section":str(nxt.get("section","UNKNOWN")),
+                "start_beat":next_start,
+                "before_midi":old_pitch,
+                "after_midi":new_pitch,
+                "spacing_from_prior_attack_beats":round(spacing,6),
+            })
             continue
 
-        new_duration=round(max(0.08,next_start-start-RELEASE_GAP_BEATS),6)
+        # For a real pitch change, clear enough space for the old tone's release.
+        latest_end=next_start-RELEASE_GAP_BEATS
+        if end<=latest_end+1e-9:
+            continue
+
+        new_duration=round(max(0.08,latest_end-start),6)
         if new_duration>=duration-1e-9:
             continue
         if new_duration<=0:
             raise BassPitchCoherenceError("NONPOSITIVE_REPAIRED_DURATION")
 
-        before["pre_pitch_coherence_duration_beats"]=duration
-        before["duration_beats"]=new_duration
-        before["bass_pitch_coherence_mode"]=MODE
-        before["bass_release_gap_beats"]=RELEASE_GAP_BEATS
+        current["pre_pitch_coherence_duration_beats"]=duration
+        current["duration_beats"]=new_duration
+        current["bass_pitch_coherence_mode"]=MODE
+        current["bass_release_gap_beats"]=RELEASE_GAP_BEATS
 
         changes.append({
             "event_index":i,
-            "section":str(before.get("section","UNKNOWN")),
+            "section":str(current.get("section","UNKNOWN")),
             "start_beat":start,
-            "midi":int(before["midi"]),
+            "midi":int(current["midi"]),
             "next_start_beat":next_start,
             "next_midi":int(nxt["midi"]),
             "before_duration_beats":duration,
@@ -105,10 +134,11 @@ def execute()->dict[str,Any]:
 
     identity_fields=(
         "track_id","role","instrument_id","source_instrument_id",
-        "start_beat","midi","velocity","section","section_type",
+        "start_beat","velocity","section","section_type",
         "source_cell","chord_symbol",
     )
     changed_duration_count=0
+    changed_pitch_count=0
     non_bass_changes=0
     remaining_different_pitch_overlap=0
 
@@ -116,15 +146,22 @@ def execute()->dict[str,Any]:
         for field in identity_fields:
             if before.get(field)!=after.get(field):
                 raise BassPitchCoherenceError("IDENTITY_MUTATION::"+field)
+        track=str(before.get("track_id","")).upper()
         if abs(float(before["duration_beats"])-float(after["duration_beats"]))>1e-9:
             changed_duration_count+=1
-            if str(before.get("track_id","")).upper()!="BASS":
+            if track!="BASS":
+                non_bass_changes+=1
+        if int(before["midi"])!=int(after["midi"]):
+            changed_pitch_count+=1
+            if track!="BASS":
                 non_bass_changes+=1
 
     if non_bass_changes:
-        raise BassPitchCoherenceError("NON_BASS_DURATION_MUTATION")
+        raise BassPitchCoherenceError("NON_BASS_MUTATION")
     if changed_duration_count!=len(changes):
-        raise BassPitchCoherenceError("CHANGE_COUNT_MISMATCH")
+        raise BassPitchCoherenceError("DURATION_CHANGE_COUNT_MISMATCH")
+    if changed_pitch_count!=len(pitch_locks):
+        raise BassPitchCoherenceError("PITCH_LOCK_COUNT_MISMATCH")
 
     repaired_bass=[result[i] for i in bass_indices]
     for a,b in zip(repaired_bass,repaired_bass[1:]):
@@ -132,7 +169,9 @@ def execute()->dict[str,Any]:
             continue
         a_end=float(a["start_beat"])+float(a["duration_beats"])
         b_start=float(b["start_beat"])
-        if a_end>b_start-RELEASE_GAP_BEATS+1e-9:
+        spacing=b_start-float(a["start_beat"])
+        required_gap=(RELEASE_GAP_BEATS if spacing>ULTRA_CLOSE_PITCH_LOCK_BEATS else 0.0)
+        if a_end>b_start-required_gap+1e-9:
             remaining_different_pitch_overlap+=1
 
     if remaining_different_pitch_overlap:
@@ -155,10 +194,13 @@ def execute()->dict[str,Any]:
         "same_pitch_adjacent_pair_count":same_pitch_pairs,
         "different_pitch_adjacent_pair_count":different_pitch_pairs,
         "bass_duration_shortened_event_count":len(changes),
-        "change_manifest":changes,
+        "bass_pitch_locked_event_count":len(pitch_locks),
+        "duration_change_manifest":changes,
+        "pitch_lock_manifest":pitch_locks,
         "release_gap_beats":RELEASE_GAP_BEATS,
+        "ultra_close_pitch_lock_beats":ULTRA_CLOSE_PITCH_LOCK_BEATS,
         "remaining_different_pitch_overlap_count":0,
-        "bass_pitch_changed":False,
+        "bass_pitch_changed":bool(pitch_locks),
         "bass_onset_changed":False,
         "bass_velocity_changed":False,
         "event_count_changed":False,

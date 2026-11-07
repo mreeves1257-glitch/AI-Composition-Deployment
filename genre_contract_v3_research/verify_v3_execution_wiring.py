@@ -165,7 +165,8 @@ def main():
         "fallback_path_still_uses_static_palette": "PALETTES.get(tmpl" in adapter_source,
         "classical_special_case_present": "if name == 'Classical':" in adapter_source,
         "legacy_classical_fixed_plan_code_still_present": "CLASSICAL_EXECUTABLE_PLAN_1" in classical_source,
-        "classical_v3_package_boundary_present": "V3_STRUCTURAL_COMPILER_REQUIRED" in classical_source,
+        "classical_v3_structural_compiler_bound": "from classical_v3_structural_compiler import compile_plan as compile_v3_structure" in classical_source,
+        "classical_note_realizer_still_required": "V3_NOTE_REALIZER_REQUIRED" in classical_source,
         "classical_legacy_execution_explicitly_false": "'legacy_classical_generator_executed':False" in classical_source,
         "generic_blueprint_rejects_classical": "CLASSICAL_USES_EXISTING_SPECIALIZED_PATH" in communication_source,
         "performance_realizer_bypasses_classical": "CLASSICAL_SPECIALIZED_PATH_UNCHANGED" in performance_source,
@@ -197,8 +198,9 @@ def main():
             "Seven non-Classical automatic genres with explicit V3 formations now have "
             "V3 instrument-role authority. Forty automatic genres still require a "
             "clearly labeled legacy palette fallback because their V3 rosters are not "
-            "yet explicit. Classical now resolves a V3 period/orchestral package and "
-            "blocks the legacy fixed plan until a V3 structural compiler is bound."
+            "yet explicit. Classical now resolves a V3 period/orchestral package, "
+            "binds the V3 structural compiler, blocks the legacy fixed plan, and "
+            "halts before the still-missing V3 note/harmony/texture realizer."
         ),
         "genres": results,
     }
@@ -221,7 +223,8 @@ def main():
         "fallback_path_still_uses_static_palette",
         "classical_special_case_present",
         "legacy_classical_fixed_plan_code_still_present",
-        "classical_v3_package_boundary_present",
+        "classical_v3_structural_compiler_bound",
+        "classical_note_realizer_still_required",
         "classical_legacy_execution_explicitly_false",
         "generic_blueprint_rejects_classical",
         "performance_realizer_bypasses_classical",

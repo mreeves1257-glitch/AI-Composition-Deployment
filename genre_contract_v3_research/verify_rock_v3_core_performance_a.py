@@ -132,6 +132,18 @@ def main():
     if any(len({round(float(x["start_beat"]),6) for x in group})!=1 for group in chord_groups):
         raise RuntimeError("ROCK_PERFORMANCE_A_STRUM_TIMING_SNEAKED_IN")
 
+    # Mode A treats each vertical rhythm-guitar chord as one gesture. Its three
+    # simultaneous notes must therefore end together as well as start together.
+    for onset,group in by_onset.items():
+        if len(group)<2:
+            continue
+        durations={round(float(x["duration_beats"]),6) for x in group}
+        if len(durations)!=1:
+            raise RuntimeError(
+                "ROCK_PERFORMANCE_A_VERTICAL_CHORD_DURATION_SPLIT::"+
+                str(onset)+"::"+json.dumps(sorted(durations))
+            )
+
     harmonic_changes=sum(1 for a,b in zip(
         [x["duration_beats"] for x in before if x["track_id"]=="HARMONY"],
         [x["duration_beats"] for x in after if x["track_id"]=="HARMONY"],
@@ -156,6 +168,7 @@ def main():
         "pitches_identical":True,
         "velocities_identical":True,
         "instrument_ids_identical":True,
+        "vertical_rhythm_guitar_gesture_duration_coherent":True,
         "rhythm_guitar_strum_applied":False,
         "bass_sustain_applied":False,
         "random_jitter_used":False,

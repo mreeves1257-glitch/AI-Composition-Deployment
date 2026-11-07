@@ -86,6 +86,11 @@ jobs:
           print("CLASSICAL_WAV_READY", target, target.stat().st_size)
           PY
 
+      - name: Install MP3 converter
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
       - name: Convert to MP3
         run: |
           ffmpeg -y -hide_banner -loglevel error \

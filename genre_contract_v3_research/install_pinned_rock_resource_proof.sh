@@ -51,33 +51,23 @@ git clone --filter=blob:none --no-checkout \
 find "$BANK/KARORYFER_SHINYGUITAR" "$BANK/KARORYFER_BIG_RUSTY_DRUMS" \
   -type f -name "*.sfz" -print0 | xargs -0 sed -i 's#\\#/#g'
 
-# Recreate the current Composer-facing electric-guitar wrapper from the pinned
-# upstream Shinyguitar program. This is a path/control wrapper around the real
-# recorded library, not a synthesized replacement.
-python - "$BANK/KARORYFER_SHINYGUITAR/Programs" "$EXPECTED_SHINY_WRAPPER_SHA256" <<'PY'
-from pathlib import Path
-import hashlib
-import sys
+# Recreate the exact current Composer-facing electric-guitar wrapper recovered
+# from /Working File/INTEGRATED_WORKING_COPY on 2026-10-17. The preserved file
+# is 109 bytes and has the SHA-256 recorded below. It does not alter the factory
+# program or samples; it only supplies the Composer sample-directory context and
+# includes the untouched upstream main.sfz.
+cat > "$BANK/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz" <<'EOF'
+// Composer wrapper; original SFZ/sample files unchanged.
+#define $sample_dir ../Samples
+#include "main.sfz"
+EOF
 
-root=Path(sys.argv[1])
-expected=sys.argv[2]
-src=(root/"main.sfz").read_text(encoding="utf-8")
-src=src.replace("default_path=$sample_dir/", "default_path=../Samples/")
-src="\n".join(
-    line for line in src.splitlines()
-    if '#include "acoustic_' not in line
-)
-if "set_cc106=0" in src:
-    src=src.replace("set_cc106=0", "set_cc106=32")
-out=root/"composer_electric.sfz"
-out.write_text(src+"\n",encoding="utf-8")
-digest=hashlib.sha256(out.read_bytes()).hexdigest()
-if digest!=expected:
-    raise SystemExit(
-        f"SHINYGUITAR_WRAPPER_HASH_MISMATCH::{digest}::{expected}"
-    )
-print("SHINYGUITAR_WRAPPER_HASH_PASS",digest)
-PY
+actual_wrapper_sha="$(sha256sum "$BANK/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz" | awk '{print $1}')"
+if [ "$actual_wrapper_sha" != "$EXPECTED_SHINY_WRAPPER_SHA256" ]; then
+  echo "SHINYGUITAR_WRAPPER_HASH_MISMATCH::$actual_wrapper_sha::$EXPECTED_SHINY_WRAPPER_SHA256" >&2
+  exit 1
+fi
+echo "SHINYGUITAR_WRAPPER_HASH_PASS $actual_wrapper_sha"
 
 # Historical Shinyguitar programs expect an electric directory reachable from
 # Programs; preserve that real-sample link without copying or modifying samples.

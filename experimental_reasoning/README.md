@@ -80,3 +80,33 @@ When parts collide for register, rhythm, or attention, the rule is to redesign t
 ## Integration guardrail
 
 Do not connect this branch to live generation until its decision behavior has been tested against representative genres and section sequences. The existing Composer remains unchanged until a deliberate integration step is approved.
+
+
+## Musical memory
+
+The reasoning engine now includes abstract musical-idea memory.
+
+A remembered idea can retain descriptors such as contour, rhythmic character, harmonic relationship, expressive character, origin section, origin instrument, last carrier, age, appearances, and transformations.
+
+The memory layer does not store an instruction to replay exact notes. Instead it can decide to:
+
+- transform and recall an earlier idea;
+- let another compatible instrument answer or carry it;
+- develop it before introducing more major material;
+- recontextualize it harmonically when the genre permits;
+- fragment, extend, shift register, reshape rhythm, or vary contour;
+- deliberately leave it dormant.
+
+This supports musical continuity without turning the composition into a loop.
+
+### Memory and equal instrument importance
+
+Idea transfer can also support equal instrument importance. When an instrument has been underserved in the whole-composition importance ledger, the reasoning layer may prefer that instrument as the next carrier of a remembered idea when the existing genre and capability rules say the transfer is musically appropriate.
+
+This does not make instruments interchangeable. Compatibility remains mandatory.
+
+### Memory principle
+
+Recognition should come from preserved identity across change, not from compulsory literal repetition.
+
+Absence is also musically meaningful. A remembered idea does not need to return immediately, and not every stored idea must return at all.

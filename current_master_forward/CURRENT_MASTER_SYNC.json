@@ -37,6 +37,7 @@
     "rock_v3_core_harmony_plan.py",
     "rock_v3_core_development_plan.py",
     "rock_v3_core_form_plan.py",
+    "genre_v3_composition_executor_registry.py",
     "genre_v3_foreground_executor_registry.py",
     "genre_v3_source_pattern_bridge.py",
     "genre_v3_instrument_authority.py",
@@ -93,7 +94,8 @@
       "rock_v3_core_form_plan.py",
       "rock_v3_core_development_plan.py",
       "rock_v3_core_harmony_plan.py",
-      "rock_v3_core_development_executor.py"
+      "rock_v3_core_development_executor.py",
+      "genre_v3_composition_executor_registry.py"
     ],
     "live_promotion_approved": false,
     "classical_v3_symbolic_path": {
@@ -110,7 +112,7 @@
       ]
     },
     "rock_core_symbolic_path": {
-      "status": "DEVELOPED_EVENT_AUDIT_PENDING_RUNTIME_INTEGRATION",
+      "status": "DEVELOPED_EVENT_STRUCTURAL_PASS__RUNTIME_INTEGRATION_ACTIVE",
       "resolved_variant": null,
       "family_baseline_only": true,
       "variant_cues_present": false,
@@ -122,7 +124,10 @@
         "rock_v3_core_development_plan.py",
         "rock_v3_core_harmony_plan.py",
         "rock_v3_core_development_executor.py"
-      ]
+      ],
+      "developed_event_count": 897,
+      "execution_sha256": "0f3f4049f4bb49814f1ee892e294e5a1edbf8a890d17d0c02302afe9d139ee70",
+      "performance_realization_applied": false
     }
   }
 }

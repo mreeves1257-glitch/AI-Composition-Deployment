@@ -132,6 +132,8 @@ class MusicalGoal:
     instrument_balance: float = 1.0
     # 1.0 requests maximum bass richness/depth while preserving clarity and genre fit.
     bass_richness: float = 1.0
+    # 1.0 requests a deeply pronounced, physically felt kick without raising its compositional importance.
+    kick_impact: float = 1.0
 
 
 def _section_target_energy(state: ComposerState, goal: MusicalGoal) -> float:
@@ -235,6 +237,46 @@ def _role_intent(state: ComposerState, energy_motion: str, density: int) -> dict
     return intent
 
 
+def _kick_character_intent(goal: MusicalGoal, tags: set[str]) -> dict[str, Any]:
+    """Describe a pronounced kick character without turning kick into a hierarchy override."""
+    impact = _clamp(float(goal.kick_impact), 0.0, 1.0)
+    maximum = impact >= 0.999
+    instructions = [
+        "PRESERVE_DEEP_LOW_FREQUENCY_IMPACT",
+        "PRESERVE_CLEAR_PHYSICAL_PUNCH",
+        "KEEP_TRANSIENT_DEFINED_WITHOUT_THIN_CLICK",
+        "KEEP_KICK_BODY_FULL_AND_ROUND",
+        "MAKE_THE_KICK_EASY_TO_FEEL_AND_EASY_TO_LOCATE",
+        "COORDINATE_WITH_BASS_SO_BOTH_REMAIN_POWERFUL_AND_DISTINCT",
+        "AVOID_BOOMY_UNCONTROLLED_LOW_END",
+        "AVOID_OVERCOMPRESSION_THAT_FLATTENS_IMPACT",
+    ]
+    if "four_floor" in tags:
+        instructions.append("PRESERVE_REPEATED_KICK_IMPACT_WITHOUT FATIGUE_OR LOW_END_BUILDUP")
+    if "sidechain" in tags:
+        instructions.append("USE_DUCKING_OR_SPACE_RELATIONSHIP_TO_CLARIFY_KICK_BASS_HANDOFF_WITHOUT WEAKENING_EITHER")
+
+    return {
+        "parameter": "kick_impact",
+        "target_0_to_1": round(impact, 3),
+        "mode": "MAXIMUM_PRONOUNCED_IMPACT" if maximum else "SCALED_PRONOUNCED_IMPACT",
+        "compositional_importance_change": False,
+        "importance_rule": "KICK_REMAINS_EQUAL_IN_COMPOSITIONAL_IMPORTANCE_WITH_OTHER_ACTIVE_INSTRUMENTS",
+        "sound_character": {
+            "depth": "DEEP",
+            "impact": "VERY_PRONOUNCED",
+            "punch": "STRONG",
+            "body": "FULL_AND_ROUND",
+            "transient": "DEFINED_NOT_THIN",
+            "physical_feel": "HIGH",
+        },
+        "clarity_policy": "KICK_MUST_BE_PRONOUNCED_WITHOUT MASKING_BASS_OR OTHER_EQUAL_IMPORTANCE_INSTRUMENTS",
+        "bass_relationship": "KICK_PROVIDES_IMPACT_WHILE_BASS_PROVIDES_SUSTAINED_DEPTH_AND_BODY_WITH_CLEAR LOW_END_SEPARATION",
+        "future_realization_requirements": instructions,
+        "v0_1_audio_processing_applied": False,
+    }
+
+
 def _bass_character_intent(goal: MusicalGoal, tags: set[str]) -> dict[str, Any]:
     """Describe the required bass sound character without changing bass importance.
 
@@ -292,6 +334,7 @@ def _spatial_3d_intent(state: ComposerState, goal: MusicalGoal, importance_plan:
     active=[str(x) for x in state.active_instruments if str(x).strip()]
     section=_norm_section(state.section)
     bass_ids=[x for x in active if "bass" in x.lower()]
+    kick_ids=[x for x in active if "kick" in x.lower()]
     return {
         "status": "PASS" if active else "WAITING_FOR_ACTIVE_INSTRUMENT_LIST",
         "architecture": "SPATIAL_INTENT_EARLY__PHYSICAL_3D_MIX_LATE",
@@ -312,6 +355,15 @@ def _spatial_3d_intent(state: ComposerState, goal: MusicalGoal, importance_plan:
             if section in {"chorus","solo"} else
             "PRESERVE_SPACE_AND_DEPTH_WITHOUT OVERCROWDING"
         ),
+        "kick_spatial_rule": {
+            "kick_instruments": kick_ids,
+            "center_of_gravity": "FIRM_LOW_CENTER_ANCHOR",
+            "depth": "FORWARD_PHYSICAL_IMPACT_WITH_LOW_END_DEPTH",
+            "width": "TIGHT_CONTROLLED_LOW_FREQUENCY_IMAGE",
+            "impact_target": round(float(goal.kick_impact),3),
+            "importance_change": False,
+            "masking_guardrail": "MAKE_KICK_PRONOUNCED_WITHOUT PUSHING_BASS_OR OTHER INSTRUMENTS OUT_OF THEIR OWN SPACE",
+        },
         "bass_spatial_rule": {
             "bass_instruments": bass_ids,
             "center_of_gravity": "STABLE_LOW_FREQUENCY_ANCHOR",
@@ -729,6 +781,8 @@ def reason(
         raise ValueError("REASONING_INSTRUMENT_BALANCE_OUT_OF_RANGE")
     if not 0.0 <= float(goal.bass_richness) <= 1.0:
         raise ValueError("REASONING_BASS_RICHNESS_OUT_OF_RANGE")
+    if not 0.0 <= float(goal.kick_impact) <= 1.0:
+        raise ValueError("REASONING_KICK_IMPACT_OUT_OF_RANGE")
     tags = _norm_tags(semantic_tags)
     section = _norm_section(state.section)
 
@@ -748,6 +802,7 @@ def reason(
             "principle": "DENSITY_FOLLOWS_SECTION_FUNCTION_AND_ENERGY_NOT_FIXED_TRACK_COUNT",
         },
         "roles": _role_intent(state, energy_motion, density),
+        "kick_character": _kick_character_intent(goal, tags),
         "bass_character": _bass_character_intent(goal, tags),
         "instrument_balance": _instrument_balance_intent(goal),
         "spatial_3d_intent": _spatial_3d_intent(state, goal, importance_plan),
@@ -768,6 +823,8 @@ def reason(
             "DO_NOT_USE_NOTE_COUNT_LOUDNESS_OR_FOREGROUND_TIME_AS_A_PROXY_FOR_INSTRUMENT_IMPORTANCE",
             "DO_NOT_ALLOW_CHRONIC_INSTRUMENT_NEGLECT_ACROSS_THE_COMPOSITION",
             "DO_NOT_SOLVE_INSTRUMENT_COLLISIONS_BY_DECLARING_ONE_PART_UNIMPORTANT",
+            "DO_NOT_EQUATE_KICK_IMPACT_WITH_GREATER_COMPOSITIONAL_IMPORTANCE",
+            "DO_NOT_LET_PRONOUNCED_KICK_MASK_THE_RICH_BASS_OR_OTHER_INSTRUMENTS",
             "DO_NOT_EQUATE_BASS_DEPTH_WITH_GREATER_COMPOSITIONAL_IMPORTANCE",
             "DO_NOT_ALLOW_RICH_BASS_TO_MASK_OTHER_EQUAL_IMPORTANCE_INSTRUMENTS",
             "DO_NOT_APPLY_PHYSICAL_3D_AUDIO_PROCESSING_INSIDE_REASONING",

@@ -64,6 +64,9 @@ def main():
         "from genre_contract_v3_execution_bridge import all_snapshots" in adapter_source
         and "profiles=all_snapshots()" in adapter_source
         and "v3_execution_packet(name)" in adapter_source
+        and "def __init__(self, profile_registry_path=None, history_path=None)" in adapter_source
+        and "self.profile_source='GENRE_CONTRACT_V3_ALL_55'" in adapter_source
+        and "profile_registry_path=PROFILE_PATH" not in adapter_source
     )
     adapter_v3_roster_patch = (
         "from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority" in adapter_source
@@ -159,6 +162,11 @@ def main():
 
     remaining_gaps = {
         "adapter_v3_profile_source_patch_present": adapter_v3_source_patch,
+        "adapter_constructor_defaults_to_v3": (
+            "def __init__(self, profile_registry_path=None, history_path=None)" in adapter_source
+            and "self.profile_source='GENRE_CONTRACT_V3_ALL_55'" in adapter_source
+        ),
+        "adapter_constructor_legacy_default_removed": "profile_registry_path=PROFILE_PATH" not in adapter_source,
         "adapter_v3_roster_patch_present": adapter_v3_roster_patch,
         "static_palette_table_still_present_as_fallback": bool(palettes),
         "static_family_baseline_table_still_present": bool(bases),

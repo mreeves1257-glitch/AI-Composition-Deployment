@@ -234,7 +234,6 @@ def orchestrate_variant(plan, variant_id):
     base_events = cc.realize(copy.deepcopy(plan))
     bars = {bar["bar"]: bar for bar in plan["bars"]}
     activity_plan = _activity_bar_plan(plan, variant_id, base_events)
-    active_bar_sets = _activity_bar_sets(plan, base_events, variant_id)
     output = []
     original_theme_count = 0
     transferred_theme_count = 0
@@ -265,8 +264,6 @@ def orchestrate_variant(plan, variant_id):
             continue
 
         fam = _family(event)
-        if fam in active_bar_sets and fam != fg_family and bar_number not in active_bar_sets[fam]:
-            continue
         if not _support_keep(variant_id, event, fg_family, bar_number, activity_plan):
             continue
 

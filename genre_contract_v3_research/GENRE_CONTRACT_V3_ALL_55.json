@@ -7089,7 +7089,7 @@
       "source_profile_id": "TRADITIONAL_COUNTRY_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
+      "research_status": "V3_UPDATED__COUNTRY_FAMILY_INSTRUMENT_PRIOR_AND_HUMAN_DRUM_REFERENCE_ADDED__ERA_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "TRADITIONAL_COUNTRY_V1",
@@ -7206,7 +7206,9 @@
           "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
         },
         "presence_percent": {
-          "status": "TO_DERIVE_BY_VARIANT"
+          "status": "BROAD_COUNTRY_TAG_PRIOR_AVAILABLE__ERA_VARIANT_REQUIRED",
+          "shared_evidence_ref": "COUNTRY_FAMILY_MTG_JAMENDO_001",
+          "interpretation": "Acoustic guitar/guitar are strong broad-family candidates; drums/bass/electric guitar/harmonica/piano/fiddle roles depend on era and formation."
         },
         "activity_percent": {
           "status": "TO_DERIVE"
@@ -7352,12 +7354,18 @@
           "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
-        "unresolved_questions": []
+        "unresolved_questions": [],
+        "shared_evidence_refs": [
+          "COUNTRY_FAMILY_MTG_JAMENDO_001",
+          "COUNTRY_GMD_DRUM_001"
+        ]
       },
       "validation": {
         "structural_tests": [
           "Era/variant required for formation percentages.",
-          "Fill ownership cannot be simultaneous by default."
+          "Fill ownership cannot be simultaneous by default.",
+          "Broad Country instrument-tag evidence is a candidate-role prior only; resolved substyle/formation remains authoritative.",
+          "If the resolved Country variant includes drum kit, groove and fill must be separate phrase-aware states; if it does not include drums, GMD evidence is inactive."
         ],
         "listening_tests": [
           "Lead stays clear.",
@@ -7397,7 +7405,7 @@
       "source_profile_id": "COUNTRY_ROCK_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__COUNTRY_AND_ROCK_EVIDENCE_LAYERS_LINKED__BLEND_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_ROCK_V1",
@@ -7525,7 +7533,8 @@
         },
         "foreground_window_rules": [
           "Featured fiddle/steel/lead guitar gets room from rhythm guitars/keys.",
-          "Kick/bass foundation remains clear without masking acoustic/country colors."
+          "Kick/bass foundation remains clear without masking acoustic/country colors.",
+          "Broad Country evidence plus Rock evidence supports a true blend resolver: acoustic/country colors and electric rock core must be weighted explicitly rather than simply stacking both full arrangements."
         ],
         "role_handoff_rules": [
           "Foreground rotates lead↔lead guitar/fiddle/steel.",
@@ -7580,12 +7589,18 @@
           "MMA": "LICENSE_REVIEW"
         },
         "conflicts_between_sources": [],
-        "unresolved_questions": []
+        "unresolved_questions": [],
+        "shared_evidence_refs": [
+          "COUNTRY_FAMILY_MTG_JAMENDO_001",
+          "COUNTRY_GMD_DRUM_001"
+        ]
       },
       "validation": {
         "structural_tests": [
           "Blend must be resolved.",
-          "Featured country instruments cannot be permanently buried by electric guitars."
+          "Featured country instruments cannot be permanently buried by electric guitars.",
+          "Broad Country instrument-tag evidence is a candidate-role prior only; resolved substyle/formation remains authoritative.",
+          "If the resolved Country variant includes drum kit, groove and fill must be separate phrase-aware states; if it does not include drums, GMD evidence is inactive."
         ],
         "listening_tests": [
           "Country and rock identities are both audible.",
@@ -7624,7 +7639,7 @@
       "source_profile_id": "COUNTRY_BALLAD_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
+      "research_status": "V3_UPDATED__COUNTRY_EVIDENCE_LAYER_LINKED__BALLAD_VARIANT_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_BALLAD_V1",
@@ -7812,12 +7827,18 @@
           "published_corpus": "REFERENCE"
         },
         "conflicts_between_sources": [],
-        "unresolved_questions": []
+        "unresolved_questions": [],
+        "shared_evidence_refs": [
+          "COUNTRY_FAMILY_MTG_JAMENDO_001",
+          "COUNTRY_GMD_DRUM_001"
+        ]
       },
       "validation": {
         "structural_tests": [
           "Meter must resolve before generation.",
-          "Layer growth cannot become generic density ramp."
+          "Layer growth cannot become generic density ramp.",
+          "Broad Country instrument-tag evidence is a candidate-role prior only; resolved substyle/formation remains authoritative.",
+          "If the resolved Country variant includes drum kit, groove and fill must be separate phrase-aware states; if it does not include drums, GMD evidence is inactive."
         ],
         "listening_tests": [
           "Lead stays intimate.",
@@ -7858,7 +7879,7 @@
       "source_profile_id": "COUNTRY_SHUFFLE_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__COUNTRY_DRUM_REFERENCE_LINKED__SHUFFLE_SPECIFIC_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_SHUFFLE_V1",
@@ -8008,7 +8029,8 @@
         "continuous_performance_control": "velocity/articulation control",
         "interaction_rules": [
           "All parts share triplet feel.",
-          "Fills do not straighten subdivision."
+          "Fills do not straighten subdivision.",
+          "Country drum corpus can validate human fill/pocket behavior, but the shuffle subdivision remains contract authority and must not be straightened by generic Country examples."
         ]
       },
       "production": {
@@ -8037,12 +8059,18 @@
           "Berklee": "REFERENCE_ONLY"
         },
         "conflicts_between_sources": [],
-        "unresolved_questions": []
+        "unresolved_questions": [],
+        "shared_evidence_refs": [
+          "COUNTRY_FAMILY_MTG_JAMENDO_001",
+          "COUNTRY_GMD_DRUM_001"
+        ]
       },
       "validation": {
         "structural_tests": [
           "Triplet feel must survive fills.",
-          "4/4 vs 12/8 cannot be silently normalized."
+          "4/4 vs 12/8 cannot be silently normalized.",
+          "Broad Country instrument-tag evidence is a candidate-role prior only; resolved substyle/formation remains authoritative.",
+          "If the resolved Country variant includes drum kit, groove and fill must be separate phrase-aware states; if it does not include drums, GMD evidence is inactive."
         ],
         "listening_tests": [
           "Shuffle identity remains constant.",
@@ -8081,7 +8109,7 @@
       "source_profile_id": "COUNTRY_TWO_STEP_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
+      "research_status": "V3_UPDATED__COUNTRY_DRUM_REFERENCE_LINKED__REGIONAL_TWO_STEP_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_TWO_STEP_V1",
@@ -8232,7 +8260,8 @@
         "interaction_rules": [
           "Consistent dance timing.",
           "No independent rubato.",
-          "Fills preserve pulse."
+          "Fills preserve pulse.",
+          "Human Country drum evidence is secondary to resolved dance-pulse authority; fills cannot interrupt two-step continuity."
         ]
       },
       "production": {
@@ -8261,12 +8290,18 @@
           "Berklee": "REFERENCE_ONLY"
         },
         "conflicts_between_sources": [],
-        "unresolved_questions": []
+        "unresolved_questions": [],
+        "shared_evidence_refs": [
+          "COUNTRY_FAMILY_MTG_JAMENDO_001",
+          "COUNTRY_GMD_DRUM_001"
+        ]
       },
       "validation": {
         "structural_tests": [
           "Meter/felt-pulse must resolve first.",
-          "Dance pulse cannot be broken by fills."
+          "Dance pulse cannot be broken by fills.",
+          "Broad Country instrument-tag evidence is a candidate-role prior only; resolved substyle/formation remains authoritative.",
+          "If the resolved Country variant includes drum kit, groove and fill must be separate phrase-aware states; if it does not include drums, GMD evidence is inactive."
         ],
         "listening_tests": [
           "Dance drive is unmistakable.",
@@ -8305,7 +8340,7 @@
       "source_profile_id": "COUNTRY_WALTZ_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__COUNTRY_EVIDENCE_LAYER_LINKED__WALTZ_VARIANT_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_WALTZ_V1",
@@ -8487,12 +8522,18 @@
           "published_corpus": "REFERENCE"
         },
         "conflicts_between_sources": [],
-        "unresolved_questions": []
+        "unresolved_questions": [],
+        "shared_evidence_refs": [
+          "COUNTRY_FAMILY_MTG_JAMENDO_001",
+          "COUNTRY_GMD_DRUM_001"
+        ]
       },
       "validation": {
         "structural_tests": [
           "3/4 required.",
-          "No jazz/classical waltz fallback."
+          "No jazz/classical waltz fallback.",
+          "Broad Country instrument-tag evidence is a candidate-role prior only; resolved substyle/formation remains authoritative.",
+          "If the resolved Country variant includes drum kit, groove and fill must be separate phrase-aware states; if it does not include drums, GMD evidence is inactive."
         ],
         "listening_tests": [
           "Country waltz identity is clear.",
@@ -8531,7 +8572,7 @@
       "source_profile_id": "BLUEGRASS_RELATED_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__TRADITIONAL_FIVE_PILOT",
+      "research_status": "V3_UPDATED__BLUEGRASS_SEPARATION_REINFORCED__TRADITIONAL_FIVE_PILOT_RETAINED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BLUEGRASS_RELATED_V1",
@@ -8727,7 +8768,8 @@
           "Current Bluegrass-related profile",
           "Berklee Bluegrass Ensemble",
           "Berklee traditional bluegrass instrumentation examples",
-          "Berklee American Roots references"
+          "Berklee American Roots references",
+          "AcousticBrainz genre taxonomy: explicit Bluegrass subgenre branch (taxonomy evidence only)"
         ],
         "source_confidence": {
           "traditional_five_pilot": "MEDIUM_HIGH_FOR_QUALIFIED_REFERENCE",
@@ -8737,7 +8779,9 @@
           "internal": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY"
         },
-        "conflicts_between_sources": [],
+        "conflicts_between_sources": [
+          "Broad Country Jamendo/GMD evidence is intentionally not inherited as Bluegrass execution authority; traditional Bluegrass retains its acoustic/no-default-drums contract."
+        ],
         "unresolved_questions": []
       },
       "validation": {
@@ -8770,7 +8814,12 @@
           "Vocal-harmony bluegrass",
           "Instrumental bluegrass"
         ],
-        "note": "Traditional five-piece pilot uses guitar, bass, banjo, mandolin and fiddle; optional dobro/other roles are variant-dependent."
+        "note": "Traditional five-piece pilot uses guitar, bass, banjo, mandolin and fiddle; optional dobro/other roles are variant-dependent.",
+        "taxonomy_evidence": {
+          "AcousticBrainz_example_count": 2647,
+          "taxonomy_label": "folk, world, & country---bluegrass",
+          "use": "Confirms Bluegrass deserves its own distinct resolver branch; not used for instrumentation frequencies."
+        }
       },
       "quantitative_evidence_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -17556,5 +17605,102 @@
       "Foreground ownership never requires matching the population mass of a larger section.",
       "No generic generator may override a resolved genre/variant contract."
     ]
+  },
+  "shared_evidence_layers": {
+    "COUNTRY_FAMILY_MTG_JAMENDO_001": {
+      "source": "MTG-Jamendo cleaned tag metadata",
+      "genre_tag": "country",
+      "genre_tagged_tracks": 584,
+      "tracks_with_any_instrument_tag": 250,
+      "instrument_tag_coverage_percent": 42.8,
+      "top_instrument_tags": [
+        {
+          "instrument": "acousticguitar",
+          "tagged_track_count": 108,
+          "percent_of_instrument_tagged_tracks": 43.2
+        },
+        {
+          "instrument": "guitar",
+          "tagged_track_count": 91,
+          "percent_of_instrument_tagged_tracks": 36.4
+        },
+        {
+          "instrument": "drums",
+          "tagged_track_count": 54,
+          "percent_of_instrument_tagged_tracks": 21.6
+        },
+        {
+          "instrument": "bass",
+          "tagged_track_count": 52,
+          "percent_of_instrument_tagged_tracks": 20.8
+        },
+        {
+          "instrument": "electricguitar",
+          "tagged_track_count": 45,
+          "percent_of_instrument_tagged_tracks": 18
+        },
+        {
+          "instrument": "harmonica",
+          "tagged_track_count": 36,
+          "percent_of_instrument_tagged_tracks": 14.4
+        },
+        {
+          "instrument": "piano",
+          "tagged_track_count": 24,
+          "percent_of_instrument_tagged_tracks": 9.6
+        },
+        {
+          "instrument": "violin",
+          "tagged_track_count": 11,
+          "percent_of_instrument_tagged_tracks": 4.4
+        }
+      ],
+      "top_co_genre_tags": [
+        {
+          "genre": "folk",
+          "percent": 54.1
+        },
+        {
+          "genre": "latin",
+          "percent": 25.2
+        },
+        {
+          "genre": "rock",
+          "percent": 13.9
+        },
+        {
+          "genre": "popfolk",
+          "percent": 12.7
+        },
+        {
+          "genre": "blues",
+          "percent": 10.3
+        },
+        {
+          "genre": "pop",
+          "percent": 9.2
+        }
+      ],
+      "guardrails": [
+        "Uploader/tag metadata, not acoustic detection.",
+        "Instrument percentages use only the 250 Country tracks with any instrument tag as denominator.",
+        "Broad Country evidence cannot determine a specific honky-tonk, two-step, shuffle, ballad, country-rock or waltz formation.",
+        "No Bluegrass inference: this Jamendo metadata set has no cleaned 'bluegrass' genre tag."
+      ],
+      "license_note": "Metadata repository Apache 2.0; underlying audio has individual Creative Commons licenses and is not embedded."
+    },
+    "COUNTRY_GMD_DRUM_001": {
+      "source": "Groove MIDI Dataset",
+      "direct_primary_style": "country",
+      "scope": "Human drum performances tagged by drummer as Country; corpus globally includes style, BPM, beat/fill and time-signature metadata.",
+      "use": "Drum-pocket/fill validation for Country variants that actually include drum kit.",
+      "guardrails": [
+        "Do not apply to traditional Bluegrass, which has no default drum kit in the current contract.",
+        "Do not infer exact Country substyle from the broad primary 'country' label.",
+        "Beat and fill are separate performance states.",
+        "Humanization is relational performance behavior, not independent random jitter."
+      ],
+      "license": "CC BY 4.0"
+    }
   }
 }

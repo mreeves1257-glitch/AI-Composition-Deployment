@@ -64,21 +64,21 @@
     },
     {
       "id": "SOS_BASS_DRUM",
-      "name": "Sound On Sound \u2014 Synthesizing Drums: The Bass Drum",
+      "name": "Sound On Sound — Synthesizing Drums: The Bass Drum",
       "url": "https://www.soundonsound.com/techniques/synthesizing-drums-bass-drum",
       "role": "acoustic_modeling_reference",
       "notes": "Discusses coupled bass-drum modes; example orchestral partials near 50, 93, 136 and 179 Hz, plus dense mid-frequency partials and pitch decay."
     },
     {
       "id": "JASA_DJEMBE",
-      "name": "Russell & Haveman \u2014 Acoustic and modal analysis of an African djembe drum",
+      "name": "Russell & Haveman — Acoustic and modal analysis of an African djembe drum",
       "url": "https://doi.org/10.1121/1.4743633",
       "role": "research_acoustics",
       "notes": "JASA abstract reports djembe shell/cavity/membrane coupling and a strong Helmholtz bass component around 75 Hz."
     },
     {
       "id": "HYPERPHYSICS_GUITAR",
-      "name": "HyperPhysics \u2014 Acoustic Guitar",
+      "name": "HyperPhysics — Acoustic Guitar",
       "url": "https://hyperphysics.phy-astr.gsu.edu/hbase/Music/guita.html",
       "role": "reference_acoustics",
       "notes": "Standard six-string tuning E2 A2 D3 G3 B3 E4 at A440."
@@ -92,21 +92,21 @@
     },
     {
       "id": "BERKLEE_BIG_BAND",
-      "name": "Berklee College of Music \u2014 Writing for Big Band",
+      "name": "Berklee College of Music — Writing for Big Band",
       "url": "https://college.berklee.edu/courses/cw-311",
       "role": "ensemble_instrumentation_reference",
       "notes": "Big-band writing treats trumpets, trombones, saxophones/selected woodwinds, and rhythm section as distinct sections."
     },
     {
       "id": "LOC_BLUEGRASS",
-      "name": "Library of Congress \u2014 Bluegrass Music",
+      "name": "Library of Congress — Bluegrass Music",
       "url": "https://www.loc.gov/collections/dolly-parton-and-the-roots-of-country-music/articles-and-essays/bluegrass-music/",
       "role": "genre_instrumentation_reference",
       "notes": "Bluegrass string-band instrumentation includes guitar, double bass, fiddle, five-string banjo, mandolin, steel guitar/Dobro; players take turns on lead."
     },
     {
       "id": "FREEPATS_TENOR_SAX",
-      "name": "FreePats \u2014 Tenor Saxophone",
+      "name": "FreePats — Tenor Saxophone",
       "url": "https://freepats.zenvoid.org/Reed/saxophone.html",
       "role": "open_sample_source",
       "license": "CC0",
@@ -114,7 +114,7 @@
     },
     {
       "id": "VIRTUOSITY_DRUMS",
-      "name": "Versilian Studios / Karoryfer \u2014 Virtuosity Drums",
+      "name": "Versilian Studios / Karoryfer — Virtuosity Drums",
       "url": "https://versilian-studios.com/virtuosity-drums/",
       "role": "open_sample_source",
       "license": "CC0",
@@ -122,21 +122,21 @@
     },
     {
       "id": "COUNTRY_HALL_INSTRUMENTS",
-      "name": "Country Music Hall of Fame \u2014 History of Country Music Instruments",
+      "name": "Country Music Hall of Fame — History of Country Music Instruments",
       "url": "https://countrymusichalloffame.org/learn/family-and-community-resources/history-of-country-music-instruments",
       "role": "performance_and_instrumentation_reference",
       "notes": "Documents pedal steel, fiddle, bass, acoustic/electric guitar, piano and other country instrument roles; pedal steel uses pedals/mechanism to alter pitches and smoothly voice/modulate chords."
     },
     {
       "id": "UMICH_SAMBA_RESIDENCY",
-      "name": "University of Michigan LACS \u2014 Samba Residency",
+      "name": "University of Michigan LACS — Samba Residency",
       "url": "https://ii.umich.edu/lacs/about-us/brazil-initiative/arts-and-culture-network/samba-residency.html",
       "role": "genre_percussion_reference",
       "notes": "Demonstrates samba timeline, surdo pulse, pandeiro subdivisions, tamborim, agogo and shaker roles."
     },
     {
       "id": "SMITHSONIAN_SAMBA",
-      "name": "Smithsonian Folkways \u2014 Dan\u00e7a! Movement and Music of Brazil",
+      "name": "Smithsonian Folkways — Dança! Movement and Music of Brazil",
       "url": "https://folkways.si.edu/danca-movement-brazil/samba/music/tools-for-teaching/smithsonian",
       "role": "genre_percussion_reference",
       "notes": "Describes carnival samba bateria roles including pandeiro, agogo, ganza, caixa, cuica, repinique and surdo."
@@ -151,8 +151,8 @@
       "nominal_range_notes": null,
       "nominal_range_hz_A440": null,
       "sound_production": "Large soft beater strikes batter head; two heads, shell and enclosed air are coupled resonators.",
-      "spectral_or_resonance_behavior": "Low quasi-harmonic/inharmonic coupled modes; Sound On Sound example partials ~50, 93, 136, 179 Hz plus dense 250 Hz\u20131 kHz inharmonic content. VSL emphasizes indefinite pitch and very deep resonance.",
-      "time_behavior": "Attack is brief/noise-like; resonance decays after strike. VSL reports resonance around 3\u20134 s at mezzoforte, but short notes are damped and center strikes reduce resonance.",
+      "spectral_or_resonance_behavior": "Low quasi-harmonic/inharmonic coupled modes; Sound On Sound example partials ~50, 93, 136, 179 Hz plus dense 250 Hz–1 kHz inharmonic content. VSL emphasizes indefinite pitch and very deep resonance.",
+      "time_behavior": "Attack is brief/noise-like; resonance decays after strike. VSL reports resonance around 3–4 s at mezzoforte, but short notes are damped and center strikes reduce resonance.",
       "performance_techniques": [
         "single stroke",
         "center/darker low-resonance stroke",
@@ -294,7 +294,7 @@
       ],
       "sound_production": "Bars struck with mallets; resonators reinforce bar modes.",
       "spectral_or_resonance_behavior": "Tuned percussion with approximately harmonic pitch structure but bar/resonator modes shape timbre.",
-      "time_behavior": "Single notes comprise attack + resonance; VSL notes low notes may ring 2\u20133 seconds.",
+      "time_behavior": "Single notes comprise attack + resonance; VSL notes low notes may ring 2–3 seconds.",
       "performance_techniques": [
         "single note",
         "repetition",
@@ -438,7 +438,7 @@
         622.254
       ],
       "sound_production": "Double reed drives long conical folded bore.",
-      "spectral_or_resonance_behavior": "Low harmonics are strong; bassoon formant regions reported around 440\u2013500 Hz and 1220\u20131280 Hz. Approximate bore cutoff ~600 Hz.",
+      "spectral_or_resonance_behavior": "Low harmonics are strong; bassoon formant regions reported around 440–500 Hz and 1220–1280 Hz. Approximate bore cutoff ~600 Hz.",
       "time_behavior": "Continuous driven tone; low register full/sonorous, upper register carries fewer overtones and sounds more compressed.",
       "performance_techniques": [
         "single tonguing",
@@ -471,11 +471,11 @@
         "F2"
       ],
       "nominal_range_hz_A440": [
-        55.0,
+        55,
         87.3071
       ],
       "sound_production": "Lip vibration drives long bore; player's vocal tract strongly alters spectral envelope and formants.",
-      "spectral_or_resonance_behavior": "UNSW reports preferred instrument pitch range ~A1\u2013F2; player vocal tract can create/shape strong formants, notably in ~1\u20132 kHz region. Tongue position can suppress around 1.5 and 2.0 kHz, leaving strong energy near ~1.8 kHz.",
+      "spectral_or_resonance_behavior": "UNSW reports preferred instrument pitch range ~A1–F2; player vocal tract can create/shape strong formants, notably in ~1–2 kHz region. Tongue position can suppress around 1.5 and 2.0 kHz, leaving strong energy near ~1.8 kHz.",
       "time_behavior": "Drone is sustained by breath/circular breathing; timbre evolves continuously with tongue, glottis and vocalization.",
       "performance_techniques": [
         "drone",
@@ -576,7 +576,7 @@
         698.4565
       ],
       "sound_production": "Lip reed drives long cylindrical tube; slide changes acoustic length continuously.",
-      "spectral_or_resonance_behavior": "Brass harmonic series with strong projection; pedals E1\u2013Bb1 are special low extension. Timbre remains relatively homogeneous across registers.",
+      "spectral_or_resonance_behavior": "Brass harmonic series with strong projection; pedals E1–Bb1 are special low extension. Timbre remains relatively homogeneous across registers.",
       "time_behavior": "Sustained tone; slide travel limits some fast distant-position passages.",
       "performance_techniques": [
         "single/double/triple tonguing",
@@ -643,17 +643,17 @@
       ],
       "nominal_range_hz_A440": [
         195.9977,
-        3520.0
+        3520
       ],
       "sound_production": "Bow stick-slip continuously drives string; bridge/body radiate string energy.",
-      "spectral_or_resonance_behavior": "Rich harmonic spectrum maintained by bow. UNSW notes bridge transmits strongly around ~1\u20134 kHz and a broad bridge resonance around ~2.5 kHz; body has multiple resonances below 1 kHz.",
+      "spectral_or_resonance_behavior": "Rich harmonic spectrum maintained by bow. UNSW notes bridge transmits strongly around ~1–4 kHz and a broad bridge resonance around ~2.5 kHz; body has multiple resonances below 1 kHz.",
       "time_behavior": "Bowed notes sustain while energy is supplied; pizzicato decays rapidly. Bow position/pressure/speed change partial balance.",
       "performance_techniques": [
         "arco",
         "pizzicato",
         "legato",
-        "d\u00e9tach\u00e9",
-        "martel\u00e9",
+        "détaché",
+        "martelé",
         "tremolo",
         "sul ponticello",
         "sul tasto",
@@ -682,7 +682,7 @@
       ],
       "nominal_range_hz_A440": [
         130.8128,
-        1760.0
+        1760
       ],
       "sound_production": "Bowed/plucked strings coupled through bridge to body resonator.",
       "spectral_or_resonance_behavior": "Same core string physics as violin but body is proportionally small for tuning, contributing darker/statelier timbre; mute reduces higher partials above ~2 kHz per VSL.",
@@ -691,8 +691,8 @@
         "arco",
         "pizzicato",
         "legato",
-        "d\u00e9tach\u00e9",
-        "martel\u00e9",
+        "détaché",
+        "martelé",
         "tremolo",
         "sul ponticello",
         "sul tasto",
@@ -721,7 +721,7 @@
       ],
       "nominal_range_hz_A440": [
         65.4064,
-        880.0
+        880
       ],
       "sound_production": "Bowed/plucked strings coupled through bridge/body; four strings C2 G2 D3 A3.",
       "spectral_or_resonance_behavior": "Rich harmonic bowed spectrum; strong body/bridge coloration. Low C string dark/weighty, A string bright/penetrating.",
@@ -730,8 +730,8 @@
         "arco",
         "pizzicato",
         "legato",
-        "d\u00e9tach\u00e9",
-        "martel\u00e9",
+        "détaché",
+        "martelé",
         "tremolo",
         "sul ponticello",
         "sul tasto",
@@ -770,7 +770,7 @@
         "pizzicato",
         "walking/slap bass",
         "legato",
-        "d\u00e9tach\u00e9",
+        "détaché",
         "tremolo",
         "sul ponticello",
         "sul tasto",
@@ -794,7 +794,7 @@
       "pitch_type": "pitched",
       "standard_open_strings": {
         "E2": 82.4069,
-        "A2": 110.0,
+        "A2": 110,
         "D3": 146.8324,
         "G3": 195.9977,
         "B3": 246.9417,
@@ -933,7 +933,7 @@
       "pitch_type": "pitched",
       "standard_open_strings": {
         "E1": 41.2034,
-        "A1": 55.0,
+        "A1": 55,
         "D2": 73.4162,
         "G2": 97.9989
       },
@@ -968,7 +968,7 @@
         "preferred_note_density": "quarter_to_eighth_note",
         "clarity_rule": "preserve note separation in dense rock passages"
       },
-      "implementation_guidance": "Keep the fundamental and first few harmonics clearly audible. Avoid masking the 70\u2013180 Hz body with rhythm-guitar energy.",
+      "implementation_guidance": "Keep the fundamental and first few harmonics clearly audible. Avoid masking the 70–180 Hz body with rhythm-guitar energy.",
       "source_ids": [
         "BASS_STANDARD_TUNING_REF"
       ],
@@ -993,7 +993,7 @@
       "pitch_type": "pitched",
       "standard_open_strings": {
         "E2": 82.4069,
-        "A2": 110.0,
+        "A2": 110,
         "D3": 146.8324,
         "G3": 195.9977,
         "B3": 246.9417,
@@ -1881,7 +1881,7 @@
       "family": "plucked_string",
       "pitch_type": "pitched",
       "standard_open_strings": {
-        "G4": 392.0,
+        "G4": 392,
         "D3": 146.8324,
         "G3": 195.9977,
         "B3": 246.9417,
@@ -1921,9 +1921,9 @@
       "family": "plucked_string",
       "pitch_type": "pitched",
       "standard_open_strings": {
-        "G3": 196.0,
+        "G3": 196,
         "D4": 293.6648,
-        "A4": 440.0,
+        "A4": 440,
         "E5": 659.2551
       },
       "nominal_range_notes": [
@@ -1959,13 +1959,13 @@
       "pitch_type": "varies_or_indefinite",
       "nominal_range_notes": null,
       "nominal_range_hz_A440": null,
-      "sound_production": "Shallow single-headed drums struck with sticks; shell/rim may also be used for c\u00e1scara patterns.",
+      "sound_production": "Shallow single-headed drums struck with sticks; shell/rim may also be used for cáscara patterns.",
       "spectral_or_resonance_behavior": "Bright, cutting membrane attack with strong shell/rim transients; high/low drums remain distinguishable.",
       "time_behavior": "Very fast attack and short ringing decay; rolls/fills and shell patterns require repeated-stroke variation.",
       "performance_techniques": [
         "high drum",
         "low drum",
-        "rim/shell c\u00e1scara",
+        "rim/shell cáscara",
         "roll",
         "fill"
       ],
@@ -2104,7 +2104,7 @@
     },
     {
       "id": "agogo_bells",
-      "name": "Agog\u00f4 Bells",
+      "name": "Agogô Bells",
       "family": "percussion_idiophone",
       "pitch_type": "quasi_pitched",
       "nominal_range_notes": null,
@@ -2127,6 +2127,61 @@
       ],
       "status": "research_seed_open_sample_candidate",
       "notes": "VCSL is a CC0 candidate source; playable binding is not yet installed."
+    },
+    {
+      "id": "brush_snare",
+      "name": "Brush-Played Snare Drum",
+      "family": "percussion_membranophone",
+      "pitch_type": "indefinite_pitch",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical performance-role identity for a snare drum played with brushes. Exact brush material, drum, sweep/tap balance and recording belong to the selected target resource.",
+      "spectral_or_resonance_behavior": "Snare-drum body and wire response with softer/noisier brush excitation than a stick strike; detailed resource-specific characterization remains pending.",
+      "time_behavior": "Supports short brush taps and longer sweep/texture behavior; exact decay and sweep continuity are resource dependent.",
+      "performance_techniques": [
+        "brush tap",
+        "brush sweep",
+        "brush accent",
+        "soft ballad backbeat"
+      ],
+      "role_capabilities": [
+        "soft timekeeping",
+        "ballad backbeat",
+        "brush texture",
+        "low-aggression rhythmic support"
+      ],
+      "sample_sources": [],
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "production_resource_status": "RESOURCE_REQUIRED",
+      "provenance": "V3-governed original symbolic source-pattern roles for Jazz Ballad, Country Ballad and Country Waltz.",
+      "implementation_guidance": "Preserve BRUSH identity through composition and resource resolution. Do not silently substitute an ordinary stick-snare performance when brush behavior is required."
+    },
+    {
+      "id": "hand_drum",
+      "name": "Generic Hand-Drum Role",
+      "family": "percussion_hand",
+      "pitch_type": "varies_or_indefinite",
+      "nominal_range_notes": null,
+      "nominal_range_hz_A440": null,
+      "sound_production": "Canonical genre-role identity for hand-played drum/percussion where the V3 variant has not yet resolved a specific drum family. Exact shell/head/instrument identity belongs to later variant/resource resolution.",
+      "spectral_or_resonance_behavior": "Instrument-specific; this role intentionally does not collapse conga, frame drum, djembe or another hand drum into one assumed acoustic model.",
+      "time_behavior": "Hand-struck transient and resonant behavior is target-instrument dependent.",
+      "performance_techniques": [
+        "hand strike",
+        "open tone intent",
+        "slap intent",
+        "muted tone intent"
+      ],
+      "role_capabilities": [
+        "interlocking hand percussion",
+        "syncopated support",
+        "Afro-derived rhythmic layer"
+      ],
+      "sample_sources": [],
+      "status": "PROGRAM_ROLE_DEFINED_RESOURCE_REQUIRED",
+      "production_resource_status": "RESOURCE_REQUIRED",
+      "provenance": "V3-governed original symbolic source-pattern roles for Afrobeats and Afro House.",
+      "implementation_guidance": "Preserve HAND_DRUM as an unresolved canonical role until a genre/variant-specific drum family and verified resource are selected. Do not silently map it to conga or frame drum."
     }
   ],
   "next_research_queue": [

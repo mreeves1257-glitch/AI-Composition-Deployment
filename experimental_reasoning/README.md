@@ -134,3 +134,21 @@ The target character is:
 Richness must not turn into mud. If low-frequency parts collide, the arrangement and later mix/render stages should create separation rather than simply reducing the bass to insignificance.
 
 V0.1 does not apply EQ, compression, saturation, synthesis, sample selection, or rendering. It emits a future realization contract that later audio stages must satisfy.
+
+
+## 3D architecture — plan early, realize late
+
+The Composer already has a preserved downstream 3D mixing stage. The experimental reasoning engine does **not** move or replace that mixer.
+
+Instead, 3D is split into two responsibilities:
+
+1. **Early spatial intent** — during pre-generation reasoning, the Composer decides how instruments should coexist in width, depth, register/frequency space, distance, and conversational placement.
+2. **Late physical realization** — after independent instrument stems have been rendered, the existing 3D mixer realizes the approved spatial relationships in audio.
+
+This prevents spatial depth from being merely a final cosmetic effect. Space becomes part of the composition and arrangement while preserving the proven downstream mixer.
+
+### Bass and 3D
+
+The rich-bass requirement uses the spatial plan to keep the bass deep and physically grounded with controlled low-frequency width. Bass and kick should have distinct low-end space, and other equal-importance instruments should remain clear.
+
+Depth is not hierarchy. An instrument placed farther back, wider, or in a different depth zone does not become less important to the composition.

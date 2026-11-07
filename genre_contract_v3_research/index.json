@@ -17,8 +17,8 @@
   "genres": [
     {
       "genre_name": "ROCK",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
+      "comparison_status": "HUMAN_PERFORMANCE_REFERENCE_ADDED__FULL_QUANT_STATS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -161,8 +161,8 @@
     },
     {
       "genre_name": "Soul",
-      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__GMD_SOUL_DRUM_REFERENCE_ADDED__QUANT_STATS_PENDING",
+      "comparison_status": "HUMAN_PERFORMANCE_REFERENCE_ADDED__FULL_QUANT_STATS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -173,8 +173,8 @@
     },
     {
       "genre_name": "Funk",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
+      "comparison_status": "HUMAN_PERFORMANCE_REFERENCE_ADDED__FULL_QUANT_STATS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -293,8 +293,8 @@
     },
     {
       "genre_name": "Bossa Nova",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
-      "comparison_status": "SMALL_COMBO_QUANTITATIVE_REFERENCE_ADDED__BROADER_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED__GUITARSET_ROLE_REFERENCE_ADDED",
+      "comparison_status": "HUMAN_PERFORMANCE_REFERENCE_ADDED__FULL_QUANT_STATS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

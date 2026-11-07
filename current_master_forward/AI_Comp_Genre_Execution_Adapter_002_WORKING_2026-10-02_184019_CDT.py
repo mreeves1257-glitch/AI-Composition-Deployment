@@ -196,13 +196,23 @@ PROFILE_ROLE_ALIASES = (
 SUPPORTED_EVENT_ROLES = set(role for parts in PALETTES.values() for role in parts)
 
 def resolve_genre_parts_with_authority(name, tmpl, profile):
-    # Genre Contract V3 owns instrumentation only where it has an explicit,
-    # resource-mapped roster. Otherwise retain the old palette as a clearly
-    # labeled fallback; never silently claim the fallback came from V3.
+    # Authority order on this diagnostic branch:
+    # 1) explicit current V3 researched formation,
+    # 2) fully current-resolved V3-governed original symbolic source roles,
+    # 3) legacy static palette only as an explicit last fallback.
     from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority
     v3_authority = resolve_v3_instrument_authority(name, profile)
     if v3_authority.get('status') == 'PASS':
         return list(v3_authority['event_roles']), v3_authority
+
+    from genre_v3_source_pattern_bridge import resolve_source_roles
+    source_authority = resolve_source_roles(name)
+    if source_authority.get('status') == 'PASS':
+        source_authority=dict(source_authority)
+        source_authority['status']='PASS'
+        source_authority['authority']='V3_GOVERNED_SOURCE_PATTERN_ROLES'
+        source_authority['fallback_used']=False
+        return list(source_authority['event_roles']), source_authority
 
     baseline = list(PALETTES.get(tmpl, PALETTES['hybrid']))
     if tmpl == 'classical':
@@ -214,6 +224,7 @@ def resolve_genre_parts_with_authority(name, tmpl, profile):
         'template': tmpl,
         'event_roles': list(baseline),
         'v3_attempt': v3_authority,
+        'source_pattern_attempt': source_authority,
         'rule': 'FALLBACK_IS_EXPLICIT_AND_MUST_NOT_BE_REPORTED_AS_V3_AUTHORITY',
     }
     return baseline, fallback
@@ -251,6 +262,78 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
     baseline=BASE.get(tmpl,BASE['hybrid'])
     tonic,quality,_,_,_,_=baseline
     parts,instrument_authority=resolve_genre_parts_with_authority(name,tmpl,profile)
+
+    # For fully resolved source-pattern genres, Stage 3 instrument identity and
+    # Stage 4 symbolic behavior now come from the same V3-governed source. Do not
+    # send these genres back through the legacy family-note generator.
+    if instrument_authority.get('authority') == 'V3_GOVERNED_SOURCE_PATTERN_ROLES':
+        from genre_v3_symbolic_pattern_executor import compile_seed as compile_v3_symbolic_seed
+        symbolic=compile_v3_symbolic_seed(name)
+        meter=symbolic['meter']; bpm=symbolic['tempo_bpm']; bars=symbolic['bar_count']
+        numerator,denominator=map(int,meter.split('/'))
+        beats_per_bar=numerator*4/denominator
+
+        from genre_interpreter_linkage import interpret_genre, link_genre
+        interpreted=interpret_genre(name,profile,parts)
+        from genre_pre_generation_compiler import compile_generation_plan
+        generation_plan=compile_generation_plan(profile,baseline,creation_seed)
+        generation_plan=dict(generation_plan)
+        generation_plan.update({
+            'source':'GENRE_V3_SYMBOLIC_SOURCE_PATTERN_DIAGNOSTIC',
+            'meter':meter,
+            'tempo_bpm':bpm,
+            'form':'V3_ORIGINAL_SEVEN_SECTION_SYMBOLIC_SEED',
+            'source_pattern_seed_id':symbolic['source_seed_id'],
+            'v3_symbolic_execution_sha256':symbolic['execution_sha256'],
+            'legacy_note_generator_used':False,
+        })
+        generation_plan.pop('plan_sha256',None)
+        generation_plan['plan_sha256']=h(generation_plan)
+
+        from genre_communication_blueprint import build as build_communication_blueprint
+        communication_blueprint=build_communication_blueprint(
+            name,profile,parts,interpreted,generation_plan,
+            v3_execution_packet=v3_packet)
+        events=list(symbolic['events'])
+        linkage=link_genre(name,profile,parts,events,interpreted=interpreted)
+        return {
+            'genre_name':name,
+            'profile_id':profile['profile_id'],
+            'status':'PASS',
+            'resolution_policy':policy,
+            'execution_template':'v3_symbolic_source_pattern',
+            'tempo_bpm':bpm,
+            'meter':meter,
+            'bars':bars,
+            'form':'V3_ORIGINAL_SEVEN_SECTION_SYMBOLIC_SEED',
+            'creation_seed':creation_seed,
+            'profile_required_fields_sha256':h({k:profile[k] for k in profiles_meta_required}),
+            'pre_generation_genre_plan':generation_plan,
+            'genre_contract_v3_execution_packet':v3_packet,
+            'genre_v3_instrument_authority':instrument_authority,
+            'v3_symbolic_pattern_execution':{k:v for k,v in symbolic.items() if k!='events'},
+            'communication_blueprint':communication_blueprint,
+            'theory_request':{
+                'source':'V3_GOVERNED_ORIGINAL_SYMBOLIC_SOURCE_PATTERN',
+                'seed_id':symbolic['source_seed_id'],
+                'meter':meter,
+                'bars':bars,
+            },
+            'theory_status':'V3_SYMBOLIC_PATTERN_PASS',
+            'palette':parts,
+            'ensemble_architecture':None,
+            'ensemble_expansion_manifest':{
+                'status':'NOT_APPLIED_TO_SYMBOLIC_DIAGNOSTIC_SEED'
+            },
+            'events':events,
+            'genre_interpreter_linkage':linkage,
+            'beat_unit':'quarter_note',
+            'duration_seconds':bars*beats_per_bar*60/bpm,
+            'v3_symbolic_diagnostic_only':True,
+            'audio_authority':False,
+            'musical_audition_approved':False,
+            'legacy_note_generator_used':False,
+        }
 
     # The genre interpreter now runs BEFORE theory and before any notes are generated.
     from genre_interpreter_linkage import interpret_genre, link_genre

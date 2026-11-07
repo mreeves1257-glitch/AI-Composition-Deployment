@@ -1,0 +1,76 @@
+name: Research Classical Variant MP3 Auditions
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-research
+    paths:
+      - "genre_contract_v3_research/classical_variant_validation.py"
+      - "genre_contract_v3_research/render_classical_variant_auditions.py"
+      - ".github/workflows/research-classical-variant-mp3.yml"
+  workflow_dispatch:
+
+jobs:
+  render-classical-variant-auditions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Supply current-runner copies of pinned Python dependencies
+        run: |
+          python - <<'PY'
+          import base64, hashlib, io, json, tarfile
+          from pathlib import Path
+          root = Path("connected_package")
+          manifest = json.loads((root / "manifest.json").read_text())
+          archive = bytearray()
+          for part in manifest["parts"]:
+              data = base64.b64decode((root / part["name"]).read_text(), validate=True)
+              assert hashlib.sha256(data).hexdigest() == part["sha256"]
+              archive.extend(data)
+          assert hashlib.sha256(archive).hexdigest() == manifest["archive_sha256"]
+          dest = Path("composer/runtime")
+          dest.mkdir(parents=True, exist_ok=True)
+          tarfile.open(fileobj=io.BytesIO(archive), mode="r:gz").extractall(dest, filter="data")
+          print("REQUIREMENTS_EXTRACTED")
+          PY
+          python -m pip install -r composer/runtime/enhancer_requirements.txt
+
+      - name: Build preserved Composer runtime and audio dependencies
+        run: bash build_current_composer.sh
+
+      - name: Install MP3 converter
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Render paired Classical variants
+        env:
+          PYTHONPATH: ${{ github.workspace }}/genre_contract_v3_research:${{ github.workspace }}/current_master_forward:${{ github.workspace }}/composer/runtime
+          LD_LIBRARY_PATH: ${{ github.workspace }}/composer/runtime/runtime_linux/lib
+          AI_COMP_FLUIDSYNTH_LIBRARY: ${{ github.workspace }}/composer/runtime/runtime_linux/lib/libfluidsynth.so.3
+          CLASSICAL_VARIANT_OUT: listening/research_classical_variants
+        run: |
+          python genre_contract_v3_research/render_classical_variant_auditions.py
+          test -s listening/research_classical_variants/CLASSICAL_PERIOD_BASELINE/CLASSICAL_PERIOD_BASELINE.mp3
+          test -s listening/research_classical_variants/LATE_ROMANTIC_EXPANDED/LATE_ROMANTIC_EXPANDED.mp3
+          test -s listening/research_classical_variants/validation_summary.json
+          cat listening/research_classical_variants/validation_summary.json
+
+      - name: Upload paired auditions
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-classical-variant-mp3-auditions
+          path: |
+            listening/research_classical_variants/CLASSICAL_PERIOD_BASELINE/CLASSICAL_PERIOD_BASELINE.mp3
+            listening/research_classical_variants/LATE_ROMANTIC_EXPANDED/LATE_ROMANTIC_EXPANDED.mp3
+            listening/research_classical_variants/validation_summary.json
+          if-no-files-found: error
+          compression-level: 0

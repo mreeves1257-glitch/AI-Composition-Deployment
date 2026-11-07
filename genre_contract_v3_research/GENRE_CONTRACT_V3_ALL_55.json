@@ -12,7 +12,7 @@
       "source_profile_id": "ROCK_CORE_V2",
       "family": "Rock",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "ROCK_CORE_V2",
@@ -144,7 +144,8 @@
         },
         "foreground_window_rules": [
           "Lead/vocal/guitar feature gets space through rhythm-guitar simplification, register and density.",
-          "Kick/bass remain foundation without owning every foreground moment."
+          "Kick/bass remain foundation without owning every foreground moment.",
+          "A guitar solo window should alter the guitar's compositional role and thin competing harmonic layers before applying level changes."
         ],
         "role_handoff_rules": [
           "Foreground can move among vocal/lead guitar/keys/riff while rhythm section maintains identity.",
@@ -427,6 +428,53 @@
               ]
             }
           }
+        },
+        "gmd_drum_performance_reference": {
+          "source": "Groove MIDI Dataset (Google/Magenta)",
+          "scope": "1,150 human drum performances, 13.6 hours, >22,000 measures; annotated by drummer-provided primary/secondary style, BPM, beat versus fill, time signature, duration and split.",
+          "license": "CC BY 4.0",
+          "direct_primary_styles": [
+            "rock",
+            "funk",
+            "soul"
+          ],
+          "interpretation_guardrails": [
+            "Use GMD as human drum-performance evidence, not as a complete genre-definition source.",
+            "Tempo values in GMD are observed performance examples, not hard genre limits.",
+            "Beat and fill examples are separate labels; the Composer should distinguish sustained groove state from transition/fill state.",
+            "Do not infer bass, guitar, harmony or ensemble instrumentation from a drum-only corpus.",
+            "Do not convert human timing into independent random jitter; timing relationships must remain groove-coherent."
+          ],
+          "direct_style": "rock",
+          "runtime_implications": [
+            "Drum engine must have distinct groove/beat state and fill/transition state.",
+            "Rock fills should be selected/generated in relation to phrase and section boundaries, not pasted at fixed intervals.",
+            "Humanization should derive from coherent drummer timing/velocity behavior rather than per-hit random noise."
+          ],
+          "quantitative_status": "FULL_STYLE_AGGREGATION_PENDING"
+        },
+        "guitarset_role_reference": {
+          "source": "GuitarSet",
+          "scope": "360 approximately 30-second acoustic-guitar excerpts: 6 players × comping/solo versions × 5 styles × 3 progressions × 2 tempi, with pitch/string/fret/chord/beat/downbeat/playing-style annotations.",
+          "styles": [
+            "Rock",
+            "Funk",
+            "Bossa Nova",
+            "Jazz",
+            "Singer-Songwriter"
+          ],
+          "interpretation_guardrails": [
+            "The design is deliberately balanced, so track counts must not be interpreted as real-world instrument-presence percentages.",
+            "Use the paired comping/solo design to validate role-dependent guitar behavior, register, note density and articulation.",
+            "A guitar changing from accompaniment to foreground should change musical role, not merely gain.",
+            "Because GuitarSet is acoustic-guitar based, do not use its timbre as a universal Rock/Funk production target."
+          ],
+          "direct_style": "Rock",
+          "runtime_implications": [
+            "Rhythm-guitar/comping and lead/solo guitar must be separate role states.",
+            "Foreground handoff to guitar requires changes in note density, register, phrasing and accompaniment behavior, not only volume.",
+            "When guitar becomes lead, other harmonic layers should simplify or change register as needed."
+          ]
         }
       },
       "performance": {
@@ -437,7 +485,9 @@
         "interaction_rules": [
           "Groove timing is relational.",
           "Fills support section boundaries.",
-          "Guitar/bass/drums do not all fill the same subdivision."
+          "Guitar/bass/drums do not all fill the same subdivision.",
+          "Rock drum beat and fill states are distinct performance behaviors.",
+          "Rhythm guitar and lead guitar are role states with different phrase/density behavior, not duplicated copies."
         ]
       },
       "production": {
@@ -457,21 +507,26 @@
           "GuitarSet",
           "MTG-Jamendo",
           "MMA rock libraries",
-          "MTG-Jamendo genre/instrument co-occurrence research reference"
+          "MTG-Jamendo genre/instrument co-occurrence research reference",
+          "Groove MIDI Dataset: human Rock drum performances with style/BPM/beat-vs-fill metadata",
+          "GuitarSet: paired Rock comping and solo guitar performances with note/chord/beat/playing-style annotations"
         ],
         "source_confidence": {
           "broad_core": "HIGH",
           "subgenre_percentages": "PENDING",
-          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
+          "GMD_Rock_drum_behavior": "HIGH_FOR_HUMAN_DRUM_PERFORMANCE_REFERENCE__QUANT_AGGREGATION_PENDING",
+          "GuitarSet_Rock_role_behavior": "HIGH_FOR_COMPING_VS_SOLO_ROLE_REFERENCE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "GMD": "CC_BY_4_0",
-          "GuitarSet": "LICENSE_REVIEW",
+          "GuitarSet": "CC_BY_4_0_REPORTED__VERIFY_DISTRIBUTION_TERMS_BEFORE_DIRECT_MEDIA_REUSE",
           "MTG_Jamendo": "DATASET_AND_AUDIO_LICENSE_REVIEW",
           "MMA": "LICENSE_REVIEW",
-          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
+          "Groove_MIDI_Dataset": "CC_BY_4_0"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -480,12 +535,16 @@
         "structural_tests": [
           "Resolved subgenre required for detailed behavior.",
           "No generic arranger fallback.",
-          "Rhythm/lead guitar roles remain distinct."
+          "Rhythm/lead guitar roles remain distinct.",
+          "Drum groove state and fill state must be represented separately.",
+          "Rhythm-guitar and lead-guitar roles cannot be implemented as identical patterns at different gain."
         ],
         "listening_tests": [
           "Subgenres sound materially different.",
           "Bass/kick foundation is strong without masking lead.",
-          "Section changes feel composed rather than loop-switched."
+          "Section changes feel composed rather than loop-switched.",
+          "Verify guitar feature sounds like a true role handoff rather than a louder rhythm-guitar layer.",
+          "Verify drum fills preserve Rock pocket and lead into form changes."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -4569,7 +4628,9 @@
           "MMA": "LICENSE_REVIEW",
           "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
-        "conflicts_between_sources": [],
+        "conflicts_between_sources": [
+          "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics."
+        ],
         "unresolved_questions": []
       },
       "validation": {
@@ -4616,7 +4677,7 @@
       "source_profile_id": "SOUL_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
+      "research_status": "V3_UPDATED__GMD_SOUL_DRUM_REFERENCE_ADDED__QUANT_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SOUL_V1",
@@ -4836,6 +4897,30 @@
               ]
             }
           }
+        },
+        "gmd_drum_performance_reference": {
+          "source": "Groove MIDI Dataset (Google/Magenta)",
+          "scope": "1,150 human drum performances, 13.6 hours, >22,000 measures; annotated by drummer-provided primary/secondary style, BPM, beat versus fill, time signature, duration and split.",
+          "license": "CC BY 4.0",
+          "direct_primary_styles": [
+            "rock",
+            "funk",
+            "soul"
+          ],
+          "interpretation_guardrails": [
+            "Use GMD as human drum-performance evidence, not as a complete genre-definition source.",
+            "Tempo values in GMD are observed performance examples, not hard genre limits.",
+            "Beat and fill examples are separate labels; the Composer should distinguish sustained groove state from transition/fill state.",
+            "Do not infer bass, guitar, harmony or ensemble instrumentation from a drum-only corpus.",
+            "Do not convert human timing into independent random jitter; timing relationships must remain groove-coherent."
+          ],
+          "direct_style": "soul",
+          "runtime_implications": [
+            "Soul drum behavior should be learned/validated from human pocket examples rather than a generic backbeat.",
+            "Beat and fill states are distinct; fills support phrase/emotional transitions.",
+            "Timing feel must remain shared with bass/ensemble rather than generated as independent random lateness."
+          ],
+          "quantitative_status": "FULL_STYLE_AGGREGATION_PENDING"
         }
       },
       "performance": {
@@ -4846,7 +4931,9 @@
         "interaction_rules": [
           "Pocket remains deep and shared.",
           "Response layers enter purposefully.",
-          "Dynamics follow emotional arc."
+          "Dynamics follow emotional arc.",
+          "Soul drum beat and fill states are separate, phrase-aware behaviors.",
+          "Humanized pocket must remain relational to bass and accompaniment."
         ]
       },
       "production": {
@@ -4865,12 +4952,14 @@
           "MTG-Jamendo",
           "Berklee arranging",
           "MMA soul/spiritual references",
-          "MTG-Jamendo genre/instrument co-occurrence research reference"
+          "MTG-Jamendo genre/instrument co-occurrence research reference",
+          "Groove MIDI Dataset: human Soul drum performances with style/BPM/beat-vs-fill metadata"
         ],
         "source_confidence": {
           "core_soul_behavior": "HIGH",
           "regional_variant_statistics": "PENDING",
-          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
+          "GMD_Soul_drum_behavior": "HIGH_FOR_HUMAN_DRUM_PERFORMANCE_REFERENCE__QUANT_AGGREGATION_PENDING"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -4878,7 +4967,8 @@
           "MTG_Jamendo": "LICENSE_REVIEW",
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW",
-          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
+          "Groove_MIDI_Dataset": "CC_BY_4_0"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -4886,12 +4976,14 @@
       "validation": {
         "structural_tests": [
           "Variant/era required for orchestration percentages.",
-          "Response layers cannot become permanent foreground."
+          "Response layers cannot become permanent foreground.",
+          "Soul fill state must be tied to phrase/form or emotional transition rather than fixed bar-count insertion."
         ],
         "listening_tests": [
           "Lead remains emotionally dominant.",
           "Bass/pocket are warm and clear.",
-          "Horn/string responses expand peaks without flattening the song."
+          "Horn/string responses expand peaks without flattening the song.",
+          "Verify fills support the emotional arc without breaking the deep pocket."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -4927,7 +5019,7 @@
       "source_profile_id": "FUNK_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "FUNK_V1",
@@ -5060,7 +5152,8 @@
         "foreground_window_rules": [
           "Bass may be highly prominent without monopolizing musical agency.",
           "Lead/horns get rhythmic holes created by guitar/keys/bass/rest design.",
-          "No instrument fills every subdivision."
+          "No instrument fills every subdivision.",
+          "When guitar becomes foreground, comping-slot occupancy must be reassigned rather than stacking a solo over unchanged dense guitar comping."
         ],
         "role_handoff_rules": [
           "Foreground can move bass↔lead↔horn↔guitar/keys feature while pocket remains intact.",
@@ -5152,6 +5245,53 @@
               ]
             }
           }
+        },
+        "gmd_drum_performance_reference": {
+          "source": "Groove MIDI Dataset (Google/Magenta)",
+          "scope": "1,150 human drum performances, 13.6 hours, >22,000 measures; annotated by drummer-provided primary/secondary style, BPM, beat versus fill, time signature, duration and split.",
+          "license": "CC BY 4.0",
+          "direct_primary_styles": [
+            "rock",
+            "funk",
+            "soul"
+          ],
+          "interpretation_guardrails": [
+            "Use GMD as human drum-performance evidence, not as a complete genre-definition source.",
+            "Tempo values in GMD are observed performance examples, not hard genre limits.",
+            "Beat and fill examples are separate labels; the Composer should distinguish sustained groove state from transition/fill state.",
+            "Do not infer bass, guitar, harmony or ensemble instrumentation from a drum-only corpus.",
+            "Do not convert human timing into independent random jitter; timing relationships must remain groove-coherent."
+          ],
+          "direct_style": "funk",
+          "runtime_implications": [
+            "Funk beat and fill states must remain pocket-coherent.",
+            "Ghost-note and subdivision behavior should be modeled as relational drummer performance rather than random ornament.",
+            "Fill density must preserve the 'one'/pocket and return cleanly to the groove."
+          ],
+          "quantitative_status": "FULL_STYLE_AGGREGATION_PENDING"
+        },
+        "guitarset_role_reference": {
+          "source": "GuitarSet",
+          "scope": "360 approximately 30-second acoustic-guitar excerpts: 6 players × comping/solo versions × 5 styles × 3 progressions × 2 tempi, with pitch/string/fret/chord/beat/downbeat/playing-style annotations.",
+          "styles": [
+            "Rock",
+            "Funk",
+            "Bossa Nova",
+            "Jazz",
+            "Singer-Songwriter"
+          ],
+          "interpretation_guardrails": [
+            "The design is deliberately balanced, so track counts must not be interpreted as real-world instrument-presence percentages.",
+            "Use the paired comping/solo design to validate role-dependent guitar behavior, register, note density and articulation.",
+            "A guitar changing from accompaniment to foreground should change musical role, not merely gain.",
+            "Because GuitarSet is acoustic-guitar based, do not use its timbre as a universal Rock/Funk production target."
+          ],
+          "direct_style": "Funk",
+          "runtime_implications": [
+            "Comping guitar occupies rhythmic slots and rests; solo guitar temporarily takes melodic/foreground agency.",
+            "A Funk guitar feature must not simply add more sixteenth-notes on top of existing comping.",
+            "Comping/solo handoff should reassign rhythmic slots so the pocket remains open."
+          ]
         }
       },
       "performance": {
@@ -5162,7 +5302,9 @@
         "interaction_rules": [
           "Microtiming is relational.",
           "Ghost notes and rests are intentional.",
-          "Instrument slots interlock."
+          "Instrument slots interlock.",
+          "Funk drum fills must preserve pocket identity and return to the one coherently.",
+          "Guitar comping and guitar solo states require different rhythmic-slot behavior."
         ]
       },
       "production": {
@@ -5182,21 +5324,26 @@
           "GuitarSet",
           "MTG-Jamendo",
           "MMA funk",
-          "MTG-Jamendo genre/instrument co-occurrence research reference"
+          "MTG-Jamendo genre/instrument co-occurrence research reference",
+          "Groove MIDI Dataset: human Funk drum performances with style/BPM/beat-vs-fill metadata",
+          "GuitarSet: paired Funk comping and solo guitar performances with note/chord/beat/playing-style annotations"
         ],
         "source_confidence": {
           "core_funk_grammar": "HIGH",
           "slot_statistics": "PENDING",
-          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
+          "GMD_Funk_drum_behavior": "HIGH_FOR_HUMAN_DRUM_PERFORMANCE_REFERENCE__QUANT_AGGREGATION_PENDING",
+          "GuitarSet_Funk_role_behavior": "HIGH_FOR_COMPING_VS_SOLO_ROLE_REFERENCE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "GMD": "CC_BY_4_0",
-          "GuitarSet": "LICENSE_REVIEW",
+          "GuitarSet": "CC_BY_4_0_REPORTED__VERIFY_DISTRIBUTION_TERMS_BEFORE_DIRECT_MEDIA_REUSE",
           "MTG_Jamendo": "LICENSE_REVIEW",
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW",
-          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
+          "Groove_MIDI_Dataset": "CC_BY_4_0"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -5205,12 +5352,16 @@
         "structural_tests": [
           "Rhythmic-slot collisions must be detected.",
           "No all-instruments-continuous-sixteenths fallback.",
-          "Resolved variant required for formation."
+          "Resolved variant required for formation.",
+          "Drum beat/fill state and guitar comping/solo state must be explicit.",
+          "Foreground guitar cannot simply be added on top of unchanged full comping density."
         ],
         "listening_tests": [
           "Pocket feels interlocked and spacious.",
           "Bass/kick are powerful but not muddy.",
-          "Guitar/keys/horns occupy distinct rhythmic lanes."
+          "Guitar/keys/horns occupy distinct rhythmic lanes.",
+          "Verify Funk fills return naturally to the one.",
+          "Verify a guitar feature opens rhythmic space instead of increasing clutter."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -5438,7 +5589,9 @@
           "MedleyDB": "LICENSE_REVIEW",
           "GMD": "CC_BY_4_0"
         },
-        "conflicts_between_sources": [],
+        "conflicts_between_sources": [
+          "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics."
+        ],
         "unresolved_questions": []
       },
       "validation": {
@@ -5678,7 +5831,9 @@
           "GuitarSet": "LICENSE_REVIEW",
           "MTG_Jamendo": "LICENSE_REVIEW"
         },
-        "conflicts_between_sources": [],
+        "conflicts_between_sources": [
+          "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics."
+        ],
         "unresolved_questions": []
       },
       "validation": {
@@ -7421,7 +7576,7 @@
       "source_profile_id": "BOSSA_NOVA_V1",
       "family": "Latin",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED__GUITARSET_ROLE_REFERENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BOSSA_NOVA_V1",
@@ -7689,6 +7844,29 @@
             "Do not apply this small-combo evidence to Big Band or full traditional percussion ensembles."
           ],
           "key_finding": "In the bossa nova sample, solo sections average 68% of the active-player count found in head sections, supporting deliberate ensemble thinning when a soloist takes foreground."
+        },
+        "guitarset_role_reference": {
+          "source": "GuitarSet",
+          "scope": "360 approximately 30-second acoustic-guitar excerpts: 6 players × comping/solo versions × 5 styles × 3 progressions × 2 tempi, with pitch/string/fret/chord/beat/downbeat/playing-style annotations.",
+          "styles": [
+            "Rock",
+            "Funk",
+            "Bossa Nova",
+            "Jazz",
+            "Singer-Songwriter"
+          ],
+          "interpretation_guardrails": [
+            "The design is deliberately balanced, so track counts must not be interpreted as real-world instrument-presence percentages.",
+            "Use the paired comping/solo design to validate role-dependent guitar behavior, register, note density and articulation.",
+            "A guitar changing from accompaniment to foreground should change musical role, not merely gain.",
+            "Because GuitarSet is acoustic-guitar based, do not use its timbre as a universal Rock/Funk production target."
+          ],
+          "direct_style": "Bossa Nova",
+          "runtime_implications": [
+            "Guitar comping and guitar foreground/solo behavior must be separate roles.",
+            "When guitar becomes foreground, piano/other comping must yield register and density while bossa pulse remains intact.",
+            "Do not infer real-world guitar prevalence from the balanced GuitarSet design."
+          ]
         }
       },
       "performance": {
@@ -7719,20 +7897,22 @@
           "MMA Bossa-related libraries",
           "GuitarSet",
           "MTG-Jamendo genre/instrument co-occurrence research reference",
-          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations"
+          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations",
+          "GuitarSet: paired Bossa Nova comping and solo guitar performances with note/chord/beat/playing-style annotations"
         ],
         "source_confidence": {
           "core_bossa_behavior": "HIGH",
           "universal_formation": "REJECTED",
           "variant_percentages": "PENDING",
           "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
-          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET"
+          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET",
+          "GuitarSet_Bossa_role_behavior": "HIGH_FOR_COMPING_VS_SOLO_ROLE_REFERENCE"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW",
-          "GuitarSet": "LICENSE_REVIEW",
+          "GuitarSet": "CC_BY_4_0_REPORTED__VERIFY_DISTRIBUTION_TERMS_BEFORE_DIRECT_MEDIA_REUSE",
           "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
           "JazzSAMBA_code_and_metadata": "MIT_REPO__VERIFY_DATASET_AUDIO_TERMS_BEFORE_DIRECT_AUDIO_REUSE"
         },
@@ -7744,14 +7924,16 @@
           "No fixed percentages until a formation variant is resolved.",
           "No heavy generic backbeat.",
           "Guitar/piano roles must complement rather than duplicate.",
-          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default."
+          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default.",
+          "Bossa guitar comping and guitar foreground roles must be separately realizable."
         ],
         "listening_tests": [
           "Melody remains clearly audible at low density.",
           "Bass is warm but not dominant.",
           "Comping feels interlocked and restrained.",
           "Bossa remains recognizably distinct from Samba.",
-          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted."
+          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted.",
+          "Verify guitar can move to foreground without destroying the bossa pulse or competing with unchanged piano density."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false

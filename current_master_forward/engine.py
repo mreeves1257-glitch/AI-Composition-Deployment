@@ -77,6 +77,46 @@ class AICompositionEngine:
         if missing_parts:
             return {'status': 'BLOCKED', 'stage': 'THEORY', 'genre': genre_name,
                     'reason': 'DECLARED_INSTRUMENT_PART_NOT_GENERATED', 'missing': missing_parts}
+
+        # V3 source-pattern diagnostic route: prove the genre-selected symbolic
+        # events resolve to current instruments, then stop before performance,
+        # target, mix or audio. This branch is intentionally non-promotable by
+        # itself; human musical validation still has to occur.
+        if theory.get('v3_symbolic_diagnostic_only'):
+            from instrument_separator import separate_events, verify_instrument_resolution
+            separated = separate_events(genre_name, theory['events'])
+            instruments = self.instrument.resolve_events(separated['events'])
+            if instruments.get('status') == 'BLOCKED':
+                return {
+                    'status':'BLOCKED',
+                    'stage':'V3_SYMBOLIC_INSTRUMENT_RESOLUTION',
+                    'genre':genre_name,
+                    'reason':'INSTRUMENT_PROFILE_MISSING',
+                    'missing':instruments.get('missing',[]),
+                    'theory_package':theory,
+                    'audio_rendered':False,
+                }
+            separator_resolution = verify_instrument_resolution(
+                separated['manifest'], instruments)
+            return {
+                'status':'V3_SYMBOLIC_INSTRUMENT_RESOLUTION_PASS',
+                'stage':'V3_SYMBOLIC_STAGE_3_TO_4_DIAGNOSTIC',
+                'genre':genre_name,
+                'genre_profile_source':'GENRE_CONTRACT_V3_ALL_55',
+                'theory_package':theory,
+                'instrument_separator':separated['manifest'],
+                'instrument_package':dict(
+                    instruments,
+                    instrument_separator_resolution=separator_resolution),
+                'communication_blueprint':blueprint,
+                'genre_contract_v3_execution_packet':v3_contract_packet,
+                'audio_rendered':False,
+                'audio_authority':False,
+                'live_runtime_promoted':False,
+                'reasoning_engine_used':False,
+                'next_gate':'GENRE_SPECIFIC_MUSICAL_REVALIDATION_BEFORE_AUDIO',
+            }
+
         # Execute the profile's dynamic contour BEFORE instrument separation. V1 is
         # deliberately conservative: no pitch/timing/duration/instrument mutation.
         from genre_performance_realization import realize as realize_genre_performance

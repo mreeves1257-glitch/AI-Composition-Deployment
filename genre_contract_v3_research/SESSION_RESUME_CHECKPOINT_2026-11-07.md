@@ -137,3 +137,26 @@ Important listening risk:
 - Focused cue sheet saved as `ROCK_MODE_A_LISTENING_CUE_SHEET_2026-11-07.md`.
 
 Active gate remains human A/B listening. Do not add strum timing, bass sustain, random timing, or other performance variables until Mode A duration behavior is judged.
+
+
+## Rock Mode A role-isolated listening package
+
+Workflow: `Rock Mode A Role Isolated Listening`  
+Corrected run ID: `42390219578`  
+Artifact ID: `13580684994`  
+Artifact digest: `sha256:19e7e4a6beec1233dc60af79a04c5010e7c51f40c68b4f09c208fd4d3c8497d5`  
+Result: PASS
+
+Purpose:
+- No new performance behavior added.
+- Re-rendered the exact existing A/B and exported role-isolated listening pairs.
+- Full HARMONY A/B, full LEAD A/B, and focused 8-bar HARMONY intro A/B.
+- Exact Shinyguitar resource and sample graph revalidated.
+- Pinned sfizz renderer unchanged.
+- Chunked MP3 encoding used to avoid malformed long-buffer output.
+- All six MP3s validated after download as MPEG Layer III, 256 kbps, 44.1 kHz, stereo.
+- Reasoning engine excluded; live runtime untouched.
+
+Active gate:
+- Judge HARMONY sustain separately from LEAD connection.
+- Do not add strum timing, bass sustain, random timing, continuous control, or other performance variables until this role-isolated A/B is judged.

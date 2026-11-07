@@ -358,3 +358,68 @@ The full-40 renderer asserts:
 - live runtime not promoted
 
 The workflow started successfully and is running through the pinned Shinyguitar/sfizz validation and render path.
+
+
+## Rock Mode A HARMONY 2.0 cap — full 40-bar diagnostic completed
+
+Workflow run: `42392024204` — PASS  
+Artifact ID: `13581124287`  
+Artifact digest: `sha256:b13b9b2c2a95eb9664ec09b4252f9157ebbc6bf233b78d22b28bac1ae5e6b9c3`
+
+The full-40 renderer, matched context mixes, ffprobe validation and artifact upload all passed.
+
+Verified full-form comparison:
+- candidate: HARMONY positive extensions capped at 2.0 beats + canonical treated LEAD
+- control: current 2.8-beat HARMONY maximum + identical treated LEAD
+
+Structural checks:
+- 78 HARMONY note-events trimmed
+- 26 vertical rhythm-guitar gestures trimmed
+- all 24 canonical HARMONY shortenings preserved
+- pitch/onset/velocity/voicing/event identity unchanged
+- LEAD policy unchanged
+- bass/drums unchanged
+- no reasoning-engine involvement
+- canonical policy unchanged
+- live runtime unchanged
+
+The 26 extreme gestures are distributed across the full form:
+- INTRO_1: 4
+- VERSE_1: 5
+- CHORUS_1: 5
+- VERSE_2: 5
+- CHORUS_2: 5
+- OUTRO_1: 2
+
+Policy diagnosis:
+- `ring_fraction = 0.84`
+- `release_gap_beats = 0.15`
+- current `max_ringing_beats = 2.8`
+- at 4-beat spacing, ring_fraction would allow 3.36 beats and release-gap logic would allow 3.85 beats, so the 2.8 hard ceiling is the controlling term.
+- 2.0 therefore tests only that ceiling, not the rest of the duration model.
+
+Full-40 objective audio difference:
+- overall difference RMS: `0.00207851`
+- difference relative to 2.0 mix RMS: `0.1123`
+- INTRO_1 relative difference: `0.1804`
+- VERSE_1: `0.1135`
+- CHORUS_1: `0.0944`
+- VERSE_2: `0.1158`
+- CHORUS_2: `0.0892`
+- OUTRO_1: `0.1208`
+
+The largest relative change is in the intro; both chorus sections show smaller relative changes than the verses and intro. This is objective only and is not musical approval.
+
+Saved supporting files:
+- `ROCK_MODE_A_CAP_2_0_FULL40_SECTION_MAP_2026-11-07.json`
+- `ROCK_MODE_A_CAP_2_0_FULL40_DURATION_REMOVAL_2026-11-07.json`
+- `ROCK_MODE_A_HARMONY_CAP_POLICY_DOMINANCE_2026-11-07.json`
+- `ROCK_MODE_A_CAP_2_0_FULL40_AUDIO_DIFFERENCE_2026-11-07.json`
+- `ROCK_MODE_A_CAP_2_0_FULL40_LISTENING_CUE_SHEET_2026-11-07.md`
+- `ROCK_MODE_A_CAP_2_0_DECISION_GATE_2026-11-07.md`
+
+Active gate:
+Human full-40 listening comparison of 2.0 vs 2.8. Do not change the canonical policy or add another performance variable before that judgment.
+
+Infrastructure note:
+A reusable cached pinned-sfizz composite action was added at `.github/actions/setup-pinned-sfizz/action.yml` for future diagnostics so repeated renderer compiles can be avoided.

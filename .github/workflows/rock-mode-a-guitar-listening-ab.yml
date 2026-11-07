@@ -17,6 +17,7 @@ on:
       - "current_master_forward/genre_v3_source_pattern_bridge.py"
       - "current_master_forward/target_registry.json"
       - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/official_sfz_compatibility.py"
       - ".github/workflows/rock-mode-a-guitar-listening-ab.yml"
   workflow_dispatch:
 

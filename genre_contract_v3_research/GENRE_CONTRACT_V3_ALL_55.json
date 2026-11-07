@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_STRUCTURAL_VARIANT_VALIDATION_PASS__PAIRED_AUDIO_HARNESS_READY__LISTENING_PENDING",
+      "research_status": "V3_CLASSICAL_PAIRED_AUDIO_RENDER_COMPLETE__USER_LISTENING_REVIEW_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2383,11 +2383,13 @@
         "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE__VARIANT_AUDITIONS_PENDING_USER_COMPARISON",
         "approved_for_runtime": false,
         "variant_harness_structural_checkpoint": {
-          "status": "LOCAL_LOGIC_VALIDATION_PASS__GITHUB_ACTIONS_DISPATCH_NOT_AVAILABLE",
+          "status": "EXACT_BRANCH_LOGIC_PASS_AFTER_REDUNDANT_FILTER_FIX",
           "date": "2026-11-06",
-          "method_note": "Validation was executed locally against the retrieved current Classical generator logic plus the research-branch sidecar harness. GitHub did not auto-run the workflow because connector-authored pushes produced no Actions run; therefore this is not recorded as a GitHub Actions pass.",
+          "correction_commit": "719bc4aa12d4b01404c3aa0583febdcc335f456e",
+          "correction_note": "Exact branch execution exposed redundant activity filtering from two planners. The extra active_bar_sets filter was removed; the retained activity planner now reproduces the intended evidence bands.",
           "shared_plan_sha256": "05424729717898b816bc1c93ac96e6da6b1464e9ab5abf35a8d83d4d92f2243a",
           "mode": "quick",
+          "seed": 0,
           "bars": 28,
           "variants": {
             "CLASSICAL_PERIOD_BASELINE": {
@@ -2410,6 +2412,8 @@
                 "PERCUSSION": 17.85
               },
               "brass_foreground_bars": 0,
+              "woodwind_foreground_bars": 12,
+              "string_foreground_bars": 16,
               "gain_fields_present": false
             },
             "LATE_ROMANTIC_EXPANDED": {
@@ -2432,18 +2436,18 @@
                 "PERCUSSION": 24.47
               },
               "brass_foreground_bars": 8,
+              "woodwind_foreground_bars": 10,
+              "string_foreground_bars": 10,
               "gain_fields_present": false
             }
           },
           "assertions_passed": [
-            "Both variants use the same thematic/harmonic plan hash.",
-            "Classical-period candidate remains string-led while preserving substantial woodwind foreground.",
+            "Both variants share the identical thematic/harmonic plan hash.",
+            "Classical-period candidate remains string-led with substantial woodwind foreground and no brass foreground.",
             "Late-Romantic candidate creates genuine brass foreground windows.",
-            "Late-Romantic brass activity exceeds Classical-period brass activity.",
-            "All family activity windows remain within approximately one quick-mode bar of evidence targets.",
-            "No gain fields are used to create foreground clarity."
-          ],
-          "next_gate": "PAIRED_AUDIO_LISTENING_VALIDATION"
+            "Activity occupancy remains within approximately one quick-mode bar of the evidence targets.",
+            "No gain field is used as orchestration logic."
+          ]
         },
         "variant_audition_checkpoint": {
           "status": "AUDIO_RENDER_PASS__USER_LISTENING_REVIEW_PENDING",
@@ -2500,21 +2504,42 @@
           "merge_guardrail": "Do not merge variant harness behavior into live Composer solely because structural/audio rendering passed."
         },
         "paired_audio_harness": {
-          "status": "READY__EXECUTION_PENDING",
-          "renderer": "genre_contract_v3_research/render_classical_variant_comparison.py",
-          "workflow": ".github/workflows/research-classical-variant-listening.yml",
+          "status": "LOCAL_PAIRED_RENDER_COMPLETE__HUMAN_LISTENING_REVIEW_PENDING",
+          "date": "2026-11-06",
+          "renderer_source": "genre_contract_v3_research/render_classical_variant_comparison.py",
+          "execution_environment": "Conversation working container; live Composer and Render services untouched.",
           "shared_seed": 0,
-          "shared_plan_required": true,
-          "outputs_expected": [
-            "Classical_Period_Baseline.mp3",
-            "Late_Romantic_Expanded.mp3",
-            "Classical_Variant_AB_Comparison.mp3",
-            "pair_validation_summary.json",
-            "per-variant event and role-timeline JSON"
-          ],
-          "renderer_reuse": "Uses the existing Classical reasoning audition render/mix path and approved Classical section program/control mappings.",
+          "shared_plan_sha256": "05424729717898b816bc1c93ac96e6da6b1464e9ab5abf35a8d83d4d92f2243a",
+          "soundfont": "TimGM6mb.sf2",
+          "section_program_and_control_source": "current_master_forward/approved_audio_pipeline.py",
+          "raw_render_note": "Raw FluidSynth renders retained unchanged. Separate listening copies use identical +25 dB global post-render monitoring gain for both variants; no relative section or variant balance was changed.",
+          "raw_outputs": {
+            "CLASSICAL_PERIOD_BASELINE": {
+              "duration_seconds": 72.803265,
+              "sha256": "1ec5a4ff009ce6d278e0dead160d66086b6b5304119167f3def7dece67466163"
+            },
+            "LATE_ROMANTIC_EXPANDED": {
+              "duration_seconds": 72.803265,
+              "sha256": "a332cefacf6633f706d466cefa201096ce0e03ba168d2bedc0608ced43865149"
+            },
+            "AB_COMPARISON": {
+              "duration_seconds": 147.09551,
+              "order": [
+                "CLASSICAL_PERIOD_BASELINE",
+                "1.5_SECOND_GAP",
+                "LATE_ROMANTIC_EXPANDED"
+              ],
+              "sha256": "18bdc4bf0478a7405f98375b19f414d1d1c5a4cdae1084df718a6bd89c22853d"
+            }
+          },
+          "listening_copy_sha256": {
+            "CLASSICAL_PERIOD_BASELINE": "0c13f0c3da11e3e8597f80709d69286a8a5e9a546539f01adb3cddedbf9ac5f1",
+            "LATE_ROMANTIC_EXPANDED": "597b534a75a796a539e5fe2b5ede792b05e76a78272ef7685dee5b9f3584cef0",
+            "AB_COMPARISON": "ed407f349632b738c8d40ce3d4ff1daf8b230a6f37d4c7db5f0afb067aa5c714"
+          },
+          "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
           "live_runtime_modified": false,
-          "execution_note": "Connector-authored GitHub pushes did not auto-trigger Actions. Do not mark paired listening as passed until the workflow or equivalent renderer execution actually completes."
+          "next_gate": "USER_LISTENING_REVIEW"
         }
       },
       "safeguards": {
@@ -17697,13 +17722,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Execute the paired Classical listening renderer/workflow.",
-    "Listen to Classical-period baseline and Late-Romantic expanded versions using the same seed and plan.",
-    "Compare both against the approved Classical golden reference.",
-    "Only after listening validation should compact runtime extraction or live Composer integration be proposed."
+    "User listens to the paired Classical-period and Late-Romantic auditions, preferably the A/B comparison first.",
+    "Evaluate whether role handoffs sound musically integrated rather than like instrument substitution.",
+    "Evaluate whether supporting strings yield perceptual space without disappearing and whether late-Romantic brass foreground is convincing rather than intrusive.",
+    "Revise variant orchestration rules from listening evidence before any live Composer integration."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_STRUCTURAL_VARIANT_VALIDATION_PASS__PAIRED_AUDIO_HARNESS_READY__EXECUTION_PENDING",
+  "quantitative_phase_status": "CLASSICAL_PAIRED_AUDIO_RENDER_COMPLETE__HUMAN_LISTENING_GATE",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

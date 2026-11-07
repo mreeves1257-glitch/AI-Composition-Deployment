@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_PAIRED_AUDIO_RENDER_COMPLETE__USER_LISTENING_REVIEW_PENDING",
+      "research_status": "V3_CLASSICAL_OBJECTIVE_AUDIO_PASS__COMPOSITION_GRAMMAR_RESEARCH_NEXT__SUBJECTIVE_LISTENING_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2540,6 +2540,52 @@
           "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
           "live_runtime_modified": false,
           "next_gate": "USER_LISTENING_REVIEW"
+        },
+        "objective_audio_checkpoint": {
+          "status": "PASS__SUBJECTIVE_LISTENING_STILL_PENDING",
+          "date": "2026-11-06",
+          "files_compared": [
+            "Classical_Period_Baseline_Listening.wav",
+            "Late_Romantic_Expanded_Listening.wav"
+          ],
+          "loudness": {
+            "CLASSICAL_PERIOD_BASELINE": {
+              "integrated_lufs": -17.7,
+              "lra_lu": 4.7,
+              "true_peak_dbfs": -4.6,
+              "rms_dbfs": -22.67
+            },
+            "LATE_ROMANTIC_EXPANDED": {
+              "integrated_lufs": -17,
+              "lra_lu": 6.1,
+              "true_peak_dbfs": -2.6,
+              "rms_dbfs": -21.07
+            }
+          },
+          "role_aligned_differences": {
+            "romantic_brass_foreground_bars": {
+              "mean_rms_delta_db": 2.51,
+              "mean_spectral_centroid_delta_hz": -373.5,
+              "interpretation": "Denser/darker orchestral change concentrated where Romantic variant assigns brass foreground."
+            },
+            "romantic_woodwind_foreground_bars": {
+              "mean_rms_delta_db": 0.71,
+              "mean_spectral_centroid_delta_hz": 228.2,
+              "interpretation": "Brighter change concentrated where Romantic variant assigns woodwind foreground."
+            },
+            "romantic_string_foreground_bars": {
+              "mean_rms_delta_db": 0.6,
+              "mean_spectral_centroid_delta_hz": -33.7,
+              "interpretation": "Much smaller spectral shift where both variants remain string-oriented."
+            }
+          },
+          "artifact_integrity": {
+            "duration_seconds_each": 72.78,
+            "clipping_detected": false,
+            "suspicious_bar_boundary_clicks_detected": false,
+            "same_monitoring_gain_applied_to_both": true
+          },
+          "conclusion": "The paired audio contains measurable orchestration differences aligned with the intended role schedule. Objective audio validation supports the variant layer; human musical judgment remains required before runtime integration."
         }
       },
       "safeguards": {
@@ -17722,13 +17768,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "User listens to the paired Classical-period and Late-Romantic auditions, preferably the A/B comparison first.",
-    "Evaluate whether role handoffs sound musically integrated rather than like instrument substitution.",
-    "Evaluate whether supporting strings yield perceptual space without disappearing and whether late-Romantic brass foreground is convincing rather than intrusive.",
-    "Revise variant orchestration rules from listening evidence before any live Composer integration."
+    "Research period/variant-specific composition grammar separately from orchestration using annotated harmonic/cadential corpora.",
+    "Keep the current paired orchestration test as a controlled reference with identical underlying plan.",
+    "Do not treat objective audio metrics as a substitute for human listening approval.",
+    "Do not integrate into live Composer yet."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_PAIRED_AUDIO_RENDER_COMPLETE__HUMAN_LISTENING_GATE",
+  "quantitative_phase_status": "CLASSICAL_ORCHESTRATION_OBJECTIVE_AUDIO_PASS__GRAMMAR_SPLIT_RESEARCH_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

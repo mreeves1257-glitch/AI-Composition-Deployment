@@ -1,0 +1,41 @@
+{
+  "schema": "GROWLYBASS_SUSTAIN_RESEARCH_MAPPING_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_archive": {
+    "version": "1.002",
+    "sha256": "b92dca75494fa39d6e8d8b8addaabfe70c5aaa59b5f9a0f624be6de51a2374bc"
+  },
+  "current_registry_mapping": "growlybass_vicious.sfz",
+  "current_registry_mapping_note_length_responsive": false,
+  "candidate_characterization": {
+    "workflow_run": 42395101164,
+    "artifact_id": 13582853415,
+    "artifact_digest": "sha256:369693f5f940620acb05b58f11c6f127c41e86a34e90c0ff80bfd2298a2c3e57",
+    "clean": {
+      "sample_references": 240,
+      "unique_samples": 240,
+      "note_length_responsive": true,
+      "active_end_delta_seconds": 1.72,
+      "releases_after_long_note": true
+    },
+    "dirty": {
+      "sample_references": 310,
+      "unique_samples": 310,
+      "note_length_responsive": true,
+      "active_end_delta_seconds": 1.68,
+      "releases_after_long_note": true
+    }
+  },
+  "selected_research_mapping": "growlybass_clean.sfz",
+  "selection_reason": [
+    "Clean is note-length responsive on the exact pinned v1.002 archive.",
+    "Clean is already named by the target registry as production_preferred_mapping.",
+    "Choosing Clean avoids introducing Dirty's release-sample behavior as an additional performance variable during the bass sustain duration A/B."
+  ],
+  "registry_modified": false,
+  "canonical_policy_modified": false,
+  "live_runtime_promoted": false,
+  "reasoning_engine_used": false,
+  "next_gate": "BASS_SUSTAIN_DURATION_A_B_WITH_CLEAN_MAPPING_FIXED_IN_BOTH_CONDITIONS"
+}

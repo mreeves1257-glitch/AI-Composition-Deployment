@@ -111,6 +111,10 @@ class AICompositionEngine:
                 'communication_blueprint':blueprint,
                 'genre_contract_v3_execution_packet':v3_contract_packet,
                 'genre_v3_foreground_authority':theory.get('genre_v3_foreground_authority'),
+                'composition_executor_registry_status':theory.get('composition_executor_registry_status'),
+                'composition_candidate_execution':theory.get('composition_candidate_execution'),
+                'composition_notes_generated':bool(theory.get('composition_notes_generated')),
+                'performance_realization_applied':bool(theory.get('performance_realization_applied')),
                 'foreground_executor_registry_status':theory.get('foreground_executor_registry_status'),
                 'foreground_candidate_execution':theory.get('foreground_candidate_execution'),
                 'foreground_execution_status':theory.get('foreground_execution_status'),
@@ -125,7 +129,9 @@ class AICompositionEngine:
                 'live_runtime_promoted':False,
                 'reasoning_engine_used':False,
                 'next_gate':(
-                    'RESOLVE_VARIANT_FORM_RESOURCE_AND_LISTENING_GATES'
+                    'ROCK_CORE_PERFORMANCE_REALIZATION_PLAN__STILL_NO_AUDIO'
+                    if theory.get('composition_notes_generated')
+                    else 'RESOLVE_VARIANT_FORM_RESOURCE_AND_LISTENING_GATES'
                     if theory.get('foreground_notes_generated')
                     else 'COMPILE_GENRE_SPECIFIC_FOREGROUND_EXECUTION_BEFORE_AUDIO'
                 ),

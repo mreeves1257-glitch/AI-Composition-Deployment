@@ -329,3 +329,32 @@ Saved report:
 `ROCK_MODE_A_HARMONY_CAP_CONTEXT_REPORT_2026-11-07.json`
 
 No canonical policy change, no live promotion, and no reasoning-engine involvement.
+
+
+## Rock Mode A HARMONY 2.0 cap — full 40-bar diagnostic launched
+
+A full-form diagnostic comparison has been started without changing the canonical Composer policy.
+
+Workflow:
+`Rock Mode A Harmony Cap Full 40`
+
+Run:
+`42392024204`
+
+Comparison:
+- diagnostic HARMONY cap 2.0 beats + canonical treated LEAD
+- current canonical HARMONY cap 2.8 beats + the exact same treated LEAD
+
+The full-40 renderer asserts:
+- exactly 78 HARMONY note-events trimmed from current canonical Mode A
+- exactly 26 vertical rhythm-guitar gestures trimmed
+- all canonical HARMONY shortenings preserved
+- pitch, onset, velocity, voicing and event identity unchanged
+- LEAD policy unchanged
+- bass/drums unchanged
+- no bar-boundary crossing
+- reasoning engine excluded
+- canonical policy not modified
+- live runtime not promoted
+
+The workflow started successfully and is running through the pinned Shinyguitar/sfizz validation and render path.

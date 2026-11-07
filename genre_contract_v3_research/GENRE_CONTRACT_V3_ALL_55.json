@@ -12,7 +12,7 @@
       "source_profile_id": "ROCK_CORE_V2",
       "family": "Rock",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "ROCK_CORE_V2",
@@ -54,62 +54,168 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good broad backbeat/guitar-bass-drums baseline.",
+          "Already requires section variation and lead space.",
+          "Correctly keeps bass related to kick without reducing it to roots only."
+        ],
+        "current_profile_gaps": [
+          "Rock family is far too broad for one executable grammar.",
+          "No subgenre resolver or formation resolver.",
+          "No quantified guitar/bass/drum activity/presence data.",
+          "No explicit rhythm-guitar versus lead-guitar agency model."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Berklee Contemporary Music Styles",
+          "Groove MIDI Dataset",
+          "GuitarSet",
+          "MTG-Jamendo",
+          "MMA rock families"
+        ],
+        "retained_current_fields": [
+          "structural backbeat",
+          "guitar/bass/drum core",
+          "bass-kick relationship with independence",
+          "sectional density/register change",
+          "selective lead foreground"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "formation resolver",
+          "guitar role split",
+          "activity/presence percentages",
+          "section-development rules",
+          "production/spatial variants"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/chorus, through-composed, riff-based or progressive forms by subgenre; transitions and builds must be subgenre-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_ROCK_SUBGENRE",
+          "rule": "Power-chord, triadic, modal, blues-derived and extended vocabularies are selected by variant rather than mixed indiscriminately."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/guitar melody occupies explicit foreground windows; hooks and riffs can carry structural identity."
+        },
+        "rhythm_groove_model": {
+          "rule": "Backbeat/eighth/sixteenth feel, syncopation and subdivision are subgenre-specific; fills and pushes follow sections."
+        },
+        "bass_model": {
+          "rule": "Bass locks with drums while retaining independent line shape, pickups and fills; root/fifth behavior is only one variant."
+        },
+        "percussion_model": {
+          "rule": "Kick/snare/hats/ride/toms/crashes follow subgenre and section intensity; human timing/fill behavior can be derived from groove data."
+        },
+        "phrase_model": {
+          "rule": "Riffs, vocal lines and lead fills share space; accompaniment does not answer every gap."
+        },
+        "transition_model": {
+          "rule": "Drum fills, guitar texture shifts, stops, pickups and harmonic/riff changes are variant-specific."
+        },
+        "development_model": {
+          "rule": "Develop through riff transformation, guitar texture, dynamics, register, harmony and section contrast."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, stops, sustained hits, fades or composed endings by subgenre."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED_DATA_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_FROM_MULTITRACK_OR_SYMBOLIC_DATA"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency is role-based and can rotate independently of amplified loudness or player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead/vocal/guitar feature gets space through rhythm-guitar simplification, register and density.",
+          "Kick/bass remain foundation without owning every foreground moment."
+        ],
+        "role_handoff_rules": [
+          "Foreground can move among vocal/lead guitar/keys/riff while rhythm section maintains identity.",
+          "Rhythm and lead guitar identities must remain explicit."
+        ],
+        "register_occupancy": {
+          "rule": "Separate bass/kick low-end, rhythm-guitar midrange and lead/vocal register enough to preserve clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_PRODUCTION_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Rock formations vary from power trios to multi-guitar/keyboard ensembles."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "guitar attacks, sustains, mutes, accents and slides follow role; drums use distinct backbeat/fill articulation",
+        "dynamic_behavior": "firm but section-shaped; choruses may lift, breakdowns reduce density",
+        "timing_humanization_behavior": "shared groove offsets and phrase pushes; no independent random jitter",
+        "continuous_performance_control": "velocity + expression + note length + target articulation controls",
+        "interaction_rules": [
+          "Groove timing is relational.",
+          "Fills support section boundaries.",
+          "Guitar/bass/drums do not all fill the same subdivision."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT",
+          "rule": "Width/distortion/room and guitar placement follow resolved production style."
+        },
+        "mix_prominence_intent": "kick/bass/rhythm foundation clear; lead present selectively rather than constantly",
+        "sound_effects_intent": "amp/drive/reverb/delay are style resources, not mandatory; preserve bass clarity",
+        "production_mastering_intent": "punchy transients, controlled low-end, no automatic loudness flattening"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Rock profile",
+          "Berklee Contemporary Music Styles",
+          "Groove MIDI Dataset",
+          "GuitarSet",
+          "MTG-Jamendo",
+          "MMA rock libraries"
+        ],
+        "source_confidence": {
+          "broad_core": "HIGH",
+          "subgenre_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY",
+          "GMD": "CC_BY_4_0",
+          "GuitarSet": "LICENSE_REVIEW",
+          "MTG_Jamendo": "DATASET_AND_AUDIO_LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Resolved subgenre required for detailed behavior.",
+          "No generic arranger fallback.",
+          "Rhythm/lead guitar roles remain distinct."
+        ],
+        "listening_tests": [
+          "Subgenres sound materially different.",
+          "Bass/kick foundation is strong without masking lead.",
+          "Section changes feel composed rather than loop-switched."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -118,6 +224,22 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Rock",
+        "candidate_variants": [
+          "Classic rock",
+          "Hard rock",
+          "Soft rock",
+          "Alternative rock",
+          "Southern rock",
+          "Progressive rock",
+          "Punk-related rock",
+          "Blues rock",
+          "Singer-songwriter rock"
+        ],
+        "hard_rule": "Do not let broad Rock baseline stand in for a resolved subgenre when cues are available."
       }
     },
     "New Age": {
@@ -2415,7 +2537,7 @@
       "source_profile_id": "RHYTHM_AND_BLUES_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "RHYTHM_AND_BLUES_V1",
@@ -2458,62 +2580,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good backbeat-centered pocket and blues/gospel harmonic baseline.",
+          "Already supports straight/shuffle/triplet feels and response gaps.",
+          "Bass-kick relationship and optional brass are appropriately described."
+        ],
+        "current_profile_gaps": [
+          "R&B spans major historical eras with different instrumentation/production.",
+          "No era resolver.",
+          "No presence/activity percentages.",
+          "No explicit horn/lead/rhythm response grammar."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Berklee contemporary arranging",
+          "Groove MIDI Dataset",
+          "MTG-Jamendo",
+          "MMA R&B libraries"
+        ],
+        "retained_current_fields": [
+          "backbeat pocket",
+          "blues/gospel harmony",
+          "bass-kick relationship",
+          "response-in-gaps rule",
+          "shuffle/triplet variants"
+        ],
+        "upgraded_fields": [
+          "era resolver",
+          "formation resolver",
+          "horn/lead response rules",
+          "presence/activity statistics",
+          "production variant"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/chorus, blues-derived or sectional song forms; era/variant determines breaks, horn sections and bridges."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_RNB_VARIANT",
+          "rule": "Blues/gospel-derived tonal harmony, dominant color and repeated progressions with controlled variation."
+        },
+        "melody_model": {
+          "rule": "Lead line and horn/guitar responses occupy alternating windows; responses avoid constant overlap."
+        },
+        "rhythm_groove_model": {
+          "rule": "Straight, shuffle or triplet-derived backbeat pocket resolved by variant."
+        },
+        "bass_model": {
+          "rule": "Groove-oriented bass relates to kick but uses fills/approaches at phrase boundaries."
+        },
+        "percussion_model": {
+          "rule": "Firm backbeat with variant-specific shuffle/straight details and human fill behavior."
+        },
+        "phrase_model": {
+          "rule": "Lead phrases create response gaps for horns/guitar/keys."
+        },
+        "transition_model": {
+          "rule": "Horn pickups, drum fills, stops and turnarounds are variant-specific."
+        },
+        "development_model": {
+          "rule": "Develop via response density, groove variation, horn figures, bridge/section contrast and lead dynamics."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, turnarounds, stops, fades or arranged horn endings."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED_DATA_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_FROM_MULTITRACK_OR_SYMBOLIC_DATA"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency is role-based and can rotate independently of amplified loudness or player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead remains clear; horn/guitar/keys responses live in gaps.",
+          "Backbeat stays present without crushing lead or bass definition."
+        ],
+        "role_handoff_rules": [
+          "Foreground rotates lead↔horn/guitar fills and instrumental features.",
+          "Rhythm section remains support unless explicitly featured."
+        ],
+        "register_occupancy": {
+          "rule": "Protect lead and horn response lanes from dense keys/guitar overlap."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_PRODUCTION_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "R&B formations and instrumentation vary strongly by era."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "expressive bends/scoops, guitar accents and strong drum backbeat",
+        "dynamic_behavior": "medium-to-strong groove dynamics with chorus lift",
+        "timing_humanization_behavior": "pocket may sit slightly behind/around beat but remains ensemble-coherent",
+        "continuous_performance_control": "expression and articulation curves for lead plus rhythm-section dynamics",
+        "interaction_rules": [
+          "Pocket is shared.",
+          "Responses answer rather than overlap.",
+          "Bass/drums coordinate fills at phrase boundaries."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "ERA_VARIANT_DEPENDENT"
+        },
+        "mix_prominence_intent": "lead and bass clear; backbeat present but not crushing",
+        "sound_effects_intent": "warm amp/room/reverb; saturation optional",
+        "production_mastering_intent": "warm/punchy master with dynamic vocal or lead space"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current R&B profile",
+          "Berklee arranging",
+          "Groove MIDI Dataset",
+          "MTG-Jamendo",
+          "MMA R&B libraries"
+        ],
+        "source_confidence": {
+          "core_pocket": "HIGH",
+          "era_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY",
+          "GMD": "CC_BY_4_0",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Era/variant resolver required.",
+          "12/8 cannot be normalized as generic 4/4."
+        ],
+        "listening_tests": [
+          "Backbeat is present but not crushing.",
+          "Responses stay in gaps.",
+          "Era variants sound distinct."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -2522,6 +2744,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Rhythm and Blues",
+        "candidate_variants": [
+          "Early/classic R&B",
+          "Horn-driven R&B",
+          "Blues-shuffle R&B",
+          "Modern band R&B",
+          "12/8 R&B ballad"
+        ],
+        "note": "Contemporary R&B remains a separate top-level profile."
       }
     },
     "Soul": {
@@ -2530,7 +2764,7 @@
       "source_profile_id": "SOUL_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SOUL_V1",
@@ -2573,62 +2807,164 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong gospel/blues pocket and emotional-climax language.",
+          "Existing profile already gives horn/string responses secondary status to lead.",
+          "Bass is melodic/supportive rather than generic root support."
+        ],
+        "current_profile_gaps": [
+          "Soul spans multiple regional/era practices.",
+          "No variant resolver or formation percentages.",
+          "No measured tambourine/horn/organ/string presence/activity.",
+          "No explicit emotional build state model."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Groove MIDI Dataset soul performances",
+          "MTG-Jamendo",
+          "Berklee arranging",
+          "MMA soul/spiritual-related patterns"
+        ],
+        "retained_current_fields": [
+          "deep pocket",
+          "gospel/blues harmony",
+          "melodic bass",
+          "organ/EP/guitar",
+          "horn/string responses",
+          "emotional climax"
+        ],
+        "upgraded_fields": [
+          "era/region resolver",
+          "response agency",
+          "build/climax states",
+          "presence/activity percentages",
+          "formation resolver"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/chorus/bridge or sectional song forms with emotional build; variant controls response sections and orchestration."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_SOUL_VARIANT",
+          "rule": "Gospel/blues/tonal harmony with dominant, plagal and chromatic colors according to variant."
+        },
+        "melody_model": {
+          "rule": "Lead owns emotional foreground; horns/strings/organ/guitar answer and reinforce peaks."
+        },
+        "rhythm_groove_model": {
+          "rule": "Deep backbeat pocket with straight/triplet/gospel inflection by variant."
+        },
+        "bass_model": {
+          "rule": "Melodic supportive bass locks with drums and answers phrases without crowding lead."
+        },
+        "percussion_model": {
+          "rule": "Backbeat kit plus variant-specific tambourine/hand percussion; fills reinforce emotional contour."
+        },
+        "phrase_model": {
+          "rule": "Call/response and lead breath shape accompaniment."
+        },
+        "transition_model": {
+          "rule": "Builds use drum/tambourine density, horn pickups, organ/guitar texture and harmony."
+        },
+        "development_model": {
+          "rule": "Develop toward emotional peaks through response layers, register, dynamics and groove intensity."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, vamp endings, gospel-style repetitions, stops or fades by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED_DATA_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_FROM_MULTITRACK_OR_SYMBOLIC_DATA"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency is role-based and can rotate independently of amplified loudness or player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead retains primary clarity; response sections reinforce rather than permanently compete.",
+          "Horn/string mass increases at peaks, not continuously."
+        ],
+        "role_handoff_rules": [
+          "Instrumental features may temporarily take foreground; lead returns with accompaniment reset.",
+          "Organ/guitar/keys coordinate comping space."
+        ],
+        "register_occupancy": {
+          "rule": "Preserve lead and bass clarity while horns/strings/organ fill different registers."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_PRODUCTION_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Soul formations range from compact bands to orchestrated horn/string ensembles."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "expressive lead bends/scoops, sustained keys, guitar fills, horn accents",
+        "dynamic_behavior": "strong dynamic storytelling; choruses and bridges may expand orchestration",
+        "timing_humanization_behavior": "laid-back pocket with shared phrase pushes",
+        "continuous_performance_control": "continuous lead expression and ensemble swells",
+        "interaction_rules": [
+          "Pocket remains deep and shared.",
+          "Response layers enter purposefully.",
+          "Dynamics follow emotional arc."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "ERA_VARIANT_DEPENDENT",
+          "rule": "Lead-forward center with warm rhythm bed and expandable response/orchestral width."
+        },
+        "mix_prominence_intent": "lead foreground, rhythm section warm and present, responses secondary",
+        "sound_effects_intent": "warm reverb/saturation optional; avoid overprocessing expressive lead",
+        "production_mastering_intent": "warm, rounded, dynamic master"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Soul profile",
+          "Groove MIDI Dataset",
+          "MTG-Jamendo",
+          "Berklee arranging",
+          "MMA soul/spiritual references"
+        ],
+        "source_confidence": {
+          "core_soul_behavior": "HIGH",
+          "regional_variant_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "GMD": "CC_BY_4_0",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Variant/era required for orchestration percentages.",
+          "Response layers cannot become permanent foreground."
+        ],
+        "listening_tests": [
+          "Lead remains emotionally dominant.",
+          "Bass/pocket are warm and clear.",
+          "Horn/string responses expand peaks without flattening the song."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -2637,6 +2973,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Soul",
+        "candidate_variants": [
+          "Southern soul",
+          "Motown-influenced soul",
+          "Gospel-inflected soul",
+          "Orchestrated soul",
+          "Funk-influenced soul",
+          "Soul ballad"
+        ]
       }
     },
     "Funk": {
@@ -2645,7 +2993,7 @@
       "source_profile_id": "FUNK_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "FUNK_V1",
@@ -2687,62 +3035,173 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Existing profile is strong on sixteenth-note interlock, strong one, intentional rests and rhythmic-slot separation.",
+          "Bass/kick relationship and no-one-fills-every-subdivision rule are especially valuable.",
+          "Vamp/break/horn-hit arrangement language is appropriate."
+        ],
+        "current_profile_gaps": [
+          "No variant resolver.",
+          "No measured activity/rest percentages.",
+          "No guitar/clav/keys/horn slot-allocation model.",
+          "No formation percentages."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Berklee funk arranging",
+          "Groove MIDI Dataset funk performances",
+          "GuitarSet Funk",
+          "MTG-Jamendo",
+          "MMA funk libraries"
+        ],
+        "retained_current_fields": [
+          "sixteenth-note pocket",
+          "strong one",
+          "intentional rests",
+          "bass-kick interlock",
+          "separate rhythmic slots",
+          "vamp/break/horn-hit form"
+        ],
+        "upgraded_fields": [
+          "variant resolver",
+          "rhythmic-slot occupancy percentages",
+          "activity/rest statistics",
+          "formation resolver",
+          "foreground features"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Vamps, breaks, riff sections, horn hits and density changes; long harmonic forms are optional."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_FUNK_VARIANT",
+          "rule": "Static/vamp-based dominant/minor-seventh and other variant colors; groove outranks unnecessary chord churn."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/horn/riff material occupies explicit slots in the groove."
+        },
+        "rhythm_groove_model": {
+          "rule": "Sixteenth-note interlock with strong one and intentional rests; each instrument owns different subdivisions."
+        },
+        "bass_model": {
+          "rule": "Highly syncopated electric bass with ghost/rest space; strong kick relationship without full duplication."
+        },
+        "percussion_model": {
+          "rule": "Tight kick/snare/hats with ghost notes and fills that preserve pocket; human timing can derive from GMD."
+        },
+        "phrase_model": {
+          "rule": "Riffs and responses are rhythmically concise; silence/rest is structural."
+        },
+        "transition_model": {
+          "rule": "Breaks, one-beat stops, drum setups, bass/guitar pickups and horn hits preserve pocket."
+        },
+        "development_model": {
+          "rule": "Develop by subtraction/addition, rhythmic-slot redistribution, bass/guitar variation, horn entries and break structure."
+        },
+        "cadence_ending_model": {
+          "rule": "Vamp cuts, ensemble hits, breakdowns or fades by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED_DATA_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_FROM_MULTITRACK_OR_SYMBOLIC_DATA"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency is role-based and can rotate independently of amplified loudness or player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Bass may be highly prominent without monopolizing musical agency.",
+          "Lead/horns get rhythmic holes created by guitar/keys/bass/rest design.",
+          "No instrument fills every subdivision."
+        ],
+        "role_handoff_rules": [
+          "Foreground can move bass↔lead↔horn↔guitar/keys feature while pocket remains intact.",
+          "Outgoing feature returns to slot-based support."
+        ],
+        "register_occupancy": {
+          "rule": "Separate bass low-end, guitar/clav/keys midrange and horn/lead registers; avoid low-mid pileup."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_PRODUCTION_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Funk formations vary; headcount alone is less meaningful than rhythmic-role occupancy."
+        },
+        "rhythmic_slot_occupancy_percent": {
+          "status": "TO_DERIVE_FROM_SYMBOLIC/MULTITRACK_DATA",
+          "note": "Important Funk metric distinct from physical population."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "short guitar attacks, bass accents, horn stabs, tight drum articulation",
+        "dynamic_behavior": "sharp accents and dynamic drops/breaks",
+        "timing_humanization_behavior": "microtiming shared by pocket; often slightly laid-back subdivisions without random drift",
+        "continuous_performance_control": "velocity/articulation and filter/modulation where target resources support them",
+        "interaction_rules": [
+          "Microtiming is relational.",
+          "Ghost notes and rests are intentional.",
+          "Instrument slots interlock."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT",
+          "rule": "Keep bass/kick focused; spread guitar/keys/horns enough to reveal interlock."
+        },
+        "mix_prominence_intent": "bass and kick prominent; guitar/keys occupy separate rhythmic slots",
+        "sound_effects_intent": "dry/tight core with selective wah/filter/room effects",
+        "production_mastering_intent": "punchy, dry-to-warm master; preserve transient contrast"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Funk profile",
+          "Berklee contemporary arranging",
+          "Groove MIDI Dataset",
+          "GuitarSet",
+          "MTG-Jamendo",
+          "MMA funk"
+        ],
+        "source_confidence": {
+          "core_funk_grammar": "HIGH",
+          "slot_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "GMD": "CC_BY_4_0",
+          "GuitarSet": "LICENSE_REVIEW",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Rhythmic-slot collisions must be detected.",
+          "No all-instruments-continuous-sixteenths fallback.",
+          "Resolved variant required for formation."
+        ],
+        "listening_tests": [
+          "Pocket feels interlocked and spacious.",
+          "Bass/kick are powerful but not muddy.",
+          "Guitar/keys/horns occupy distinct rhythmic lanes."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -2751,6 +3210,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Funk",
+        "candidate_variants": [
+          "Classic band funk",
+          "Horn funk",
+          "P-Funk-related",
+          "Jazz-funk",
+          "Minimalist groove funk",
+          "Modern funk"
+        ]
       }
     },
     "Contemporary R&B": {
@@ -2759,7 +3230,7 @@
       "source_profile_id": "CONTEMPORARY_RNB_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__PRODUCTION_VARIANT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CONTEMPORARY_RNB_V1",
@@ -2802,62 +3273,169 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong lead-centered negative-space concept.",
+          "Already distinguishes hybrid acoustic/electronic percussion and detailed hats.",
+          "Extended harmony and sparse low-end around lead are appropriate."
+        ],
+        "current_profile_gaps": [
+          "Contemporary R&B evolves quickly and contains multiple production families.",
+          "No production-era/substyle resolver.",
+          "No stem/activity/presence statistics.",
+          "No explicit sub-bass versus kick interaction states."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Berklee contemporary arranging",
+          "MTG-Jamendo",
+          "MedleyDB/multitrack research target",
+          "Groove MIDI Dataset for live/hybrid drum behavior"
+        ],
+        "retained_current_fields": [
+          "laid-back pocket",
+          "negative space",
+          "lead-centered production",
+          "extended harmony",
+          "hybrid drums",
+          "sub/electric bass flexibility"
+        ],
+        "upgraded_fields": [
+          "production-variant resolver",
+          "sub/kick interaction",
+          "layer activation percentages",
+          "foreground windows",
+          "electronic/acoustic role separation"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/pre/chorus/bridge or loop-evolving sectional forms; production layers can appear/disappear across sections."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_CONTEMPORARY_RNB_VARIANT",
+          "rule": "Extended tonal harmony, modal mixture/chromatic colors and loop-based progressions according to variant."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal-like line owns foreground and negative space; instrumental fills are sparse."
+        },
+        "rhythm_groove_model": {
+          "rule": "Laid-back syncopated or half-time pocket; trap-derived subdivisions only when variant supports them."
+        },
+        "bass_model": {
+          "rule": "Sub/electric bass may sustain, pulse or syncopate; interaction with kick must be stateful rather than constant duplication."
+        },
+        "percussion_model": {
+          "rule": "Hybrid electronic/acoustic drums with detailed hats/claps/snare and variant-specific low-end kick behavior."
+        },
+        "phrase_model": {
+          "rule": "Negative space around lead is structural; fills and textures answer selectively."
+        },
+        "transition_model": {
+          "rule": "Layer drops, filtered transitions, drum/harmony changes and textural swells by production variant."
+        },
+        "development_model": {
+          "rule": "Develop by layer activation, harmony/voicing, bass/drum state, texture and lead intensity."
+        },
+        "cadence_ending_model": {
+          "rule": "Sparse tags, loop deconstruction, fades or arranged endings by production variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED_DATA_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_FROM_MULTITRACK_OR_SYMBOLIC_DATA"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency is role-based and can rotate independently of amplified loudness or player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead gets protected negative space.",
+          "Pads/textures live behind the lead.",
+          "Sub/kick power cannot mask midrange lead."
+        ],
+        "role_handoff_rules": [
+          "Foreground can move briefly to guitar/keys/production motif, then return to lead.",
+          "Layer activation is section-aware."
+        ],
+        "register_occupancy": {
+          "rule": "Protect lead midrange; coordinate sub, kick, pads and keys by register and density."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_PRODUCTION_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Contemporary R&B is production-centered; physical headcount may not represent virtual/electronic layers."
+        },
+        "layer_activation_percent": {
+          "status": "TO_DERIVE_FROM_MULTITRACK/TAGGED_DATA"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "soft attacks, vocal-like bends, muted guitar/keys, detailed programmed percussion",
+        "dynamic_behavior": "intimate verses with larger chorus layers; automated swells common",
+        "timing_humanization_behavior": "laid-back pocket and quantized-plus-human hybrid timing",
+        "continuous_performance_control": "continuous expression, filter automation, modulation and vocal-like pitch expression where appropriate",
+        "interaction_rules": [
+          "Pocket is intentionally laid back.",
+          "Live/hybrid elements share one timing concept.",
+          "Negative space is preserved."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "PRODUCTION_VARIANT_DEPENDENT",
+          "rule": "Lead center/front, controlled low-end focus, pads/effects deeper, optional wide guitars/keys."
+        },
+        "mix_prominence_intent": "lead and low end foreground; pads/effects placed behind",
+        "sound_effects_intent": "delay/reverb/filter/texture are active production components",
+        "production_mastering_intent": "modern low-end controlled master with clear transient/vocal space"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Contemporary R&B profile",
+          "Berklee contemporary arranging",
+          "MTG-Jamendo",
+          "MedleyDB research target",
+          "Groove MIDI Dataset"
+        ],
+        "source_confidence": {
+          "core_negative_space_model": "HIGH",
+          "current_substyle_taxonomy": "PENDING_CONTINUOUS_RESEARCH"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MedleyDB": "LICENSE_REVIEW",
+          "GMD": "CC_BY_4_0"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Production variant required.",
+          "Kick/sub interaction cannot default to constant duplication.",
+          "Layer activation must remain section-aware."
+        ],
+        "listening_tests": [
+          "Lead remains clear over low end.",
+          "Negative space survives.",
+          "Production variants sound materially different."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -2866,6 +3444,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Contemporary R&B",
+        "candidate_variants": [
+          "Sparse modern R&B",
+          "Live-band contemporary R&B",
+          "Trap-influenced R&B",
+          "6/8 contemporary R&B",
+          "Electronic/ambient R&B"
+        ]
       }
     },
     "Neo-Soul-related": {
@@ -2874,7 +3463,7 @@
       "source_profile_id": "NEO_SOUL_RELATED_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "NEO_SOUL_RELATED_V1",
@@ -2917,62 +3506,170 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong laid-back pocket and swung/straight ambiguity.",
+          "Rich harmonic language and chromatic voice leading already present.",
+          "Pocket-first melodic bass and sparse harmonic voicing are good foundations."
+        ],
+        "current_profile_gaps": [
+          "No era/artist-influence variant resolver.",
+          "No measurable microtiming/pocket rules.",
+          "No activity/presence percentages.",
+          "No explicit keys/guitar/bass role-spacing model."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Berklee contemporary arranging",
+          "Groove MIDI Dataset funk/soul-related timing evidence",
+          "GuitarSet Funk/Jazz comping evidence",
+          "MTG-Jamendo"
+        ],
+        "retained_current_fields": [
+          "deep laid-back pocket",
+          "syncopation",
+          "swung/straight ambiguity",
+          "rich extended harmony",
+          "melodic bass",
+          "sparse harmonic voicing"
+        ],
+        "upgraded_fields": [
+          "variant resolver",
+          "microtiming relationship model",
+          "keys/guitar voicing-space rules",
+          "activity percentages",
+          "foreground windows"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/chorus or through-composed forms with extended groove sections and harmonic/texture development."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_NEO_SOUL_VARIANT",
+          "rule": "Rich extensions, altered colors, chromatic voice leading and gospel/jazz influence; voicing motion is central."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal-like phrasing floats over deep pocket; accompaniment responds sparsely."
+        },
+        "rhythm_groove_model": {
+          "rule": "Laid-back pocket with nuanced subdivision and swung/straight ambiguity; microtiming is relational across the band."
+        },
+        "bass_model": {
+          "rule": "Melodic, pocket-first bass with intentional space and dialogue with kick/lead."
+        },
+        "percussion_model": {
+          "rule": "Live/hybrid drums with ghost notes and subtle dynamics; pocket over density."
+        },
+        "phrase_model": {
+          "rule": "Lead breath and pocket determine fill/comping density."
+        },
+        "transition_model": {
+          "rule": "Groove subtraction, voicing changes, fills and texture shifts rather than generic transitions."
+        },
+        "development_model": {
+          "rule": "Develop through harmonic voicing, bass variation, pocket density, guitar/keys exchange and dynamic contour."
+        },
+        "cadence_ending_model": {
+          "rule": "Vamp endings, tags, fades or composed harmonic resolutions by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED_DATA_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_FROM_MULTITRACK_OR_SYMBOLIC_DATA"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency is role-based and can rotate independently of amplified loudness or player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead is clear without flattening groove complexity.",
+          "Keys and guitar voice sparsely around each other.",
+          "Bass can be melodic without masking lead."
+        ],
+        "role_handoff_rules": [
+          "Foreground may transfer to keys/guitar/bass feature then return to lead.",
+          "Comping roles must re-space during handoffs."
+        ],
+        "register_occupancy": {
+          "rule": "Prevent dense extended voicings from occupying the same register as lead and melodic bass."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_PRODUCTION_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Neo-soul formations vary and are often production/live-band hybrids."
+        },
+        "microtiming_relationships": {
+          "status": "TO_DERIVE_FROM_HUMAN_PERFORMANCE_DATA",
+          "note": "Do not implement as independent random delay per instrument."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "soft/rounded attacks, ghost notes, expressive lead articulation",
+        "dynamic_behavior": "subtle dynamic shading rather than constant loudness",
+        "timing_humanization_behavior": "behind-beat and swung microtiming controlled at ensemble level",
+        "continuous_performance_control": "expression, pedal and nuanced velocity response",
+        "interaction_rules": [
+          "Microtiming is relational.",
+          "Harmonic instruments voice sparsely.",
+          "Ghost notes/rests support pocket."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT",
+          "rule": "Warm low end, clear lead, wide but non-masking chords and natural/hybrid depth."
+        },
+        "mix_prominence_intent": "bass/lead clear, chords wide but not masking",
+        "sound_effects_intent": "warm saturation/room/chorus may support keys/guitar",
+        "production_mastering_intent": "warm, dynamic, low-fatigue master"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Neo-Soul-related profile",
+          "Berklee contemporary arranging",
+          "Groove MIDI Dataset",
+          "GuitarSet",
+          "MTG-Jamendo"
+        ],
+        "source_confidence": {
+          "core_neo_soul_behavior": "HIGH",
+          "microtiming_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY",
+          "GMD": "CC_BY_4_0",
+          "GuitarSet": "LICENSE_REVIEW",
+          "MTG_Jamendo": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "No random-jitter microtiming.",
+          "Keys/guitar voicing collision checks required.",
+          "Variant required for formation percentages."
+        ],
+        "listening_tests": [
+          "Pocket feels deep without sluggish incoherence.",
+          "Lead/bass remain clear.",
+          "Extended chords are rich without masking."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -2981,6 +3678,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Neo-Soul-related",
+        "candidate_variants": [
+          "Live-band neo-soul",
+          "Keys-led neo-soul",
+          "Guitar-led neo-soul",
+          "Funk-influenced neo-soul",
+          "Contemporary hybrid neo-soul"
+        ]
       }
     },
     "Traditional Country": {
@@ -8402,6 +9110,12 @@
     "Bebop",
     "Cool Jazz",
     "Dixieland",
-    "Jazz Fusion"
+    "Jazz Fusion",
+    "ROCK",
+    "Rhythm and Blues",
+    "Soul",
+    "Funk",
+    "Contemporary R&B",
+    "Neo-Soul-related"
   ]
 }

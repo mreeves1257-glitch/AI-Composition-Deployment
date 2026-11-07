@@ -1,0 +1,209 @@
+{
+  "schema": "ROCK_V3_BASS_SOURCE_WRITING_AUDIT_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
+  "source_seed": "ORIGINAL_01_ROCK_CORE_V2",
+  "source_authoring_status": "ORIGINAL_PROJECT_SEED_NOT_AUDITIONED",
+  "source_musical_approval": "NOT_AUDITIONED",
+  "bass_role": {
+    "instrument_id": "electric_bass_guitar",
+    "playable_midi_range": [
+      28,
+      86
+    ],
+    "kind": "CHORD_RELATIVE",
+    "source_octave": 2
+  },
+  "pattern_findings": {
+    "INTRO": {
+      "notes": [
+        {
+          "beat": 0,
+          "duration": 0.75,
+          "degree": 1
+        }
+      ],
+      "source_overlap_pairs": 0
+    },
+    "A1": {
+      "notes": [
+        {
+          "beat": 0,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 1.5,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        {
+          "beat": 3.5,
+          "duration": 0.5,
+          "degree": 1
+        }
+      ],
+      "source_overlap_pairs": 1,
+      "overlap_detail": [
+        {
+          "earlier_beat": 1.5,
+          "earlier_end": 2.25,
+          "next_beat": 2,
+          "overlap_beats": 0.25
+        }
+      ]
+    },
+    "A2": {
+      "notes": [
+        {
+          "beat": 0,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 1.5,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        {
+          "beat": 3.5,
+          "duration": 0.5,
+          "degree": 1
+        }
+      ],
+      "source_overlap_pairs": 1,
+      "overlap_detail": [
+        {
+          "earlier_beat": 1.5,
+          "earlier_end": 2.25,
+          "next_beat": 2,
+          "overlap_beats": 0.25
+        }
+      ]
+    },
+    "FILL": {
+      "notes": [
+        {
+          "beat": 0,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 3.5,
+          "duration": 0.5,
+          "degree": 1
+        }
+      ],
+      "source_overlap_pairs": 0
+    },
+    "B1": {
+      "notes": [
+        {
+          "beat": 0,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 1.5,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        {
+          "beat": 2.25,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 3.5,
+          "duration": 0.5,
+          "degree": 1
+        }
+      ],
+      "source_overlap_pairs": 2,
+      "overlap_detail": [
+        {
+          "earlier_beat": 1.5,
+          "earlier_end": 2.25,
+          "next_beat": 2,
+          "overlap_beats": 0.25
+        },
+        {
+          "earlier_beat": 2,
+          "earlier_end": 2.75,
+          "next_beat": 2.25,
+          "overlap_beats": 0.5
+        }
+      ]
+    },
+    "B2": {
+      "notes": [
+        {
+          "beat": 0,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 1.25,
+          "duration": 0.75,
+          "degree": 1
+        },
+        {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        {
+          "beat": 3.5,
+          "duration": 0.5,
+          "degree": 1
+        }
+      ],
+      "source_overlap_pairs": 0
+    },
+    "OUTRO": {
+      "notes": [
+        {
+          "beat": 0,
+          "duration": 0.75,
+          "degree": 1
+        }
+      ],
+      "source_overlap_pairs": 0
+    }
+  },
+  "musical_structure_findings": [
+    "A1 and A2 are identical bass patterns, so verse call/response does not create a distinct bass response.",
+    "A1/A2 are root-root-fifth-root patterns with one pre-authored 0.25-beat overlap.",
+    "B1 is root-root-fifth-root-root and contains two pre-authored overlaps, including a 0.50-beat overlap between attacks at beats 2.00 and 2.25.",
+    "The source seed is explicitly marked NOT_AUDITIONED, so these patterns were never human-approved as finished bass writing.",
+    "The sustain experiment could not repair these upstream rhythmic and articulation choices because they exist before performance realization."
+  ],
+  "resource_findings": {
+    "current_registry_mapping": "growlybass_vicious.sfz",
+    "registry_production_preferred_mapping": "growlybass_clean.sfz",
+    "production_preferred_mapping_status": "PENDING_COMPLETE_SUSTAIN_SAMPLE_SET",
+    "production_fidelity_status": "NOT_YET_CERTIFIED"
+  },
+  "human_listening_result": {
+    "current_bass": "REJECTED",
+    "sustain_candidate": "REJECTED",
+    "conclusion": "DURATION_NOT_PRIMARY_ROOT_CAUSE"
+  },
+  "next_gate": "SEPARATE_WRITING_REPAIR_FROM_TIMBRE_TEST__DO_NOT_TUNE_SUSTAIN"
+}

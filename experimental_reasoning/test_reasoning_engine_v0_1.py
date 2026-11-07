@@ -259,6 +259,38 @@ def test_rich_bass_preserves_clarity_and_low_end_separation():
     assert b["v0_1_audio_processing_applied"] is False
 
 
+def test_3d_spatial_intent_is_planned_early_but_processed_late():
+    state = ComposerState(
+        genre="Soul",
+        profile_id="SOUL_PROFILE",
+        section="Chorus",
+        active_instruments=("drums", "bass", "guitar", "keys"),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    s = packet["decisions"]["spatial_3d_intent"]
+    assert s["architecture"] == "SPATIAL_INTENT_EARLY__PHYSICAL_3D_MIX_LATE"
+    assert s["planning_stage"] == "PRE_GENERATION_REASONING"
+    assert s["realization_stage"] == "POST_STEM_EXISTING_3D_MIXER"
+    assert s["move_existing_mixer_now"] is False
+    assert s["audio_processing_applied_here"] is False
+
+
+def test_3d_bass_position_preserves_depth_without_more_importance():
+    state = ComposerState(
+        genre="Funk",
+        profile_id="FUNK_PROFILE",
+        section="Verse",
+        active_instruments=("kick", "bass", "guitar", "clav"),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    b = packet["decisions"]["spatial_3d_intent"]["bass_spatial_rule"]
+    assert b["depth"] == "DEEP_AND_PHYSICALLY_GROUNDED"
+    assert b["importance_change"] is False
+    assert "KICK" in b["masking_guardrail"]
+
+
 def test_hash_detects_mutation():
     state = ComposerState(
         genre="Country",
@@ -287,6 +319,8 @@ if __name__ == "__main__":
         test_musical_memory_allows_dormancy_and_does_not_force_every_idea_back,
         test_bass_defaults_to_maximum_rich_depth_without_higher_importance,
         test_rich_bass_preserves_clarity_and_low_end_separation,
+        test_3d_spatial_intent_is_planned_early_but_processed_late,
+        test_3d_bass_position_preserves_depth_without_more_importance,
         test_hash_detects_mutation,
     ]
     for fn in tests:

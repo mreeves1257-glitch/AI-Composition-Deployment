@@ -7858,7 +7858,7 @@
       "source_profile_id": "SALSA_V1",
       "family": "Latin",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "research_status": "V3_SALSA_CLAVE_AND_PERCUSSION_AUTHORITY_CORRECTED__ACTIVITY_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SALSA_V1",
@@ -7909,7 +7909,9 @@
           "No explicit variant resolver for son montuno, mambo-influenced salsa, songo, guajiro, bomba-related or other salsa-family practices.",
           "Clave orientation and section-level response behavior are not executable enough in the current profile.",
           "Population proportions, activity share and foreground ownership are not encoded in the genre contract.",
-          "Shared auxiliary percussion such as clave/cowbell is not distinguished from additional physical players in the genre file."
+          "Shared auxiliary percussion such as clave/cowbell is not distinguished from additional physical players in the genre file.",
+          "Earlier v3 draft treated rumba clave as a generic Salsa option; corrected so son clave is default and rumba clave requires explicit sourced variant evidence.",
+          "Earlier 10-player pilot omitted maracas from the common auxiliary percussion-role inventory."
         ],
         "external_sources_considered": [
           "Current AI Composer 55-profile registry",
@@ -7933,7 +7935,10 @@
           "shared auxiliary-player policy",
           "foreground windows",
           "interlocking percussion-role rules",
-          "intro/fill/ending/section transformation rules"
+          "intro/fill/ending/section transformation rules",
+          "son-clave default authority",
+          "maracas auxiliary role",
+          "124-track expert beat-validation source"
         ],
         "conflicts": [],
         "unresolved_questions": [
@@ -7954,20 +7959,43 @@
           "rule": "Melodic lead and horn figures interact with clave-aware rhythmic phrasing; call/response and sectional writing are variant-dependent."
         },
         "rhythm_groove_model": {
-          "rule": "Clave is structural where the resolved variant requires it; piano, bass, percussion and brass figures must align to the same rhythmic orientation rather than operate independently.",
+          "rule": "Clave is structural where the resolved Salsa variant requires it; piano, bass, percussion and brass figures align to the same rhythmic orientation rather than operating independently.",
           "clave_options": [
             "son 2-3",
             "son 3-2",
             "rumba 2-3",
             "rumba 3-2",
             "variant-specific/explicit"
-          ]
+          ],
+          "default_clave_authority": {
+            "accepted": [
+              "son 2-3",
+              "son 3-2"
+            ],
+            "conditional": [
+              "rumba 2-3",
+              "rumba 3-2"
+            ],
+            "conditional_rule": "Rumba clave is not a generic Salsa default. It may be used only when the resolved arrangement/variant has explicit sourced evidence for it."
+          },
+          "expert_validation": "Salsa-specific perceptual research shows correct clave pairing is learned context-specific knowledge; the Composer must treat clave direction as genre knowledge, not as an interchangeable five-stroke pattern.",
+          "beat_dataset_reference": "The Salsa Dataset contains expert-reviewed beat annotations for 124 salsa recordings and can be used to validate pulse/beat behavior without treating it as an orchestration corpus."
         },
         "bass_model": {
           "rule": "Bass locks to the variant's tumbao/Latin bass logic and interacts with piano/percussion; it must not simply duplicate kick-like accents."
         },
         "percussion_model": {
-          "rule": "Conga, bongo, timbales and shared auxiliary roles interlock; no generic drum-kit substitution unless the selected variant explicitly includes it."
+          "rule": "Conga, bongo, timbales and auxiliary percussion roles interlock; no generic drum-kit substitution unless the selected variant explicitly includes it.",
+          "common_role_inventory": [
+            "congas",
+            "bongos",
+            "timbales",
+            "clave",
+            "cowbell",
+            "maracas"
+          ],
+          "player_count_guardrail": "Instrument-role inventory is not the same as physical player count; clave/cowbell/maracas may be doubled or shared according to the resolved ensemble.",
+          "note": "The six-role percussion inventory is supported by salsa-specific research; exact player assignment remains formation/variant dependent."
         },
         "phrase_model": {
           "rule": "Phrases respond to clave orientation, horn hits, vocal/lead space and percussion setup; rests are part of the groove."
@@ -7994,7 +8022,8 @@
           "CONGA_1",
           "BONGO_1",
           "TIMBALES_1",
-          "PERCUSSION_SHARED_CLAVE_COWBELL"
+          "PERCUSSION_SHARED_CLAVE_COWBELL",
+          "PERCUSSION_SHARED_MARACAS"
         ],
         "population_mass_percent": {
           "FLUTE": 10,
@@ -8056,10 +8085,12 @@
           },
           "shared_auxiliary_roles": [
             "claves",
-            "cowbell"
+            "cowbell",
+            "maracas"
           ],
           "qualification": "Pilot formation only. Shared auxiliary roles do not add fake players; variant-specific formations may differ."
-        }
+        },
+        "instrument_roster_guardrail": "Shared auxiliary percussion entries are roles, not extra physical players; the 10-player pilot headcount remains unchanged until a new formation is explicitly resolved."
       },
       "performance": {
         "articulation_behavior": "percussive piano/horn attacks, articulated bass and differentiated hand percussion",
@@ -8087,18 +8118,25 @@
           "Berklee Writing in Salsa Styles",
           "Berklee clave materials",
           "MMA Salsa library",
-          "Latin Music Database"
+          "Latin Music Database",
+          "Salsa Dataset (Gómez-Marín et al.): 124 expert-reviewed beat-annotated salsa recordings",
+          "Salsa-specific clave expertise research: 2-3 and 3-2 son-clave pairing as context-specific learned structure",
+          "Salsa performance research describing common percussion-role inventory: congas, bongos, timbales, clave, cowbell, maracas"
         ],
         "source_confidence": {
           "pilot_formation": "HIGH_FOR_NAMED_FORMATION",
           "clave_structural_role": "HIGH",
-          "variant_activity_foreground_statistics": "PENDING"
+          "variant_activity_foreground_statistics": "PENDING",
+          "son_clave_default_authority": "HIGH_FOR_GENERIC_SALSA",
+          "rumba_clave_generic_default": "REJECTED__EXPLICIT_VARIANT_EVIDENCE_REQUIRED",
+          "salsa_beat_validation_124_tracks": "HIGH_FOR_BEAT_PULSE_VALIDATION__NOT_INSTRUMENT_ACTIVITY"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE",
-          "Latin_Music_Database": "RESEARCH_TERMS_REVIEW"
+          "Latin_Music_Database": "RESEARCH_TERMS_REVIEW",
+          "Salsa_Dataset": "ACADEMIC_RESEARCH_DATASET__AUDIO_NONPROFIT_RESTRICTIONS_REPORTED__USE_METADATA/DERIVED_RULES_ONLY_UNLESS_TERMS_RECHECKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -8108,13 +8146,17 @@
           "Pilot formation population percentages sum to 100.",
           "Shared clave/cowbell roles do not inflate physical player count.",
           "Resolved variant must define clave/orientation policy.",
-          "No generic percussion collapse."
+          "No generic percussion collapse.",
+          "Generic Salsa resolver may choose son 2-3 or son 3-2; rumba clave requires explicit sourced variant authorization.",
+          "Auxiliary percussion roles do not silently increase physical player count."
         ],
         "listening_tests": [
           "Percussion layers remain distinct.",
           "Bass/piano interlock without masking horns.",
           "Featured horn/flute phrases remain audible without artificial permanent gain.",
-          "Transitions preserve rhythmic identity."
+          "Transitions preserve rhythmic identity.",
+          "Verify piano, bass, percussion and horn phrasing sound aligned to one clave orientation rather than merely layered over a Latin beat.",
+          "Verify maracas/cowbell/clave roles can appear without turning the percussion section into constant full-density clutter."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false

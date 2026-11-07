@@ -1,0 +1,59 @@
+name: Research Classical V3 Structural Compiler
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json"
+      - "current_master_forward/genre_contract_v3_execution_bridge.py"
+      - "current_master_forward/classical_v3_variant_package.py"
+      - "current_master_forward/classical_v3_structural_compiler.py"
+      - "genre_contract_v3_research/test_classical_v3_structural_compiler.py"
+      - ".github/workflows/research-classical-v3-structural-compiler.yml"
+  workflow_dispatch:
+
+jobs:
+  structural:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run structural compiler tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python -m unittest genre_contract_v3_research/test_classical_v3_structural_compiler.py -v
+
+      - name: Export seed-0 structural plan and validation summary
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          from genre_contract_v3_execution_bridge import snapshot_for
+          from classical_v3_variant_package import resolve
+          from classical_v3_structural_compiler import compile_plan, validate_plan
+
+          out = Path("listening/classical_v3_structural")
+          out.mkdir(parents=True, exist_ok=True)
+          package = resolve(snapshot_for("Classical"), "CLASSICAL_PERIOD_ORCHESTRAL")
+          plan = compile_plan(package, tempo_bpm=112, meter="4/4", mode="quick", seed=0)
+          summary = validate_plan(plan)
+          (out / "Classical_V3_Structural_Plan_seed0.json").write_text(json.dumps(plan, indent=2) + "\n")
+          (out / "Classical_V3_Structural_Validation_seed0.json").write_text(json.dumps(summary, indent=2) + "\n")
+          print(json.dumps(summary, indent=2))
+          PY
+
+      - name: Upload structural artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Classical_V3_Structural_Compiler
+          path: listening/classical_v3_structural/*.json
+          if-no-files-found: error

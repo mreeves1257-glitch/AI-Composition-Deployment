@@ -14,7 +14,8 @@ spec=importlib.util.spec_from_file_location('theory_engine',THEORY_PATH)
 mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
 TheoryEngine=mod.TheoryEngine
 engine=TheoryEngine()
-profiles=json.loads(PROFILE_PATH.read_text())['profiles']
+from genre_contract_v3_execution_bridge import all_snapshots, execution_packet as v3_execution_packet
+profiles=all_snapshots()
 
 NOTE_PC={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 def midi(note:str,octave:int)->int: return 12*(octave+1)+NOTE_PC[note]
@@ -199,9 +200,12 @@ def resolve_genre_parts(name, tmpl, profile):
 VARIANT={name:i for i,name in enumerate(BASE)}
 
 def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int=0):
+    v3_packet=v3_execution_packet(name)
     if name == 'Classical':
         from classical_composition import build_classical_setup
-        return build_classical_setup(profile, mode, creation_seed)
+        setup=build_classical_setup(profile, mode, creation_seed)
+        setup['genre_contract_v3_execution_packet']=v3_packet
+        return setup
     policy=profile['resolution_policy']
     if policy!='AUTOMATIC_BASELINE_ALLOWED':
         return {'genre_name':name,'profile_id':profile['profile_id'],'status':'CONTROLLED_INPUT_REQUIRED','resolution_policy':policy,'events':[]}
@@ -251,6 +255,7 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
         'execution_template':tmpl,'tempo_bpm':bpm,'meter':meter,'bars':bars,'form':form,'creation_seed':creation_seed,
         'profile_required_fields_sha256':h({k:profile[k] for k in profiles_meta_required}),
         'pre_generation_genre_plan':generation_plan,
+        'genre_contract_v3_execution_packet':v3_packet,
         'communication_blueprint':communication_blueprint,
         'theory_request':req,'theory_status':ctx['status'],'palette':parts,
         'ensemble_architecture':ensemble_expansion.get('spec'),

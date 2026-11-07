@@ -1,0 +1,38 @@
+{
+  "schema": "ROCK_MODE_A_HARMONY_CAP_POLICY_DOMINANCE_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "harmony_duration_policy": {
+    "close_attack_beats": 0.105,
+    "rapid_phrase_beats": 0.82,
+    "release_gap_beats": 0.15,
+    "ring_fraction": 0.84,
+    "max_ringing_beats": 2.8
+  },
+  "canonical_long_spacing_example": {
+    "next_attack_spacing_beats": 4,
+    "spacing_fraction_result_beats": 3.36,
+    "release_gap_limit_beats": 3.85,
+    "canonical_selected_duration_beats": 2.8,
+    "controlling_term": "max_ringing_beats"
+  },
+  "candidate_long_spacing_example": {
+    "next_attack_spacing_beats": 4,
+    "spacing_fraction_result_beats": 3.36,
+    "release_gap_limit_beats": 3.85,
+    "candidate_max_ringing_beats": 2,
+    "candidate_selected_duration_beats": 2,
+    "controlling_term": "candidate_max_ringing_beats"
+  },
+  "interpretation": [
+    "For the repeated four-beat HARMONY spacing that creates the extreme long-ring gestures, the 0.84 ring fraction and 0.15 release-gap rules would both allow a duration longer than 2.8 beats.",
+    "The current 2.8-beat result is therefore governed by the hard max_ringing_beats ceiling rather than by spacing or release-gap logic.",
+    "The 2.0 diagnostic changes only that ceiling. It does not alter ring_fraction, release_gap_beats, rapid_phrase logic, close-attack logic, lead behavior, or event identity.",
+    "This makes the 2.0 test a direct revalidation of one previously project-authored constant, not a rewrite of the performance model."
+  ],
+  "canonical_policy_modified": false,
+  "reasoning_engine_used": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "FULL40_2_0_VS_2_8_LISTENING"
+}

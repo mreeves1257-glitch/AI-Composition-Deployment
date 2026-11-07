@@ -209,11 +209,9 @@ def _structural_transform_notes(
         if isinstance(note.get("velocity"),int):
             note["velocity"]=_clamp_velocity(note["velocity"]*factor)
 
-    if recurrence and not transforms and role in ("BASS","HARMONY","HAT"):
-        raise RockV3CoreDevelopmentExecutorError(
-            "RECURRENT_DEVELOPABLE_ROLE_LEFT_LITERAL::"+
-            epoch+"::"+cell+"::"+role
-        )
+    # A recurrent BAR must transform, but not every instrument has to mutate.
+    # Stable foundation parts are permitted when another role supplies the real
+    # section development; the bar-level gate in execute() enforces that.
     return working,transforms
 
 

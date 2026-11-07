@@ -1,0 +1,36 @@
+{
+  "schema": "GROWLYBASS_VICIOUS_SUSTAIN_GATE_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "exact_resource": {
+    "resource_id": "KARORYFER_GROWLYBASS_V1_002",
+    "version": "1.002",
+    "archive_sha256": "b92dca75494fa39d6e8d8b8addaabfe70c5aaa59b5f9a0f624be6de51a2374bc",
+    "mapping": "growlybass_vicious.sfz",
+    "sample_references": 86,
+    "unique_samples": 86
+  },
+  "note_length_characterization": {
+    "workflow_run": 42394927340,
+    "artifact_id": 13583152249,
+    "artifact_digest": "sha256:a80bb4c2528f3505cfd67ccdab552dc8bf334bf6be6e79f7cd3c447b55df0668",
+    "classification": "NOTE_LENGTH_NONRESPONSIVE_OR_STACCATO",
+    "short_note_seconds": 0.25,
+    "long_note_seconds": 2,
+    "short_active_end_seconds": 0.34,
+    "long_active_end_seconds": 0.48,
+    "active_end_delta_seconds": 0.14,
+    "note_length_response_for_current_mapping": false
+  },
+  "musical_ab_run": {
+    "workflow_run": 42394879894,
+    "technical_status": "PASS",
+    "authority_for_bass_sustain_judgment": "REJECTED",
+    "reason": "The exact current bass mapping does not materially express note-length differences, so successful A/B rendering cannot establish musical preference for the bass sustain policy."
+  },
+  "next_gate": "CHARACTERIZE_SUSTAIN_CAPABLE_GROWLYBASS_CLEAN_AND_DIRTY_MAPPINGS_WITHOUT_REGISTRY_CHANGE",
+  "target_registry_modified": false,
+  "canonical_policy_modified": false,
+  "live_runtime_promoted": false,
+  "reasoning_engine_used": false
+}

@@ -130,14 +130,7 @@ jobs:
             codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "$f")"
             rate="$(ffprobe -v error -select_streams a:0 -show_entries stream=sample_rate -of default=nw=1:nk=1 "$f")"
             channels="$(ffprobe -v error -select_streams a:0 -show_entries stream=channels -of default=nw=1:nk=1 "$f")"
-            python - <<PY
-d=float("$duration")
-assert d>1.0, ("DURATION_TOO_SHORT","$f",d)
-assert "$codec"=="mp3", ("CODEC","$f","$codec")
-assert int("$rate")==44100, ("RATE","$f","$rate")
-assert int("$channels")==2, ("CHANNELS","$f","$channels")
-print("VALID_MP3","$f",d)
-PY
+            python -c 'import sys; d=float(sys.argv[1]); assert d>1.0; assert sys.argv[2]=="mp3"; assert int(sys.argv[3])==44100; assert int(sys.argv[4])==2; print("VALID_MP3",sys.argv[5],d)' "$duration" "$codec" "$rate" "$channels" "$f"
           done
 
       - name: Write role-isolation manifest

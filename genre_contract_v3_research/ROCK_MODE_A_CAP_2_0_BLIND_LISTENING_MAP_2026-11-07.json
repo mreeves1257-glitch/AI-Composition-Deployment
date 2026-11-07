@@ -1,0 +1,26 @@
+{
+  "schema": "ROCK_MODE_A_CAP_2_0_BLIND_LISTENING_MAP_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "purpose": "Blind human comparison of the verified full-40 Rock HARMONY sustain candidates.",
+  "mapping": {
+    "BLIND_A_FULL40": "CAP_2_0_WITH_TREATED_LEAD_FULL40",
+    "BLIND_B_FULL40": "CURRENT_2_8_WITH_TREATED_LEAD_FULL40",
+    "BLIND_A_FOCUSED": "CAP_2_0_FOCUSED_MONTAGE",
+    "BLIND_B_FOCUSED": "CURRENT_2_8_FOCUSED_MONTAGE"
+  },
+  "sha256": {
+    "BLIND_A_FULL40": "0494343379a287dc683629413b799e07179915aa95b643a89ff398cc9ddf6967",
+    "BLIND_B_FULL40": "8407dfe93ac9029aa7aaec6717982417aa470d18a2cc6e3c61f05a32e35386f4",
+    "BLIND_A_FOCUSED": "697aba9eff636707d70c8315e4e073ed8803617212e065603fcd80adbe864080",
+    "BLIND_B_FOCUSED": "ab6db4b0e7156c3e89070dfd248bfd7bbfd203024389de5d62b2220d13ce9975"
+  },
+  "audio_changed": false,
+  "remixed": false,
+  "normalized": false,
+  "transcoded": false,
+  "canonical_policy_modified": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "USER_BLIND_A_B_JUDGMENT"
+}

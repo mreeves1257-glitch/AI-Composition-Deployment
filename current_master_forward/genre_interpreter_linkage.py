@@ -47,18 +47,35 @@ def interpret_genre(name, profile, requested_parts):
     in link_genre after generation, but the musical instructions exist first.
     """
     installed = profile.get('genre_execution_pipeline')
-    # The profile owns these six musical interpretation stages.  The shared
+    v3_source = profile.get('_genre_contract_v3_source') or {}
+    v3_structured = profile.get('_genre_contract_v3') or {}
+    # The profile owns these six musical interpretation stages. The shared
     # INSTRUMENT_SEPARATION_REGISTRATION gate is an engine-level routing integrity
     # stage inserted after realization; it does not become a second interpreter.
     required = ['GENRE_RECOGNITION','GENRE_INTERPRETER','ADAPTIVE_ARRANGEMENT',
                 'MUSICAL_PERFORMANCE_REALIZATION','INSTRUMENT_CAPABILITY_RESOURCE_RESOLVER',
                 'VERIFIED_RENDERING_HANDOFF']
-    if not installed or installed.get('owner_profile_id') != profile.get('profile_id'):
-        raise ValueError('GENRE_SPECIFIC_INTERPRETER_NOT_INSTALLED')
-    if installed.get('interpreter_count') != 1 or installed.get('stages') != required:
-        raise ValueError('GENRE_SPECIFIC_INTERPRETER_SEQUENCE_INVALID')
     if not profile or not profile.get('profile_id'):
         raise ValueError('GENRE_INTERPRETER_PROFILE_MISSING')
+
+    if v3_source:
+        # V3 is a new profile format, not a missing legacy interpreter. Accept it
+        # only when the canonical source marker and structured payload agree.
+        if v3_source.get('genre_name') != name:
+            raise ValueError('GENRE_V3_INTERPRETER_SOURCE_NAME_MISMATCH')
+        if v3_source.get('source_profile_id') not in (None, profile.get('profile_id')):
+            raise ValueError('GENRE_V3_INTERPRETER_SOURCE_PROFILE_MISMATCH')
+        required_v3=('musical_grammar','ensemble','performance','safeguards','variant_resolution')
+        missing=[key for key in required_v3 if v3_structured.get(key) is None]
+        if missing:
+            raise ValueError('GENRE_V3_INTERPRETER_STRUCTURED_SECTION_MISSING:'+','.join(missing))
+        interpreter_mode='GENRE_CONTRACT_V3_STRUCTURED'
+    else:
+        if not installed or installed.get('owner_profile_id') != profile.get('profile_id'):
+            raise ValueError('GENRE_SPECIFIC_INTERPRETER_NOT_INSTALLED')
+        if installed.get('interpreter_count') != 1 or installed.get('stages') != required:
+            raise ValueError('GENRE_SPECIFIC_INTERPRETER_SEQUENCE_INVALID')
+        interpreter_mode='LEGACY_DECLARED_PIPELINE'
     if not requested_parts or len(requested_parts) != len(set(requested_parts)):
         raise ValueError('GENRE_INTERPRETER_PARTS_INVALID')
     from genre_recognition_fingerprints import build as build_recognition_fingerprint, validate as validate_recognition_fingerprint
@@ -71,6 +88,9 @@ def interpret_genre(name, profile, requested_parts):
         'genre_recognition_fingerprint': recognition_fingerprint,
         'arrangement_policy': 'GENRE_SPECIFIC_NO_GLOBAL_PLAYER_LIMIT',
         'interpretation_stage': 'PRE_GENERATION',
+        'interpreter_mode': interpreter_mode,
+        'structured_v3_contract': dict(v3_structured) if v3_source else None,
+        'genre_contract_v3_source': dict(v3_source) if v3_source else None,
     }
 
 

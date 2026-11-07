@@ -568,7 +568,8 @@
           "Separate Baroque, Classical-period, Romantic, chamber and later orchestral variants before runtime approval.",
           "Define tuba/percussion population by variant rather than forcing one universal orchestra.",
           "Derive foreground ownership priors separately by period/composer/variant instead of treating the aggregate corpus as universal.",
-          "Derive full activity percentages from score/activity data; Hauptstimme measures main-theme foreground, not total playing time."
+          "Derive full activity percentages from score/activity data; Hauptstimme measures main-theme foreground, not total playing time.",
+          "Extract exact activity percentages from the public activity annotation archive when raw archive access is available; filter instrumental/orchestral subsets before runtime priors."
         ]
       },
       "musical_grammar": {
@@ -651,8 +652,9 @@
           "note": "Do not infer presence probability directly from one orchestra roster."
         },
         "activity_percent": {
-          "status": "TO_DERIVE_FROM_SCORE_AND_ACTIVITY_CORPORA",
-          "note": "Must measure how much each section actually plays; player count alone is not activity."
+          "status": "EMPIRICAL_DATASET_IDENTIFIED__RAW_PERCENTAGE_EXTRACTION_PENDING",
+          "source_reference": "ensemble.activity_empirical_reference",
+          "rule": "Total playing-time/activity share is distinct from main-theme foreground ownership."
         },
         "musical_agency_percent": {
           "status": "EMPIRICAL_REFERENCE_ADDED__VARIANT_PRIORS_STILL_PENDING",
@@ -751,6 +753,37 @@
             "Resolve by period/composer/variant before converting corpus evidence into runtime priors.",
             "Population mass and foreground ownership remain separate dimensions."
           ]
+        },
+        "activity_empirical_reference": {
+          "source": "Krause & Müller 2023, Hierarchical Classification for Instrument Activity Detection in Orchestral Music Recordings",
+          "dataset_scope": "Approximately 14 hours of orchestral/opera recordings with aligned frame-level activity annotations.",
+          "frame_classes": [
+            "WW",
+            "BR",
+            "TMP",
+            "VOC",
+            "ST",
+            "Fl",
+            "Ob",
+            "Cl",
+            "Bn",
+            "Hn",
+            "Tpt",
+            "Fe",
+            "Ma",
+            "Vn",
+            "Va",
+            "Vc",
+            "Db"
+          ],
+          "definition": "Activity delta_c = fraction of reference frames in which class c is active.",
+          "published_observation": "Strings and woodwinds are the most common classes; many same-family instruments are jointly active for substantial portions of recordings.",
+          "current_use": "EVIDENCE_SOURCE_REGISTERED__RAW_PERCENTAGE_EXTRACTION_PENDING",
+          "guardrails": [
+            "Do not invent exact activity percentages from prose or a figure.",
+            "Do not mix opera/vocal activity with instrumental-orchestra activity without subset filtering.",
+            "Use activity share separately from population mass and Hauptstimme foreground ownership."
+          ]
         }
       },
       "performance": {
@@ -783,13 +816,15 @@
           "MusicNet and URMP (instrument/note participation research targets)",
           "DCML corpora (expert harmony/style-period research target)",
           "Orchestral instrument-activity datasets (activity-percentage research target)",
-          "OpenScore Orchestra / Hauptstimme: 72 non-B-Minor-Mass annotation files analyzed for duration-weighted instrumental foreground ownership"
+          "OpenScore Orchestra / Hauptstimme: 72 non-B-Minor-Mass annotation files analyzed for duration-weighted instrumental foreground ownership",
+          "Krause & Müller 2023 orchestral instrument-activity dataset: ~14 hours, frame-level 18-class annotations"
         ],
         "source_confidence": {
           "current_profile": "MEDIUM__USEFUL_BASELINE_NOT_COMPLETE",
           "current_population_reference": "MEDIUM_HIGH_FOR_NAMED_FORMATION__NOT_UNIVERSAL",
           "future_activity_foreground_statistics": "PENDING",
-          "hauptstimme_foreground_aggregate": "HIGH_FOR_CORPUS_REFERENCE__NOT_UNIVERSAL_RUNTIME_TARGET"
+          "hauptstimme_foreground_aggregate": "HIGH_FOR_CORPUS_REFERENCE__NOT_UNIVERSAL_RUNTIME_TARGET",
+          "orchestral_activity_dataset": "HIGH_FOR_ACTIVITY_METHOD__EXACT_FILTERED_PERCENTAGES_PENDING"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
@@ -12866,5 +12901,5 @@
     "Validate each candidate runtime contract structurally and by listening before approval."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED"
+  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED__ACTIVITY_DATASET_REGISTERED"
 }

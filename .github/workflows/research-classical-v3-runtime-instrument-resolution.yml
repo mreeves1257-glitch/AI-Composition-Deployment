@@ -1,0 +1,167 @@
+name: Research Classical V3 Runtime Instrument Resolution
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - "current_master_forward/CURRENT_MASTER_SYNC.json"
+      - "current_master_forward/engine.py"
+      - "current_master_forward/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
+      - "current_master_forward/classical_composition.py"
+      - "current_master_forward/classical_v3_variant_package.py"
+      - "current_master_forward/classical_v3_structural_compiler.py"
+      - "current_master_forward/classical_v3_note_realizer.py"
+      - "current_master_forward/classical_v3_orchestration_binder.py"
+      - "current_master_forward/classical_v3_resource_mapper.py"
+      - "current_master_forward/genre_contract_v3_execution_bridge.py"
+      - "current_master_forward/instrument_separator.py"
+      - "current_master_forward/instrument_program.py"
+      - "current_master_forward/instrument_library.json"
+      - ".github/workflows/research-classical-v3-runtime-instrument-resolution.yml"
+  workflow_dispatch:
+
+jobs:
+  classical-runtime-resolution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct preserved Composer runtime package
+        run: |
+          python - <<'PY'
+          import base64,hashlib,io,json,tarfile
+          from pathlib import Path
+          root=Path("connected_package")
+          manifest=json.loads((root/"manifest.json").read_text())
+          archive=bytearray()
+          for part in manifest["parts"]:
+              data=base64.b64decode((root/part["name"]).read_text(),validate=True)
+              assert hashlib.sha256(data).hexdigest()==part["sha256"]
+              archive.extend(data)
+          assert hashlib.sha256(archive).hexdigest()==manifest["archive_sha256"]
+          dest=Path("composer/runtime")
+          dest.mkdir(parents=True,exist_ok=True)
+          tarfile.open(fileobj=io.BytesIO(archive),mode="r:gz").extractall(
+              dest,filter="data")
+          print("PRESERVED_RUNTIME_RECONSTRUCTED")
+          PY
+          cp tuning_runtime_overrides/*.py composer/runtime/
+
+      - name: Apply current no-reasoning diagnostic overlay
+        run: |
+          python - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          overlay=Path("current_master_forward")
+          runtime=Path("composer/runtime")
+          manifest=json.loads((overlay/"CURRENT_MASTER_SYNC.json").read_text())
+          assert manifest["master_policy"]=="ONE_MASTER_FORWARD_ONLY"
+          assert manifest["genre_count"]==55
+          diag=manifest["diagnostic_v3_runtime_sync"]
+          assert diag["reasoning_engine_included"] is False
+          for name in manifest["runtime_files"]:
+              src=overlay/name
+              assert src.is_file(), "CURRENT_MASTER_FORWARD_FILE_MISSING:"+name
+              shutil.copy2(src,runtime/name)
+          (runtime/"CURRENT_MASTER_SYNC.json").write_text(
+              json.dumps(manifest,indent=2)+"\n")
+          print("V3_DIAGNOSTIC_OVERLAY_APPLIED",len(manifest["runtime_files"]))
+          PY
+
+      - name: Verify Classical V3 diagnostic modules compile
+        run: |
+          python -m py_compile             composer/runtime/engine.py             composer/runtime/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py             composer/runtime/classical_composition.py             composer/runtime/classical_v3_variant_package.py             composer/runtime/classical_v3_structural_compiler.py             composer/runtime/classical_v3_note_realizer.py             composer/runtime/classical_v3_orchestration_binder.py             composer/runtime/classical_v3_resource_mapper.py
+
+      - name: Run reconstructed Composer to instrument-resolution stop
+        env:
+          PYTHONPATH: ${{ github.workspace }}/composer/runtime
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,tempfile
+          from engine import AICompositionEngine
+
+          with tempfile.TemporaryDirectory() as tmp:
+              engine=AICompositionEngine(
+                  history_path=Path(tmp)/"history.json")
+              result=engine.run(
+                  "Classical", mode="quick", audio_backend="PRESERVED")
+
+          assert result["status"]=="V3_SYMBOLIC_INSTRUMENT_RESOLUTION_PASS", result
+          assert result["stage"]=="V3_SYMBOLIC_STAGE_3_TO_4_DIAGNOSTIC"
+          assert result["audio_rendered"] is False
+          assert result["audio_authority"] is False
+          assert result["reasoning_engine_used"] is False
+          assert result["live_runtime_promoted"] is False
+
+          theory=result["theory_package"]
+          assert theory["execution_template"]=="classical_v3_symbolic_orchestration"
+          assert theory["legacy_note_generator_used"] is False
+          assert theory["legacy_classical_generator_executed"] is False
+          assert theory["v3_symbolic_diagnostic_only"] is True
+          assert theory["audio_authority"] is False
+
+          note=theory["classical_v3_abstract_note_validation"]
+          assert note["support_harmony_attack_pass_pct"]==100
+          assert note["structural_melody_chord_tone_pct"]==100
+          assert note["cadence_target_pct"]==100
+          assert note["melody_with_three_voice_support_overlap_pct"]==100
+
+          orch=theory["classical_v3_canonical_orchestration_validation"]
+          assert orch["status"]=="PASS"
+          assert orch["foreground_unique_section_count"]>=3
+          assert orch["brass_foreground_default"] is False
+          assert orch["percussion_foreground_default"] is False
+
+          authority=theory["genre_v3_instrument_authority"]
+          assert authority["authority"]=="CLASSICAL_V3_VARIANT_CANONICAL_ORCHESTRATION"
+          assert authority["fallback_used"] is False
+
+          resolution=result["instrument_package"][
+              "instrument_separator_resolution"]
+          assert resolution["status"]=="PASS"
+          assert resolution["missing_registrations"]==[]
+          assert resolution["extra_registrations"]==[]
+
+          summary={
+              "status":"PASS",
+              "genre":"Classical",
+              "genre_profile_source":result["genre_profile_source"],
+              "variant":theory["classical_v3_variant_package"]["variant_id"],
+              "execution_template":theory["execution_template"],
+              "legacy_note_generator_used":theory["legacy_note_generator_used"],
+              "legacy_classical_generator_executed":
+                  theory["legacy_classical_generator_executed"],
+              "abstract_note_validation":note,
+              "orchestration_validation":orch,
+              "instrument_authority":authority,
+              "separator_resolution":resolution,
+              "resolved_instrument_ids":sorted({
+                  p.get("instrument_id")
+                  for p in result["instrument_package"].get("profiles",[])
+                  if p.get("instrument_id")
+              }),
+              "audio_rendered":result["audio_rendered"],
+              "reasoning_engine_used":result["reasoning_engine_used"],
+              "live_runtime_promoted":result["live_runtime_promoted"],
+              "next_gate":"HUMAN_MUSICAL_REVALIDATION_BEFORE_ANY_AUDIO",
+          }
+          out=Path(
+              "genre_contract_v3_research/"
+              "CLASSICAL_V3_RUNTIME_INSTRUMENT_RESOLUTION_AUDIT.json")
+          out.write_text(json.dumps(summary,indent=2)+"\n")
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Upload Classical runtime resolution audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: Classical_V3_Runtime_Instrument_Resolution_Audit
+          path: genre_contract_v3_research/CLASSICAL_V3_RUNTIME_INSTRUMENT_RESOLUTION_AUDIT.json
+          if-no-files-found: error

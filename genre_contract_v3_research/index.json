@@ -681,16 +681,22 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "CLASSICAL_USER_LISTENING_REVIEW",
+  "next_phase": "CLASSICAL_COMBINED_COMPOSITION_LISTENING__THEN_ORCHESTRATION_BINDING",
   "classical_checkpoint": {
-    "foreground_period_split": "ADDED_TO_ALL_55_MASTER",
-    "activity_period_split": "ADDED_TO_ALL_55_MASTER",
-    "candidate_role_priors": "DEFINED_WITH_EVIDENCE_TIERS",
-    "structural_variant_validation": "PASS_AFTER_REDUNDANT_ACTIVITY_FILTER_FIX",
-    "structural_fix_commit": "719bc4aa12d4b01404c3aa0583febdcc335f456e",
-    "paired_audio_render": "COMPLETE_IN_CONVERSATION_CONTAINER",
-    "paired_audio_master_checkpoint_commit": "26831cbf106f5b0188fe32793867d7aaacbba9c1",
-    "human_listening_review": "PENDING",
-    "live_runtime_status": "UNTOUCHED"
+    "foreground_period_split": "DONE",
+    "activity_period_split": "DONE",
+    "orchestration_structural_validation": "PASS",
+    "orchestration_objective_audio": "PASS",
+    "abstract_period_grammar": "PASS",
+    "satb_voice_leading": "PASS",
+    "topline_melody_evidence": "DONE",
+    "melody_structural_harness": "READY",
+    "melody_grammar_binding": "STRUCTURAL_PROTOTYPE_PASS",
+    "grammar_only_audio": "READY_FOR_HUMAN_LISTENING",
+    "melody_only_audio": "READY_FOR_HUMAN_LISTENING",
+    "combined_grammar_melody_audio": "READY_FOR_HUMAN_LISTENING",
+    "combined_orchestration_binding": "NOT_STARTED",
+    "live_runtime_status": "UNTOUCHED",
+    "latest_master_commit": "1b55639b3ad2aadcd57d9472b1cba70f7dd2bd4c"
   }
 }

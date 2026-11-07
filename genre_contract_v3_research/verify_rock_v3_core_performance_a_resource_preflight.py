@@ -20,7 +20,7 @@ if str(RUNTIME) not in sys.path:
     sys.path.insert(0,str(RUNTIME))
 
 from genre_contract_v3_execution_bridge import snapshot_for
-from rock_v3_core_performance_a import execute as perform_a
+from rock_v3_core_performance_executor import execute as perform_a, MODE
 from instrument_separator import separate_events, verify_instrument_resolution
 from instrument_program import InstrumentProgram
 from target_program import TargetProgram
@@ -29,10 +29,10 @@ from production_resource_resolver import resolve_bindings
 
 
 def main():
-    performed=perform_a()
+    performed=perform_a(MODE)
     if performed.get("status")!="PASS":
         raise RuntimeError("ROCK_MODE_A_NOT_READY_FOR_RESOURCE_PREFLIGHT")
-    if performed.get("performance_mode")!="A_GUITAR_DURATION_ONLY":
+    if performed.get("mode")!=MODE:
         raise RuntimeError("ROCK_RESOURCE_PREFLIGHT_WRONG_PERFORMANCE_MODE")
     if performed.get("audio_generated") is not False:
         raise RuntimeError("ROCK_RESOURCE_PREFLIGHT_RECEIVED_AUDIO")
@@ -155,7 +155,7 @@ def main():
         "diagnostic_only":True,
         "genre":"ROCK",
         "profile_id":"ROCK_CORE_V2",
-        "performance_mode":"A_GUITAR_DURATION_ONLY",
+        "performance_mode":MODE,
         "bar_count":performed["bar_count"],
         "event_count":performed["event_count"],
         "resource_identity_resolution":"PASS",

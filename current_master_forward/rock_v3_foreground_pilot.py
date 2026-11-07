@@ -171,9 +171,11 @@ def _compose_bar(
 
 def realize()->dict[str,Any]:
     foreground=compile_authority("ROCK")
-    variant_gate=resolve_rock_variant(None)
-    if variant_gate.get("status")!="ROCK_VARIANT_REQUIRED":
-        raise RockV3ForegroundPilotError("ROCK_VARIANT_GATE_DID_NOT_BLOCK_BROAD_ROCK")
+    variant_gate=resolve_rock_variant(None,variant_cues_present=False)
+    if variant_gate.get("status")!="ROCK_CORE_BASELINE_ALLOWED__NO_VARIANT_CUES":
+        raise RockV3ForegroundPilotError("ROCK_CORE_BASELINE_NOT_ALLOWED_WITHOUT_VARIANT_CUES")
+    if variant_gate.get("family_baseline_music_allowed") is not True:
+        raise RockV3ForegroundPilotError("ROCK_CORE_BASELINE_PERMISSION_MISSING")
     if foreground.get("profile_id")!=PROFILE_ID:
         raise RockV3ForegroundPilotError("ROCK_PROFILE_ID_DRIFT")
     if foreground.get("execution_status")!="STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED":
@@ -272,6 +274,7 @@ def realize()->dict[str,Any]:
         "rock_variant_gate":variant_gate,
         "resolved_rock_variant":None,
         "variant_specific_music_ready":False,
+        "family_baseline_music_allowed":True,
         "song_form_expansion_ready":False,
         "lead_instrument_id":LEAD_INSTRUMENT_ID,
         "lead_register_midi":list(LEAD_REGISTER),
@@ -288,7 +291,7 @@ def realize()->dict[str,Any]:
         "legacy_note_generator_used":False,
         "prior_project_melodic_vocabulary":"ROCK_MELODIC_AUTHOR_V1",
         "new_candidate_decision":"SECTION_TO_FOREGROUND_SCHEDULE_REQUIRES_LISTENING_VALIDATION",
-        "promotion_gate":"ROCK_VARIANT_REQUIRED__THEN_VARIANT_FORM_RESOURCE_AND_LISTENING_GATES",
+        "promotion_gate":"ROCK_CORE_FORM_EXPANSION__OR_VARIANT_OVERRIDE_IF_CUES__THEN_RESOURCE_AND_LISTENING_GATES",
     }
     result["execution_sha256"]=_sha({k:v for k,v in result.items() if k!="execution_sha256"})
     return result

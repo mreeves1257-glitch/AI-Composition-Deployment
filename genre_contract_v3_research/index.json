@@ -42,7 +42,7 @@
     {
       "genre_name": "Classical",
       "research_status": "V3_QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCES_ADDED__PERIOD_SPLIT_PENDING",
-      "comparison_status": "QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCE_ADDED__PERIOD_SPLIT_PENDING",
+      "comparison_status": "QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCE_COMPLETE__PERIOD_SPLIT_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "RESEARCH_REFERENCE_AVAILABLE",

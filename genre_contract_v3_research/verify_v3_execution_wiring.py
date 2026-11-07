@@ -18,7 +18,6 @@ if str(FORWARD) not in sys.path:
 
 from genre_contract_v3_execution_bridge import load_master, snapshot_for, execution_packet
 from genre_selector import GenreSelector
-from genre_contract_v3_instrument_authority import resolve as resolve_v3_instrument_authority
 from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority
 
 V3_PATH = ROOT / "genre_contract_v3_research" / "GENRE_CONTRACT_V3_ALL_55.json"

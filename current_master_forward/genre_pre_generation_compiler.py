@@ -80,6 +80,58 @@ SUPPORTED_PRODUCTION_METERS = ('4/4','3/4','2/4','6/8')
 SUPPORTED_FORMS = ('verse_chorus','aba','through_composed')
 
 
+V3_STRUCTURED_KEYS = (
+    'musical_grammar', 'ensemble', 'performance', 'production',
+    'safeguards', 'variant_resolution', 'quantitative_evidence_status',
+)
+
+
+def compile_v3_structured_contract(profile: dict[str, Any]) -> dict[str, Any]:
+    """Carry the structured Genre Contract V3 payload without flattening it.
+
+    This is intentionally non-generative. It preserves the genre intelligence
+    for downstream execution stages while legacy semantic tags remain available
+    as an explicit compatibility fallback.
+    """
+    source = profile.get('_genre_contract_v3_source') or {}
+    v3 = profile.get('_genre_contract_v3') or {}
+    if not source or not isinstance(v3, dict):
+        return {
+            'status': 'LEGACY_PROFILE_ONLY',
+            'source': None,
+            'sections': {},
+            'section_presence': {},
+        }
+
+    sections = {
+        key: json.loads(json.dumps(v3.get(key), default=str))
+        for key in V3_STRUCTURED_KEYS
+        if key in v3
+    }
+    presence = {key: sections.get(key) is not None for key in V3_STRUCTURED_KEYS}
+    required = ('musical_grammar', 'ensemble', 'performance', 'variant_resolution')
+    missing = [key for key in required if not presence.get(key)]
+    if missing:
+        raise ValueError('GENRE_V3_STRUCTURED_SECTION_MISSING::' + ','.join(missing))
+
+    payload = {
+        'status': 'PASS',
+        'source': 'GENRE_CONTRACT_V3_ALL_55',
+        'genre_name': source.get('genre_name'),
+        'profile_id': profile.get('profile_id'),
+        'contract_schema': source.get('contract_schema'),
+        'contract_sha256': source.get('contract_sha256'),
+        'research_status': source.get('research_status'),
+        'approved_for_runtime': source.get('approved_for_runtime'),
+        'sections': sections,
+        'section_presence': presence,
+        'legacy_semantic_fallback_allowed': True,
+        'rule': 'PRESERVE_STRUCTURED_V3_AUTHORITY_BEFORE_ANY_LEGACY_TAG_FALLBACK',
+    }
+    payload['structured_sha256'] = _hash(payload)
+    return payload
+
+
 def _hash(value: Any) -> str:
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), default=str).encode()).hexdigest()
 
@@ -202,6 +254,7 @@ def compile_generation_plan(profile: dict[str, Any], baseline: tuple, creation_s
     """
     tonic, quality, fallback_meter, fallback_bpm, fallback_form, fallback_bass = baseline
     contract = compile_semantic_contract(profile)
+    v3_structured = compile_v3_structured_contract(profile)
     semantic_basis = {
         'meters': contract['meters'], 'tempo_range': contract['tempo_range'],
         'forms': contract['forms'], 'tags': contract['tags'],
@@ -235,10 +288,13 @@ def compile_generation_plan(profile: dict[str, Any], baseline: tuple, creation_s
 
     plan = {
         'status': 'PASS',
-        'source': 'GENRE_PROFILE_AUTHORITY_PRE_GENERATION',
+        'source': ('GENRE_CONTRACT_V3_STRUCTURED_PRE_GENERATION' if v3_structured.get('status') == 'PASS' else 'GENRE_PROFILE_AUTHORITY_PRE_GENERATION'),
         'profile_id': profile.get('profile_id'),
+        'structured_v3_contract': v3_structured,
+        'structured_v3_contract_sha256': v3_structured.get('structured_sha256'),
         'semantic_contract': semantic_basis,
         'semantic_tags': contract['tags'],
+        'semantic_tag_role': 'LEGACY_EXECUTION_FALLBACK',
         'tempo_bpm': int(bpm),
         'meter': meter,
         'form': form,

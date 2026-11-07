@@ -455,6 +455,47 @@ def _spatial_choreography_plan(
     }
 
 
+def _low_end_interaction_plan(tags: set[str], state: ComposerState) -> dict[str, Any]:
+    """Coordinate kick and bass musically before downstream sound realization."""
+    section = _norm_section(state.section)
+    instructions = [
+        "LOCK_KICK_AND_BASS_ON_SELECTED_STRUCTURAL_ACCENTS",
+        "ALLOW_BASS_TO_SUSTAIN_OR_MOVE_THROUGH_SPACE_AFTER_KICK_IMPACT",
+        "USE_INTENTIONAL_GAPS_SO_EACH_LOW_END_EVENT_HAS_PHYSICAL_DEFINITION",
+        "AVOID_CONSTANT_FULL_UNISON_UNLESS THE_GENRE_IDENTITY REQUIRES IT",
+        "AVOID_INDEPENDENT_OVERACTIVITY_THAT_TURNS_LOW_END_INTO MUD",
+        "PRESERVE_KICK_AS_IMPACT_AND_BASS_AS_DEPTH",
+    ]
+
+    relationship = "LOCK_AND_RELEASE"
+    if "syncopated" in tags or "offbeat" in tags:
+        relationship = "INTERLOCK_AND_ANSWER"
+        instructions.append("LET_SYNCOPATION_CREATE_KICK_BASS_CONVERSATION_WITHOUT LOSING DOWNBEAT_AUTHORITY")
+    if "four_floor" in tags:
+        relationship = "STEADY_KICK_WITH_BASS_MOVEMENT_AROUND_ANCHOR"
+        instructions.append("KEEP_REPEATED_KICK_STABLE_WHILE BASS CREATES MOTION_BETWEEN_IMPACTS")
+    if "walking" in tags or "walking3" in tags:
+        relationship = "KICK_PUNCTUATES_WHILE_BASS_CARRIES_CONTINUOUS_MOTION"
+        instructions.append("DO_NOT_FORCE_WALKING_BASS_TO DUPLICATE_EVERY_KICK")
+    if "sidechain" in tags:
+        instructions.append("TREAT_DUCKING_AS A CLARITY_HANDOFF_NOT_A LOSS_OF_BASS_POWER")
+    if section == "breakdown":
+        instructions.append("REDUCE_LOW_END_EVENT_DENSITY_BEFORE REDUCING_LOW_END_DEPTH")
+    elif section == "chorus":
+        instructions.append("ALLOW_STRONGER_SHARED_ACCENTS_WHILE KEEPING_INDIVIDUAL_KICK_AND_BASS_IDENTITIES_CLEAR")
+
+    return {
+        "status": "PASS",
+        "relationship": relationship,
+        "kick_job": "PHYSICAL_IMPACT_AND_PULSE_DEFINITION",
+        "bass_job": "SUSTAINED_DEPTH_TONAL_BODY_AND_MOTION",
+        "shared_job": "FORM_A_SINGLE_COHERENT_LOW_END_FOUNDATION_WITH_TWO_DISTINCT_VOICES",
+        "timing_rule": "COORDINATE_ATTACKS_AND_GAPS_AT THE ARRANGEMENT_LEVEL_BEFORE MIXING",
+        "density_rule": "DO_NOT_SOLVE_LOW_END_CLUTTER_BY SIMPLY MAKING EITHER PART WEAKER",
+        "instructions": instructions,
+    }
+
+
 def _instrument_balance_intent(goal: MusicalGoal) -> dict[str, Any]:
     strength = _clamp(float(goal.instrument_balance), 0.0, 1.0)
     complete = strength >= 0.999
@@ -880,6 +921,7 @@ def reason(
         "roles": _role_intent(state, energy_motion, density),
         "kick_character": _kick_character_intent(goal, tags),
         "bass_character": _bass_character_intent(goal, tags),
+        "low_end_interaction": _low_end_interaction_plan(tags, state),
         "instrument_balance": _instrument_balance_intent(goal),
         "spatial_3d_intent": _spatial_3d_intent(state, goal, importance_plan),
         "spatial_choreography": _spatial_choreography_plan(state, energy_motion, importance_plan),
@@ -902,6 +944,7 @@ def reason(
             "DO_NOT_SOLVE_INSTRUMENT_COLLISIONS_BY_DECLARING_ONE_PART_UNIMPORTANT",
             "DO_NOT_EQUATE_KICK_IMPACT_WITH_GREATER_COMPOSITIONAL_IMPORTANCE",
             "DO_NOT_LET_PRONOUNCED_KICK_MASK_THE_RICH_BASS_OR_OTHER_INSTRUMENTS",
+            "DO_NOT_MAKE_KICK_AND_BASS_CONSTANTLY_DUPLICATE_EACH_OTHER_UNLESS THE GENRE_REQUIRES IT",
             "DO_NOT_EQUATE_BASS_DEPTH_WITH_GREATER_COMPOSITIONAL_IMPORTANCE",
             "DO_NOT_ALLOW_RICH_BASS_TO_MASK_OTHER_EQUAL_IMPORTANCE_INSTRUMENTS",
             "DO_NOT_APPLY_PHYSICAL_3D_AUDIO_PROCESSING_INSIDE_REASONING",

@@ -41,8 +41,8 @@
     },
     {
       "genre_name": "Jazz Ballad",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
@@ -53,32 +53,32 @@
     },
     {
       "genre_name": "Jazz Waltz",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Bebop",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Cool Jazz",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Dixieland",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Jazz Fusion",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {

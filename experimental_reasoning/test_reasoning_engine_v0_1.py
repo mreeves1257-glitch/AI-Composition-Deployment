@@ -369,6 +369,37 @@ def test_spatial_choreography_uses_clarity_before_loudness_for_underserved_instr
     assert "BEFORE GAIN" in s["clarity_over_loudness_rule"]
 
 
+def test_low_end_interaction_keeps_kick_and_bass_distinct_but_coherent():
+    state = ComposerState(
+        genre="Funk",
+        profile_id="FUNK_PROFILE",
+        section="Chorus",
+        active_instruments=("kick", "bass", "guitar", "clav"),
+    )
+    packet = reason(state=state, semantic_tags=("syncopated",))
+    validate(packet)
+    p = packet["decisions"]["low_end_interaction"]
+    assert p["relationship"] == "INTERLOCK_AND_ANSWER"
+    assert p["kick_job"] == "PHYSICAL_IMPACT_AND_PULSE_DEFINITION"
+    assert p["bass_job"] == "SUSTAINED_DEPTH_TONAL_BODY_AND_MOTION"
+    assert "TWO_DISTINCT_VOICES" in p["shared_job"]
+    assert "SIMPLY MAKING EITHER PART WEAKER" in p["density_rule"]
+
+
+def test_walking_bass_is_not_forced_to_duplicate_every_kick():
+    state = ComposerState(
+        genre="Swing",
+        profile_id="SWING_PROFILE",
+        section="Verse",
+        active_instruments=("kick", "double_bass", "ride", "piano"),
+    )
+    packet = reason(state=state, semantic_tags=("walking",))
+    validate(packet)
+    p = packet["decisions"]["low_end_interaction"]
+    assert p["relationship"] == "KICK_PUNCTUATES_WHILE_BASS_CARRIES_CONTINUOUS_MOTION"
+    assert any("DO_NOT_FORCE_WALKING_BASS_TO DUPLICATE_EVERY_KICK" in x for x in p["instructions"])
+
+
 def test_hash_detects_mutation():
     state = ComposerState(
         genre="Country",
@@ -403,6 +434,8 @@ if __name__ == "__main__":
         test_kick_and_bass_have_distinct_low_end_jobs,
         test_chorus_spatial_scene_expands_from_verse_without_random_motion,
         test_spatial_choreography_uses_clarity_before_loudness_for_underserved_instrument,
+        test_low_end_interaction_keeps_kick_and_bass_distinct_but_coherent,
+        test_walking_bass_is_not_forced_to_duplicate_every_kick,
         test_hash_detects_mutation,
     ]
     for fn in tests:

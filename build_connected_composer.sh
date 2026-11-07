@@ -32,37 +32,50 @@ assert hashlib.sha256(ap.read_bytes()).hexdigest()==manifest['approved_audio_pip
 (runtime/'CURRENT_MASTER_SYNC.json').write_text(json.dumps(manifest,indent=2)+'\\n')
 print('CURRENT_MASTER_FORWARD_SYNC_APPLIED',manifest['source_checkpoint'],len(manifest['runtime_files']),flush=True)
 FORWARDPY
-python - <<'REASONINGOVERLAYPY'
-import base64,hashlib,json,zlib
+python - <<'REASONINGFORWARDPY'
+import json, shutil
 from pathlib import Path
 
-parts=sorted(Path('all55_reasoning_overlay').glob('part*.b64'))
-assert [p.name for p in parts] == ['part01.b64','part02.b64','part03.b64','part04.b64'], 'ALL55_REASONING_OVERLAY_PARTS_MISSING'
-encoded=''.join(p.read_text().strip() for p in parts)
-compressed=base64.b64decode(encoded,validate=True)
-payload=json.loads(zlib.decompress(compressed).decode('utf-8'))
-assert payload.get('schema')=='AI_COMPOSER_RENDER_DEPLOYMENT_OVERLAY_V1'
-files=payload.get('files',[])
-assert len(files)==12, f'ALL55_REASONING_OVERLAY_FILE_COUNT:{len(files)}'
+source=Path('reasoning_forward')
 runtime=Path('composer/runtime')
-for item in files:
-    rel=Path(item['path'])
-    assert not rel.is_absolute() and '..' not in rel.parts, f'UNSAFE_OVERLAY_PATH:{rel}'
-    data=item['content'].encode('utf-8')
-    actual=hashlib.sha256(data).hexdigest()
-    assert actual==item['sha256'], f'OVERLAY_SOURCE_HASH_MISMATCH:{rel}'
+files=[p for p in source.rglob('*') if p.is_file()]
+assert len(files)==12, f'ALL55_REASONING_FORWARD_FILE_COUNT:{len(files)}'
+for src in files:
+    rel=src.relative_to(source)
     dst=runtime/rel
     dst.parent.mkdir(parents=True,exist_ok=True)
-    dst.write_bytes(data)
-    assert hashlib.sha256(dst.read_bytes()).hexdigest()==item['sha256'], f'OVERLAY_WRITE_HASH_MISMATCH:{rel}'
+    shutil.copy2(src,dst)
+
+required={
+    'AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py':'dedicated_genre_arranger_manifest',
+    'classical_composition.py':'CLASSICAL_REASONING_V0_1_USER_PREFERRED_TRIAL_BASELINE',
+    'controlled_genre_input.py':'musical_reasoning_bridge',
+    'approved_audio_pipeline.py':'genre_style_sound_maps.json',
+    'genre_arranger_packages.py':'reasoning_bridge_active',
+    'genre_reasoning_bridge.py':'GENRE_REASONING_BRIDGE_V1_ALL_55',
+    'genre_v3_overlay.py':'augment_profiles',
+    'genre_v3_safe_overlay.json':'Classical',
+    'genre_style_sound_maps.json':'Big Band',
+    'genre_selector.py':'genre_v3_overlay',
+    'genre_pre_generation_compiler.py':'v3_genre_grammar',
+    'experimental_reasoning/reasoning_engine_v0_1.py':'COMPOSER_MUSICAL_REASONING_ENGINE_V0_1',
+}
+for rel,marker in required.items():
+    p=runtime/rel
+    assert p.is_file(), f'ALL55_REASONING_FORWARD_MISSING:{rel}'
+    assert marker in p.read_text(), f'ALL55_REASONING_FORWARD_MARKER_MISSING:{rel}:{marker}'
+
 (runtime/'ALL55_REASONING_DEPLOYMENT.json').write_text(json.dumps({
     'status':'ALL55_REASONING_WIRED',
     'checkpoint':'2026-11-07',
-    'overlay_file_count':len(files),
-    'files':[{'path':x['path'],'sha256':x['sha256']} for x in files],
+    'source':'reasoning_forward',
+    'file_count':len(files),
+    'protected_anchors':['Classical','Big Band'],
+    'reasoning_engine':'COMPOSER_MUSICAL_REASONING_ENGINE_V0_1',
+    'reasoning_bridge':'GENRE_REASONING_BRIDGE_V1_ALL_55',
 },indent=2)+'\n')
-print('ALL55_REASONING_OVERLAY_APPLIED',len(files),flush=True)
-REASONINGOVERLAYPY
+print('ALL55_REASONING_FORWARD_APPLIED',len(files),flush=True)
+REASONINGFORWARDPY
 python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
 python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
 cp connected_http_server.py composer/runtime/render_server.py

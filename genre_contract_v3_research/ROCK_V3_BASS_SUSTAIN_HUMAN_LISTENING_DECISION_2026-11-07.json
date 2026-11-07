@@ -1,0 +1,34 @@
+{
+  "schema": "ROCK_V3_BASS_SUSTAIN_HUMAN_LISTENING_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "blind_test": true,
+  "blind_mapping": {
+    "Blind_1_Context": "CURRENT_BASS_PLUS_APPROVED_GUITARS",
+    "Blind_2_Context": "BASS_SUSTAIN_CANDIDATE_PLUS_APPROVED_GUITARS",
+    "Blind_1_Bass_Only": "CURRENT_BASS",
+    "Blind_2_Bass_Only": "BASS_SUSTAIN_CANDIDATE"
+  },
+  "user_judgment": "BOTH_WRONG_BASS_NOT_LIKED",
+  "decision": {
+    "bass_sustain_candidate": "REJECT_AS_CURRENT_REPAIR_PATH",
+    "current_bass_baseline": "NOT_MUSICALLY_APPROVED",
+    "root_cause_status": "UPSTREAM_BASS_WRITING_AND_OR_RESOURCE_TIMBRE_REQUIRES_DIAGNOSIS"
+  },
+  "interpretation": [
+    "Human listening rejected both the current bass and the sustain-modified bass.",
+    "Bass duration is therefore not the primary repair target.",
+    "Do not promote or further tune the sustain candidate until the underlying bass writing and bass sound/resource are acceptable.",
+    "The currently selected Growlybass mapping is growlybass_vicious.sfz and production fidelity remains uncertified.",
+    "The source bass writing also contains pre-existing overlaps, so symbolic line quality must be audited independently from the sustain experiment."
+  ],
+  "approved_guitar_context_preserved": true,
+  "preferred_harmony_max_ringing_beats": 2.8,
+  "safe_strum_treatment_preserved": true,
+  "treated_lead_preserved": true,
+  "canonical_policy_modified": false,
+  "bass_candidate_enabled_live": false,
+  "reasoning_engine_used": false,
+  "live_runtime_promoted": false,
+  "next_gate": "UPSTREAM_BASS_ROOT_CAUSE_AUDIT__WRITING_VS_RESOURCE"
+}

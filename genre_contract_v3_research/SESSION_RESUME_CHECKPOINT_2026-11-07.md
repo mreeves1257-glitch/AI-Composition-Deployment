@@ -50,3 +50,60 @@ Earlier Classical MP3s had mechanically repetitive, weakly developed melodies. S
 - Bass and drums deliberately excluded.
 - Reasoning engine excluded.
 - Human listening review is now the active gate. Do not add strum timing, bass sustain, or other performance variables until A/B is judged.
+
+
+## Continued diagnostic results — Shinyguitar capability and Rock Mode A listening gate
+
+### Shinyguitar NOTE_LENGTH_RESPONSE — proven
+
+Workflow: `Shinyguitar Note Length Response Proof`  
+Successful run: **42388034436**
+
+Exact scope:
+- resource: `KARORYFER_SHINYGUITAR`
+- mapping: `Programs/composer_electric.sfz`
+- wrapper SHA-256: `da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35`
+- renderer pin: `sfizz 1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0`
+- full recovered sample graph validated: 6,798 references / 846 unique samples / 16 SFZ files
+- short note active end: 0.34 s
+- long note active end: 2.04 s
+- active-duration difference: 1.70 s
+
+The isolated test held pitch, velocity, onset, tempo, mapping and total MIDI length constant and changed note-off time only. It therefore certifies NOTE_LENGTH_RESPONSE for this exact mapping/backend combination. It does **not** certify production fidelity or the full composition.
+
+Certificate:
+`genre_contract_v3_research/SHINYGUITAR_NOTE_LENGTH_CAPABILITY_CERTIFICATE_2026-11-07.json`
+
+### Controlled Rock Mode A guitar A/B — rendered
+
+Workflow: `Rock Mode A Guitar Listening AB`  
+Successful run: **42388941089**
+
+Comparison:
+- A = Rock V3 40-bar developed score before Mode A
+- B = same score after `A_GUITAR_DURATION_ONLY`
+- exact same Karoryfer Shinyguitar mapping
+- 123 BPM
+- rhythm guitar + lead guitar only
+- **268 guitar events** have changed duration
+- no pitch changes
+- no onset changes
+- no velocity changes
+- no instrument changes
+- bass/drums deliberately excluded from this first listening gate
+- experimental reasoning engine excluded
+- same fixed target gains in both conditions: HARMONY -5 dB, LEAD -6 dB
+- one common mix gain; no separate normalization that could bias the comparison
+
+Published diagnostic listening files:
+- `genre_contract_v3_research/listening_outputs/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.mp3`
+- `genre_contract_v3_research/listening_outputs/rock_mode_a_guitar_ab/B_AFTER_MODE_A.mp3`
+- `genre_contract_v3_research/listening_outputs/rock_mode_a_guitar_ab/ROCK_MODE_A_GUITAR_AB_LISTENING_REPORT.json`
+
+### Current gate
+
+**STOP FOR HUMAN LISTENING REVIEW.**
+
+Question: Does B sound more connected/natural than A without blurring intentional rests, rhythm-guitar riff articulation, or lead phrase gaps?
+
+Do not add strum timing, bass sustain, random timing, full-band mix, or live promotion until this A/B is judged by ear.

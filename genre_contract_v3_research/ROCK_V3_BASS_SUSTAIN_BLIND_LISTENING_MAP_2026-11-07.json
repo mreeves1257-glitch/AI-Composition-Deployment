@@ -1,0 +1,53 @@
+{
+  "schema": "ROCK_V3_BASS_SUSTAIN_BLIND_LISTENING_MAP_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_workflow_run": 42394879894,
+  "source_artifact_id": 13583535149,
+  "source_artifact_digest": "sha256:7e3b01dc5330ccca45261428668251f2b9b62186281bb451eb61a7cb097c31c1",
+  "mapping": {
+    "BLIND_1_CONTEXT": "A_CURRENT_WITH_APPROVED_GUITARS",
+    "BLIND_2_CONTEXT": "B_SUSTAIN_WITH_APPROVED_GUITARS",
+    "BLIND_1_BASS_ONLY": "A_BASS_CURRENT",
+    "BLIND_2_BASS_ONLY": "B_BASS_SUSTAIN"
+  },
+  "sha256": {
+    "BLIND_1_CONTEXT": "677137d2434d2d9886042f2b13817f718b5873963133bdd54ee224a1a0ccb62d",
+    "BLIND_2_CONTEXT": "9f72650cd5a33f3488aa7ea07a38900d50ab7855e3a53dc2d45a901c2bec3186",
+    "BLIND_1_BASS_ONLY": "ee6bc1af5ab2541fb2c036ce5c7e7c9be9ed1a6fd5ce91e9d90dfa782f478896",
+    "BLIND_2_BASS_ONLY": "94143412d439540b5ecc666595a638dc6a41b9bf6cc700e7dcb46dbec11b369a"
+  },
+  "listening_window": {
+    "bars": 16,
+    "tempo_bpm": 123,
+    "changed_bass_event_count": 23,
+    "extension_distribution_beats": {
+      "0.225": 7,
+      "0.420": 13,
+      "0.615": 3
+    },
+    "total_added_symbolic_bass_ring_beats": 8.88,
+    "approximate_added_symbolic_bass_ring_seconds": 4.3317
+  },
+  "audio_checks": {
+    "bass_only_current_peak_dbfs": -11.903,
+    "bass_only_sustain_peak_dbfs": -11.903,
+    "context_current_peak_dbfs": -10.2059,
+    "context_sustain_peak_dbfs": -10.2247,
+    "clipping_detected": false,
+    "bass_only_difference_relative_to_current_rms_db": -31.0187,
+    "context_difference_relative_to_current_rms_db": -35.1521
+  },
+  "fixed_context": {
+    "harmony_max_ringing_beats": 2.8,
+    "safe_strum_treatment": true,
+    "treated_lead": true,
+    "drums_included": false
+  },
+  "candidate_enabled_live": false,
+  "canonical_policy_modified": false,
+  "reasoning_engine_used": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "USER_BLIND_BASS_SUSTAIN_LISTENING_JUDGMENT"
+}

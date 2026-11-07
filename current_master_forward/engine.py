@@ -111,16 +111,24 @@ class AICompositionEngine:
                 'communication_blueprint':blueprint,
                 'genre_contract_v3_execution_packet':v3_contract_packet,
                 'genre_v3_foreground_authority':theory.get('genre_v3_foreground_authority'),
+                'foreground_executor_registry_status':theory.get('foreground_executor_registry_status'),
+                'foreground_candidate_execution':theory.get('foreground_candidate_execution'),
                 'foreground_execution_status':theory.get('foreground_execution_status'),
-                'foreground_notes_generated':False,
-                'finished_composition_authority':False,
+                'foreground_notes_generated':bool(theory.get('foreground_notes_generated')),
+                'finished_composition_authority':bool(theory.get('finished_composition_authority')),
                 'source_pattern_finished_composition_eligible':False,
-                'promotion_block':'SOURCE_PATTERN_ACCOMPANIMENT_MAY_NOT_BE_RENDERED_AS_FINISHED_COMPOSITION',
+                'promotion_block':theory.get(
+                    'promotion_block',
+                    'SOURCE_PATTERN_ACCOMPANIMENT_MAY_NOT_BE_RENDERED_AS_FINISHED_COMPOSITION'),
                 'audio_rendered':False,
                 'audio_authority':False,
                 'live_runtime_promoted':False,
                 'reasoning_engine_used':False,
-                'next_gate':'COMPILE_GENRE_SPECIFIC_FOREGROUND_EXECUTION_BEFORE_AUDIO',
+                'next_gate':(
+                    'RESOLVE_VARIANT_FORM_RESOURCE_AND_LISTENING_GATES'
+                    if theory.get('foreground_notes_generated')
+                    else 'COMPILE_GENRE_SPECIFIC_FOREGROUND_EXECUTION_BEFORE_AUDIO'
+                ),
             }
 
         # Execute the profile's dynamic contour BEFORE instrument separation. V1 is

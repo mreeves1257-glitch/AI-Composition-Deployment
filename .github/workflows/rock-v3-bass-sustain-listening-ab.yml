@@ -1,0 +1,137 @@
+name: Rock V3 Bass Sustain Listening AB
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/rock-v3-bass-sustain-listening-ab.yml"
+      - ".github/actions/setup-pinned-sfizz/action.yml"
+      - "genre_contract_v3_research/render_rock_v3_bass_sustain_ab.py"
+      - "genre_contract_v3_research/install_pinned_growlybass_v1002.sh"
+      - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
+      - "current_master_forward/rock_v3_bass_sustain_candidate_executor.py"
+      - "current_master_forward/rock_v3_strum_candidate_executor.py"
+      - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/official_sfz_compatibility.py"
+  workflow_dispatch:
+
+jobs:
+  bass-ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python and audio dependencies
+        run: |
+          python -m pip install --disable-pip-version-check --no-input numpy
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Restore exact pinned Growlybass v1.002
+        run: |
+          bash genre_contract_v3_research/install_pinned_growlybass_v1002.sh current_master_forward
+
+      - name: Validate Growlybass target mapping and sample graph
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          from sfz_renderer_adapter import validate_sfz_samples
+
+          root=Path("current_master_forward")
+          registry=json.loads((root/"target_registry.json").read_text())
+          binding=registry["targets"]["INTERNAL"]["instrument_bindings"]["electric_bass_guitar"]
+          assert binding["resource_id"]=="KARORYFER_GROWLYBASS_V1_002", binding
+          assert binding["preferred_mapping"]=="growlybass_vicious.sfz", binding
+          assert binding["fallback_policy"]=="NO_SYNTHETIC_SUBSTITUTION", binding
+          bank=root/"sound_resources"/binding["resource_id"]
+          report=validate_sfz_samples(bank/binding["preferred_mapping"],allowed_root=bank)
+          assert report == {
+              "sample_references":86,
+              "unique_samples":86,
+              "sfz_files_validated":1,
+          }, report
+          print(report)
+          PY
+
+      - name: Restore exact pinned Shinyguitar resource
+        run: |
+          bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh current_master_forward
+          test "$(sha256sum current_master_forward/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz | awk '{print $1}')" = "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
+
+      - name: Validate Shinyguitar sample graph
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from sfz_renderer_adapter import validate_sfz_samples
+          pack=Path("current_master_forward/sound_resources/KARORYFER_SHINYGUITAR").resolve()
+          report=validate_sfz_samples(pack/"Programs/composer_electric.sfz",allowed_root=pack)
+          assert report == {
+              "sample_references":6798,
+              "unique_samples":846,
+              "sfz_files_validated":16,
+          }, report
+          print(report)
+          PY
+
+      - name: Setup exact pinned sfizz renderer
+        id: sfizz
+        uses: ./.github/actions/setup-pinned-sfizz
+
+      - name: Render strict bass sustain A/B stems
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+          AI_COMP_SFIZZ_PIN: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+          AI_COMP_SFZ_RENDERER: ${{ steps.sfizz.outputs.renderer }}
+        run: |
+          python genre_contract_v3_research/render_rock_v3_bass_sustain_ab.py
+
+      - name: Build listening MP3s
+        run: |
+          set -euo pipefail
+          folder="genre_contract_v3_research/rock_v3_bass_sustain_ab"
+
+          for stem in A_BASS_CURRENT B_BASS_SUSTAIN
+          do
+            ffmpeg -hide_banner -loglevel error -y               -i "$folder/$stem.wav"               -codec:a libmp3lame -b:a 256k               "$folder/$stem.mp3"
+          done
+
+          ffmpeg -hide_banner -loglevel error -y             -i "$folder/A_BASS_CURRENT.wav"             -i "$folder/HARMONY_APPROVED.wav"             -i "$folder/LEAD_TREATED.wav"             -filter_complex "[0:a]volume=0dB[b];[1:a]volume=-5dB[h];[2:a]volume=-6dB[l];[b][h][l]amix=inputs=3:duration=longest:normalize=0[m]"             -map "[m]" -codec:a libmp3lame -b:a 256k             "$folder/A_CURRENT_WITH_APPROVED_GUITARS.mp3"
+
+          ffmpeg -hide_banner -loglevel error -y             -i "$folder/B_BASS_SUSTAIN.wav"             -i "$folder/HARMONY_APPROVED.wav"             -i "$folder/LEAD_TREATED.wav"             -filter_complex "[0:a]volume=0dB[b];[1:a]volume=-5dB[h];[2:a]volume=-6dB[l];[b][h][l]amix=inputs=3:duration=longest:normalize=0[m]"             -map "[m]" -codec:a libmp3lame -b:a 256k             "$folder/B_SUSTAIN_WITH_APPROVED_GUITARS.mp3"
+
+      - name: Validate listening MP3s
+        run: |
+          set -euo pipefail
+          folder="genre_contract_v3_research/rock_v3_bass_sustain_ab"
+          for f in             "$folder/A_BASS_CURRENT.mp3"             "$folder/B_BASS_SUSTAIN.mp3"             "$folder/A_CURRENT_WITH_APPROVED_GUITARS.mp3"             "$folder/B_SUSTAIN_WITH_APPROVED_GUITARS.mp3"
+          do
+            codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "$f")"
+            rate="$(ffprobe -v error -select_streams a:0 -show_entries stream=sample_rate -of default=nw=1:nk=1 "$f")"
+            channels="$(ffprobe -v error -select_streams a:0 -show_entries stream=channels -of default=nw=1:nk=1 "$f")"
+            duration="$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "$f")"
+            python -c 'import sys; d=float(sys.argv[1]); assert d>25; assert sys.argv[2]=="mp3"; assert int(sys.argv[3])==44100; assert int(sys.argv[4])==2; print("VALID",sys.argv[5],d)' "$duration" "$codec" "$rate" "$channels" "$f"
+          done
+
+      - name: Upload strict bass sustain A/B listening package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_V3_Bass_Sustain_Listening_AB
+          path: |
+            genre_contract_v3_research/rock_v3_bass_sustain_ab/A_BASS_CURRENT.mp3
+            genre_contract_v3_research/rock_v3_bass_sustain_ab/B_BASS_SUSTAIN.mp3
+            genre_contract_v3_research/rock_v3_bass_sustain_ab/A_CURRENT_WITH_APPROVED_GUITARS.mp3
+            genre_contract_v3_research/rock_v3_bass_sustain_ab/B_SUSTAIN_WITH_APPROVED_GUITARS.mp3
+            genre_contract_v3_research/rock_v3_bass_sustain_ab/ROCK_V3_BASS_SUSTAIN_AB_RENDER_REPORT.json
+          if-no-files-found: error

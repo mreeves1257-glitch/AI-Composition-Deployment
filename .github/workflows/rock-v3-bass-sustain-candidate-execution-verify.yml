@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/rock-v3-bass-sustain-candidate-execution-verify.yml"
       - "current_master_forward/rock_v3_bass_sustain_candidate_executor.py"
+      - "current_master_forward/rock_v3_strum_candidate_executor.py"
       - "genre_contract_v3_research/verify_rock_v3_bass_sustain_candidate_execution.py"
   workflow_dispatch:
 

@@ -35,8 +35,8 @@
     },
     {
       "genre_name": "Swing",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
@@ -155,44 +155,44 @@
     },
     {
       "genre_name": "Bossa Nova",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Samba",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Salsa",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Mambo",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Rumba",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Cha-Cha",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Bolero",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {

@@ -1,0 +1,115 @@
+{
+  "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "genre_name": "Jazz Fusion",
+  "source_profile_id": "JAZZ_FUSION_V1",
+  "family": "Jazz",
+  "source_status": "CONTROLLED_PROFILE",
+  "research_status": "NOT_STARTED",
+  "approved_for_runtime": false,
+  "current_profile_snapshot": {
+    "profile_id": "JAZZ_FUSION_V1",
+    "family": "Jazz",
+    "status": "CONTROLLED_PROFILE",
+    "scope_note": "",
+    "tempo_bpm_range": [
+      85,
+      170
+    ],
+    "meter_options": [
+      "4/4",
+      "6/8",
+      "7/8"
+    ],
+    "form_tendencies": [
+      "through_composed"
+    ],
+    "groove_behavior": "straight or swung syncopation with funk/rock-derived rhythm-section precision; odd meters allowed only with explicit grouping",
+    "phrase_behavior": "longer developmental phrases, riffs, solo sections and sectional metric/harmonic shifts",
+    "harmony_behavior": "extended/modal jazz harmony mixed with rock/funk vamps and pedal harmony",
+    "bass_behavior": "electric bass may be syncopated, melodic, slapped/picked or pedal-based according to section",
+    "percussion_behavior_if_applicable": "drum kit can be dense and technically active; groove remains coherent through fills and meter shifts",
+    "instrument_role_behavior": "electric guitar, electric bass, drums, keys/synth target, sax/brass/woodwind lead options",
+    "ensemble_player_behavior": "rhythm section tightly interlocks while soloists can float over groove",
+    "arrangement_transformation": "riff sections, solo development, breakdowns and climactic returns",
+    "dynamic_behavior": "broad dynamic range from atmospheric openings to high-energy sections",
+    "articulation_behavior": "clean/fused articulation: legato leads, accented riffs, guitar sustain, crisp drums",
+    "timing_humanization_behavior": "humanized within tight pocket; odd-meter groupings remain stable",
+    "continuous_performance_control": "expression, modulation, pitch bend and target-specific effects may be prominent",
+    "sound_effects_intent": "delay/chorus/drive/synth effects allowed as controlled style components",
+    "mix_prominence_intent": "bass/drums strong but melodic lead remains intelligible",
+    "production_mastering_intent": "modern full-range master with controlled density",
+    "manufacturer_adapter_requirements": "requires electric/synth resources and fast articulation support",
+    "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+    "provenance": [
+      "existing_project_theory",
+      "established_genre_practice"
+    ],
+    "execution_rule": "USE_CONTROLLED_PROFILE"
+  },
+  "comparison": {
+    "current_profile_strengths": [],
+    "current_profile_gaps": [],
+    "external_sources_considered": [],
+    "retained_current_fields": [],
+    "upgraded_fields": [],
+    "conflicts": [],
+    "unresolved_questions": []
+  },
+  "musical_grammar": {
+    "form_model": null,
+    "harmony_model": null,
+    "melody_model": null,
+    "rhythm_groove_model": null,
+    "bass_model": null,
+    "percussion_model": null,
+    "phrase_model": null,
+    "transition_model": null,
+    "development_model": null,
+    "cadence_ending_model": null
+  },
+  "ensemble": {
+    "instrument_roster": [],
+    "population_mass_percent": {},
+    "presence_percent": {},
+    "activity_percent": {},
+    "musical_agency_percent": {},
+    "foreground_window_percent": {},
+    "foreground_window_rules": [],
+    "role_handoff_rules": [],
+    "register_occupancy": {},
+    "spatial_footprint_percent": {},
+    "section_population_reference": {}
+  },
+  "performance": {
+    "articulation_behavior": null,
+    "dynamic_behavior": null,
+    "timing_humanization_behavior": null,
+    "continuous_performance_control": null,
+    "interaction_rules": []
+  },
+  "production": {
+    "spatial_presentation": null,
+    "mix_prominence_intent": null,
+    "sound_effects_intent": null,
+    "production_mastering_intent": null
+  },
+  "evidence": {
+    "sources": [],
+    "source_confidence": {},
+    "source_license_status": {},
+    "conflicts_between_sources": [],
+    "unresolved_questions": []
+  },
+  "validation": {
+    "structural_tests": [],
+    "listening_tests": [],
+    "golden_reference_status": null,
+    "approved_for_runtime": false
+  },
+  "safeguards": {
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_not_loudness": true,
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true
+  }
+}

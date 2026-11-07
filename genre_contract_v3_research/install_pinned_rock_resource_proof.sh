@@ -34,6 +34,7 @@ git clone --filter=blob:none --no-checkout \
   git sparse-checkout set \
     Programs \
     Samples/kick_24 \
+    Samples/kick_24_nodamp \
     Samples/snare_14 \
     Samples/hihat_14 \
     Samples/tom_14 \
@@ -41,7 +42,9 @@ git clone --filter=blob:none --no-checkout \
     Samples/tom_18 \
     Samples/tom_22 \
     Samples/crash_17 \
+    Samples/crash_sizzle_17 \
     Samples/ride_22 \
+    Samples/ride_sizzle_19 \
     Samples/china_18 \
     Samples/stack_3_layer
   git checkout "$RUSTY_COMMIT"

@@ -835,7 +835,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "research_status": "V3_QUANTITATIVE_FOREGROUND_REFERENCE_ADDED__ACTIVITY_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -1028,7 +1028,9 @@
         "foreground_window_rules": [
           "When a woodwind or other small section owns foreground material, accompaniment must create an audibility window through density, register, articulation and/or spatial separation rather than artificial loudness alone.",
           "Large string population does not grant permanent foreground ownership.",
-          "Foreground transfer must be explicit and time-bounded; supporting sections retain musical agency without masking the current owner."
+          "Foreground transfer must be explicit and time-bounded; supporting sections retain musical agency without masking the current owner.",
+          "Corpus evidence supports frequent woodwind foreground ownership despite much smaller physical population; the arranger must create windows for flute, oboe, clarinet and bassoon rather than allowing string mass to mask them.",
+          "Foreground targets are variant- and composition-specific; observed corpus averages are validation references, not quotas."
         ],
         "role_handoff_rules": [
           "Theme/countertheme may transfer among strings, woodwinds, brass and solo desks when supported by the resolved variant.",
@@ -1281,6 +1283,61 @@
               ]
             }
           }
+        },
+        "observed_foreground_time_reference_percent": {
+          "source": "OpenScore Orchestra / Hauptstimme",
+          "methodology": "Duration-weighted qstamp-to-next-annotation intervals across 70 instrumental orchestral annotation files. Excludes Bach B Minor Mass, Brahms Ein Deutsches Requiem, and Beethoven Symphony No.9 movement 4 because of choral foreground. Final trailing segment after each file's last annotation is not estimated because the annotation format defines segment endings by the next annotation.",
+          "annotated_intervals": 7823,
+          "family_percent": {
+            "STRINGS": 50.91,
+            "WOODWINDS": 41.6,
+            "BRASS": 7.42,
+            "PERCUSSION": 0.06,
+            "KEYBOARD": 0
+          },
+          "instrument_percent": {
+            "VIOLIN": 44.91,
+            "FLUTE": 22.79,
+            "OBOE": 9.82,
+            "CLARINET": 6.01,
+            "HORN": 4.68,
+            "VIOLA": 2.41,
+            "CELLO": 2.39,
+            "BASSOON": 2.27,
+            "TRUMPET": 2.01,
+            "GENERIC_STRINGS": 1.1,
+            "TROMBONE": 0.66,
+            "PICCOLO": 0.49,
+            "DOUBLE_BASS": 0.1,
+            "BASS_CLARINET": 0.1,
+            "ENGLISH_HORN": 0.09,
+            "BASS_TROMBONE": 0.07,
+            "TIMPANI": 0.06,
+            "CONTRABASSOON": 0.04
+          },
+          "interpretation_guardrails": [
+            "These are observed Hauptstimme/main-melody shares in this corpus, not recommended gain values.",
+            "Do not use these percentages as physical population, presence, or total activity percentages.",
+            "Corpus repertoire is not balanced evenly across periods/composers; Beethoven is heavily represented.",
+            "Hauptstimme annotation intentionally chooses one primary melody instrument even when multiple instruments double the theme.",
+            "Use this evidence to support foreground-window and role-handoff logic, not to force every piece toward the corpus average."
+          ]
+        },
+        "population_vs_foreground_observation": {
+          "population_reference": {
+            "STRINGS": 65.22,
+            "WOODWINDS": 17.39,
+            "BRASS": 11.96,
+            "PERCUSSION": 5.43
+          },
+          "observed_foreground_reference": {
+            "STRINGS": 50.91,
+            "WOODWINDS": 41.6,
+            "BRASS": 7.42,
+            "PERCUSSION": 0.06
+          },
+          "key_finding": "Physical population and foreground ownership are strongly different quantities. In the observed corpus, woodwinds carry a much larger share of annotated foreground than their physical population share, while strings retain the largest physical mass.",
+          "runtime_implication": "Population controls ensemble mass; resolved foreground ownership controls audibility windows. Never derive one directly from the other."
         }
       },
       "performance": {
@@ -1315,7 +1372,8 @@
           "Orchestral instrument-activity datasets (activity-percentage research target)",
           "OpenScore Orchestra / Hauptstimme: 72 non-B-Minor-Mass annotation files analyzed for duration-weighted instrumental foreground ownership",
           "Krause & Müller 2023 orchestral instrument-activity dataset: ~14 hours, frame-level 18-class annotations",
-          "MTG-Jamendo genre/instrument co-occurrence research reference"
+          "MTG-Jamendo genre/instrument co-occurrence research reference",
+          "OpenScore Orchestra / Hauptstimme: 70 instrumental orchestral foreground-annotation files used for interval-weighted foreground reference statistics"
         ],
         "source_confidence": {
           "current_profile": "MEDIUM__USEFUL_BASELINE_NOT_COMPLETE",
@@ -1323,16 +1381,20 @@
           "future_activity_foreground_statistics": "PENDING",
           "hauptstimme_foreground_aggregate": "HIGH_FOR_CORPUS_REFERENCE__NOT_UNIVERSAL_RUNTIME_TARGET",
           "orchestral_activity_dataset": "HIGH_FOR_ACTIVITY_METHOD__EXACT_FILTERED_PERCENTAGES_PENDING",
-          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
+          "Hauptstimme_foreground_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__NOT_UNIVERSAL_TARGET"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "external_corpora": "REVIEW_BEFORE_DIRECT_REUSE__DERIVED_RULES_PREFERRED",
           "OpenScore_scores": "CC0_1_0",
           "Hauptstimme_annotations": "CC_BY_SA",
-          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
+          "OpenScore_Orchestra_scores": "CC0_1_0"
         },
-        "conflicts_between_sources": [],
+        "conflicts_between_sources": [
+          "Population reference and Hauptstimme foreground reference intentionally differ; this is not a conflict to normalize away."
+        ],
         "unresolved_questions": []
       },
       "validation": {
@@ -1342,14 +1404,18 @@
           "Reasoning may alter density/role/space but not violate resolved harmony authority.",
           "Foreground-owner tests must verify small sections can become audible without permanent level inflation.",
           "Foreground priors must remain independent of population mass and gain.",
-          "Flute/woodwind foreground windows must not be suppressed merely because their physical population is small."
+          "Flute/woodwind foreground windows must not be suppressed merely because their physical population is small.",
+          "Foreground ownership must be represented independently from physical section population.",
+          "Woodwind foreground windows cannot be suppressed merely because string population mass is larger."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
           "Verify flute/oboe/bassoon remain audible during assigned foreground windows.",
           "Verify strings retain greater ensemble mass without permanently masking smaller sections.",
           "Verify stereo/depth separation is materially audible, not metadata-only.",
-          "Confirm that a small woodwind section can carry a clearly audible foreground line over a larger string population without artificial permanent boosting."
+          "Confirm that a small woodwind section can carry a clearly audible foreground line over a larger string population without artificial permanent boosting.",
+          "Across a multi-section Classical audition, verify at least one clearly audible woodwind-led passage when the resolved composition assigns woodwind foreground.",
+          "Verify woodwind foreground clarity is achieved primarily by orchestration/density/register/spatial decisions rather than permanent gain inflation."
         ],
         "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE",
         "approved_for_runtime": false
@@ -15124,10 +15190,10 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Derive evidence-backed presence/activity/musical-agency/foreground percentages by resolved variant.",
-    "Resolve subgenre/formation defaults only where evidence supports them.",
-    "Build compact runtime extraction without research prose or duplicate legacy data.",
-    "Validate each candidate runtime contract structurally and by listening before approval."
+    "Derive Classical total-activity statistics separately from foreground ownership.",
+    "Split Classical foreground/activity references by period/variant before runtime targets are selected.",
+    "Continue quantitative evidence extraction for the remaining genre families.",
+    "Build compact runtime extraction only after structural and listening validation."
   ],
   "last_quantitative_update": "2026-11-06",
   "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED__ACTIVITY_DATASET_REGISTERED__MTG_PRESENCE_CROSSCHECK_ADDED",

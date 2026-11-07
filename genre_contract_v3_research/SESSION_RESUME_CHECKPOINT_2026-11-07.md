@@ -1217,3 +1217,48 @@ No guitars, no drums, no reasoning engine, no canonical/main/live promotion.
 
 Active gate:
 Human bass-only listening among A, B, and C to determine whether body/sustain can be added without reintroducing the unwanted upbeat behavior.
+
+
+## Rock bass C preferred; crisp-downbeat hybrid test completed
+
+Human listening result:
+- C held-tone bass is preferred for what the bass should be doing.
+- C has the desired sustain/body.
+- remaining issue: C does not have a crisp enough downbeat.
+- unwanted upbeat behavior remains absent.
+
+Decision:
+Preserve C's held-tone writing exactly:
+- strong-beat bass attacks only
+- no offbeat re-attacks
+- no different-pitch offbeats
+- Clean sustain-capable mapping
+
+Do not reopen pitch/rhythm behavior.
+
+New attack-layer test:
+Workflow:
+`Rock V3 Bass Attack Hybrid Listening`
+run `42398615404` — PASS
+
+Artifact:
+`13584112748`
+Digest:
+`sha256:707295f6ac258295584469c78526fc7a5f321a01a4e4d5c7a5d995a477d917a3`
+
+Conditions:
+- C = Clean held-tone baseline, unchanged
+- D = C + same-pitch/same-onset Vicious 0.20-beat transient at -9 dB
+- E = C + same-pitch/same-onset Vicious 0.20-beat transient at -6 dB
+
+Invariants:
+- 27 strong-beat events in first 16 bars
+- attack layer uses the exact same 27 onsets/pitches/velocities
+- no offbeat events added
+- no rhythmic/pitch changes
+- no guitars/drums
+- no reasoning engine
+- no main/live promotion
+
+Active gate:
+Human listening chooses C, D, E, or none.

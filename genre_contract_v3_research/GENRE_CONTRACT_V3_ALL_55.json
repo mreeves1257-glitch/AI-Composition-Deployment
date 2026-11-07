@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_VARIANT_AUDITIONS_RENDERED__USER_LISTENING_REVIEW_PENDING",
+      "research_status": "V3_CLASSICAL_STRUCTURAL_VARIANT_VALIDATION_PASS__PAIRED_AUDIO_HARNESS_READY__LISTENING_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2498,6 +2498,23 @@
           },
           "interpretation": "Machine validation confirms the two auditions preserve one shared composition plan while changing orchestration role/activity behavior. Subjective musical-quality approval remains pending user listening review.",
           "merge_guardrail": "Do not merge variant harness behavior into live Composer solely because structural/audio rendering passed."
+        },
+        "paired_audio_harness": {
+          "status": "READY__EXECUTION_PENDING",
+          "renderer": "genre_contract_v3_research/render_classical_variant_comparison.py",
+          "workflow": ".github/workflows/research-classical-variant-listening.yml",
+          "shared_seed": 0,
+          "shared_plan_required": true,
+          "outputs_expected": [
+            "Classical_Period_Baseline.mp3",
+            "Late_Romantic_Expanded.mp3",
+            "Classical_Variant_AB_Comparison.mp3",
+            "pair_validation_summary.json",
+            "per-variant event and role-timeline JSON"
+          ],
+          "renderer_reuse": "Uses the existing Classical reasoning audition render/mix path and approved Classical section program/control mappings.",
+          "live_runtime_modified": false,
+          "execution_note": "Connector-authored GitHub pushes did not auto-trigger Actions. Do not mark paired listening as passed until the workflow or equivalent renderer execution actually completes."
         }
       },
       "safeguards": {
@@ -17680,13 +17697,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "User listening review of paired Classical-period and Late-Romantic research auditions.",
-    "Compare preferred audition against approved Classical golden reference and identify remaining composition/orchestration failures.",
-    "Revise research harness only; do not merge into live Composer until musical-quality review passes.",
-    "After Classical pilot is validated, continue quantitative extraction for remaining genre families."
+    "Execute the paired Classical listening renderer/workflow.",
+    "Listen to Classical-period baseline and Late-Romantic expanded versions using the same seed and plan.",
+    "Compare both against the approved Classical golden reference.",
+    "Only after listening validation should compact runtime extraction or live Composer integration be proposed."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_VARIANT_STRUCTURAL_AND_AUDIO_RENDER_PASS__USER_LISTENING_REVIEW_PENDING",
+  "quantitative_phase_status": "CLASSICAL_STRUCTURAL_VARIANT_VALIDATION_PASS__PAIRED_AUDIO_HARNESS_READY__EXECUTION_PENDING",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

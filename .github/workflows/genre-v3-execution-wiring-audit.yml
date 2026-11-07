@@ -22,9 +22,12 @@ on:
       - "current_master_forward/genre_v3_symbolic_pattern_executor.py"
       - "current_master_forward/genre_v3_foreground_authority.py"
       - "current_master_forward/rock_v3_foreground_pilot.py"
+      - "current_master_forward/rock_v3_variant_package.py"
       - "genre_contract_v3_research/verify_v3_symbolic_pattern_execution.py"
       - "genre_contract_v3_research/verify_v3_foreground_authority.py"
       - "genre_contract_v3_research/verify_rock_v3_foreground_pilot.py"
+      - "genre_contract_v3_research/verify_rock_v3_variant_packages.py"
+      - "genre_contract_v3_research/ROCK_V3_VARIANT_RESEARCH_MATRIX_2026-11-07.json"
       - "composer_overrides/genre_styles/*/SOURCE_PATTERN_LIBRARY_R1.json"
       - ".github/workflows/genre-v3-execution-wiring-audit.yml"
   workflow_dispatch:
@@ -82,6 +85,13 @@ jobs:
           python genre_contract_v3_research/verify_rock_v3_foreground_pilot.py
           test -s genre_contract_v3_research/ROCK_V3_FOREGROUND_PILOT_AUDIT.json
 
+      - name: Audit Rock V3 variant composition packages
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/verify_rock_v3_variant_packages.py
+          test -s genre_contract_v3_research/ROCK_V3_VARIANT_PACKAGE_AUDIT.json
+
       - name: Upload wiring audits
         uses: actions/upload-artifact@v4
         with:
@@ -93,4 +103,5 @@ jobs:
             genre_contract_v3_research/V3_SYMBOLIC_PATTERN_EXECUTION_AUDIT.json
             genre_contract_v3_research/V3_FOREGROUND_AUTHORITY_AUDIT.json
             genre_contract_v3_research/ROCK_V3_FOREGROUND_PILOT_AUDIT.json
+            genre_contract_v3_research/ROCK_V3_VARIANT_PACKAGE_AUDIT.json
           if-no-files-found: error

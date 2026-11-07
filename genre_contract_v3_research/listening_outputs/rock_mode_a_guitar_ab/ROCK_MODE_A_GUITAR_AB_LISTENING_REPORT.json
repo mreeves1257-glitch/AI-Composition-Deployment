@@ -1,0 +1,81 @@
+{
+  "schema": "ROCK_MODE_A_GUITAR_AB_LISTENING_001",
+  "status": "PASS",
+  "diagnostic_only": true,
+  "genre": "ROCK",
+  "profile_id": "ROCK_CORE_V2",
+  "bar_count": 40,
+  "tempo_bpm": 123,
+  "tracks": [
+    "HARMONY",
+    "LEAD"
+  ],
+  "resource_id": "KARORYFER_SHINYGUITAR",
+  "mapping": "Programs/composer_electric.sfz",
+  "performance_mode": "A_GUITAR_DURATION_ONLY",
+  "duration_changed_event_count": 268,
+  "only_difference_between_conditions": "ELECTRIC_GUITAR_NOTE_DURATIONS",
+  "pitch_changed": false,
+  "onset_changed": false,
+  "velocity_changed": false,
+  "instrument_changed": false,
+  "bass_included": false,
+  "drums_included": false,
+  "reasoning_engine_used": false,
+  "common_mix_gain": 1.0,
+  "track_target_gains_db": {
+    "HARMONY": -5.0,
+    "LEAD": -6.0
+  },
+  "render_reports": {
+    "A_BEFORE_MODE_A": {
+      "HARMONY": {
+        "midi_sha256": "638e504eeb3f9b23e261e4a3ef979c25a4cc50578ccef57742e5c1565b7337c0",
+        "wav_sha256": "076b32773a79f81d05d9de4dd4c1888f19fd56009ca9c312a84009f5c4119ee1",
+        "frames": 3421184,
+        "sample_rate": 44100,
+        "channels": 2
+      },
+      "LEAD": {
+        "midi_sha256": "53b168dac8537a405a68beb0849b1d127d6ba362f85282a27587d7bceafbcf1f",
+        "wav_sha256": "079a84a6a134b3b597bf3ddcbf9c52e51c5a96dbb4e3a0cee20ec7b099108c34",
+        "frames": 3447808,
+        "sample_rate": 44100,
+        "channels": 2
+      }
+    },
+    "B_AFTER_MODE_A": {
+      "HARMONY": {
+        "midi_sha256": "4f8ce288a8da5c928bca097edde0245a935944360c2748cddc321036567d3a0c",
+        "wav_sha256": "823a42c28df63089971820c5b0781742c117344f1e758bbe0be8fd55b0399ee5",
+        "frames": 3421184,
+        "sample_rate": 44100,
+        "channels": 2
+      },
+      "LEAD": {
+        "midi_sha256": "5f3b19084892b567accf84219046ff4eefefdfc73093128c3fba30d72cc18db2",
+        "wav_sha256": "53a7f5b7b858845c4f6ebc92b3e7a23743b2000c5951de07b56547056a12e9d8",
+        "frames": 3447808,
+        "sample_rate": 44100,
+        "channels": 2
+      }
+    }
+  },
+  "outputs": {
+    "A_BEFORE_MODE_A": {
+      "wav_path": "/home/runner/work/AI-Composition-Deployment/AI-Composition-Deployment/genre_contract_v3_research/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.wav",
+      "wav_sha256": "e648426e45b4bfd1e48d355cca7b22efca1d7fa7477163121bdac8fae5197108",
+      "frames": 3447808
+    },
+    "B_AFTER_MODE_A": {
+      "wav_path": "/home/runner/work/AI-Composition-Deployment/AI-Composition-Deployment/genre_contract_v3_research/rock_mode_a_guitar_ab/B_AFTER_MODE_A.wav",
+      "wav_sha256": "47b27fc349d12a575fbf6feb229654643dcc1ca2ad179bf79d0d3baeca4cc554",
+      "frames": 3447808
+    }
+  },
+  "production_fidelity_certified": false,
+  "full_rock_composition_approved": false,
+  "live_runtime_promoted": false,
+  "listening_question": "Does Mode A make the same Rock guitar writing sound more connected/natural without blurring rests, riffs, or lead phrase gaps?",
+  "next_gate": "HUMAN_LISTENING_REVIEW_BEFORE_ADDING_ANY_OTHER_PERFORMANCE_VARIABLE"
+}

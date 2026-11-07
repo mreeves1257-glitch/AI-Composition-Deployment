@@ -18,7 +18,7 @@ class AICompositionEngine:
     def __init__(self, history_path=None):
         self.genre = GenreSelector(
             ROOT.parent / 'genre_contract_v3_research' / 'GENRE_CONTRACT_V3_ALL_55.json',
-            ROOT / 'genre_menu_catalog_WORKING_2026-09-28.json')
+            None)
         source = ROOT / 'AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py'
         spec = importlib.util.spec_from_file_location('composition_genre_adapter', source)
         module = importlib.util.module_from_spec(spec)

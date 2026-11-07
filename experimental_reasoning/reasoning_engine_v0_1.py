@@ -247,9 +247,21 @@ def _role_intent(state: ComposerState, energy_motion: str, density: int) -> dict
     return intent
 
 
-def _kick_character_intent(goal: MusicalGoal, tags: set[str]) -> dict[str, Any]:
-    """Describe a pronounced kick character without turning kick into a hierarchy override."""
+def _kick_character_intent(state: ComposerState, goal: MusicalGoal, tags: set[str]) -> dict[str, Any]:
+    """Describe a pronounced kick when a kick exists; never invent one for the genre."""
+    active = [str(x).lower() for x in state.active_instruments]
+    has_kick = any("kick" in x for x in active)
     impact = _clamp(float(goal.kick_impact), 0.0, 1.0)
+    if not has_kick:
+        return {
+            "parameter": "kick_impact",
+            "status": "NOT_ACTIVE",
+            "target_0_to_1": round(impact, 3),
+            "create_kick_part": False,
+            "rule": "DO_NOT_INTRODUCE_A_KICK_WHEN_THE_SELECTED_GENRE_OR_ARRANGEMENT_DOES_NOT_USE_ONE",
+            "compositional_importance_change": False,
+            "v0_1_audio_processing_applied": False,
+        }
     maximum = impact >= 0.999
     instructions = [
         "PRESERVE_DEEP_LOW_FREQUENCY_IMPACT",
@@ -456,8 +468,19 @@ def _spatial_choreography_plan(
 
 
 def _low_end_interaction_plan(tags: set[str], state: ComposerState) -> dict[str, Any]:
-    """Coordinate kick and bass musically before downstream sound realization."""
+    """Coordinate kick and bass musically when both are present."""
     section = _norm_section(state.section)
+    active = [str(x).lower() for x in state.active_instruments]
+    has_kick = any("kick" in x for x in active)
+    has_bass = any("bass" in x for x in active)
+    if not (has_kick and has_bass):
+        return {
+            "status": "NOT_APPLICABLE",
+            "kick_present": has_kick,
+            "bass_present": has_bass,
+            "create_missing_part": False,
+            "rule": "DO_NOT_INVENT_A_KICK_OR_BASS_ROLE_TO_SATISFY_LOW_END_LOGIC",
+        }
     instructions = [
         "LOCK_KICK_AND_BASS_ON_SELECTED_STRUCTURAL_ACCENTS",
         "ALLOW_BASS_TO_SUSTAIN_OR_MOVE_THROUGH_SPACE_AFTER_KICK_IMPACT",
@@ -919,7 +942,7 @@ def reason(
             "principle": "DENSITY_FOLLOWS_SECTION_FUNCTION_AND_ENERGY_NOT_FIXED_TRACK_COUNT",
         },
         "roles": _role_intent(state, energy_motion, density),
-        "kick_character": _kick_character_intent(goal, tags),
+        "kick_character": _kick_character_intent(state, goal, tags),
         "bass_character": _bass_character_intent(goal, tags),
         "low_end_interaction": _low_end_interaction_plan(tags, state),
         "instrument_balance": _instrument_balance_intent(goal),

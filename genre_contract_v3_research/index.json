@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "CLASSICAL_COMBINED_COMPOSITION_HUMAN_LISTENING__THEN_ORCHESTRATION_BINDING",
+  "next_phase": "CLASSICAL_RHYTHMIC_PERFORMANCE_HUMAN_LISTENING__ORCHESTRATION_BLOCKED",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -695,14 +695,19 @@
     "grammar_only_audio": "READY_FOR_HUMAN_LISTENING",
     "melody_only_audio": "READY_FOR_HUMAN_LISTENING",
     "combined_grammar_melody_audio": "READY_FOR_HUMAN_LISTENING",
-    "combined_orchestration_binding": "NOT_STARTED",
+    "combined_orchestration_binding": "BLOCKED_UNTIL_RHYTHM_PASS",
     "live_runtime_status": "UNTOUCHED",
-    "latest_master_commit": "fa88b3ac7904a38f666066db1430550c0ff00cd1",
+    "latest_master_commit": "e5d446596b0c65faab67ad667cec18c25cf27591",
     "combined_composition_reproducible_renderer": "PASS",
     "combined_composition_workflow": "PASS",
     "combined_composition_workflow_run_id": 42339331336,
     "combined_composition_artifact_id": 13560946482,
     "combined_composition_artifact_sha256": "d88ad4c1a386bc9f4b17cc8ea1637195bf16e61f6b4ef0c00adb9fff91b92c74",
-    "combined_composition_human_listening": "PENDING"
+    "combined_composition_human_listening": "PENDING",
+    "previous_combined_composition_human_listening": "FAIL_NO_RHYTHMIC_FEEL__TOO_MECHANICAL",
+    "rhythmic_performance_renderer": "PASS",
+    "rhythmic_performance_workflow_run_id": 42339712308,
+    "rhythmic_performance_artifact_id": 13561471174,
+    "rhythmic_performance_human_listening": "PENDING"
   }
 }

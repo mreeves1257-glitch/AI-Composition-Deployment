@@ -47,10 +47,8 @@ git clone --filter=blob:none --no-checkout \
   git checkout "$RUSTY_COMMIT"
 )
 
-# Normalize SFZ path separators the same way the historical Composer build did.
-find "$BANK/KARORYFER_SHINYGUITAR" "$BANK/KARORYFER_BIG_RUSTY_DRUMS" \
-  -type f -name "*.sfz" -print0 | xargs -0 sed -i 's#\\#/#g'
-
+# Preserve all publisher-controlled files byte-for-byte. The October 17
+# recovery architecture adds only the Composer routing wrapper below.
 # Recreate the exact current Composer-facing electric-guitar wrapper recovered
 # from /Working File/INTEGRATED_WORKING_COPY on 2026-10-17. The preserved file
 # is 109 bytes and has the SHA-256 recorded below. It does not alter the factory
@@ -69,11 +67,10 @@ if [ "$actual_wrapper_sha" != "$EXPECTED_SHINY_WRAPPER_SHA256" ]; then
 fi
 echo "SHINYGUITAR_WRAPPER_HASH_PASS $actual_wrapper_sha"
 
-# Historical Shinyguitar programs expect an electric directory reachable from
-# Programs; preserve that real-sample link without copying or modifying samples.
-ln -sfn \
-  "$BANK/KARORYFER_SHINYGUITAR/Samples/electric" \
-  "$BANK/KARORYFER_SHINYGUITAR/Programs/electric"
+# Prove the pinned publisher trees were not edited. The Composer wrapper is
+# intentionally untracked and therefore excluded from this tracked-file check.
+git -C "$BANK/KARORYFER_SHINYGUITAR" diff --exit-code
+git -C "$BANK/KARORYFER_BIG_RUSTY_DRUMS" diff --exit-code
 
 test -f "$BANK/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz"
 test -f "$BANK/KARORYFER_BIG_RUSTY_DRUMS/Programs/01-full.sfz"
@@ -89,6 +86,8 @@ report={
     "diagnostic_only":True,
     "audio_rendered":False,
     "live_runtime_promoted":False,
+    "publisher_files_modified":False,
+    "wrapper_policy":"ADD_TINY_COMPOSER_ROUTING_WRAPPER_ONLY__PUBLISHER_FILES_UNCHANGED",
     "resources":{
         "KARORYFER_SHINYGUITAR":{
             "pinned_commit":sys.argv[2],

@@ -159,6 +159,274 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "Rock formations vary from power trios to multi-guitar/keyboard ensembles."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "rock": {
+              "overlap_tracks": 3203,
+              "top_instrument_tags": [
+                {
+                  "instrument": "drums",
+                  "count": 1758,
+                  "presence_percent": 54.89
+                },
+                {
+                  "instrument": "bass",
+                  "count": 1753,
+                  "presence_percent": 54.73
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 1563,
+                  "presence_percent": 48.8
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 1269,
+                  "presence_percent": 39.62
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 668,
+                  "presence_percent": 20.86
+                },
+                {
+                  "instrument": "voice",
+                  "count": 526,
+                  "presence_percent": 16.42
+                },
+                {
+                  "instrument": "acousticguitar",
+                  "count": 387,
+                  "presence_percent": 12.08
+                },
+                {
+                  "instrument": "piano",
+                  "count": 347,
+                  "presence_percent": 10.83
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 219,
+                  "presence_percent": 6.84
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 177,
+                  "presence_percent": 5.53
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 110,
+                  "presence_percent": 3.43
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 86,
+                  "presence_percent": 2.68
+                }
+              ]
+            },
+            "classicrock": {
+              "overlap_tracks": 116,
+              "top_instrument_tags": [
+                {
+                  "instrument": "guitar",
+                  "count": 52,
+                  "presence_percent": 44.83
+                },
+                {
+                  "instrument": "piano",
+                  "count": 35,
+                  "presence_percent": 30.17
+                },
+                {
+                  "instrument": "drums",
+                  "count": 25,
+                  "presence_percent": 21.55
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 24,
+                  "presence_percent": 20.69
+                },
+                {
+                  "instrument": "bass",
+                  "count": 15,
+                  "presence_percent": 12.93
+                },
+                {
+                  "instrument": "voice",
+                  "count": 13,
+                  "presence_percent": 11.21
+                },
+                {
+                  "instrument": "violin",
+                  "count": 5,
+                  "presence_percent": 4.31
+                },
+                {
+                  "instrument": "viola",
+                  "count": 5,
+                  "presence_percent": 4.31
+                },
+                {
+                  "instrument": "strings",
+                  "count": 4,
+                  "presence_percent": 3.45
+                },
+                {
+                  "instrument": "acousticguitar",
+                  "count": 4,
+                  "presence_percent": 3.45
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 3,
+                  "presence_percent": 2.59
+                },
+                {
+                  "instrument": "computer",
+                  "count": 3,
+                  "presence_percent": 2.59
+                }
+              ]
+            },
+            "hardrock": {
+              "overlap_tracks": 288,
+              "top_instrument_tags": [
+                {
+                  "instrument": "drums",
+                  "count": 181,
+                  "presence_percent": 62.85
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 158,
+                  "presence_percent": 54.86
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 126,
+                  "presence_percent": 43.75
+                },
+                {
+                  "instrument": "bass",
+                  "count": 120,
+                  "presence_percent": 41.67
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 76,
+                  "presence_percent": 26.39
+                },
+                {
+                  "instrument": "voice",
+                  "count": 25,
+                  "presence_percent": 8.68
+                },
+                {
+                  "instrument": "harmonica",
+                  "count": 8,
+                  "presence_percent": 2.78
+                },
+                {
+                  "instrument": "violin",
+                  "count": 5,
+                  "presence_percent": 1.74
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 5,
+                  "presence_percent": 1.74
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 3,
+                  "presence_percent": 1.04
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 3,
+                  "presence_percent": 1.04
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 2,
+                  "presence_percent": 0.69
+                }
+              ]
+            },
+            "alternativerock": {
+              "overlap_tracks": 124,
+              "top_instrument_tags": [
+                {
+                  "instrument": "bass",
+                  "count": 51,
+                  "presence_percent": 41.13
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 50,
+                  "presence_percent": 40.32
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 48,
+                  "presence_percent": 38.71
+                },
+                {
+                  "instrument": "drums",
+                  "count": 38,
+                  "presence_percent": 30.65
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 24,
+                  "presence_percent": 19.35
+                },
+                {
+                  "instrument": "acousticguitar",
+                  "count": 14,
+                  "presence_percent": 11.29
+                },
+                {
+                  "instrument": "voice",
+                  "count": 12,
+                  "presence_percent": 9.68
+                },
+                {
+                  "instrument": "harmonica",
+                  "count": 11,
+                  "presence_percent": 8.87
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 6,
+                  "presence_percent": 4.84
+                },
+                {
+                  "instrument": "piano",
+                  "count": 5,
+                  "presence_percent": 4.03
+                },
+                {
+                  "instrument": "strings",
+                  "count": 3,
+                  "presence_percent": 2.42
+                },
+                {
+                  "instrument": "violin",
+                  "count": 3,
+                  "presence_percent": 2.42
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -188,11 +456,13 @@
           "Groove MIDI Dataset",
           "GuitarSet",
           "MTG-Jamendo",
-          "MMA rock libraries"
+          "MMA rock libraries",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "broad_core": "HIGH",
-          "subgenre_percentages": "PENDING"
+          "subgenre_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -200,7 +470,8 @@
           "GMD": "CC_BY_4_0",
           "GuitarSet": "LICENSE_REVIEW",
           "MTG_Jamendo": "DATASET_AND_AUDIO_LICENSE_REVIEW",
-          "MMA": "LICENSE_REVIEW"
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -394,6 +665,79 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "New Age can be solo piano, guitar/flute/harp-led, ensemble, electronic or hybrid."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "newage": {
+              "overlap_tracks": 1174,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 539,
+                  "presence_percent": 45.91
+                },
+                {
+                  "instrument": "piano",
+                  "count": 456,
+                  "presence_percent": 38.84
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 110,
+                  "presence_percent": 9.37
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 100,
+                  "presence_percent": 8.52
+                },
+                {
+                  "instrument": "bass",
+                  "count": 81,
+                  "presence_percent": 6.9
+                },
+                {
+                  "instrument": "violin",
+                  "count": 75,
+                  "presence_percent": 6.39
+                },
+                {
+                  "instrument": "acousticguitar",
+                  "count": 71,
+                  "presence_percent": 6.05
+                },
+                {
+                  "instrument": "drums",
+                  "count": 65,
+                  "presence_percent": 5.54
+                },
+                {
+                  "instrument": "computer",
+                  "count": 52,
+                  "presence_percent": 4.43
+                },
+                {
+                  "instrument": "flute",
+                  "count": 48,
+                  "presence_percent": 4.09
+                },
+                {
+                  "instrument": "classicalguitar",
+                  "count": 46,
+                  "presence_percent": 3.92
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 40,
+                  "presence_percent": 3.41
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -420,15 +764,18 @@
         "sources": [
           "Current New Age profile",
           "GRAMMY New Age definition",
-          "AllMusic New Age taxonomy"
+          "AllMusic New Age taxonomy",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "broad_identity": "HIGH",
-          "subgenre_percentages": "PENDING"
+          "subgenre_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
-          "GRAMMY_AllMusic": "REFERENCE_ONLY"
+          "GRAMMY_AllMusic": "REFERENCE_ONLY",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -784,6 +1131,144 @@
             "Do not mix opera/vocal activity with instrumental-orchestra activity without subset filtering.",
             "Use activity share separately from population mass and Hauptstimme foreground ownership."
           ]
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "classical": {
+              "overlap_tracks": 3812,
+              "top_instrument_tags": [
+                {
+                  "instrument": "piano",
+                  "count": 2665,
+                  "presence_percent": 69.91
+                },
+                {
+                  "instrument": "violin",
+                  "count": 671,
+                  "presence_percent": 17.6
+                },
+                {
+                  "instrument": "cello",
+                  "count": 447,
+                  "presence_percent": 11.73
+                },
+                {
+                  "instrument": "strings",
+                  "count": 364,
+                  "presence_percent": 9.55
+                },
+                {
+                  "instrument": "drums",
+                  "count": 257,
+                  "presence_percent": 6.74
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 246,
+                  "presence_percent": 6.45
+                },
+                {
+                  "instrument": "orchestra",
+                  "count": 231,
+                  "presence_percent": 6.06
+                },
+                {
+                  "instrument": "viola",
+                  "count": 216,
+                  "presence_percent": 5.67
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 207,
+                  "presence_percent": 5.43
+                },
+                {
+                  "instrument": "doublebass",
+                  "count": 207,
+                  "presence_percent": 5.43
+                },
+                {
+                  "instrument": "flute",
+                  "count": 203,
+                  "presence_percent": 5.33
+                },
+                {
+                  "instrument": "oboe",
+                  "count": 157,
+                  "presence_percent": 4.12
+                }
+              ]
+            },
+            "orchestral": {
+              "overlap_tracks": 1161,
+              "top_instrument_tags": [
+                {
+                  "instrument": "piano",
+                  "count": 391,
+                  "presence_percent": 33.68
+                },
+                {
+                  "instrument": "violin",
+                  "count": 327,
+                  "presence_percent": 28.17
+                },
+                {
+                  "instrument": "strings",
+                  "count": 278,
+                  "presence_percent": 23.94
+                },
+                {
+                  "instrument": "cello",
+                  "count": 231,
+                  "presence_percent": 19.9
+                },
+                {
+                  "instrument": "orchestra",
+                  "count": 154,
+                  "presence_percent": 13.26
+                },
+                {
+                  "instrument": "computer",
+                  "count": 150,
+                  "presence_percent": 12.92
+                },
+                {
+                  "instrument": "horn",
+                  "count": 118,
+                  "presence_percent": 10.16
+                },
+                {
+                  "instrument": "flute",
+                  "count": 110,
+                  "presence_percent": 9.47
+                },
+                {
+                  "instrument": "doublebass",
+                  "count": 110,
+                  "presence_percent": 9.47
+                },
+                {
+                  "instrument": "drums",
+                  "count": 103,
+                  "presence_percent": 8.87
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 93,
+                  "presence_percent": 8.01
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 91,
+                  "presence_percent": 7.84
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -817,20 +1302,23 @@
           "DCML corpora (expert harmony/style-period research target)",
           "Orchestral instrument-activity datasets (activity-percentage research target)",
           "OpenScore Orchestra / Hauptstimme: 72 non-B-Minor-Mass annotation files analyzed for duration-weighted instrumental foreground ownership",
-          "Krause & Müller 2023 orchestral instrument-activity dataset: ~14 hours, frame-level 18-class annotations"
+          "Krause & Müller 2023 orchestral instrument-activity dataset: ~14 hours, frame-level 18-class annotations",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "current_profile": "MEDIUM__USEFUL_BASELINE_NOT_COMPLETE",
           "current_population_reference": "MEDIUM_HIGH_FOR_NAMED_FORMATION__NOT_UNIVERSAL",
           "future_activity_foreground_statistics": "PENDING",
           "hauptstimme_foreground_aggregate": "HIGH_FOR_CORPUS_REFERENCE__NOT_UNIVERSAL_RUNTIME_TARGET",
-          "orchestral_activity_dataset": "HIGH_FOR_ACTIVITY_METHOD__EXACT_FILTERED_PERCENTAGES_PENDING"
+          "orchestral_activity_dataset": "HIGH_FOR_ACTIVITY_METHOD__EXACT_FILTERED_PERCENTAGES_PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "external_corpora": "REVIEW_BEFORE_DIRECT_REUSE__DERIVED_RULES_PREFERRED",
           "OpenScore_scores": "CC0_1_0",
-          "Hauptstimme_annotations": "CC_BY_SA"
+          "Hauptstimme_annotations": "CC_BY_SA",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -1039,6 +1527,79 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_SWING_FORMATION",
           "note": "Do not reuse Big Band headcounts for Swing."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "swing": {
+              "overlap_tracks": 118,
+              "top_instrument_tags": [
+                {
+                  "instrument": "drums",
+                  "count": 43,
+                  "presence_percent": 36.44
+                },
+                {
+                  "instrument": "piano",
+                  "count": 41,
+                  "presence_percent": 34.75
+                },
+                {
+                  "instrument": "bass",
+                  "count": 36,
+                  "presence_percent": 30.51
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 25,
+                  "presence_percent": 21.19
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 23,
+                  "presence_percent": 19.49
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 21,
+                  "presence_percent": 17.8
+                },
+                {
+                  "instrument": "doublebass",
+                  "count": 17,
+                  "presence_percent": 14.41
+                },
+                {
+                  "instrument": "acousticguitar",
+                  "count": 17,
+                  "presence_percent": 14.41
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 15,
+                  "presence_percent": 12.71
+                },
+                {
+                  "instrument": "voice",
+                  "count": 11,
+                  "presence_percent": 9.32
+                },
+                {
+                  "instrument": "trombone",
+                  "count": 10,
+                  "presence_percent": 8.47
+                },
+                {
+                  "instrument": "orchestra",
+                  "count": 9,
+                  "presence_percent": 7.63
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -1067,18 +1628,21 @@
           "MMA Swing library",
           "Berklee Arranging 1",
           "Weimar Jazz Database",
-          "Berklee jazz performance/arranging references"
+          "Berklee jazz performance/arranging references",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "core_swing_behavior": "HIGH",
           "single_universal_formation": "REJECTED",
-          "variant_percentages": "PENDING"
+          "variant_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE",
           "Berklee": "REFERENCE_ONLY",
-          "Weimar": "REVIEW_CURRENT_DATA_LICENSE"
+          "Weimar": "REVIEW_CURRENT_DATA_LICENSE",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -2662,6 +3226,79 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "Fusion formations range from trio/quartet to large electric ensembles; no universal headcount."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "jazzfusion": {
+              "overlap_tracks": 153,
+              "top_instrument_tags": [
+                {
+                  "instrument": "drums",
+                  "count": 99,
+                  "presence_percent": 64.71
+                },
+                {
+                  "instrument": "bass",
+                  "count": 75,
+                  "presence_percent": 49.02
+                },
+                {
+                  "instrument": "piano",
+                  "count": 73,
+                  "presence_percent": 47.71
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 25,
+                  "presence_percent": 16.34
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 22,
+                  "presence_percent": 14.38
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 22,
+                  "presence_percent": 14.38
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 15,
+                  "presence_percent": 9.8
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 13,
+                  "presence_percent": 8.5
+                },
+                {
+                  "instrument": "pipeorgan",
+                  "count": 10,
+                  "presence_percent": 6.54
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 10,
+                  "presence_percent": 6.54
+                },
+                {
+                  "instrument": "percussion",
+                  "count": 9,
+                  "presence_percent": 5.88
+                },
+                {
+                  "instrument": "classicalguitar",
+                  "count": 6,
+                  "presence_percent": 3.92
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -2689,18 +3326,21 @@
           "Current AI Composer Jazz Fusion profile",
           "Weimar Jazz Database Fusion data",
           "MMA JazzRock/LFusion references",
-          "Berklee funk/fusion arranging"
+          "Berklee funk/fusion arranging",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "fusion_style_family": "MEDIUM_HIGH",
           "single_formation": "REJECTED",
-          "variant_percentages": "PENDING"
+          "variant_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Weimar": "ODbL",
           "MMA": "LICENSE_REVIEW",
-          "Berklee": "REFERENCE_ONLY"
+          "Berklee": "REFERENCE_ONLY",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -2889,6 +3529,79 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "R&B formations and instrumentation vary strongly by era."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "rnb": {
+              "overlap_tracks": 155,
+              "top_instrument_tags": [
+                {
+                  "instrument": "drums",
+                  "count": 52,
+                  "presence_percent": 33.55
+                },
+                {
+                  "instrument": "bass",
+                  "count": 49,
+                  "presence_percent": 31.61
+                },
+                {
+                  "instrument": "piano",
+                  "count": 45,
+                  "presence_percent": 29.03
+                },
+                {
+                  "instrument": "beat",
+                  "count": 36,
+                  "presence_percent": 23.23
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 31,
+                  "presence_percent": 20
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 28,
+                  "presence_percent": 18.06
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 27,
+                  "presence_percent": 17.42
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 24,
+                  "presence_percent": 15.48
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 21,
+                  "presence_percent": 13.55
+                },
+                {
+                  "instrument": "computer",
+                  "count": 20,
+                  "presence_percent": 12.9
+                },
+                {
+                  "instrument": "pipeorgan",
+                  "count": 19,
+                  "presence_percent": 12.26
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 17,
+                  "presence_percent": 10.97
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -2916,18 +3629,21 @@
           "Berklee arranging",
           "Groove MIDI Dataset",
           "MTG-Jamendo",
-          "MMA R&B libraries"
+          "MMA R&B libraries",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "core_pocket": "HIGH",
-          "era_statistics": "PENDING"
+          "era_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "GMD": "CC_BY_4_0",
           "MTG_Jamendo": "LICENSE_REVIEW",
-          "MMA": "LICENSE_REVIEW"
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -3117,6 +3833,79 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "Soul formations range from compact bands to orchestrated horn/string ensembles."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "soul": {
+              "overlap_tracks": 301,
+              "top_instrument_tags": [
+                {
+                  "instrument": "drums",
+                  "count": 183,
+                  "presence_percent": 60.8
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 163,
+                  "presence_percent": 54.15
+                },
+                {
+                  "instrument": "bass",
+                  "count": 159,
+                  "presence_percent": 52.82
+                },
+                {
+                  "instrument": "voice",
+                  "count": 129,
+                  "presence_percent": 42.86
+                },
+                {
+                  "instrument": "piano",
+                  "count": 116,
+                  "presence_percent": 38.54
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 111,
+                  "presence_percent": 36.88
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 110,
+                  "presence_percent": 36.54
+                },
+                {
+                  "instrument": "violin",
+                  "count": 108,
+                  "presence_percent": 35.88
+                },
+                {
+                  "instrument": "rhodes",
+                  "count": 107,
+                  "presence_percent": 35.55
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 106,
+                  "presence_percent": 35.22
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 98,
+                  "presence_percent": 32.56
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 98,
+                  "presence_percent": 32.56
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -3145,18 +3934,21 @@
           "Groove MIDI Dataset",
           "MTG-Jamendo",
           "Berklee arranging",
-          "MMA soul/spiritual references"
+          "MMA soul/spiritual references",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "core_soul_behavior": "HIGH",
-          "regional_variant_statistics": "PENDING"
+          "regional_variant_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "GMD": "CC_BY_4_0",
           "MTG_Jamendo": "LICENSE_REVIEW",
           "Berklee": "REFERENCE_ONLY",
-          "MMA": "LICENSE_REVIEW"
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -3351,6 +4143,79 @@
         "rhythmic_slot_occupancy_percent": {
           "status": "TO_DERIVE_FROM_SYMBOLIC/MULTITRACK_DATA",
           "note": "Important Funk metric distinct from physical population."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "funk": {
+              "overlap_tracks": 659,
+              "top_instrument_tags": [
+                {
+                  "instrument": "bass",
+                  "count": 372,
+                  "presence_percent": 56.45
+                },
+                {
+                  "instrument": "drums",
+                  "count": 364,
+                  "presence_percent": 55.24
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 265,
+                  "presence_percent": 40.21
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 265,
+                  "presence_percent": 40.21
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 234,
+                  "presence_percent": 35.51
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 218,
+                  "presence_percent": 33.08
+                },
+                {
+                  "instrument": "piano",
+                  "count": 199,
+                  "presence_percent": 30.2
+                },
+                {
+                  "instrument": "rhodes",
+                  "count": 172,
+                  "presence_percent": 26.1
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 169,
+                  "presence_percent": 25.64
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 165,
+                  "presence_percent": 25.04
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 152,
+                  "presence_percent": 23.07
+                },
+                {
+                  "instrument": "violin",
+                  "count": 150,
+                  "presence_percent": 22.76
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -3380,11 +4245,13 @@
           "Groove MIDI Dataset",
           "GuitarSet",
           "MTG-Jamendo",
-          "MMA funk"
+          "MMA funk",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "core_funk_grammar": "HIGH",
-          "slot_statistics": "PENDING"
+          "slot_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -3392,7 +4259,8 @@
           "GuitarSet": "LICENSE_REVIEW",
           "MTG_Jamendo": "LICENSE_REVIEW",
           "Berklee": "REFERENCE_ONLY",
-          "MMA": "LICENSE_REVIEW"
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -4049,6 +4917,79 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "Country bands vary by era and regional/production practice."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "country": {
+              "overlap_tracks": 250,
+              "top_instrument_tags": [
+                {
+                  "instrument": "acousticguitar",
+                  "count": 108,
+                  "presence_percent": 43.2
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 91,
+                  "presence_percent": 36.4
+                },
+                {
+                  "instrument": "drums",
+                  "count": 54,
+                  "presence_percent": 21.6
+                },
+                {
+                  "instrument": "bass",
+                  "count": 52,
+                  "presence_percent": 20.8
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 45,
+                  "presence_percent": 18
+                },
+                {
+                  "instrument": "harmonica",
+                  "count": 36,
+                  "presence_percent": 14.4
+                },
+                {
+                  "instrument": "piano",
+                  "count": 24,
+                  "presence_percent": 9.6
+                },
+                {
+                  "instrument": "voice",
+                  "count": 19,
+                  "presence_percent": 7.6
+                },
+                {
+                  "instrument": "classicalguitar",
+                  "count": 18,
+                  "presence_percent": 7.2
+                },
+                {
+                  "instrument": "violin",
+                  "count": 11,
+                  "presence_percent": 4.4
+                },
+                {
+                  "instrument": "accordion",
+                  "count": 7,
+                  "presence_percent": 2.8
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 7,
+                  "presence_percent": 2.8
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -4076,18 +5017,21 @@
           "Country harmony corpus research",
           "Groove MIDI Dataset",
           "MMA country libraries",
-          "Berklee American Roots references"
+          "Berklee American Roots references",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "core_country_behavior": "HIGH",
-          "era_percentages": "PENDING"
+          "era_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "published_corpus_research": "REFERENCE",
           "GMD": "CC_BY_4_0",
           "MMA": "LICENSE_REVIEW",
-          "Berklee": "REFERENCE_ONLY"
+          "Berklee": "REFERENCE_ONLY",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -5631,6 +6575,79 @@
         },
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_BOSSA_FORMATION"
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "bossanova": {
+              "overlap_tracks": 96,
+              "top_instrument_tags": [
+                {
+                  "instrument": "guitar",
+                  "count": 34,
+                  "presence_percent": 35.42
+                },
+                {
+                  "instrument": "piano",
+                  "count": 23,
+                  "presence_percent": 23.96
+                },
+                {
+                  "instrument": "drums",
+                  "count": 19,
+                  "presence_percent": 19.79
+                },
+                {
+                  "instrument": "bass",
+                  "count": 17,
+                  "presence_percent": 17.71
+                },
+                {
+                  "instrument": "classicalguitar",
+                  "count": 13,
+                  "presence_percent": 13.54
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 12,
+                  "presence_percent": 12.5
+                },
+                {
+                  "instrument": "brass",
+                  "count": 11,
+                  "presence_percent": 11.46
+                },
+                {
+                  "instrument": "flute",
+                  "count": 10,
+                  "presence_percent": 10.42
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 10,
+                  "presence_percent": 10.42
+                },
+                {
+                  "instrument": "acousticguitar",
+                  "count": 9,
+                  "presence_percent": 9.38
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 9,
+                  "presence_percent": 9.38
+                },
+                {
+                  "instrument": "rhodes",
+                  "count": 8,
+                  "presence_percent": 8.33
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -5659,18 +6676,21 @@
           "Berklee Contemporary Music Styles",
           "Berklee Arranging 1",
           "MMA Bossa-related libraries",
-          "GuitarSet"
+          "GuitarSet",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "core_bossa_behavior": "HIGH",
           "universal_formation": "REJECTED",
-          "variant_percentages": "PENDING"
+          "variant_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW",
-          "GuitarSet": "LICENSE_REVIEW"
+          "GuitarSet": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -7367,6 +8387,144 @@
         "low_end_occupancy_percent": {
           "status": "TO_DERIVE_AND_VALIDATE",
           "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "house": {
+              "overlap_tracks": 916,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 629,
+                  "presence_percent": 68.67
+                },
+                {
+                  "instrument": "bass",
+                  "count": 480,
+                  "presence_percent": 52.4
+                },
+                {
+                  "instrument": "drums",
+                  "count": 384,
+                  "presence_percent": 41.92
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 363,
+                  "presence_percent": 39.63
+                },
+                {
+                  "instrument": "percussion",
+                  "count": 332,
+                  "presence_percent": 36.24
+                },
+                {
+                  "instrument": "piano",
+                  "count": 115,
+                  "presence_percent": 12.55
+                },
+                {
+                  "instrument": "computer",
+                  "count": 114,
+                  "presence_percent": 12.45
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 72,
+                  "presence_percent": 7.86
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 64,
+                  "presence_percent": 6.99
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 56,
+                  "presence_percent": 6.11
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 43,
+                  "presence_percent": 4.69
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 42,
+                  "presence_percent": 4.59
+                }
+              ]
+            },
+            "deephouse": {
+              "overlap_tracks": 299,
+              "top_instrument_tags": [
+                {
+                  "instrument": "piano",
+                  "count": 192,
+                  "presence_percent": 64.21
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 189,
+                  "presence_percent": 63.21
+                },
+                {
+                  "instrument": "bass",
+                  "count": 46,
+                  "presence_percent": 15.38
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 42,
+                  "presence_percent": 14.05
+                },
+                {
+                  "instrument": "computer",
+                  "count": 27,
+                  "presence_percent": 9.03
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 15,
+                  "presence_percent": 5.02
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 9,
+                  "presence_percent": 3.01
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 9,
+                  "presence_percent": 3.01
+                },
+                {
+                  "instrument": "beat",
+                  "count": 6,
+                  "presence_percent": 2.01
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 5,
+                  "presence_percent": 1.67
+                },
+                {
+                  "instrument": "drums",
+                  "count": 5,
+                  "presence_percent": 1.67
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 4,
+                  "presence_percent": 1.34
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -7395,19 +8553,22 @@
           "Beatport 2026 genre taxonomy",
           "GiantSteps tempo+genre dataset",
           "MMA House",
-          "MTG-Jamendo"
+          "MTG-Jamendo",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "house_family": "HIGH",
           "current_subgenre_taxonomy": "HIGH_FOR_BEATPORT_MARKETPLACE",
-          "layer_statistics": "PENDING"
+          "layer_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
           "GiantSteps": "RESEARCH_DATA_LICENSE_REVIEW",
           "MMA": "LICENSE_REVIEW",
-          "MTG_Jamendo": "LICENSE_REVIEW"
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -7611,6 +8772,79 @@
         },
         "repetition_mutation_rate": {
           "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "techno": {
+              "overlap_tracks": 731,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 408,
+                  "presence_percent": 55.81
+                },
+                {
+                  "instrument": "computer",
+                  "count": 185,
+                  "presence_percent": 25.31
+                },
+                {
+                  "instrument": "bass",
+                  "count": 144,
+                  "presence_percent": 19.7
+                },
+                {
+                  "instrument": "piano",
+                  "count": 97,
+                  "presence_percent": 13.27
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 93,
+                  "presence_percent": 12.72
+                },
+                {
+                  "instrument": "drums",
+                  "count": 51,
+                  "presence_percent": 6.98
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 50,
+                  "presence_percent": 6.84
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 45,
+                  "presence_percent": 6.16
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 40,
+                  "presence_percent": 5.47
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 37,
+                  "presence_percent": 5.06
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 33,
+                  "presence_percent": 4.51
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 24,
+                  "presence_percent": 3.28
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -7639,19 +8873,22 @@
           "Beatport 2026 taxonomy",
           "GiantSteps",
           "MMA Techno references",
-          "MTG-Jamendo"
+          "MTG-Jamendo",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "techno_family": "HIGH",
           "subgenre_taxonomy": "HIGH_FOR_CURRENT_MARKETPLACE",
-          "mutation_statistics": "PENDING"
+          "mutation_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
           "GiantSteps": "RESEARCH_LICENSE_REVIEW",
           "MMA": "LICENSE_REVIEW",
-          "MTG_Jamendo": "LICENSE_REVIEW"
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -7855,6 +9092,79 @@
         "tension_cycle_percent": {
           "status": "TO_DERIVE_BY_SUBGENRE",
           "note": "Share of track spent in build/breakdown/peak/release states."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "trance": {
+              "overlap_tracks": 473,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 260,
+                  "presence_percent": 54.97
+                },
+                {
+                  "instrument": "computer",
+                  "count": 120,
+                  "presence_percent": 25.37
+                },
+                {
+                  "instrument": "bass",
+                  "count": 81,
+                  "presence_percent": 17.12
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 78,
+                  "presence_percent": 16.49
+                },
+                {
+                  "instrument": "piano",
+                  "count": 58,
+                  "presence_percent": 12.26
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 54,
+                  "presence_percent": 11.42
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 48,
+                  "presence_percent": 10.15
+                },
+                {
+                  "instrument": "drums",
+                  "count": 34,
+                  "presence_percent": 7.19
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 26,
+                  "presence_percent": 5.5
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 22,
+                  "presence_percent": 4.65
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 21,
+                  "presence_percent": 4.44
+                },
+                {
+                  "instrument": "violin",
+                  "count": 18,
+                  "presence_percent": 3.81
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -7883,19 +9193,22 @@
           "Beatport 2026 taxonomy",
           "GiantSteps",
           "MMA Trance",
-          "MTG-Jamendo"
+          "MTG-Jamendo",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "trance_family": "HIGH",
           "subgenre_taxonomy": "HIGH_FOR_CURRENT_MARKETPLACE",
-          "tension_statistics": "PENDING"
+          "tension_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
           "GiantSteps": "RESEARCH_LICENSE_REVIEW",
           "MMA": "LICENSE_REVIEW",
-          "MTG_Jamendo": "LICENSE_REVIEW"
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -8102,6 +9415,144 @@
         },
         "event_density_percent": {
           "status": "TO_DERIVE_BY_SUBSTYLE"
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "ambient": {
+              "overlap_tracks": 4005,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 1808,
+                  "presence_percent": 45.14
+                },
+                {
+                  "instrument": "piano",
+                  "count": 1221,
+                  "presence_percent": 30.49
+                },
+                {
+                  "instrument": "computer",
+                  "count": 573,
+                  "presence_percent": 14.31
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 448,
+                  "presence_percent": 11.19
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 432,
+                  "presence_percent": 10.79
+                },
+                {
+                  "instrument": "drums",
+                  "count": 397,
+                  "presence_percent": 9.91
+                },
+                {
+                  "instrument": "bass",
+                  "count": 345,
+                  "presence_percent": 8.61
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 280,
+                  "presence_percent": 6.99
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 258,
+                  "presence_percent": 6.44
+                },
+                {
+                  "instrument": "violin",
+                  "count": 253,
+                  "presence_percent": 6.32
+                },
+                {
+                  "instrument": "acousticguitar",
+                  "count": 215,
+                  "presence_percent": 5.37
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 214,
+                  "presence_percent": 5.34
+                }
+              ]
+            },
+            "darkambient": {
+              "overlap_tracks": 237,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 83,
+                  "presence_percent": 35.02
+                },
+                {
+                  "instrument": "computer",
+                  "count": 47,
+                  "presence_percent": 19.83
+                },
+                {
+                  "instrument": "piano",
+                  "count": 39,
+                  "presence_percent": 16.46
+                },
+                {
+                  "instrument": "drums",
+                  "count": 23,
+                  "presence_percent": 9.7
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 21,
+                  "presence_percent": 8.86
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 13,
+                  "presence_percent": 5.49
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 11,
+                  "presence_percent": 4.64
+                },
+                {
+                  "instrument": "violin",
+                  "count": 10,
+                  "presence_percent": 4.22
+                },
+                {
+                  "instrument": "voice",
+                  "count": 9,
+                  "presence_percent": 3.8
+                },
+                {
+                  "instrument": "percussion",
+                  "count": 9,
+                  "presence_percent": 3.8
+                },
+                {
+                  "instrument": "strings",
+                  "count": 7,
+                  "presence_percent": 2.95
+                },
+                {
+                  "instrument": "bass",
+                  "count": 7,
+                  "presence_percent": 2.95
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -8129,17 +9580,20 @@
           "Current Ambient Electronic profile",
           "Beatport Ambient/Experimental taxonomy",
           "MTG-Jamendo",
-          "MMA ambient references"
+          "MMA ambient references",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "ambient_core": "HIGH",
-          "state_statistics": "PENDING"
+          "state_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
           "MTG_Jamendo": "LICENSE_REVIEW",
-          "MMA": "LICENSE_REVIEW"
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -8337,6 +9791,79 @@
         "low_end_occupancy_percent": {
           "status": "TO_DERIVE_AND_VALIDATE",
           "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "downtempo": {
+              "overlap_tracks": 842,
+              "top_instrument_tags": [
+                {
+                  "instrument": "piano",
+                  "count": 461,
+                  "presence_percent": 54.75
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 437,
+                  "presence_percent": 51.9
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 188,
+                  "presence_percent": 22.33
+                },
+                {
+                  "instrument": "drums",
+                  "count": 128,
+                  "presence_percent": 15.2
+                },
+                {
+                  "instrument": "bass",
+                  "count": 106,
+                  "presence_percent": 12.59
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 105,
+                  "presence_percent": 12.47
+                },
+                {
+                  "instrument": "beat",
+                  "count": 72,
+                  "presence_percent": 8.55
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 70,
+                  "presence_percent": 8.31
+                },
+                {
+                  "instrument": "computer",
+                  "count": 57,
+                  "presence_percent": 6.77
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 49,
+                  "presence_percent": 5.82
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 42,
+                  "presence_percent": 4.99
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 28,
+                  "presence_percent": 3.33
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -8364,17 +9891,20 @@
           "Current Downtempo profile",
           "Beatport taxonomy",
           "MTG-Jamendo",
-          "MMA downtempo references"
+          "MMA downtempo references",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "downtempo_core": "HIGH",
-          "subgenre_statistics": "PENDING"
+          "subgenre_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
           "MTG_Jamendo": "LICENSE_REVIEW",
-          "MMA": "LICENSE_REVIEW"
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -8571,6 +10101,79 @@
         },
         "break_mutation_rate": {
           "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "breakbeat": {
+              "overlap_tracks": 176,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 61,
+                  "presence_percent": 34.66
+                },
+                {
+                  "instrument": "bass",
+                  "count": 55,
+                  "presence_percent": 31.25
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 41,
+                  "presence_percent": 23.3
+                },
+                {
+                  "instrument": "drums",
+                  "count": 39,
+                  "presence_percent": 22.16
+                },
+                {
+                  "instrument": "piano",
+                  "count": 25,
+                  "presence_percent": 14.2
+                },
+                {
+                  "instrument": "beat",
+                  "count": 24,
+                  "presence_percent": 13.64
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 23,
+                  "presence_percent": 13.07
+                },
+                {
+                  "instrument": "strings",
+                  "count": 12,
+                  "presence_percent": 6.82
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 11,
+                  "presence_percent": 6.25
+                },
+                {
+                  "instrument": "computer",
+                  "count": 8,
+                  "presence_percent": 4.55
+                },
+                {
+                  "instrument": "rhodes",
+                  "count": 7,
+                  "presence_percent": 3.98
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 6,
+                  "presence_percent": 3.41
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -8597,17 +10200,20 @@
           "Current Breakbeat profile",
           "Beatport 2026 taxonomy",
           "MTG-Jamendo",
-          "MMA breakbeat references"
+          "MMA breakbeat references",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "breakbeat_core": "HIGH",
-          "subgenre_statistics": "PENDING"
+          "subgenre_statistics": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
           "MTG_Jamendo": "LICENSE_REVIEW",
-          "MMA": "LICENSE_REVIEW"
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -9047,6 +10653,144 @@
         },
         "component_state_percent": {
           "status": "TO_BE_DECLARED_OR_GENERATED_WITHIN_CONSTRAINTS"
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "experimental": {
+              "overlap_tracks": 1559,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 757,
+                  "presence_percent": 48.56
+                },
+                {
+                  "instrument": "computer",
+                  "count": 399,
+                  "presence_percent": 25.59
+                },
+                {
+                  "instrument": "drums",
+                  "count": 284,
+                  "presence_percent": 18.22
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 257,
+                  "presence_percent": 16.48
+                },
+                {
+                  "instrument": "bass",
+                  "count": 252,
+                  "presence_percent": 16.16
+                },
+                {
+                  "instrument": "piano",
+                  "count": 252,
+                  "presence_percent": 16.16
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 201,
+                  "presence_percent": 12.89
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 178,
+                  "presence_percent": 11.42
+                },
+                {
+                  "instrument": "voice",
+                  "count": 164,
+                  "presence_percent": 10.52
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 120,
+                  "presence_percent": 7.7
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 117,
+                  "presence_percent": 7.5
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 117,
+                  "presence_percent": 7.5
+                }
+              ]
+            },
+            "electronic": {
+              "overlap_tracks": 5572,
+              "top_instrument_tags": [
+                {
+                  "instrument": "synthesizer",
+                  "count": 3345,
+                  "presence_percent": 60.03
+                },
+                {
+                  "instrument": "piano",
+                  "count": 1268,
+                  "presence_percent": 22.76
+                },
+                {
+                  "instrument": "computer",
+                  "count": 1134,
+                  "presence_percent": 20.35
+                },
+                {
+                  "instrument": "bass",
+                  "count": 900,
+                  "presence_percent": 16.15
+                },
+                {
+                  "instrument": "drums",
+                  "count": 900,
+                  "presence_percent": 16.15
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 871,
+                  "presence_percent": 15.63
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 563,
+                  "presence_percent": 10.1
+                },
+                {
+                  "instrument": "sampler",
+                  "count": 559,
+                  "presence_percent": 10.03
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 467,
+                  "presence_percent": 8.38
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 402,
+                  "presence_percent": 7.21
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 400,
+                  "presence_percent": 7.18
+                },
+                {
+                  "instrument": "violin",
+                  "count": 281,
+                  "presence_percent": 5.04
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -9073,16 +10817,19 @@
         "sources": [
           "Current Experimental Electronic profile",
           "Beatport Ambient/Experimental taxonomy",
-          "project constraint-composition research"
+          "project constraint-composition research",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "component_architecture_direction": "HIGH",
-          "universal_style_rules": "REJECTED"
+          "universal_style_rules": "REJECTED",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
-          "research_sources": "REFERENCE"
+          "research_sources": "REFERENCE",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -10639,6 +12386,79 @@
         },
         "layer_activity_percent": {
           "status": "TO_DERIVE"
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "triphop": {
+              "overlap_tracks": 684,
+              "top_instrument_tags": [
+                {
+                  "instrument": "drums",
+                  "count": 378,
+                  "presence_percent": 55.26
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 370,
+                  "presence_percent": 54.09
+                },
+                {
+                  "instrument": "bass",
+                  "count": 336,
+                  "presence_percent": 49.12
+                },
+                {
+                  "instrument": "piano",
+                  "count": 242,
+                  "presence_percent": 35.38
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 208,
+                  "presence_percent": 30.41
+                },
+                {
+                  "instrument": "drummachine",
+                  "count": 199,
+                  "presence_percent": 29.09
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 191,
+                  "presence_percent": 27.92
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 184,
+                  "presence_percent": 26.9
+                },
+                {
+                  "instrument": "computer",
+                  "count": 176,
+                  "presence_percent": 25.73
+                },
+                {
+                  "instrument": "electricpiano",
+                  "count": 161,
+                  "presence_percent": 23.54
+                },
+                {
+                  "instrument": "guitar",
+                  "count": 161,
+                  "presence_percent": 23.54
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 152,
+                  "presence_percent": 22.22
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -10664,16 +12484,19 @@
         "sources": [
           "Current Trip-Hop profile",
           "AllMusic Trip-Hop overview",
-          "MTG-Jamendo/MedleyDB research targets"
+          "MTG-Jamendo/MedleyDB research targets",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "historical_style_identity": "HIGH",
-          "variant_percentages": "PENDING"
+          "variant_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "AllMusic": "REFERENCE_ONLY",
-          "datasets": "LICENSE_REVIEW"
+          "datasets": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -12123,6 +13946,79 @@
         },
         "rhythmic_slot_occupancy_percent": {
           "status": "TO_DERIVE"
+        },
+        "presence_research_reference_mtg_jamendo": {
+          "source": "MTG-Jamendo Dataset genre/instrument metadata",
+          "methodology": "Conditional instrument-tag presence among tracks carrying the named genre tag AND at least one instrument tag.",
+          "interpretation": "Research cross-check only. Tag absence does not mean an instrument is absent; uploader metadata is incomplete and multi-label.",
+          "license_gate": "NONCOMMERCIAL_RESEARCH_ONLY__DO_NOT_EXPORT_TO_COMMERCIAL_RUNTIME_WITHOUT_AUTHORIZATION_OR_INDEPENDENT_CORROBORATION",
+          "references": {
+            "disco": {
+              "overlap_tracks": 242,
+              "top_instrument_tags": [
+                {
+                  "instrument": "guitar",
+                  "count": 104,
+                  "presence_percent": 42.98
+                },
+                {
+                  "instrument": "piano",
+                  "count": 98,
+                  "presence_percent": 40.5
+                },
+                {
+                  "instrument": "synthesizer",
+                  "count": 80,
+                  "presence_percent": 33.06
+                },
+                {
+                  "instrument": "drums",
+                  "count": 46,
+                  "presence_percent": 19.01
+                },
+                {
+                  "instrument": "bass",
+                  "count": 45,
+                  "presence_percent": 18.6
+                },
+                {
+                  "instrument": "keyboard",
+                  "count": 37,
+                  "presence_percent": 15.29
+                },
+                {
+                  "instrument": "percussion",
+                  "count": 26,
+                  "presence_percent": 10.74
+                },
+                {
+                  "instrument": "saxophone",
+                  "count": 22,
+                  "presence_percent": 9.09
+                },
+                {
+                  "instrument": "electricguitar",
+                  "count": 19,
+                  "presence_percent": 7.85
+                },
+                {
+                  "instrument": "violin",
+                  "count": 19,
+                  "presence_percent": 7.85
+                },
+                {
+                  "instrument": "trumpet",
+                  "count": 19,
+                  "presence_percent": 7.85
+                },
+                {
+                  "instrument": "pipeorgan",
+                  "count": 14,
+                  "presence_percent": 5.79
+                }
+              ]
+            }
+          }
         }
       },
       "performance": {
@@ -12149,16 +14045,19 @@
         "sources": [
           "Current Disco profile",
           "Beatport Nu Disco/Disco taxonomy",
-          "arranger/style references"
+          "arranger/style references",
+          "MTG-Jamendo genre/instrument co-occurrence research reference"
         ],
         "source_confidence": {
           "classic_core": "HIGH",
-          "formation_percentages": "PENDING"
+          "formation_percentages": "PENDING",
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Beatport": "TAXONOMY_REFERENCE",
-          "external_style_sources": "LICENSE_REVIEW"
+          "external_style_sources": "LICENSE_REVIEW",
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -12901,5 +14800,5 @@
     "Validate each candidate runtime contract structurally and by listening before approval."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED__ACTIVITY_DATASET_REGISTERED"
+  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED__ACTIVITY_DATASET_REGISTERED__MTG_PRESENCE_CROSSCHECK_ADDED"
 }

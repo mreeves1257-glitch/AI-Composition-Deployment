@@ -662,3 +662,69 @@ Run:
 `42394334886`
 
 No audio, no bass enablement, no canonical/live mutation, and no reasoning-engine involvement.
+
+
+## Rock V3 bass sustain — structural and resource gates passed; listening A/B launched
+
+Current approved diagnostic guitar context remains fixed:
+- HARMONY max ringing: 2.8 beats
+- safe note-off-preserving strum attack
+- treated LEAD unchanged
+
+Bass candidate safety result:
+- 147 total BASS events
+- 58 duration changes
+- extension distribution:
+  - +0.225 beat: 18 events
+  - +0.420 beat: 31 events
+  - +0.615 beat: 9 events
+- section changes:
+  - INTRO_1: 2
+  - VERSE_1: 14
+  - CHORUS_1: 12
+  - VERSE_2: 14
+  - CHORUS_2: 12
+  - OUTRO_1: 4
+- no pitch/onset/velocity/event-count mutation
+- no bar-boundary crossing
+
+Important source-overlap distinction:
+- the source bass writing already contains 33 pre-existing next-attack overlaps
+- the bass sustain candidate introduces 0 new overlaps
+- worsens 0 existing overlaps
+- none of the 58 changed bass events overlap their next attack
+- the earlier overbroad verifier incorrectly rejected any overlap in the finished score; the corrected verifier compares before vs after and rejects only candidate-introduced/worsened overlap
+
+Corrected symbolic execution verification:
+Run `42394761793` — PASS  
+Artifact `13583281262`  
+Digest `sha256:18d8e7604eff073c96d9892aa3959c4f9205f92209b56e7df6c32ef462e0919c`
+
+Exact Growlybass resource proof:
+Run `42394715088` — PASS  
+Artifact `13583037189`  
+Digest `sha256:002356c662b5c93fdb84b07c7e9ac40bcc0c9a886a5c4a385732af72793ea605`
+- official v1.002 archive size: 167454256 bytes
+- archive SHA256: `b92dca75494fa39d6e8d8b8addaabfe70c5aaa59b5f9a0f624be6de51a2374bc`
+- target mapping: `growlybass_vicious.sfz`
+- 86 sample references / 86 unique samples / 1 SFZ validated
+- fallback: NO_SYNTHETIC_SUBSTITUTION
+- production fidelity not certified
+
+Strict listening gate:
+`Rock V3 Bass Sustain Listening AB`
+Run `42394879894`
+
+Window:
+- first 16 bars / 64 beats
+- contains 23 changed bass notes
+- covers intro, full first verse, and first part of Chorus 1
+
+Listening outputs planned:
+- current BASS only
+- sustained BASS only
+- current BASS + approved HARMONY strum + treated LEAD
+- sustained BASS + exact same approved HARMONY strum + treated LEAD
+
+No drums are included in this gate, so bass duration is the only new variable.
+No live enablement, no main merge, no reasoning engine.

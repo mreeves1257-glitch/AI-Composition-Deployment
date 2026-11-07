@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_OBJECTIVE_AUDIO_PASS__COMPOSITION_GRAMMAR_RESEARCH_NEXT__SUBJECTIVE_LISTENING_PENDING",
+      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__PERIOD_COMPOSITION_GRAMMAR_CANDIDATES_DEFINED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -1076,7 +1076,8 @@
           "No percentage-based ensemble population model in the genre contract itself.",
           "No executable spatial seating/section-footprint contract.",
           "Current live Classical generator still contains hard-coded orchestration behavior separate from the profile.",
-          "Current Classical pilot hard-codes foreground to violin/flute and restricts brass to support/punctuation, preventing evidence-backed role handoffs."
+          "Current Classical pilot hard-codes foreground to violin/flute and restricts brass to support/punctuation, preventing evidence-backed role handoffs.",
+          "Current Classical plan uses a narrow cadence palette and largely one-chord-per-bar templates; corpus evidence supports more varied harmonic rhythm, tonicization, inversions, applied harmony, and cadence types."
         ],
         "external_sources_considered": [
           "Current AI Composer 55-profile registry",
@@ -2363,7 +2364,10 @@
           "A VALIDATION_ONLY cohort may not directly set runtime probabilities or family-wide role weights.",
           "A COMPOSER_STYLE_REFERENCE may constrain or validate a variant but may not be silently promoted to an era-wide default.",
           "A resolved variant must be able to assign FOREGROUND to every section family permitted by that variant; the realization layer may not hard-code foreground to violin/flute.",
-          "Late-Romantic expanded-orchestra validation must demonstrate at least one genuine brass-foreground passage generated from composition logic, not post-mix boosting."
+          "Late-Romantic expanded-orchestra validation must demonstrate at least one genuine brass-foreground passage generated from composition logic, not post-mix boosting.",
+          "Classical-period grammar validation must support PAC, HC, IAC, EC and DC outcomes without collapsing them to a generic AUTHENTIC label.",
+          "Romantic grammar validation must increase tonal mobility/chromatic vocabulary without merely increasing chord-change frequency.",
+          "Harmony generator must keep orchestration variant and composition-grammar variant independently selectable for controlled tests."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
@@ -2834,6 +2838,66 @@
             "A section may remain active while yielding perceptual space through register, density, rhythm, articulation and spatial depth.",
             "Qualitative role bands remain provisional until listening validation against approved references."
           ]
+        },
+        "candidate_composition_grammar": {
+          "status": "RESEARCH_CANDIDATES__NOT_RUNTIME_APPROVED",
+          "CLASSICAL_PERIOD_TONAL": {
+            "evidence_level": "VARIANT_CANDIDATE",
+            "harmonic_rhythm": "VARIABLE_WITHIN_PHRASE__MANY_EVENTS_0_5_TO_2_QB__STABILITY_AT_STRUCTURAL_POINTS",
+            "cadence_palette": {
+              "primary": [
+                "PAC",
+                "HC"
+              ],
+              "secondary": [
+                "IAC",
+                "EC",
+                "DC"
+              ],
+              "behavior": "Cadence type should be selected by formal function and phrase trajectory; do not force every non-HC phrase to one generic authentic cadence."
+            },
+            "tonal_plan": [
+              "Establish global tonic clearly, but allow substantial local-key/tonicization windows.",
+              "Dominant is highly active but should be prepared through predominant, applied-dominant, leading-tone and cadential-six-four behaviors rather than repeated root-position V alone.",
+              "Use ii, vii/leading-tone harmony, IV, vi and controlled minor-mode mixture as functional resources.",
+              "Allow local-key excursions commonly involving V, vi, IV and mode-relative regions, with return architecture tied to form."
+            ],
+            "voice_leading": [
+              "Favor inversions and stepwise bass/inner-voice continuity over repeated block-root motion.",
+              "Treat diminished and applied harmonies as directed voice-leading devices with preparation/resolution.",
+              "Harmonic rhythm should accelerate approaching cadences/development and relax at stable arrivals."
+            ],
+            "phrase_policy": "Replace fixed eight-bar-only construction with cadence-driven phrase units; retain 4/8-bar balance as common options but permit extensions, contractions and elisions after phrase-parser validation."
+          },
+          "ROMANTIC_TONAL_EXPANDED": {
+            "evidence_level": "VARIANT_CANDIDATE",
+            "harmonic_rhythm": "NOT_SYSTEMATICALLY_FASTER_THAN_CLASSICAL__COMPLEXITY_COMES_FROM_TONAL_MOBILITY_AND_CHROMATIC_VOICE_LEADING",
+            "cadence_palette": {
+              "primary": [
+                "PAC",
+                "HC",
+                "IAC"
+              ],
+              "secondary": [
+                "PC",
+                "EC",
+                "DC"
+              ],
+              "behavior": "Permit less categorical closure and more imperfect/prolonged arrivals; cadence strength should follow long-range tension rather than fixed phrase length."
+            },
+            "tonal_plan": [
+              "Spend longer spans in tonicized/local-key regions before return.",
+              "Increase applied harmony, chromatic alterations, diminished-seventh voice-leading, modal mixture, Neapolitan/augmented-sixth and extended dominant resources.",
+              "Permit chromatic-mediant and third-related tonal motion only where a resolved subvariant supports it; do not make it universal.",
+              "Use tonic return as a long-range structural event rather than forcing frequent global-tonic reset."
+            ],
+            "voice_leading": [
+              "Use common-tone and semitone voice-leading to connect remote or chromatic harmonies.",
+              "Permit prolonged dominant and diminished structures over changing bass/inner voices.",
+              "Increase seventh/extended sonority probability while preserving functional direction where the selected Romantic subvariant remains tonal."
+            ],
+            "internal_variant_requirement": "Schumann/Liszt/Dvorak/Grieg/Tchaikovsky/Medtner evidence differs materially; broad Romantic profile must expose bounded subvariant parameters rather than one fixed table."
+          }
         }
       },
       "quantitative_evidence_status": {
@@ -2885,6 +2949,154 @@
           "Let foreground ownership transfer among eligible sections by variant.",
           "Let supporting sections change density/register/articulation/rest state before any gain correction.",
           "Keep physical population, activity, foreground and gain as separate variables."
+        ]
+      },
+      "composition_grammar_empirical_reference": {
+        "status": "RESEARCH_REFERENCE__NOT_RUNTIME_QUOTA",
+        "purpose": "Separate period/variant-specific composition grammar from orchestration behavior.",
+        "sources": {
+          "classical_period_mozart": {
+            "corpus": "DCMLab mozart_piano_sonatas",
+            "coverage": "All 54 movements of Mozart's 18 piano sonatas",
+            "annotation_standard": "DCML harmony/cadence annotations",
+            "source_scope_caution": "Keyboard sonata corpus used for harmonic/cadential grammar only; not an orchestration, ensemble-population, or universal-form corpus.",
+            "events": 15272,
+            "total_duration_quarterbeats": 22408.25,
+            "mean_harmony_duration_quarterbeats": 1.467,
+            "cadence_events": 1115,
+            "cadences_per_100_quarterbeats": 4.976,
+            "cadence_distribution_percent": {
+              "PAC": 47.35,
+              "HC": 35.7,
+              "IAC": 6.19,
+              "EC": 7.35,
+              "DC": 3.41
+            },
+            "tonicized_or_localkey_not_global_tonic_duration_percent": 43.1,
+            "mean_localkey_changes_per_movement": 5.61,
+            "mean_unique_localkeys_per_movement": 3.74,
+            "applied_harmony_event_percent": 10.4,
+            "altered_changes_event_percent": 11.35,
+            "diminished_chord_type_percent": 9.93,
+            "augmented_sixth_chord_type_percent": 0.88,
+            "seventh_or_extended_chord_type_percent": 24.97,
+            "common_numeral_event_percent": {
+              "V": 37.63,
+              "I": 24.93,
+              "ii": 8.03,
+              "vii": 7.14,
+              "IV": 6.03,
+              "i": 4.96,
+              "vi": 2.96,
+              "#vii": 2.71
+            },
+            "harmonic_event_duration_bins_percent": {
+              "LTE_0_5_QB": 24.89,
+              "GT_0_5_LTE_1_QB": 36.54,
+              "GT_1_LTE_2_QB": 25.08,
+              "GT_2_LTE_4_QB": 11.04,
+              "GT_4_QB": 2.46
+            },
+            "phrase_span_note": "Direct phrase-brace span extraction was tested but deferred because nested/overlapping phrase annotations produced implausible long spans under a naive parser. Do not use those raw spans as runtime evidence."
+          },
+          "romantic_tonal_balanced_sample": {
+            "corpus": "DCML romantic piano corpora",
+            "composers": [
+              "Robert Schumann",
+              "Franz Liszt",
+              "Antonin Dvorak",
+              "Edvard Grieg",
+              "Pyotr Tchaikovsky",
+              "Nikolai Medtner"
+            ],
+            "sampling": "Six evenly spaced annotated pieces per composer/corpus, 36 pieces total, to reduce domination by one large corpus.",
+            "annotation_standard": "DCML harmony/cadence annotations",
+            "source_scope_caution": "Balanced piano sample used for harmonic grammar. It is not a complete survey of Romantic music and must not define orchestration or genre-wide form by itself.",
+            "events": 7195,
+            "total_duration_quarterbeats": 10318.63,
+            "mean_harmony_duration_quarterbeats": 1.434,
+            "cadences_per_100_quarterbeats": 4.189,
+            "cadence_events": 432,
+            "cadence_distribution_percent": {
+              "PAC": 38.43,
+              "HC": 34.49,
+              "IAC": 22.92,
+              "PC": 2.55,
+              "EC": 1.16,
+              "DC": 0.46
+            },
+            "tonicized_or_localkey_not_global_tonic_duration_percent": 66.31,
+            "applied_harmony_event_percent": 17.23,
+            "altered_changes_event_percent": 21.49,
+            "diminished_chord_type_percent": 12.26,
+            "augmented_sixth_chord_type_percent": 1.33,
+            "seventh_or_extended_chord_type_percent": 33.98,
+            "composer_variation_examples": {
+              "Schumann": {
+                "tonicized_duration_percent": 52.11,
+                "applied_percent": 16.74,
+                "diminished_percent": 14.06,
+                "seventh_extended_percent": 28.79
+              },
+              "Liszt": {
+                "tonicized_duration_percent": 65.33,
+                "applied_percent": 14.34,
+                "diminished_percent": 14.18,
+                "seventh_extended_percent": 28.3
+              },
+              "Dvorak": {
+                "tonicized_duration_percent": 58.83,
+                "applied_percent": 12.28,
+                "diminished_percent": 12.4,
+                "seventh_extended_percent": 28.93
+              },
+              "Grieg": {
+                "tonicized_duration_percent": 36.92,
+                "applied_percent": 20.77,
+                "altered_changes_percent": 34.39,
+                "seventh_extended_percent": 47.22
+              },
+              "Tchaikovsky": {
+                "tonicized_duration_percent": 69.52,
+                "altered_changes_percent": 27.31,
+                "augmented_sixth_percent": 2.7,
+                "seventh_extended_percent": 34.65
+              },
+              "Medtner": {
+                "tonicized_duration_percent": 95.99,
+                "applied_percent": 26.71,
+                "altered_changes_percent": 25.25,
+                "seventh_extended_percent": 37.49
+              }
+            }
+          },
+          "brahms_crosscheck": {
+            "corpus": "When in Rome / Brahms String Quartet Op.51 No.1",
+            "movements": 4,
+            "chord_events": 1479,
+            "mean_chord_events_per_measure": 1.969,
+            "applied_chord_percent": 11.09,
+            "diminished_chord_percent": 14.6,
+            "augmented_sixth_percent": 1.83,
+            "seventh_or_extended_percent": 32.18,
+            "local_key_markers": 139,
+            "qualification": "Composer-specific cross-check only. RomanText annotation practice differs from DCML TSV, so direct numerical comparison must be cautious."
+          }
+        },
+        "comparative_findings": [
+          "The strongest Classical-to-Romantic difference in these samples is not faster harmonic rhythm: mean harmony duration is nearly unchanged.",
+          "Romantic samples spend substantially more annotated duration away from the global tonic and use more applied, altered, diminished, and seventh/extended harmony.",
+          "Mozart cadence behavior is not binary: PAC and HC dominate, but IAC, evaded, and deceptive cadences are real recurring options.",
+          "The current Classical pilot's mostly one-chord-per-bar eight-bar templates are too harmonically static relative to the Mozart reference.",
+          "Romantic grammar should increase tonal excursion and chromatic voice-leading rather than simply increasing chord-change speed.",
+          "Composer variation within the Romantic sample is large enough to require subvariants or bounded style tendencies instead of one universal Romantic probability table."
+        ],
+        "guardrails": [
+          "Corpus percentages are descriptive evidence, not direct chord-generation quotas.",
+          "Do not equate localkey != I with literal modulation in every analytical sense; it includes tonicization/local-key analysis.",
+          "Piano harmonic corpora may inform harmony/cadence grammar but not orchestral population, foreground ownership, or instrumentation.",
+          "Different annotation systems are not numerically interchangeable; Brahms/When-in-Rome statistics are a qualitative cross-check.",
+          "Do not promote naive phrase-brace parsing into runtime logic until a parser respecting the annotation semantics is validated."
         ]
       }
     },
@@ -17768,13 +17980,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Research period/variant-specific composition grammar separately from orchestration using annotated harmonic/cadential corpora.",
-    "Keep the current paired orchestration test as a controlled reference with identical underlying plan.",
-    "Do not treat objective audio metrics as a substitute for human listening approval.",
-    "Do not integrate into live Composer yet."
+    "Build a research-only composition-grammar harness separate from the already validated orchestration harness.",
+    "Generate Classical-period tonal and Romantic tonal-expanded plans from the same seed while keeping renderer/orchestration controlled.",
+    "Validate cadence palette, harmonic-rhythm distribution, local-key excursion, applied/chromatic harmony and voice-leading before audio rendering.",
+    "Keep live Composer untouched until both grammar and orchestration listening gates pass."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_ORCHESTRATION_OBJECTIVE_AUDIO_PASS__GRAMMAR_SPLIT_RESEARCH_NEXT",
+  "quantitative_phase_status": "CLASSICAL_PERIOD_GRAMMAR_EVIDENCE_ADDED__ISOLATED_GRAMMAR_HARNESS_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

@@ -1,0 +1,33 @@
+{
+  "schema": "OCT17_COMPOSER_RESOURCE_RECOVERY_EVIDENCE_001",
+  "date": "2026-11-07",
+  "donor_archive": {
+    "library_path": "/Composer Backups/AI Composition - Sandbox_HARD_COPY_2026-10-17.zip",
+    "sha256": "27c122d962bc751cacac72eda3ab850f44aeef09461e4c5eafd1345a057c1ae0",
+    "verified_sha_match": true
+  },
+  "recovered_module": {
+    "name": "sfz_sample_graph.py",
+    "source_library_file_id": "file_00000000cad481f682ade43404fe954d",
+    "sha256": "39e5484053f317237d07a466af5aa61935d6951510e03e8d6e72163bae0b0e98",
+    "current_path": "current_master_forward/sfz_sample_graph.py",
+    "role": "READ_ONLY_STREAM_ORDER_SFZ_GRAPH_VALIDATOR"
+  },
+  "oct17_big_rusty_truth": {
+    "mapping": "Programs/01-full.sfz",
+    "sample_references": 7922,
+    "unique_samples": 4466,
+    "sfz_files_validated": 310,
+    "silent_choke_regions": 18,
+    "installation_manifest_big_rusty_file_entries": 4871,
+    "status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOFS_PRESENT_FIDELITY_NOT_CERTIFIED"
+  },
+  "policy": {
+    "donor_archive_overwrites_current_master": false,
+    "selective_forward_recovery_only": true,
+    "publisher_files_modified": false,
+    "synthetic_substitution": false,
+    "reasoning_engine_used": false,
+    "live_runtime_promoted": false
+  }
+}

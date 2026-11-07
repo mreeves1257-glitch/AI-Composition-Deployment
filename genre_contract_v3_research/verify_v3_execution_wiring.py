@@ -24,7 +24,7 @@ from genre_contract_v3_execution_bridge import (
 from genre_selector import GenreSelector
 
 V3_PATH = ROOT / "genre_contract_v3_research" / "GENRE_CONTRACT_V3_ALL_55.json"
-MENU_PATH = FORWARD / "genre_menu_catalog_WORKING_2026-09-28.json"
+MENU_PATH = None
 ADAPTER_PATH = FORWARD / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
 
 

@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "ROCK_FAMILY_BASELINE_FORM_EXPANSION__NO_AUDIO__VARIANT_CUES_GATED",
+  "next_phase": "ROCK_CORE_PERFORMANCE_REALIZATION_PLAN__NO_AUDIO",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -712,7 +712,7 @@
   },
   "execution_wiring_diagnosis": {
     "date": "2026-11-07",
-    "status": "V3_GENRE_TO_INSTRUMENT_COMMUNICATION_PASS__GENERIC_MELODY_BOTTLENECK_IDENTIFIED",
+    "status": "V3_GENRE_INSTRUMENT_RESOURCE_COMMUNICATION_PASS__ROCK_40_BAR_SYMBOLIC_COMPOSITION_PASS__PERFORMANCE_NEXT",
     "diagnostic_branch": "genre-contract-v3-no-reasoning-diagnostic",
     "reasoning_engine_status": "PRESERVED_ELSEWHERE__EXCLUDED_FROM_DIAGNOSTIC_BRANCH",
     "findings": [
@@ -748,7 +748,7 @@
     "automatic_legacy_instrument_fallback_genres": 0,
     "controlled_component_genres": 7,
     "classical_specialized_genres": 1,
-    "next_gap": "Build explicit evidence-backed Rock variant musical packages and expand the seven-bar seed into variant-valid song form before any audio.",
+    "next_gap": "Build and audit Rock Core instrument-specific performance candidate without audio; preserve prior strum/bass policies as research candidates until listening.",
     "v3_governed_source_pattern_genres": 40,
     "latest_positive_wiring_audit_run_id": 42379201319,
     "latest_positive_wiring_audit_status": "PASS",
@@ -926,6 +926,43 @@
       "live_runtime_promoted": false,
       "next_gate": "BUILD_AND_VALIDATE_NEUTRAL_ROCK_CORE_FAMILY_FORM_WITHOUT_CLAIMING_SUBGENRE",
       "runtime_workflow_head_sha": "8924c3afdede547a96db981560cb31e9dca84d95"
+    },
+    "latest_no_audio_wiring_run_id": 42381420994,
+    "latest_no_audio_wiring_status": "PASS",
+    "latest_no_audio_audit_artifact_id": 13576809898,
+    "latest_no_audio_audit_artifact_sha256": "bc46cbc31fae4914e092e7cc8cc3bd6e107c596d43df9895ee214d30346b4362",
+    "rock_core_symbolic_composition": {
+      "status": "PASS__NOT_LISTENING_APPROVED",
+      "bar_count": 40,
+      "tempo_bpm": 123,
+      "duration_seconds": 78.049,
+      "event_count": 897,
+      "role_count": 6,
+      "instrument_count": 5,
+      "rhythm_guitar_attack_count": 73,
+      "rhythm_guitar_attack_pitch_count": 3,
+      "single_note_rhythm_guitar_attack_present": false,
+      "lead_foreground_bar_count": 25,
+      "recurrent_bar_count_checked": 33,
+      "all_recurrent_bars_structurally_transformed": true,
+      "kick_snare_source_pattern_timing_preserved": true,
+      "verse2_not_literal_copy": true,
+      "chorus2_not_literal_copy": true,
+      "final_sustained_arrival_present": true,
+      "generic_progression_engine_used": false,
+      "old_generic_development_patch_used": false,
+      "random_jitter_used": false,
+      "new_instrument_roles_invented": false,
+      "audio_generated": false,
+      "finished_composition_authority": false,
+      "listening_approval": false,
+      "execution_sha256": "0f3f4049f4bb49814f1ee892e294e5a1edbf8a890d17d0c02302afe9d139ee70"
+    },
+    "rock_form_authority": {
+      "runtime_composition_candidate": "ROCK_V3_CORE_FORM_PLAN_001__40_BAR",
+      "neutral_36_bar_fixture": "RESEARCH_COMPARISON_ONLY__NOT_RUNTIME_SYNCED__NOT_COMPOSITION_AUTHORITY",
+      "variant_specific_form_planner": "SEPARATE_VARIANT_PATH__REQUIRES_EXPLICIT_VARIANT_FORM_DECISION",
+      "rule": "Do not allow multiple broad-Rock form candidates to become simultaneous runtime authorities."
     }
   }
 }

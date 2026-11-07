@@ -19,22 +19,7 @@ git clone --filter=blob:none --no-checkout \
 (
   cd "$DEST"
   git sparse-checkout init --cone
-  git sparse-checkout set \
-    Programs \
-    Samples/kick_24 \
-    Samples/kick_24_nodamp \
-    Samples/snare_14 \
-    Samples/hihat_14 \
-    Samples/tom_14 \
-    Samples/tom_15 \
-    Samples/tom_18 \
-    Samples/tom_22 \
-    Samples/crash_17 \
-    Samples/crash_sizzle_17 \
-    Samples/ride_22 \
-    Samples/ride_sizzle_19 \
-    Samples/china_18 \
-    Samples/stack_3_layer
+  git sparse-checkout set Programs Samples
   git checkout "$RUSTY_COMMIT"
   test "$(git rev-parse HEAD)" = "$RUSTY_COMMIT"
   git diff --exit-code

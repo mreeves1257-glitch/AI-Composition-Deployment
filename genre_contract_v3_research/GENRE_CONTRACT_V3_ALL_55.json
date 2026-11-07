@@ -5011,7 +5011,7 @@
       "source_profile_id": "RHYTHM_AND_BLUES_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__DIRECT_RNB_TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_STATS_PENDING",
+      "research_status": "V3_UPDATED__DIRECT_RNB_INSTRUMENT_PRIOR_AND_VARIANT_TAXONOMY_ADDED__ERA_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "RHYTHM_AND_BLUES_V1",
@@ -5388,13 +5388,15 @@
           "MTG-Jamendo",
           "MMA R&B libraries",
           "MTG-Jamendo genre/instrument co-occurrence research reference",
-          "MTG-Jamendo cleaned metadata: 568 tracks carrying genre tag 'rnb', with instrument-tag co-occurrence analyzed under coverage guardrails"
+          "MTG-Jamendo cleaned metadata: 568 tracks carrying genre tag 'rnb', with instrument-tag co-occurrence analyzed under coverage guardrails",
+          "AcousticBrainz genre dataset: large R&B hierarchy confirming major era/substyle separation"
         ],
         "source_confidence": {
           "core_pocket": "HIGH",
           "era_statistics": "PENDING",
           "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
-          "MTG_Jamendo_rnb_instrument_tag_ranking": "MEDIUM_FOR_TAG_RANKING__LOW_INSTRUMENT_TAG_COVERAGE__NOT_TRUE_PREVALENCE"
+          "MTG_Jamendo_rnb_instrument_tag_ranking": "MEDIUM_FOR_TAG_RANKING__LOW_INSTRUMENT_TAG_COVERAGE__NOT_TRUE_PREVALENCE",
+          "AcousticBrainz_RnB_variant_hierarchy": "HIGH_FOR_TAXONOMY__NOT_EXECUTION"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -5441,7 +5443,19 @@
           "Modern band R&B",
           "12/8 R&B ballad"
         ],
-        "note": "Contemporary R&B remains a separate top-level profile."
+        "note": "Contemporary R&B remains a separate top-level profile.",
+        "taxonomy_evidence": {
+          "AcousticBrainz_examples": {
+            "r&b---contemporary r&b": 34647,
+            "r&b---early r&b": 20006,
+            "r&b---soul": 37069,
+            "r&b---funk": 10851,
+            "r&b---neo-soul": 2195,
+            "r&b---new jack swing": 2312,
+            "r&b---quiet storm": 5180
+          },
+          "interpretation": "Strong evidence that 'R&B' cannot be one execution grammar; resolver must identify era/substyle before detailed instrumentation and groove."
+        }
       },
       "quantitative_evidence_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -6463,7 +6477,7 @@
       "source_profile_id": "CONTEMPORARY_RNB_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__PRODUCTION_VARIANT_REQUIRED",
+      "research_status": "V3_UPDATED__CONTEMPORARY_RNB_TIMING_AND_TAXONOMY_AUTHORITY_ADDED__INSTRUMENT_SUBSTYLE_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CONTEMPORARY_RNB_V1",
@@ -6554,7 +6568,16 @@
           "rule": "Lead/vocal-like line owns foreground and negative space; instrumental fills are sparse."
         },
         "rhythm_groove_model": {
-          "rule": "Laid-back syncopated or half-time pocket; trap-derived subdivisions only when variant supports them."
+          "rule": "Contemporary R&B may range from tightly programmed grid behavior to deliberate inter-layer microtiming. The resolved production variant must choose the timing model explicitly.",
+          "microtiming_authority": "RELATIONAL_OR_GRID_DEPENDENT_BY_PRODUCTION_VARIANT",
+          "timing_models": [
+            "tight_programmed_grid",
+            "relational_laid_back_live_hybrid",
+            "trap_influenced_subdivision",
+            "6_8_or_triplet_derived",
+            "explicit_custom_hybrid"
+          ],
+          "guardrail": "Do not apply one Neo-Soul-style timing offset to all Contemporary R&B."
         },
         "bass_model": {
           "rule": "Sub/electric bass may sustain, pulse or syncopate; interaction with kick must be stateful rather than constant duplication."
@@ -6614,6 +6637,11 @@
         },
         "layer_activation_percent": {
           "status": "TO_DERIVE_FROM_MULTITRACK/TAGGED_DATA"
+        },
+        "microtiming_relationships": {
+          "status": "VARIANT_DEPENDENT",
+          "research_basis": "Musicological research on contemporary R&B and Neo-Soul documents micro-rhythmic manipulation as a significant production/performance resource.",
+          "hard_rule": "Timing model must be resolved before performance rendering; no generic random humanization."
         }
       },
       "performance": {
@@ -6624,7 +6652,9 @@
         "interaction_rules": [
           "Pocket is intentionally laid back.",
           "Live/hybrid elements share one timing concept.",
-          "Negative space is preserved."
+          "Negative space is preserved.",
+          "Contemporary R&B timing may be grid-tight or relationally displaced depending on production variant; resolve this explicitly.",
+          "Live/hybrid microtiming must preserve a coherent shared pulse."
         ]
       },
       "production": {
@@ -6642,18 +6672,23 @@
           "Berklee contemporary arranging",
           "MTG-Jamendo",
           "MedleyDB research target",
-          "Groove MIDI Dataset"
+          "Groove MIDI Dataset",
+          "University of Oslo Rhythm in the Age of Digital Reproduction: empirical micro-rhythm research focused on Neo-Soul and contemporary R&B",
+          "AcousticBrainz genre dataset: large taxonomy distinguishes contemporary R&B, adult contemporary R&B, alternative R&B, quiet storm, and new jack swing"
         ],
         "source_confidence": {
           "core_negative_space_model": "HIGH",
-          "current_substyle_taxonomy": "PENDING_CONTINUOUS_RESEARCH"
+          "current_substyle_taxonomy": "PENDING_CONTINUOUS_RESEARCH",
+          "Contemporary_RnB_microtiming_as_resource": "HIGH_QUALITATIVE__VARIANT_DEPENDENT",
+          "AcousticBrainz_Contemporary_RnB_taxonomy": "HIGH_FOR_TAXONOMY__NOT_EXECUTION"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "MTG_Jamendo": "LICENSE_REVIEW",
           "MedleyDB": "LICENSE_REVIEW",
-          "GMD": "CC_BY_4_0"
+          "GMD": "CC_BY_4_0",
+          "AcousticBrainz_genre_dataset": "REFERENCE_ONLY__SOURCE_REUSE_RESTRICTIONS_VARY"
         },
         "conflicts_between_sources": [
           "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics.",
@@ -6665,12 +6700,15 @@
         "structural_tests": [
           "Production variant required.",
           "Kick/sub interaction cannot default to constant duplication.",
-          "Layer activation must remain section-aware."
+          "Layer activation must remain section-aware.",
+          "Timing model is a required production-variant field.",
+          "Grid-tight and laid-back relational timing modes must not be blended implicitly."
         ],
         "listening_tests": [
           "Lead remains clear over low end.",
           "Negative space survives.",
-          "Production variants sound materially different."
+          "Production variants sound materially different.",
+          "Verify different Contemporary R&B timing variants sound intentionally distinct while preserving pocket."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -6690,7 +6728,17 @@
           "Trap-influenced R&B",
           "6/8 contemporary R&B",
           "Electronic/ambient R&B"
-        ]
+        ],
+        "taxonomy_evidence": {
+          "AcousticBrainz_examples": {
+            "r&b---contemporary r&b": 34647,
+            "r&b---adult contemporary r&b": 5307,
+            "r&b---alternative r&b": 1271,
+            "r&b---quiet storm": 5180,
+            "r&b---new jack swing": 2312
+          },
+          "note": "Taxonomy evidence shows Contemporary R&B is internally diverse; counts are labels in a development dataset, not music-rule frequencies."
+        }
       },
       "quantitative_evidence_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -6705,7 +6753,7 @@
       "source_profile_id": "NEO_SOUL_RELATED_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__NEO_SOUL_RELATIONAL_MICROTIMING_AUTHORITY_ADDED__HARMONY_QUANT_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "NEO_SOUL_RELATED_V1",
@@ -6796,7 +6844,15 @@
           "rule": "Lead/vocal-like phrasing floats over deep pocket; accompaniment responds sparsely."
         },
         "rhythm_groove_model": {
-          "rule": "Laid-back pocket with nuanced subdivision and swung/straight ambiguity; microtiming is relational across the band."
+          "rule": "Laid-back groove may use deliberate inter-layer onset asynchrony while maintaining a coherent shared pulse. Microtiming is a relationship among drums, bass, guitar/keys and other layers, not independent random delay.",
+          "microtiming_authority": "RELATIONAL_BEAT_BIN_MODEL",
+          "research_note": "Neo-soul scholarship analyzes widened/dynamic perceptual beat locations ('beat bins') and intentional layer displacement as defining groove resources.",
+          "guardrails": [
+            "Do not assign a fixed universal delay in milliseconds.",
+            "Do not delay every instrument in the same direction.",
+            "Do not use independent random jitter as a substitute for groove.",
+            "Offset magnitude and direction must depend on role, tempo, sound envelope and the resolved Neo-Soul variant."
+          ]
         },
         "bass_model": {
           "rule": "Melodic, pocket-first bass with intentional space and dialogue with kick/lead."
@@ -6855,8 +6911,19 @@
           "note": "Neo-soul formations vary and are often production/live-band hybrids."
         },
         "microtiming_relationships": {
-          "status": "TO_DERIVE_FROM_HUMAN_PERFORMANCE_DATA",
-          "note": "Do not implement as independent random delay per instrument."
+          "status": "HIGH_CONFIDENCE_QUALITATIVE_MODEL__PARAMETER_RANGES_REQUIRE_VARIANT_VALIDATION",
+          "core_rule": "Preserve stable macro-pulse while allowing controlled, role-specific microtiming relationships inside each beat.",
+          "allowed_relationship_examples": [
+            "drums versus bass pocket offset",
+            "guitar/keys comping slightly displaced relative to drum reference",
+            "ghost-note placement around a shared perceptual beat region",
+            "foreground phrase timing that floats against a stable rhythm-section frame"
+          ],
+          "forbidden": [
+            "per-track independent random latency",
+            "global humanize slider applied equally to all roles",
+            "constant fixed lag across an entire piece without section/role context"
+          ]
         }
       },
       "performance": {
@@ -6867,7 +6934,9 @@
         "interaction_rules": [
           "Microtiming is relational.",
           "Harmonic instruments voice sparsely.",
-          "Ghost notes/rests support pocket."
+          "Ghost notes/rests support pocket.",
+          "Neo-Soul microtiming is relational: layers may intentionally disagree at the micro level while agreeing on the macro pulse.",
+          "Beat placement can have a perceptual width/shape; the Composer must reason about coupled layer timing rather than a single rigid timestamp."
         ]
       },
       "production": {
@@ -6885,18 +6954,27 @@
           "Berklee contemporary arranging",
           "Groove MIDI Dataset",
           "GuitarSet",
-          "MTG-Jamendo"
+          "MTG-Jamendo",
+          "Danielsen, Johansson & Stover (Music Theory Spectrum 2023): beat-bin/microtiming theory developed in part from Neo-Soul and related groove-based traditions",
+          "University of Oslo Rhythm in the Age of Digital Reproduction project: empirical focus on micro-rhythmic relationships in Neo-Soul and contemporary R&B",
+          "AcousticBrainz genre dataset: large taxonomy includes r&b---neo-soul",
+          "MMGenre 2026: 95 Neo-Soul symbolic score segments used only as diagnostic/taxonomy evidence because source music was AI-generated"
         ],
         "source_confidence": {
           "core_neo_soul_behavior": "HIGH",
-          "microtiming_statistics": "PENDING"
+          "microtiming_statistics": "PENDING",
+          "NeoSoul_relational_microtiming": "HIGH_QUALITATIVE_MUSICOLOGICAL_AUTHORITY",
+          "AcousticBrainz_NeoSoul_taxonomy": "HIGH_FOR_TAXONOMY__NOT_EXECUTION",
+          "MMGenre_NeoSoul_authenticity": "LOW_FOR_STYLE_AUTHORITY__DIAGNOSTIC_ONLY"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "GMD": "CC_BY_4_0",
           "GuitarSet": "LICENSE_REVIEW",
-          "MTG_Jamendo": "LICENSE_REVIEW"
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "AcousticBrainz_genre_dataset": "REFERENCE_ONLY__SOURCE_REUSE_RESTRICTIONS_VARY",
+          "MMGenre": "CURRENT_RELEASE_REPORTS_CC_BY_4_0__AI_GENERATED_SOURCE_CAVEAT__DIAGNOSTIC_ONLY"
         },
         "conflicts_between_sources": [
           "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics.",
@@ -6908,12 +6986,16 @@
         "structural_tests": [
           "No random-jitter microtiming.",
           "Keys/guitar voicing collision checks required.",
-          "Variant required for formation percentages."
+          "Variant required for formation percentages.",
+          "Microtiming engine must operate on inter-role relationships, not independent per-track random jitter.",
+          "Macro pulse stability must be testable even when microtiming offsets are active."
         ],
         "listening_tests": [
           "Pocket feels deep without sluggish incoherence.",
           "Lead/bass remain clear.",
-          "Extended chords are rich without masking."
+          "Extended chords are rich without masking.",
+          "Verify laid-back/elastic feel sounds intentional and coupled, not sloppy or flam-like.",
+          "Disable microtiming model and confirm the difference is groove feel rather than simple tempo drift."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -6933,7 +7015,17 @@
           "Guitar-led neo-soul",
           "Funk-influenced neo-soul",
           "Contemporary hybrid neo-soul"
-        ]
+        ],
+        "taxonomy_evidence": {
+          "AcousticBrainz_examples": {
+            "r&b---neo-soul": 2195,
+            "note": "Large human-recording genre-label corpus; used as taxonomy/variant evidence only, not direct composition statistics."
+          },
+          "MMGenre_examples": {
+            "neo-soul_symbolic_segments": 95,
+            "note": "Useful diagnostic taxonomy/score sample, but source music was generated with Suno V4.5; not accepted as an authenticity authority."
+          }
+        }
       },
       "quantitative_evidence_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

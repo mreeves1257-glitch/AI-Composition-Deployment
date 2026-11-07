@@ -88,6 +88,7 @@ def build()->dict[str,Any]:
                     "ring_fraction":0.84,
                     "max_ringing_beats":2.8,
                     "status":"PROJECT_AUTHORED_POLICY__REVALIDATE_ON_NEW_40_BAR_SCORE",
+                    "v3_harmony_safety_cap":"DO_NOT_CROSS_NEXT_BAR_HARMONY_CHANGE_WITHOUT_EXPLICIT_TIE",
                 },
                 "attack_strum_candidate":{
                     "source":"ROCK_SHINYGUITAR_STRUM_ATTACK_TIMING_V1",
@@ -117,6 +118,7 @@ def build()->dict[str,Any]:
                     "preserve_explicit_short_articulation":True,
                     "preserve_pitch_onset_velocity":True,
                     "status":"PROJECT_AUTHORED_POLICY__REVALIDATE_ON_NEW_40_BAR_SCORE",
+                    "v3_harmony_safety_cap":"DO_NOT_CROSS_NEXT_BAR_HARMONY_CHANGE_WITHOUT_EXPLICIT_TIE",
                 },
                 "timing_policy":{
                     "random_jitter":False,
@@ -127,6 +129,7 @@ def build()->dict[str,Any]:
                     "GENERIC_OCTAVE_FLIP",
                     "RANDOM_MELODY_TIMING",
                     "CONTINUOUS_LEAD_FILL",
+                    "SUSTAIN_ACROSS_UNVERIFIED_HARMONY_CHANGE",
                 ],
             },
             "BASS":{

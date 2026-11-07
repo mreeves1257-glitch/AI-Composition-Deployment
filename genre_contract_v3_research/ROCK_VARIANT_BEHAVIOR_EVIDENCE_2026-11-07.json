@@ -1,0 +1,163 @@
+{
+  "schema": "ROCK_V3_VARIANT_BEHAVIOR_EVIDENCE_INVENTORY_001",
+  "date": "2026-11-07",
+  "genre": "ROCK",
+  "profile_id": "ROCK_CORE_V2",
+  "authority": "GENRE_CONTRACT_V3",
+  "purpose": "Preserve concrete project evidence about Rock behavioral variation without falsely mapping legacy style files one-to-one onto V3 subgenre labels.",
+  "v3_variant_gate": {
+    "status": "REQUIRED_BEFORE_PERCENTAGES",
+    "candidate_variants": [
+      "Classic rock",
+      "Hard rock",
+      "Soft rock",
+      "Alternative rock",
+      "Southern rock",
+      "Progressive rock",
+      "Punk-related rock",
+      "Blues rock",
+      "Singer-songwriter rock"
+    ],
+    "hard_rule": "Do not let broad Rock baseline stand in for a resolved subgenre when cues are available.",
+    "silent_default_prohibited": true
+  },
+  "preserved_project_evidence": [
+    {
+      "evidence_id": "LEGACY_BASICROCK_MMA",
+      "source_ref": "composer_overrides/genre_styles/Rock/basicrock.mma",
+      "source_branch": "genre-interpreter-behavior-55-20261009",
+      "classification": "BEHAVIOR_REFERENCE_NOT_V3_SUBGENRE_LABEL",
+      "observed_behavior": [
+        "4/4 straight-ahead rock pulse",
+        "two-sequence bass pattern with root/fifth motion",
+        "kick/snare/open-hat/tambourine layers",
+        "clean-guitar plus secondary clean-guitar plus lower distorted-guitar roles",
+        "alternate BasicRock4 section reduces off-beat guitar activity and emphasizes four-beat feel",
+        "four-bar intro definitions",
+        "two-bar ending definition",
+        "optional sustained-string layer"
+      ],
+      "useful_axes": [
+        "straight_vs_syncopated_guitar_density",
+        "section_specific_guitar_texture",
+        "bass_motion",
+        "intro_behavior",
+        "ending_behavior",
+        "optional_sustained_color"
+      ],
+      "v3_variant_mapping": "UNRESOLVED__DO_NOT_ASSUME_CLASSIC_OR_HARD_ROCK"
+    },
+    {
+      "evidence_id": "LEGACY_60SROCK_MMA",
+      "source_ref": "composer_overrides/genre_styles/Rock/60srock.mma",
+      "source_branch": "genre-interpreter-behavior-55-20261009",
+      "classification": "ERA_STYLE_BEHAVIOR_REFERENCE_NOT_AUTOMATIC_V3_LABEL",
+      "observed_behavior": [
+        "steady 4/4 rock beat",
+        "four-beat kick activity",
+        "clean-guitar comping with alternate straight-guitar role",
+        "bridge variant removes some drum/hihat parts and introduces conga activity",
+        "alternate bridge changes chord rhythm and bass/walk behavior",
+        "optional sustained strings and arpeggiated guitar-noise layer",
+        "four-bar intro and two-bar ending definitions"
+      ],
+      "useful_axes": [
+        "verse_bridge_contrast",
+        "drum_layer_substitution",
+        "guitar_comping_density",
+        "bass_vs_walk_role",
+        "intro_behavior",
+        "ending_behavior",
+        "optional_color_layers"
+      ],
+      "v3_variant_mapping": "HISTORIC_60S_CUE_PRESENT_BUT_NOT_EQUAL_TO_ANY_SINGLE_V3_CANDIDATE_WITHOUT_FURTHER_RESEARCH"
+    },
+    {
+      "evidence_id": "LEGACY_ROCK128_MMA",
+      "source_ref": "composer_overrides/genre_styles/Rock/rock-128.mma",
+      "source_branch": "genre-interpreter-behavior-55-20261009",
+      "classification": "FEEL_REFERENCE_NOT_AUTOMATIC_V3_LABEL",
+      "observed_behavior": [
+        "doo-wop/1950s-oriented 12/8-feel concept represented in 4/4",
+        "piano-led triplet chord activity",
+        "four-beat kick, handclap backbeat and open-hat pulse",
+        "plain version converts triplet piano behavior to straighter four-in-bar",
+        "optional sustained strings/choir",
+        "optional piano/arpeggio interest layer",
+        "four-bar intro and two-bar ending definitions"
+      ],
+      "useful_axes": [
+        "triplet_vs_straight_feel",
+        "piano_vs_guitar_harmonic_ownership",
+        "backbeat_instrument_choice",
+        "sustained_background_color",
+        "intro_behavior",
+        "ending_behavior"
+      ],
+      "v3_variant_mapping": "UNRESOLVED__DO_NOT_FORCE_INTO_CURRENT_V3_VARIANT_LIST"
+    },
+    {
+      "evidence_id": "ROCK_PROFILE_2026_10_09",
+      "source_ref": "composer_overrides/genre_styles/Rock/profile.json",
+      "source_branch": "genre-interpreter-behavior-55-20261009",
+      "classification": "PROJECT_CONTROLLED_BROAD_BASELINE",
+      "observed_behavior": [
+        "separate HARMONY and LEAD roles both using electric_guitar identity",
+        "kick/bass/rhythm foundation with lead present selectively rather than constantly",
+        "4- or 8-bar phrase concept with verse/chorus contrast and fills into boundaries",
+        "lead phrases leave space and answer melodic gaps",
+        "density, register and guitar texture change across sections",
+        "shared groove offsets rather than independent random jitter"
+      ],
+      "useful_axes": [
+        "foreground_role_handoff",
+        "phrase_length",
+        "section_contrast",
+        "density",
+        "guitar_texture",
+        "groove_humanization"
+      ],
+      "v3_variant_mapping": "BROAD_BASELINE_ONLY"
+    },
+    {
+      "evidence_id": "ROCK_MELODIC_AUTHOR_V1",
+      "source_ref": "composer_overrides/rock_melodic_author_v1.py",
+      "source_branch": "genre-interpreter-behavior-55-20261009",
+      "classification": "PRIOR_PROJECT_FOREGROUND_RESEARCH_CANDIDATE",
+      "observed_behavior": [
+        "motif-based foreground rather than random notes",
+        "chord-tone phrase anchors and resolutions",
+        "scale passing tones for movement",
+        "phrase-end air",
+        "register continuity",
+        "call/answer/lift/reprise/cadence motif vocabulary"
+      ],
+      "useful_axes": [
+        "motivic_foreground",
+        "harmonic_anchor",
+        "phrase_space",
+        "register_continuity",
+        "section_development"
+      ],
+      "v3_variant_mapping": "CROSS_VARIANT_FOREGROUND_RESEARCH_TOOL__NOT_A_VARIANT_DEFINITION"
+    }
+  ],
+  "current_research_conclusion": {
+    "behavior_axes_with_project_evidence": [
+      "straight_vs_triplet_feel",
+      "guitar_density_and_texture",
+      "bass_motion",
+      "drum_layer_behavior",
+      "bridge_or_alternate_section_contrast",
+      "intro_and_ending_behavior",
+      "foreground_role_handoff",
+      "motivic_development",
+      "optional_color_layers"
+    ],
+    "evidence_gap": "Existing project materials demonstrate real Rock behavior variation but do not provide a trustworthy one-to-one mapping to the current V3 candidate subgenre names.",
+    "consequence": "Build variant-specific packages only after evidence explicitly supports that variant. Do not infer Classic/Hard/Alternative/etc. from a legacy filename alone.",
+    "broad_rock_finished_composition_authority": false,
+    "audio_authority": false,
+    "live_runtime_authority": false
+  }
+}

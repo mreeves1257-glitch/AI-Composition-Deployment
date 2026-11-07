@@ -270,7 +270,7 @@ def realize(plan):
 def duration_seconds(plan):
     return sum(180/t['bpm'] for t in plan['tempo_map'])
 
-def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None, v3_variant_package=None):
+def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None, v3_variant_package=None, v3_piece_intent=None):
     if profile.get('profile_id')!=PROFILE_ID:
         raise ValueError('CLASSICAL_PROFILE_ID_MISMATCH')
     if v3_variant_package is not None:
@@ -278,21 +278,42 @@ def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None, v3
             raise ValueError('CLASSICAL_V3_VARIANT_PACKAGE_INVALID')
         if v3_variant_package.get('status') != 'RESEARCH_PACKAGE_READY_FOR_STRUCTURAL_COMPILER__NOT_AUDIO_APPROVED':
             raise ValueError('CLASSICAL_V3_VARIANT_PACKAGE_STATUS_INVALID')
-        # Do not silently execute the legacy fixed Classical pilot while claiming
-        # that the V3 package is authoritative. The V3 structural compiler must
-        # explicitly replace the old fixed plan first.
+        if not isinstance(v3_piece_intent, dict):
+            return {
+                'genre_name':'Classical','profile_id':PROFILE_ID,
+                'status':'V3_PIECE_INTENT_REQUIRED','events':[],
+                'legacy_classical_generator_executed':False,
+                'classical_v3_variant_package':copy.deepcopy(v3_variant_package),
+            }
+        from classical_v3_structural_compiler import compile_plan as compile_v3_structure, validate_plan as validate_v3_structure
+        structural_plan=compile_v3_structure(
+            v3_variant_package,
+            tempo_bpm=float(v3_piece_intent['tempo_bpm']),
+            meter=str(v3_piece_intent['meter']),
+            mode=mode,
+            seed=creation_seed)
+        structural_validation=validate_v3_structure(structural_plan)
+        # Structural V3 communication is now bound. Stop before note realization:
+        # the legacy fixed-note generator is forbidden from standing in for the
+        # still-missing V3 melody/harmony/texture realizer.
         return {
             'genre_name':'Classical',
             'profile_id':PROFILE_ID,
-            'status':'V3_STRUCTURAL_COMPILER_REQUIRED',
+            'status':'V3_NOTE_REALIZER_REQUIRED',
             'resolution_policy':profile['resolution_policy'],
-            'execution_template':'classical_v3_pending_structural_compiler',
+            'execution_template':'classical_v3_structural_compiler',
+            'tempo_bpm':structural_plan['tempo_bpm'],
+            'meter':structural_plan['meter'],
+            'bars':len(structural_plan['bars']),
             'events':[],
             'palette':[],
             'classical_v3_variant_package':copy.deepcopy(v3_variant_package),
+            'classical_v3_piece_intent':copy.deepcopy(v3_piece_intent),
+            'classical_v3_structural_plan':structural_plan,
+            'classical_v3_structural_validation':structural_validation,
             'legacy_classical_generator_executed':False,
             'live_runtime_modified':False,
-            'reason':'V3_PACKAGE_RESOLVED_BUT_LEGACY_FIXED_PLAN_NOT_ALLOWED_AS_V3_EXECUTION',
+            'reason':'V3_STRUCTURE_BOUND__NOTE_REALIZER_NOT_YET_BOUND',
         }
     plan=copy.deepcopy(plan) if plan is not None else make_plan(creation_seed,mode)
     events=realize(plan)

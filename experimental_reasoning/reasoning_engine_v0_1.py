@@ -76,6 +76,15 @@ class SectionMemory:
 
 
 @dataclass(frozen=True)
+class InstrumentMemory:
+    instrument_id: str
+    meaningful_windows: int = 0
+    total_windows: int = 0
+    featured_windows: int = 0
+    last_role: Optional[str] = None
+
+
+@dataclass(frozen=True)
 class ComposerState:
     genre: str
     profile_id: str
@@ -91,6 +100,8 @@ class ComposerState:
     current_density: Optional[int] = None
     chord_context: Sequence[str] = field(default_factory=tuple)
     recent_sections: Sequence[SectionMemory] = field(default_factory=tuple)
+    active_instruments: Sequence[str] = field(default_factory=tuple)
+    instrument_history: Sequence[InstrumentMemory] = field(default_factory=tuple)
 
 
 @dataclass(frozen=True)
@@ -223,6 +234,79 @@ def _instrument_balance_intent(goal: MusicalGoal) -> dict[str, Any]:
         "interaction_instruction": "INSTRUMENTS_MAY_LEAD_SUPPORT_ANSWER_OR_REST_BUT REMAIN EQUALLY IMPORTANT TO THE WHOLE",
         "future_mix_instruction": "KEEP_EACH INSTRUMENT CLEAR AND INTENTIONAL WITHOUT FORCING EQUAL VOLUME",
         "solo_or_feature_exception": "TEMPORARY_FOCUS_ALLOWED_WITHOUT_REDUCING_OTHER_INSTRUMENTS_OVERALL_IMPORTANCE",
+    }
+
+
+def _instrument_importance_plan(state: ComposerState, goal: MusicalGoal) -> dict[str, Any]:
+    """Track equal importance across the composition without equating importance to activity.
+
+    Meaningful musical function is the unit of fairness.  Note count, velocity,
+    loudness, and foreground time are explicitly not used as importance scores.
+    """
+    active = [str(x) for x in state.active_instruments if str(x).strip()]
+    seen = set()
+    active = [x for x in active if not (x in seen or seen.add(x))]
+    memory = {m.instrument_id: m for m in state.instrument_history if m.instrument_id}
+
+    if not active:
+        return {
+            "status": "WAITING_FOR_ACTIVE_INSTRUMENT_LIST",
+            "target": "EQUAL_COMPOSITIONAL_IMPORTANCE",
+            "importance_unit": "MEANINGFUL_MUSICAL_FUNCTION",
+            "note_quantity_is_importance": False,
+            "loudness_is_importance": False,
+            "foreground_time_is_importance": False,
+            "rule": "WHEN_INSTRUMENTS_ARE_KNOWN_GIVE_EACH_EQUAL_STRUCTURAL_VALUE_OVER_THE_WHOLE_COMPOSITION",
+        }
+
+    rows = []
+    rates = []
+    for instrument_id in active:
+        hist = memory.get(instrument_id)
+        meaningful = int(hist.meaningful_windows) if hist else 0
+        total = int(hist.total_windows) if hist else 0
+        featured = int(hist.featured_windows) if hist else 0
+        rate = (meaningful / total) if total > 0 else 1.0
+        rates.append(rate)
+        rows.append({
+            "instrument_id": instrument_id,
+            "equal_importance_weight": 1.0,
+            "meaningful_windows": meaningful,
+            "observed_windows": total,
+            "featured_windows": featured,
+            "meaningful_function_rate": round(rate, 3),
+            "last_role": hist.last_role if hist else None,
+        })
+
+    min_rate = min(rates) if rates else 1.0
+    max_rate = max(rates) if rates else 1.0
+    gap = round(max_rate - min_rate, 3)
+    underserved = sorted(
+        row["instrument_id"] for row in rows
+        if row["meaningful_function_rate"] < max_rate - 0.001
+    )
+
+    complete = float(goal.instrument_balance) >= 0.999
+    return {
+        "status": "PASS",
+        "target": "EQUAL_COMPOSITIONAL_IMPORTANCE" if complete else "WEIGHTED_COMPOSITIONAL_IMPORTANCE",
+        "scope": "WHOLE_COMPOSITION_NOT_EVERY_INSTANT",
+        "importance_unit": "MEANINGFUL_MUSICAL_FUNCTION",
+        "note_quantity_is_importance": False,
+        "loudness_is_importance": False,
+        "foreground_time_is_importance": False,
+        "active_instrument_count": len(active),
+        "ledger": rows,
+        "meaningful_function_gap": gap,
+        "priority_for_next_window": underserved if underserved else list(active),
+        "priority_rule": (
+            "RESTORE_UNDERSERVED_INSTRUMENTS_TO_MEANINGFUL_FUNCTION"
+            if underserved else
+            "ROTATE_MEANINGFUL_FUNCTIONS_WITHOUT_HIERARCHY"
+        ),
+        "rest_rule": "AN_INSTRUMENT_MAY_REST_WHEN_THE_REST_IS_MUSICALLY_PURPOSEFUL_BUT_MAY_NOT_BE_CHRONICALLY_NEGLECTED",
+        "role_rule": "DIFFERENT_ROLES_ARE_ALLOWED_EQUAL_IMPORTANCE_DOES_NOT_MEAN_IDENTICAL_BEHAVIOR",
+        "feature_rule": "TEMPORARY_FEATURES_ARE_ALLOWED_BUT_MUST_NOT_CREATE_PERMANENT_STRUCTURAL_SUPERIORITY",
     }
 
 
@@ -385,6 +469,7 @@ def reason(
         },
         "roles": _role_intent(state, energy_motion, density),
         "instrument_balance": _instrument_balance_intent(goal),
+        "instrument_importance_plan": _instrument_importance_plan(state, goal),
         "rhythm": _rhythm_intent(tags, energy_motion, section),
         "harmony": _harmony_intent(tags, state),
         "melody": _melody_intent(state, generation_plan),
@@ -396,6 +481,8 @@ def reason(
             "DO_NOT_EMIT_MIDI_OR_NOTE_EVENTS_IN_V0_1",
             "DO_NOT_CHANGE_INSTRUMENT_IDENTITY",
             "DO_NOT_TREAT_ANY_ACTIVE_INSTRUMENT_AS_DISPOSABLE_OR_STRUCTURALLY_INFERIOR_WHEN_BALANCE_IS_1_0",
+            "DO_NOT_USE_NOTE_COUNT_LOUDNESS_OR_FOREGROUND_TIME_AS_A_PROXY_FOR_INSTRUMENT_IMPORTANCE",
+            "DO_NOT_ALLOW_CHRONIC_INSTRUMENT_NEGLECT_ACROSS_THE_COMPOSITION",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",
         ],
     }

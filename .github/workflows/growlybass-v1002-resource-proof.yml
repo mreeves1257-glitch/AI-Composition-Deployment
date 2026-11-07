@@ -1,0 +1,104 @@
+name: Growlybass v1.002 Resource Proof
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/growlybass-v1002-resource-proof.yml"
+      - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/official_sfz_compatibility.py"
+  workflow_dispatch:
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download exact official Growlybass v1.002 release
+        run: |
+          set -euo pipefail
+          url="https://github.com/sfzinstruments/karoryfer.growlybass/releases/download/v1.002/Karoryfer.Growlybass.v1.002.zip"
+          out="/tmp/Karoryfer.Growlybass.v1.002.zip"
+          curl -L --fail --retry 3 --retry-delay 2 -o "$out" "$url"
+          size="$(stat -c '%s' "$out")"
+          test "$size" = "167454256"
+          sha="$(sha256sum "$out" | awk '{print $1}')"
+          echo "GROWLYBASS_ARCHIVE_SIZE=$size"
+          echo "GROWLYBASS_ARCHIVE_SHA256=$sha"
+          printf '%s\n' "$sha" > /tmp/growlybass.sha256
+
+      - name: Unpack into Composer diagnostic resource path
+        run: |
+          set -euo pipefail
+          tmp="/tmp/growlybass-unpack"
+          dest="current_master_forward/sound_resources/KARORYFER_GROWLYBASS_V1_002"
+          rm -rf "$tmp" "$dest"
+          mkdir -p "$tmp" "$dest"
+          unzip -q /tmp/Karoryfer.Growlybass.v1.002.zip -d "$tmp"
+          mapping="$(find "$tmp" -type f -name growlybass_vicious.sfz | head -n 1)"
+          test -n "$mapping"
+          root="$(dirname "$mapping")"
+          cp -a "$root"/. "$dest"/
+          test -f "$dest/growlybass_vicious.sfz"
+          test -f "$dest/growlybass_clean.sfz"
+          test -f "$dest/growlybass_angry.sfz"
+
+      - name: Validate exact target-registry mapping and full sample graph
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+
+          from sfz_renderer_adapter import validate_sfz_samples
+
+          root=Path("current_master_forward")
+          registry=json.loads((root/"target_registry.json").read_text())
+          binding=registry["targets"]["INTERNAL"]["instrument_bindings"]["electric_bass_guitar"]
+          assert binding["resource_id"]=="KARORYFER_GROWLYBASS_V1_002", binding
+          assert binding["preferred_mapping"]=="growlybass_vicious.sfz", binding
+          assert binding["fallback_policy"]=="NO_SYNTHETIC_SUBSTITUTION", binding
+          assert binding["version"]=="1.002", binding
+
+          bank=root/"sound_resources"/binding["resource_id"]
+          mapping=bank/binding["preferred_mapping"]
+          report=validate_sfz_samples(mapping,allowed_root=bank)
+          archive_sha=Path("/tmp/growlybass.sha256").read_text().strip()
+
+          proof={
+              "schema":"GROWLYBASS_V1002_RESOURCE_PROOF_001",
+              "status":"PASS",
+              "diagnostic_only":True,
+              "official_release_tag":"v1.002",
+              "official_release_asset":"Karoryfer.Growlybass.v1.002.zip",
+              "official_release_asset_id":83416481,
+              "archive_size_bytes":167454256,
+              "archive_sha256":archive_sha,
+              "resource_id":binding["resource_id"],
+              "mapping":binding["preferred_mapping"],
+              "fallback_policy":binding["fallback_policy"],
+              "sample_graph":report,
+              "production_fidelity_certified":False,
+              "audio_generated":False,
+              "live_runtime_promoted":False,
+          }
+          out=Path("genre_contract_v3_research/GROWLYBASS_V1002_RESOURCE_PROOF.json")
+          out.write_text(json.dumps(proof,indent=2)+"\n")
+          print(json.dumps(proof,indent=2))
+          PY
+
+      - name: Upload resource proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: Growlybass_V1002_Resource_Proof
+          path: genre_contract_v3_research/GROWLYBASS_V1002_RESOURCE_PROOF.json
+          if-no-files-found: error

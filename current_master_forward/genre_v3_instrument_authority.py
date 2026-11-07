@@ -91,8 +91,8 @@ def _base_label(canonical: str) -> str:
     for prefix in (
         "ALTO_SAX", "TENOR_SAX", "BARITONE_SAX",
         "TRUMPET", "TROMBONE",
-        "SURDO", "CAIXA", "REPINIQUE", "TAMBORIM", "AGOGO",
-        "CONGA", "BONGO", "TIMBALES", "MARACAS",
+        "SURDO", "CAIXA", "REPINIQUE", "TAMBORIM", "AGOGO", "GANZA",
+        "CONGA", "BONGO", "TIMBALES", "MARACAS", "FLUTE",
     ):
         if canonical == prefix or canonical.startswith(prefix + "_"):
             return prefix

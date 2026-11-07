@@ -1,0 +1,291 @@
+{
+  "source_map_id": "GENRE_CONTRACT_V3_SOURCE_MAP_001",
+  "sources": [
+    {
+      "name": "Current AI Composer 55-profile registry",
+      "role": [
+        "baseline comparison",
+        "existing semantic profile"
+      ],
+      "use_policy": "PRESERVE_AND_COMPARE",
+      "license_note": "Internal project source."
+    },
+    {
+      "name": "MMA - Musical MIDI Accompaniment",
+      "role": [
+        "executable accompaniment grammar",
+        "instrument-role patterns",
+        "fills/intros/endings"
+      ],
+      "use_policy": "RESEARCH_AND_LICENSE_REVIEW",
+      "license_note": "Open-source project; review license compatibility before embedding/copying patterns."
+    },
+    {
+      "name": "Yamaha Style/SFF documentation",
+      "role": [
+        "arranger architecture",
+        "style elements",
+        "NTR/NTT",
+        "variations/fills/intros/endings"
+      ],
+      "use_policy": "ARCHITECTURE_REFERENCE_ONLY",
+      "license_note": "Manufacturer documentation/proprietary style ecosystem; do not copy factory style content."
+    },
+    {
+      "name": "Korg Pa-series Style documentation",
+      "role": [
+        "style elements",
+        "chord variations",
+        "track sequences",
+        "transposition behavior"
+      ],
+      "use_policy": "ARCHITECTURE_REFERENCE_ONLY",
+      "license_note": "Manufacturer documentation/proprietary style ecosystem; do not copy factory style content."
+    },
+    {
+      "name": "JJazzLab",
+      "role": [
+        "open arranger implementation",
+        "Yamaha-style interpretation",
+        "section intensity"
+      ],
+      "use_policy": "RESEARCH_AND_LICENSE_REVIEW",
+      "license_note": "Open-source; review code/data licenses before reuse."
+    },
+    {
+      "name": "MTG-Jamendo",
+      "role": [
+        "genre taxonomy",
+        "instrument presence statistics"
+      ],
+      "use_policy": "STATISTICAL_RESEARCH",
+      "license_note": "Track licenses vary; verify dataset and track licensing before commercial reuse."
+    },
+    {
+      "name": "MedleyDB",
+      "role": [
+        "multitrack stems",
+        "instrument activity",
+        "genre/instrument co-occurrence"
+      ],
+      "use_policy": "STATISTICAL_RESEARCH",
+      "license_note": "Source licenses vary; use derived statistics only after review."
+    },
+    {
+      "name": "Groove MIDI Dataset",
+      "role": [
+        "human drum timing",
+        "velocity",
+        "fills",
+        "style-specific groove"
+      ],
+      "use_policy": "RESEARCH_AND_DERIVED_RULES",
+      "license_note": "CC BY 4.0 dataset; preserve attribution requirements if directly reused."
+    },
+    {
+      "name": "MusicNet",
+      "role": [
+        "classical note/instrument annotations",
+        "participation statistics"
+      ],
+      "use_policy": "STATISTICAL_RESEARCH",
+      "license_note": "Review current dataset license before commercial reuse."
+    },
+    {
+      "name": "URMP",
+      "role": [
+        "classical separated instruments",
+        "score/MIDI alignment"
+      ],
+      "use_policy": "RESEARCH_AND_VALIDATION",
+      "license_note": "Review current terms before commercial reuse."
+    },
+    {
+      "name": "OpenScore Orchestra / Hauptstimme",
+      "role": [
+        "orchestral scores",
+        "foreground/theme ownership",
+        "part relationships"
+      ],
+      "use_policy": "RESEARCH_AND_VALIDATION",
+      "license_note": "Review corpus/item licenses before commercial reuse."
+    },
+    {
+      "name": "Orchset",
+      "role": [
+        "orchestral predominant-melody ownership"
+      ],
+      "use_policy": "VALIDATION_ONLY",
+      "license_note": "Known non-commercial/research restrictions; do not embed content."
+    },
+    {
+      "name": "Orchestral instrument-activity datasets",
+      "role": [
+        "frame-level activity percentages",
+        "family/section participation"
+      ],
+      "use_policy": "STATISTICAL_RESEARCH",
+      "license_note": "Review each dataset's terms before use."
+    },
+    {
+      "name": "DCML corpora",
+      "role": [
+        "expert classical harmony",
+        "style-period comparison"
+      ],
+      "use_policy": "RESEARCH_AND_DERIVED_RULES",
+      "license_note": "Corpus licenses vary; review before direct reuse."
+    },
+    {
+      "name": "ChoCo",
+      "role": [
+        "large-scale chord annotations",
+        "keys/modulations",
+        "harmonic statistics"
+      ],
+      "use_policy": "STATISTICAL_RESEARCH",
+      "license_note": "Review constituent dataset licenses before commercial reuse."
+    },
+    {
+      "name": "SALAMI",
+      "role": [
+        "song-form and structural segmentation"
+      ],
+      "use_policy": "STATISTICAL_RESEARCH",
+      "license_note": "Review dataset license and source-audio constraints."
+    },
+    {
+      "name": "CoCoPops / Billboard-derived corpora",
+      "role": [
+        "pop harmony",
+        "melody",
+        "vocal role changes",
+        "form"
+      ],
+      "use_policy": "RESEARCH_AND_VALIDATION",
+      "license_note": "Research/copyright restrictions may apply; derive rules, do not copy songs."
+    },
+    {
+      "name": "Weimar Jazz Database",
+      "role": [
+        "jazz solo language",
+        "instrument/style/tempo differences"
+      ],
+      "use_policy": "RESEARCH_AND_DERIVED_RULES",
+      "license_note": "Review current data license before reuse."
+    },
+    {
+      "name": "Latin Music Database",
+      "role": [
+        "Latin genre taxonomy",
+        "style classification"
+      ],
+      "use_policy": "RESEARCH_AND_VALIDATION",
+      "license_note": "Research-use restrictions may apply."
+    },
+    {
+      "name": "FlaBase",
+      "role": [
+        "flamenco palo taxonomy",
+        "style distinctions"
+      ],
+      "use_policy": "RESEARCH_AND_VALIDATION",
+      "license_note": "Review current terms before reuse."
+    },
+    {
+      "name": "ENST-Drums",
+      "role": [
+        "professional drum performances",
+        "tempo/complexity/style behavior"
+      ],
+      "use_policy": "RESEARCH_AND_DERIVED_RULES",
+      "license_note": "Review dataset license before commercial reuse."
+    },
+    {
+      "name": "GuitarSet",
+      "role": [
+        "guitar comping vs solo behavior",
+        "chords/beats/playing style"
+      ],
+      "use_policy": "RESEARCH_AND_DERIVED_RULES",
+      "license_note": "Review current dataset license before reuse."
+    },
+    {
+      "name": "Freesound Loop Dataset",
+      "role": [
+        "loop instrumentation",
+        "genre",
+        "tempo/key co-occurrence"
+      ],
+      "use_policy": "STATISTICAL_RESEARCH",
+      "license_note": "Individual audio licenses vary."
+    },
+    {
+      "name": "CompMusic corpora",
+      "role": [
+        "culture-specific musical systems",
+        "raga/makam/tala/usul/form"
+      ],
+      "use_policy": "TRADITION_SPECIFIC_AUTHORITY",
+      "license_note": "Corpus-specific terms apply; avoid imposing Western theory."
+    },
+    {
+      "name": "FMA",
+      "role": [
+        "hierarchical genre taxonomy",
+        "subgenre discovery"
+      ],
+      "use_policy": "TAXONOMY_RESEARCH",
+      "license_note": "Audio licenses vary; taxonomy/data terms must be reviewed."
+    },
+    {
+      "name": "AcousticBrainz genre datasets",
+      "role": [
+        "large genre/subgenre taxonomies",
+        "cross-source labels"
+      ],
+      "use_policy": "TAXONOMY_RESEARCH",
+      "license_note": "Some underlying sources have reuse restrictions; use cautiously."
+    },
+    {
+      "name": "GiantSteps",
+      "role": [
+        "electronic genre/tempo/key evidence"
+      ],
+      "use_policy": "RESEARCH_AND_VALIDATION",
+      "license_note": "Review current dataset terms before reuse."
+    },
+    {
+      "name": "Traditional/folk symbolic corpora",
+      "role": [
+        "meter",
+        "mode",
+        "tune type",
+        "melodic grammar",
+        "regional forms"
+      ],
+      "use_policy": "TRADITION_SPECIFIC_RESEARCH",
+      "license_note": "Corpus/item licenses vary."
+    },
+    {
+      "name": "Berklee arranging/theory resources",
+      "role": [
+        "human-authored validation",
+        "arranging practice",
+        "rhythm-section interaction"
+      ],
+      "use_policy": "REFERENCE_ONLY",
+      "license_note": "Copyrighted educational material; do not copy content into runtime."
+    },
+    {
+      "name": "Other conservatory/orchestration references",
+      "role": [
+        "ensemble formation",
+        "instrument balance",
+        "orchestration practice"
+      ],
+      "use_policy": "REFERENCE_ONLY",
+      "license_note": "Use as cited research, not copied content."
+    }
+  ]
+}

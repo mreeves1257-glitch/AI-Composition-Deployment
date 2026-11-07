@@ -91,45 +91,6 @@ jobs:
           bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh composer/runtime
           test -s composer/runtime/ROCK_PINNED_RESOURCE_ACQUISITION.json
 
-      - name: Restore pinned Rock mapping programs for no-audio preflight
-        run: |
-          set -euo pipefail
-
-          rm -rf /tmp/shinyguitar /tmp/big-rusty
-          git clone --filter=blob:none --no-checkout https://github.com/sfzinstruments/karoryfer.shinyguitar.git /tmp/shinyguitar
-          (
-            cd /tmp/shinyguitar
-            git sparse-checkout init --cone
-            git sparse-checkout set Programs
-            git checkout 57243cca85277dbcc120ce17c6178032f93c80f3
-          )
-
-          git clone --filter=blob:none --no-checkout https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git /tmp/big-rusty
-          (
-            cd /tmp/big-rusty
-            git sparse-checkout init --cone
-            git sparse-checkout set Programs
-            git checkout f07ce00df34a46b6b08375be56fe116cf15782bc
-          )
-
-          mkdir -p composer/runtime/sound_resources/KARORYFER_SHINYGUITAR
-          mkdir -p composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS
-          rm -rf composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs
-          rm -rf composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS/Programs
-          cp -a /tmp/shinyguitar/Programs composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/
-          cp -a /tmp/big-rusty/Programs composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS/
-
-          cat > composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz <<'EOF'
-          // Composer wrapper; original SFZ/sample files unchanged.
-          #define $sample_dir ../Samples
-          #include "main.sfz"
-          EOF
-
-          test "$(sha256sum composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz | awk '{print $1}')" = "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
-          test -f composer/runtime/sound_resources/KARORYFER_BIG_RUSTY_DRUMS/Programs/01-full.sfz
-          test -f composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs/main.sfz
-          echo "ROCK_MAPPING_PROGRAMS_RESTORED_NO_AUDIO"
-
       - name: Preflight Rock V3 contextual target resources without audio
         env:
           PYTHONPATH: ${{ github.workspace }}/composer/runtime

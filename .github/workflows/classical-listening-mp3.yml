@@ -21,8 +21,25 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Supply runner compatibility dependency
-        run: python -m pip install cffi==2.1.1
+      - name: Supply current-runner copies of the Composer's pinned Python dependencies
+        run: |
+          python - <<'PY'
+          import base64, hashlib, io, json, tarfile
+          from pathlib import Path
+          root = Path("connected_package")
+          manifest = json.loads((root / "manifest.json").read_text())
+          archive = bytearray()
+          for part in manifest["parts"]:
+              data = base64.b64decode((root / part["name"]).read_text(), validate=True)
+              assert hashlib.sha256(data).hexdigest() == part["sha256"]
+              archive.extend(data)
+          assert hashlib.sha256(archive).hexdigest() == manifest["archive_sha256"]
+          dest = Path("composer/runtime")
+          dest.mkdir(parents=True, exist_ok=True)
+          tarfile.open(fileobj=io.BytesIO(archive), mode="r:gz").extractall(dest, filter="data")
+          print("REQUIREMENTS_EXTRACTED")
+          PY
+          python -m pip install -r composer/runtime/enhancer_requirements.txt
 
       - name: Build preserved Composer runtime and audio dependencies
         run: bash build_current_composer.sh

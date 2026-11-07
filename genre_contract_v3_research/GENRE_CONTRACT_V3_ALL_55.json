@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_COMPOSITION_LAYERS_BOUND__COMBINED_PIANO_AUDIO_READY__ORCHESTRATION_BINDING_NOT_YET_APPROVED",
+      "research_status": "V3_CLASSICAL_COMPOSITION_LAYERS_BOUND__DURABLE_COMBINED_PIANO_LISTENING_READY__HUMAN_REVIEW_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2947,7 +2947,27 @@
           "conclusion": "Period harmony and period melody can operate together without orchestration and retain a measurable period contrast. This is the first combined composition-layer audition, not yet an orchestral Composer candidate.",
           "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
           "live_runtime_modified": false,
-          "next_gate": "HUMAN_LISTENING_THEN_PERIOD_PACKAGE_ORCHESTRATION_BINDING"
+          "next_gate": "HUMAN_LISTENING_THEN_PERIOD_PACKAGE_ORCHESTRATION_BINDING",
+          "reproducible_research_render": {
+            "status": "PASS",
+            "date": "2026-11-06",
+            "renderer": "genre_contract_v3_research/render_classical_combined_composition.py",
+            "renderer_commit": "ed1a8267f845b37a940af92fc564cb55ee955cc1",
+            "workflow": ".github/workflows/research-classical-combined-composition.yml",
+            "workflow_commit": "3c264abb6687c2bce2f61a948519d0f4f72fc347",
+            "workflow_run_id": 42339331336,
+            "artifact_id": 13560946482,
+            "artifact_name": "Classical_Combined_Grammar_Melody_Listening",
+            "artifact_sha256": "d88ad4c1a386bc9f4b17cc8ea1637195bf16e61f6b4ef0c00adb9fff91b92c74",
+            "classical_period_mp3_sha256": "5052e4f2326a8a136e17154cdcab97ba9140ad840aa088513fc85e8081967f4d",
+            "romantic_tonal_mp3_sha256": "679cddbd871d92c65e33fb54c1d324878372660a07b06093832252da639fef8d",
+            "ab_mp3_sha256": "a9a7771ef3f36e7d150285a50b08b2fd62fbb730a224d9dbed341ff872d4a73e",
+            "structural_gate": "PASS",
+            "render_gate": "PASS",
+            "live_runtime_modified": false,
+            "human_listening_review": "PENDING",
+            "note": "Durable research-branch reproduction of the combined grammar+melody piano listening gate. No orchestration authority granted."
+          }
         }
       },
       "safeguards": {
@@ -18460,7 +18480,7 @@
     "Do not integrate into the live Composer until combined orchestral listening validation passes."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_GRAMMAR_MELODY_BINDING_READY__HUMAN_LISTENING_GATE",
+  "quantitative_phase_status": "CLASSICAL_COMBINED_COMPOSITION_DURABLE_RENDER_PASS__HUMAN_LISTENING_GATE",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

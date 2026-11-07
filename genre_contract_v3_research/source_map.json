@@ -315,8 +315,8 @@
         "orchestral layer annotations",
         "classical-to-romantic texture comparison"
       ],
-      "use_policy": "RESEARCH_AND_VALIDATION",
-      "license_note": "Public research repository; verify repository/data license before any direct redistribution. Derived rules/statistics preferred.",
+      "use_policy": "RESEARCH_DERIVED_RULES_AND_VALIDATION",
+      "license_note": "MIT License (repository); preserve copyright/license notice for substantial direct reuse. Derived rules/statistics are suitable for research integration.",
       "relevance": [
         "Classical variant split",
         "orchestral texture",

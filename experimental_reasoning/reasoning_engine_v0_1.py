@@ -101,6 +101,15 @@ class MusicalIdeaMemory:
 
 
 @dataclass(frozen=True)
+class SpatialSceneMemory:
+    section: str
+    width: str = "MEDIUM"
+    depth: str = "MEDIUM"
+    intimacy: str = "MID"
+    low_end_anchor: str = "CENTERED"
+
+
+@dataclass(frozen=True)
 class ComposerState:
     genre: str
     profile_id: str
@@ -119,6 +128,7 @@ class ComposerState:
     active_instruments: Sequence[str] = field(default_factory=tuple)
     instrument_history: Sequence[InstrumentMemory] = field(default_factory=tuple)
     musical_idea_history: Sequence[MusicalIdeaMemory] = field(default_factory=tuple)
+    spatial_history: Sequence[SpatialSceneMemory] = field(default_factory=tuple)
 
 
 @dataclass(frozen=True)
@@ -376,6 +386,72 @@ def _spatial_3d_intent(state: ComposerState, goal: MusicalGoal, importance_plan:
         "importance_priority_context": list(importance_plan.get("priority_for_next_window",[])),
         "future_handoff_required": True,
         "audio_processing_applied_here": False,
+    }
+
+
+def _spatial_choreography_plan(
+    state: ComposerState,
+    energy_motion: str,
+    importance_plan: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Plan section-to-section spatial movement without random motion or hierarchy.
+
+    The output is categorical intent, not pan/gain/reverb numbers.
+    """
+    section = _norm_section(state.section)
+    previous = _norm_section(state.previous_section)
+    priorities = list(importance_plan.get("priority_for_next_window", []))
+
+    scene_map = {
+        "intro": {"width": "MEDIUM_NARROW", "depth": "DEEP", "intimacy": "MID_CLOSE"},
+        "verse": {"width": "MEDIUM", "depth": "MEDIUM_DEEP", "intimacy": "CLOSE"},
+        "prechorus": {"width": "MEDIUM_WIDE", "depth": "MEDIUM_DEEP", "intimacy": "MID"},
+        "pre_chorus": {"width": "MEDIUM_WIDE", "depth": "MEDIUM_DEEP", "intimacy": "MID"},
+        "chorus": {"width": "WIDE", "depth": "DEEP", "intimacy": "MID"},
+        "bridge": {"width": "WIDE_OR_REFRAMED", "depth": "DEEP", "intimacy": "VARIABLE_FOR_CONTRAST"},
+        "breakdown": {"width": "FOCUSED", "depth": "DEEP_WITH_OPEN_SPACE", "intimacy": "CLOSE"},
+        "solo": {"width": "WIDE", "depth": "MEDIUM_DEEP", "intimacy": "MID_CLOSE"},
+        "outro": {"width": "MEDIUM_TO_WIDE", "depth": "DEEP", "intimacy": "RECEDING_OR_CLOSE_BY_INTENT"},
+    }
+    target = scene_map.get(section, {"width": "MEDIUM", "depth": "MEDIUM", "intimacy": "MID"})
+
+    if section == "chorus" and previous in {"verse", "prechorus", "pre_chorus"}:
+        transition = "EXPAND_WIDTH_AND_DEPTH_WITHOUT_JUMPING_LEVELS"
+    elif section == "verse" and previous == "chorus":
+        transition = "CONTRACT_FIELD_SLIGHTLY_AND_RESTORE_INTIMACY"
+    elif section == "bridge":
+        transition = "REFRAME_SPACE_FOR_CONTRAST_NOT_SIMPLY_MORE_WIDTH"
+    elif section == "breakdown":
+        transition = "REMOVE_SPATIAL_CLUTTER_AND_EXPOSE_DEPTH"
+    elif section == "outro":
+        transition = "ALLOW_GRADUAL_SPATIAL_RELEASE_OR_RECEDING_DEPTH"
+    elif energy_motion == "BUILD":
+        transition = "EXPAND_OR_ADVANCE_SELECTIVELY_WITHOUT_RANDOM_MOVEMENT"
+    elif energy_motion == "PULL_BACK":
+        transition = "INCREASE_BREATHING_ROOM_AND_REDUCE_SPATIAL_CROWDING"
+    else:
+        transition = "PRESERVE_SCENE_WITH_SMALL_INTENTIONAL_VARIATION"
+
+    previous_scene = asdict(state.spatial_history[-1]) if state.spatial_history else None
+
+    return {
+        "status": "PASS",
+        "target_scene": target,
+        "previous_scene": previous_scene,
+        "transition": transition,
+        "continuity_rule": "SPATIAL_CHANGES_FOLLOW_FORM_AND_MUSICAL_INTENT_NOT_RANDOM_PANNING_OR_ORBITING",
+        "low_end_anchor_rule": "KICK_AND_BASS_REMAIN_SPATIALLY_STABLE_ENOUGH_TO PRESERVE PHYSICAL LOW_END_AUTHORITY",
+        "low_end_width_rule": "KEEP_DEEPEST_LOW_FREQUENCY_ENERGY_TIGHT_AND_CONTROLLED_WHILE UPPER HARMONICS MAY SUPPORT WIDTH",
+        "equal_importance_rule": "DEPTH_OR_DISTANCE_DOES_NOT_DEFINE COMPOSITIONAL VALUE",
+        "underserved_instrument_rule": (
+            "GIVE_UNDERSERVED_INSTRUMENTS_CLEARER SPACE_OR A MORE_MEANINGFUL SPATIAL WINDOW WHEN MUSICALLY COMPATIBLE"
+            if priorities else
+            "NO_SPATIAL_PRIORITY_CORRECTION_REQUIRED"
+        ),
+        "underserved_instruments": priorities,
+        "clarity_over_loudness_rule": "USE_SPACE_REGISTER_AND_INTERACTION_BEFORE GAIN TO IMPROVE AUDIBILITY",
+        "anti_gimmick_rule": "NO_CONTINUOUS_SWIRLING_RANDOM_AUTOPAN_OR_DEPTH_MOTION_UNLESS THE STYLE EXPLICITLY CALLS FOR IT",
+        "handoff": "PASS_CATEGORICAL_SCENE_INTENT_TO_EXISTING_3D_REALIZATION_STAGE",
     }
 
 
@@ -806,6 +882,7 @@ def reason(
         "bass_character": _bass_character_intent(goal, tags),
         "instrument_balance": _instrument_balance_intent(goal),
         "spatial_3d_intent": _spatial_3d_intent(state, goal, importance_plan),
+        "spatial_choreography": _spatial_choreography_plan(state, energy_motion, importance_plan),
         "instrument_importance_plan": importance_plan,
         "instrument_interaction_plan": _instrument_interaction_plan(state, density, importance_plan),
         "musical_memory": _musical_memory_plan(state, generation_plan, importance_plan),
@@ -829,6 +906,8 @@ def reason(
             "DO_NOT_ALLOW_RICH_BASS_TO_MASK_OTHER_EQUAL_IMPORTANCE_INSTRUMENTS",
             "DO_NOT_APPLY_PHYSICAL_3D_AUDIO_PROCESSING_INSIDE_REASONING",
             "DO_NOT_POSTPONE_ALL_SPATIAL_DECISIONS_UNTIL_AFTER_RENDERING",
+            "DO_NOT_USE_RANDOM_3D_MOVEMENT_AS_A SUBSTITUTE_FOR MUSICAL DEVELOPMENT",
+            "DO_NOT_WIDEN_THE_DEEPEST_LOW_END_IN_A_WAY_THAT_WEAKENS_KICK_OR_BASS_FOCUS",
             "DO_NOT_EQUATE_MUSICAL_MEMORY_WITH_LITERAL_NOTE_COPYING",
             "DO_NOT_REINTRODUCE_EVERY_REMEMBERED_IDEA_IMMEDIATELY",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",

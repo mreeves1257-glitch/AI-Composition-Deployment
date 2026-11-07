@@ -263,6 +263,34 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
     tonic,quality,_,_,_,_=baseline
     parts,instrument_authority=resolve_genre_parts_with_authority(name,tmpl,profile)
 
+    # Explicit V3 formation knowledge proves which instruments/sections belong
+    # to the genre, but it does NOT by itself define a finished composition.
+    # Never fall through from a researched formation into the legacy generic
+    # melody/note generator. Hold at the Stage-3 boundary until a genre-specific
+    # foreground/arrangement executor is compiled and validated.
+    if instrument_authority.get('authority') == 'GENRE_CONTRACT_V3_EXPLICIT_ROSTER':
+        from genre_v3_foreground_authority import compile_authority as compile_v3_foreground_authority
+        foreground_authority=compile_v3_foreground_authority(name)
+        return {
+            'genre_name':name,
+            'profile_id':profile['profile_id'],
+            'status':'V3_EXPLICIT_FORMATION_COMPOSITION_PENDING',
+            'resolution_policy':policy,
+            'execution_template':'v3_explicit_formation_pending_composition',
+            'genre_contract_v3_execution_packet':v3_packet,
+            'genre_v3_instrument_authority':instrument_authority,
+            'genre_v3_foreground_authority':foreground_authority,
+            'palette':parts,
+            'events':[],
+            'legacy_note_generator_used':False,
+            'finished_composition_authority':False,
+            'foreground_notes_generated':False,
+            'audio_authority':False,
+            'musical_audition_approved':False,
+            'promotion_block':'EXPLICIT_FORMATION_IS_NOT_A_FINISHED_COMPOSITION',
+            'next_gate':'GENRE_SPECIFIC_FOREGROUND_AND_ARRANGEMENT_EXECUTOR',
+        }
+
     # For fully resolved source-pattern genres, Stage 3 instrument identity and
     # Stage 4 symbolic behavior now come from the same V3-governed source. Do not
     # send these genres back through the legacy family-note generator.

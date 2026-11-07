@@ -107,3 +107,33 @@ Published diagnostic listening files:
 Question: Does B sound more connected/natural than A without blurring intentional rests, rhythm-guitar riff articulation, or lead phrase gaps?
 
 Do not add strum timing, bass sustain, random timing, full-band mix, or live promotion until this A/B is judged by ear.
+
+
+## Rock Mode A symbolic duration-shape audit
+
+Workflow: `Rock Mode A Duration Shape Audit`  
+Run ID: `42389442115`  
+Artifact ID: `13581210356`  
+Result: PASS
+
+Measured state:
+- 897 total events.
+- 268 guitar duration changes; 629 events unchanged.
+- 244 extensions and 24 shortenings.
+- HARMONY: 186 changed events; mean delta +1.30597 beats, median +1.18, max +2.3, min -0.28.
+- LEAD: 82 changed events; mean delta +0.08024 beat, median +0.0825, range +0.05 to +0.1675.
+- No same-track overlaps.
+- No cross-bar duration spill.
+- No split duration inside vertical rhythm-guitar chord gestures.
+- No cross-bar lead phrase-gap mutation.
+- Minimum remaining same-track gap: 0.03 beat.
+- Pitch/onset/velocity/instrument/bass/drums unchanged.
+- Reasoning engine excluded; live runtime untouched.
+
+Important listening risk:
+- 78 HARMONY note events use the largest +2.3-beat extension.
+- Because harmony attacks are three-note vertical voicings, this is 26 chord gestures changing from 0.5 beat to 2.8 beats.
+- This is structurally safe but may be musically over-sustained.
+- Focused cue sheet saved as `ROCK_MODE_A_LISTENING_CUE_SHEET_2026-11-07.md`.
+
+Active gate remains human A/B listening. Do not add strum timing, bass sustain, random timing, or other performance variables until Mode A duration behavior is judged.

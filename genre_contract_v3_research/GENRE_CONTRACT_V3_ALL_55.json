@@ -797,7 +797,7 @@
       "source_profile_id": "JAZZ_BALLAD_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "JAZZ_BALLAD_V1",
@@ -840,62 +840,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong existing definition of slow swing/rubato/straight ballad feel.",
+          "Already protects lead breath, sparse bass, light brushes and uncluttered accompaniment.",
+          "Existing harmony description allows extended jazz language without forcing one progression."
+        ],
+        "current_profile_gaps": [
+          "No explicit distinction among trio, horn-led, vocal, guitar-led and orchestral/chamber ballad formations.",
+          "No measurable foreground/activity model.",
+          "No executable rubato-to-time transition policy.",
+          "No formation percentages."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "MMA SlowJazz/MellowJazz",
+          "Weimar Jazz Database",
+          "Berklee jazz arranging/performance references"
+        ],
+        "retained_current_fields": [
+          "slow swing/rubato flexibility",
+          "sparse bass",
+          "brushes/light kit",
+          "lead breath",
+          "gradual dynamic arc",
+          "intimate mix"
+        ],
+        "upgraded_fields": [
+          "formation resolver",
+          "rubato/time-state resolver",
+          "foreground windows",
+          "activity percentages",
+          "intro/ending rules"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "ABA/AABA/through-composed or song forms with gradual arc; variant controls intro/interlude/solo/ending."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_JAZZ_BALLAD_VARIANT",
+          "rule": "Extended harmony with slow harmonic rhythm, substitutions and altered dominants as expressive options, not obligations."
+        },
+        "melody_model": {
+          "rule": "Lead phrasing and breath govern accompaniment density and harmonic pacing."
+        },
+        "rhythm_groove_model": {
+          "rule": "Can move among rubato, slow swing and straight ballad states; transitions between states must be explicit and shared."
+        },
+        "bass_model": {
+          "rule": "Sparse roots/tenths/melodic motion or walking fragments; avoid continuous density unless section requires it."
+        },
+        "percussion_model": {
+          "rule": "Brushes/light kit/cymbal swells are selective; silence is valid."
+        },
+        "phrase_model": {
+          "rule": "Long breath-shaped phrases with accompaniment yielding at exposed line endings."
+        },
+        "transition_model": {
+          "rule": "Use rubato, harmonic anticipation, cymbal/brush setup or sparse fills; no generic transition fill."
+        },
+        "development_model": {
+          "rule": "Develop by reharmonization where appropriate, register, solo exchange, texture and dynamic contour."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, ritardandi, held cadences, rubato endings or arranged resolutions by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Musical agency rotates among lead/solo, bass, drums and comping independent of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead/solo owns clear space; comping thins under exposed phrases.",
+          "Bass and brushes remain audible anchors without crowding.",
+          "Secondary colors enter selectively."
+        ],
+        "role_handoff_rules": [
+          "Foreground may transfer to piano/guitar/horn solo, then return to principal lead.",
+          "Outgoing foreground becomes support or silence."
+        ],
+        "register_occupancy": {
+          "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Jazz ballad describes behavior/form as much as instrumentation; percentages require a resolved formation."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato, breathy/soft attacks, restrained accents",
+        "dynamic_behavior": "wide soft-to-medium range with intimate swells",
+        "timing_humanization_behavior": "shared rubato and laid-back placement tied to phrase",
+        "continuous_performance_control": "expression and tempo curves are essential",
+        "interaction_rules": [
+          "Rubato is shared, not instrument-by-instrument random drift.",
+          "Comping responds to phrase breath.",
+          "Fills are sparse and conversational."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "FORMATION_DEPENDENT",
+          "rule": "Intimate lead-forward depth with uncluttered accompaniment."
+        },
+        "mix_prominence_intent": "lead intimate and forward; accompaniment soft and uncluttered",
+        "sound_effects_intent": "warm room/reverb; delay only when stylistically chosen",
+        "production_mastering_intent": "warm, dynamic, low-harshness master"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Jazz Ballad profile",
+          "MMA SlowJazz/MellowJazz",
+          "Weimar Jazz Database",
+          "Berklee jazz references"
+        ],
+        "source_confidence": {
+          "core_ballad_behavior": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "MMA": "LICENSE_REVIEW",
+          "Weimar": "ODbL_DATA_REFERENCE",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "No fixed percentages before formation resolution.",
+          "Rubato/time changes must be shared."
+        ],
+        "listening_tests": [
+          "Lead remains intimate and forward.",
+          "Accompaniment breathes.",
+          "Bass/brushes do not crowd the line."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -904,6 +1004,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Jazz Ballad",
+        "candidate_variants": [
+          "Piano-trio ballad",
+          "Horn-led ballad",
+          "Vocal ballad",
+          "Guitar-led ballad",
+          "Chamber/orchestrated jazz ballad"
+        ]
       }
     },
     "Big Band": {
@@ -1186,7 +1297,7 @@
       "source_profile_id": "JAZZ_WALTZ_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "JAZZ_WALTZ_V1",
@@ -1228,62 +1339,159 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Correctly centers 3/4 jazz pulse with flexible swing/straight subdivision.",
+          "Already rejects generic oom-pah-pah as a default.",
+          "Walking-in-3 and melodic bass options are present."
+        ],
+        "current_profile_gaps": [
+          "No formation resolver.",
+          "No explicit 3/4 accent-pattern variation model.",
+          "No activity/foreground percentages.",
+          "No intro/fill/ending grammar beyond broad form."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "MMA JazzWaltz library",
+          "Yamaha-derived JazzWaltz style evidence",
+          "Weimar Jazz Database",
+          "Berklee jazz arranging"
+        ],
+        "retained_current_fields": [
+          "3/4 pocket",
+          "walking-in-3",
+          "flexible comping",
+          "interactive fills",
+          "extended/modal harmony"
+        ],
+        "upgraded_fields": [
+          "formation resolver",
+          "3/4 accent/subdivision variants",
+          "foreground windows",
+          "section-development rules",
+          "activity percentages"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Head/solo/return, ABA/AABA-like or through-composed 3/4 forms; intros/endings may be arranged."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_JAZZ_WALTZ_VARIANT",
+          "rule": "Extended/modal/functional jazz harmony according to variant; cadence not mandatory."
+        },
+        "melody_model": {
+          "rule": "Lead phrases exploit 3-beat grouping, cross-accent and breath without collapsing into a ballroom waltz pattern."
+        },
+        "rhythm_groove_model": {
+          "rule": "3/4 jazz pulse with tempo-dependent swing/straight subdivision and elastic accents; no automatic beat-1 bass/2-3 chord template."
+        },
+        "bass_model": {
+          "rule": "Walking-in-3, roots/fifths or melodic bass depending section/variant."
+        },
+        "percussion_model": {
+          "rule": "Ride/brush patterns adapt to 3/4 with interactive fills and accents."
+        },
+        "phrase_model": {
+          "rule": "3/4 phrasing may span barlines and use hemiola/cross-accent where variant supports it."
+        },
+        "transition_model": {
+          "rule": "Use 3/4-specific fills, turnarounds and textural changes."
+        },
+        "development_model": {
+          "rule": "Develop by accent redistribution, solo/background exchange, comping variation and harmonic motion."
+        },
+        "cadence_ending_model": {
+          "rule": "Jazz tags, held endings, turnarounds or arranged hits in 3/4."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Musical agency rotates among lead/solo, bass, drums and comping independent of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Solo/lead receives clear space; 3/4 accompaniment remains responsive.",
+          "Walking bass/ride maintain pulse without dominating."
+        ],
+        "role_handoff_rules": [
+          "Foreground transfers between head and soloists; comping becomes response/support."
+        ],
+        "register_occupancy": {
+          "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Jazz Waltz is a meter/style grammar, not one fixed ensemble."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato horn phrasing, responsive comping, brush/stick variation",
+        "dynamic_behavior": "phrase arcs with dynamic lift into phrase 3 or 4",
+        "timing_humanization_behavior": "subtle swing placement and phrase rubato",
+        "continuous_performance_control": "expression and tempo breathing",
+        "interaction_rules": [
+          "Shared 3/4 pocket.",
+          "Accent variation is coordinated.",
+          "Fills do not reset groove identity."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "FORMATION_DEPENDENT"
+        },
+        "mix_prominence_intent": "bass and cymbal pulse clear without dominating melody",
+        "sound_effects_intent": "natural room/reverb",
+        "production_mastering_intent": "dynamic master with controlled cymbal brightness"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Jazz Waltz profile",
+          "MMA JazzWaltz",
+          "Yamaha-derived JazzWaltz style evidence",
+          "Weimar Jazz Database"
+        ],
+        "source_confidence": {
+          "core_meter_behavior": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "MMA": "LICENSE_REVIEW",
+          "Weimar": "ODbL_DATA_REFERENCE",
+          "manufacturer_style_content": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Meter fixed at 3/4 for this contract unless explicit hybrid.",
+          "No generic ballroom-waltz fallback."
+        ],
+        "listening_tests": [
+          "Feels like jazz in 3 rather than generic waltz.",
+          "Bass/ride are clear but not dominant.",
+          "Solo/comping hierarchy remains conversational."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -1292,6 +1500,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Jazz Waltz",
+        "candidate_variants": [
+          "Small-combo jazz waltz",
+          "Piano-trio jazz waltz",
+          "Horn-led jazz waltz",
+          "Modern/modal jazz waltz"
+        ]
       }
     },
     "Bebop": {
@@ -1300,7 +1518,7 @@
       "source_profile_id": "BEBOP_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BEBOP_V1",
@@ -1341,62 +1559,164 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong fast-swing identity.",
+          "Correctly includes walking bass, ride-led time, ii-V chains, substitutions and chromatic approaches.",
+          "Already emphasizes high interaction and leaving room for solo line."
+        ],
+        "current_profile_gaps": [
+          "No explicit combo formation resolver.",
+          "No measured solo-language/tempo distributions.",
+          "No comping-density or drum-comping probability model.",
+          "No foreground/activity percentages."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Weimar Jazz Database Bebop solos",
+          "MMA Bebop library",
+          "Berklee jazz harmony/arranging references"
+        ],
+        "retained_current_fields": [
+          "fast swing",
+          "walking bass",
+          "ride-led time",
+          "fast-moving harmony",
+          "head-solos-head",
+          "small-combo interaction"
+        ],
+        "upgraded_fields": [
+          "formation resolver",
+          "tempo-class behavior",
+          "solo/comping agency model",
+          "foreground windows",
+          "phrase-density rules"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Head-solos-head baseline with compact ensemble statements, intros/tags and chorus-based improvisational form."
+        },
+        "harmony_model": {
+          "authority": "BEBOP_HARMONY_ENGINE",
+          "rule": "Fast-moving extended harmony, ii-V chains, secondary dominants, substitutions and chromatic approaches; chord-scale/voice-leading logic must remain coherent at tempo."
+        },
+        "melody_model": {
+          "rule": "Angular/syncopated bop lines with chord-tone targeting and chromatic approach behavior; not generic diatonic melody."
+        },
+        "rhythm_groove_model": {
+          "rule": "Fast swing with ride-led time; drums comp interactively and do not become rock backbeat."
+        },
+        "bass_model": {
+          "rule": "Continuous or near-continuous walking with chord-tone targets and passing approaches, adapting under breaks/solos."
+        },
+        "percussion_model": {
+          "rule": "Ride/hi-hat time plus interactive snare/kick comping; accents converse with soloist."
+        },
+        "phrase_model": {
+          "rule": "Phrase density, pickups, enclosures/approaches and rests vary by tempo and solo context."
+        },
+        "transition_model": {
+          "rule": "Turnarounds, breaks, setups and compact fills; chorus boundaries remain musically legible."
+        },
+        "development_model": {
+          "rule": "Develop through improvisational chorus variation, motivic transformation and rhythm-section interaction."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, arranged heads, breaks or held endings by tune/variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Musical agency rotates among lead/solo, bass, drums and comping independent of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Soloist/head owns primary foreground; comping and drums interact without crowding.",
+          "Walking bass remains audible foundation.",
+          "Second horn backgrounds are selective, not constant."
+        ],
+        "role_handoff_rules": [
+          "Foreground moves head→soloists→head; rhythm section adapts each handoff.",
+          "Trading/fours or drum features require explicit temporary foreground transfer."
+        ],
+        "register_occupancy": {
+          "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Bebop commonly uses small combos but quartet/quintet/piano-less/guitar variants differ."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "clean fast tonguing/legato alternation, ghosted notes and rhythmic accents as target permits",
+        "dynamic_behavior": "accent-driven line shaping rather than large sustained swells",
+        "timing_humanization_behavior": "swing microtiming tightens at faster tempos; ensemble relational timing only",
+        "continuous_performance_control": "articulation and accent control prioritized over heavy effects",
+        "interaction_rules": [
+          "High interaction without random timing.",
+          "Comping responds to solo phrases.",
+          "Drums converse while preserving time."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "FORMATION_DEPENDENT",
+          "rule": "Small-combo clarity with localized soloist and cohesive rhythm section."
+        },
+        "mix_prominence_intent": "melody and bass clarity prioritized over dense pads",
+        "sound_effects_intent": "dry-to-natural room; little masking",
+        "production_mastering_intent": "fast transients, controlled cymbals and headroom"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Bebop profile",
+          "Weimar Jazz Database",
+          "MMA Bebop",
+          "Berklee jazz references"
+        ],
+        "source_confidence": {
+          "bebop_style_identity": "HIGH",
+          "solo_style_data": "HIGH_FOR_DATABASE_SCOPE",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Weimar": "ODbL",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "No generic swing profile substitution.",
+          "Solo foreground hierarchy explicit.",
+          "No rock backbeat fallback."
+        ],
+        "listening_tests": [
+          "Bop line/harmony feels idiomatic at tempo.",
+          "Walking bass/ride remain coherent.",
+          "Comping leaves room for solo."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -1405,6 +1725,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Bebop",
+        "candidate_variants": [
+          "Quartet",
+          "Quintet with two horns",
+          "Piano-less small combo",
+          "Guitar-led bop combo"
+        ]
       }
     },
     "Cool Jazz": {
@@ -1413,7 +1743,7 @@
       "source_profile_id": "COOL_JAZZ_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COOL_JAZZ_V1",
@@ -1456,62 +1786,160 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good existing emphasis on restraint, space, lighter attack and transparent voicings.",
+          "Already allows chamber colors and slower harmonic rhythm.",
+          "Mix intent is appropriately transparent."
+        ],
+        "current_profile_gaps": [
+          "No explicit West Coast/chamber/small-combo variant resolver.",
+          "No activity/foreground percentages.",
+          "No formation percentages.",
+          "No measured difference from generic slow swing beyond prose."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Weimar Jazz Database Cool solos",
+          "MMA mellow/modern jazz libraries",
+          "Berklee jazz references"
+        ],
+        "retained_current_fields": [
+          "restrained attack",
+          "space",
+          "transparent harmony",
+          "light drums",
+          "conversational ensemble",
+          "chamber colors"
+        ],
+        "upgraded_fields": [
+          "variant resolver",
+          "density ceiling",
+          "foreground windows",
+          "activity percentages",
+          "formation-specific spatial rules"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "ABA/head-solo or through-composed forms with textural restraint; variant may include arranged chamber-like sections."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COOL_JAZZ_VARIANT",
+          "rule": "Extended/modal harmony with transparent voicings and controlled chromaticism."
+        },
+        "melody_model": {
+          "rule": "Lyrical/linear lead with space and lighter attack; not merely slowed bebop."
+        },
+        "rhythm_groove_model": {
+          "rule": "Restrained swing or straight feel; pocket remains present while attack and density are reduced."
+        },
+        "bass_model": {
+          "rule": "Walking or sparse melodic bass with softer attack and more space."
+        },
+        "percussion_model": {
+          "rule": "Brushes/light kit and cymbal color; percussion deliberately leaves air."
+        },
+        "phrase_model": {
+          "rule": "Conversational phrasing with rests and longer arcs."
+        },
+        "transition_model": {
+          "rule": "Subtle setups, textural shifts and harmonic transitions rather than aggressive fills."
+        },
+        "development_model": {
+          "rule": "Develop through voicing, register, chamber color, solo exchange and textural restraint."
+        },
+        "cadence_ending_model": {
+          "rule": "Understated tags, held endings or arranged cadences."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Musical agency rotates among lead/solo, bass, drums and comping independent of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead remains clear because ensemble leaves air, not because of excessive gain.",
+          "Chamber colors enter as distinct events, not constant pads."
+        ],
+        "role_handoff_rules": [
+          "Foreground moves conversationally among horn/woodwind/vibes/piano/guitar depending formation."
+        ],
+        "register_occupancy": {
+          "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Cool jazz formations vary widely; no single headcount is defensible."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "soft attacks, legato lines, understated accents",
+        "dynamic_behavior": "restrained dynamics with subtle swells",
+        "timing_humanization_behavior": "laid-back but coherent shared pocket",
+        "continuous_performance_control": "continuous expression and breath shaping",
+        "interaction_rules": [
+          "Lower attack and density are coordinated.",
+          "Comping responds sparingly.",
+          "No section overwhelms texture."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "FORMATION_DEPENDENT",
+          "rule": "Transparent spread with clear local sources and generous air."
+        },
+        "mix_prominence_intent": "transparent mix with bass and melody both clear",
+        "sound_effects_intent": "natural ambience; subtle plate/room if target uses effects",
+        "production_mastering_intent": "low-compression, warm master"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Cool Jazz profile",
+          "Weimar Jazz Database",
+          "MMA mellow/modern jazz references",
+          "Berklee jazz references"
+        ],
+        "source_confidence": {
+          "cool_style_identity": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Weimar": "ODbL",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Cool Jazz cannot be implemented as merely slower Bebop.",
+          "Density ceiling/space behavior must be explicit."
+        ],
+        "listening_tests": [
+          "Texture remains transparent.",
+          "Lead is clear without aggressive boost.",
+          "Rhythm section feels restrained but alive."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -1520,6 +1948,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Cool Jazz",
+        "candidate_variants": [
+          "Small-combo cool",
+          "West Coast/chamber-influenced",
+          "Piano-less cool combo",
+          "Vibraphone-led cool"
+        ]
       }
     },
     "Dixieland": {
@@ -1528,7 +1966,7 @@
       "source_profile_id": "DIXIELAND_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "DIXIELAND_V1",
@@ -1570,62 +2008,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong differentiation of trumpet/cornet lead, clarinet obbligato and trombone tailgate/counter-support.",
+          "Correctly recognizes two-beat/four-beat pulse and collective lift.",
+          "Already distinguishes period-appropriate rhythm behavior from rock backbeat."
+        ],
+        "current_profile_gaps": [
+          "Term/formation covers multiple early-jazz practices; variant/history needs qualification.",
+          "No formation percentages.",
+          "No collective-improvisation activity model.",
+          "No explicit front-line audibility rules."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Weimar Traditional/Swing style metadata",
+          "MMA early-jazz/ragtime/dixieland-related libraries",
+          "Berklee jazz history/performance references"
+        ],
+        "retained_current_fields": [
+          "front-line role differentiation",
+          "two/four beat bass",
+          "collective improvisation framework",
+          "multiple strains/breaks",
+          "supportive rhythm foundation"
+        ],
+        "upgraded_fields": [
+          "formation resolver",
+          "front-line agency model",
+          "collective-improvisation rules",
+          "historical variant qualification",
+          "activity percentages"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Multiple strains, breaks, ensemble returns and solo/collective passages; variant-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TRADITIONAL_JAZZ_VARIANT",
+          "rule": "Functional/blues/ragtime-related harmony with dominant motion and turnarounds."
+        },
+        "melody_model": {
+          "rule": "Cornet/trumpet lead, clarinet obbligato/counterline and trombone counter-support remain simultaneous but functionally differentiated."
+        },
+        "rhythm_groove_model": {
+          "rule": "Two-beat or four-beat early-jazz pulse with collective lift; no modern rock backbeat."
+        },
+        "bass_model": {
+          "rule": "Bass/tuba role may use two-beat roots/fifths or four-beat motion by formation/section."
+        },
+        "percussion_model": {
+          "rule": "Period-appropriate snare/bass drum/cymbal behavior; energetic but style-specific."
+        },
+        "phrase_model": {
+          "rule": "Collective front-line counterpoint remains readable through role separation and register."
+        },
+        "transition_model": {
+          "rule": "Breaks, stop-time, pickups and ensemble cues rather than generic fills."
+        },
+        "development_model": {
+          "rule": "Develop through strain changes, collective/solo alternation, breaks and front-line interaction."
+        },
+        "cadence_ending_model": {
+          "rule": "Traditional tags, breaks, ensemble stops or arranged endings by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Musical agency rotates among lead/solo, bass, drums and comping independent of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Trumpet/cornet lead remains perceptible while clarinet and trombone retain active counter-roles.",
+          "Collective improvisation is not equal-volume chaos; register/function separation is mandatory."
+        ],
+        "role_handoff_rules": [
+          "Lead can pass during solos/breaks while front-line functions reconfigure.",
+          "Rhythm section supports rather than competes."
+        ],
+        "register_occupancy": {
+          "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Traditional/Dixieland ensembles vary in front line and rhythm-section instrumentation."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "brisk tonguing, gliss/falls where supported, crisp rhythm accompaniment",
+        "dynamic_behavior": "lively accents and collective builds",
+        "timing_humanization_behavior": "ensemble push tied to two-beat/four-beat pulse",
+        "continuous_performance_control": "articulation and breath controls",
+        "interaction_rules": [
+          "Front-line parts remain differentiated.",
+          "Collective lift is shared.",
+          "Breaks/stop-time are coordinated."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "FORMATION_DEPENDENT",
+          "rule": "Front line must be spatially separable; rhythm section cohesive behind/under it."
+        },
+        "mix_prominence_intent": "front line clear with rhythm foundation supportive",
+        "sound_effects_intent": "small-room/live-band character; avoid heavy modern processing",
+        "production_mastering_intent": "preserve acoustic transient character"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Dixieland profile",
+          "Weimar Jazz Database traditional style metadata",
+          "MMA traditional-jazz references",
+          "Berklee references"
+        ],
+        "source_confidence": {
+          "front_line_role_model": "HIGH",
+          "historical_variant_taxonomy": "PENDING_DEEPER_RESEARCH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Weimar": "ODbL",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Front-line roles must remain differentiated.",
+          "No modern rock backbeat.",
+          "No fixed percentages before formation resolution."
+        ],
+        "listening_tests": [
+          "Lead/counterlines are all audible without flattening roles.",
+          "Rhythm foundation supports collective front line.",
+          "Breaks and strain returns read clearly."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -1634,6 +2172,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Early/Traditional Jazz",
+        "candidate_variants": [
+          "New Orleans/traditional small ensemble",
+          "Chicago/Dixieland small ensemble",
+          "Revival-style ensemble"
+        ],
+        "note": "Historical terminology and instrumentation require careful source qualification."
       }
     },
     "Jazz Fusion": {
@@ -1642,7 +2190,7 @@
       "source_profile_id": "JAZZ_FUSION_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "JAZZ_FUSION_V1",
@@ -1685,62 +2233,161 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Correctly combines jazz harmony with funk/rock-derived rhythm precision.",
+          "Already allows odd meters, electric bass techniques, dense drums and synth/guitar roles.",
+          "Mix intent recognizes strong rhythm section plus intelligible lead."
+        ],
+        "current_profile_gaps": [
+          "Fusion spans radically different subgenres/eras and cannot use one formation.",
+          "No meter-grouping executor beyond broad description.",
+          "No synth/guitar/keys role resolver.",
+          "No activity/foreground percentages."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Weimar Fusion solo data",
+          "MMA JazzRock/LFusion and fusion-related libraries",
+          "Berklee funk/fusion arranging references"
+        ],
+        "retained_current_fields": [
+          "electric rhythm section",
+          "extended/modal harmony",
+          "funk/rock precision",
+          "odd-meter allowance",
+          "riff/solo/breakdown development"
+        ],
+        "upgraded_fields": [
+          "variant resolver",
+          "odd-meter grouping authority",
+          "electric-instrument role resolver",
+          "activity/foreground model",
+          "formation percentages"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Riff sections, solos, breakdowns, metric/harmonic developments and climactic returns; variant-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_FUSION_VARIANT",
+          "rule": "Extended/modal jazz harmony may combine with vamps, pedals and rock/funk harmony; no generic jazz substitution set."
+        },
+        "melody_model": {
+          "rule": "Solo/lead may float over dense groove but must remain rhythmically/harmonically integrated."
+        },
+        "rhythm_groove_model": {
+          "rule": "Straight or swung syncopation, funk/rock precision and odd-meter grouping as explicitly resolved; meter changes require grouping logic."
+        },
+        "bass_model": {
+          "rule": "Electric bass can be syncopated, melodic, slapped, picked or pedal-based by variant/section."
+        },
+        "percussion_model": {
+          "rule": "Dense technically active kit allowed, but fills/meter shifts must preserve groove continuity."
+        },
+        "phrase_model": {
+          "rule": "Riff and solo phrasing can cross meters/sections while maintaining grouping cues."
+        },
+        "transition_model": {
+          "rule": "Metric setups, fills, riff breaks, synth/guitar transitions and harmonic pivots are variant-specific."
+        },
+        "development_model": {
+          "rule": "Develop through riff transformation, solo development, meter, timbre, harmony and density."
+        },
+        "cadence_ending_model": {
+          "rule": "Riff tags, ensemble hits, vamp fades or composed endings according to variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Musical agency rotates among lead/solo, bass, drums and comping independent of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead/solo remains intelligible over powerful rhythm section through arrangement space, not only gain.",
+          "Synth/guitar/keys roles must be assigned rather than stacked continuously."
+        ],
+        "role_handoff_rules": [
+          "Foreground transfers among guitar, sax/brass/woodwind, keys/synth, bass or drums when structurally featured."
+        ],
+        "register_occupancy": {
+          "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Fusion formations range from trio/quartet to large electric ensembles; no universal headcount."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "clean/fused articulation: legato leads, accented riffs, guitar sustain, crisp drums",
+        "dynamic_behavior": "broad dynamic range from atmospheric openings to high-energy sections",
+        "timing_humanization_behavior": "humanized within tight pocket; odd-meter groupings remain stable",
+        "continuous_performance_control": "expression, modulation, pitch bend and target-specific effects may be prominent",
+        "interaction_rules": [
+          "Rhythm section interlocks tightly.",
+          "Odd-meter accents are shared.",
+          "Solo space and dense groove are negotiated dynamically."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT",
+          "rule": "Electric ensemble width/depth must preserve lead clarity and low-end focus."
+        },
+        "mix_prominence_intent": "bass/drums strong but melodic lead remains intelligible",
+        "sound_effects_intent": "delay/chorus/drive/synth effects allowed as controlled style components",
+        "production_mastering_intent": "modern full-range master with controlled density"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer Jazz Fusion profile",
+          "Weimar Jazz Database Fusion data",
+          "MMA JazzRock/LFusion references",
+          "Berklee funk/fusion arranging"
+        ],
+        "source_confidence": {
+          "fusion_style_family": "MEDIUM_HIGH",
+          "single_formation": "REJECTED",
+          "variant_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Weimar": "ODbL",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Odd meters require explicit grouping.",
+          "No fixed percentages before formation resolution.",
+          "Lead must remain intelligible over dense rhythm section."
+        ],
+        "listening_tests": [
+          "Groove stays coherent through fills/meter changes.",
+          "Lead is clear without weakening bass/drums.",
+          "Variants sound materially different."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -1749,6 +2396,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Jazz Fusion",
+        "candidate_variants": [
+          "Jazz-rock fusion",
+          "Funk-fusion",
+          "Electric/modal fusion",
+          "Latin fusion",
+          "Modern progressive fusion"
+        ]
       }
     },
     "Rhythm and Blues": {
@@ -7738,6 +8396,12 @@
     "Mambo",
     "Rumba",
     "Cha-Cha",
-    "Bolero"
+    "Bolero",
+    "Jazz Ballad",
+    "Jazz Waltz",
+    "Bebop",
+    "Cool Jazz",
+    "Dixieland",
+    "Jazz Fusion"
   ]
 }

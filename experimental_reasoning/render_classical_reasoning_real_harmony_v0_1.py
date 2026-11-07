@@ -32,8 +32,24 @@ from approved_audio_pipeline import (
     CLASSICAL_GOLDEN_SECTION_CONTROLS,
     CLASSICAL_GOLDEN_SECTION_PROGRAMS,
 )
-from render_substitute_universal import render_track
-from original_mixer_adapter import mix
+import importlib.util
+
+def _load_runtime_module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("RUNTIME_MODULE_LOAD_FAILED:" + str(path))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+_runtime_render = _load_runtime_module(
+    "reasoning_runtime_render_substitute", RUNTIME / "render_substitute_universal.py"
+)
+_runtime_mixer = _load_runtime_module(
+    "reasoning_runtime_original_mixer_adapter", RUNTIME / "original_mixer_adapter.py"
+)
+render_track = _runtime_render.render_track
+mix = _runtime_mixer.mix
 
 SECTIONS = [
     ("VIOLIN_I", "violin"),

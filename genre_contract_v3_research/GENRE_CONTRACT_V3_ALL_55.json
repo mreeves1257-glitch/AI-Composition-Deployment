@@ -2380,8 +2380,71 @@
           "Compare candidate Classical-period and Late-Romantic variants using the same thematic seed; verify that role handoffs, brass agency, density and section interaction change audibly without changing the underlying seed identity.",
           "Using one fixed thematic seed, compare current hard-coded orchestration against variant-aware orchestration and verify that the latter produces audible section-role handoffs without losing thematic identity."
         ],
-        "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE",
-        "approved_for_runtime": false
+        "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE__VARIANT_PAIRED_AUDIO_PENDING",
+        "approved_for_runtime": false,
+        "variant_harness_structural_checkpoint": {
+          "status": "LOCAL_LOGIC_VALIDATION_PASS__GITHUB_ACTIONS_DISPATCH_NOT_AVAILABLE",
+          "date": "2026-11-06",
+          "method_note": "Validation was executed locally against the retrieved current Classical generator logic plus the research-branch sidecar harness. GitHub did not auto-run the workflow because connector-authored pushes produced no Actions run; therefore this is not recorded as a GitHub Actions pass.",
+          "shared_plan_sha256": "05424729717898b816bc1c93ac96e6da6b1464e9ab5abf35a8d83d4d92f2243a",
+          "mode": "quick",
+          "bars": 28,
+          "variants": {
+            "CLASSICAL_PERIOD_BASELINE": {
+              "event_count": 436,
+              "foreground_bar_percent": {
+                "STRINGS": 57.14,
+                "WOODWINDS": 42.86,
+                "BRASS": 0
+              },
+              "active_bar_percent": {
+                "STRINGS": 92.86,
+                "WOODWINDS": 75,
+                "BRASS": 46.43,
+                "PERCUSSION": 17.86
+              },
+              "target_active_percent": {
+                "STRINGS": 92.78,
+                "WOODWINDS": 74.23,
+                "BRASS": 46.76,
+                "PERCUSSION": 17.85
+              },
+              "brass_foreground_bars": 0,
+              "gain_fields_present": false
+            },
+            "LATE_ROMANTIC_EXPANDED": {
+              "event_count": 448,
+              "foreground_bar_percent": {
+                "STRINGS": 35.71,
+                "WOODWINDS": 35.71,
+                "BRASS": 28.57
+              },
+              "active_bar_percent": {
+                "STRINGS": 92.86,
+                "WOODWINDS": 71.43,
+                "BRASS": 60.71,
+                "PERCUSSION": 25
+              },
+              "target_active_percent": {
+                "STRINGS": 91.88,
+                "WOODWINDS": 70.12,
+                "BRASS": 62.19,
+                "PERCUSSION": 24.47
+              },
+              "brass_foreground_bars": 8,
+              "gain_fields_present": false
+            }
+          },
+          "assertions_passed": [
+            "Both variants use the same thematic/harmonic plan hash.",
+            "Classical-period candidate remains string-led while preserving substantial woodwind foreground.",
+            "Late-Romantic candidate creates genuine brass foreground windows.",
+            "Late-Romantic brass activity exceeds Classical-period brass activity.",
+            "All family activity windows remain within approximately one quick-mode bar of evidence targets.",
+            "No gain fields are used to create foreground clarity."
+          ],
+          "next_gate": "PAIRED_AUDIO_LISTENING_VALIDATION"
+        }
       },
       "safeguards": {
         "population_is_not_linear_gain": true,
@@ -17563,13 +17626,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Build an isolated Classical variant-orchestration validation harness on the research branch; do not edit the live Composer path.",
-    "Use one fixed thematic/harmonic plan and generate at least Classical-period baseline and Late-Romantic expanded variants.",
-    "Validate event-level role ownership, activity, density and anti-masking before rendering audio.",
-    "Render paired MP3 auditions only after structural tests pass."
+    "Wire research-only paired audio rendering for CLASSICAL_PERIOD_BASELINE and LATE_ROMANTIC_EXPANDED using the same seed and plan.",
+    "Preserve separate stems/role metadata so foreground handoffs can be audited after render.",
+    "Compare both against the approved Classical golden reference and against each other.",
+    "Do not merge variant logic into live runtime until paired listening validation passes."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_CANDIDATE_VARIANT_ROLE_PRIORS_DEFINED__LISTENING_VALIDATION_NEXT",
+  "quantitative_phase_status": "CLASSICAL_STRUCTURAL_VARIANT_VALIDATION_PASS__PAIRED_AUDIO_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

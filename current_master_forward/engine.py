@@ -70,7 +70,7 @@ class AICompositionEngine:
         if genre_name != 'Classical':
             from genre_communication_blueprint import validate as validate_communication_blueprint, SEQUENCE
             blueprint=theory.get('communication_blueprint')
-            validate_communication_blueprint(blueprint,genre=genre_name,profile_id=selection['profile'].get('profile_id'),requested_parts=theory.get('palette',[]),generation_plan=theory.get('pre_generation_genre_plan',{}))
+            validate_communication_blueprint(blueprint,genre=genre_name,profile_id=selection['profile'].get('profile_id'),requested_parts=theory.get('palette',[]),generation_plan=theory.get('pre_generation_genre_plan',{}),v3_execution_packet=v3_contract_packet)
         if not theory.get('events'):
             raise ValueError('EMPTY_COMPOSITION_EVENTS')
         used = {event['instrument_id'] for event in theory['events']}

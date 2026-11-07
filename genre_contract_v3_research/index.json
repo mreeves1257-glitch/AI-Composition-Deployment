@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "CLASSICAL_RHYTHMIC_PERFORMANCE_HUMAN_LISTENING__ORCHESTRATION_BLOCKED",
+  "next_phase": "GENRE_V3_EXECUTION_WIRING_DIAGNOSTIC__NO_REASONING_ENGINE",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -709,5 +709,29 @@
     "rhythmic_performance_workflow_run_id": 42339712308,
     "rhythmic_performance_artifact_id": 13561471174,
     "rhythmic_performance_human_listening": "PENDING"
+  },
+  "execution_wiring_diagnosis": {
+    "date": "2026-11-07",
+    "status": "ROOT_CAUSE_IDENTIFIED",
+    "diagnostic_branch": "genre-contract-v3-no-reasoning-diagnostic",
+    "reasoning_engine_status": "PRESERVED_ELSEWHERE__EXCLUDED_FROM_DIAGNOSTIC_BRANCH",
+    "findings": [
+      "Live/current engine selected from legacy October genre registry rather than Genre Contract V3.",
+      "Execution adapter loaded legacy performance registry rather than Genre Contract V3.",
+      "Instrument role selection was largely hard-coded in static PALETTES before instrument resolution.",
+      "Legacy pre-generation compiler consumed only a narrow legacy text-field subset rather than structured V3 musical grammar/ensemble/performance/variant data.",
+      "Classical bypassed the generic genre communication blueprint and used its older specialized composition path.",
+      "Recent piano auditions were isolated research harnesses and did not exercise the full Composer genre communication chain."
+    ],
+    "repair_order": [
+      "Prove all 55 V3 contracts survive selection and execution handoff.",
+      "Replace hard-coded instrument palette authority with V3-backed formation/role authority where evidence is ready.",
+      "Compile structured V3 musical grammar into executable composition behavior.",
+      "Feed Classical a resolved V3 variant package before note generation.",
+      "Resume listening only after source-to-generation communication is proven."
+    ],
+    "diagnosis_report": "genre_contract_v3_research/GENRE_EXECUTION_WIRING_DIAGNOSIS_2026-11-07.md",
+    "v3_bridge": "current_master_forward/genre_contract_v3_execution_bridge.py",
+    "live_runtime_status": "UNTOUCHED"
   }
 }

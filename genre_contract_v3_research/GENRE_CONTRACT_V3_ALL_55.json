@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__GRAMMAR_PASS__VOICE_LEADING_PASS__CONTROLLED_GRAMMAR_AUDIO_READY__MELODY_RESEARCH_NEXT",
+      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__GRAMMAR_AND_VOICE_LEADING_PASS__MELODY_EVIDENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -1077,7 +1077,8 @@
           "No executable spatial seating/section-footprint contract.",
           "Current live Classical generator still contains hard-coded orchestration behavior separate from the profile.",
           "Current Classical pilot hard-codes foreground to violin/flute and restricts brass to support/punctuation, preventing evidence-backed role handoffs.",
-          "Current Classical plan uses a narrow cadence palette and largely one-chord-per-bar templates; corpus evidence supports more varied harmonic rhythm, tonicization, inversions, applied harmony, and cadence types."
+          "Current Classical plan uses a narrow cadence palette and largely one-chord-per-bar templates; corpus evidence supports more varied harmonic rhythm, tonicization, inversions, applied harmony, and cadence types.",
+          "Current Classical melody engine uses a small fixed rhythm/motif set without evidence-backed period differences in step/leap balance or upper-line rhythmic density."
         ],
         "external_sources_considered": [
           "Current AI Composer 55-profile registry",
@@ -2367,7 +2368,9 @@
           "Late-Romantic expanded-orchestra validation must demonstrate at least one genuine brass-foreground passage generated from composition logic, not post-mix boosting.",
           "Classical-period grammar validation must support PAC, HC, IAC, EC and DC outcomes without collapsing them to a generic AUTHENTIC label.",
           "Romantic grammar validation must increase tonal mobility/chromatic vocabulary without merely increasing chord-change frequency.",
-          "Harmony generator must keep orchestration variant and composition-grammar variant independently selectable for controlled tests."
+          "Harmony generator must keep orchestration variant and composition-grammar variant independently selectable for controlled tests.",
+          "Melody period variants must be separable from harmony and orchestration so interval/rhythm behavior can be validated independently.",
+          "Melody validation must treat top-line corpus statistics as broad bands, not exact per-piece quotas."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
@@ -3064,6 +3067,39 @@
             ],
             "internal_variant_requirement": "Schumann/Liszt/Dvorak/Grieg/Tchaikovsky/Medtner evidence differs materially; broad Romantic profile must expose bounded subvariant parameters rather than one fixed table."
           }
+        },
+        "candidate_melody_behavior": {
+          "status": "RESEARCH_CANDIDATES__TOPLINE_PROXY_BOUNDED",
+          "CLASSICAL_PERIOD_TONAL": {
+            "contour": "STEP_DOMINANT_WITH_CONTROLLED_THIRDS_AND_OCCASIONAL_LEAPS",
+            "interval_band_guidance": {
+              "step_motion": "HIGH",
+              "thirds": "MODERATE",
+              "leap_4th_or_larger": "LOW_TO_MODERATE",
+              "octave_or_near_octave": "OCCASIONAL_STRUCTURAL_OR_EXPRESSIVE"
+            },
+            "rhythm": "ACTIVE_SMALL_VALUES_WITH_PHRASE_LEVEL_BREATHING",
+            "development": [
+              "Motif identity should survive sequence, inversion-like contour changes, fragmentation and cadential recomposition.",
+              "Large leaps should normally receive stepwise compensation or structural harmonic support.",
+              "Cadence approach should reduce arbitrary contour volatility and target harmonically meaningful tones."
+            ]
+          },
+          "ROMANTIC_TONAL_EXPANDED": {
+            "contour": "BROADER_INTERVAL_SPAN_WITH_MORE_LEAPS_AND_DIRECTION_REVERSALS",
+            "interval_band_guidance": {
+              "step_motion": "MODERATE",
+              "thirds": "MODERATE",
+              "leap_4th_or_larger": "MODERATE_TO_HIGH",
+              "octave_or_near_octave": "MORE_AVAILABLE_BUT_NOT_CONSTANT"
+            },
+            "rhythm": "MORE_BREATHING_SPACE_AND_LONGER_VALUES_THAN_CLASSICAL_PROXY",
+            "development": [
+              "Permit broader registral arcs and more expressive leap recovery.",
+              "Use longer-note arrivals over chromatically mobile harmony rather than filling every harmonic event with equal note density.",
+              "Motivic recurrence should allow interval expansion/compression while retaining contour/rhythmic identity."
+            ]
+          }
         }
       },
       "quantitative_evidence_status": {
@@ -3263,6 +3299,89 @@
           "Piano harmonic corpora may inform harmony/cadence grammar but not orchestral population, foreground ownership, or instrumentation.",
           "Different annotation systems are not numerically interchangeable; Brahms/When-in-Rome statistics are a qualitative cross-check.",
           "Do not promote naive phrase-brace parsing into runtime logic until a parser respecting the annotation semantics is validated."
+        ]
+      },
+      "melody_empirical_reference": {
+        "status": "TOPLINE_PROXY_RESEARCH_REFERENCE__NOT_LITERAL_MELODY_QUOTA",
+        "methodology": "For each score onset, select the highest non-grace note on staff 1. This approximates upper-line behavior but is not guaranteed to equal the perceptual melody at every moment.",
+        "classical_period_mozart": {
+          "corpus": "DCMLab mozart_piano_sonatas",
+          "coverage": "All 54 movements",
+          "selected_topline_notes": 48831,
+          "aggregate_span_quarterbeats": 22350.25,
+          "notes_per_quarterbeat": 2.185,
+          "mean_absolute_interval_semitones": 3.103,
+          "interval_distribution_percent": {
+            "repeat": 9.13,
+            "step_1_2": 52.34,
+            "third_3_4": 18.63,
+            "leap_5_plus": 19.9,
+            "large_leap_7_plus": 12.93
+          },
+          "direction_change_percent": 53.34,
+          "selected_note_duration_percent": {
+            "LTE_0_25_QB": 55.34,
+            "GT_0_25_LTE_0_5_QB": 32.12,
+            "GT_0_5_LTE_1_QB": 9.8,
+            "GT_1_LTE_2_QB": 2.47,
+            "GT_2_QB": 0.27
+          },
+          "mean_midi": 74.53,
+          "observed_range_midi": [
+            29,
+            89
+          ],
+          "long_onset_gap_gt_4_qb_percent": 0.11
+        },
+        "romantic_balanced_sample": {
+          "corpora": [
+            "schumann_kinderszenen",
+            "liszt_pelerinage",
+            "dvorak_silhouettes",
+            "grieg_lyric_pieces",
+            "tchaikovsky_seasons",
+            "medtner_tales"
+          ],
+          "sampling": "Same balanced harmonic sample: six evenly spaced pieces per composer/corpus, 36 pieces total.",
+          "selected_topline_notes": 17368,
+          "aggregate_span_quarterbeats": 10255.292,
+          "notes_per_quarterbeat": 1.694,
+          "mean_absolute_interval_semitones": 3.787,
+          "interval_distribution_percent": {
+            "repeat": 12.9,
+            "step_1_2": 38.39,
+            "third_3_4": 18.54,
+            "leap_5_plus": 30.17,
+            "large_leap_7_plus": 19.43
+          },
+          "direction_change_percent": 58.14,
+          "selected_note_duration_percent": {
+            "LTE_0_25_QB": 35.46,
+            "GT_0_25_LTE_0_5_QB": 41.91,
+            "GT_0_5_LTE_1_QB": 15.95,
+            "GT_1_LTE_2_QB": 5.33,
+            "GT_2_QB": 1.35
+          },
+          "mean_midi": 72.15,
+          "observed_range_midi": [
+            38,
+            96
+          ],
+          "long_onset_gap_gt_4_qb_percent": 0.26
+        },
+        "comparative_findings": [
+          "The Mozart upper-line proxy is predominantly stepwise and rhythmically dense.",
+          "The balanced Romantic upper-line proxy uses substantially fewer step motions and more fourth-or-larger and seventh-or-larger leaps.",
+          "The Romantic proxy is less onset-dense and uses longer selected note values on average.",
+          "Direction changes are common in both samples and somewhat more frequent in the Romantic sample.",
+          "Period melody differentiation should therefore involve contour span and rhythmic breathing, not merely more chromatic notes."
+        ],
+        "guardrails": [
+          "Highest staff-1 note is a proxy for upper-line behavior, not a perceptual-melody ground truth.",
+          "Do not copy interval percentages directly as per-piece quotas.",
+          "Piano texture can place accompaniment or inner-voice material above the perceptual melody.",
+          "Register statistics are corpus/instrument specific and must not become orchestral instrument ranges.",
+          "Grace notes were excluded from this proxy and should be modeled separately as ornamentation."
         ]
       }
     },
@@ -18146,13 +18265,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Research melodic interval, rhythm, phrase-end and motivic-recurrence behavior separately from harmony and orchestration.",
-    "Keep the controlled piano grammar pair as the harmonic reference.",
-    "Build a melody/phrase validation harness before combining period grammar with orchestration.",
-    "Do not integrate any of these research layers into the live Composer yet."
+    "Build a research-only melody/phrase harness with the same neutral harmonic support for both period melody variants.",
+    "Validate interval class bands, rhythmic density, leap recovery, contour reversals and cadence targeting separately from orchestration.",
+    "Add ornament/grace-note behavior only after the core line passes structural tests.",
+    "Keep live Composer untouched."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_CONTROLLED_GRAMMAR_AUDIO_READY__MELODY_PHRASE_RESEARCH_NEXT",
+  "quantitative_phase_status": "CLASSICAL_MELODY_TOPLINE_EVIDENCE_ADDED__MELODY_HARNESS_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

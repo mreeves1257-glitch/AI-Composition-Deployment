@@ -8,6 +8,7 @@ on:
       - "genre_contract_v3_research/verify_shinyguitar_note_length_response.py"
       - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
       - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
       - ".github/workflows/shinyguitar-note-length-response-proof.yml"
   workflow_dispatch:
 
@@ -43,7 +44,8 @@ jobs:
           runtime.mkdir(parents=True,exist_ok=True)
           tarfile.open(fileobj=io.BytesIO(archive),mode="r:gz").extractall(runtime,filter="data")
           shutil.copy2("current_master_forward/target_registry.json",runtime/"target_registry.json")
-          print("ISOLATED_RUNTIME_READY")
+          shutil.copy2("current_master_forward/sfz_renderer_adapter.py",runtime/"sfz_renderer_adapter.py")
+          print("ISOLATED_RUNTIME_READY_WITH_MACRO_AWARE_SFZ_VALIDATOR")
           PY
 
       - name: Restore exact pinned Shinyguitar resource
@@ -51,6 +53,23 @@ jobs:
           bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh composer/runtime
           test -s composer/runtime/ROCK_PINNED_RESOURCE_ACQUISITION.json
           test "$(sha256sum composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz | awk '{print $1}')" = "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
+
+      - name: Prove Shinyguitar sample graph with macro-aware validator
+        env:
+          PYTHONPATH: ${{ github.workspace }}/composer/runtime
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from sfz_renderer_adapter import validate_sfz_samples
+          pack=Path("composer/runtime/sound_resources/KARORYFER_SHINYGUITAR").resolve()
+          sfz=pack/"Programs/composer_electric.sfz"
+          report=validate_sfz_samples(sfz,allowed_root=pack)
+          print(report)
+          assert report["sample_references"] == 6798, report
+          assert report["unique_samples"] == 846, report
+          assert report["sfz_files_validated"] == 16, report
+          print("SHINYGUITAR_MACRO_AWARE_SAMPLE_GRAPH_PASS")
+          PY
 
       - name: Build pinned sfizz 1.2.3 offline renderer
         run: |

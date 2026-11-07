@@ -53,8 +53,8 @@
     },
     {
       "genre_name": "Swing",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "comparison_status": "SMALL_COMBO_QUANTITATIVE_REFERENCE_ADDED__BROADER_VARIANTS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -65,8 +65,8 @@
     },
     {
       "genre_name": "Jazz Ballad",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "comparison_status": "SMALL_COMBO_QUANTITATIVE_REFERENCE_ADDED__BROADER_VARIANTS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -89,8 +89,8 @@
     },
     {
       "genre_name": "Jazz Waltz",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "comparison_status": "SMALL_COMBO_QUANTITATIVE_REFERENCE_ADDED__BROADER_VARIANTS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -101,8 +101,8 @@
     },
     {
       "genre_name": "Bebop",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "comparison_status": "SMALL_COMBO_QUANTITATIVE_REFERENCE_ADDED__BROADER_VARIANTS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -293,8 +293,8 @@
     },
     {
       "genre_name": "Bossa Nova",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "comparison_status": "SMALL_COMBO_QUANTITATIVE_REFERENCE_ADDED__BROADER_VARIANTS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -305,8 +305,8 @@
     },
     {
       "genre_name": "Samba",
-      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
+      "comparison_status": "SMALL_COMBO_QUANTITATIVE_REFERENCE_ADDED__BROADER_VARIANTS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

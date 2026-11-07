@@ -1,0 +1,90 @@
+name: Shinyguitar Note Length Response Proof
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - "genre_contract_v3_research/verify_shinyguitar_note_length_response.py"
+      - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
+      - "current_master_forward/target_registry.json"
+      - ".github/workflows/shinyguitar-note-length-response-proof.yml"
+  workflow_dispatch:
+
+jobs:
+  isolated-note-length-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Reconstruct preserved Composer runtime and current target registry
+        run: |
+          python - <<'PY'
+          import base64,hashlib,io,json,tarfile,shutil
+          from pathlib import Path
+          root=Path("connected_package")
+          manifest=json.loads((root/"manifest.json").read_text())
+          archive=bytearray()
+          for part in manifest["parts"]:
+              data=base64.b64decode((root/part["name"]).read_text(),validate=True)
+              assert hashlib.sha256(data).hexdigest()==part["sha256"]
+              archive.extend(data)
+          assert hashlib.sha256(archive).hexdigest()==manifest["archive_sha256"]
+          runtime=Path("composer/runtime")
+          runtime.mkdir(parents=True,exist_ok=True)
+          tarfile.open(fileobj=io.BytesIO(archive),mode="r:gz").extractall(runtime,filter="data")
+          shutil.copy2("current_master_forward/target_registry.json",runtime/"target_registry.json")
+          print("ISOLATED_RUNTIME_READY")
+          PY
+
+      - name: Restore exact pinned Shinyguitar resource
+        run: |
+          bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh composer/runtime
+          test -s composer/runtime/ROCK_PINNED_RESOURCE_ACQUISITION.json
+          test "$(sha256sum composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz | awk '{print $1}')" = "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
+
+      - name: Build pinned sfizz 1.2.3 offline renderer
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sfizz /tmp/sfizz-build
+          git clone --recursive https://github.com/sfztools/sfizz.git /tmp/sfizz
+          cd /tmp/sfizz
+          git checkout 4e70dc0bef53b41f2853ed46e26f5911114c92d0
+          git submodule update --init --recursive
+          cmake -S /tmp/sfizz -B /tmp/sfizz-build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DENABLE_LTO=OFF \
+            -DSFIZZ_JACK=OFF \
+            -DSFIZZ_SHARED=OFF \
+            -DSFIZZ_RENDER=ON \
+            -DSFIZZ_TESTS=OFF \
+            -DSFIZZ_DEMOS=OFF \
+            -DSFIZZ_DEVTOOLS=OFF
+          cmake --build /tmp/sfizz-build --target sfizz_render --parallel 2
+          RENDERER="$(find /tmp/sfizz-build -type f -name sfizz_render -perm -111 | head -n 1)"
+          test -n "$RENDERER"
+          "$RENDERER" --help >/tmp/sfizz-help.txt 2>&1 || true
+          grep -q -- "--sfz" /tmp/sfizz-help.txt
+          printf '%s\n' "$RENDERER" > /tmp/sfizz-renderer-path
+          echo "PINNED_SFIZZ_RENDERER_READY $RENDERER"
+
+      - name: Prove note length response with isolated recorded guitar
+        env:
+          PYTHONPATH: ${{ github.workspace }}/composer/runtime
+          AI_COMP_SFIZZ_PIN: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+        run: |
+          export AI_COMP_SFZ_RENDERER="$(cat /tmp/sfizz-renderer-path)"
+          python genre_contract_v3_research/verify_shinyguitar_note_length_response.py
+          test -s genre_contract_v3_research/SHINYGUITAR_NOTE_LENGTH_RESPONSE_PROOF.json
+
+      - name: Upload measurement report only
+        uses: actions/upload-artifact@v4
+        with:
+          name: Shinyguitar_Note_Length_Response_Proof
+          path: genre_contract_v3_research/SHINYGUITAR_NOTE_LENGTH_RESPONSE_PROOF.json
+          if-no-files-found: error

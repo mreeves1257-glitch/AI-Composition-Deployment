@@ -1,0 +1,35 @@
+{
+  "schema": "OCT17_QUARANTINED_RECORD_RECOVERY_001",
+  "donor_archive": "/Composer Backups/AI Composition - Sandbox_HARD_COPY_2026-10-17.zip",
+  "donor_archive_sha256": "27c122d962bc751cacac72eda3ab850f44aeef09461e4c5eafd1345a057c1ae0",
+  "status": "RECOVERED_AS_EVIDENCE_ONLY",
+  "records": [
+    {
+      "path": "recovery/oct17_records/CURRENT_RESOURCE_TRUTH_2026-10-17.json",
+      "source_file_id": "file_0000000008bc81f780b9924f61fe4684"
+    },
+    {
+      "path": "recovery/oct17_records/CURRENT_RESOURCE_TRUTH_2026-10-17.md",
+      "source_file_id": "file_000000000ab881f7aea87123155ee2e6"
+    },
+    {
+      "path": "recovery/oct17_records/DRUM_EXECUTION_COMPLETION_CHECKPOINT_2026-10-05.txt",
+      "source_file_id": "file_00000000656c81f8898a30037b1ace4b"
+    },
+    {
+      "path": "recovery/oct17_records/Composer_Master_Growlybass_Repair_Status_2026-10-16.json",
+      "source_file_id": "file_00000000518c81f78dbd658c51a91be4"
+    },
+    {
+      "path": "recovery/oct17_records/FORWARD_ORIGINAL_RESOURCE_REPAIR_REPORT_2026-10-12.json",
+      "source_file_id": "file_00000000508882469234bc92f413c70e"
+    }
+  ],
+  "policy": {
+    "runtime_authority": false,
+    "overwrite_current_master": false,
+    "selective_forward_recovery_only": true,
+    "reasoning_engine_used": false,
+    "live_runtime_promoted": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "ROCK_MODE_A_HARMONY_CAP_SWEEP_SYMBOLIC_FORECAST_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_audit": "ROCK_MODE_A_DURATION_SHAPE_AUDIT_001",
+  "canonical_current_max_ringing_beats": 2.8,
+  "candidate_caps_beats": [
+    1.4,
+    2,
+    2.8
+  ],
+  "interpretation": {
+    "cap_1_4": "Conservative diagnostic bracket: trims all canonical HARMONY extensions above 1.4 beats while preserving current Mode A shortenings.",
+    "cap_2_0": "Targeted diagnostic bracket: trims only the extreme long-ring gestures above 2.0 beats while preserving current Mode A shortenings.",
+    "cap_2_8": "Canonical current Mode A HARMONY maximum; comparison control."
+  },
+  "first_8_bars": {
+    "changed_harmony_note_events": 30,
+    "affected_vertical_chord_gestures": 10,
+    "canonical_gesture_after_duration_distribution": {
+      "2.8": 6,
+      "1.68": 2,
+      "1.26": 1,
+      "1.05": 1
+    },
+    "cap_1_4": {
+      "gestures_trimmed_vs_current": 8,
+      "note_events_trimmed_vs_current": 24,
+      "extreme_2_8_gestures_trimmed": 6,
+      "moderate_1_68_gestures_trimmed": 2,
+      "1_26_and_1_05_gestures_unchanged": true
+    },
+    "cap_2_0": {
+      "gestures_trimmed_vs_current": 6,
+      "note_events_trimmed_vs_current": 18,
+      "only_2_8_gestures_trimmed": true,
+      "1_68_1_26_1_05_gestures_unchanged": true
+    }
+  },
+  "full_40_bars": {
+    "affected_harmony_vertical_chord_gestures": 62,
+    "canonical_gesture_after_duration_distribution": {
+      "2.8": 26,
+      "1.68": 6,
+      "1.47": 7,
+      "1.26": 3,
+      "1.05": 8,
+      "0.84": 4,
+      "0.47": 2,
+      "0.22": 6
+    },
+    "cap_1_4": {
+      "gestures_trimmed_vs_current": 39,
+      "note_events_trimmed_vs_current": 117,
+      "includes_2_8_1_68_and_1_47_groups": true
+    },
+    "cap_2_0": {
+      "gestures_trimmed_vs_current": 26,
+      "note_events_trimmed_vs_current": 78,
+      "only_2_8_group_trimmed": true
+    }
+  },
+  "unchanged_dimensions": [
+    "pitch",
+    "onset",
+    "velocity",
+    "voicing",
+    "event_count",
+    "instrument_identity",
+    "lead",
+    "bass",
+    "drums",
+    "reasoning_engine"
+  ],
+  "production_fidelity_certified": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "RENDER_AND_HUMAN_LISTENING_OF_8_BAR_HARMONY_CAP_SWEEP"
+}

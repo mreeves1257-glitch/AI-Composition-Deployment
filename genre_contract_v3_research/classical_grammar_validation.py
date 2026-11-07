@@ -98,6 +98,23 @@ def _weighted_choice(rng, weights):
             return key
     return items[-1][0]
 
+def _internal_cadence_weights(weights):
+    """Compensate three internal choices for one deliberately forced final PAC.
+
+    With four cadences per plan, one PAC is structurally reserved for the coda.
+    The other three are reweighted so the aggregate cadence family remains near
+    the corpus distribution across many seeds.
+    """
+    total=sum(float(v) for v in weights.values())
+    p={k:float(v)/total for k,v in weights.items()}
+    q={}
+    for k,v in p.items():
+        expected_total=4.0*v
+        forced=1.0 if k=="PAC" else 0.0
+        q[k]=max(0.0,(expected_total-forced)/3.0)
+    qsum=sum(q.values())
+    return {k:100.0*v/qsum for k,v in q.items()}
+
 def _event_counts(variant, seed):
     profile = list(EVENT_COUNT_PROFILE[variant])
     rng = random.Random(seed * 101 + (17 if variant.startswith("ROMANTIC") else 3))
@@ -163,7 +180,7 @@ def _decorate_event(variant, seed, bar, event_index, function, numeral, cadence)
     applied=_feature_threshold(seed,bar,event_index,11) < target["applied_pct"]
     altered=_feature_threshold(seed,bar,event_index,23) < target["altered_pct"]
     diminished=_feature_threshold(seed,bar,event_index,31) < target["diminished_pct"]
-    extended=_feature_threshold(seed,bar,event_index,43) < target["extended_pct"]
+    extended=_feature_threshold(seed,bar,event_index,43) < max(0.0, target["extended_pct"] - 10.0)
     aug6=_feature_threshold(seed,bar,event_index,59) < target["aug6_pct"]
 
     # Keep feature choices functionally plausible.
@@ -218,7 +235,7 @@ def build_plan(variant, seed=0):
     rng=random.Random(seed*4099 + (101 if variant.startswith("ROMANTIC") else 13))
     counts=_event_counts(variant,seed)
     localkeys=_localkey_by_bar(variant,seed)
-    cadence_weights=TARGETS[variant]["cadence_weights"]
+    cadence_weights=_internal_cadence_weights(TARGETS[variant]["cadence_weights"])
     events=[]
     cadence_bars=(8,16,24,28)
     cadence_types={}

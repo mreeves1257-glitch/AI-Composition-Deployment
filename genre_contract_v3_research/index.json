@@ -17,8 +17,8 @@
   "genres": [
     {
       "genre_name": "ROCK",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
@@ -83,32 +83,32 @@
     },
     {
       "genre_name": "Rhythm and Blues",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Soul",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Funk",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Contemporary R&B",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__PRODUCTION_VARIANT_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Neo-Soul-related",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {

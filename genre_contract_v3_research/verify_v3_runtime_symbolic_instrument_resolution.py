@@ -86,22 +86,46 @@ def main():
             fg=result.get("genre_v3_foreground_authority") or {}
             if fg.get("source_pattern_can_supply_finished_foreground") is not False:
                 raise RuntimeError("FOREGROUND_AUTHORITY_GUARD_MISSING::"+name)
-            registry=result.get("foreground_executor_registry_status") or {}
+            foreground_registry=result.get("foreground_executor_registry_status") or {}
+            composition_registry=result.get("composition_executor_registry_status") or {}
             if name=="ROCK":
                 if result.get("foreground_notes_generated") is not True:
-                    raise RuntimeError("ROCK_FOREGROUND_CANDIDATE_NOT_ACTIVE")
-                if result.get("foreground_execution_status")!="GENRE_SPECIFIC_FOREGROUND_RESEARCH_CANDIDATE__STRUCTURAL_PASS":
-                    raise RuntimeError("ROCK_FOREGROUND_RUNTIME_STATUS_WRONG::"+str(result.get("foreground_execution_status")))
-                if registry.get("registered") is not True:
-                    raise RuntimeError("ROCK_FOREGROUND_EXECUTOR_NOT_REGISTERED")
-                if not (result.get("foreground_candidate_execution") or {}).get("lead_event_count"):
-                    raise RuntimeError("ROCK_FOREGROUND_CANDIDATE_METADATA_MISSING")
+                    raise RuntimeError("ROCK_DEVELOPED_FOREGROUND_NOT_ACTIVE")
+                if result.get("composition_notes_generated") is not True:
+                    raise RuntimeError("ROCK_DEVELOPED_COMPOSITION_NOT_ACTIVE")
+                if result.get("performance_realization_applied") is not False:
+                    raise RuntimeError("ROCK_PERFORMANCE_REALIZATION_PREMATURE")
+                if result.get("foreground_execution_status")!="GENRE_SPECIFIC_COMPOSITION_RESEARCH_CANDIDATE__STRUCTURAL_PASS":
+                    raise RuntimeError("ROCK_COMPOSITION_RUNTIME_STATUS_WRONG::"+str(result.get("foreground_execution_status")))
+                if composition_registry.get("registered") is not True or composition_registry.get("eligible") is not True:
+                    raise RuntimeError("ROCK_COMPOSITION_EXECUTOR_NOT_ACTIVE")
+                if composition_registry.get("scope")!="FAMILY_BASELINE_ONLY_WHEN_NO_VARIANT_CUES":
+                    raise RuntimeError("ROCK_COMPOSITION_EXECUTOR_SCOPE_WRONG")
+                candidate=result.get("composition_candidate_execution") or {}
+                if candidate.get("bar_count")!=40:
+                    raise RuntimeError("ROCK_RUNTIME_COMPOSITION_NOT_40_BARS")
+                if candidate.get("event_count")!=897:
+                    raise RuntimeError("ROCK_RUNTIME_COMPOSITION_EVENT_COUNT_WRONG::"+str(candidate.get("event_count")))
+                if candidate.get("rhythm_guitar_vertical_voicing_used") is not True:
+                    raise RuntimeError("ROCK_RUNTIME_VERTICAL_GUITAR_FLAG_MISSING")
+                if candidate.get("minimum_harmony_attack_pitch_count")!=3:
+                    raise RuntimeError("ROCK_RUNTIME_HARMONY_MINIMUM_VOICING_WRONG")
+                if candidate.get("performance_realization_applied") is not False:
+                    raise RuntimeError("ROCK_RUNTIME_CANDIDATE_PERFORMANCE_ALREADY_APPLIED")
+                if result.get("foreground_candidate_execution") is not None:
+                    raise RuntimeError("ROCK_OLD_SEVEN_BAR_FOREGROUND_CANDIDATE_STILL_EXECUTED")
+                if foreground_registry.get("registered") is not True:
+                    raise RuntimeError("ROCK_FOREGROUND_REGISTRY_PROVENANCE_MISSING")
             else:
+                if result.get("composition_notes_generated") is not False:
+                    raise RuntimeError("UNREGISTERED_COMPOSITION_NOTES_WERE_FABRICATED::"+name)
+                if composition_registry.get("registered") is not False:
+                    raise RuntimeError("UNEXPECTED_COMPOSITION_EXECUTOR_REGISTERED::"+name)
                 if result.get("foreground_notes_generated") is not False:
                     raise RuntimeError("UNREGISTERED_FOREGROUND_NOTES_WERE_FABRICATED::"+name)
                 if result.get("foreground_execution_status") != "STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED":
                     raise RuntimeError("FOREGROUND_EXECUTION_STATUS_UNEXPECTED::"+name+"::"+str(result.get("foreground_execution_status")))
-                if registry.get("registered") is not False:
+                if foreground_registry.get("registered") is not False:
                     raise RuntimeError("UNEXPECTED_FOREGROUND_EXECUTOR_REGISTERED::"+name)
             theory=result["theory_package"]
             if theory.get("legacy_note_generator_used") is not False:
@@ -109,8 +133,31 @@ def main():
             authority=theory.get("genre_v3_instrument_authority") or {}
             if authority.get("authority")!="V3_GOVERNED_SOURCE_PATTERN_ROLES":
                 raise RuntimeError("SOURCE_ROLE_AUTHORITY_NOT_ACTIVE::"+name)
-            if theory.get("execution_template")!="v3_symbolic_source_pattern":
-                raise RuntimeError("SOURCE_PATTERN_EXECUTION_TEMPLATE_NOT_ACTIVE::"+name)
+            expected_template=(
+                "v3_developed_composition_candidate"
+                if name=="ROCK"
+                else "v3_symbolic_source_pattern"
+            )
+            if theory.get("execution_template")!=expected_template:
+                raise RuntimeError(
+                    "V3_EXECUTION_TEMPLATE_WRONG::"+name+"::"+
+                    str(theory.get("execution_template"))
+                )
+            if name=="ROCK":
+                if theory.get("bars")!=40:
+                    raise RuntimeError("ROCK_THEORY_PACKAGE_NOT_40_BARS")
+                if len(theory.get("events") or [])!=897:
+                    raise RuntimeError("ROCK_THEORY_EVENT_COUNT_NOT_897")
+                if theory.get("form")!="ROCK_CORE_V3_40_BAR_DEVELOPED_SYMBOLIC_CANDIDATE":
+                    raise RuntimeError("ROCK_THEORY_FORM_ID_WRONG")
+                harmony_attacks={}
+                for event in theory["events"]:
+                    if event.get("track_id")=="HARMONY":
+                        harmony_attacks.setdefault(round(float(event["start_beat"]),6),[]).append(event)
+                if len(harmony_attacks)!=73:
+                    raise RuntimeError("ROCK_RUNTIME_HARMONY_ATTACK_COUNT_NOT_73::"+str(len(harmony_attacks)))
+                if min(len(v) for v in harmony_attacks.values())!=3 or max(len(v) for v in harmony_attacks.values())!=3:
+                    raise RuntimeError("ROCK_RUNTIME_HARMONY_ATTACK_NOT_THREE_NOTE_VOICING")
             if not theory.get("events"):
                 raise RuntimeError("RUNTIME_SYMBOLIC_EVENTS_EMPTY::"+name)
 
@@ -146,8 +193,17 @@ def main():
                 "foreground_execution_status":result.get("foreground_execution_status"),
                 "finished_composition_authority":result.get("finished_composition_authority"),
                 "foreground_notes_generated":result.get("foreground_notes_generated"),
+                "composition_notes_generated":result.get("composition_notes_generated"),
+                "performance_realization_applied":result.get("performance_realization_applied"),
+                "composition_executor_registered":bool((result.get("composition_executor_registry_status") or {}).get("registered")),
                 "foreground_executor_registered":bool((result.get("foreground_executor_registry_status") or {}).get("registered")),
-                "lead_event_count":(result.get("foreground_candidate_execution") or {}).get("lead_event_count",0),
+                "bar_count":theory.get("bars"),
+                "execution_template":theory.get("execution_template"),
+                "lead_event_count":sum(1 for e in theory["events"] if e.get("track_id")=="LEAD"),
+                "rhythm_guitar_attack_count":(
+                    len({round(float(e["start_beat"]),6) for e in theory["events"] if e.get("track_id")=="HARMONY"})
+                    if name=="ROCK" else 0
+                ),
             }
 
         # A researched formation is not permission to synthesize generic music.
@@ -192,16 +248,23 @@ def main():
         "all_finished_composition_authority_false":all(
             row["finished_composition_authority"] is False for row in rows.values()
         ),
-        "registered_foreground_candidate_count":sum(
+        "registered_composition_candidate_count":sum(
+            1 for row in rows.values() if row["composition_executor_registered"]
+        ),
+        "registered_foreground_registry_count":sum(
             1 for row in rows.values() if row["foreground_executor_registered"]
         ),
         "foreground_blocked_source_pattern_count":sum(
             1 for row in rows.values()
             if row["foreground_execution_status"]=="STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED"
         ),
-        "rock_foreground_candidate_active":(
-            rows["ROCK"]["foreground_notes_generated"] is True
-            and rows["ROCK"]["foreground_executor_registered"] is True
+        "rock_developed_composition_candidate_active":(
+            rows["ROCK"]["composition_notes_generated"] is True
+            and rows["ROCK"]["composition_executor_registered"] is True
+            and rows["ROCK"]["bar_count"]==40
+            and rows["ROCK"]["event_count"]==897
+            and rows["ROCK"]["rhythm_guitar_attack_count"]==73
+            and rows["ROCK"]["performance_realization_applied"] is False
             and rows["ROCK"]["finished_composition_authority"] is False
         ),
         "result":(
@@ -211,13 +274,14 @@ def main():
             "automatic genres with explicit researched V3 formations stop safely before "
             "the generic legacy melody generator. Brush-snare and hand-drum remain "
             "canonical resource-required identities. Rendering remains blocked, and "
-            "Rock alone uses its registered structurally validated foreground research candidate; "
-            "the other 39 source-pattern genres remain accompaniment-only. No source-pattern package "
-            "has finished-composition authority and rendering remains blocked."
+            "Rock alone now uses its registered 40-bar developed symbolic composition candidate "
+            "(897 events, including vertical rhythm-guitar voicings); the other 39 source-pattern "
+            "genres remain accompaniment-only. Rock performance realization is still blocked, and "
+            "no source-pattern package has finished-composition authority or rendering permission."
         ),
         "genres":rows,
         "explicit_formation_safe_stops":explicit_rows,
-        "next_gate":"ROCK_VARIANT_FORM_RESOURCE_GATES__OTHER_GENRES_FOREGROUND_EXECUTORS",
+        "next_gate":"ROCK_CORE_PERFORMANCE_REALIZATION_PLAN__OTHER_GENRES_FOREGROUND_EXECUTORS",
     }
     out=ROOT/"genre_contract_v3_research"/"V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json"
     out.write_text(json.dumps(summary,indent=2)+"\n")

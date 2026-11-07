@@ -1,0 +1,55 @@
+{
+  "schema": "ROCK_V3_DRUM_RELATION_STRUCTURAL_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_pattern_authoring_status": "ORIGINAL_PROJECT_SEED_NOT_AUDITIONED",
+  "approved_bass_profile": "ROCK_CORE_V2__ELECTRIC_BASS__D_APPROVED_001",
+  "audit": {
+    "run_id": 42401320701,
+    "artifact_id": 13585811020,
+    "artifact_digest": "sha256:ffd1b49f8c91d33f92c339cb01ec17846e13110fe3785e3a1238e276dd3ff26f",
+    "bass_onsets": 70,
+    "kick_onsets": 76,
+    "coincident_onsets": 63,
+    "bass_with_kick_fraction": 0.9,
+    "kick_with_bass_fraction": 0.828947
+  },
+  "source_pattern_findings": {
+    "standard_kick_positions": {
+      "beat_0_count": 40,
+      "beat_2_count": 24
+    },
+    "intentional_syncopation": {
+      "pattern": "B2",
+      "kick_beat": 2.25,
+      "count": 7,
+      "relation_to_approved_bass": "approved Bass D retains strong beat 2.0 while B2 kick remains authored at 2.25"
+    },
+    "intentional_fill_pickup": {
+      "pattern": "FILL",
+      "kick_beat": 3.75,
+      "count": 5
+    }
+  },
+  "decision": {
+    "change_drum_timing_now": false,
+    "force_all_kicks_to_bass_onsets": false,
+    "preserve_authored_kick_syncopation": true,
+    "preserve_authored_fill_pickups": true,
+    "rationale": [
+      "90% of approved bass attacks already coincide with kick.",
+      "The repeated quarter-beat offsets are authored B2 structure, not random timing drift.",
+      "The 3.75 kick events are authored fill pickups.",
+      "Forcing 100% coincidence would introduce a new musical variable without human evidence.",
+      "Source-pattern intent is not the same as human musical approval, so drums remain a separate unresolved listening gate."
+    ]
+  },
+  "drums_human_approved": false,
+  "drum_resource_or_mix_changed": false,
+  "new_performance_variables_added": false,
+  "audio_generated": false,
+  "reasoning_engine_used": false,
+  "canonical_policy_modified": false,
+  "live_runtime_promoted": false,
+  "next_gate": "PRESERVE_CURRENT_DRUM_TIMING__OBJECTIVELY_PREFLIGHT_DRUM_RESOURCE_AND_RENDER_PATH_BEFORE_ANY_LISTENING"
+}

@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "V3_STRUCTURED_PACKET_DOWNSTREAM_HANDOFF__THEN_CLASSICAL_VARIANT_PACKAGE",
+  "next_phase": "V3_MACHINE_READABLE_EXECUTION_LAYER__NO_REASONING_ENGINE",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -712,7 +712,7 @@
   },
   "execution_wiring_diagnosis": {
     "date": "2026-11-07",
-    "status": "ROOT_CAUSE_IDENTIFIED",
+    "status": "V3_SOURCE_AND_STRUCTURED_PREGEN_PASS__EXECUTION_LAYER_NEXT",
     "diagnostic_branch": "genre-contract-v3-no-reasoning-diagnostic",
     "reasoning_engine_status": "PRESERVED_ELSEWHERE__EXCLUDED_FROM_DIAGNOSTIC_BRANCH",
     "findings": [
@@ -741,6 +741,13 @@
     "controlled_component_count": 7,
     "classical_specialized_count": 1,
     "wiring_audit_workflow_run_id": 42377781811,
-    "wiring_audit_status": "PASS"
+    "wiring_audit_status": "PASS",
+    "latest_wiring_audit_run_id": 42377911425,
+    "structured_pre_generation_pass_count": 55,
+    "explicit_v3_instrument_authority_genres": 7,
+    "automatic_legacy_instrument_fallback_genres": 40,
+    "controlled_component_genres": 7,
+    "classical_specialized_genres": 1,
+    "next_gap": "Event/note generation still executes legacy family-template logic; add machine-readable V3 execution authority before further audio tests."
   }
 }

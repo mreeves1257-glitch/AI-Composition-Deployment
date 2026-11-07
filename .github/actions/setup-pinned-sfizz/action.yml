@@ -1,0 +1,68 @@
+name: Setup pinned sfizz renderer
+description: Reuse or build the exact diagnostic sfizz renderer pinned by the Composer project.
+
+inputs:
+  sfizz_commit:
+    description: Exact sfizz git commit
+    required: false
+    default: "4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+  sfizz_pin:
+    description: Human-readable renderer pin
+    required: false
+    default: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+
+outputs:
+  renderer:
+    description: Absolute path to sfizz_render
+    value: ${{ steps.locate.outputs.renderer }}
+  pin:
+    description: Exact renderer pin
+    value: ${{ inputs.sfizz_pin }}
+
+runs:
+  using: composite
+  steps:
+    - name: Restore cached pinned renderer
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ai-composer/sfizz/${{ inputs.sfizz_commit }}
+        key: ai-composer-sfizz-${{ runner.os }}-${{ runner.arch }}-${{ inputs.sfizz_commit }}
+
+    - name: Build exact pinned renderer on cache miss
+      if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        set -euo pipefail
+        commit="${{ inputs.sfizz_commit }}"
+        root="$HOME/.cache/ai-composer/sfizz/$commit"
+        src="/tmp/sfizz-$commit"
+        build="/tmp/sfizz-build-$commit"
+        rm -rf "$src" "$build"
+        mkdir -p "$root"
+
+        git clone --recursive https://github.com/sfztools/sfizz.git "$src"
+        cd "$src"
+        git checkout "$commit"
+        git submodule update --init --recursive
+
+        cmake -S "$src" -B "$build"           -DCMAKE_BUILD_TYPE=Release           -DENABLE_LTO=OFF           -DSFIZZ_JACK=OFF           -DSFIZZ_SHARED=OFF           -DSFIZZ_RENDER=ON           -DSFIZZ_TESTS=OFF           -DSFIZZ_DEMOS=OFF           -DSFIZZ_DEVTOOLS=OFF
+        cmake --build "$build" --target sfizz_render --parallel 2
+
+        renderer="$(find "$build" -type f -name sfizz_render -perm -111 | head -n 1)"
+        test -n "$renderer"
+        cp "$renderer" "$root/sfizz_render"
+        chmod +x "$root/sfizz_render"
+
+    - name: Locate and validate pinned renderer
+      id: locate
+      shell: bash
+      run: |
+        set -euo pipefail
+        commit="${{ inputs.sfizz_commit }}"
+        renderer="$HOME/.cache/ai-composer/sfizz/$commit/sfizz_render"
+        test -x "$renderer"
+        "$renderer" --help >/dev/null 2>&1 || true
+        echo "renderer=$renderer" >> "$GITHUB_OUTPUT"
+        echo "PINNED_SFIZZ_RENDERER=$renderer"
+        echo "PINNED_SFIZZ=${{ inputs.sfizz_pin }}"

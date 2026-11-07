@@ -681,16 +681,25 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "CLASSICAL_USER_LISTENING_REVIEW__THEN_GOLDEN_REFERENCE_COMPARISON",
+  "next_phase": "CLASSICAL_PAIRED_LISTENING_WORKFLOW_READY__AUDIO_EXECUTION_PENDING",
   "classical_checkpoint": {
     "foreground_period_split": "ADDED_TO_ALL_55_MASTER",
     "activity_period_split": "ADDED_TO_ALL_55_MASTER",
     "candidate_role_priors": "DEFINED_WITH_EVIDENCE_TIERS",
-    "structural_validation": "PASS",
-    "paired_audio_render": "PASS",
-    "user_listening_review": "PENDING",
+    "structural_variant_validation": "LOCAL_LOGIC_PASS",
+    "paired_renderer": "READY",
+    "paired_workflow": "READY__NOT_AUTO_TRIGGERED_BY_CONNECTOR_COMMIT",
     "live_runtime_status": "UNTOUCHED",
-    "latest_master_commit": "a3da8a2d73ef097f18e7564dd77e4ce21ec6de53",
-    "audition_workflow_run_id": 42335519354
+    "master_commits": [
+      "6de7b744620883783e442a4767f56de2f73a1887",
+      "e41349c135d1549b209b5604464e5f9191e09e6f",
+      "537dc04cb7ff141be1dd2b417ce9e6bf03a71193",
+      "a291ccd02c2f4655138709e4e1102af8c6ab8639",
+      "8ee5607e1e4c8595450751467aa7950cc9ef12e3"
+    ],
+    "harness_commit": "23a054a730dd785f5af239516eec3579d14cf640",
+    "test_commit": "e0e7f36336e1e2165c1c62f9cf2fa410f113b1f2",
+    "renderer_commit": "2d6265945036360a7f80cf49c2aa87c4d4ef4aff",
+    "listening_workflow_commit": "676f59234c251a951c89ef0ebaa160b293ba7622"
   }
 }

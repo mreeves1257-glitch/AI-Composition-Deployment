@@ -291,17 +291,25 @@ def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None, v3
             tempo_bpm=float(v3_piece_intent['tempo_bpm']),
             meter=str(v3_piece_intent['meter']),
             mode=mode,
-            seed=creation_seed)
+            seed=creation_seed,
+            tonic_pc=int(v3_piece_intent.get('tonic_pc',0)),
+            tonal_mode=str(v3_piece_intent.get('tonal_mode','major')))
         structural_validation=validate_v3_structure(structural_plan)
-        # Structural V3 communication is now bound. Stop before note realization:
-        # the legacy fixed-note generator is forbidden from standing in for the
-        # still-missing V3 melody/harmony/texture realizer.
+
+        from classical_v3_note_realizer import realize as realize_v3_notes, validate as validate_v3_notes
+        abstract_note_plan=realize_v3_notes(structural_plan)
+        abstract_note_validation=validate_v3_notes(
+            abstract_note_plan, structural_plan)
+
+        # Composition logic is now bound through an abstract score. Stop before
+        # instrumentation/orchestration so orchestral color cannot hide a
+        # composition-layer failure.
         return {
             'genre_name':'Classical',
             'profile_id':PROFILE_ID,
-            'status':'V3_NOTE_REALIZER_REQUIRED',
+            'status':'V3_ORCHESTRATION_BINDING_REQUIRED',
             'resolution_policy':profile['resolution_policy'],
-            'execution_template':'classical_v3_structural_compiler',
+            'execution_template':'classical_v3_abstract_score',
             'tempo_bpm':structural_plan['tempo_bpm'],
             'meter':structural_plan['meter'],
             'bars':len(structural_plan['bars']),
@@ -311,9 +319,11 @@ def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None, v3
             'classical_v3_piece_intent':copy.deepcopy(v3_piece_intent),
             'classical_v3_structural_plan':structural_plan,
             'classical_v3_structural_validation':structural_validation,
+            'classical_v3_abstract_note_plan':abstract_note_plan,
+            'classical_v3_abstract_note_validation':abstract_note_validation,
             'legacy_classical_generator_executed':False,
             'live_runtime_modified':False,
-            'reason':'V3_STRUCTURE_BOUND__NOTE_REALIZER_NOT_YET_BOUND',
+            'reason':'V3_STRUCTURE_AND_ABSTRACT_NOTES_BOUND__ORCHESTRATION_NOT_YET_BOUND',
         }
     plan=copy.deepcopy(plan) if plan is not None else make_plan(creation_seed,mode)
     events=realize(plan)

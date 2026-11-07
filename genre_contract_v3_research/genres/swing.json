@@ -1,0 +1,114 @@
+{
+  "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "genre_name": "Swing",
+  "source_profile_id": "JAZZ_SWING_V1",
+  "family": "Jazz",
+  "source_status": "CONTROLLED_PROFILE",
+  "research_status": "NOT_STARTED",
+  "approved_for_runtime": false,
+  "current_profile_snapshot": {
+    "profile_id": "JAZZ_SWING_V1",
+    "family": "Jazz",
+    "status": "CONTROLLED_PROFILE",
+    "scope_note": "",
+    "tempo_bpm_range": [
+      95,
+      210
+    ],
+    "meter_options": [
+      "4/4"
+    ],
+    "form_tendencies": [
+      "through_composed",
+      "aba"
+    ],
+    "groove_behavior": "swung eighth feel with ride-led pulse and flexible comping; swing ratio varies with tempo/performance",
+    "phrase_behavior": "4/8-bar phrasing with call-response, pickups, turnaround energy and space for improvisatory lines",
+    "harmony_behavior": "extended tonal harmony; ii-V motion, secondary dominants, substitutions and blues language available without forcing one progression",
+    "bass_behavior": "walking bass structural baseline with chromatic approaches and chord-tone targets",
+    "percussion_behavior_if_applicable": "ride pattern + hi-hat/backbeat accents + feathered/supportive kick as target permits; brushes optional",
+    "instrument_role_behavior": "piano/guitar comping, acoustic/electric bass, drum kit, sax/brass/clarinet melodic roles",
+    "ensemble_player_behavior": "rhythm section negotiates shared swing pocket; comping responds to phrases rather than repeating fixed blocks",
+    "arrangement_transformation": "head/solo/head or sectional jazz form; density changes under solos and ensemble figures",
+    "dynamic_behavior": "interactive accents and phrase crescendos rather than static velocity",
+    "articulation_behavior": "legato/tongued horn lines, comping stabs, bass sustain, brush/stick differentiation",
+    "timing_humanization_behavior": "microtiming is relational to swing pulse and ensemble role; no random jitter",
+    "continuous_performance_control": "expression, articulation, breath and comping-density controls",
+    "sound_effects_intent": "room/reverb restrained; target tone may be warm/natural",
+    "mix_prominence_intent": "bass/ride time feel clear; melody and comping leave mutual space",
+    "production_mastering_intent": "preserve transient nuance and dynamic headroom",
+    "manufacturer_adapter_requirements": "sax/piano target voices may be electronic patches but must retain canonical role behavior",
+    "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+    "provenance": [
+      "existing_project_theory",
+      "established_genre_practice"
+    ],
+    "execution_rule": "USE_CONTROLLED_PROFILE"
+  },
+  "comparison": {
+    "current_profile_strengths": [],
+    "current_profile_gaps": [],
+    "external_sources_considered": [],
+    "retained_current_fields": [],
+    "upgraded_fields": [],
+    "conflicts": [],
+    "unresolved_questions": []
+  },
+  "musical_grammar": {
+    "form_model": null,
+    "harmony_model": null,
+    "melody_model": null,
+    "rhythm_groove_model": null,
+    "bass_model": null,
+    "percussion_model": null,
+    "phrase_model": null,
+    "transition_model": null,
+    "development_model": null,
+    "cadence_ending_model": null
+  },
+  "ensemble": {
+    "instrument_roster": [],
+    "population_mass_percent": {},
+    "presence_percent": {},
+    "activity_percent": {},
+    "musical_agency_percent": {},
+    "foreground_window_percent": {},
+    "foreground_window_rules": [],
+    "role_handoff_rules": [],
+    "register_occupancy": {},
+    "spatial_footprint_percent": {},
+    "section_population_reference": {}
+  },
+  "performance": {
+    "articulation_behavior": null,
+    "dynamic_behavior": null,
+    "timing_humanization_behavior": null,
+    "continuous_performance_control": null,
+    "interaction_rules": []
+  },
+  "production": {
+    "spatial_presentation": null,
+    "mix_prominence_intent": null,
+    "sound_effects_intent": null,
+    "production_mastering_intent": null
+  },
+  "evidence": {
+    "sources": [],
+    "source_confidence": {},
+    "source_license_status": {},
+    "conflicts_between_sources": [],
+    "unresolved_questions": []
+  },
+  "validation": {
+    "structural_tests": [],
+    "listening_tests": [],
+    "golden_reference_status": null,
+    "approved_for_runtime": false
+  },
+  "safeguards": {
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_not_loudness": true,
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true
+  }
+}

@@ -1170,3 +1170,50 @@ Full-form symbolic verifier remains:
 
 Active gate:
 Human listening of clearly labeled Current Bass vs Corrected Bass.
+
+
+## Rock bass-only three-way sustain/body test completed
+
+Workflow:
+`Rock V3 Bass Three Way Listening`
+run `42398125730` — PASS
+
+Artifact:
+`13584073354`
+Digest:
+`sha256:686e8b1697f6b435deb186ff57357386fb3862ca7c36dad233c7b1e204fe5382`
+
+Human baseline entering this test:
+- corrected bass-only is preferred
+- unwanted offbeat pitch behavior is gone
+- corrected bass-only is too dry / lacks sustain
+
+Three bass-only conditions:
+A. `A_ACCEPTED_VICIOUS_SHORT`
+- human-preferred corrected bass baseline
+- growlybass_vicious.sfz
+- 56 events in first 16 bars
+- 0.20-beat max gate
+- offbeat re-attacks remain, but all are pitch-coherent
+- 0 different-pitch offbeats
+
+B. `B_CLEAN_SHORT_CONTROL`
+- exact same symbolic bass performance as A
+- growlybass_clean.sfz
+- 56 events
+- 0.20-beat max gate
+- isolates mapping/timbre only
+
+C. `C_CLEAN_HELD_TONE`
+- sustain-capable growlybass_clean.sfz
+- 27 strong-beat bass events in first 16 bars
+- all offbeat bass re-attacks removed
+- strong-beat notes held toward next strong beat
+- maximum hold 1.50 beats
+- 0.20-beat release gap
+- 0 different-pitch offbeats
+
+No guitars, no drums, no reasoning engine, no canonical/main/live promotion.
+
+Active gate:
+Human bass-only listening among A, B, and C to determine whether body/sustain can be added without reintroducing the unwanted upbeat behavior.

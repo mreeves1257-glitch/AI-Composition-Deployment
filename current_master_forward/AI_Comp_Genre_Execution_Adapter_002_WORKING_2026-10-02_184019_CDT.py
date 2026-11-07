@@ -301,24 +301,62 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
             status_for as foreground_executor_status_for,
             execute as execute_genre_foreground,
         )
+        from genre_v3_composition_executor_registry import (
+            status_for as composition_executor_status_for,
+            execute as execute_genre_composition,
+        )
         symbolic=compile_v3_symbolic_seed(name)
         foreground_authority=compile_v3_foreground_authority(name)
         if foreground_authority.get('note_execution_ready_here') is not False:
             raise ValueError('V3_SOURCE_PATTERN_FOREGROUND_READINESS_UNEXPECTED')
+
+        # This adapter currently receives only the broad genre name. A request for
+        # ROCK is therefore treated as a broad-family diagnostic with no supplied
+        # subgenre cue. If/when variant cues are passed into this adapter, they
+        # must be forwarded here; the composition registry will then block the
+        # Rock Core family baseline instead of swallowing them.
+        variant_cues_present=False
+        composition_executor=composition_executor_status_for(
+            name,variant_cues_present=variant_cues_present)
+        composition_candidate=None
         foreground_executor=foreground_executor_status_for(name)
         foreground_candidate=None
-        if foreground_executor.get('registered'):
+
+        if composition_executor.get('registered') and composition_executor.get('eligible'):
+            composition_candidate=execute_genre_composition(
+                name,variant_cues_present=variant_cues_present)
+            events=list(composition_candidate['events'])
+            meter=composition_candidate['meter']
+            bpm=composition_candidate['tempo_bpm']
+            bars=composition_candidate['bar_count']
+            form='ROCK_CORE_V3_40_BAR_DEVELOPED_SYMBOLIC_CANDIDATE'
+            foreground_execution_status='GENRE_SPECIFIC_COMPOSITION_RESEARCH_CANDIDATE__STRUCTURAL_PASS'
+            foreground_notes_generated=any(
+                e.get('track_id')=='LEAD' for e in events)
+            composition_notes_generated=True
+            performance_realization_applied=bool(
+                composition_candidate.get('performance_realization_applied'))
+            promotion_block='DEVELOPED_COMPOSITION_CANDIDATE_REQUIRES_PERFORMANCE_PLAN_RESOURCE_PREFLIGHT_AND_LISTENING'
+        elif foreground_executor.get('registered'):
             foreground_candidate=execute_genre_foreground(name)
             events=list(foreground_candidate['events'])
+            meter=symbolic['meter']; bpm=symbolic['tempo_bpm']; bars=symbolic['bar_count']
+            form='V3_ORIGINAL_SEVEN_SECTION_SYMBOLIC_SEED_WITH_FOREGROUND_CANDIDATE'
             foreground_execution_status='GENRE_SPECIFIC_FOREGROUND_RESEARCH_CANDIDATE__STRUCTURAL_PASS'
             foreground_notes_generated=True
+            composition_notes_generated=False
+            performance_realization_applied=False
             promotion_block='FOREGROUND_CANDIDATE_REQUIRES_VARIANT_FORM_RESOURCE_AND_LISTENING_GATES'
         else:
             events=list(symbolic['events'])
+            meter=symbolic['meter']; bpm=symbolic['tempo_bpm']; bars=symbolic['bar_count']
+            form='V3_ORIGINAL_SEVEN_SECTION_SYMBOLIC_SEED'
             foreground_execution_status=foreground_authority['execution_status']
             foreground_notes_generated=False
+            composition_notes_generated=False
+            performance_realization_applied=False
             promotion_block='SOURCE_PATTERN_ACCOMPANIMENT_MAY_NOT_BE_RENDERED_AS_FINISHED_COMPOSITION'
-        meter=symbolic['meter']; bpm=symbolic['tempo_bpm']; bars=symbolic['bar_count']
+
         numerator,denominator=map(int,meter.split('/'))
         beats_per_bar=numerator*4/denominator
 
@@ -328,19 +366,30 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
         generation_plan=compile_generation_plan(profile,baseline,creation_seed)
         generation_plan=dict(generation_plan)
         generation_plan.update({
-            'source':'GENRE_V3_SYMBOLIC_SOURCE_PATTERN_DIAGNOSTIC',
+            'source':(
+                'GENRE_V3_DEVELOPED_COMPOSITION_DIAGNOSTIC'
+                if composition_candidate is not None
+                else 'GENRE_V3_SYMBOLIC_SOURCE_PATTERN_DIAGNOSTIC'
+            ),
             'meter':meter,
             'tempo_bpm':bpm,
-            'form':'V3_ORIGINAL_SEVEN_SECTION_SYMBOLIC_SEED',
+            'form':form,
             'source_pattern_seed_id':symbolic['source_seed_id'],
             'v3_symbolic_execution_sha256':symbolic['execution_sha256'],
             'legacy_note_generator_used':False,
             'foreground_execution_status':foreground_execution_status,
+            'composition_executor_registry_status':composition_executor,
+            'composition_candidate_execution':(
+                {k:v for k,v in composition_candidate.items() if k!='events'}
+                if composition_candidate is not None else None
+            ),
             'foreground_executor_registry_status':foreground_executor,
             'foreground_candidate_execution':(
                 {k:v for k,v in foreground_candidate.items() if k!='events'}
                 if foreground_candidate is not None else None
             ),
+            'composition_notes_generated':composition_notes_generated,
+            'performance_realization_applied':performance_realization_applied,
             'source_pattern_finished_composition_eligible':False,
         })
         generation_plan.pop('plan_sha256',None)
@@ -356,11 +405,15 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
             'profile_id':profile['profile_id'],
             'status':'PASS',
             'resolution_policy':policy,
-            'execution_template':'v3_symbolic_source_pattern',
+            'execution_template':(
+                'v3_developed_composition_candidate'
+                if composition_candidate is not None
+                else 'v3_symbolic_source_pattern'
+            ),
             'tempo_bpm':bpm,
             'meter':meter,
             'bars':bars,
-            'form':'V3_ORIGINAL_SEVEN_SECTION_SYMBOLIC_SEED',
+            'form':form,
             'creation_seed':creation_seed,
             'profile_required_fields_sha256':h({k:profile[k] for k in profiles_meta_required}),
             'pre_generation_genre_plan':generation_plan,
@@ -368,12 +421,19 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
             'genre_v3_instrument_authority':instrument_authority,
             'v3_symbolic_pattern_execution':{k:v for k,v in symbolic.items() if k!='events'},
             'genre_v3_foreground_authority':foreground_authority,
+            'composition_executor_registry_status':composition_executor,
+            'composition_candidate_execution':(
+                {k:v for k,v in composition_candidate.items() if k!='events'}
+                if composition_candidate is not None else None
+            ),
             'foreground_executor_registry_status':foreground_executor,
             'foreground_candidate_execution':(
                 {k:v for k,v in foreground_candidate.items() if k!='events'}
                 if foreground_candidate is not None else None
             ),
             'foreground_execution_status':foreground_execution_status,
+            'composition_notes_generated':composition_notes_generated,
+            'performance_realization_applied':performance_realization_applied,
             'source_pattern_finished_composition_eligible':False,
             'communication_blueprint':communication_blueprint,
             'theory_request':{
@@ -382,7 +442,11 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
                 'meter':meter,
                 'bars':bars,
             },
-            'theory_status':'V3_SYMBOLIC_PATTERN_PASS',
+            'theory_status':(
+                'V3_DEVELOPED_COMPOSITION_CANDIDATE_PASS'
+                if composition_candidate is not None
+                else 'V3_SYMBOLIC_PATTERN_PASS'
+            ),
             'palette':parts,
             'ensemble_architecture':None,
             'ensemble_expansion_manifest':{

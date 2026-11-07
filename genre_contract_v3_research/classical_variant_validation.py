@@ -54,6 +54,21 @@ PLAYER_BY_INSTRUMENT = {
     "bass_tuba": "TUBA_1",
 }
 
+ACTIVITY_TARGET_PERCENT = {
+    "CLASSICAL_PERIOD_BASELINE": {
+        "STRINGS": 92.78,
+        "WOODWINDS": 74.23,
+        "BRASS": 46.76,
+        "PERCUSSION": 17.85,
+    },
+    "LATE_ROMANTIC_EXPANDED": {
+        "STRINGS": 91.88,
+        "WOODWINDS": 70.12,
+        "BRASS": 62.19,
+        "PERCUSSION": 24.47,
+    },
+}
+
 VARIANT_SCHEDULES = {
     "CLASSICAL_PERIOD_BASELINE": {
         "A": ("violin", "violin", "oboe", "violin"),
@@ -89,6 +104,37 @@ def _foreground_instrument(variant_id, bar):
 
 def _retarget_note(note, instrument):
     return cc.nearest({int(note) % 12}, int(note), cc.RANGES[instrument])
+
+
+def _activity_bar_sets(plan, base_events, variant_id):
+    """Choose deterministic active bars close to corpus-derived family bands.
+
+    Foreground bars are mandatory. Remaining active bars are selected only from
+    bars where the base realization already contains that family, so this layer
+    does not fabricate support activity merely to hit a number.
+    """
+    total_bars = len(plan["bars"])
+    fg_by_bar = {
+        bar["bar"]: FAMILY_BY_INSTRUMENT[_foreground_instrument(variant_id, bar)]
+        for bar in plan["bars"]
+    }
+    available = defaultdict(set)
+    for event in base_events:
+        fam = _family(event)
+        if fam in ACTIVITY_TARGET_PERCENT[variant_id]:
+            available[fam].add(int(event["plan_bar"]))
+
+    offsets = {"STRINGS": 3, "WOODWINDS": 7, "BRASS": 11, "PERCUSSION": 13}
+    result = {}
+    for fam, target in ACTIVITY_TARGET_PERCENT[variant_id].items():
+        required = {bar for bar, fg in fg_by_bar.items() if fg == fam}
+        desired = max(len(required), int(round(total_bars * target / 100.0)))
+        candidates = list((available.get(fam, set()) | required) - required)
+        candidates.sort(key=lambda b: (((b * 17) + offsets[fam]) % max(1, total_bars), b))
+        selected = set(required)
+        selected.update(candidates[: max(0, desired - len(required))])
+        result[fam] = selected
+    return result
 
 
 def _support_keep(variant_id, event, foreground_family, bar_number):
@@ -128,6 +174,7 @@ def orchestrate_variant(plan, variant_id):
 
     base_events = cc.realize(copy.deepcopy(plan))
     bars = {bar["bar"]: bar for bar in plan["bars"]}
+    active_bar_sets = _activity_bar_sets(plan, base_events, variant_id)
     output = []
     original_theme_count = 0
     transferred_theme_count = 0
@@ -157,11 +204,13 @@ def orchestrate_variant(plan, variant_id):
             output.append(e)
             continue
 
+        fam = _family(event)
+        if fam in active_bar_sets and fam != fg_family and bar_number not in active_bar_sets[fam]:
+            continue
         if not _support_keep(variant_id, event, fg_family, bar_number):
             continue
 
         e = copy.deepcopy(event)
-        fam = _family(e)
         e["variant_id"] = variant_id
         e["foreground_family"] = fg_family
         if fam == "STRINGS" and fg_family != "STRINGS":

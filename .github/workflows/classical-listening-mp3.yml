@@ -1,0 +1,84 @@
+name: Classical Listening MP3
+
+on:
+  push:
+    branches:
+      - composer-reasoning-engine-v0-1
+    paths:
+      - ".github/workflows/classical-listening-mp3.yml"
+  workflow_dispatch:
+
+jobs:
+  render-classical-mp3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build preserved Composer runtime and audio dependencies
+        run: bash build_current_composer.sh
+
+      - name: Render current Classical listening piece
+        env:
+          PYTHONPATH: composer/runtime
+          LD_LIBRARY_PATH: ${{ github.workspace }}/composer/runtime/runtime_linux/lib
+          AI_COMP_FLUIDSYNTH_LIBRARY: ${{ github.workspace }}/composer/runtime/runtime_linux/lib/libfluidsynth.so.3
+        run: |
+          mkdir -p listening
+          python - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+          from engine import AICompositionEngine
+          import output_handoff
+
+          out = Path("listening/runtime_outputs")
+          out.mkdir(parents=True, exist_ok=True)
+          output_handoff.OUT = out
+
+          engine = AICompositionEngine(history_path=Path("listening/history.json"))
+          result = engine.run(
+              "Classical",
+              mode="quick",
+              audio_backend="APPROVED_SF2",
+          )
+          assert result.get("status") == "AUDIO_RENDER_PASS", result.get("reason")
+          assert result.get("audio_rendered") is True
+          wav = Path(result["audio_render"]["wav_path"])
+          assert wav.is_file() and wav.stat().st_size > 0
+          target = Path("listening/Classical_Composer_Current.mp3.source.wav")
+          shutil.copyfile(wav, target)
+          Path("listening/render_summary.json").write_text(json.dumps({
+              "genre": "Classical",
+              "status": result.get("status"),
+              "audio_rendered": result.get("audio_rendered"),
+              "source_wav": str(wav),
+              "order": result.get("order"),
+              "track_count": result.get("audio_render", {}).get("track_count"),
+              "finished_audio_sha256": result.get("audio_render", {}).get("finished_audio_sha256"),
+          }, indent=2))
+          print("CLASSICAL_WAV_READY", target, target.stat().st_size)
+          PY
+
+      - name: Convert to MP3
+        run: |
+          ffmpeg -y -hide_banner -loglevel error \
+            -i listening/Classical_Composer_Current.mp3.source.wav \
+            -codec:a libmp3lame -q:a 2 \
+            listening/Classical_Composer_Current.mp3
+          test -s listening/Classical_Composer_Current.mp3
+          ls -lh listening/Classical_Composer_Current.mp3
+
+      - name: Upload MP3 only
+        uses: actions/upload-artifact@v4
+        with:
+          name: Classical_Composer_Current_MP3
+          path: listening/Classical_Composer_Current.mp3
+          if-no-files-found: error
+          compression-level: 0

@@ -28,3 +28,25 @@
 ## Musical quality issue remains open
 
 Earlier Classical MP3s had mechanically repetitive, weakly developed melodies. Successful symbolic wiring or one guitar resource-response proof cannot by itself solve composition quality. Keep melody/phrasing, genre-specific execution, orchestration and human listening as separate validation gates.
+
+
+## Rock Mode A capability + listening gate completed
+
+- Shinyguitar NOTE_LENGTH_RESPONSE proof passed in workflow run `42388034436`.
+- Exact mapping: `Programs/composer_electric.sfz`; wrapper SHA-256 `da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35`.
+- Sample graph proof: 6,798 sample references, 846 unique samples, 16 SFZ files validated.
+- Scoped capability certificate recorded at `SHINYGUITAR_NOTE_LENGTH_CAPABILITY_CERTIFICATE_2026-11-07.json`.
+- Production fidelity, full-composition quality, and live promotion remain explicitly uncertified.
+
+### Controlled Rock Mode A guitar A/B
+- Workflow run `42388941089`: PASS.
+- Artifact `Rock_Mode_A_Guitar_Listening_AB`, artifact ID `13580902032`.
+- 40 bars, 123 BPM; HARMONY + LEAD electric guitar only.
+- A = developed Rock Core symbolic score before Mode A.
+- B = same score after Mode A.
+- Only A/B difference: electric-guitar note durations.
+- 268 guitar events changed duration.
+- Pitch, onset, velocity, instrument identity, and structure remained unchanged.
+- Bass and drums deliberately excluded.
+- Reasoning engine excluded.
+- Human listening review is now the active gate. Do not add strum timing, bass sustain, or other performance variables until A/B is judged.

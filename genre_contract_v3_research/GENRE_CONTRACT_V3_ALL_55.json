@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_VARIANT_ROLE_CANDIDATES_DEFINED__LISTENING_AND_RUNTIME_EXTRACTION_PENDING",
+      "research_status": "V3_CLASSICAL_VARIANT_AUDITIONS_RENDERED__USER_LISTENING_REVIEW_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2380,7 +2380,7 @@
           "Compare candidate Classical-period and Late-Romantic variants using the same thematic seed; verify that role handoffs, brass agency, density and section interaction change audibly without changing the underlying seed identity.",
           "Using one fixed thematic seed, compare current hard-coded orchestration against variant-aware orchestration and verify that the latter produces audible section-role handoffs without losing thematic identity."
         ],
-        "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE__VARIANT_PAIRED_AUDIO_PENDING",
+        "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE__VARIANT_AUDITIONS_PENDING_USER_COMPARISON",
         "approved_for_runtime": false,
         "variant_harness_structural_checkpoint": {
           "status": "LOCAL_LOGIC_VALIDATION_PASS__GITHUB_ACTIONS_DISPATCH_NOT_AVAILABLE",
@@ -2444,6 +2444,60 @@
             "No gain fields are used to create foreground clarity."
           ],
           "next_gate": "PAIRED_AUDIO_LISTENING_VALIDATION"
+        },
+        "variant_audition_checkpoint": {
+          "status": "AUDIO_RENDER_PASS__USER_LISTENING_REVIEW_PENDING",
+          "date": "2026-11-06",
+          "workflow_run_id": 42335519354,
+          "workflow_artifact_id": 13559766036,
+          "plan_sha256": "05424729717898b816bc1c93ac96e6da6b1464e9ab5abf35a8d83d4d92f2243a",
+          "controlled_comparison": {
+            "same_theme_harmony_form_and_tempo": true,
+            "same_audio_resources": true,
+            "same_render_and_mix_path": true,
+            "live_runtime_modified": false,
+            "research_only": true
+          },
+          "variants": {
+            "CLASSICAL_PERIOD_BASELINE": {
+              "structural_status": "PASS",
+              "audio_render_status": "PASS",
+              "bars": 28,
+              "event_count": 435,
+              "active_bar_percent": {
+                "STRINGS": 92.86,
+                "WOODWINDS": 75,
+                "BRASS": 46.43,
+                "PERCUSSION": 17.86
+              },
+              "foreground_bar_percent": {
+                "STRINGS": 57.14,
+                "WOODWINDS": 42.86,
+                "BRASS": 0
+              },
+              "brass_foreground_bars": 0
+            },
+            "LATE_ROMANTIC_EXPANDED": {
+              "structural_status": "PASS",
+              "audio_render_status": "PASS",
+              "bars": 28,
+              "event_count": 451,
+              "active_bar_percent": {
+                "STRINGS": 92.86,
+                "WOODWINDS": 71.43,
+                "BRASS": 60.71,
+                "PERCUSSION": 25
+              },
+              "foreground_bar_percent": {
+                "STRINGS": 35.71,
+                "WOODWINDS": 35.71,
+                "BRASS": 28.57
+              },
+              "brass_foreground_bars": 8
+            }
+          },
+          "interpretation": "Machine validation confirms the two auditions preserve one shared composition plan while changing orchestration role/activity behavior. Subjective musical-quality approval remains pending user listening review.",
+          "merge_guardrail": "Do not merge variant harness behavior into live Composer solely because structural/audio rendering passed."
         }
       },
       "safeguards": {
@@ -17626,13 +17680,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Wire research-only paired audio rendering for CLASSICAL_PERIOD_BASELINE and LATE_ROMANTIC_EXPANDED using the same seed and plan.",
-    "Preserve separate stems/role metadata so foreground handoffs can be audited after render.",
-    "Compare both against the approved Classical golden reference and against each other.",
-    "Do not merge variant logic into live runtime until paired listening validation passes."
+    "User listening review of paired Classical-period and Late-Romantic research auditions.",
+    "Compare preferred audition against approved Classical golden reference and identify remaining composition/orchestration failures.",
+    "Revise research harness only; do not merge into live Composer until musical-quality review passes.",
+    "After Classical pilot is validated, continue quantitative extraction for remaining genre families."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_STRUCTURAL_VARIANT_VALIDATION_PASS__PAIRED_AUDIO_NEXT",
+  "quantitative_phase_status": "CLASSICAL_VARIANT_STRUCTURAL_AND_AUDIO_RENDER_PASS__USER_LISTENING_REVIEW_PENDING",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

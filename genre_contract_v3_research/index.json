@@ -17,388 +17,335 @@
   "genres": [
     {
       "genre_name": "ROCK",
-      "file": "genres/rock.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "New Age",
-      "file": "genres/new_age.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Classical",
-      "file": "genres/classical.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Swing",
-      "file": "genres/swing.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Jazz Ballad",
-      "file": "genres/jazz_ballad.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Big Band",
-      "file": "genres/big_band.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Jazz Waltz",
-      "file": "genres/jazz_waltz.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Bebop",
-      "file": "genres/bebop.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Cool Jazz",
-      "file": "genres/cool_jazz.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Dixieland",
-      "file": "genres/dixieland.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Jazz Fusion",
-      "file": "genres/jazz_fusion.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Rhythm and Blues",
-      "file": "genres/rhythm_and_blues.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Soul",
-      "file": "genres/soul.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Funk",
-      "file": "genres/funk.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Contemporary R&B",
-      "file": "genres/contemporary_randb.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Neo-Soul-related",
-      "file": "genres/neo_soul_related.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Traditional Country",
-      "file": "genres/traditional_country.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Rock",
-      "file": "genres/country_rock.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Ballad",
-      "file": "genres/country_ballad.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Shuffle",
-      "file": "genres/country_shuffle.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Two-Step",
-      "file": "genres/two_step.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Country Waltz",
-      "file": "genres/country_waltz.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Bluegrass-related",
-      "file": "genres/bluegrass_related.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Bossa Nova",
-      "file": "genres/bossa_nova.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Samba",
-      "file": "genres/samba.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Salsa",
-      "file": "genres/salsa.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Mambo",
-      "file": "genres/mambo.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Rumba",
-      "file": "genres/rumba.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Cha-Cha",
-      "file": "genres/cha_cha.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Bolero",
-      "file": "genres/bolero.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "House",
-      "file": "genres/house.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Techno",
-      "file": "genres/techno.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Trance",
-      "file": "genres/trance.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Ambient Electronic",
-      "file": "genres/ambient_electronic.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Downtempo",
-      "file": "genres/downtempo.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Breakbeat-related",
-      "file": "genres/breakbeat_related.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Garage-related",
-      "file": "genres/garage_related.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Experimental Electronic",
-      "file": "genres/experimental_electronic.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Eclectic New Indie",
-      "file": "genres/eclectic_new_indie.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Mexican Reggaeton",
-      "file": "genres/mexican_reggaeton.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Chugg / #chugg",
-      "file": "genres/chugg_sharpchugg.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Afrobeats",
-      "file": "genres/afrobeats.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Afro-Latin / Afrobeats Fusion",
-      "file": "genres/afro_latin_afrobeats_fusion.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Afro House",
-      "file": "genres/afro_house.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Trip-Hop",
-      "file": "genres/trip_hop.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Contemporary Trip-Hop / Trip-Hop Revival",
-      "file": "genres/contemporary_trip_hop_trip_hop_revival.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Regional Electronic Hybrids",
-      "file": "genres/regional_electronic_hybrids.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Genre-Breaking / Borderless",
-      "file": "genres/genre_breaking_borderless.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Custom Hybrid",
-      "file": "genres/custom_hybrid.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Custom Style",
-      "file": "genres/custom_style.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Controlled Custom Style Profile",
-      "file": "genres/controlled_custom_style_profile.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "DISCO",
-      "file": "genres/disco.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "WALTZ",
-      "file": "genres/waltz.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "PIANIST",
-      "file": "genres/pianist.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Spiritual",
-      "file": "genres/spiritual.json",
       "research_status": "NOT_STARTED",
       "comparison_status": "PENDING",
       "approved_for_runtime": false
     }
-  ]
+  ],
+  "genre_master_file": "GENRE_CONTRACT_V3_ALL_55.json",
+  "organization_policy": "ALL_55_GENRES_IN_ONE_MASTER_FILE"
 }

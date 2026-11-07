@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Supply runner compatibility dependency
+        run: python -m pip install cffi==2.1.1
+
       - name: Build preserved Composer runtime and audio dependencies
         run: bash build_current_composer.sh
 

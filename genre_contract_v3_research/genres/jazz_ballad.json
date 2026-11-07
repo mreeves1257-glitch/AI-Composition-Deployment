@@ -1,0 +1,115 @@
+{
+  "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "genre_name": "Jazz Ballad",
+  "source_profile_id": "JAZZ_BALLAD_V1",
+  "family": "Jazz",
+  "source_status": "CONTROLLED_PROFILE",
+  "research_status": "NOT_STARTED",
+  "approved_for_runtime": false,
+  "current_profile_snapshot": {
+    "profile_id": "JAZZ_BALLAD_V1",
+    "family": "Jazz",
+    "status": "CONTROLLED_PROFILE",
+    "scope_note": "",
+    "tempo_bpm_range": [
+      45,
+      85
+    ],
+    "meter_options": [
+      "4/4",
+      "3/4"
+    ],
+    "form_tendencies": [
+      "aba",
+      "through_composed"
+    ],
+    "groove_behavior": "slow swing, rubato or straight ballad feel; pulse can soften at phrase edges",
+    "phrase_behavior": "long lyrical phrases with pickups, breath, delayed resolutions and spacious turnarounds",
+    "harmony_behavior": "extended jazz harmony with slow harmonic rhythm, altered dominants and substitutions as controlled options",
+    "bass_behavior": "sparse roots/tenths/walking fragments; bass avoids overcrowding",
+    "percussion_behavior_if_applicable": "brushes or very light kit; cymbal swells and fills used selectively",
+    "instrument_role_behavior": "piano/electric piano, bass, brushes, sax/trumpet/clarinet/flute or guitar lead",
+    "ensemble_player_behavior": "ensemble follows melody breath and rubato; accompaniment thins under exposed lines",
+    "arrangement_transformation": "AABA/ABA/through-composed ballad structures with gradual dynamic arc",
+    "dynamic_behavior": "wide soft-to-medium range with intimate swells",
+    "articulation_behavior": "legato, breathy/soft attacks, restrained accents",
+    "timing_humanization_behavior": "shared rubato and laid-back placement tied to phrase",
+    "continuous_performance_control": "expression and tempo curves are essential",
+    "sound_effects_intent": "warm room/reverb; delay only when stylistically chosen",
+    "mix_prominence_intent": "lead intimate and forward; accompaniment soft and uncluttered",
+    "production_mastering_intent": "warm, dynamic, low-harshness master",
+    "manufacturer_adapter_requirements": "prioritize expressive horn/keys voices and continuous control",
+    "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+    "provenance": [
+      "existing_project_theory",
+      "established_genre_practice"
+    ],
+    "execution_rule": "USE_CONTROLLED_PROFILE"
+  },
+  "comparison": {
+    "current_profile_strengths": [],
+    "current_profile_gaps": [],
+    "external_sources_considered": [],
+    "retained_current_fields": [],
+    "upgraded_fields": [],
+    "conflicts": [],
+    "unresolved_questions": []
+  },
+  "musical_grammar": {
+    "form_model": null,
+    "harmony_model": null,
+    "melody_model": null,
+    "rhythm_groove_model": null,
+    "bass_model": null,
+    "percussion_model": null,
+    "phrase_model": null,
+    "transition_model": null,
+    "development_model": null,
+    "cadence_ending_model": null
+  },
+  "ensemble": {
+    "instrument_roster": [],
+    "population_mass_percent": {},
+    "presence_percent": {},
+    "activity_percent": {},
+    "musical_agency_percent": {},
+    "foreground_window_percent": {},
+    "foreground_window_rules": [],
+    "role_handoff_rules": [],
+    "register_occupancy": {},
+    "spatial_footprint_percent": {},
+    "section_population_reference": {}
+  },
+  "performance": {
+    "articulation_behavior": null,
+    "dynamic_behavior": null,
+    "timing_humanization_behavior": null,
+    "continuous_performance_control": null,
+    "interaction_rules": []
+  },
+  "production": {
+    "spatial_presentation": null,
+    "mix_prominence_intent": null,
+    "sound_effects_intent": null,
+    "production_mastering_intent": null
+  },
+  "evidence": {
+    "sources": [],
+    "source_confidence": {},
+    "source_license_status": {},
+    "conflicts_between_sources": [],
+    "unresolved_questions": []
+  },
+  "validation": {
+    "structural_tests": [],
+    "listening_tests": [],
+    "golden_reference_status": null,
+    "approved_for_runtime": false
+  },
+  "safeguards": {
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_not_loudness": true,
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true
+  }
+}

@@ -130,6 +130,8 @@ class MusicalGoal:
     # 1.0 means complete equal compositional importance among all active instruments.
     # This does NOT require equal note counts, equal loudness, or equal foreground time.
     instrument_balance: float = 1.0
+    # 1.0 requests maximum bass richness/depth while preserving clarity and genre fit.
+    bass_richness: float = 1.0
 
 
 def _section_target_energy(state: ComposerState, goal: MusicalGoal) -> float:
@@ -231,6 +233,54 @@ def _role_intent(state: ComposerState, energy_motion: str, density: int) -> dict
         intent["add"] = list(dict.fromkeys(intent["add"] + ["shared_sparse_space"]))
 
     return intent
+
+
+def _bass_character_intent(goal: MusicalGoal, tags: set[str]) -> dict[str, Any]:
+    """Describe the required bass sound character without changing bass importance.
+
+    This is a future realization contract only.  It does not alter notes, select
+    samples, apply EQ, or render audio in v0.1.
+    """
+    richness = _clamp(float(goal.bass_richness), 0.0, 1.0)
+    maximum = richness >= 0.999
+    instructions = [
+        "PRESERVE_STRONG_LOW_FUNDAMENTAL",
+        "PRESERVE_FULL_LOW_MID_BODY",
+        "ADD_ENOUGH_UPPER_HARMONIC_INFORMATION_FOR_NOTE_DEFINITION",
+        "CONTROL_ATTACK_SO_DEPTH_IS_NOT_REPLACED_BY_CLICK_OR_THIN_TRANSIENT",
+        "AVOID_HOLLOW_OR_WEAK_BASS_TIMBRE",
+        "AVOID_LOW_END_MUD_BY_COORDINATING_WITH_KICK_AND_OTHER_LOW_REGISTER_PARTS",
+        "KEEP_BASS_AUDIBLE_AS_MUSICAL_TONE_NOT_ONLY_SUB_ENERGY",
+    ]
+    if "walking" in tags or "walking3" in tags:
+        instructions.append("PRESERVE_NOTE_DEFINITION_AND_WARM_BODY_FOR_MOVING_BASS_LINES")
+    if "sidechain" in tags:
+        instructions.append("PRESERVE_DEPTH_DURING_DUCKING_OR_SIDECHAIN_MOVEMENT")
+    if "pedal" in tags:
+        instructions.append("SUSTAIN_LOW_FUNDAMENTAL_WITHOUT_BUILDING_UNCONTROLLED_MUD")
+
+    return {
+        "parameter": "bass_richness",
+        "target_0_to_1": round(richness, 3),
+        "mode": "MAXIMUM_RICH_DEPTH" if maximum else "SCALED_RICH_DEPTH",
+        "compositional_importance_change": False,
+        "importance_rule": "BASS_REMAINS_EQUAL_IN_COMPOSITIONAL_IMPORTANCE_WITH_OTHER_ACTIVE_INSTRUMENTS",
+        "sound_character": {
+            "depth": "VERY_DEEP",
+            "weight": "POWERFUL",
+            "body": "FULL_AND_RICH",
+            "warmth": "HIGH",
+            "fundamental_authority": "STRONG",
+            "harmonic_definition": "PRESENT",
+            "transient_character": "CONTROLLED_NOT_THIN",
+        },
+        "register_policy": "USE_A_NATURAL_DEEP_BASS_REGISTER_SUPPORTED_BY_THE_INSTRUMENT_AND_GENRE_WITHOUT_FORCING_UNMUSICAL_EXTREMES",
+        "clarity_policy": "DEPTH_AND_RICHNESS_MUST_NOT_BECOME_MUD_OR_MASK_OTHER_EQUAL_IMPORTANCE_INSTRUMENTS",
+        "kick_relationship": "COORDINATE_LOW_END_SPACE_SO_KICK_AND_BASS_CAN_BOTH_REMAIN POWERFUL_AND_DISTINCT",
+        "small_speaker_policy": "RETAIN_HARMONIC_DEFINITION_SO_THE_BASS_LINE_REMAINS PERCEPTIBLE_WHEN THE DEEPEST FUNDAMENTAL_IS NOT REPRODUCED",
+        "future_realization_requirements": instructions,
+        "v0_1_audio_processing_applied": False,
+    }
 
 
 def _instrument_balance_intent(goal: MusicalGoal) -> dict[str, Any]:
@@ -633,6 +683,8 @@ def reason(
     goal = goal or MusicalGoal()
     if not 0.0 <= float(goal.instrument_balance) <= 1.0:
         raise ValueError("REASONING_INSTRUMENT_BALANCE_OUT_OF_RANGE")
+    if not 0.0 <= float(goal.bass_richness) <= 1.0:
+        raise ValueError("REASONING_BASS_RICHNESS_OUT_OF_RANGE")
     tags = _norm_tags(semantic_tags)
     section = _norm_section(state.section)
 
@@ -652,6 +704,7 @@ def reason(
             "principle": "DENSITY_FOLLOWS_SECTION_FUNCTION_AND_ENERGY_NOT_FIXED_TRACK_COUNT",
         },
         "roles": _role_intent(state, energy_motion, density),
+        "bass_character": _bass_character_intent(goal, tags),
         "instrument_balance": _instrument_balance_intent(goal),
         "instrument_importance_plan": importance_plan,
         "instrument_interaction_plan": _instrument_interaction_plan(state, density, importance_plan),
@@ -670,6 +723,8 @@ def reason(
             "DO_NOT_USE_NOTE_COUNT_LOUDNESS_OR_FOREGROUND_TIME_AS_A_PROXY_FOR_INSTRUMENT_IMPORTANCE",
             "DO_NOT_ALLOW_CHRONIC_INSTRUMENT_NEGLECT_ACROSS_THE_COMPOSITION",
             "DO_NOT_SOLVE_INSTRUMENT_COLLISIONS_BY_DECLARING_ONE_PART_UNIMPORTANT",
+            "DO_NOT_EQUATE_BASS_DEPTH_WITH_GREATER_COMPOSITIONAL_IMPORTANCE",
+            "DO_NOT_ALLOW_RICH_BASS_TO_MASK_OTHER_EQUAL_IMPORTANCE_INSTRUMENTS",
             "DO_NOT_EQUATE_MUSICAL_MEMORY_WITH_LITERAL_NOTE_COPYING",
             "DO_NOT_REINTRODUCE_EVERY_REMEMBERED_IDEA_IMMEDIATELY",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",

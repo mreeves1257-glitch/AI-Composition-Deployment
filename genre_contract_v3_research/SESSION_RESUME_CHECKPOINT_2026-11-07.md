@@ -206,3 +206,29 @@ Active listening gate:
 - Compare A vs D for HARMONY Mode A in context.
 - Compare C vs B to hear the incremental effect of adding HARMONY Mode A after the lead treatment.
 - Do not add strum timing, bass sustain, random timing, continuous control, or any other performance variable yet.
+
+
+## Rock Mode A component-in-context localization
+
+Verified role-isolated workflow run: `42390723896`  
+Artifact ID: `13581427805`  
+Artifact digest: `sha256:4969d1f60fc2b494c04f79e979568c79c691ca5a0dcfb41739daeb5d7c935726`
+
+The corrected package passed ffmpeg encoding and ffprobe validation for every MP3.
+
+A context-mix diagnostic was built with the original mix gains:
+- HARMONY: -5 dB
+- LEAD: -6 dB
+- common mix gain: 1
+
+Compared with baseline A:
+- LEAD-only Mode A difference RMS: `0.00128279`, about 14.8% of the full A→B difference RMS.
+- HARMONY-only Mode A difference RMS: `0.00858549`, about 99.0% of the full A→B difference RMS.
+- Full Mode A difference RMS: `0.00867396`.
+
+These ratios are magnitude comparisons, not additive percentages. They strongly localize Mode A's audible impact to the HARMONY/rhythm-guitar duration treatment. The LEAD treatment is materially smaller.
+
+Saved report:
+`ROCK_MODE_A_COMPONENT_AUDIO_DIFFERENCE_REPORT_2026-11-07.json`
+
+No new performance variable was added. Active gate remains human listening before changing the HARMONY duration policy.

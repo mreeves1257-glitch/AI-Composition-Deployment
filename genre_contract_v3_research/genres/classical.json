@@ -1,0 +1,117 @@
+{
+  "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "genre_name": "Classical",
+  "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
+  "family": "Classical",
+  "source_status": "CONTROLLED_PROFILE",
+  "research_status": "NOT_STARTED",
+  "approved_for_runtime": false,
+  "current_profile_snapshot": {
+    "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
+    "family": "Classical",
+    "status": "CONTROLLED_PROFILE",
+    "scope_note": "Project common-practice tonal chamber baseline; not all Western classical music.",
+    "tempo_bpm_range": [
+      55,
+      150
+    ],
+    "meter_options": [
+      "4/4",
+      "3/4",
+      "2/4",
+      "6/8"
+    ],
+    "form_tendencies": [
+      "aba",
+      "through_composed"
+    ],
+    "groove_behavior": "meter hierarchy and phrase rhythm drive motion; no modern groove is imposed unless explicitly hybridized",
+    "phrase_behavior": "balanced phrase structures with motivic development, cadence hierarchy and sectional contrast",
+    "harmony_behavior": "common-practice tonal baseline with functional harmony and voice-leading; modal/modern classical requires another profile",
+    "bass_behavior": "double bass/cello/bassoon or keyboard left hand support harmonic function rather than fixed groove",
+    "percussion_behavior_if_applicable": "orchestral percussion optional and structurally motivated rather than constant",
+    "instrument_role_behavior": "strings, winds, brass, keyboard and chamber combinations according to role; orchestration must respect instrument authority",
+    "ensemble_player_behavior": "ensemble follows score-like dynamic/articulation relationships and shared rubato",
+    "arrangement_transformation": "motivic development, register transfer, contrapuntal redistribution and formal return",
+    "dynamic_behavior": "wide phrase-shaped dynamics including crescendos, diminuendos and terraced contrasts where appropriate",
+    "articulation_behavior": "legato/staccato/tenuto/accent/bow/breath intent passed to instrument authority",
+    "timing_humanization_behavior": "shared rubato at phrase/cadence level rather than random note displacement",
+    "continuous_performance_control": "expression, breath/bow/pedal and tempo curves preserved",
+    "sound_effects_intent": "naturalistic room/depth baseline; effects do not replace orchestration",
+    "mix_prominence_intent": "melody/counterline/harmony/bass roles remain independently audible",
+    "production_mastering_intent": "retain dynamic range; avoid overcompression and excessive brightness",
+    "manufacturer_adapter_requirements": "target adapters must honor canonical orchestral identities and articulations",
+    "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+    "provenance": [
+      "existing_project_theory",
+      "established_genre_practice"
+    ],
+    "execution_rule": "USE_CONTROLLED_PROFILE"
+  },
+  "comparison": {
+    "current_profile_strengths": [],
+    "current_profile_gaps": [],
+    "external_sources_considered": [],
+    "retained_current_fields": [],
+    "upgraded_fields": [],
+    "conflicts": [],
+    "unresolved_questions": []
+  },
+  "musical_grammar": {
+    "form_model": null,
+    "harmony_model": null,
+    "melody_model": null,
+    "rhythm_groove_model": null,
+    "bass_model": null,
+    "percussion_model": null,
+    "phrase_model": null,
+    "transition_model": null,
+    "development_model": null,
+    "cadence_ending_model": null
+  },
+  "ensemble": {
+    "instrument_roster": [],
+    "population_mass_percent": {},
+    "presence_percent": {},
+    "activity_percent": {},
+    "musical_agency_percent": {},
+    "foreground_window_percent": {},
+    "foreground_window_rules": [],
+    "role_handoff_rules": [],
+    "register_occupancy": {},
+    "spatial_footprint_percent": {},
+    "section_population_reference": {}
+  },
+  "performance": {
+    "articulation_behavior": null,
+    "dynamic_behavior": null,
+    "timing_humanization_behavior": null,
+    "continuous_performance_control": null,
+    "interaction_rules": []
+  },
+  "production": {
+    "spatial_presentation": null,
+    "mix_prominence_intent": null,
+    "sound_effects_intent": null,
+    "production_mastering_intent": null
+  },
+  "evidence": {
+    "sources": [],
+    "source_confidence": {},
+    "source_license_status": {},
+    "conflicts_between_sources": [],
+    "unresolved_questions": []
+  },
+  "validation": {
+    "structural_tests": [],
+    "listening_tests": [],
+    "golden_reference_status": null,
+    "approved_for_runtime": false
+  },
+  "safeguards": {
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_not_loudness": true,
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true
+  }
+}

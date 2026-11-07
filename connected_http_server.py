@@ -1,4 +1,4 @@
-"""HTTP delivery adapter for the synchronized October 19 Composer Master; no musical edits."""
+"""HTTP delivery adapter for the November 7 all-55 reasoning-wired Composer build."""
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -56,7 +56,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == '/health':
             return self.json(200, {'status':'BRIDGE_READY', 'audio_ready':True,
                 'resource_ready':True, 'resource_mode':'APPROVED_SF2_AUDITION', 'production_resource_complete':False, 'genre_count':len(GENRES),
-                'deployment':'CURRENT_MASTER_SYNCED', 'master_checkpoint':'2026-10-19', 'supported_tuning_references_hz':[440,432], 'verification':'55-profile structural/separator build preflight plus forward master overlay; finished audio build proofs include the approved Classical and Big Band anchors.'})
+                'deployment':'ALL55_REASONING_WIRED', 'master_checkpoint':'2026-11-07', 'reasoning_engine':'COMPOSER_MUSICAL_REASONING_ENGINE_V0_1', 'supported_tuning_references_hz':[440,432], 'verification':'55-profile structural build preflight plus hash-verified 12-file reasoning/genre overlay; finished audio build proofs include Classical, Big Band, and 432-Hz Country Rock.'})
         match = re.fullmatch(r'/audio/([a-f0-9]{32})/finished.wav', path)
         if not match: return self.json(404, {'status':'NOT_FOUND'})
         file = OUTPUT/match.group(1)/'finished.wav'

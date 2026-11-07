@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_QUANTITATIVE_FOREGROUND_PERIOD_SPLIT_ADDED__ACTIVITY_PERIOD_SPLIT_PENDING",
+      "research_status": "V3_QUANTITATIVE_FOREGROUND_AND_ACTIVITY_PERIOD_SPLITS_ADDED__VARIANT_ROLE_PRIORS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -1113,7 +1113,7 @@
           "Define tuba/percussion population by variant rather than forcing one universal orchestra.",
           "Derive full activity percentages from score/activity data; Hauptstimme measures main-theme foreground, not total playing time.",
           "Extract exact activity percentages from the public activity annotation archive when raw archive access is available; filter instrumental/orchestral subsets before runtime priors.",
-          "Derive period/variant-specific total activity occupancy from score CSVs; keep it separate from Hauptstimme foreground ownership."
+          "Derive candidate variant role-state priors from the paired period foreground/activity evidence, with minimum-sample and composer-bias safeguards."
         ]
       },
       "musical_grammar": {
@@ -1543,14 +1543,14 @@
         },
         "observed_activity_time_reference_percent": {
           "source": "OpenScore Orchestra / Hauptstimme score CSVs",
-          "methodology": "Duration-weighted qstamp intervals across the same 70 instrumental orchestral movements used for the foreground study. A family/type counts as active during an interval when at least one corresponding score part is sounding. Families and types overlap, so percentages do not sum to 100.",
+          "methodology": "Duration-weighted qstamp intervals across the same 70 instrumental orchestral movements used for the foreground study. A family/type counts as active during an interval when at least one corresponding score part is sounding. Family values are temporal unions, not sums of member-instrument occupancies; families overlap in time.",
           "total_qstamp_duration": 83187.4583,
           "family_active_percent": {
             "STRINGS": 91.74,
             "WOODWINDS": 75.95,
             "BRASS": 54.29,
-            "PERCUSSION": 18.29,
-            "KEYBOARD_HARP_CONTINUO": 3.76
+            "PERCUSSION": 18.31,
+            "KEYBOARD_HARP_CONTINUO": 3.41
           },
           "instrument_type_active_percent": {
             "VIOLIN": 84.4,
@@ -1584,8 +1584,10 @@
             "Family percentages overlap because multiple families can sound simultaneously.",
             "An instrument type is counted active if at least one part of that type is sounding.",
             "Corpus repertoire is not period-balanced and should not be used as a universal Classical target without variant splitting.",
-            "Use this reference to model when sections should thin, sustain, rest, or change register around the current foreground owner."
-          ]
+            "Use this reference to model when sections should thin, sustain, rest, or change register around the current foreground owner.",
+            "Family occupancy must be computed as a temporal union. Summing instrument occupancies within a family can double-count simultaneous parts."
+          ],
+          "correction_note": "2026-11-06: KEYBOARD_HARP_CONTINUO corrected from 3.76% to 3.41% because the earlier value summed overlapping piano/harp/celesta/continuo occupancies instead of taking a family time-union. PERCUSSION updated to 18.31% after header normalization including Pauken/timpani."
         },
         "section_role_state_rules": {
           "allowed_states": [
@@ -1986,6 +1988,294 @@
             "Composer imbalance in the source corpus must not be silently converted into a family-wide prior.",
             "Foreground period splitting remains separate from total activity/occupancy period splitting."
           ]
+        },
+        "period_activity_empirical_reference": {
+          "source": "OpenScore Orchestra / Hauptstimme score CSVs",
+          "methodology": "Duration-weighted qstamp intervals across the same 70 instrumental orchestral movements used for the period foreground split. A family or instrument type counts as active during an interval when at least one corresponding score part is sounding. Family activity is a temporal union, never the arithmetic sum of member-instrument occupancies.",
+          "total_qstamp_duration": 83187.458,
+          "cohort_policy": "Composer/repertoire cohorts expose real orchestration differences. They are research references and must not be treated as universal period quotas.",
+          "cohorts": {
+            "BAROQUE_BACH_BRANDENBURG": {
+              "movement_files": 6,
+              "total_qstamp": 2941,
+              "family_active_percent": {
+                "STRINGS": 98.63,
+                "KEYBOARD_HARP_CONTINUO": 75.18,
+                "WOODWINDS": 47.38,
+                "BRASS": 0,
+                "PERCUSSION": 0
+              },
+              "instrument_active_percent": {
+                "VIOLIN": 91.47,
+                "CELLO": 74.57,
+                "VIOLA": 70.65,
+                "VIOLONE": 63.58,
+                "FLUTE": 47.38,
+                "CONTINUO": 43.14,
+                "HARPSICHORD": 32.04
+              },
+              "qualification": "Two Brandenburg concertos only. Violone is retained as its own historical low-string type rather than silently relabeled double bass."
+            },
+            "CLASSICAL_HAYDN_SAMPLE": {
+              "movement_files": 1,
+              "total_qstamp": 1604,
+              "family_active_percent": {
+                "STRINGS": 97.63,
+                "WOODWINDS": 80.08,
+                "BRASS": 36.41,
+                "PERCUSSION": 18.77
+              },
+              "instrument_active_percent": {
+                "VIOLIN": 97.63,
+                "VIOLA": 82.98,
+                "CELLO": 75.34,
+                "DOUBLE_BASS": 71.35,
+                "FLUTE": 63.22,
+                "OBOE": 61.22,
+                "BASSOON": 58.2,
+                "CLARINET": 38.34,
+                "HORN": 35.85,
+                "TRUMPET": 28.37,
+                "TIMPANI": 18.77
+              },
+              "qualification": "Single movement of Haydn Symphony No.104; validation sample only."
+            },
+            "EARLY_BEETHOVEN_SYMPHONIES_1_2": {
+              "movement_files": 8,
+              "total_qstamp": 8717.625,
+              "family_active_percent": {
+                "STRINGS": 91.89,
+                "WOODWINDS": 73.15,
+                "BRASS": 48.66,
+                "PERCUSSION": 17.68
+              },
+              "instrument_active_percent": {
+                "VIOLIN": 87.87,
+                "VIOLA": 74.15,
+                "CELLO": 70.05,
+                "DOUBLE_BASS": 64.47,
+                "BASSOON": 63.31,
+                "OBOE": 57.69,
+                "FLUTE": 49.77,
+                "HORN": 47.31,
+                "CLARINET": 38.77,
+                "TRUMPET": 26.88,
+                "TIMPANI": 17.68
+              },
+              "qualification": "Early Beethoven cohort retained separately at the Classical-to-Romantic transition."
+            },
+            "MIDDLE_BEETHOVEN_SYMPHONIES_3_6": {
+              "movement_files": 17,
+              "total_qstamp": 21010,
+              "family_active_percent": {
+                "STRINGS": 92.66,
+                "WOODWINDS": 74.02,
+                "BRASS": 50.16,
+                "PERCUSSION": 18.85
+              },
+              "instrument_active_percent": {
+                "VIOLIN": 86.93,
+                "VIOLA": 78.37,
+                "CELLO": 75.4,
+                "BASSOON": 61.51,
+                "DOUBLE_BASS": 60.73,
+                "CLARINET": 52.61,
+                "OBOE": 51.52,
+                "HORN": 48.95,
+                "FLUTE": 47.53,
+                "TRUMPET": 23.25,
+                "TIMPANI": 18.85,
+                "CONTRABASSOON": 6.77,
+                "TROMBONE": 4.63,
+                "PICCOLO": 4.28,
+                "BASS_TROMBONE": 3.79
+              },
+              "qualification": "Middle Beethoven cohort; orchestration activity differs materially from early and late Beethoven."
+            },
+            "LATE_BEETHOVEN_SYMPHONIES_7_9_INSTRUMENTAL": {
+              "movement_files": 11,
+              "total_qstamp": 16818.5,
+              "family_active_percent": {
+                "STRINGS": 86.55,
+                "WOODWINDS": 80.74,
+                "BRASS": 60.71,
+                "PERCUSSION": 21.39
+              },
+              "instrument_active_percent": {
+                "VIOLIN": 80.51,
+                "VIOLA": 72.21,
+                "BASSOON": 71.44,
+                "CELLO": 68.11,
+                "OBOE": 65.72,
+                "CLARINET": 62.21,
+                "FLUTE": 62.15,
+                "DOUBLE_BASS": 61.68,
+                "HORN": 59.33,
+                "TRUMPET": 27.29,
+                "TIMPANI": 21.39,
+                "BASS_TROMBONE": 1.25,
+                "TROMBONE": 0.42
+              },
+              "qualification": "Symphonies 7-9 with Symphony 9 movement 4 excluded because of choral foreground."
+            },
+            "EARLY_ROMANTIC_SCHUBERT_SAMPLE": {
+              "movement_files": 1,
+              "total_qstamp": 1660,
+              "family_active_percent": {
+                "STRINGS": 97.53,
+                "WOODWINDS": 82.41,
+                "BRASS": 44.19,
+                "PERCUSSION": 0
+              },
+              "instrument_active_percent": {
+                "VIOLA": 94.22,
+                "VIOLIN": 93.31,
+                "CELLO": 86.93,
+                "DOUBLE_BASS": 86.93,
+                "OBOE": 79.28,
+                "FLUTE": 72.38,
+                "BASSOON": 71.45,
+                "HORN": 44.19
+              },
+              "qualification": "Single movement of Schubert Symphony No.5; too small for a general Early-Romantic prior."
+            },
+            "ROMANTIC_BRAHMS": {
+              "movement_files": 16,
+              "total_qstamp": 17214,
+              "family_active_percent": {
+                "STRINGS": 93.02,
+                "WOODWINDS": 82.91,
+                "BRASS": 62.07,
+                "PERCUSSION": 14.64
+              },
+              "instrument_active_percent": {
+                "CELLO": 81.78,
+                "VIOLA": 79.43,
+                "VIOLIN": 79.07,
+                "BASSOON": 71.83,
+                "DOUBLE_BASS": 64.85,
+                "CLARINET": 60.27,
+                "HORN": 59.43,
+                "FLUTE": 54.42,
+                "OBOE": 50.98,
+                "TRUMPET": 19.09,
+                "CONTRABASSOON": 16.56,
+                "TIMPANI": 14.44,
+                "TROMBONE": 9.64,
+                "TUBA": 2.24,
+                "PICCOLO": 1.51,
+                "PERCUSSION_OTHER": 0.49
+              },
+              "qualification": "All four Brahms symphonies in the corpus; stronger Romantic cohort but still composer-specific."
+            },
+            "LATE_ROMANTIC_BRUCKNER": {
+              "movement_files": 5,
+              "total_qstamp": 7170.333,
+              "family_active_percent": {
+                "STRINGS": 90.97,
+                "WOODWINDS": 62.01,
+                "BRASS": 54.51,
+                "PERCUSSION": 21.89
+              },
+              "instrument_active_percent": {
+                "VIOLIN": 86.36,
+                "VIOLA": 78.08,
+                "CELLO": 71.47,
+                "DOUBLE_BASS": 64.25,
+                "HORN": 49.29,
+                "CLARINET": 48.63,
+                "OBOE": 45.97,
+                "FLUTE": 44.8,
+                "TRUMPET": 31.62,
+                "BASSOON": 29.37,
+                "TROMBONE": 25.77,
+                "BASS_TROMBONE": 24.82,
+                "TIMPANI": 21.89,
+                "TUBA": 12.83
+              },
+              "qualification": "Bruckner Symphony No.5 only; German 'Pauken' header normalized to timpani for activity classification."
+            },
+            "LATE_ROMANTIC_BEACH": {
+              "movement_files": 4,
+              "total_qstamp": 5430,
+              "family_active_percent": {
+                "STRINGS": 93.08,
+                "WOODWINDS": 80.84,
+                "BRASS": 72.33,
+                "PERCUSSION": 27.88
+              },
+              "instrument_active_percent": {
+                "VIOLIN": 83.62,
+                "VIOLA": 81.49,
+                "CELLO": 77.44,
+                "DOUBLE_BASS": 71.94,
+                "CLARINET": 64.1,
+                "HORN": 62.99,
+                "BASSOON": 57.82,
+                "OBOE": 49.87,
+                "FLUTE": 49.72,
+                "TRUMPET": 38.1,
+                "BASS_TROMBONE": 29.36,
+                "TUBA": 29.04,
+                "TIMPANI": 27.66,
+                "TROMBONE": 27.75,
+                "BASS_CLARINET": 6.16,
+                "ENGLISH_HORN": 2.78,
+                "PICCOLO": 0.97,
+                "PERCUSSION_OTHER": 0.66
+              },
+              "qualification": "Amy Beach Gaelic Symphony; quoted CSV header for multi-pitch timpani was parsed correctly as one timpani field."
+            },
+            "EARLY_MODERN_BOULANGER": {
+              "movement_files": 1,
+              "total_qstamp": 622,
+              "family_active_percent": {
+                "KEYBOARD_HARP_CONTINUO": 100,
+                "STRINGS": 97.17,
+                "WOODWINDS": 83.68,
+                "BRASS": 53.51,
+                "PERCUSSION": 36.67
+              },
+              "instrument_active_percent": {
+                "PIANO": 100,
+                "VIOLIN": 95.95,
+                "VIOLA": 77.9,
+                "FLUTE": 58.52,
+                "CELLO": 56.3,
+                "CLARINET": 48.51,
+                "HORN": 46.26,
+                "OBOE": 45.52,
+                "BASSOON": 43.84,
+                "PERCUSSION_OTHER": 36.67,
+                "BASS_CLARINET": 32.51,
+                "HARP": 32.37,
+                "ENGLISH_HORN": 28.78,
+                "DOUBLE_BASS": 28.38,
+                "TRUMPET": 26.89,
+                "CELESTA": 15.23,
+                "PICCOLO": 10.73,
+                "TROMBONE": 9.89,
+                "TUBA": 6.83,
+                "OTHER_WOODWIND": 1.13
+              },
+              "qualification": "Single Boulanger orchestral score in the corpus; piano is continuously present in this score and must not be generalized to early-modern orchestration."
+            }
+          },
+          "findings": [
+            "All major orchestral families overlap substantially in time; activity percentages are not shares and do not sum to 100.",
+            "Strings remain highly active in every orchestral cohort, even when they do not own foreground material.",
+            "Woodwind activity rises strongly in late Beethoven, Brahms, Beach and the Boulanger sample, supporting denser multi-family interaction than a string-led foreground model alone would imply.",
+            "Brass activity increases materially in later cohorts, but high brass activity still does not imply brass foreground ownership.",
+            "Baroque continuo/harpsichord activity is structurally important in the Brandenburg sample and belongs in a distinct Baroque variant rather than the generic common-practice orchestra profile.",
+            "Period activity and period foreground must remain separate inputs to the arranger: activity controls who may continue sounding; foreground controls whose material must remain perceptually intelligible."
+          ],
+          "parser_and_measurement_guardrails": [
+            "Parse quoted CSV fields correctly; commas inside instrument labels must not create false columns.",
+            "Normalize historical/language-specific names only when the equivalence is clear, e.g. Pauken -> timpani.",
+            "Retain historically distinct labels such as violone when collapsing them would erase useful variant information.",
+            "Family occupancy is the temporal union of member activity, not the sum of instrument occupancies.",
+            "Never normalize family activity percentages to 100 because families can sound simultaneously."
+          ]
         }
       },
       "performance": {
@@ -2036,7 +2326,8 @@
           "Hauptstimme_foreground_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__NOT_UNIVERSAL_TARGET",
           "OpenScore_activity_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__PERIOD_VARIANT_SPLIT_PENDING",
           "Hauptstimme_score_activity_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__VARIANT_SPLIT_STILL_REQUIRED",
-          "MCTL_cross_period_texture_roles": "MEDIUM_FOR_REPRESENTATIVE_FIRST_MOVEMENT_VALIDATION__HIGH_ANNOTATION_RELEVANCE"
+          "MCTL_cross_period_texture_roles": "MEDIUM_FOR_REPRESENTATIVE_FIRST_MOVEMENT_VALIDATION__HIGH_ANNOTATION_RELEVANCE",
+          "OpenScore_activity_period_split": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__COHORT_SIZE_VARIES__NOT_RUNTIME_QUOTA"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
@@ -2066,7 +2357,8 @@
           "Family activity percentages must never be normalized to sum to 100 because orchestral families overlap in time.",
           "Activity occupancy and foreground ownership must remain separate runtime variables.",
           "If a small-section foreground owner is masked while a high-activity family continues underneath, the arranger must first attempt orchestration-level anti-masking actions.",
-          "Resolved Classical variant must be able to alter role-state probabilities; a universal flute/violin/horn role mix is forbidden."
+          "Resolved Classical variant must be able to alter role-state probabilities; a universal flute/violin/horn role mix is forbidden.",
+          "Family activity occupancy must be a temporal union over active member parts; summing overlapping member percentages is forbidden."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
@@ -2110,7 +2402,7 @@
       },
       "quantitative_evidence_status": {
         "foreground_reference": "PERIOD_SPLIT_RESEARCH_REFERENCE_AVAILABLE",
-        "activity_reference": "SOURCE_REGISTERED_OR_REFERENCE_AVAILABLE",
+        "activity_reference": "PERIOD_SPLIT_RESEARCH_REFERENCE_AVAILABLE",
         "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
         "runtime_numeric_authority": "NOT_APPROVED"
       }
@@ -16854,13 +17146,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Derive Classical total-activity statistics by period/variant from score CSVs, separately from foreground ownership.",
-    "Use period-split foreground plus activity evidence to define candidate Classical variant role-state priors without turning corpus averages into quotas.",
+    "Derive candidate Classical variant role-state priors from paired period foreground and activity evidence, with explicit sample-size safeguards.",
+    "Define minimum evidence thresholds for when a cohort may influence runtime behavior versus validation-only behavior.",
     "Continue quantitative evidence extraction for the remaining genre families.",
     "Build compact runtime extraction only after structural and listening validation."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_FOREGROUND_PERIOD_SPLIT_ADDED__ACTIVITY_PERIOD_SPLIT_PENDING",
+  "quantitative_phase_status": "CLASSICAL_FOREGROUND_AND_ACTIVITY_PERIOD_SPLITS_ADDED__VARIANT_ROLE_PRIORS_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

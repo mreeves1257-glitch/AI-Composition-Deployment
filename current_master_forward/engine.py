@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent
 class AICompositionEngine:
     def __init__(self, history_path=None):
         self.genre = GenreSelector(
-            ROOT / 'genre_registry_WORKING_GENRE_COMPLETE_2026-10-02_182810_CDT.json',
+            ROOT.parent / 'genre_contract_v3_research' / 'GENRE_CONTRACT_V3_ALL_55.json',
             ROOT / 'genre_menu_catalog_WORKING_2026-09-28.json')
         source = ROOT / 'AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py'
         spec = importlib.util.spec_from_file_location('composition_genre_adapter', source)
@@ -37,6 +37,8 @@ class AICompositionEngine:
         from musical_tuning import validate_reference
         tuning_reference_hz = validate_reference(tuning_reference_hz)
         selection = self.genre.select(genre_name)
+        if selection.get('registry_source') != 'GENRE_CONTRACT_V3_ALL_55':
+            raise ValueError('ENGINE_SELECTOR_NOT_V3_AUTHORITY')
         from genre_contract_v3_execution_bridge import snapshot_for as v3_snapshot_for, execution_packet as v3_execution_packet
         selection = dict(selection, profile=v3_snapshot_for(genre_name), profile_source='GENRE_CONTRACT_V3_ALL_55')
         v3_contract_packet = v3_execution_packet(genre_name)

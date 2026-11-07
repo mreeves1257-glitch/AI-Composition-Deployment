@@ -69,6 +69,21 @@ ACTIVITY_TARGET_PERCENT = {
     },
 }
 
+ACTIVITY_TARGETS = {
+    "CLASSICAL_PERIOD_BASELINE": {
+        "STRINGS": 92.78,
+        "WOODWINDS": 74.23,
+        "BRASS": 46.76,
+        "PERCUSSION": 17.85,
+    },
+    "LATE_ROMANTIC_EXPANDED": {
+        "STRINGS": 91.88,
+        "WOODWINDS": 70.12,
+        "BRASS": 62.19,
+        "PERCUSSION": 24.47,
+    },
+}
+
 VARIANT_SCHEDULES = {
     "CLASSICAL_PERIOD_BASELINE": {
         "A": ("violin", "violin", "oboe", "violin"),
@@ -137,10 +152,56 @@ def _activity_bar_sets(plan, base_events, variant_id):
     return result
 
 
-def _support_keep(variant_id, event, foreground_family, bar_number):
-    """Deterministic density shaping; never a gain decision."""
+def _even_fill(candidates, count):
+    candidates = sorted(candidates)
+    if count <= 0:
+        return set()
+    if count >= len(candidates):
+        return set(candidates)
+    if count == 1:
+        return {candidates[len(candidates) // 2]}
+    chosen = set()
+    for i in range(count):
+        index = round(i * (len(candidates) - 1) / (count - 1))
+        chosen.add(candidates[index])
+    if len(chosen) < count:
+        for candidate in candidates:
+            chosen.add(candidate)
+            if len(chosen) == count:
+                break
+    return chosen
+
+
+def _activity_bar_plan(plan, variant_id, base_events):
+    total_bars = len(plan["bars"])
+    foreground_by_bar = {
+        bar["bar"]: FAMILY_BY_INSTRUMENT[_foreground_instrument(variant_id, bar)]
+        for bar in plan["bars"]
+    }
+    available_by_family = defaultdict(set)
+    for event in base_events:
+        fam = _family(event)
+        if fam != "OTHER":
+            available_by_family[fam].add(int(event["plan_bar"]))
+
+    planned = {}
+    for fam, target_percent in ACTIVITY_TARGETS[variant_id].items():
+        desired_count = round(total_bars * target_percent / 100.0)
+        mandatory = {bar for bar, fg in foreground_by_bar.items() if fg == fam}
+        desired_count = max(desired_count, len(mandatory))
+        support_candidates = available_by_family[fam] - mandatory
+        support_needed = max(0, desired_count - len(mandatory))
+        planned[fam] = mandatory | _even_fill(support_candidates, support_needed)
+    return planned
+
+
+def _support_keep(variant_id, event, foreground_family, bar_number, activity_plan):
+    """Deterministic activity-window + density shaping; never a gain decision."""
     fam = _family(event)
     pid = event.get("player_id", "")
+
+    if fam in activity_plan and bar_number not in activity_plan[fam]:
+        return False
 
     if fam == "STRINGS" and foreground_family != "STRINGS":
         # Keep harmonic foundation while yielding upper-string density.
@@ -153,11 +214,9 @@ def _support_keep(variant_id, event, foreground_family, bar_number):
 
     if fam == "BRASS":
         if variant_id == "CLASSICAL_PERIOD_BASELINE":
-            # Classical baseline keeps brass mostly structural.
-            return (
-                event.get("source_rule") in {"orchestral_horn_support", "orchestral_brass_punctuation"}
-                and (bar_number % 2 == 0 or event.get("articulation") == "tenuto")
-            )
+            # Classical baseline keeps brass structural; activity-window planning
+            # controls when the family may be present.
+            return event.get("source_rule") in {"orchestral_horn_support", "orchestral_brass_punctuation"}
         # Late Romantic keeps substantially more brass active.
         return True
 
@@ -174,6 +233,7 @@ def orchestrate_variant(plan, variant_id):
 
     base_events = cc.realize(copy.deepcopy(plan))
     bars = {bar["bar"]: bar for bar in plan["bars"]}
+    activity_plan = _activity_bar_plan(plan, variant_id, base_events)
     active_bar_sets = _activity_bar_sets(plan, base_events, variant_id)
     output = []
     original_theme_count = 0
@@ -207,7 +267,7 @@ def orchestrate_variant(plan, variant_id):
         fam = _family(event)
         if fam in active_bar_sets and fam != fg_family and bar_number not in active_bar_sets[fam]:
             continue
-        if not _support_keep(variant_id, event, fg_family, bar_number):
+        if not _support_keep(variant_id, event, fg_family, bar_number, activity_plan):
             continue
 
         e = copy.deepcopy(event)
@@ -284,6 +344,7 @@ def summarize_variant(plan, variant_id, events):
         "avg_string_events_per_non_string_foreground_bar": string_density_non_string_fg,
         "gain_fields_present": any("gain" in str(k).lower() for e in events for k in e.keys()),
         "role_states": dict(sorted(Counter(e.get("role_state", "UNSET") for e in events).items())),
+        "activity_target_percent": ACTIVITY_TARGETS[variant_id],
     }
 
 

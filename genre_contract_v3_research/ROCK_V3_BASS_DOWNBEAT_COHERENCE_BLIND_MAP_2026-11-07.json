@@ -1,0 +1,51 @@
+{
+  "schema": "ROCK_V3_BASS_DOWNBEAT_COHERENCE_BLIND_MAP_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_workflow_run": 42395850331,
+  "source_artifact_id": 13583163853,
+  "source_artifact_digest": "sha256:960bb39fa270a8b9beb151feedf4d42628387a83287d552a35dea2d4dcd90e0e",
+  "mapping": {
+    "BLIND_1_CONTEXT": "B_DAMPED_COHERENT_WITH_APPROVED_GUITARS",
+    "BLIND_2_CONTEXT": "A_CURRENT_WITH_APPROVED_GUITARS",
+    "BLIND_1_BASS_ONLY": "B_BASS_DAMPED_COHERENT",
+    "BLIND_2_BASS_ONLY": "A_BASS_CURRENT"
+  },
+  "sha256": {
+    "BLIND_1_CONTEXT": "2a02348d52222a529913d8996e0bd87cf397ac7733df332a8f5b11444826d324",
+    "BLIND_2_CONTEXT": "677137d2434d2d9886042f2b13817f718b5873963133bdd54ee224a1a0ccb62d",
+    "BLIND_1_BASS_ONLY": "c64d4301728897f728c478472d326d571fc8e4a500658448cbd0828840fb1796",
+    "BLIND_2_BASS_ONLY": "ee6bc1af5ab2541fb2c036ce5c7e7c9be9ed1a6fd5ce91e9d90dfa782f478896"
+  },
+  "candidate": {
+    "max_bass_gate_beats": 0.2,
+    "half_beat_upbeat_event_count": 29,
+    "different_pitch_half_beat_upbeats_before": 3,
+    "different_pitch_half_beat_upbeats_after": 0,
+    "same_pitch_half_beat_upbeats_after": 29,
+    "duration_changed_bass_events_in_16_bar_window": 56,
+    "pitch_changed_bass_events_in_16_bar_window": 3
+  },
+  "audio_checks": {
+    "blind_1_context_mean_dbfs": -33.1,
+    "blind_1_context_peak_dbfs": -9.7,
+    "blind_2_context_mean_dbfs": -32.6,
+    "blind_2_context_peak_dbfs": -10.2,
+    "clipping_detected": false,
+    "normalization_applied": false
+  },
+  "fixed_context": {
+    "bass_resource": "KARORYFER_GROWLYBASS_V1_002",
+    "bass_mapping": "growlybass_vicious.sfz",
+    "harmony_max_ringing_beats": 2.8,
+    "safe_strum_treatment": true,
+    "treated_lead": true,
+    "drums_included": false
+  },
+  "canonical_policy_modified": false,
+  "candidate_enabled_live": false,
+  "reasoning_engine_used": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "USER_BLIND_DOWNBEAT_COHERENCE_LISTENING_JUDGMENT"
+}

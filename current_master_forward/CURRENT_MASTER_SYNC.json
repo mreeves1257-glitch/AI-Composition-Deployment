@@ -34,7 +34,7 @@
     "rock_v3_variant_package.py",
     "rock_v3_form_planner.py",
     "rock_v3_core_development_executor.py",
-    "rock_v3_core_performance_a.py",
+    "rock_v3_core_performance_executor.py",
     "rock_v3_core_performance_plan.py",
     "rock_v3_core_harmony_plan.py",
     "rock_v3_core_development_plan.py",
@@ -99,7 +99,7 @@
       "rock_v3_core_development_executor.py",
       "genre_v3_composition_executor_registry.py",
       "rock_v3_core_performance_plan.py",
-      "rock_v3_core_performance_a.py"
+      "rock_v3_core_performance_executor.py"
     ],
     "live_promotion_approved": false,
     "classical_v3_symbolic_path": {
@@ -131,7 +131,11 @@
       ],
       "developed_event_count": 897,
       "execution_sha256": "0f3f4049f4bb49814f1ee892e294e5a1edbf8a890d17d0c02302afe9d139ee70",
-      "performance_realization_applied": false
+      "performance_realization_applied": false,
+      "performance_candidate": "A_GUITAR_DURATION_ONLY",
+      "performance_executor": "rock_v3_core_performance_executor.py",
+      "performance_plan": "rock_v3_core_performance_plan.py",
+      "performance_realization_applied_in_candidate": true
     },
     "rock_core_performance_path": {
       "status": "MODE_A_STRUCTURAL_AUDIT_PENDING_RUNTIME_ACTIVATION",

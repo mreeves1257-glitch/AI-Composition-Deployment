@@ -1,0 +1,25 @@
+{
+  "schema": "ROCK_MODE_A_CAP_2_0_HUMAN_LISTENING_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "blind_test": true,
+  "blind_mapping": {
+    "A": "CAP_2_0_WITH_TREATED_LEAD",
+    "B": "CURRENT_2_8_WITH_TREATED_LEAD"
+  },
+  "user_judgment": "B_PREFERRED",
+  "revealed_result": {
+    "preferred_harmony_cap_beats": 2.8,
+    "rejected_replacement_candidate_beats": 2
+  },
+  "interpretation": [
+    "Human blind listening preferred the current 2.8-beat HARMONY sustain ceiling over the 2.0-beat diagnostic cap.",
+    "The 2.0-beat candidate is rejected as a replacement for the current ceiling.",
+    "The current 2.8-beat HARMONY cap remains the preferred diagnostic Mode A setting.",
+    "This decision does not by itself approve additional performance dimensions or promote anything to live/main."
+  ],
+  "canonical_policy_changed": false,
+  "reasoning_engine_used": false,
+  "live_runtime_promoted": false,
+  "next_gate": "INSPECT_NEXT_DISABLED_ROCK_PERFORMANCE_CANDIDATE_WITHOUT_ENABLING_IT"
+}

@@ -557,3 +557,39 @@ Listening definitions:
 - workflow produces HARMONY-only A/B and HARMONY+fixed treated-LEAD context A/B
 
 No other performance variable is allowed in this gate.
+
+
+## Rock V3 strict strum A/B completed and blinded
+
+Strict listening workflow:
+`Rock V3 Strum Listening AB`
+Run `42393208378` — PASS
+
+Artifact:
+`13582452120`
+Digest:
+`sha256:b7b8ea8c3d0c3626af991e0e066f69f6c607891c6bb53ea29958b8459d3ca1d8`
+
+Verified 8-bar A/B:
+- current Mode A HARMONY attack timing
+- safe note-off-preserving strum attack timing
+- human-preferred 2.8-beat HARMONY sustain ceiling fixed in both
+- treated LEAD fixed in both context mixes
+- 24 HARMONY note attacks moved in the 8-bar excerpt
+- zero HARMONY note-off times moved
+- pitch, velocity, event count, LEAD, BASS and DRUMS unchanged
+- exact Shinyguitar resource and mapping verified
+- all listening MP3s passed ffprobe
+
+Strum timing:
+- 0.038 beat between strings
+- 0.076 beat three-note span
+- approximately 18.5 ms between strings / 37.1 ms total at 123 BPM
+- alternating low-to-high / high-to-low direction
+
+Blind copies were created byte-for-byte with no remixing, normalization or transcoding.
+Mapping is recorded in:
+`ROCK_V3_STRUM_BLIND_LISTENING_MAP_2026-11-07.json`
+
+Active gate:
+User blind judgment of context A vs B. Do not reveal mapping or enable strum before that judgment.

@@ -1,0 +1,101 @@
+name: Rock Mode A Guitar Listening AB
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - "genre_contract_v3_research/render_rock_mode_a_guitar_ab.py"
+      - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
+      - "current_master_forward/rock_v3_core_development_executor.py"
+      - "current_master_forward/rock_v3_core_performance_executor.py"
+      - "current_master_forward/rock_v3_core_performance_plan.py"
+      - "current_master_forward/rock_v3_core_form_plan.py"
+      - "current_master_forward/rock_v3_core_harmony_plan.py"
+      - "current_master_forward/rock_v3_core_development_plan.py"
+      - "current_master_forward/rock_v3_foreground_pilot.py"
+      - "current_master_forward/genre_v3_source_pattern_bridge.py"
+      - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
+      - ".github/workflows/rock-mode-a-guitar-listening-ab.yml"
+  workflow_dispatch:
+
+jobs:
+  guitar-listening-ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependency
+        run: |
+          python -m pip install --disable-pip-version-check --no-input numpy
+
+      - name: Restore exact pinned Shinyguitar resource
+        run: |
+          bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh current_master_forward
+          test "$(sha256sum current_master_forward/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz | awk '{print $1}')" = "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
+
+      - name: Prove Shinyguitar sample graph
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from sfz_renderer_adapter import validate_sfz_samples
+          pack=Path("current_master_forward/sound_resources/KARORYFER_SHINYGUITAR").resolve()
+          report=validate_sfz_samples(pack/"Programs/composer_electric.sfz",allowed_root=pack)
+          print(report)
+          assert report == {
+              "sample_references":6798,
+              "unique_samples":846,
+              "sfz_files_validated":16,
+          }, report
+          PY
+
+      - name: Build pinned sfizz 1.2.3 offline renderer
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sfizz /tmp/sfizz-build
+          git clone --recursive https://github.com/sfztools/sfizz.git /tmp/sfizz
+          cd /tmp/sfizz
+          git checkout 4e70dc0bef53b41f2853ed46e26f5911114c92d0
+          git submodule update --init --recursive
+          cmake -S /tmp/sfizz -B /tmp/sfizz-build             -DCMAKE_BUILD_TYPE=Release             -DENABLE_LTO=OFF             -DSFIZZ_JACK=OFF             -DSFIZZ_SHARED=OFF             -DSFIZZ_RENDER=ON             -DSFIZZ_TESTS=OFF             -DSFIZZ_DEMOS=OFF             -DSFIZZ_DEVTOOLS=OFF
+          cmake --build /tmp/sfizz-build --target sfizz_render --parallel 2
+          RENDERER="$(find /tmp/sfizz-build -type f -name sfizz_render -perm -111 | head -n 1)"
+          test -n "$RENDERER"
+          "$RENDERER" --help >/tmp/sfizz-help.txt 2>&1 || true
+          grep -q -- "--sfz" /tmp/sfizz-help.txt
+          printf '%s\n' "$RENDERER" > /tmp/sfizz-renderer-path
+          echo "PINNED_SFIZZ_RENDERER_READY $RENDERER"
+
+      - name: Render controlled guitar A/B
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+          AI_COMP_SFIZZ_PIN: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+        run: |
+          export AI_COMP_SFZ_RENDERER="$(cat /tmp/sfizz-renderer-path)"
+          python genre_contract_v3_research/render_rock_mode_a_guitar_ab.py
+          test -s genre_contract_v3_research/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.wav
+          test -s genre_contract_v3_research/rock_mode_a_guitar_ab/B_AFTER_MODE_A.wav
+          test -s genre_contract_v3_research/rock_mode_a_guitar_ab/ROCK_MODE_A_GUITAR_AB_LISTENING_REPORT.json
+
+      - name: Make listening MP3s without changing relative A/B level
+        run: |
+          ffmpeg -hide_banner -loglevel error -y             -i genre_contract_v3_research/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.wav             -codec:a libmp3lame -b:a 256k             genre_contract_v3_research/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.mp3
+          ffmpeg -hide_banner -loglevel error -y             -i genre_contract_v3_research/rock_mode_a_guitar_ab/B_AFTER_MODE_A.wav             -codec:a libmp3lame -b:a 256k             genre_contract_v3_research/rock_mode_a_guitar_ab/B_AFTER_MODE_A.mp3
+
+      - name: Upload controlled listening package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_Mode_A_Guitar_Listening_AB
+          path: |
+            genre_contract_v3_research/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.mp3
+            genre_contract_v3_research/rock_mode_a_guitar_ab/B_AFTER_MODE_A.mp3
+            genre_contract_v3_research/rock_mode_a_guitar_ab/ROCK_MODE_A_GUITAR_AB_LISTENING_REPORT.json
+          if-no-files-found: error

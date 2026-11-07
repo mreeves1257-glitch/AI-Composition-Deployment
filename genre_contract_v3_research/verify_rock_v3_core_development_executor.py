@@ -146,6 +146,26 @@ def main():
             json.dumps(sorted(set(range(40))-set(events_by_bar)))
         )
 
+    # Pitched composition events must stop at their planned bar/harmony boundary
+    # unless a future explicit tie rule exists. The current Rock Core candidate
+    # has no cross-bar tie authority.
+    for e in events:
+        if e["track_id"] not in ("BASS","HARMONY","LEAD"):
+            continue
+        start=float(e["start_beat"])
+        end=start+float(e["duration_beats"])
+        bar_end=(int(start//4)+1)*4
+        if end>bar_end+1e-9:
+            raise RuntimeError(
+                "ROCK_DEVELOPED_PITCHED_EVENT_CROSSES_HARMONY_BOUNDARY::"+
+                json.dumps({
+                    "track":e["track_id"],
+                    "start":start,
+                    "duration":e["duration_beats"],
+                    "bar_end":bar_end,
+                },sort_keys=True)
+            )
+
     form_by_bar={x["bar"]:x for x in form["bars"]}
     manifest_by_bar={x["bar"]:x for x in result["transform_manifest"]}
     if set(manifest_by_bar)!=set(range(40)):

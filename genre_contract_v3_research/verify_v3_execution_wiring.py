@@ -26,6 +26,7 @@ CLASSICAL_PATH = FORWARD / "classical_composition.py"
 BLUEPRINT_PATH = FORWARD / "genre_communication_blueprint.py"
 PERFORMANCE_PATH = FORWARD / "genre_performance_realization.py"
 INSTRUMENT_PATH = FORWARD / "instrument_program.py"
+ENGINE_PATH = FORWARD / "engine.py"
 
 
 def _literal_assignment(source: str, name: str):
@@ -53,6 +54,7 @@ def main():
     communication_source = BLUEPRINT_PATH.read_text()
     performance_source = PERFORMANCE_PATH.read_text()
     instrument_source = INSTRUMENT_PATH.read_text()
+    engine_source = ENGINE_PATH.read_text()
 
     palettes = _literal_assignment(adapter_source, "PALETTES")
     bases = _literal_assignment(adapter_source, "BASE")
@@ -144,6 +146,12 @@ def main():
             ],
         })
 
+    v3_downstream_guards = {
+        "blueprint_embeds_full_v3_packet": "'genre_contract_v3_execution_packet': copy.deepcopy(v3_execution_packet)" in communication_source,
+        "blueprint_validates_embedded_v3_packet": "GENRE_COMMUNICATION_BLUEPRINT_V3_PACKET_MISSING" in communication_source,
+        "engine_revalidates_v3_packet_at_blueprint_boundary": "v3_execution_packet=v3_contract_packet" in engine_source,
+    }
+
     remaining_gaps = {
         "adapter_v3_profile_source_patch_present": adapter_v3_source_patch,
         "adapter_v3_roster_patch_present": adapter_v3_roster_patch,
@@ -175,6 +183,7 @@ def main():
             "CONTROLLED_COMPONENT_INPUT": controlled_component,
             "SPECIALIZED_CLASSICAL_COMPOSITION_STATIC_PLAN_AND_ROSTER": classical_specialized,
         },
+        "v3_downstream_guards": v3_downstream_guards,
         "confirmed_remaining_gaps": remaining_gaps,
         "interpretation": (
             "All 55 V3 contracts survive selection and execution-packet creation. "
@@ -187,6 +196,8 @@ def main():
         "genres": results,
     }
 
+    if not all(v3_downstream_guards.values()):
+        raise RuntimeError("V3_DOWNSTREAM_BLUEPRINT_GUARD_MISSING")
     if selection_pass != 55 or packet_pass != 55:
         raise RuntimeError("ALL_55_V3_PROPAGATION_NOT_PROVEN")
     if v3_explicit_roster != 7:

@@ -56,16 +56,16 @@ PLAYER_BY_INSTRUMENT = {
 
 VARIANT_SCHEDULES = {
     "CLASSICAL_PERIOD_BASELINE": {
-        "A": ("violin", "oboe", "violin", "concert_flute"),
-        "B": ("concert_flute", "clarinet_bb", "oboe", "bassoon"),
+        "A": ("violin", "violin", "oboe", "violin"),
+        "B": ("concert_flute", "violin", "clarinet_bb", "violin"),
         "A_RETURN": ("violin", "concert_flute", "violin", "oboe"),
         "CODA": ("violin", "clarinet_bb"),
     },
     "LATE_ROMANTIC_EXPANDED": {
-        "A": ("violin", "horn_f", "oboe", "cello"),
-        "B": ("clarinet_bb", "horn_f", "concert_flute", "trumpet_c"),
+        "A": ("violin", "oboe", "horn_f", "cello"),
+        "B": ("clarinet_bb", "horn_f", "concert_flute", "violin"),
         "A_RETURN": ("violin", "tenor_trombone", "oboe", "horn_f"),
-        "CODA": ("horn_f", "violin", "trumpet_c", "cello"),
+        "CODA": ("violin", "concert_flute", "trumpet_c", "cello"),
     },
 }
 

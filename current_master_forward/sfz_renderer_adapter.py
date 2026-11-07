@@ -45,6 +45,10 @@ def validate_sfz_samples(sfz_path: Path, allowed_root: Path|None=None) -> dict:
     """
     visited=set(); refs=[]; missing=[]
     allowed=Path(allowed_root).resolve() if allowed_root is not None else None
+    # SFZ #include is textual preprocessing: paths inside included files are
+    # interpreted from the main instrument SFZ directory, not from each
+    # included file's own directory.
+    instrument_base=Path(sfz_path).resolve().parent
 
     def expand(raw: str, macros: dict[str,str]) -> str:
         value=raw.strip().strip('"').replace('\\','/')
@@ -92,18 +96,18 @@ def validate_sfz_samples(sfz_path: Path, allowed_root: Path|None=None) -> dict:
         dm=re.search(r'(?:^|\s)default_path=([^\s<]+)', text)
         if dm:
             raw_default=expand(dm.group(1),macros)
-            default=(path.parent/raw_default).resolve()
+            default=(instrument_base/raw_default).resolve()
             if not within_allowed(default):
                 missing.append('DEFAULT_PATH_OUTSIDE_ALLOWED_ROOT:'+str(default))
 
         for inc in re.findall(r'#include\s+["<]([^">]+)[">]', text):
             rel=expand(inc,macros)
-            walk((path.parent/rel).resolve(), default, macros)
+            walk((instrument_base/rel).resolve(), default, macros)
 
         for match in re.finditer(r'(?:^|\s)sample=(.*?)(?=\s+\w+=|\s*<|$)', text, re.S):
             ref=expand(match.group(1),macros)
             refs.append(ref)
-            base=default if default is not None else path.parent
+            base=default if default is not None else instrument_base
             candidate=(base/ref).resolve()
             if not within_allowed(candidate) or not candidate.is_file():
                 missing.append(ref)

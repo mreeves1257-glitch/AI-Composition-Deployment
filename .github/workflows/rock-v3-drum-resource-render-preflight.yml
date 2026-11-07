@@ -1,0 +1,58 @@
+name: Rock V3 Drum Resource Render Preflight
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/rock-v3-drum-resource-render-preflight.yml"
+      - ".github/actions/setup-pinned-sfizz/action.yml"
+      - "genre_contract_v3_research/install_pinned_big_rusty_complete.sh"
+      - "genre_contract_v3_research/verify_rock_v3_drum_resource_render_preflight.py"
+      - "current_master_forward/rock_v3_approved_performance_package.py"
+      - "current_master_forward/instrument_role_performance_profiles.py"
+      - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/official_sfz_compatibility.py"
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependency
+        run: python -m pip install --disable-pip-version-check --no-input numpy
+
+      - name: Restore exact complete pinned Big Rusty resource
+        run: |
+          bash genre_contract_v3_research/install_pinned_big_rusty_complete.sh current_master_forward
+          test -s current_master_forward/BIG_RUSTY_COMPLETE_ACQUISITION.json
+
+      - name: Setup exact pinned sfizz renderer
+        id: sfizz
+        uses: ./.github/actions/setup-pinned-sfizz
+
+      - name: Verify complete sample graph and render authored drum roles
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+          AI_COMP_SFIZZ_PIN: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+          AI_COMP_SFZ_RENDERER: ${{ steps.sfizz.outputs.renderer }}
+        run: |
+          python genre_contract_v3_research/verify_rock_v3_drum_resource_render_preflight.py
+          test -s genre_contract_v3_research/rock_v3_drum_resource_preflight/ROCK_V3_DRUM_RESOURCE_RENDER_PREFLIGHT.json
+
+      - name: Upload objective preflight
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_V3_Drum_Resource_Render_Preflight
+          path: |
+            current_master_forward/BIG_RUSTY_COMPLETE_ACQUISITION.json
+            genre_contract_v3_research/rock_v3_drum_resource_preflight/ROCK_V3_DRUM_RESOURCE_RENDER_PREFLIGHT.json
+          if-no-files-found: error

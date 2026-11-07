@@ -835,7 +835,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_QUANTITATIVE_FOREGROUND_REFERENCE_ADDED__ACTIVITY_STATS_PENDING",
+      "research_status": "V3_QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCES_ADDED__PERIOD_SPLIT_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -1011,9 +1011,76 @@
           "note": "Do not infer presence probability directly from one orchestra roster."
         },
         "activity_percent": {
-          "status": "EMPIRICAL_DATASET_IDENTIFIED__RAW_PERCENTAGE_EXTRACTION_PENDING",
-          "source_reference": "ensemble.activity_empirical_reference",
-          "rule": "Total playing-time/activity share is distinct from main-theme foreground ownership."
+          "status": "OBSERVED_CORPUS_REFERENCE_ADDED__VARIANT_TARGETS_PENDING",
+          "source": "OpenScore Orchestra full-score CSVs",
+          "methodology": "Presence/activity derived from 70 instrumental orchestral movements. Excludes Bach B Minor Mass, Brahms Ein Deutsches Requiem, and Beethoven Symphony No.9 movement 4. For each score interval, an instrument type is active when any part of that type is non-rest. Family occupancy is true when any instrument of that family is active. Percentages are time occupancy, not note-count, loudness, or recommended target quotas.",
+          "total_score_qstamp_duration": 83187.4583,
+          "family_corpus_occupancy_percent": {
+            "STRINGS": 91.74,
+            "WOODWINDS": 75.95,
+            "BRASS": 54.29,
+            "PERCUSSION": 18.31,
+            "KEYBOARD_HARP_CONTINUO": 3.41
+          },
+          "instrument_corpus_occupancy_percent": {
+            "VIOLIN": 84.4,
+            "VIOLA": 77.21,
+            "CELLO": 74.54,
+            "DOUBLE_BASS": 63.79,
+            "BASSOON": 60.66,
+            "OBOE": 53.21,
+            "FLUTE": 52.93,
+            "HORN": 51.89,
+            "CLARINET": 51.88,
+            "TRUMPET": 24.12,
+            "TIMPANI": 17.98,
+            "TROMBONE": 7.35,
+            "BASS_TROMBONE": 5.27,
+            "CONTRABASSOON": 5.14,
+            "TUBA": 3.52,
+            "PICCOLO": 1.54,
+            "CONTINUO": 1.53,
+            "HARPSICHORD": 1.13,
+            "PIANO": 0.75,
+            "BASS_CLARINET": 0.65,
+            "OTHER_PERCUSSION": 0.42,
+            "ENGLISH_HORN": 0.4,
+            "HARP": 0.24,
+            "CELESTA": 0.11
+          },
+          "instrument_presence_adjusted_activity_percent": {
+            "VIOLIN": 84.4,
+            "VIOLA": 77.21,
+            "CELLO": 74.54,
+            "DOUBLE_BASS": 63.79,
+            "BASSOON": 62.88,
+            "OBOE": 55.16,
+            "CLARINET": 54.91,
+            "HORN": 53.8,
+            "FLUTE": 53.65,
+            "CONTRABASSOON": 38.43,
+            "BASS_CLARINET": 36.12,
+            "HARP": 32.37,
+            "PICCOLO": 27.34,
+            "TRUMPET": 27.14,
+            "BASS_TROMBONE": 23.47,
+            "TIMPANI": 20.95,
+            "TROMBONE": 19.42,
+            "TUBA": 18.22,
+            "OTHER_PERCUSSION": 17.67,
+            "CELESTA": 15.23,
+            "ENGLISH_HORN": 11.22,
+            "HARPSICHORD": 84.13,
+            "CONTINUO": 69.67,
+            "PIANO": 100
+          },
+          "interpretation_guardrails": [
+            "Family occupancy percentages are not mutually exclusive and therefore do not sum to 100; multiple families commonly play simultaneously.",
+            "Corpus-wide instrument occupancy combines whether an instrument is present in the repertoire with how much it plays.",
+            "Presence-adjusted activity estimates how active an instrument is during score time in pieces where that instrument type exists.",
+            "Rare-instrument conditional values can be unstable because they may come from very few scores; they require period/variant-specific confirmation.",
+            "These values are evidence for density/activity behavior, not gain, population, or foreground quotas."
+          ]
         },
         "musical_agency_percent": {
           "status": "EMPIRICAL_REFERENCE_ADDED__VARIANT_PRIORS_STILL_PENDING",
@@ -1030,7 +1097,9 @@
           "Large string population does not grant permanent foreground ownership.",
           "Foreground transfer must be explicit and time-bounded; supporting sections retain musical agency without masking the current owner.",
           "Corpus evidence supports frequent woodwind foreground ownership despite much smaller physical population; the arranger must create windows for flute, oboe, clarinet and bassoon rather than allowing string mass to mask them.",
-          "Foreground targets are variant- and composition-specific; observed corpus averages are validation references, not quotas."
+          "Foreground targets are variant- and composition-specific; observed corpus averages are validation references, not quotas.",
+          "Woodwind foreground does not imply string silence: corpus activity shows frequent simultaneous section activity. The arranger should thin or re-voice supporting mass rather than simply muting the orchestra.",
+          "When foreground changes, adjust accompaniment activity quality (density/register/articulation/voicing) before using level changes."
         ],
         "role_handoff_rules": [
           "Theme/countertheme may transfer among strings, woodwinds, brass and solo desks when supported by the resolved variant.",
@@ -1338,6 +1407,23 @@
           },
           "key_finding": "Physical population and foreground ownership are strongly different quantities. In the observed corpus, woodwinds carry a much larger share of annotated foreground than their physical population share, while strings retain the largest physical mass.",
           "runtime_implication": "Population controls ensemble mass; resolved foreground ownership controls audibility windows. Never derive one directly from the other."
+        },
+        "activity_vs_foreground_observation": {
+          "key_finding": "High activity and foreground ownership are different. Strings are active through most score time, while woodwinds are also highly active and own a disproportionately large share of annotated foreground relative to physical headcount.",
+          "example": {
+            "FLUTE": {
+              "corpus_activity_occupancy_percent": 52.93,
+              "presence_adjusted_activity_percent": 53.65,
+              "observed_foreground_share_percent": 22.79,
+              "population_mass_reference_percent": 4.35
+            },
+            "VIOLIN_FAMILY": {
+              "corpus_activity_occupancy_percent": 84.4,
+              "observed_foreground_share_percent": 44.91,
+              "note": "Violin activity is measured by instrument type, while physical mass is split between Violin I and II in the formation reference."
+            }
+          },
+          "runtime_implication": "A featured woodwind should not require other sections to become silent. Instead, supporting strings can remain active while changing register, density, articulation, voicing, dynamics, or spatial position to preserve foreground clarity."
         }
       },
       "performance": {
@@ -1373,7 +1459,8 @@
           "OpenScore Orchestra / Hauptstimme: 72 non-B-Minor-Mass annotation files analyzed for duration-weighted instrumental foreground ownership",
           "Krause & Müller 2023 orchestral instrument-activity dataset: ~14 hours, frame-level 18-class annotations",
           "MTG-Jamendo genre/instrument co-occurrence research reference",
-          "OpenScore Orchestra / Hauptstimme: 70 instrumental orchestral foreground-annotation files used for interval-weighted foreground reference statistics"
+          "OpenScore Orchestra / Hauptstimme: 70 instrumental orchestral foreground-annotation files used for interval-weighted foreground reference statistics",
+          "OpenScore Orchestra full-score CSVs: 70 instrumental movements used for section/instrument activity occupancy analysis"
         ],
         "source_confidence": {
           "current_profile": "MEDIUM__USEFUL_BASELINE_NOT_COMPLETE",
@@ -1382,7 +1469,8 @@
           "hauptstimme_foreground_aggregate": "HIGH_FOR_CORPUS_REFERENCE__NOT_UNIVERSAL_RUNTIME_TARGET",
           "orchestral_activity_dataset": "HIGH_FOR_ACTIVITY_METHOD__EXACT_FILTERED_PERCENTAGES_PENDING",
           "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
-          "Hauptstimme_foreground_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__NOT_UNIVERSAL_TARGET"
+          "Hauptstimme_foreground_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__NOT_UNIVERSAL_TARGET",
+          "OpenScore_activity_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__PERIOD_VARIANT_SPLIT_PENDING"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
@@ -1406,7 +1494,9 @@
           "Foreground priors must remain independent of population mass and gain.",
           "Flute/woodwind foreground windows must not be suppressed merely because their physical population is small.",
           "Foreground ownership must be represented independently from physical section population.",
-          "Woodwind foreground windows cannot be suppressed merely because string population mass is larger."
+          "Woodwind foreground windows cannot be suppressed merely because string population mass is larger.",
+          "Activity occupancy and foreground ownership must be stored and applied as separate dimensions.",
+          "Family activity percentages must never be normalized to sum to 100 because orchestral families overlap in time."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
@@ -1415,7 +1505,9 @@
           "Verify stereo/depth separation is materially audible, not metadata-only.",
           "Confirm that a small woodwind section can carry a clearly audible foreground line over a larger string population without artificial permanent boosting.",
           "Across a multi-section Classical audition, verify at least one clearly audible woodwind-led passage when the resolved composition assigns woodwind foreground.",
-          "Verify woodwind foreground clarity is achieved primarily by orchestration/density/register/spatial decisions rather than permanent gain inflation."
+          "Verify woodwind foreground clarity is achieved primarily by orchestration/density/register/spatial decisions rather than permanent gain inflation.",
+          "During a flute-led passage, verify strings can remain present without masking the flute through density/register/articulation changes.",
+          "Verify a large string mass still sounds larger than a single wind even when the wind owns the foreground."
         ],
         "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE",
         "approved_for_runtime": false

@@ -174,7 +174,8 @@ def main():
         "classical_special_case_present": "if name == 'Classical':" in adapter_source,
         "legacy_classical_fixed_plan_code_still_present": "CLASSICAL_EXECUTABLE_PLAN_1" in classical_source,
         "classical_v3_structural_compiler_bound": "from classical_v3_structural_compiler import compile_plan as compile_v3_structure" in classical_source,
-        "classical_note_realizer_still_required": "V3_NOTE_REALIZER_REQUIRED" in classical_source,
+        "classical_abstract_note_realizer_bound": "from classical_v3_note_realizer import realize as realize_v3_notes" in classical_source,
+        "classical_orchestration_binding_still_required": "V3_ORCHESTRATION_BINDING_REQUIRED" in classical_source,
         "classical_legacy_execution_explicitly_false": "'legacy_classical_generator_executed':False" in classical_source,
         "generic_blueprint_rejects_classical": "CLASSICAL_USES_EXISTING_SPECIALIZED_PATH" in communication_source,
         "performance_realizer_bypasses_classical": "CLASSICAL_SPECIALIZED_PATH_UNCHANGED" in performance_source,
@@ -207,8 +208,8 @@ def main():
             "V3 instrument-role authority. Forty automatic genres still require a "
             "clearly labeled legacy palette fallback because their V3 rosters are not "
             "yet explicit. Classical now resolves a V3 period/orchestral package, "
-            "binds the V3 structural compiler, blocks the legacy fixed plan, and "
-            "halts before the still-missing V3 note/harmony/texture realizer."
+            "binds the V3 structural compiler and abstract note/harmony/texture "
+            "realizer, blocks the legacy fixed plan, and halts before orchestration."
         ),
         "genres": results,
     }
@@ -232,7 +233,8 @@ def main():
         "classical_special_case_present",
         "legacy_classical_fixed_plan_code_still_present",
         "classical_v3_structural_compiler_bound",
-        "classical_note_realizer_still_required",
+        "classical_abstract_note_realizer_bound",
+        "classical_orchestration_binding_still_required",
         "classical_legacy_execution_explicitly_false",
         "generic_blueprint_rejects_classical",
         "performance_realizer_bypasses_classical",

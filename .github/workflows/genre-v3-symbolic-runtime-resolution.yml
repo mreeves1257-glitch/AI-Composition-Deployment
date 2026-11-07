@@ -77,6 +77,13 @@ jobs:
             composer/runtime/genre_v3_foreground_authority.py \
             composer/runtime/genre_v3_foreground_executor_registry.py \
             composer/runtime/rock_v3_variant_resolver.py \
+            composer/runtime/rock_v3_variant_package.py \
+            composer/runtime/rock_v3_form_planner.py \
+            composer/runtime/rock_v3_core_form_plan.py \
+            composer/runtime/rock_v3_core_development_plan.py \
+            composer/runtime/rock_v3_core_harmony_plan.py \
+            composer/runtime/rock_v3_core_development_executor.py \
+            composer/runtime/genre_v3_composition_executor_registry.py \
             composer/runtime/rock_v3_foreground_pilot.py
 
       - name: Resolve V3 symbolic events through current instrument library

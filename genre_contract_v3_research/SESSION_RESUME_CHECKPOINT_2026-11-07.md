@@ -475,3 +475,52 @@ Run:
 The verifier asks whether 0.038-beat string staggering can be applied as a pure onset change without causing next-gesture overlap or bar-boundary violations. If not, it separately checks whether preserving original note-off times would be mechanically safe before any implementation is considered.
 
 No audio, no strum enablement, no canonical policy mutation, no live promotion, and no reasoning-engine involvement.
+
+
+## Rock V3 strum candidate safety result
+
+Workflow run:
+`42393038398` — PASS
+
+Artifact:
+`13582362211`
+Digest:
+`sha256:0aa2ac71e40d52aafc9cb61738355dc8fbc3559236acaef49bd2d2a2496379f1`
+
+Current Rock HARMONY score:
+- 219 HARMONY note-events
+- 73 vertical chord gestures
+- all 73 gestures contain exactly 3 notes
+- proposed note gap: 0.038 beat
+- required 3-note strum span: 0.076 beat
+- candidate maximum span: 0.14 beat
+
+Unsafe form rejected:
+**pure onset stagger with durations unchanged**
+- 8 bar-boundary crossing notes
+- 16 next-gesture overlap notes
+- 8 gestures with at least one overlap
+- worst resulting overlap: 0.046 beat
+
+Safe mechanical form:
+**onset stagger with each original absolute note-off preserved**
+- 0 nonpositive durations
+- minimum resulting duration: 0.144 beat
+- 146 delayed note-events
+- maximum mechanical duration reduction: 0.076 beat
+- no new sustain; release times stay exactly where Mode A put them
+
+This means any future strum A/B must use note-off preservation. The unchanged-duration version is explicitly rejected.
+
+A symbolic candidate executor has been added:
+`current_master_forward/rock_v3_strum_candidate_executor.py`
+
+A symbolic execution verifier has been added:
+`genre_contract_v3_research/verify_rock_v3_strum_candidate_execution.py`
+
+Execution verification workflow:
+`Rock V3 Strum Candidate Execution Verify`
+Run:
+`42393131339`
+
+No audio yet. Strum remains disabled. Canonical Mode A remains unchanged. Reasoning remains excluded. Live runtime remains untouched.

@@ -7006,7 +7006,7 @@
       "source_profile_id": "HOUSE_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "HOUSE_V1",
@@ -7047,62 +7047,176 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong four-on-floor/kick-bass/pad-stab baseline.",
+          "Already includes build/break/return architecture and protected kick/sub relationship.",
+          "Current profile recognizes timbral evolution and grid coherence."
+        ],
+        "current_profile_gaps": [
+          "House is now a broad family with distinct subgenres.",
+          "No layer-presence/activity percentages.",
+          "No explicit sidechain/low-end state model.",
+          "No subgenre-specific swing/percussion/chord behavior."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport 2026 taxonomy",
+          "GiantSteps EDM tempo/genre data",
+          "MMA House library",
+          "MTG-Jamendo electronic tags"
+        ],
+        "retained_current_fields": [
+          "four-on-floor foundation",
+          "offbeat/open-hat relations",
+          "syncopated percussion",
+          "loop-based harmony",
+          "intro/build/break/return architecture",
+          "kick/sub protection"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "virtual-layer percentages",
+          "low-end occupancy states",
+          "section-layer activation",
+          "spatial layer choreography"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "DJ/track-oriented intro-build-main-break-return-outro or song-hybrid structure; subgenre controls phrase lengths and peak density."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_HOUSE_SUBGENRE",
+          "rule": "Loop-based tonal/modal/stab/pad vocabulary selected by subgenre; timbre may carry development."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal/sample/synth hooks use explicit windows; not every House track requires a melodic foreground."
+        },
+        "rhythm_groove_model": {
+          "rule": "Four-on-floor baseline only for subgenres that require it; swing, percussion and offbeat relationships resolve by subgenre."
+        },
+        "bass_model": {
+          "rule": "Sub/synth bass interlocks with kick using section-aware rhythmic/sidechain states rather than constant overlap."
+        },
+        "percussion_model": {
+          "rule": "Kick/clap/snare/hats/percussion layers evolve by section; fills/risers are transition tools, not random decoration."
+        },
+        "phrase_model": {
+          "rule": "Loop identity develops through layer activation, microvariation and automation."
+        },
+        "transition_model": {
+          "rule": "Risers, filter/automation, drum subtraction/addition and fills mark transitions; exact devices are subgenre-specific."
+        },
+        "development_model": {
+          "rule": "Develop by timbre, automation, layer density, bass/drum variation, hook recurrence and breakdown/return."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, fade, final drop/stop or song ending according to resolved use case."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "House is usually a virtual/electronic layered production; human headcount is not the primary ensemble metric."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Kick/bass can dominate foundation while lead/hook/textures receive separate windows.",
+          "Pads/stabs must not mask vocal/lead hook.",
+          "Transition FX temporarily rise then recede."
+        ],
+        "role_handoff_rules": [
+          "Foreground can shift groove→hook→break texture→drop without declaring every layer equal."
+        ],
+        "register_occupancy": {
+          "rule": "Protect sub/kick focus; separate chord/pad/lead spectral lanes."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "short percussive stabs, sustained pads, programmed drum articulations",
+        "dynamic_behavior": "long-form automation and section lifts rather than random note dynamics",
+        "timing_humanization_behavior": "quantized core with controlled swing/microtiming where profile calls for it",
+        "continuous_performance_control": "filter, envelope, modulation, sidechain and level automation central",
+        "interaction_rules": [
+          "Grid coherence with subgenre-specific swing/humanization.",
+          "Layer activation follows form.",
+          "Kick/bass relationship is stateful."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT",
+          "rule": "Low end focused; pads/FX/perc can widen; lead/hook placement follows production style."
+        },
+        "mix_prominence_intent": "kick/sub relationship protected; lead/pads occupy separate frequency/space",
+        "sound_effects_intent": "delay/reverb/filter/drive/sidechain are production tools, not decorations",
+        "production_mastering_intent": "club-capable low end with controlled transients and headroom"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current House profile",
+          "Beatport 2026 genre taxonomy",
+          "GiantSteps tempo+genre dataset",
+          "MMA House",
+          "MTG-Jamendo"
+        ],
+        "source_confidence": {
+          "house_family": "HIGH",
+          "current_subgenre_taxonomy": "HIGH_FOR_BEATPORT_MARKETPLACE",
+          "layer_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "GiantSteps": "RESEARCH_DATA_LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Subgenre resolution required.",
+          "No constant kick/bass duplication.",
+          "Layer activity must change across form."
+        ],
+        "listening_tests": [
+          "Subgenres sound materially different.",
+          "Low end is powerful but clear.",
+          "Break/drop development feels composed, not loop toggling."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7111,6 +7225,22 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "House",
+        "candidate_variants": [
+          "House core",
+          "Acid house",
+          "Soulful house",
+          "Latin house",
+          "Deep house",
+          "Funky house",
+          "Progressive house",
+          "Tech house",
+          "Minimal/deep-tech-adjacent"
+        ],
+        "note": "Current marketplace taxonomies separate several of these as their own categories; resolver must not collapse them automatically."
       }
     },
     "Techno": {
@@ -7119,7 +7249,7 @@
       "source_profile_id": "TECHNO_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "TECHNO_V1",
@@ -7160,62 +7290,177 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good hypnotic cell/timbral-development concept.",
+          "Already recognizes minimal/nonfunctional harmony and long-form reduction/rebuild.",
+          "Kick/low-end dominance is appropriately protected."
+        ],
+        "current_profile_gaps": [
+          "Techno taxonomy is highly differentiated today.",
+          "No explicit raw/deep/hypnotic vs peak-time/driving vs hard-techno resolver.",
+          "No layer/activity percentages.",
+          "No repetition-mutation rate model."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport 2026 Techno taxonomy",
+          "GiantSteps",
+          "MMA Techno references",
+          "MTG-Jamendo"
+        ],
+        "retained_current_fields": [
+          "persistent four-on-floor drive",
+          "hypnotic cells",
+          "timbral movement",
+          "long-form build/reduction/rebuild",
+          "low-end focus"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "mutation-rate model",
+          "virtual-layer percentages",
+          "low-end occupancy",
+          "automation/development states"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Long-form evolution through layer/mutation/energy states; subgenre controls peak/break architecture."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TECHNO_SUBGENRE",
+          "rule": "Minimal/modal/nonfunctional/spectral or tonal content as subgenre requires; timbral motion may replace chord motion."
+        },
+        "melody_model": {
+          "rule": "Melodic foreground optional; motifs/cells/noise/timbre may carry identity."
+        },
+        "rhythm_groove_model": {
+          "rule": "Kick pattern, brokenness, swing and percussion density resolve by Techno subgenre."
+        },
+        "bass_model": {
+          "rule": "Sub/low pulse shares low-end space with kick through timing, envelope and section states."
+        },
+        "percussion_model": {
+          "rule": "Electronic percussion evolves through controlled pattern mutation and density."
+        },
+        "phrase_model": {
+          "rule": "Repetition requires measurable micro/macro change rather than exact indefinite looping."
+        },
+        "transition_model": {
+          "rule": "Automation, filtering, subtraction, noise, fills and rhythmic mutation by subgenre."
+        },
+        "development_model": {
+          "rule": "Develop through mutation rate, timbral evolution, layer entrances/exits, spatial motion and energy contour."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, gradual deconstruction or composed stop depending use case."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "Techno is layer-based; physical player count is not a useful default."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Kick/low end can remain dominant foundation while texture/motif foreground rotates.",
+          "No constant requirement for melodic lead."
+        ],
+        "role_handoff_rules": [
+          "Identity may transfer among percussion motif, synth cell, texture/noise and bass state."
+        ],
+        "register_occupancy": {
+          "rule": "Maintain kick/sub focus and prevent dense mid/high texture from masking rhythmic detail."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "repetition_mutation_rate": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "precise programmed attacks with occasional texture tails",
+        "dynamic_behavior": "automation-driven energy curve with controlled drops",
+        "timing_humanization_behavior": "mostly grid-stable with deliberate groove offsets only",
+        "continuous_performance_control": "filter/envelope/modulation/drive/level automation essential",
+        "interaction_rules": [
+          "Automation and pattern change are structured.",
+          "Low-end envelopes interlock.",
+          "Randomness cannot substitute for design."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT",
+          "rule": "Focused low end with evolving depth/width and controlled spatial automation."
+        },
+        "mix_prominence_intent": "kick/low-end dominant but not clipped; textures layered around it",
+        "sound_effects_intent": "delay/reverb/distortion/filter used structurally",
+        "production_mastering_intent": "club-oriented, controlled loudness and transient shape"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Techno profile",
+          "Beatport 2026 taxonomy",
+          "GiantSteps",
+          "MMA Techno references",
+          "MTG-Jamendo"
+        ],
+        "source_confidence": {
+          "techno_family": "HIGH",
+          "subgenre_taxonomy": "HIGH_FOR_CURRENT_MARKETPLACE",
+          "mutation_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "GiantSteps": "RESEARCH_LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Subgenre resolution required.",
+          "Repetition must include controlled development.",
+          "No automatic melodic lead requirement."
+        ],
+        "listening_tests": [
+          "Hypnotic repetition feels evolving, not static.",
+          "Subgenres differ in drive/brokenness/timbre.",
+          "Low end remains clear."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7224,6 +7469,20 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Techno",
+        "candidate_variants": [
+          "Peak Time/Driving",
+          "Raw",
+          "Deep/Hypnotic",
+          "Dub",
+          "Broken techno",
+          "Psy-Techno",
+          "Hard Techno"
+        ],
+        "hard_rule": "Do not treat all Techno as peak-time four-on-floor."
       }
     },
     "Trance": {
@@ -7232,7 +7491,7 @@
       "source_profile_id": "TRANCE_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "TRANCE_V1",
@@ -7273,62 +7532,179 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong build-breakdown-peak logic and rolling/offbeat bass concept.",
+          "Existing profile protects kick/bass and wide lead/pad relationships.",
+          "Long tension/release cycles are correctly central."
+        ],
+        "current_profile_gaps": [
+          "Current Trance taxonomy is much more granular.",
+          "No progressive/tech/hard/uplifting/vocal/raw/deep resolver.",
+          "No phrase-length/build-rate statistics.",
+          "No layer activity/foreground percentages."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport 2026 Trance taxonomy",
+          "GiantSteps",
+          "MMA Trance",
+          "MTG-Jamendo"
+        ],
+        "retained_current_fields": [
+          "four-on-floor drive",
+          "rolling/offbeat bass",
+          "arps/pads/leads",
+          "long tension/release",
+          "build-breakdown-peak-outro"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "tension-cycle model",
+          "layer percentages",
+          "lead/vocal foreground states",
+          "breakdown/drop transitions"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Long build/breakdown/peak/outro cycles with subgenre-specific phrase lengths and number of peaks."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TRANCE_SUBGENRE",
+          "rule": "Tonal/modal progression, pad/arpeggio/lead vocabulary by subgenre; tension/release governs harmonic pacing."
+        },
+        "melody_model": {
+          "rule": "Lead hook/vocal/arpeggio foreground is subgenre-dependent; breakdown may expose melody/harmony before peak return."
+        },
+        "rhythm_groove_model": {
+          "rule": "Four-on-floor baseline with subgenre-specific percussion and drive; not all Trance uses identical kick/hats."
+        },
+        "bass_model": {
+          "rule": "Rolling/offbeat/sequence bass interacts with kick by envelope/timing states and section intensity."
+        },
+        "percussion_model": {
+          "rule": "Kick/hats/claps/risers and percussion density expand/retract with tension cycle."
+        },
+        "phrase_model": {
+          "rule": "Long phrase arcs support anticipation and release; hook recurrence is controlled."
+        },
+        "transition_model": {
+          "rule": "Risers, snare builds, filters, silence, impacts and harmonic preparation by subgenre."
+        },
+        "development_model": {
+          "rule": "Develop through tension curve, layer activation, arpeggio/lead transformation, harmony and energy."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, final peak/resolve or fade by use case."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "Trance is a layered electronic production; player count is not the primary metric."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Lead/vocal owns clear peak or breakdown windows.",
+          "Pads/arps support without masking hook.",
+          "FX occupy temporary transition windows."
+        ],
+        "role_handoff_rules": [
+          "Foreground moves groove→breakdown melody→build→peak lead/drop."
+        ],
+        "register_occupancy": {
+          "rule": "Protect kick/sub lane; separate arp/pad/lead registers."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "tension_cycle_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE",
+          "note": "Share of track spent in build/breakdown/peak/release states."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "sustained pads, gated/arpeggiated textures, bright lead articulation",
+        "dynamic_behavior": "large section-scale crescendos and breakdown contrast",
+        "timing_humanization_behavior": "grid-stable core with controlled groove; phrase timing driven by long sections",
+        "continuous_performance_control": "filter cutoff, resonance, envelopes, modulation, sidechain and expression essential",
+        "interaction_rules": [
+          "Layer automation follows shared tension curve.",
+          "Kick/bass states remain coherent.",
+          "Peak density does not erase lead."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT",
+          "rule": "Focused low end; expansive pads/FX; lead/vocal clear at foreground."
+        },
+        "mix_prominence_intent": "kick/bass protected; lead and pads wide but controlled",
+        "sound_effects_intent": "delay/reverb/sidechain/riser effects structural",
+        "production_mastering_intent": "wide, bright, energetic master with harshness control"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Trance profile",
+          "Beatport 2026 taxonomy",
+          "GiantSteps",
+          "MMA Trance",
+          "MTG-Jamendo"
+        ],
+        "source_confidence": {
+          "trance_family": "HIGH",
+          "subgenre_taxonomy": "HIGH_FOR_CURRENT_MARKETPLACE",
+          "tension_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "GiantSteps": "RESEARCH_LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW",
+          "MTG_Jamendo": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Subgenre resolution required.",
+          "Tension/release curve must be explicit.",
+          "Peak cannot be created only by master gain."
+        ],
+        "listening_tests": [
+          "Build/breakdown/peak arc is convincing.",
+          "Lead remains clear at peak.",
+          "Subgenres have distinct bass/energy behavior."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7337,6 +7713,21 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Trance",
+        "candidate_variants": [
+          "Progressive Trance",
+          "Tech Trance",
+          "Hard Trance",
+          "Uplifting Trance",
+          "Vocal Trance",
+          "Raw Trance",
+          "Deep Trance",
+          "Hypnotic Trance"
+        ],
+        "note": "Psy-Trance is sufficiently distinct to resolve separately rather than silently inheriting."
       }
     },
     "Ambient Electronic": {
@@ -7345,7 +7736,7 @@
       "source_profile_id": "AMBIENT_ELECTRONIC_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__TEXTURE_STATE_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "AMBIENT_ELECTRONIC_V1",
@@ -7388,62 +7779,176 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Excellent current distinction from New Age/meditation music.",
+          "Already allows absent pulse, drones, clusters and selective foreground events.",
+          "Depth/width and evolving fields are correctly central."
+        ],
+        "current_profile_gaps": [
+          "No explicit ambient substyle/component resolver.",
+          "No texture-state occupancy model.",
+          "No event-density or change-rate percentages.",
+          "No rule for free-time versus metered evolution."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport Ambient/Experimental taxonomy",
+          "MTG-Jamendo ambient/electronic tags",
+          "MMA ambient references"
+        ],
+        "retained_current_fields": [
+          "optional pulse",
+          "texture evolution",
+          "drone/modal/cluster options",
+          "selective foreground",
+          "depth/width priority"
+        ],
+        "upgraded_fields": [
+          "texture-state model",
+          "change-rate percentages",
+          "pulse-state resolver",
+          "foreground-event density",
+          "substyle resolver"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Through-composed/long-form fields with explicit state transitions; no forced verse/chorus."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_AMBIENT_SUBSTYLE",
+          "rule": "Modal/drone/cluster/slow tonal/spectral fields according to substyle; cadence optional."
+        },
+        "melody_model": {
+          "rule": "Sparse foreground events may emerge and recede; continuous melody not required."
+        },
+        "rhythm_groove_model": {
+          "rule": "Pulse state may be NONE, SOFT, REPEATING or METERED; free-time must be explicit."
+        },
+        "bass_model": {
+          "rule": "Drone/sub field, sparse support or absence; avoid unnecessary low-end permanence."
+        },
+        "percussion_model": {
+          "rule": "Optional minimal/textural percussion with low event density unless substyle says otherwise."
+        },
+        "phrase_model": {
+          "rule": "Phrase may be defined by texture evolution, breath, register or spectral change rather than bar-count."
+        },
+        "transition_model": {
+          "rule": "Crossfade, spectral/timbral change, silence, field emergence and spatial movement."
+        },
+        "development_model": {
+          "rule": "Develop through change rate, texture, density, register, spatial depth and rare foreground events."
+        },
+        "cadence_ending_model": {
+          "rule": "Fade, dissipation, unresolved field or deliberate tonal closure by substyle."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "Ambient electronic is texture/layer based; physical headcount is not meaningful."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Foreground event can emerge without forcing all other layers to disappear.",
+          "No constant foreground requirement."
+        ],
+        "role_handoff_rules": [
+          "Foreground may transfer among texture, sparse melody, processed acoustic event and silence."
+        ],
+        "register_occupancy": {
+          "rule": "Maintain spectral space between drones, textures and foreground events."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "texture_state_occupancy_percent": {
+          "status": "TO_DERIVE/DEFINE_BY_SUBSTYLE"
+        },
+        "event_density_percent": {
+          "status": "TO_DERIVE_BY_SUBSTYLE"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "soft attacks, sustained tones, granular/textural articulations",
+        "dynamic_behavior": "slow fades/swells over long spans",
+        "timing_humanization_behavior": "timing can float; when pulse exists, humanization is slow and coherent",
+        "continuous_performance_control": "filter/envelope/spatial/modulation automation central",
+        "interaction_rules": [
+          "Slow shared evolution.",
+          "Silence is valid material.",
+          "Random motion cannot substitute for designed texture."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "CORE_IDENTITY",
+          "rule": "Depth/width/spatial choreography are compositional parameters, not post-processing decoration."
+        },
+        "mix_prominence_intent": "depth and width prioritized; no constant foreground requirement",
+        "sound_effects_intent": "reverb/delay/granular/spatial effects may be structural",
+        "production_mastering_intent": "high dynamic headroom, low harshness, preserve tails"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Ambient Electronic profile",
+          "Beatport Ambient/Experimental taxonomy",
+          "MTG-Jamendo",
+          "MMA ambient references"
+        ],
+        "source_confidence": {
+          "ambient_core": "HIGH",
+          "state_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "No forced beat/melody.",
+          "Texture state changes must be explicit.",
+          "No generic New Age substitution."
+        ],
+        "listening_tests": [
+          "Texture evolves meaningfully.",
+          "Space/depth is audible.",
+          "Sparse foreground events remain intentional."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7452,6 +7957,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Ambient Electronic",
+        "candidate_variants": [
+          "Drone ambient",
+          "Textural ambient",
+          "Pulse ambient",
+          "Dark ambient",
+          "Melodic ambient",
+          "Electro-acoustic ambient"
+        ]
       }
     },
     "Downtempo": {
@@ -7460,7 +7977,7 @@
       "source_profile_id": "DOWNTEMPO_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "DOWNTEMPO_V1",
@@ -7503,62 +8020,169 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good laid-back groove/atmosphere balance.",
+          "Warm low end and softer transients are already explicit.",
+          "Loop-evolving or song-hybrid form is appropriate."
+        ],
+        "current_profile_gaps": [
+          "Downtempo overlaps trip-hop, organic house, chillout and electronica; resolver needed.",
+          "No layer/activity percentages.",
+          "No explicit live/electronic drum balance states."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport Downtempo/Organic House taxonomy",
+          "MTG-Jamendo",
+          "GiantSteps contextual reference",
+          "MMA downtempo/ambient libraries"
+        ],
+        "retained_current_fields": [
+          "laid-back groove",
+          "warm bass",
+          "soft hybrid drums",
+          "atmosphere over density",
+          "loop-evolving form"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "layer percentages",
+          "drum-source state",
+          "foreground texture rules",
+          "spatial depth model"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Loop-evolving sectional or verse/chorus hybrid; subgenre controls density and vocal/lead structure."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_DOWNTEMPO_VARIANT",
+          "rule": "Tonal/modal loops, extended chords or sparse fields."
+        },
+        "melody_model": {
+          "rule": "Lead/sample/guitar/textural hooks remain spacious."
+        },
+        "rhythm_groove_model": {
+          "rule": "Laid-back electronic/breakbeat pulse with restrained tempo; groove type resolves by subgenre."
+        },
+        "bass_model": {
+          "rule": "Warm sub/electric bass leaves space around kick and lead."
+        },
+        "percussion_model": {
+          "rule": "Electronic/acoustic hybrid drums with softer transient profile unless subgenre says otherwise."
+        },
+        "phrase_model": {
+          "rule": "Pocket and atmosphere define phrase; repetition evolves through texture and timing."
+        },
+        "transition_model": {
+          "rule": "Layer subtraction, filtering, samples, fills and ambience changes."
+        },
+        "development_model": {
+          "rule": "Develop through texture, drum/bass states, harmony, sample/lead recurrence and spatial change."
+        },
+        "cadence_ending_model": {
+          "rule": "Fade, deconstruction, soft stop or song ending by subgenre."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "Downtempo may mix virtual and live instruments; headcount is secondary to layer/function."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Lead/textures remain spacious; warm low end cannot occupy whole mix.",
+          "Atmospheric layers stay behind foreground."
+        ],
+        "role_handoff_rules": [
+          "Foreground can move among lead, sample, guitar/keys and texture."
+        ],
+        "register_occupancy": {
+          "rule": "Protect lead/texture air above warm low-mid/low end."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "softened drum attacks, sustained textures, selective accents",
+        "dynamic_behavior": "moderate dynamics with gradual automation",
+        "timing_humanization_behavior": "laid-back placement with controlled swing/microtiming",
+        "continuous_performance_control": "filter/expression/FX automation",
+        "interaction_rules": [
+          "Laid-back timing is shared.",
+          "Hybrid drums and live parts coexist in one pocket.",
+          "Negative space is preserved."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT",
+          "rule": "Warm focused low end with broad/deep atmosphere."
+        },
+        "mix_prominence_intent": "low end warm, lead/textures spacious",
+        "sound_effects_intent": "reverb/delay/saturation texture common as controlled options",
+        "production_mastering_intent": "smooth master with preserved groove dynamics"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Downtempo profile",
+          "Beatport taxonomy",
+          "MTG-Jamendo",
+          "MMA downtempo references"
+        ],
+        "source_confidence": {
+          "downtempo_core": "HIGH",
+          "subgenre_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Trip-Hop cannot silently resolve here.",
+          "Layer density must remain restrained relative to dancefloor styles."
+        ],
+        "listening_tests": [
+          "Groove feels laid back, not weak.",
+          "Low end is warm without mud.",
+          "Atmosphere stays spacious."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7567,6 +8191,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Downtempo",
+        "candidate_variants": [
+          "Electronic downtempo",
+          "Organic downtempo",
+          "Chillout",
+          "Beat-driven downtempo",
+          "Song-oriented downtempo"
+        ],
+        "note": "Trip-Hop remains a separate profile."
       }
     },
     "Breakbeat-related": {
@@ -7575,7 +8211,7 @@
       "source_profile_id": "BREAKBEAT_RELATED_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BREAKBEAT_RELATED_V1",
@@ -7616,62 +8252,170 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Correctly defines broken drums rather than four-on-floor as core.",
+          "Bass syncopation around broken kick and phrase-preserving fills are good rules."
+        ],
+        "current_profile_gaps": [
+          "Breakbeat/UK Bass family contains very different subgenres.",
+          "No break-source/chop transformation model.",
+          "No drum-layer activity percentages.",
+          "No distinction between original-programmed and sampled/chopped feel."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport Breaks/Breakbeat/UK Bass taxonomy",
+          "MTG-Jamendo",
+          "MMA breakbeat references"
+        ],
+        "retained_current_fields": [
+          "broken drum identity",
+          "syncopated bass",
+          "ghost notes/fills",
+          "rhythm-primary identifier",
+          "breakdowns"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "break transformation model",
+          "drum-layer percentages",
+          "sample/program source state",
+          "foreground windows"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Loop-evolving sectional form with breakdowns, drops and pattern transformations."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BREAKBEAT_VARIANT",
+          "rule": "Tonal/modal/minimal harmony according to subgenre; rhythm remains primary identifier."
+        },
+        "melody_model": {
+          "rule": "Lead/sample/synth material arranged around break rather than forcing constant melody."
+        },
+        "rhythm_groove_model": {
+          "rule": "Broken kick/snare architecture is central; chopping, ghosting and subdivision vary by subgenre."
+        },
+        "bass_model": {
+          "rule": "Bass syncopates around broken kick and may use sub/synth/electric timbre by variant."
+        },
+        "percussion_model": {
+          "rule": "Break can be sampled-style, chopped or originally programmed; transformations preserve groove identity."
+        },
+        "phrase_model": {
+          "rule": "Break mutation and fills follow phrase direction, not arbitrary edits."
+        },
+        "transition_model": {
+          "rule": "Break edits, stops, fills, FX and layer changes mark sections."
+        },
+        "development_model": {
+          "rule": "Develop through break transformation, bass variation, samples, density and effects."
+        },
+        "cadence_ending_model": {
+          "rule": "Break deconstruction, final hit, fade or DJ outro."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "Breakbeat-related genres are layer/programming systems, not fixed human ensembles."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Drums/bass remain prominent but lead/sample material gets uncluttered windows.",
+          "FX edits are temporary foreground events."
+        ],
+        "role_handoff_rules": [
+          "Foreground can move break→bass→sample/lead→break feature."
+        ],
+        "register_occupancy": {
+          "rule": "Keep sub/bass separated from broken-kick energy and melodic/sample layers."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "break_mutation_rate": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "sharp drum edits, ghost notes, stutters where controlled",
+        "dynamic_behavior": "accent-driven energy and dropouts",
+        "timing_humanization_behavior": "groove/swing offsets may be important; preserve pattern feel",
+        "continuous_performance_control": "filter/edit/modulation/level automation",
+        "interaction_rules": [
+          "Ghost notes/fills preserve pocket.",
+          "Break edits are phrase-aware.",
+          "Low end follows broken kick rather than four-on-floor assumptions."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT"
+        },
+        "mix_prominence_intent": "drums/bass prominent; melodic material arranged around break",
+        "sound_effects_intent": "delay/filter/distortion/chop effects available",
+        "production_mastering_intent": "punchy transient master with sub control"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Breakbeat profile",
+          "Beatport 2026 taxonomy",
+          "MTG-Jamendo",
+          "MMA breakbeat references"
+        ],
+        "source_confidence": {
+          "breakbeat_core": "HIGH",
+          "subgenre_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Four-on-floor cannot be default.",
+          "Break transformations must remain phrase-aware."
+        ],
+        "listening_tests": [
+          "Broken groove remains coherent.",
+          "Bass fits kick gaps.",
+          "Edits feel intentional."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7680,6 +8424,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Breakbeat-related",
+        "candidate_variants": [
+          "Breaks",
+          "UK Bass-related breaks",
+          "Glitch Hop-related",
+          "Old-school breakbeat",
+          "Hybrid electronic breaks"
+        ]
       }
     },
     "Garage-related": {
@@ -7688,7 +8443,7 @@
       "source_profile_id": "GARAGE_RELATED_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "GARAGE_RELATED_V1",
@@ -7729,62 +8484,176 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already acknowledges 2-step kick placement and shuffled/syncopated grid.",
+          "Sub/snare/clap clarity and loop-based R&B/house harmony are good foundations."
+        ],
+        "current_profile_gaps": [
+          "UK Garage, Bassline, 2-Step and Speed Garage need explicit separation.",
+          "No swing/2-step probability model.",
+          "No layer percentages.",
+          "No bass-slide/voice-sample role resolver."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport UK Garage/Bassline taxonomy",
+          "GiantSteps contextual EDM data",
+          "MTG-Jamendo",
+          "MMA garage references"
+        ],
+        "retained_current_fields": [
+          "shuffled/syncopated groove",
+          "2-step option",
+          "sub bass",
+          "shuffled hats/claps",
+          "R&B/house chord influence"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "kick-pattern state",
+          "shuffle amount model",
+          "layer percentages",
+          "bass/lead interaction"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Intro/main/break/return or song-hybrid dance structure; subgenre-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_GARAGE_SUBGENRE",
+          "rule": "House/R&B-influenced loops/stabs with subgenre-specific voicing."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/sample roles use syncopated windows around drums and bass."
+        },
+        "rhythm_groove_model": {
+          "rule": "Shuffled/syncopated grid with explicit kick-pattern state; 2-step and speed-garage behavior differ."
+        },
+        "bass_model": {
+          "rule": "Sub/bassline syncopates with sparse kick; slides/movement only when variant supports them."
+        },
+        "percussion_model": {
+          "rule": "Shuffled hats, claps/snares, ghost percussion and syncopated kicks; subdivision is structural."
+        },
+        "phrase_model": {
+          "rule": "Vocal chops/leads and chord stabs occupy gaps in the shuffled grid."
+        },
+        "transition_model": {
+          "rule": "Drum drops, bass switches, vocal chops, fills and FX by subgenre."
+        },
+        "development_model": {
+          "rule": "Develop through kick-pattern variation, bass movement, chord/sample activation and breakdowns."
+        },
+        "cadence_ending_model": {
+          "rule": "DJ outro, fade, final bass/drum stop or song ending."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "Garage-related styles are electronic layer systems."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Snare/clap and bass remain clear while vocal/chord features get syncopated space.",
+          "Sub cannot mask vocal/lead."
+        ],
+        "role_handoff_rules": [
+          "Foreground can move vocal/sample↔bassline↔chord stab↔drum feature."
+        ],
+        "register_occupancy": {
+          "rule": "Protect sub, snare/clap and vocal/chord lanes."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "shuffle_amount": {
+          "status": "TO_DERIVE_BY_SUBGENRE/TEMPO"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "short stabs, chopped lead articulation, tight percussion",
+        "dynamic_behavior": "energy lifts by percussion/bass density and vocal/lead entries",
+        "timing_humanization_behavior": "shuffle microtiming is structural and shared",
+        "continuous_performance_control": "filter/level/pitch-envelope automation",
+        "interaction_rules": [
+          "Shuffle grid is shared.",
+          "Kick/bass relationship adapts to 2-step/full-step state.",
+          "Ghost percussion fills gaps."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SUBGENRE_DEPENDENT",
+          "rule": "Focused sub/snare with wider chords/vocals/FX."
+        },
+        "mix_prominence_intent": "sub and snare/clap clear; chords/lead do not mask them",
+        "sound_effects_intent": "reverb/delay/chop and bass processing as controlled tools",
+        "production_mastering_intent": "tight dance master with controlled sub"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Garage-related profile",
+          "Beatport UK Garage/Bassline taxonomy",
+          "GiantSteps",
+          "MTG-Jamendo",
+          "MMA garage references"
+        ],
+        "source_confidence": {
+          "garage_family": "HIGH",
+          "subgenre_taxonomy": "HIGH_FOR_CURRENT_MARKETPLACE",
+          "shuffle_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "GiantSteps": "RESEARCH_LICENSE_REVIEW",
+          "MTG_Jamendo": "LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Subgenre resolution required.",
+          "2-step cannot be rendered as generic house beat.",
+          "Shuffle grid must be shared."
+        ],
+        "listening_tests": [
+          "2-step/speed-garage/bassline variants differ.",
+          "Sub and snare remain clear.",
+          "Swing feels coherent."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7793,6 +8662,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Garage-related",
+        "candidate_variants": [
+          "UK Garage",
+          "2-Step",
+          "Speed Garage",
+          "Bassline"
+        ],
+        "hard_rule": "Do not use continuous four-on-floor unless selected subgenre requires it."
       }
     },
     "Experimental Electronic": {
@@ -7801,7 +8681,7 @@
       "source_profile_id": "EXPERIMENTAL_ELECTRONIC_V1",
       "family": "Electronic",
       "source_status": "CONTROLLED_COMPONENT_ARCHITECTURE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__COMPONENT_CONTRACT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "EXPERIMENTAL_ELECTRONIC_V1",
@@ -7846,62 +8726,172 @@
         "execution_rule": "RESOLVE_COMPONENTS_WITH_PROVENANCE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Current profile already rejects randomness as a genre definition.",
+          "Explicit component choices, pulse/free-time/additive grouping and broad harmony options are exactly the right direction.",
+          "Mix hierarchy is already required to be declared."
+        ],
+        "current_profile_gaps": [
+          "Needs a formal component schema and validation rather than broad prose.",
+          "No component-activity/state percentages.",
+          "No transformation graph or constraint-conflict resolver.",
+          "No distinction between ambient-experimental, glitch, algorithmic, electro-acoustic and other approaches."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport Ambient/Experimental taxonomy",
+          "electronic taxonomy research",
+          "algorithmic/constraint-composition research already in project"
+        ],
+        "retained_current_fields": [
+          "explicit components",
+          "no generic randomness",
+          "declared pulse/free time",
+          "declared harmony system",
+          "declared mix hierarchy",
+          "through-composed transformation"
+        ],
+        "upgraded_fields": [
+          "component schema",
+          "transformation graph",
+          "state/activity percentages",
+          "constraint validation",
+          "sub-approach resolver"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Component/state graph with explicit transformation rules; through-composed by default but sections allowed when declared."
+        },
+        "harmony_model": {
+          "authority": "DECLARED_COMPONENT_CONTRACT",
+          "rule": "Tonal/modal/atonal/spectral/drone/process systems permitted only when explicitly selected."
+        },
+        "melody_model": {
+          "rule": "Melody may be absent, generated, fragmented or conventional according to component map."
+        },
+        "rhythm_groove_model": {
+          "rule": "Pulse/free-time/additive/algorithmic timing must be explicitly declared; randomness cannot replace design."
+        },
+        "bass_model": {
+          "rule": "Bass role must be declared as absent/tonal/textural/rhythmic/sub-field."
+        },
+        "percussion_model": {
+          "rule": "Conventional/electronic/found-sound/absent percussion must be explicitly declared."
+        },
+        "phrase_model": {
+          "rule": "Phrase/grouping definition comes from component map."
+        },
+        "transition_model": {
+          "rule": "Transformation edges between component states must be declared or rule-generated under constraints."
+        },
+        "development_model": {
+          "rule": "Development follows transformation graph and parameter changes, not unbounded randomness."
+        },
+        "cadence_ending_model": {
+          "rule": "Ending condition declared by component contract: resolution, process exhaustion, stop, fade, dissipation or other explicit rule."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "NOT_PHYSICAL_HEADCOUNT_AUTHORITY",
+          "note": "Experimental Electronic is component-defined; physical player percentages are generally inapplicable."
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Agency rotates among beat, bass, lead, texture and transitional layers independently of loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "foreground_window_rules": [
+          "Hierarchy must be explicitly declared per component state.",
+          "No automatic lead/foundation assumptions."
+        ],
+        "role_handoff_rules": [
+          "Role transitions are edges in the component-state graph."
+        ],
+        "register_occupancy": {
+          "rule": "Register/spectral occupancy constraints declared per component."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_SUBGENRE"
+        },
+        "section_population_reference": {
+          "status": "VIRTUAL_LAYER_FORMATION_REQUIRED"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE_FROM_TAGGED/MULTITRACK_DATA"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE_FROM_SECTION/LAYER_ANALYSIS"
+        },
+        "low_end_occupancy_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Kick and bass share low-end occupancy without default constant duplication."
+        },
+        "component_state_percent": {
+          "status": "TO_BE_DECLARED_OR_GENERATED_WITHIN_CONSTRAINTS"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "articulation derived from chosen resources/processes",
+        "dynamic_behavior": "dynamic behavior declared per section/process",
+        "timing_humanization_behavior": "timing transformation must be intentional and reproducible",
+        "continuous_performance_control": "automation/process control is first-class",
+        "interaction_rules": [
+          "No generic randomization.",
+          "All stochastic behavior must be bounded by declared constraints.",
+          "Conflicting components require explicit resolution."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "DECLARED_COMPONENT_AUTHORITY",
+          "rule": "Spatial hierarchy/movement is part of composition contract when used."
+        },
+        "mix_prominence_intent": "mix hierarchy explicitly declared rather than assumed",
+        "sound_effects_intent": "effects may be compositional processes, with parameters traceable",
+        "production_mastering_intent": "mastering preserves intended extremes without clipping"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Experimental Electronic profile",
+          "Beatport Ambient/Experimental taxonomy",
+          "project constraint-composition research"
+        ],
+        "source_confidence": {
+          "component_architecture_direction": "HIGH",
+          "universal_style_rules": "REJECTED"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "research_sources": "REFERENCE"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Component map required.",
+          "No unbounded randomness.",
+          "Transformation graph validates.",
+          "Mix/spatial hierarchy explicitly declared."
+        ],
+        "listening_tests": [
+          "Result sounds intentionally designed rather than random.",
+          "Transformations remain coherent with declared components."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -7910,6 +8900,19 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "COMPONENT_MAP_REQUIRED",
+        "parent_family": "Experimental Electronic",
+        "candidate_variants": [
+          "Algorithmic/constraint-based",
+          "Glitch/process-based",
+          "Electro-acoustic",
+          "Noise/textural",
+          "Experimental beat-based",
+          "Spectral/drone electronic"
+        ],
+        "hard_rule": "Variant label alone is insufficient; explicit component map is mandatory."
       }
     },
     "Eclectic New Indie": {
@@ -9898,6 +10901,14 @@
     "Country Shuffle",
     "Two-Step",
     "Country Waltz",
-    "Bluegrass-related"
+    "Bluegrass-related",
+    "House",
+    "Techno",
+    "Trance",
+    "Ambient Electronic",
+    "Downtempo",
+    "Breakbeat-related",
+    "Garage-related",
+    "Experimental Electronic"
   ]
 }

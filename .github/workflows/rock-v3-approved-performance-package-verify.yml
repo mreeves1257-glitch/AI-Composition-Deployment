@@ -8,6 +8,7 @@ on:
       - ".github/workflows/rock-v3-approved-performance-package-verify.yml"
       - "current_master_forward/instrument_role_performance_profiles.py"
       - "current_master_forward/rock_v3_approved_performance_package.py"
+      - "current_master_forward/rock_v3_core_performance_plan.py"
       - "current_master_forward/rock_v3_bass_held_tone_candidate.py"
       - "current_master_forward/rock_v3_bass_offbeat_coherence_candidate.py"
       - "current_master_forward/rock_v3_strum_candidate_executor.py"

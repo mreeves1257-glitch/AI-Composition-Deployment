@@ -209,8 +209,8 @@
     },
     {
       "genre_name": "Traditional Country",
-      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__COUNTRY_FAMILY_INSTRUMENT_PRIOR_AND_HUMAN_DRUM_REFERENCE_ADDED__ERA_STATS_PENDING",
+      "comparison_status": "SHARED_COUNTRY_EVIDENCE_LAYER_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -221,8 +221,8 @@
     },
     {
       "genre_name": "Country Rock",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__COUNTRY_AND_ROCK_EVIDENCE_LAYERS_LINKED__BLEND_STATS_PENDING",
+      "comparison_status": "SHARED_COUNTRY_EVIDENCE_LAYER_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -233,8 +233,8 @@
     },
     {
       "genre_name": "Country Ballad",
-      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__COUNTRY_EVIDENCE_LAYER_LINKED__BALLAD_VARIANT_STATS_PENDING",
+      "comparison_status": "SHARED_COUNTRY_EVIDENCE_LAYER_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -245,8 +245,8 @@
     },
     {
       "genre_name": "Country Shuffle",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__COUNTRY_DRUM_REFERENCE_LINKED__SHUFFLE_SPECIFIC_STATS_PENDING",
+      "comparison_status": "SHARED_COUNTRY_EVIDENCE_LAYER_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -257,8 +257,8 @@
     },
     {
       "genre_name": "Two-Step",
-      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__COUNTRY_DRUM_REFERENCE_LINKED__REGIONAL_TWO_STEP_STATS_PENDING",
+      "comparison_status": "SHARED_COUNTRY_EVIDENCE_LAYER_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -269,8 +269,8 @@
     },
     {
       "genre_name": "Country Waltz",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__COUNTRY_EVIDENCE_LAYER_LINKED__WALTZ_VARIANT_STATS_PENDING",
+      "comparison_status": "SHARED_COUNTRY_EVIDENCE_LAYER_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -281,8 +281,8 @@
     },
     {
       "genre_name": "Bluegrass-related",
-      "research_status": "V3_UPDATED__TRADITIONAL_FIVE_PILOT",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__BLUEGRASS_SEPARATION_REINFORCED__TRADITIONAL_FIVE_PILOT_RETAINED",
+      "comparison_status": "SHARED_COUNTRY_EVIDENCE_LAYER_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

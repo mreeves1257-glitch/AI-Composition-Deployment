@@ -53,8 +53,12 @@ def main():
     if rhythm["duration_policy"].get("v3_harmony_safety_cap")!="DO_NOT_CROSS_NEXT_BAR_HARMONY_CHANGE_WITHOUT_EXPLICIT_TIE":
         raise RuntimeError("RHYTHM_GUITAR_HARMONY_SAFETY_CAP_MISSING")
     strum=rhythm["attack_strum_candidate"]
-    if strum.get("listening_approved") is not False or strum.get("default_enabled") is not False:
-        raise RuntimeError("UNAPPROVED_STRUM_CANDIDATE_AUTO_ENABLED")
+    if strum.get("listening_approved") is not True:
+        raise RuntimeError("APPROVED_STRUM_STATUS_LOST")
+    if strum.get("default_enabled") is not False:
+        raise RuntimeError("APPROVED_STRUM_AUTO_ENABLED_IN_MODE_A")
+    if "HUMAN_APPROVED_DIAGNOSTIC" not in str(strum.get("status","")):
+        raise RuntimeError("APPROVED_STRUM_DIAGNOSTIC_STATUS_LOST")
     if strum.get("note_gap_beats")!=0.038:
         raise RuntimeError("ROCK_STRUM_RESEARCH_VALUE_DRIFT")
 
@@ -69,7 +73,20 @@ def main():
     bass=roles["BASS"]
     sustain=bass["sustain_candidate"]
     if sustain.get("listening_approved") is not False or sustain.get("default_enabled") is not False:
-        raise RuntimeError("UNAPPROVED_BASS_SUSTAIN_AUTO_ENABLED")
+        raise RuntimeError("REJECTED_BASS_SUSTAIN_AUTO_ENABLED")
+    if "SUPERSEDED_BY_APPROVED_HELD_TONE_BASS_D_PROFILE" not in str(sustain.get("status","")):
+        raise RuntimeError("REJECTED_BASS_SUSTAIN_NOT_MARKED_SUPERSEDED")
+
+    approved_refs=plan.get("approved_role_profile_refs") or {}
+    if set(approved_refs)!={"HARMONY","LEAD","BASS"}:
+        raise RuntimeError("APPROVED_ROLE_PROFILE_REF_SET_WRONG")
+    for role in ("HARMONY","LEAD","BASS"):
+        if approved_refs[role].get("status")!="HUMAN_APPROVED_DIAGNOSTIC":
+            raise RuntimeError("APPROVED_ROLE_PROFILE_STATUS_LOST::"+role)
+        if not approved_refs[role].get("profile_id") or not approved_refs[role].get("profile_sha256"):
+            raise RuntimeError("APPROVED_ROLE_PROFILE_REF_INCOMPLETE::"+role)
+    if approved_refs["BASS"].get("old_sustain_candidate_superseded") is not True:
+        raise RuntimeError("BASS_SUPERSEDED_GUARD_MISSING")
 
     for role in ("KICK","SNARE","HAT"):
         row=roles[role]
@@ -108,8 +125,11 @@ def main():
         "profile_id":"ROCK_CORE_V2",
         "recommended_mode":"A_GUITAR_DURATION_ONLY",
         "mode_a_changes":"GUITAR_NOTE_DURATIONS_ONLY",
+        "strum_listening_approved":True,
         "strum_candidate_default_enabled":False,
+        "old_bass_sustain_candidate_listening_approved":False,
         "bass_sustain_candidate_default_enabled":False,
+        "approved_role_profiles":["HARMONY","LEAD","BASS"],
         "random_jitter_allowed":False,
         "drum_onset_changes_allowed":False,
         "new_drum_hits_allowed":False,
@@ -119,9 +139,10 @@ def main():
         "listening_approval":False,
         "result":(
             "Rock Core performance planning is now explicit and staged. The first "
-            "candidate may change only electric-guitar note durations, must stop at "
-            "planned harmony changes, and leaves strum timing and bass sustain as "
-            "separate unapproved research variables."
+            "candidate may change only electric-guitar note durations and must stop "
+            "at planned harmony changes. Separately, human-approved diagnostic role "
+            "profiles now preserve the safe strum, treated lead, and Bass D treatment "
+            "without auto-enabling them inside legacy Mode A."
         ),
         "next_gate":"EXECUTE_AND_AUDIT_MODE_A_GUITAR_DURATION_ONLY",
         "performance_plan_sha256":plan["performance_plan_sha256"],

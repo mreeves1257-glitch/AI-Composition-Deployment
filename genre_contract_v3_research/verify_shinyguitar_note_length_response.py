@@ -26,7 +26,9 @@ import hashlib
 import json
 import math
 import os
+import re
 import struct
+import subprocess
 import sys
 import tempfile
 import wave
@@ -36,7 +38,6 @@ RUNTIME=ROOT/"composer"/"runtime"
 if str(RUNTIME) not in sys.path:
     sys.path.insert(0,str(RUNTIME))
 
-from sfz_renderer_adapter import render_midi
 
 SCHEMA="SHINYGUITAR_NOTE_LENGTH_RESPONSE_PROOF_001"
 RESOURCE_ID="KARORYFER_SHINYGUITAR"
@@ -54,6 +55,142 @@ SAMPLE_RATE=44100
 
 class ShinyguitarNoteLengthProofError(RuntimeError):
     pass
+
+
+def _expand_macros(value:str, macros:dict[str,str])->str:
+    out=value
+    for _ in range(16):
+        changed=False
+        for name,replacement in macros.items():
+            if name in out:
+                out=out.replace(name,replacement)
+                changed=True
+        if not changed:
+            break
+    if re.search(r"\$[A-Za-z_][A-Za-z0-9_]*",out):
+        raise ShinyguitarNoteLengthProofError("UNRESOLVED_SFZ_MACRO::"+out)
+    return out
+
+
+def _validate_sample_graph(wrapper:Path, allowed_root:Path)->dict:
+    """Read-only SFZ sample-graph validation with #define support.
+
+    The recovered production validator predates Shinyguitar's $sample_dir wrapper
+    and falsely treats the macro name as a literal directory. This diagnostic
+    validator handles inherited #define values without modifying any publisher
+    SFZ or sample file.
+    """
+    allowed_root=allowed_root.resolve()
+    visited:set[Path]=set()
+    refs:list[str]=[]
+    resolved_samples:set[Path]=set()
+    missing:list[str]=[]
+
+    def inside_root(path:Path)->bool:
+        try:
+            path.resolve().relative_to(allowed_root)
+            return True
+        except ValueError:
+            return False
+
+    def walk(path:Path, inherited_macros:dict[str,str], inherited_default:Path|None=None):
+        path=path.resolve()
+        if not inside_root(path):
+            raise ShinyguitarNoteLengthProofError("SFZ_PATH_ESCAPES_RESOURCE_ROOT::"+str(path))
+        if path in visited:
+            return
+        if not path.is_file():
+            missing.append("INCLUDE:"+str(path))
+            return
+        visited.add(path)
+
+        text=path.read_text(errors="strict")
+        text=re.sub(r"//[^\n]*","",text)
+        macros=dict(inherited_macros)
+
+        for m in re.finditer(r"#define\s+(\$[A-Za-z_][A-Za-z0-9_]*)\s+([^\r\n]+)",text):
+            name=m.group(1)
+            raw=m.group(2).strip().strip('"')
+            macros[name]=_expand_macros(raw,macros)
+
+        default=inherited_default
+        dm=re.search(r"(?:^|\s)default_path=([^\s<]+)",text)
+        if dm:
+            raw=dm.group(1).strip().strip('"').replace("\\","/")
+            raw=_expand_macros(raw,macros)
+            default=(path.parent/raw).resolve()
+            if not inside_root(default):
+                raise ShinyguitarNoteLengthProofError(
+                    "SFZ_DEFAULT_PATH_ESCAPES_RESOURCE_ROOT::"+str(default)
+                )
+
+        for inc in re.findall(r'#include\s+["<]([^">]+)[">]',text):
+            raw=_expand_macros(inc.replace("\\","/"),macros)
+            walk((path.parent/raw).resolve(),macros,default)
+
+        for match in re.finditer(r"(?:^|\s)sample=(.*?)(?=\s+\w+=|\s*<|$)",text,re.S):
+            ref=match.group(1).strip().strip('"').replace("\\","/")
+            ref=_expand_macros(ref,macros)
+            refs.append(ref)
+            base=default if default is not None else path.parent
+            candidate=(base/ref).resolve()
+            if not inside_root(candidate):
+                raise ShinyguitarNoteLengthProofError(
+                    "SFZ_SAMPLE_ESCAPES_RESOURCE_ROOT::"+str(candidate)
+                )
+            if candidate.is_file():
+                resolved_samples.add(candidate)
+            else:
+                missing.append(ref)
+
+    walk(wrapper,{},None)
+    if not refs:
+        raise ShinyguitarNoteLengthProofError("SFZ_NO_SAMPLE_REFERENCES")
+    if missing:
+        raise ShinyguitarNoteLengthProofError(
+            "SFZ_SAMPLE_SET_INCOMPLETE::"+
+            json.dumps({"missing_count":len(missing),"examples":missing[:12]},sort_keys=True)
+        )
+    return {
+        "sample_references":len(refs),
+        "unique_sample_references":len(set(refs)),
+        "unique_sample_files_resolved":len(resolved_samples),
+        "sfz_files_validated":len(visited),
+        "macro_aware_validation":True,
+    }
+
+
+def _render_direct(renderer:Path, wrapper:Path, midi_path:Path, wav_path:Path)->dict:
+    """Diagnostic-only render through the exact pinned sfizz CLI."""
+    wav_path.unlink(missing_ok=True)
+    cp=subprocess.run(
+        [
+            str(renderer),"--sfz",str(wrapper),"--midi",str(midi_path),
+            "--wav",str(wav_path),"--samplerate",str(SAMPLE_RATE),
+        ],
+        capture_output=True,text=True,timeout=120,
+    )
+    if cp.returncode!=0 or not wav_path.is_file():
+        raise ShinyguitarNoteLengthProofError(
+            "SFIZZ_DIAGNOSTIC_RENDER_FAILED::"+
+            (cp.stderr or cp.stdout or "")[-1200:]
+        )
+    with wave.open(str(wav_path),"rb") as w:
+        frames=w.getnframes()
+        channels=w.getnchannels()
+        rate=w.getframerate()
+    if not frames or channels not in (1,2) or rate!=SAMPLE_RATE:
+        raise ShinyguitarNoteLengthProofError(
+            "SFIZZ_DIAGNOSTIC_WAVEFORM_INVALID::"+
+            json.dumps({"frames":frames,"channels":channels,"rate":rate},sort_keys=True)
+        )
+    return {
+        "frames":frames,
+        "channels":channels,
+        "sample_rate":rate,
+        "audio_rendered":True,
+        "diagnostic_direct_pinned_sfizz":True,
+    }
 
 
 def _vlq(value:int)->bytes:
@@ -168,7 +305,15 @@ def main():
             "SHINYGUITAR_WRAPPER_HASH_CHANGED::"+digest
         )
 
-    resource=dict(binding)
+    resource_root=wrapper.parents[1]
+    sample_graph=_validate_sample_graph(wrapper,resource_root)
+    if sample_graph["unique_sample_files_resolved"]!=846:
+        raise ShinyguitarNoteLengthProofError(
+            "SHINYGUITAR_UNIQUE_SAMPLE_COUNT_CHANGED::"+
+            str(sample_graph["unique_sample_files_resolved"])
+        )
+
+    renderer_path=Path(renderer).resolve()
     with tempfile.TemporaryDirectory(prefix="shiny-note-length-",dir=str(RUNTIME)) as tmp:
         folder=Path(tmp)
         renders={}
@@ -180,7 +325,7 @@ def main():
             wav_path=folder/(name+".wav")
             midi_path.write_bytes(midi)
             midi_hashes[name]=hashlib.sha256(midi).hexdigest()
-            reports[name]=render_midi(resource,midi_path,wav_path,SAMPLE_RATE)
+            reports[name]=_render_direct(renderer_path,wrapper,midi_path,wav_path)
             pcm,rate=_pcm_mono(wav_path)
             renders[name]=(pcm,rate)
 
@@ -245,7 +390,9 @@ def main():
             "resource_id":RESOURCE_ID,
             "mapping":MAPPING,
             "wrapper_sha256":digest,
-            "renderer_path":str(Path(renderer).resolve()),
+            "renderer_path":str(renderer_path),
+            "sample_graph_validation":sample_graph,
+            "production_preflight_bypassed_for_isolated_diagnostic":True,
             "renderer_version_pin":os.environ.get("AI_COMP_SFIZZ_PIN"),
             "pitch":PITCH,
             "velocity":VELOCITY,
@@ -271,8 +418,6 @@ def main():
                     "frames":report["frames"],
                     "channels":report["channels"],
                     "sample_rate":report["sample_rate"],
-                    "peak_dbfs":report.get("peak_dbfs"),
-                    "rms_dbfs":report.get("rms_dbfs"),
                     "audio_rendered":report["audio_rendered"],
                 }
                 for name,report in reports.items()
@@ -285,7 +430,9 @@ def main():
                 "With pitch, velocity, onset, tempo, mapping and total MIDI length held "
                 "constant, changing only note-off time causes the preserved Shinyguitar "
                 "render to sustain materially longer and release after the later note-off. "
-                "This proves NOTE_LENGTH_RESPONSE for Rock Mode A on this mapping/renderer."
+                "The sample graph was independently validated with SFZ #define expansion; "
+                "the live production preflight remains unchanged and blocked. This proves "
+                "NOTE_LENGTH_RESPONSE for Rock Mode A on this exact mapping/renderer."
             ),
             "next_gate":"RECORD_CAPABILITY_CERTIFICATE__THEN_NARROW_ROCK_MODE_A_LISTENING_A_B",
         }

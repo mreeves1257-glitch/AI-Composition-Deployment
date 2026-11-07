@@ -12,7 +12,7 @@
       "source_profile_id": "ROCK_CORE_V2",
       "family": "Rock",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
+      "research_status": "V3_UPDATED__GMD_GUITARSET_AND_JAMENDO_REFERENCES_ADDED__SUBGENRE_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "ROCK_CORE_V2",
@@ -145,7 +145,8 @@
         "foreground_window_rules": [
           "Lead/vocal/guitar feature gets space through rhythm-guitar simplification, register and density.",
           "Kick/bass remain foundation without owning every foreground moment.",
-          "A guitar solo window should alter the guitar's compositional role and thin competing harmonic layers before applying level changes."
+          "A guitar solo window should alter the guitar's compositional role and thin competing harmonic layers before applying level changes.",
+          "Rock instrument-tag evidence strongly supports drums/bass/electric-guitar core as a candidate default for band variants, while synth/keys/acoustic/other colors remain subgenre-dependent."
         ],
         "role_handoff_rules": [
           "Foreground can move among vocal/lead guitar/keys/riff while rhythm section maintains identity.",
@@ -475,6 +476,126 @@
             "Foreground handoff to guitar requires changes in note density, register, phrasing and accompaniment behavior, not only volume.",
             "When guitar becomes lead, other harmonic layers should simplify or change register as needed."
           ]
+        },
+        "mtg_jamendo_tagged_instrument_reference": {
+          "source": "MTG-Jamendo cleaned tag metadata (raw_30s_cleantags_50artists.tsv)",
+          "genre_tag": "rock",
+          "genre_tagged_tracks": 6865,
+          "tracks_with_any_instrument_tag": 3203,
+          "instrument_tag_coverage_percent": 46.7,
+          "top_instrument_tags": [
+            {
+              "instrument": "drums",
+              "tagged_track_count": 1758,
+              "percent_of_instrument_tagged_genre_tracks": 54.9
+            },
+            {
+              "instrument": "bass",
+              "tagged_track_count": 1753,
+              "percent_of_instrument_tagged_genre_tracks": 54.7
+            },
+            {
+              "instrument": "electricguitar",
+              "tagged_track_count": 1563,
+              "percent_of_instrument_tagged_genre_tracks": 48.8
+            },
+            {
+              "instrument": "guitar",
+              "tagged_track_count": 1269,
+              "percent_of_instrument_tagged_genre_tracks": 39.6
+            },
+            {
+              "instrument": "synthesizer",
+              "tagged_track_count": 668,
+              "percent_of_instrument_tagged_genre_tracks": 20.9
+            },
+            {
+              "instrument": "voice",
+              "tagged_track_count": 526,
+              "percent_of_instrument_tagged_genre_tracks": 16.4
+            },
+            {
+              "instrument": "acousticguitar",
+              "tagged_track_count": 387,
+              "percent_of_instrument_tagged_genre_tracks": 12.1
+            },
+            {
+              "instrument": "piano",
+              "tagged_track_count": 347,
+              "percent_of_instrument_tagged_genre_tracks": 10.8
+            },
+            {
+              "instrument": "keyboard",
+              "tagged_track_count": 219,
+              "percent_of_instrument_tagged_genre_tracks": 6.8
+            },
+            {
+              "instrument": "drummachine",
+              "tagged_track_count": 177,
+              "percent_of_instrument_tagged_genre_tracks": 5.5
+            },
+            {
+              "instrument": "electricpiano",
+              "tagged_track_count": 110,
+              "percent_of_instrument_tagged_genre_tracks": 3.4
+            },
+            {
+              "instrument": "saxophone",
+              "tagged_track_count": 86,
+              "percent_of_instrument_tagged_genre_tracks": 2.7
+            },
+            {
+              "instrument": "trumpet",
+              "tagged_track_count": 77,
+              "percent_of_instrument_tagged_genre_tracks": 2.4
+            },
+            {
+              "instrument": "violin",
+              "tagged_track_count": 75,
+              "percent_of_instrument_tagged_genre_tracks": 2.3
+            }
+          ],
+          "top_co_genre_tags": [
+            {
+              "genre": "pop",
+              "percent_of_genre_tagged_tracks": 26.7
+            },
+            {
+              "genre": "alternative",
+              "percent_of_genre_tagged_tracks": 17.7
+            },
+            {
+              "genre": "indie",
+              "percent_of_genre_tagged_tracks": 16.4
+            },
+            {
+              "genre": "poprock",
+              "percent_of_genre_tagged_tracks": 10.5
+            },
+            {
+              "genre": "electronic",
+              "percent_of_genre_tagged_tracks": 8.1
+            },
+            {
+              "genre": "metal",
+              "percent_of_genre_tagged_tracks": 7.9
+            },
+            {
+              "genre": "punkrock",
+              "percent_of_genre_tagged_tracks": 6.7
+            },
+            {
+              "genre": "instrumentalrock",
+              "percent_of_genre_tagged_tracks": 5.6
+            }
+          ],
+          "methodology": "Direct tag co-occurrence computed from MTG-Jamendo cleaned metadata. Instrument percentage denominator is only genre-tagged tracks that contain at least one instrument tag.",
+          "guardrails": [
+            "These are uploader/tag metadata co-occurrences, not acoustic instrument-detection results.",
+            "Do not interpret instrument-tag percentages as true instrument prevalence across all tracks; many tracks lack instrument tags.",
+            "Co-genre tags show taxonomy overlap in this corpus, not historical influence or causal lineage.",
+            "Use rankings to inform candidate instrumentation/variant priors, then resolve actual instrumentation from the selected genre variant."
+          ]
         }
       },
       "performance": {
@@ -509,14 +630,16 @@
           "MMA rock libraries",
           "MTG-Jamendo genre/instrument co-occurrence research reference",
           "Groove MIDI Dataset: human Rock drum performances with style/BPM/beat-vs-fill metadata",
-          "GuitarSet: paired Rock comping and solo guitar performances with note/chord/beat/playing-style annotations"
+          "GuitarSet: paired Rock comping and solo guitar performances with note/chord/beat/playing-style annotations",
+          "MTG-Jamendo cleaned metadata: 6865 tracks carrying genre tag 'rock', with instrument-tag co-occurrence analyzed under coverage guardrails"
         ],
         "source_confidence": {
           "broad_core": "HIGH",
           "subgenre_percentages": "PENDING",
           "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
           "GMD_Rock_drum_behavior": "HIGH_FOR_HUMAN_DRUM_PERFORMANCE_REFERENCE__QUANT_AGGREGATION_PENDING",
-          "GuitarSet_Rock_role_behavior": "HIGH_FOR_COMPING_VS_SOLO_ROLE_REFERENCE"
+          "GuitarSet_Rock_role_behavior": "HIGH_FOR_COMPING_VS_SOLO_ROLE_REFERENCE",
+          "MTG_Jamendo_rock_instrument_tag_ranking": "MEDIUM_FOR_TAG_RANKING__LOW_INSTRUMENT_TAG_COVERAGE__NOT_TRUE_PREVALENCE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -526,7 +649,9 @@
           "MTG_Jamendo": "DATASET_AND_AUDIO_LICENSE_REVIEW",
           "MMA": "LICENSE_REVIEW",
           "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
-          "Groove_MIDI_Dataset": "CC_BY_4_0"
+          "Groove_MIDI_Dataset": "CC_BY_4_0",
+          "MTG_Jamendo_metadata_repo": "APACHE_2_0",
+          "MTG_Jamendo_audio": "INDIVIDUAL_CREATIVE_COMMONS_LICENSES_VARY__NOT_EMBEDDED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -537,7 +662,8 @@
           "No generic arranger fallback.",
           "Rhythm/lead guitar roles remain distinct.",
           "Drum groove state and fill state must be represented separately.",
-          "Rhythm-guitar and lead-guitar roles cannot be implemented as identical patterns at different gain."
+          "Rhythm-guitar and lead-guitar roles cannot be implemented as identical patterns at different gain.",
+          "MTG-Jamendo instrument-tag rankings may influence candidate role selection but cannot be used as direct physical population percentages."
         ],
         "listening_tests": [
           "Subgenres sound materially different.",
@@ -4366,7 +4492,7 @@
       "source_profile_id": "RHYTHM_AND_BLUES_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
+      "research_status": "V3_UPDATED__DIRECT_RNB_TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "RHYTHM_AND_BLUES_V1",
@@ -4439,7 +4565,9 @@
           "formation resolver",
           "horn/lead response rules",
           "presence/activity statistics",
-          "production variant"
+          "production variant",
+          "direct R&B-tagged instrument-prior evidence",
+          "live/electronic instrumentation branch"
         ],
         "conflicts": [],
         "unresolved_questions": []
@@ -4483,7 +4611,8 @@
           "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
         },
         "presence_percent": {
-          "status": "TO_DERIVE_FROM_TAGGED_DATA_BY_VARIANT"
+          "status": "TAG_PRIOR_REFERENCE_ADDED__TRUE_PREVALENCE_NOT_ESTABLISHED",
+          "note": "Use MTG-Jamendo instrument-tag ranking as a weak/medium prior only; final presence depends on R&B era/variant."
         },
         "activity_percent": {
           "status": "TO_DERIVE_FROM_MULTITRACK_OR_SYMBOLIC_DATA"
@@ -4497,7 +4626,8 @@
         },
         "foreground_window_rules": [
           "Lead remains clear; horn/guitar/keys responses live in gaps.",
-          "Backbeat stays present without crushing lead or bass definition."
+          "Backbeat stays present without crushing lead or bass definition.",
+          "R&B contract must support both live-band roles (drums, bass, piano/guitar/organ/horns) and electronic roles (beat/drum-machine/synth/keyboard) without assuming all are simultaneously active."
         ],
         "role_handoff_rules": [
           "Foreground rotates lead↔horn/guitar fills and instrumental features.",
@@ -4585,6 +4715,131 @@
               ]
             }
           }
+        },
+        "mtg_jamendo_tagged_instrument_reference": {
+          "source": "MTG-Jamendo cleaned tag metadata (raw_30s_cleantags_50artists.tsv)",
+          "genre_tag": "rnb",
+          "genre_tagged_tracks": 568,
+          "tracks_with_any_instrument_tag": 155,
+          "instrument_tag_coverage_percent": 27.3,
+          "top_instrument_tags": [
+            {
+              "instrument": "drums",
+              "tagged_track_count": 52,
+              "percent_of_instrument_tagged_genre_tracks": 33.5
+            },
+            {
+              "instrument": "bass",
+              "tagged_track_count": 49,
+              "percent_of_instrument_tagged_genre_tracks": 31.6
+            },
+            {
+              "instrument": "piano",
+              "tagged_track_count": 45,
+              "percent_of_instrument_tagged_genre_tracks": 29
+            },
+            {
+              "instrument": "beat",
+              "tagged_track_count": 36,
+              "percent_of_instrument_tagged_genre_tracks": 23.2
+            },
+            {
+              "instrument": "guitar",
+              "tagged_track_count": 31,
+              "percent_of_instrument_tagged_genre_tracks": 20
+            },
+            {
+              "instrument": "electricguitar",
+              "tagged_track_count": 28,
+              "percent_of_instrument_tagged_genre_tracks": 18.1
+            },
+            {
+              "instrument": "synthesizer",
+              "tagged_track_count": 27,
+              "percent_of_instrument_tagged_genre_tracks": 17.4
+            },
+            {
+              "instrument": "keyboard",
+              "tagged_track_count": 24,
+              "percent_of_instrument_tagged_genre_tracks": 15.5
+            },
+            {
+              "instrument": "drummachine",
+              "tagged_track_count": 21,
+              "percent_of_instrument_tagged_genre_tracks": 13.5
+            },
+            {
+              "instrument": "computer",
+              "tagged_track_count": 20,
+              "percent_of_instrument_tagged_genre_tracks": 12.9
+            },
+            {
+              "instrument": "pipeorgan",
+              "tagged_track_count": 19,
+              "percent_of_instrument_tagged_genre_tracks": 12.3
+            },
+            {
+              "instrument": "trumpet",
+              "tagged_track_count": 17,
+              "percent_of_instrument_tagged_genre_tracks": 11
+            },
+            {
+              "instrument": "acousticguitar",
+              "tagged_track_count": 13,
+              "percent_of_instrument_tagged_genre_tracks": 8.4
+            },
+            {
+              "instrument": "violin",
+              "tagged_track_count": 13,
+              "percent_of_instrument_tagged_genre_tracks": 8.4
+            },
+            {
+              "instrument": "rhodes",
+              "tagged_track_count": 5,
+              "percent_of_instrument_tagged_genre_tracks": 3.2
+            }
+          ],
+          "top_co_genre_tags": [
+            {
+              "genre": "funk",
+              "percent_of_genre_tagged_tracks": 35.6
+            },
+            {
+              "genre": "hiphop",
+              "percent_of_genre_tagged_tracks": 27.6
+            },
+            {
+              "genre": "pop",
+              "percent_of_genre_tagged_tracks": 22
+            },
+            {
+              "genre": "soul",
+              "percent_of_genre_tagged_tracks": 18.7
+            },
+            {
+              "genre": "electronic",
+              "percent_of_genre_tagged_tracks": 12.3
+            },
+            {
+              "genre": "rock",
+              "percent_of_genre_tagged_tracks": 10.7
+            },
+            {
+              "genre": "rap",
+              "percent_of_genre_tagged_tracks": 10.7
+            },
+            {
+              "genre": "blues",
+              "percent_of_genre_tagged_tracks": 7.7
+            }
+          ],
+          "methodology": "Direct tag co-occurrence computed from MTG-Jamendo cleaned metadata. Instrument percentage denominator is only genre-tagged tracks that contain at least one instrument tag.",
+          "guardrails": [
+            "These are uploader/tag metadata co-occurrences, not acoustic instrument-detection results.",
+            "Do not interpret instrument-tag percentages as true instrument prevalence across all tracks; many tracks lack instrument tags.",
+            "Co-genre tags show taxonomy overlap in this corpus, not historical influence or causal lineage.",
+            "Use rankings to inform candidate instrumentation/variant priors, then resolve actual instrumentation from the selected genre variant."
+          ]
         }
       },
       "performance": {
@@ -4613,12 +4868,14 @@
           "Groove MIDI Dataset",
           "MTG-Jamendo",
           "MMA R&B libraries",
-          "MTG-Jamendo genre/instrument co-occurrence research reference"
+          "MTG-Jamendo genre/instrument co-occurrence research reference",
+          "MTG-Jamendo cleaned metadata: 568 tracks carrying genre tag 'rnb', with instrument-tag co-occurrence analyzed under coverage guardrails"
         ],
         "source_confidence": {
           "core_pocket": "HIGH",
           "era_statistics": "PENDING",
-          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
+          "MTG_Jamendo_rnb_instrument_tag_ranking": "MEDIUM_FOR_TAG_RANKING__LOW_INSTRUMENT_TAG_COVERAGE__NOT_TRUE_PREVALENCE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -4626,7 +4883,9 @@
           "GMD": "CC_BY_4_0",
           "MTG_Jamendo": "LICENSE_REVIEW",
           "MMA": "LICENSE_REVIEW",
-          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
+          "MTG_Jamendo_metadata_repo": "APACHE_2_0",
+          "MTG_Jamendo_audio": "INDIVIDUAL_CREATIVE_COMMONS_LICENSES_VARY__NOT_EMBEDDED"
         },
         "conflicts_between_sources": [
           "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics."
@@ -4636,7 +4895,8 @@
       "validation": {
         "structural_tests": [
           "Era/variant resolver required.",
-          "12/8 cannot be normalized as generic 4/4."
+          "12/8 cannot be normalized as generic 4/4.",
+          "MTG-Jamendo instrument-tag rankings may influence candidate role selection but cannot be used as direct physical population percentages."
         ],
         "listening_tests": [
           "Backbeat is present but not crushing.",
@@ -4677,7 +4937,7 @@
       "source_profile_id": "SOUL_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__GMD_SOUL_DRUM_REFERENCE_ADDED__QUANT_STATS_PENDING",
+      "research_status": "V3_UPDATED__GMD_DRUM_PLUS_JAMENDO_INSTRUMENT_PRIOR_ADDED__VARIANT_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SOUL_V1",
@@ -4809,7 +5069,8 @@
         },
         "foreground_window_rules": [
           "Lead retains primary clarity; response sections reinforce rather than permanently compete.",
-          "Horn/string mass increases at peaks, not continuously."
+          "Horn/string mass increases at peaks, not continuously.",
+          "Soul instrumentation prior supports rhythm-section, electric-guitar/keys, horn/sax and optional string/color roles, but role activation must remain section- and variant-specific."
         ],
         "role_handoff_rules": [
           "Instrumental features may temporarily take foreground; lead returns with accompaniment reset.",
@@ -4921,6 +5182,151 @@
             "Timing feel must remain shared with bass/ensemble rather than generated as independent random lateness."
           ],
           "quantitative_status": "FULL_STYLE_AGGREGATION_PENDING"
+        },
+        "mtg_jamendo_tagged_instrument_reference": {
+          "source": "MTG-Jamendo cleaned tag metadata (raw_30s_cleantags_50artists.tsv)",
+          "genre_tag": "soul",
+          "genre_tagged_tracks": 504,
+          "tracks_with_any_instrument_tag": 301,
+          "instrument_tag_coverage_percent": 59.7,
+          "top_instrument_tags": [
+            {
+              "instrument": "drums",
+              "tagged_track_count": 183,
+              "percent_of_instrument_tagged_genre_tracks": 60.8
+            },
+            {
+              "instrument": "electricguitar",
+              "tagged_track_count": 163,
+              "percent_of_instrument_tagged_genre_tracks": 54.2
+            },
+            {
+              "instrument": "bass",
+              "tagged_track_count": 159,
+              "percent_of_instrument_tagged_genre_tracks": 52.8
+            },
+            {
+              "instrument": "voice",
+              "tagged_track_count": 129,
+              "percent_of_instrument_tagged_genre_tracks": 42.9
+            },
+            {
+              "instrument": "piano",
+              "tagged_track_count": 116,
+              "percent_of_instrument_tagged_genre_tracks": 38.5
+            },
+            {
+              "instrument": "guitar",
+              "tagged_track_count": 111,
+              "percent_of_instrument_tagged_genre_tracks": 36.9
+            },
+            {
+              "instrument": "saxophone",
+              "tagged_track_count": 110,
+              "percent_of_instrument_tagged_genre_tracks": 36.5
+            },
+            {
+              "instrument": "violin",
+              "tagged_track_count": 108,
+              "percent_of_instrument_tagged_genre_tracks": 35.9
+            },
+            {
+              "instrument": "rhodes",
+              "tagged_track_count": 107,
+              "percent_of_instrument_tagged_genre_tracks": 35.5
+            },
+            {
+              "instrument": "trumpet",
+              "tagged_track_count": 106,
+              "percent_of_instrument_tagged_genre_tracks": 35.2
+            },
+            {
+              "instrument": "drummachine",
+              "tagged_track_count": 98,
+              "percent_of_instrument_tagged_genre_tracks": 32.6
+            },
+            {
+              "instrument": "electricpiano",
+              "tagged_track_count": 98,
+              "percent_of_instrument_tagged_genre_tracks": 32.6
+            },
+            {
+              "instrument": "keyboard",
+              "tagged_track_count": 88,
+              "percent_of_instrument_tagged_genre_tracks": 29.2
+            },
+            {
+              "instrument": "horn",
+              "tagged_track_count": 83,
+              "percent_of_instrument_tagged_genre_tracks": 27.6
+            },
+            {
+              "instrument": "bongo",
+              "tagged_track_count": 81,
+              "percent_of_instrument_tagged_genre_tracks": 26.9
+            },
+            {
+              "instrument": "synthesizer",
+              "tagged_track_count": 78,
+              "percent_of_instrument_tagged_genre_tracks": 25.9
+            },
+            {
+              "instrument": "cello",
+              "tagged_track_count": 77,
+              "percent_of_instrument_tagged_genre_tracks": 25.6
+            },
+            {
+              "instrument": "brass",
+              "tagged_track_count": 76,
+              "percent_of_instrument_tagged_genre_tracks": 25.2
+            },
+            {
+              "instrument": "flute",
+              "tagged_track_count": 75,
+              "percent_of_instrument_tagged_genre_tracks": 24.9
+            }
+          ],
+          "top_co_genre_tags": [
+            {
+              "genre": "funk",
+              "percent_of_genre_tagged_tracks": 35.9
+            },
+            {
+              "genre": "hiphop",
+              "percent_of_genre_tagged_tracks": 31
+            },
+            {
+              "genre": "jazz",
+              "percent_of_genre_tagged_tracks": 23.6
+            },
+            {
+              "genre": "rnb",
+              "percent_of_genre_tagged_tracks": 21
+            },
+            {
+              "genre": "pop",
+              "percent_of_genre_tagged_tracks": 20.4
+            },
+            {
+              "genre": "electronic",
+              "percent_of_genre_tagged_tracks": 15.7
+            },
+            {
+              "genre": "chillout",
+              "percent_of_genre_tagged_tracks": 14.1
+            },
+            {
+              "genre": "rock",
+              "percent_of_genre_tagged_tracks": 13.5
+            }
+          ],
+          "methodology": "Direct tag co-occurrence computed from MTG-Jamendo cleaned metadata. Instrument percentage denominator is only genre-tagged tracks that contain at least one instrument tag.",
+          "guardrails": [
+            "These are uploader/tag metadata co-occurrences, not acoustic instrument-detection results.",
+            "Do not interpret instrument-tag percentages as true instrument prevalence across all tracks; many tracks lack instrument tags.",
+            "Co-genre tags show taxonomy overlap in this corpus, not historical influence or causal lineage.",
+            "Use rankings to inform candidate instrumentation/variant priors, then resolve actual instrumentation from the selected genre variant."
+          ]
         }
       },
       "performance": {
@@ -4953,13 +5359,15 @@
           "Berklee arranging",
           "MMA soul/spiritual references",
           "MTG-Jamendo genre/instrument co-occurrence research reference",
-          "Groove MIDI Dataset: human Soul drum performances with style/BPM/beat-vs-fill metadata"
+          "Groove MIDI Dataset: human Soul drum performances with style/BPM/beat-vs-fill metadata",
+          "MTG-Jamendo cleaned metadata: 504 tracks carrying genre tag 'soul', with instrument-tag co-occurrence analyzed under coverage guardrails"
         ],
         "source_confidence": {
           "core_soul_behavior": "HIGH",
           "regional_variant_statistics": "PENDING",
           "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
-          "GMD_Soul_drum_behavior": "HIGH_FOR_HUMAN_DRUM_PERFORMANCE_REFERENCE__QUANT_AGGREGATION_PENDING"
+          "GMD_Soul_drum_behavior": "HIGH_FOR_HUMAN_DRUM_PERFORMANCE_REFERENCE__QUANT_AGGREGATION_PENDING",
+          "MTG_Jamendo_soul_instrument_tag_ranking": "MEDIUM_HIGH_FOR_TAG_RANKING__NOT_TRUE_PREVALENCE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -4968,7 +5376,9 @@
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW",
           "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
-          "Groove_MIDI_Dataset": "CC_BY_4_0"
+          "Groove_MIDI_Dataset": "CC_BY_4_0",
+          "MTG_Jamendo_metadata_repo": "APACHE_2_0",
+          "MTG_Jamendo_audio": "INDIVIDUAL_CREATIVE_COMMONS_LICENSES_VARY__NOT_EMBEDDED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -4977,7 +5387,8 @@
         "structural_tests": [
           "Variant/era required for orchestration percentages.",
           "Response layers cannot become permanent foreground.",
-          "Soul fill state must be tied to phrase/form or emotional transition rather than fixed bar-count insertion."
+          "Soul fill state must be tied to phrase/form or emotional transition rather than fixed bar-count insertion.",
+          "MTG-Jamendo instrument-tag rankings may influence candidate role selection but cannot be used as direct physical population percentages."
         ],
         "listening_tests": [
           "Lead remains emotionally dominant.",
@@ -5019,7 +5430,7 @@
       "source_profile_id": "FUNK_V1",
       "family": "R&B",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
+      "research_status": "V3_UPDATED__GMD_GUITARSET_AND_JAMENDO_REFERENCES_ADDED__QUANT_TIMING_STATS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "FUNK_V1",
@@ -5153,7 +5564,8 @@
           "Bass may be highly prominent without monopolizing musical agency.",
           "Lead/horns get rhythmic holes created by guitar/keys/bass/rest design.",
           "No instrument fills every subdivision.",
-          "When guitar becomes foreground, comping-slot occupancy must be reassigned rather than stacking a solo over unchanged dense guitar comping."
+          "When guitar becomes foreground, comping-slot occupancy must be reassigned rather than stacking a solo over unchanged dense guitar comping.",
+          "Funk instrument-tag evidence reinforces bass/drums/guitar/keys as common candidate roles while horn/reed/electronic colors remain variant-dependent."
         ],
         "role_handoff_rules": [
           "Foreground can move bass↔lead↔horn↔guitar/keys feature while pocket remains intact.",
@@ -5292,6 +5704,136 @@
             "A Funk guitar feature must not simply add more sixteenth-notes on top of existing comping.",
             "Comping/solo handoff should reassign rhythmic slots so the pocket remains open."
           ]
+        },
+        "mtg_jamendo_tagged_instrument_reference": {
+          "source": "MTG-Jamendo cleaned tag metadata (raw_30s_cleantags_50artists.tsv)",
+          "genre_tag": "funk",
+          "genre_tagged_tracks": 1283,
+          "tracks_with_any_instrument_tag": 659,
+          "instrument_tag_coverage_percent": 51.4,
+          "top_instrument_tags": [
+            {
+              "instrument": "bass",
+              "tagged_track_count": 372,
+              "percent_of_instrument_tagged_genre_tracks": 56.4
+            },
+            {
+              "instrument": "drums",
+              "tagged_track_count": 364,
+              "percent_of_instrument_tagged_genre_tracks": 55.2
+            },
+            {
+              "instrument": "guitar",
+              "tagged_track_count": 265,
+              "percent_of_instrument_tagged_genre_tracks": 40.2
+            },
+            {
+              "instrument": "electricguitar",
+              "tagged_track_count": 265,
+              "percent_of_instrument_tagged_genre_tracks": 40.2
+            },
+            {
+              "instrument": "synthesizer",
+              "tagged_track_count": 234,
+              "percent_of_instrument_tagged_genre_tracks": 35.5
+            },
+            {
+              "instrument": "keyboard",
+              "tagged_track_count": 218,
+              "percent_of_instrument_tagged_genre_tracks": 33.1
+            },
+            {
+              "instrument": "piano",
+              "tagged_track_count": 199,
+              "percent_of_instrument_tagged_genre_tracks": 30.2
+            },
+            {
+              "instrument": "rhodes",
+              "tagged_track_count": 172,
+              "percent_of_instrument_tagged_genre_tracks": 26.1
+            },
+            {
+              "instrument": "electricpiano",
+              "tagged_track_count": 169,
+              "percent_of_instrument_tagged_genre_tracks": 25.6
+            },
+            {
+              "instrument": "saxophone",
+              "tagged_track_count": 165,
+              "percent_of_instrument_tagged_genre_tracks": 25
+            },
+            {
+              "instrument": "trumpet",
+              "tagged_track_count": 152,
+              "percent_of_instrument_tagged_genre_tracks": 23.1
+            },
+            {
+              "instrument": "horn",
+              "tagged_track_count": 139,
+              "percent_of_instrument_tagged_genre_tracks": 21.1
+            },
+            {
+              "instrument": "drummachine",
+              "tagged_track_count": 137,
+              "percent_of_instrument_tagged_genre_tracks": 20.8
+            },
+            {
+              "instrument": "bongo",
+              "tagged_track_count": 128,
+              "percent_of_instrument_tagged_genre_tracks": 19.4
+            },
+            {
+              "instrument": "brass",
+              "tagged_track_count": 128,
+              "percent_of_instrument_tagged_genre_tracks": 19.4
+            },
+            {
+              "instrument": "flute",
+              "tagged_track_count": 125,
+              "percent_of_instrument_tagged_genre_tracks": 19
+            }
+          ],
+          "top_co_genre_tags": [
+            {
+              "genre": "jazz",
+              "percent_of_genre_tagged_tracks": 23.4
+            },
+            {
+              "genre": "hiphop",
+              "percent_of_genre_tagged_tracks": 18.2
+            },
+            {
+              "genre": "electronic",
+              "percent_of_genre_tagged_tracks": 16.6
+            },
+            {
+              "genre": "rnb",
+              "percent_of_genre_tagged_tracks": 15.7
+            },
+            {
+              "genre": "rock",
+              "percent_of_genre_tagged_tracks": 15.4
+            },
+            {
+              "genre": "pop",
+              "percent_of_genre_tagged_tracks": 15.1
+            },
+            {
+              "genre": "soul",
+              "percent_of_genre_tagged_tracks": 14.1
+            },
+            {
+              "genre": "disco",
+              "percent_of_genre_tagged_tracks": 8
+            }
+          ],
+          "methodology": "Direct tag co-occurrence computed from MTG-Jamendo cleaned metadata. Instrument percentage denominator is only genre-tagged tracks that contain at least one instrument tag.",
+          "guardrails": [
+            "These are uploader/tag metadata co-occurrences, not acoustic instrument-detection results.",
+            "Do not interpret instrument-tag percentages as true instrument prevalence across all tracks; many tracks lack instrument tags.",
+            "Co-genre tags show taxonomy overlap in this corpus, not historical influence or causal lineage.",
+            "Use rankings to inform candidate instrumentation/variant priors, then resolve actual instrumentation from the selected genre variant."
+          ]
         }
       },
       "performance": {
@@ -5326,14 +5868,16 @@
           "MMA funk",
           "MTG-Jamendo genre/instrument co-occurrence research reference",
           "Groove MIDI Dataset: human Funk drum performances with style/BPM/beat-vs-fill metadata",
-          "GuitarSet: paired Funk comping and solo guitar performances with note/chord/beat/playing-style annotations"
+          "GuitarSet: paired Funk comping and solo guitar performances with note/chord/beat/playing-style annotations",
+          "MTG-Jamendo cleaned metadata: 1283 tracks carrying genre tag 'funk', with instrument-tag co-occurrence analyzed under coverage guardrails"
         ],
         "source_confidence": {
           "core_funk_grammar": "HIGH",
           "slot_statistics": "PENDING",
           "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
           "GMD_Funk_drum_behavior": "HIGH_FOR_HUMAN_DRUM_PERFORMANCE_REFERENCE__QUANT_AGGREGATION_PENDING",
-          "GuitarSet_Funk_role_behavior": "HIGH_FOR_COMPING_VS_SOLO_ROLE_REFERENCE"
+          "GuitarSet_Funk_role_behavior": "HIGH_FOR_COMPING_VS_SOLO_ROLE_REFERENCE",
+          "MTG_Jamendo_funk_instrument_tag_ranking": "MEDIUM_HIGH_FOR_TAG_RANKING__NOT_TRUE_PREVALENCE"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
@@ -5343,7 +5887,9 @@
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW",
           "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
-          "Groove_MIDI_Dataset": "CC_BY_4_0"
+          "Groove_MIDI_Dataset": "CC_BY_4_0",
+          "MTG_Jamendo_metadata_repo": "APACHE_2_0",
+          "MTG_Jamendo_audio": "INDIVIDUAL_CREATIVE_COMMONS_LICENSES_VARY__NOT_EMBEDDED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -5354,7 +5900,8 @@
           "No all-instruments-continuous-sixteenths fallback.",
           "Resolved variant required for formation.",
           "Drum beat/fill state and guitar comping/solo state must be explicit.",
-          "Foreground guitar cannot simply be added on top of unchanged full comping density."
+          "Foreground guitar cannot simply be added on top of unchanged full comping density.",
+          "MTG-Jamendo instrument-tag rankings may influence candidate role selection but cannot be used as direct physical population percentages."
         ],
         "listening_tests": [
           "Pocket feels interlocked and spacious.",
@@ -5590,7 +6137,8 @@
           "GMD": "CC_BY_4_0"
         },
         "conflicts_between_sources": [
-          "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics."
+          "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics.",
+          "MTG-Jamendo has broad 'rnb' and 'soul' tags but does not isolate this contract's contemporary/neo-soul substyle with sufficient specificity; broad-family instrument rankings are not direct subgenre statistics."
         ],
         "unresolved_questions": []
       },
@@ -5832,7 +6380,8 @@
           "MTG_Jamendo": "LICENSE_REVIEW"
         },
         "conflicts_between_sources": [
-          "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics."
+          "Groove MIDI Dataset does not provide a direct primary 'R&B' or 'Neo-Soul' style label. Soul/Funk/Hip-Hop examples may inform neighboring performance questions but must not be treated as direct quantitative R&B/Neo-Soul genre statistics.",
+          "MTG-Jamendo has broad 'rnb' and 'soul' tags but does not isolate this contract's contemporary/neo-soul substyle with sufficient specificity; broad-family instrument rankings are not direct subgenre statistics."
         ],
         "unresolved_questions": []
       },

@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "V3_FOREGROUND_MELODY_AUTHORITY__NO_AUDIO__NO_REASONING_ENGINE",
+  "next_phase": "GENRE_SPECIFIC_MUSICAL_BEHAVIOR_REVALIDATION_BEFORE_AUDIO",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -712,7 +712,7 @@
   },
   "execution_wiring_diagnosis": {
     "date": "2026-11-07",
-    "status": "V3_SOURCE__STRUCTURED_PREGEN__SYMBOLIC_INSTRUMENT_RESOLUTION_PASS__FOREGROUND_LAYER_NEXT",
+    "status": "V3_COMMUNICATION_AND_INSTRUMENT_HANDOFF_REPAIRED__MUSICAL_REVALIDATION_PENDING",
     "diagnostic_branch": "genre-contract-v3-no-reasoning-diagnostic",
     "reasoning_engine_status": "PRESERVED_ELSEWHERE__EXCLUDED_FROM_DIAGNOSTIC_BRANCH",
     "findings": [
@@ -782,6 +782,63 @@
       ],
       "finding": "Recovered source-pattern seeds provide accompaniment/groove roles but no explicit LEAD/MELODY/SOLO/HOOK/THEME/COUNTER/VOCAL role.",
       "consequence": "DO_NOT_RENDER_SYMBOLIC_SOURCE_PATTERNS_AS_FINISHED_COMPOSITIONS. Add a separate V3 foreground/melody authority first."
-    }
+    },
+    "genre_contract_v3_count": 55,
+    "automatic_legacy_static_palette_authority_count": 0,
+    "v3_explicit_formation_genres_nonclassical": 7,
+    "v3_source_pattern_genres": 40,
+    "classical_v3_symbolic_path_count": 1,
+    "all55_wiring_audit": {
+      "status": "PASS",
+      "workflow_run_id": 42379276004,
+      "artifact_id": 13576702470,
+      "artifact_sha256": "e1926b5ce6f02354842861a607d6ee97aaa89b6faf80acc7ceb59934c2ce0180"
+    },
+    "source_pattern_runtime_instrument_resolution": {
+      "status": "PASS",
+      "genre_count": 40,
+      "workflow_run_id": 42379327129,
+      "artifact_id": 13576489528,
+      "artifact_sha256": "1e65f7a1e6c52e0d0520646f566b72d50b4d97dbab1e94a30025f8c7ad2fdcd2",
+      "legacy_note_generator_bypassed_all": true,
+      "audio_rendered": false
+    },
+    "classical_runtime_instrument_resolution": {
+      "status": "PASS",
+      "variant": "CLASSICAL_PERIOD_ORCHESTRAL",
+      "workflow_run_id": 42379164785,
+      "artifact_id": 13576962565,
+      "artifact_sha256": "6b30b01be873340c1948a0adbb9750d1e240532c6f960f2073690e67ba0fa231",
+      "separator_expected_registrations": 7,
+      "separator_resolved_registrations": 7,
+      "missing_registrations": [],
+      "extra_registrations": [],
+      "resolved_instrument_ids": [
+        "cello",
+        "clarinet_bb",
+        "concert_flute",
+        "oboe",
+        "viola",
+        "violin"
+      ],
+      "legacy_note_generator_used": false,
+      "legacy_classical_generator_executed": false,
+      "reasoning_engine_used": false,
+      "audio_rendered": false,
+      "live_runtime_promoted": false
+    },
+    "classical_composition_gates": {
+      "structural": "PASS",
+      "abstract_note_harmony_texture": "PASS",
+      "canonical_orchestration": "PASS",
+      "resource_mapping": "PASS",
+      "foreground_melody_and_three_voice_support": true,
+      "structural_melody_chord_tone_pct": 100,
+      "cadence_target_pct": 100,
+      "nonchord_step_resolution_pct": 100,
+      "support_harmony_attack_pass_pct": 100,
+      "audio_generated": false
+    },
+    "conclusion": "Genre Contract V3 now reaches selection, symbolic execution and current instrument resolution on the diagnostic branch. This proves communication/instrument handoff, not final musical quality. Genre-specific form, rhythm, melody, harmony and performance behavior still require validation before any new audio audition."
   }
 }

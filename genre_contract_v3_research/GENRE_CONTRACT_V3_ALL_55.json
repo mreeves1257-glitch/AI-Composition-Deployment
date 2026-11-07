@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__PERIOD_COMPOSITION_GRAMMAR_CANDIDATES_DEFINED",
+      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__ABSTRACT_PERIOD_GRAMMAR_PASS__VOICE_LEADING_NEXT",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2590,6 +2590,66 @@
             "same_monitoring_gain_applied_to_both": true
           },
           "conclusion": "The paired audio contains measurable orchestration differences aligned with the intended role schedule. Objective audio validation supports the variant layer; human musical judgment remains required before runtime integration."
+        },
+        "composition_grammar_harness_checkpoint": {
+          "status": "PASS__ABSTRACT_HARMONY_ONLY",
+          "date": "2026-11-06",
+          "harness": "genre_contract_v3_research/classical_grammar_validation.py",
+          "harness_commit": "44130044c514bbc99b15d3527edec097e35c6707",
+          "test": "genre_contract_v3_research/test_classical_grammar_validation.py",
+          "test_commit": "1d7e7449cbfe944cba5fe1a8a54c1dca47fa7e6a",
+          "seed_count_per_variant": 32,
+          "bars_per_plan": 28,
+          "meter": "3/4",
+          "variants": {
+            "CLASSICAL_PERIOD_TONAL": {
+              "mean_harmony_qb": 1.474,
+              "localkey_duration_pct": 42.86,
+              "applied_pct": 9.43,
+              "altered_pct": 9.979,
+              "diminished_pct": 9.375,
+              "aug6_pct": 0.876,
+              "extended_pct": 25.932,
+              "cadences_per_100_qb": 4.762,
+              "cadence_distribution_percent": {
+                "PAC": 47.66,
+                "HC": 35.16,
+                "IAC": 4.69,
+                "EC": 5.47,
+                "DC": 7.03
+              }
+            },
+            "ROMANTIC_TONAL_EXPANDED": {
+              "mean_harmony_qb": 1.424,
+              "localkey_duration_pct": 67.86,
+              "applied_pct": 16.312,
+              "altered_pct": 20.549,
+              "diminished_pct": 11.492,
+              "aug6_pct": 1.27,
+              "extended_pct": 36.388,
+              "cadences_per_100_qb": 4.762,
+              "cadence_distribution_percent": {
+                "PAC": 37.5,
+                "HC": 36.72,
+                "IAC": 22.66,
+                "PC": 1.56,
+                "DC": 1.56,
+                "EC": 0
+              }
+            }
+          },
+          "important_result": "The Romantic candidate becomes more tonally mobile/chromatic/extended while keeping nearly the same mean harmonic-event duration as the Classical-period candidate. Period contrast therefore does not depend on simply speeding up chord changes.",
+          "failures_caught_before_pass": [
+            "Cadence-recording typo prevented cadence events from appearing.",
+            "Overlapping applied/diminished features inflated seventh/extended harmony until base extension probability was reduced.",
+            "Forced final PAC initially biased the full cadence distribution; internal cadence weights were compensated."
+          ],
+          "guardrails": [
+            "This gate validates abstract harmonic-event planning only; it does not prove playable voice-leading or good audio.",
+            "Corpus targets remain descriptive bands, not per-piece quotas.",
+            "No live Composer code is modified or activated."
+          ],
+          "next_gate": "PITCH_AND_VOICE_LEADING_REALIZATION"
         }
       },
       "safeguards": {
@@ -17980,13 +18040,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Build a research-only composition-grammar harness separate from the already validated orchestration harness.",
-    "Generate Classical-period tonal and Romantic tonal-expanded plans from the same seed while keeping renderer/orchestration controlled.",
-    "Validate cadence palette, harmonic-rhythm distribution, local-key excursion, applied/chromatic harmony and voice-leading before audio rendering.",
-    "Keep live Composer untouched until both grammar and orchestration listening gates pass."
+    "Build a research-only pitch/voice-leading realization layer for the period grammar plans.",
+    "Resolve local-key Roman numerals into playable chord tones while preserving inversions, tendency-tone resolutions and chromatic/common-tone voice leading.",
+    "Validate melodic and bass continuity, forbidden leaps, doubled tendency tones, cadence resolution, and instrument range before rendering.",
+    "Only after voice-leading structural validation should new grammar audio be compared with the existing orchestration-only A/B."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_PERIOD_GRAMMAR_EVIDENCE_ADDED__ISOLATED_GRAMMAR_HARNESS_NEXT",
+  "quantitative_phase_status": "CLASSICAL_ABSTRACT_PERIOD_GRAMMAR_VALIDATION_PASS__VOICE_LEADING_REALIZATION_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

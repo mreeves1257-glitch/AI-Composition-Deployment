@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__ABSTRACT_GRAMMAR_PASS__VOICE_LEADING_PASS__GRAMMAR_AUDIO_NEXT",
+      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__GRAMMAR_PASS__VOICE_LEADING_PASS__CONTROLLED_GRAMMAR_AUDIO_READY__MELODY_RESEARCH_NEXT",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2702,6 +2702,60 @@
             "Live Composer remains untouched."
           ],
           "next_gate": "CONTROLLED_GRAMMAR_AUDIO"
+        },
+        "controlled_grammar_audio_checkpoint": {
+          "status": "LOCAL_RENDER_COMPLETE__HUMAN_LISTENING_PENDING",
+          "date": "2026-11-06",
+          "purpose": "Isolate period composition grammar from orchestration color.",
+          "seed": 0,
+          "form": "28 bars, 3/4, same section layout",
+          "tempo_bpm": 76,
+          "instrumentation": "Single acoustic-grand-piano GM program 0 for both variants",
+          "dynamics": "Identical deterministic velocity shaping for both variants",
+          "monitoring": "Identical +20 dB global listening gain applied after raw render; no variant-specific mix processing",
+          "variants": {
+            "CLASSICAL_PERIOD_TONAL": {
+              "duration_seconds": 69.616327,
+              "plan_sha256": "6b9171a84b8b8e59686e8a0e11747d084308e0323b48ce9b1d4d9a7b5ec606aa",
+              "listening_mp3_sha256": "2b21965b2c9122158717d48cdd837b235a460fe24c259efaa7ef18bc5ace7df8",
+              "mean_volume_db": -26.8,
+              "max_volume_db": -8.7,
+              "clipping_detected": false,
+              "seed0_voice_integrity": {
+                "voice_crossings": 0,
+                "parallel_perfect_5_8": 0,
+                "essential_coverage_percent": 100,
+                "bass_inversion_accuracy_percent": 100
+              }
+            },
+            "ROMANTIC_TONAL_EXPANDED": {
+              "duration_seconds": 69.564082,
+              "plan_sha256": "910faa4e19b7389625c91b554514dee12df0e34c9b3b5acfd127c6dead7518e3",
+              "listening_mp3_sha256": "fcb658826295d5ebeb78e3323dcf3c7d8d15455ae1bc31b235a4ae3daf433b65",
+              "mean_volume_db": -26.7,
+              "max_volume_db": -7.6,
+              "clipping_detected": false,
+              "seed0_voice_integrity": {
+                "voice_crossings": 0,
+                "parallel_perfect_5_8": 0,
+                "essential_coverage_percent": 100,
+                "bass_inversion_accuracy_percent": 100
+              }
+            }
+          },
+          "ab_comparison": {
+            "duration_seconds": 140.643265,
+            "order": [
+              "CLASSICAL_PERIOD_TONAL",
+              "1.5_SECOND_GAP",
+              "ROMANTIC_TONAL_EXPANDED"
+            ],
+            "sha256": "6e6719ba678c3c1d1cfde6bbcfc923def973e03fa82a60ffd089877089b27d84"
+          },
+          "conclusion": "The grammar pair is technically valid and level-matched enough for listening. It intentionally uses one piano so harmonic grammar and voice-leading, not orchestration, are the controlled difference.",
+          "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
+          "live_runtime_modified": false,
+          "next_gate": "USER_GRAMMAR_LISTENING_AND_MELODY_PHRASE_RESEARCH"
         }
       },
       "safeguards": {
@@ -18092,13 +18146,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Render a controlled grammar-only listening pair using identical instrumentation, tempo, mix and seed for both period grammars.",
-    "Keep the validated orchestration-variant layer disabled so harmony/voice-leading is the controlled difference.",
-    "Evaluate whether Classical-period and Romantic tonal-expanded grammar sound meaningfully different without relying on orchestral color.",
-    "Only after grammar listening validation should period grammar and period orchestration be combined."
+    "Research melodic interval, rhythm, phrase-end and motivic-recurrence behavior separately from harmony and orchestration.",
+    "Keep the controlled piano grammar pair as the harmonic reference.",
+    "Build a melody/phrase validation harness before combining period grammar with orchestration.",
+    "Do not integrate any of these research layers into the live Composer yet."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_VOICE_LEADING_VALIDATION_PASS__CONTROLLED_GRAMMAR_AUDIO_NEXT",
+  "quantitative_phase_status": "CLASSICAL_CONTROLLED_GRAMMAR_AUDIO_READY__MELODY_PHRASE_RESEARCH_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

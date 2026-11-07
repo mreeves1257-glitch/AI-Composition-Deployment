@@ -185,16 +185,31 @@ PROFILE_ROLE_ALIASES = (
 )
 SUPPORTED_EVENT_ROLES = set(role for parts in PALETTES.values() for role in parts)
 
-def resolve_genre_parts(name, tmpl, profile):
-    # Executable instrumentation is explicit, never inferred by blindly scanning
-    # prose.  The old keyword extension treated alternatives such as
-    # 'piano/electric piano' and 'acoustic/electric bass' as simultaneous required
-    # players, which created avoidable masking and muddiness.  PALETTES is now the
-    # controlled executable role map; profile prose remains recognition/context.
+def resolve_genre_parts_with_authority(name, tmpl, profile):
+    # Genre Contract V3 owns instrumentation only where it has an explicit,
+    # resource-mapped roster. Otherwise retain the old palette as a clearly
+    # labeled fallback; never silently claim the fallback came from V3.
+    from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority
+    v3_authority = resolve_v3_instrument_authority(name, profile)
+    if v3_authority.get('status') == 'PASS':
+        return list(v3_authority['event_roles']), v3_authority
+
     baseline = list(PALETTES.get(tmpl, PALETTES['hybrid']))
     if tmpl == 'classical':
         baseline = [role for role in baseline if role not in ('strings', 'choir')]
-    return baseline
+    fallback = {
+        'status': 'LEGACY_FALLBACK',
+        'authority': 'LEGACY_STATIC_PALETTE',
+        'genre': name,
+        'template': tmpl,
+        'event_roles': list(baseline),
+        'v3_attempt': v3_authority,
+        'rule': 'FALLBACK_IS_EXPLICIT_AND_MUST_NOT_BE_REPORTED_AS_V3_AUTHORITY',
+    }
+    return baseline, fallback
+
+def resolve_genre_parts(name, tmpl, profile):
+    return resolve_genre_parts_with_authority(name, tmpl, profile)[0]
 
 # stable per-template variants so closely related genres don't collapse into identical grooves
 VARIANT={name:i for i,name in enumerate(BASE)}
@@ -212,7 +227,7 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
     tmpl=family_template(name)
     baseline=BASE.get(tmpl,BASE['hybrid'])
     tonic,quality,_,_,_,_=baseline
-    parts=resolve_genre_parts(name,tmpl,profile)
+    parts,instrument_authority=resolve_genre_parts_with_authority(name,tmpl,profile)
 
     # The genre interpreter now runs BEFORE theory and before any notes are generated.
     from genre_interpreter_linkage import interpret_genre, link_genre
@@ -256,6 +271,7 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
         'profile_required_fields_sha256':h({k:profile[k] for k in profiles_meta_required}),
         'pre_generation_genre_plan':generation_plan,
         'genre_contract_v3_execution_packet':v3_packet,
+        'genre_v3_instrument_authority':instrument_authority,
         'communication_blueprint':communication_blueprint,
         'theory_request':req,'theory_status':ctx['status'],'palette':parts,
         'ensemble_architecture':ensemble_expansion.get('spec'),

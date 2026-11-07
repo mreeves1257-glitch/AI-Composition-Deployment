@@ -20,7 +20,9 @@ on:
       - "current_master_forward/classical_composition.py"
       - "current_master_forward/genre_communication_blueprint.py"
       - "current_master_forward/genre_v3_symbolic_pattern_executor.py"
+      - "current_master_forward/genre_v3_foreground_authority.py"
       - "genre_contract_v3_research/verify_v3_symbolic_pattern_execution.py"
+      - "genre_contract_v3_research/verify_v3_foreground_authority.py"
       - "composer_overrides/genre_styles/*/SOURCE_PATTERN_LIBRARY_R1.json"
       - ".github/workflows/genre-v3-execution-wiring-audit.yml"
   workflow_dispatch:
@@ -64,6 +66,13 @@ jobs:
           python genre_contract_v3_research/verify_v3_symbolic_pattern_execution.py
           test -s genre_contract_v3_research/V3_SYMBOLIC_PATTERN_EXECUTION_AUDIT.json
 
+      - name: Audit V3 foreground authority and accompaniment-only guard
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/verify_v3_foreground_authority.py
+          test -s genre_contract_v3_research/V3_FOREGROUND_AUTHORITY_AUDIT.json
+
       - name: Upload wiring audits
         uses: actions/upload-artifact@v4
         with:
@@ -73,4 +82,5 @@ jobs:
             genre_contract_v3_research/V3_STRUCTURED_PREGEN_AUDIT.json
             genre_contract_v3_research/V3_SOURCE_PATTERN_COMPATIBILITY_AUDIT.json
             genre_contract_v3_research/V3_SYMBOLIC_PATTERN_EXECUTION_AUDIT.json
+            genre_contract_v3_research/V3_FOREGROUND_AUTHORITY_AUDIT.json
           if-no-files-found: error

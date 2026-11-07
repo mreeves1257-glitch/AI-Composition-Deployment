@@ -19,6 +19,7 @@ if str(FORWARD) not in sys.path:
 from genre_contract_v3_execution_bridge import load_master, snapshot_for, execution_packet
 from genre_selector import GenreSelector
 from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority
+from genre_v3_source_pattern_bridge import resolve_source_roles
 from classical_v3_variant_package import resolve as resolve_classical_v3_variant
 
 V3_PATH = ROOT / "genre_contract_v3_research" / "GENRE_CONTRACT_V3_ALL_55.json"
@@ -82,6 +83,7 @@ def main():
     selection_pass = 0
     packet_pass = 0
     v3_explicit_roster = 0
+    v3_source_pattern_roles = 0
     legacy_fallback = 0
     controlled_component = 0
     classical_specialized = 0
@@ -132,8 +134,13 @@ def main():
             authority = "GENRE_CONTRACT_V3_EXPLICIT_ROSTER"
             v3_explicit_roster += 1
         else:
-            authority = "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE_FALLBACK"
-            legacy_fallback += 1
+            source_roles = resolve_source_roles(name)
+            if source_roles.get("status") == "PASS":
+                authority = "V3_GOVERNED_SOURCE_PATTERN_ROLES"
+                v3_source_pattern_roles += 1
+            else:
+                authority = "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE_FALLBACK"
+                legacy_fallback += 1
 
         ensemble = contract.get("ensemble") or {}
         roster = ensemble.get("instrument_roster") or []
@@ -196,6 +203,7 @@ def main():
         "legacy_family_baseline_template_count": len(bases),
         "remaining_execution_authority_counts": {
             "GENRE_CONTRACT_V3_EXPLICIT_ROSTER": v3_explicit_roster,
+            "V3_GOVERNED_SOURCE_PATTERN_ROLES": v3_source_pattern_roles,
             "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE_FALLBACK": legacy_fallback,
             "CONTROLLED_COMPONENT_INPUT": controlled_component,
             "V3_CLASSICAL_VARIANT_PACKAGE__STRUCTURAL_COMPILER_REQUIRED": classical_specialized,
@@ -204,12 +212,11 @@ def main():
         "confirmed_remaining_gaps": remaining_gaps,
         "interpretation": (
             "All 55 V3 contracts survive selection and execution-packet creation. "
-            "Seven non-Classical automatic genres with explicit V3 formations now have "
-            "V3 instrument-role authority. Forty automatic genres still require a "
-            "clearly labeled legacy palette fallback because their V3 rosters are not "
-            "yet explicit. Classical now resolves a V3 period/orchestral package, "
-            "binds the V3 structural compiler and abstract note/harmony/texture "
-            "realizer, blocks the legacy fixed plan, and halts before orchestration."
+            "Seven non-Classical automatic genres use explicit V3 formation authority "
+            "and the remaining forty automatic genres use V3-governed source-pattern "
+            "role authority. No automatic genre currently requires the legacy static "
+            "palette as execution authority. Classical uses its separately validated "
+            "V3 structural/note/orchestration diagnostic path."
         ),
         "genres": results,
     }
@@ -220,28 +227,33 @@ def main():
         raise RuntimeError("ALL_55_V3_PROPAGATION_NOT_PROVEN")
     if v3_explicit_roster != 7:
         raise RuntimeError(f"EXPECTED_7_V3_EXPLICIT_ROSTER_GENRES__GOT_{v3_explicit_roster}")
-    if legacy_fallback != 40:
-        raise RuntimeError(f"EXPECTED_40_LEGACY_FALLBACK_GENRES__GOT_{legacy_fallback}")
+    if v3_source_pattern_roles != 40:
+        raise RuntimeError(f"EXPECTED_40_V3_SOURCE_PATTERN_ROLE_GENRES__GOT_{v3_source_pattern_roles}")
+    if legacy_fallback != 0:
+        raise RuntimeError(f"EXPECTED_ZERO_AUTOMATIC_LEGACY_FALLBACKS__GOT_{legacy_fallback}")
     if controlled_component != 7 or classical_specialized != 1:
         raise RuntimeError("EXPECTED_CONTROLLED_OR_CLASSICAL_COUNTS_NOT_MET")
-    required_gap_truths = (
-        "adapter_v3_profile_source_patch_present",
-        "adapter_v3_roster_patch_present",
-        "static_palette_table_still_present_as_fallback",
-        "static_family_baseline_table_still_present",
-        "fallback_path_still_uses_static_palette",
-        "classical_special_case_present",
-        "legacy_classical_fixed_plan_code_still_present",
-        "classical_v3_structural_compiler_bound",
-        "classical_abstract_note_realizer_bound",
-        "classical_orchestration_binding_still_required",
-        "classical_legacy_execution_explicitly_false",
-        "generic_blueprint_rejects_classical",
-        "performance_realizer_bypasses_classical",
-        "instrument_resolver_only_resolves_event_ids",
-    )
-    if not all(remaining_gaps[key] for key in required_gap_truths):
-        raise RuntimeError("EXPECTED_WIRING_GAP_NOT_DETECTED")
+    positive_invariants = {
+        "adapter_v3_profile_source_patch_present": remaining_gaps["adapter_v3_profile_source_patch_present"],
+        "adapter_constructor_defaults_to_v3": remaining_gaps["adapter_constructor_defaults_to_v3"],
+        "adapter_constructor_legacy_default_removed": remaining_gaps["adapter_constructor_legacy_default_removed"],
+        "adapter_v3_roster_patch_present": remaining_gaps["adapter_v3_roster_patch_present"],
+        "source_pattern_authority_bound": (
+            "V3_GOVERNED_SOURCE_PATTERN_ROLES" in adapter_source
+            and "genre_v3_symbolic_pattern_executor" in adapter_source
+            and "legacy_note_generator_used':False" in adapter_source
+        ),
+        "classical_v3_structural_compiler_bound": remaining_gaps["classical_v3_structural_compiler_bound"],
+        "classical_legacy_execution_explicitly_false": remaining_gaps["classical_legacy_execution_explicitly_false"],
+        "engine_symbolic_resolution_stop_present": "V3_SYMBOLIC_INSTRUMENT_RESOLUTION_PASS" in engine_source,
+        "instrument_resolver_only_resolves_event_ids": remaining_gaps["instrument_resolver_only_resolves_event_ids"],
+    }
+    summary["positive_invariants"] = positive_invariants
+    if not all(positive_invariants.values()):
+        raise RuntimeError(
+            "V3_EXECUTION_POSITIVE_INVARIANT_MISSING::"+
+            json.dumps({k:v for k,v in positive_invariants.items() if not v},sort_keys=True)
+        )
 
     out = ROOT / "genre_contract_v3_research" / "V3_EXECUTION_WIRING_AUDIT.json"
     out.write_text(json.dumps(summary, indent=2) + "\n")

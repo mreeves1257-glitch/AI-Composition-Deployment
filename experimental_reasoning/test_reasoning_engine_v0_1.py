@@ -76,7 +76,24 @@ def test_bridge_requires_contrast_but_not_more_volume():
     validate(packet)
     d = packet["decisions"]
     assert d["contrast"]["required"] is True
-    assert d["roles"]["foreground_policy"] == "CONTRASTING_PRIMARY_FOCUS"
+    assert d["roles"]["foreground_policy"] == "NO_PERSISTENT_INSTRUMENT_DOMINANCE"
+    assert d["instrument_balance"]["mode"] == "COMPLETE_EQUAL_BALANCE"
+
+
+def test_complete_equal_instrument_balance_is_default():
+    state = ComposerState(
+        genre="Funk",
+        profile_id="FUNK_PROFILE",
+        section="Chorus",
+    )
+    packet = reason(state=state)
+    validate(packet)
+    b = packet["decisions"]["instrument_balance"]
+    assert b["target_0_to_1"] == 1.0
+    assert b["relative_prominence"] == "EQUAL"
+    assert b["persistent_instrument_dominance_allowed"] is False
+    assert b["identical_note_density_required"] is False
+    assert b["solo_or_feature_exception"] == "REQUIRES_EXPLICIT_OVERRIDE"
 
 
 def test_hash_detects_mutation():
@@ -100,6 +117,7 @@ if __name__ == "__main__":
         test_verse_two_after_chorus_pulls_back_and_develops,
         test_chorus_builds_without_choosing_instruments,
         test_bridge_requires_contrast_but_not_more_volume,
+        test_complete_equal_instrument_balance_is_default,
         test_hash_detects_mutation,
     ]
     for fn in tests:

@@ -1,0 +1,29 @@
+{
+  "schema": "ROCK_V3_BASS_SUSTAIN_USER_REJECTION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "user_musical_judgment": {
+    "downbeat_attack": "GOOD",
+    "problem": "BASS_RESONATES_TOO_LONG_AFTER_DOWNBEAT",
+    "perceptual_effect": "TAIL_READS_LIKE_OR_LEANS_INTO_UPBEAT",
+    "requested_direction": "LESS_SUSTAIN__MORE_DAMPED_DOWNBEAT"
+  },
+  "decision": {
+    "reject_bass_sustain_extension_direction": true,
+    "reject_clean_mapping_as_next_sustain_test": true,
+    "retain_current_vicious_mapping_for_decay_calibration": true,
+    "do_not_extend_bass_notes": true,
+    "next_research_goal": "CALIBRATE_SHORT_BASS_NOTE_GATE_SO_AUDIBLE_TAIL_DECAYS_BEFORE_UPBEAT"
+  },
+  "tempo_bpm": 123,
+  "half_beat_upbeat_seconds": 0.24390243902439024,
+  "approved_guitar_context_preserved": {
+    "harmony_max_ringing_beats": 2.8,
+    "safe_strum": true,
+    "treated_lead": true
+  },
+  "registry_modified": false,
+  "canonical_policy_modified": false,
+  "live_runtime_promoted": false,
+  "reasoning_engine_used": false
+}

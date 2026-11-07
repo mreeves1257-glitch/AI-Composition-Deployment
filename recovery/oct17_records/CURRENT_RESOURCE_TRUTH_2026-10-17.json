@@ -1,0 +1,51 @@
+{
+  "schema": "AI_COMPOSER_CURRENT_RESOURCE_TRUTH_V1",
+  "date": "2026-10-17",
+  "active_master_scope": "/Working File/INTEGRATED_WORKING_COPY",
+  "declared_internal_binding_count": 10,
+  "declared_binding_paths_present": 10,
+  "packs": {
+    "KARORYFER_GROWLYBASS_V1_002": {
+      "present": true,
+      "mapping": "growlybass_vicious.sfz",
+      "mapping_present": true,
+      "historical_preflight": {
+        "sample_references": 86,
+        "unique_samples": 86,
+        "sfz_files_validated": 1
+      },
+      "status": "TEST_MAPPING_SAMPLE_GRAPH_READY_FIDELITY_NOT_CERTIFIED",
+      "note": "production-preferred clean mapping remains a separate quality gate"
+    },
+    "KARORYFER_SHINYGUITAR": {
+      "present": true,
+      "mapping": "Programs/composer_electric.sfz",
+      "mapping_present": true,
+      "wrapper_sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35",
+      "historical_preflight": {
+        "sample_references": 6798,
+        "unique_samples": 846,
+        "sfz_files_validated": 16
+      },
+      "status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+    },
+    "KARORYFER_BIG_RUSTY_DRUMS": {
+      "present": true,
+      "mapping": "Programs/01-full.sfz",
+      "mapping_present": true,
+      "historical_preflight": {
+        "sample_references": 7922,
+        "unique_samples": 4466,
+        "sfz_files_validated": 310,
+        "silent_choke_regions": 18
+      },
+      "status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOFS_PRESENT_FIDELITY_NOT_CERTIFIED"
+    }
+  },
+  "historical_report_superseded_for_presence_only": "PRODUCTION_COVERAGE_TRUTH_2026-10-10.md",
+  "still_blocked": [
+    "full expressive/controller/backend fidelity certification for restored SFZ libraries",
+    "production resources for the many non-Karoryfer instrument identities required across the 55 genres",
+    "audible genre-by-genre production verification"
+  ]
+}

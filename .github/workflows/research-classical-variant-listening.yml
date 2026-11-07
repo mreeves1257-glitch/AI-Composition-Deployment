@@ -2,11 +2,6 @@ name: Research Classical Variant Paired Listening
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - "genre_contract_v3_research/classical_variant_validation.py"
-      - "genre_contract_v3_research/render_classical_variant_comparison.py"
-      - ".github/workflows/research-classical-variant-listening.yml"
   push:
     branches:
       - genre-contract-v3-research

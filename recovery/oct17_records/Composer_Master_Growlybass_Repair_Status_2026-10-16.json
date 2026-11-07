@@ -1,0 +1,25 @@
+{
+  "date_utc": "2026-10-16T14:53:10.158689+00:00",
+  "master_identity": "/Working File/ACTIVE_MASTER.json",
+  "active_program": "/Working File/INTEGRATED_WORKING_COPY",
+  "master_policy": "ONE_MASTER_FORWARD_ONLY",
+  "change_scope": "Growlybass repair incorporated into existing active master; no master replacement",
+  "growlybass": {
+    "sfz": "sound_resources/KARORYFER_GROWLYBASS_V1_002/growlybass_vicious.sfz",
+    "staccato_wavs": 70,
+    "scrape_wavs": 16,
+    "sfz_sample_references": 86,
+    "corrected_sample": "scrape/scrape_4_rr4.wav",
+    "duplicate_removed_from_library": true,
+    "sample_integrity": "passed prior checks",
+    "integration_playback": "NOT CERTIFIED",
+    "independent_sample_preview": "Generated; not equivalent to SFZ integration"
+  },
+  "remaining_master_release_gates": [
+    "Original library expressive fidelity not certified",
+    "Comprehensive hard copy incomplete",
+    "Historical catalog audio hashes unresolved per ACTIVE_MASTER.json"
+  ],
+  "control_panel_changed": false,
+  "existing_master_files_overwritten": false
+}

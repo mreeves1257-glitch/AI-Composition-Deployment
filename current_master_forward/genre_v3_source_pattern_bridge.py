@@ -14,12 +14,15 @@ import hashlib
 import json
 from typing import Any
 
-from genre_contract_v3_execution_bridge import snapshot_for
+from genre_contract_v3_execution_bridge import snapshot_for, ROOT as REPO
 
-REPO = Path(__file__).resolve().parents[1]
 STYLE_ROOT = REPO / "composer_overrides" / "genre_styles"
 INDEX_PATH = STYLE_ROOT / "index.json"
-INSTRUMENT_LIBRARY_PATH = REPO / "current_master_forward" / "instrument_library.json"
+_RUNTIME_LIBRARY = Path(__file__).resolve().parent / "instrument_library.json"
+INSTRUMENT_LIBRARY_PATH = (
+    _RUNTIME_LIBRARY if _RUNTIME_LIBRARY.is_file()
+    else REPO / "current_master_forward" / "instrument_library.json"
+)
 PACK_NAME = "SOURCE_PATTERN_LIBRARY_R1.json"
 PACK_SCHEMA = "AI_COMP_GENRE_ORIGINAL_SOURCE_PATTERNS_R1"
 SECTION_NAMES = (

@@ -248,7 +248,7 @@
       "source_profile_id": "NEW_AGE_V2",
       "family": "New Age",
       "source_status": "CONTROLLED_BROAD_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SUBGENRE_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "NEW_AGE_V2",
@@ -292,62 +292,157 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already supports flowing, sparse, arpeggiated or absent pulse.",
+          "Spacious tonal/modal harmony, long arcs and gradual texture evolution are strong foundations.",
+          "Existing profile already emphasizes depth, continuous expression and low masking."
+        ],
+        "current_profile_gaps": [
+          "New Age is a broad umbrella with many instrument-specific and ambient/progressive styles.",
+          "No explicit subgenre resolver.",
+          "No formation/presence/activity percentages.",
+          "No hard boundary preventing silent substitution with Ambient Electronic or project-defined Spiritual."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "GRAMMY New Age definition",
+          "AllMusic New Age style taxonomy",
+          "MTG-Jamendo for future instrument-presence research"
+        ],
+        "retained_current_fields": [
+          "spacious tonal/modal harmony",
+          "long melodic arcs",
+          "slow texture evolution",
+          "optional pulse",
+          "continuous expression",
+          "broad spatial depth"
+        ],
+        "upgraded_fields": [
+          "subgenre resolver",
+          "instrument-family presence/activity",
+          "foreground-depth rules",
+          "Ambient/Spiritual boundary",
+          "formation resolver"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Through-composed/ABA/journey-like development with variant-specific pacing and recurrence."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_NEW_AGE_VARIANT",
+          "rule": "Spacious tonal/modal/open harmony; dissonance/consonance and harmonic motion depend on variant rather than one relaxation formula."
+        },
+        "melody_model": {
+          "rule": "Long arcs, sparse motifs or solo-instrument foreground according to variant; silence can be structural."
+        },
+        "rhythm_groove_model": {
+          "rule": "Pulse can be absent, flowing, arpeggiated or gently rhythmic; no compulsory backbeat."
+        },
+        "bass_model": {
+          "rule": "Long-tone/pedal/gentle motion or absence; avoid rigid repetitive low-end templates."
+        },
+        "percussion_model": {
+          "rule": "Optional and usually light; subtype may authorize stronger rhythmic behavior."
+        },
+        "phrase_model": {
+          "rule": "Long breath/release arcs with gradual entrances/exits."
+        },
+        "transition_model": {
+          "rule": "Texture, harmony, register, silence and ambience drive transitions."
+        },
+        "development_model": {
+          "rule": "Develop by orchestration, register, motif transformation, texture and space rather than loop repetition."
+        },
+        "cadence_ending_model": {
+          "rule": "Resolution, fade, dissipation or open ending according to variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Foreground instrument remains clearly localized against pads/textures.",
+          "Background depth must not become a constant masking wall.",
+          "Large textures yield register/density when small acoustic voice is featured."
+        ],
+        "role_handoff_rules": [
+          "Foreground may pass among piano, flute, guitar, harp, synth, strings or other verified variant roles."
+        ],
+        "register_occupancy": {
+          "rule": "Preserve air around foreground; avoid chronic pad overlap across full spectrum."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "New Age can be solo piano, guitar/flute/harp-led, ensemble, electronic or hybrid."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato and sustained articulation favored, with soft attacks where the selected instrument supports them",
+        "dynamic_behavior": "long crescendos/diminuendos and section-scale breathing",
+        "timing_humanization_behavior": "phrase-level microtiming and tempo breathing; repetition must evolve",
+        "continuous_performance_control": "continuous expression, pedal, attack/release and ambience controls when target supports them",
+        "interaction_rules": [
+          "Shared phrase breathing.",
+          "Continuous expression is compositional.",
+          "Silence and low density are valid."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT",
+          "rule": "Broad depth/width with protected foreground; ambience must not erase articulation."
+        },
+        "mix_prominence_intent": "clear foreground/background depth with broad spatial field",
+        "sound_effects_intent": "reverb/depth intentional; avoid washing out foreground definition",
+        "production_mastering_intent": "smooth, open, low-harshness master; transient restraint unless subtype requires more activity"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current New Age profile",
+          "GRAMMY New Age definition",
+          "AllMusic New Age taxonomy"
+        ],
+        "source_confidence": {
+          "broad_identity": "HIGH",
+          "subgenre_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "GRAMMY_AllMusic": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "No silent Ambient Electronic or Spiritual substitution.",
+          "Subgenre/formation required before percentages."
+        ],
+        "listening_tests": [
+          "Foreground remains clear.",
+          "Texture evolves slowly without stagnation.",
+          "New Age and Ambient Electronic remain distinguishable when variants differ."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -356,6 +451,23 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "New Age",
+        "candidate_variants": [
+          "Contemporary instrumental",
+          "Piano/New Age",
+          "Guitar/New Age",
+          "Flute/New Age",
+          "Harp/New Age",
+          "Neo-Classical New Age",
+          "Progressive Electronic New Age",
+          "Ambient-leaning New Age",
+          "Environmental/Nature-oriented",
+          "Solo instrumental"
+        ],
+        "hard_rule": "New Age may overlap ambient or spiritual-use contexts, but must not silently resolve to Ambient Electronic or project-defined Spiritual."
       }
     },
     "Classical": {
@@ -9605,7 +9717,7 @@
       "source_profile_id": "TRIP_HOP_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_LAYER_MODEL_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "TRIP_HOP_V2",
@@ -9647,62 +9759,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong broken-beat/downtempo core with heavy groove and deliberate space.",
+          "Atmospheric background plus sparse foreground is already well described.",
+          "Bass and break relationship is appropriately central."
+        ],
+        "current_profile_gaps": [
+          "No variant/production resolver.",
+          "No layer activity/presence percentages.",
+          "No sampled-break versus programmed-break state.",
+          "No explicit distinction from generic Downtempo."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "AllMusic Trip-Hop overview",
+          "MTG-Jamendo",
+          "MedleyDB research target"
+        ],
+        "retained_current_fields": [
+          "downtempo broken beat",
+          "heavy bass",
+          "jazz/soul/minor/modal color",
+          "atmospheric background",
+          "sparse foreground"
+        ],
+        "upgraded_fields": [
+          "production resolver",
+          "break-source state",
+          "layer percentages",
+          "foreground windows",
+          "Downtempo boundary"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Loop-evolving sectional or verse/chorus hybrid with atmospheric development and breakdowns."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TRIP_HOP_VARIANT",
+          "rule": "Minor/modal/jazz/soul-inflected or sparse loop harmony according to production variant."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead/sample/guitar/strings may occupy sparse foreground windows over atmospheric field."
+        },
+        "rhythm_groove_model": {
+          "rule": "Downtempo broken beat with deliberate looseness, ghosting and loop variation; no four-on-floor fallback."
+        },
+        "bass_model": {
+          "rule": "Substantial bass weight, sustained or syncopated around break; low end must preserve break detail."
+        },
+        "percussion_model": {
+          "rule": "Sample-like or programmed break behavior with humanized variation; exact-copy looping is not sufficient."
+        },
+        "phrase_model": {
+          "rule": "Sparse foreground over dense/atmospheric background; negative space is intentional."
+        },
+        "transition_model": {
+          "rule": "Break edits, texture changes, filtering, silence, samples and low-end state changes."
+        },
+        "development_model": {
+          "rule": "Develop through break mutation, atmosphere, bass state, harmonic color and foreground recurrence."
+        },
+        "cadence_ending_model": {
+          "rule": "Fade, deconstruction, unresolved atmosphere or composed stop."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "VIRTUAL_LAYER_MODEL"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_rules": [
+          "Lead/vocal/sample remains intelligible through atmospheric layers.",
+          "Bass weight cannot erase break detail or foreground midrange.",
+          "Textures may be dense in depth while foreground stays sparse."
+        ],
+        "role_handoff_rules": [
+          "Foreground rotates among lead/sample/instrumental motif while break/bass remain foundation."
+        ],
+        "register_occupancy": {
+          "rule": "Separate sub/break transients, atmospheric mids and foreground lead."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "section_population_reference": {
+          "status": "PHYSICAL_HEADCOUNT_NOT_PRIMARY"
+        },
+        "layer_presence_percent": {
+          "status": "TO_DERIVE"
+        },
+        "layer_activity_percent": {
+          "status": "TO_DERIVE"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "soft/dirty drum texture, sustained pads, intimate lead articulation",
+        "dynamic_behavior": "restrained-to-heavy contrast; atmosphere can swell independently",
+        "timing_humanization_behavior": "controlled looseness and laid-back microtiming",
+        "continuous_performance_control": "filter/FX/level automation",
+        "interaction_rules": [
+          "Break looseness is relational, not random.",
+          "Atmosphere responds to form.",
+          "Foreground remains sparse by design."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "rule": "Deep/wide atmosphere with focused bass/break and clearly localized foreground."
+        },
+        "mix_prominence_intent": "bass and lead remain clear through atmospheric layers",
+        "sound_effects_intent": "reverb/delay/saturation/grain/lo-fi texture are valid structural components",
+        "production_mastering_intent": "dark/warm master with controlled sub and transients"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Trip-Hop profile",
+          "AllMusic Trip-Hop overview",
+          "MTG-Jamendo/MedleyDB research targets"
+        ],
+        "source_confidence": {
+          "historical_style_identity": "HIGH",
+          "variant_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "AllMusic": "REFERENCE_ONLY",
+          "datasets": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Broken-beat identity required.",
+          "No generic Downtempo substitution.",
+          "Bass cannot erase break detail."
+        ],
+        "listening_tests": [
+          "Atmosphere is dense but foreground clear.",
+          "Break feels human/evolving.",
+          "Bass is heavy without mud."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -9711,6 +9923,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Trip-Hop",
+        "candidate_variants": [
+          "Vocal-centered atmospheric",
+          "Instrumental/sample-driven",
+          "Dark/cinematic",
+          "Dub-influenced",
+          "Rock/guitar-inflected"
+        ],
+        "hard_rule": "Do not collapse into generic Downtempo; sampled/broken-beat identity and atmospheric tension remain defining constraints."
       }
     },
     "Contemporary Trip-Hop / Trip-Hop Revival": {
@@ -9719,7 +9943,7 @@
       "source_profile_id": "CONTEMPORARY_TRIP_HOP_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_OVERLAY",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__OVERLAY_AUTHORITY",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CONTEMPORARY_TRIP_HOP_V2",
@@ -9761,62 +9985,149 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Correctly defined as an overlay that inherits Trip-Hop instead of replacing it.",
+          "Modern sub-bass/digital transient and granular texture additions are already explicit."
+        ],
+        "current_profile_gaps": [
+          "No formal inheritance schema.",
+          "No limit preventing modern layer from erasing base Trip-Hop identity.",
+          "No overlay activity percentages."
+        ],
+        "external_sources_considered": [
+          "Current overlay profile",
+          "AllMusic historical Trip-Hop baseline",
+          "current production taxonomy research"
+        ],
+        "retained_current_fields": [
+          "inherit Trip-Hop core",
+          "modern sub-bass",
+          "digital drum reinforcement",
+          "granular/digital textures",
+          "selective width increase"
+        ],
+        "upgraded_fields": [
+          "formal inheritance",
+          "overlay percentage/state model",
+          "base-identity guardrails",
+          "modern-layer foreground rules"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Inherit Trip-Hop form, then allow modern production-layer transformations."
+        },
+        "harmony_model": {
+          "authority": "TRIP_HOP_BASE_PLUS_EXPLICIT_MODERN_OVERLAY"
+        },
+        "melody_model": {
+          "rule": "Retain sparse foreground principle; modern digital textures remain support unless explicitly featured."
+        },
+        "rhythm_groove_model": {
+          "rule": "Trip-Hop break core remains; contemporary electronic reinforcement must not convert groove into unrelated modern genre."
+        },
+        "bass_model": {
+          "rule": "Modern sub layer added with headroom and envelope separation from break."
+        },
+        "percussion_model": {
+          "rule": "Breakbeat core plus controlled electronic reinforcement."
+        },
+        "phrase_model": {
+          "rule": "Base phrasing retained; overlay layers activate/deactivate by section."
+        },
+        "transition_model": {
+          "rule": "Modern FX/granular/filter transitions allowed while preserving base identity."
+        },
+        "development_model": {
+          "rule": "Contrast inherited analog/sample-like atmosphere with controlled modern layers."
+        },
+        "cadence_ending_model": {
+          "rule": "Inherited base ending plus optional modern deconstruction/FX."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "OVERLAY_LAYER_MODEL"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "BASE_PLUS_OVERLAY_TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_rules": [
+          "Base foreground remains intelligible.",
+          "Modern textures may take temporary feature windows without erasing Trip-Hop foundation."
+        ],
+        "role_handoff_rules": [
+          "Overlay can move forward in transitions/features then recede."
+        ],
+        "register_occupancy": {
+          "rule": "Modern sub/FX layers must leave room for break and lead."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE"
+        },
+        "section_population_reference": {
+          "status": "INHERITS_TRIP_HOP"
+        },
+        "overlay_activity_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Modern overlay must not occupy 100% of every section by default."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "mixed soft/dirty/precise articulations",
+        "dynamic_behavior": "wider production-driven dynamic contrast",
+        "timing_humanization_behavior": "base Trip-Hop looseness preserved beneath precise modern layers",
+        "continuous_performance_control": "modern automation and spatial control",
+        "interaction_rules": [
+          "Overlay follows base timing/form.",
+          "No identity replacement by modern reinforcement."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "rule": "Base deep atmosphere retained; modern width/transient enhancement is selective."
+        },
+        "mix_prominence_intent": "sub and lead protected; width increased selectively",
+        "sound_effects_intent": "wider space, granular/digital texture, modern delays",
+        "production_mastering_intent": "modern low-end and transient control with dark atmospheric balance"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Contemporary Trip-Hop overlay",
+          "AllMusic Trip-Hop baseline"
+        ],
+        "source_confidence": {
+          "overlay_architecture": "HIGH",
+          "quantitative_overlay_share": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "AllMusic": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Trip-Hop base contract must resolve first.",
+          "Overlay cannot erase base identity."
+        ],
+        "listening_tests": [
+          "Clearly Trip-Hop before clearly modern.",
+          "Sub/modern drums add depth without turning into another electronic style."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -9825,6 +10136,12 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "INHERIT_BASE_THEN_OVERLAY",
+        "base_contract": "Trip-Hop",
+        "overlay_id": "CONTEMPORARY_TRIP_HOP_V2",
+        "hard_rule": "Overlay cannot remove broken-beat/atmospheric Trip-Hop core; if it does, resolve to another genre."
       }
     },
     "Regional Electronic Hybrids": {
@@ -10416,7 +10733,7 @@
       "source_profile_id": "DISCO_V1",
       "family": "Dance",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__ERA_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "DISCO_V1",
@@ -10458,62 +10775,160 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good four-on-floor/offbeat-hat/syncopated-bass core.",
+          "Rhythmic guitar plus strings/horns/keys color and dance-break form are already present.",
+          "Melodic bass as hook layer is an important distinction from House."
+        ],
+        "current_profile_gaps": [
+          "No era/production resolver.",
+          "No orchestra-vs-band formation percentages.",
+          "No explicit string/horn activity/foreground windows.",
+          "No boundary between legacy Disco and Nu Disco/Disco."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Beatport Nu Disco/Disco taxonomy",
+          "MMA Disco-style references",
+          "historical genre references"
+        ],
+        "retained_current_fields": [
+          "four-on-floor",
+          "offbeat hats",
+          "melodic syncopated bass",
+          "rhythmic guitar",
+          "strings/horns/keys colors",
+          "dance breaks"
+        ],
+        "upgraded_fields": [
+          "era resolver",
+          "formation resolver",
+          "orchestral-color percentages",
+          "rhythmic-slot occupancy",
+          "Nu-Disco boundary"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/chorus plus dance breaks/instrumental sections with extended groove passages."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_DISCO_VARIANT",
+          "rule": "Tonal pop/funk harmony with repeating progressions and extended colors."
+        },
+        "melody_model": {
+          "rule": "Vocal/lead hook remains clear over active rhythm section and orchestral colors."
+        },
+        "rhythm_groove_model": {
+          "rule": "Four-on-floor, offbeat/open hats, backbeat and guitar/percussion subdivision interlock."
+        },
+        "bass_model": {
+          "rule": "Syncopated melodic bass is a primary hook/foundation layer, not merely sub support."
+        },
+        "percussion_model": {
+          "rule": "Kick, snare/clap, hats and fills sustain dance drive; percussion may augment band groove."
+        },
+        "phrase_model": {
+          "rule": "Bass/guitar/string/horn hooks occupy complementary rhythmic and register lanes."
+        },
+        "transition_model": {
+          "rule": "Breaks, string/horn lifts, fills and dance-section changes."
+        },
+        "development_model": {
+          "rule": "Develop through orchestral-color entries, bass variation, guitar rhythm, breaks and hook recurrence."
+        },
+        "cadence_ending_model": {
+          "rule": "Dance fade, final hits, tags or arranged ending by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE"
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead hook stays clear; strings/horns widen/answer rather than constantly dominate.",
+          "Bass remains prominent but separated from kick."
+        ],
+        "role_handoff_rules": [
+          "Foreground can rotate vocal/lead↔horn/string hook↔instrumental break."
+        ],
+        "register_occupancy": {
+          "rule": "Separate bass/kick low end, rhythmic guitar/keys midrange, strings/horns and lead."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Disco ranges from compact band productions to large studio/orchestral arrangements."
+        },
+        "rhythmic_slot_occupancy_percent": {
+          "status": "TO_DERIVE"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "short guitar chanks, crisp hats, sustained strings, horn stabs",
+        "dynamic_behavior": "steady dance energy with breakdown/rebuild contrast",
+        "timing_humanization_behavior": "tight dance grid with controlled human groove",
+        "continuous_performance_control": "velocity/expression plus filter/FX where electronic target used",
+        "interaction_rules": [
+          "Dance pulse remains stable.",
+          "Bass/guitar/drums interlock.",
+          "Orchestral colors support hook/peaks."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "ERA_VARIANT_DEPENDENT",
+          "rule": "Focused rhythm center with wider strings/horns and clear lead."
+        },
+        "mix_prominence_intent": "bass/kick prominent, strings/horns wide, melody clear",
+        "sound_effects_intent": "room/plate/chorus and dance production effects",
+        "production_mastering_intent": "bright/punchy dance master with controlled low end"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Disco profile",
+          "Beatport Nu Disco/Disco taxonomy",
+          "arranger/style references"
+        ],
+        "source_confidence": {
+          "classic_core": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE",
+          "external_style_sources": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Classic Disco cannot silently resolve as modern House/Nu Disco.",
+          "Formation required for population percentages."
+        ],
+        "listening_tests": [
+          "Melodic bass is audible and active.",
+          "Strings/horns enrich without burying lead.",
+          "Dance groove remains continuous."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -10522,6 +10937,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Disco",
+        "candidate_variants": [
+          "Classic 1970s band/orchestral disco",
+          "Minimal/funk-forward disco",
+          "Hi-NRG-adjacent disco",
+          "Studio/orchestrated disco"
+        ],
+        "hard_rule": "Current Beatport Nu Disco/Disco is a modern marketplace category and must not silently replace classic Disco grammar."
       }
     },
     "WALTZ": {
@@ -10530,7 +10956,7 @@
       "source_profile_id": "WALTZ_GENERIC_V1",
       "family": "Waltz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__STYLE_RESOLVER_ONLY",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "WALTZ_GENERIC_V1",
@@ -10572,62 +10998,137 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Current profile already correctly says Waltz alone is a meter/style family, not Viennese/Jazz/Country/Classical.",
+          "Beat-one hierarchy and context-inherited instrumentation are good guardrails."
+        ],
+        "current_profile_gaps": [
+          "It should function as a resolver rather than an executable final style.",
+          "No explicit target-context resolution contract."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "existing Jazz Waltz and Country Waltz contracts",
+          "future Classical/Viennese waltz variants"
+        ],
+        "retained_current_fields": [
+          "3/4 requirement",
+          "beat-one hierarchy",
+          "context-inherited instrumentation",
+          "no automatic oom-pah-pah"
+        ],
+        "upgraded_fields": [
+          "resolver-only authority",
+          "context inheritance",
+          "conflict rejection"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Inherited from resolved Waltz context."
+        },
+        "harmony_model": {
+          "authority": "INHERIT_RESOLVED_WALTZ_CONTEXT"
+        },
+        "melody_model": {
+          "rule": "Inherited."
+        },
+        "rhythm_groove_model": {
+          "rule": "3/4 hierarchy is shared; accompaniment/accent behavior belongs to resolved context."
+        },
+        "bass_model": {
+          "rule": "Inherited from context."
+        },
+        "percussion_model": {
+          "rule": "Inherited from context."
+        },
+        "phrase_model": {
+          "rule": "Inherited from context."
+        },
+        "transition_model": {
+          "rule": "Inherited from context."
+        },
+        "development_model": {
+          "rule": "Inherited from context."
+        },
+        "cadence_ending_model": {
+          "rule": "Inherited from context."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "INHERIT_RESOLVED_CONTEXT"
+        },
+        "presence_percent": {
+          "status": "INHERIT"
+        },
+        "activity_percent": {
+          "status": "INHERIT"
+        },
+        "musical_agency_percent": {
+          "status": "INHERIT"
+        },
+        "foreground_window_percent": {
+          "status": "INHERIT"
+        },
+        "foreground_window_rules": [
+          "Inherited from resolved context."
+        ],
+        "role_handoff_rules": [
+          "Inherited from resolved context."
+        ],
+        "register_occupancy": {
+          "rule": "Inherited from resolved context."
+        },
+        "spatial_footprint_percent": {
+          "status": "INHERIT"
+        },
+        "section_population_reference": {
+          "status": "INHERIT_RESOLVED_CONTEXT"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato or dance articulation according to substyle",
+        "dynamic_behavior": "phrase-level swells and cadence shaping",
+        "timing_humanization_behavior": "rubato allowed at phrase level; three-beat hierarchy stable",
+        "continuous_performance_control": "expression and tempo curves",
+        "interaction_rules": [
+          "Triple-meter hierarchy inherited plus resolved-context behavior."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "INHERIT_RESOLVED_CONTEXT"
+        },
+        "mix_prominence_intent": "beat hierarchy clear without over-accenting",
+        "sound_effects_intent": "effects inherited from selected style",
+        "production_mastering_intent": "mastering inherited from selected style"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Waltz profile",
+          "Project Jazz Waltz/Country Waltz research"
+        ],
+        "source_confidence": {
+          "resolver_architecture": "HIGH"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Reject unresolved Waltz at composition stage.",
+          "Resolved context must be one specific contract."
+        ],
+        "listening_tests": [
+          "Country/Jazz/Classical waltzes must sound materially different."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -10636,6 +11137,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "MANDATORY",
+        "parent_family": "Waltz",
+        "candidate_variants": [
+          "Country Waltz",
+          "Jazz Waltz",
+          "Classical/Viennese Waltz",
+          "Folk/Regional Waltz",
+          "Custom 3/4 style"
+        ],
+        "hard_rule": "WALTZ cannot reach composition stage until a musical context is resolved."
       }
     },
     "PIANIST": {
@@ -10644,7 +11157,7 @@
       "source_profile_id": "PIANIST_SOLO_V1",
       "family": "Pianist",
       "source_status": "CONTROLLED_INSTRUMENTAL_STYLE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__INSTRUMENTAL_STYLE_CONTRACT",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "PIANIST_SOLO_V1",
@@ -10688,62 +11201,145 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Correctly treats piano as sole/primary voice and does not require arranger backing.",
+          "Single-performer coherence across melody/harmony/bass is already explicit."
+        ],
+        "current_profile_gaps": [
+          "Needs composition-style resolver for classical/jazz/pop/new-age/etc. piano language.",
+          "No explicit 100% solo-piano pilot representation.",
+          "Optional secondary texture needs a separate variant, not hidden addition."
+        ],
+        "external_sources_considered": [
+          "Current Pianist profile",
+          "resolved parent genre contracts"
+        ],
+        "retained_current_fields": [
+          "single performer coherence",
+          "no separate bass/drums by default",
+          "full-range piano foreground"
+        ],
+        "upgraded_fields": [
+          "parent-style resolver",
+          "solo-piano formation",
+          "secondary-texture variant rule"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Inherited from resolved composition style and adapted to single-piano realization."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_PARENT_STYLE"
+        },
+        "melody_model": {
+          "rule": "Right/left/cross-hand roles coordinated as one performer."
+        },
+        "rhythm_groove_model": {
+          "rule": "Derived from resolved composition; no arranger backing."
+        },
+        "bass_model": {
+          "rule": "Left-hand bass/arpeggio/chord support within piano unless variant explicitly adds secondary texture."
+        },
+        "percussion_model": {
+          "rule": "Absent by default."
+        },
+        "phrase_model": {
+          "rule": "Single-performer phrase timing and pedaling remain coherent across voices."
+        },
+        "transition_model": {
+          "rule": "Pianistic register, voicing, rhythm, dynamics and pedal transitions."
+        },
+        "development_model": {
+          "rule": "Develop within one instrument through voicing, register, texture, motif and dynamics."
+        },
+        "cadence_ending_model": {
+          "rule": "Inherited harmony plus pianistic release/pedal/voicing."
+        }
       },
       "ensemble": {
-        "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "instrument_roster": [
+          "PIANO"
+        ],
+        "population_mass_percent": {
+          "PIANO": 100
+        },
+        "presence_percent": {
+          "PIANO": 100
+        },
+        "activity_percent": {
+          "status": "COMPOSITION_DEPENDENT"
+        },
+        "musical_agency_percent": {
+          "PIANO": 100
+        },
+        "foreground_window_percent": {
+          "PIANO": 100
+        },
+        "foreground_window_rules": [
+          "Internal piano voices share agency; no external layer may appear in true solo variant."
+        ],
+        "role_handoff_rules": [
+          "Melody/bass/inner voices transfer within piano texture."
+        ],
+        "register_occupancy": {
+          "rule": "Balance left-hand bass, inner harmony and melody as one performer."
+        },
+        "spatial_footprint_percent": {
+          "PIANO": 100
+        },
+        "section_population_reference": {
+          "reference_id": "PIANIST_SOLO_SINGLE_PERFORMER",
+          "total_physical_players": 1,
+          "counts": {
+            "PIANO": 1
+          },
+          "qualification": "Solo-piano pilot only; any secondary texture requires a different resolved variant."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato, staccato, accent, arpeggio and pedal behavior",
+        "dynamic_behavior": "wide velocity and pedal-shaped dynamic range",
+        "timing_humanization_behavior": "human timing follows phrase/rubato and hand coordination",
+        "continuous_performance_control": "velocity, sustain pedal, soft pedal/expression where supported",
+        "interaction_rules": [
+          "Pedal/timing/dynamics shared across internal voices.",
+          "No accompaniment generator."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "rule": "One coherent piano source with natural stereo/full-range presentation."
+        },
+        "mix_prominence_intent": "piano foreground full-range; avoid unnecessary competing layers",
+        "sound_effects_intent": "room/reverb supports piano body without masking attack",
+        "production_mastering_intent": "preserve dynamic range and natural transients"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Pianist profile",
+          "resolved parent genre contracts"
+        ],
+        "source_confidence": {
+          "solo_piano_formation": "HIGH"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Solo variant remains one piano only.",
+          "Parent musical style must resolve before composition."
+        ],
+        "listening_tests": [
+          "Sounds like one pianist, not stacked independent tracks.",
+          "Melody/bass/inner voices remain balanced."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -10752,6 +11348,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED",
+        "parent_family": "Pianist",
+        "candidate_variants": [
+          "Solo piano + Classical variant",
+          "Solo piano + Jazz variant",
+          "Solo piano + New Age variant",
+          "Solo piano + Pop/Rock song variant",
+          "User-defined solo piano"
+        ],
+        "hard_rule": "Pianist defines instrumentation/performance mode, not the harmonic genre by itself."
       }
     },
     "Spiritual": {
@@ -10760,7 +11368,7 @@
       "source_profile_id": "SPIRITUAL_NONSECTARIAN_PROJECT_BASELINE_V1",
       "family": "Spiritual",
       "source_status": "CONTROLLED_BROAD_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__NONSECTARIAN_PROJECT_CONTRACT",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SPIRITUAL_NONSECTARIAN_PROJECT_BASELINE_V1",
@@ -10804,62 +11412,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong existing cultural safeguard: does not silently map to Gospel, Christian, New Age, meditation, Indigenous or other religious traditions.",
+          "Neutral project instrumentation and contemplative space are explicitly qualified.",
+          "Current ensemble architecture already avoids fake choir/string headcounts."
+        ],
+        "current_profile_gaps": [
+          "The name is broad and culturally sensitive; must stay project-defined rather than claim universal genre authority.",
+          "No fixed formation percentages are defensible for scalable choir/string sections.",
+          "Needs explicit resolver when user requests a named religious/cultural tradition."
+        ],
+        "external_sources_considered": [
+          "Current project profile",
+          "current scalable Spiritual ensemble architecture",
+          "New Age/ambient taxonomy only as boundary evidence, not source tradition"
+        ],
+        "retained_current_fields": [
+          "nonsectarian project definition",
+          "no inferred sacred rhythm/scale",
+          "optional light percussion",
+          "contemplative space",
+          "cultural signifiers require explicit subprofile"
+        ],
+        "upgraded_fields": [
+          "cultural/tradition boundary resolver",
+          "scalable formation rules",
+          "agency/foreground rules",
+          "explicit no-inference safeguards"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Project-neutral ABA/through-composed gradual development unless an explicit sourced tradition supplies another form."
+        },
+        "harmony_model": {
+          "authority": "PROJECT_NEUTRAL_OR_EXPLICIT_SOURCED_TRADITION",
+          "rule": "Neutral tonal/modal/open harmony by default; no religious/cultural scale system inferred."
+        },
+        "melody_model": {
+          "rule": "Clear contemplative lead with space; culturally specific melodic language requires explicit source."
+        },
+        "rhythm_groove_model": {
+          "rule": "Gentle/moderate/absent pulse by composition; no ritual rhythm inferred."
+        },
+        "bass_model": {
+          "rule": "Simple sustained/melodic support; no culturally specific bass pattern inferred."
+        },
+        "percussion_model": {
+          "rule": "Optional light neutral percussion only; tradition-specific drums require explicit sourced variant."
+        },
+        "phrase_model": {
+          "rule": "Long contemplative phrasing and space by project baseline."
+        },
+        "transition_model": {
+          "rule": "Gradual texture/dynamic/harmony transitions."
+        },
+        "development_model": {
+          "rule": "Develop through texture, register, choir/string/piano/flute interaction and space."
+        },
+        "cadence_ending_model": {
+          "rule": "Gentle resolution/open ending/fade according to composition."
+        }
       },
       "ensemble": {
-        "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "instrument_roster": [
+          "PIANO",
+          "FLUTE",
+          "SCALABLE_STRINGS",
+          "SCALABLE_CHOIR"
+        ],
+        "population_mass_percent": {
+          "status": "SCALABLE_FORMATION__NO_FAKE_PERCENTAGES"
+        },
+        "presence_percent": {
+          "status": "PROJECT_VARIANT_DEPENDENT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_OR_COMPOSITION_SPECIFIC"
+        },
+        "musical_agency_percent": {
+          "status": "COMPOSITION_SPECIFIC",
+          "rule": "Small flute/piano roles retain equal right to be heard despite scalable choir/string mass."
+        },
+        "foreground_window_percent": {
+          "status": "COMPOSITION_SPECIFIC"
+        },
+        "foreground_window_rules": [
+          "Featured flute/piano/voice-like line receives clear space from choir/strings.",
+          "Scalable choir/string mass does not imply permanent foreground."
+        ],
+        "role_handoff_rules": [
+          "Foreground can transfer among piano, flute, strings and choir in project-neutral variant."
+        ],
+        "register_occupancy": {
+          "rule": "Protect contemplative lead against broad choir/string masking."
+        },
+        "spatial_footprint_percent": {
+          "status": "FORMATION_DEPENDENT"
+        },
+        "section_population_reference": {
+          "reference_id": "SPIRITUAL_CHOIR_AND_STRING_SECTIONS_V1",
+          "counts": {
+            "PIANO": 1,
+            "FLUTE": 1,
+            "STRINGS": "SCALABLE",
+            "CHOIR": "SCALABLE"
+          },
+          "qualification": "No invented choir/string headcount. Percentages require an explicitly selected arrangement formation."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato/sustained articulation favored; stronger rhythm only if explicitly requested",
+        "dynamic_behavior": "soft-to-moderate expressive arc",
+        "timing_humanization_behavior": "phrase breathing and shared rubato; no stereotyped sacred timing",
+        "continuous_performance_control": "continuous expression and ambience",
+        "interaction_rules": [
+          "Shared slow phrase breathing.",
+          "No culturally specific articulation inferred without source.",
+          "Space is structural."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "FORMATION_DEPENDENT",
+          "rule": "Spacious neutral presentation; explicit cultural acoustics require sourced tradition."
+        },
+        "mix_prominence_intent": "melody/lead clear with spacious support",
+        "sound_effects_intent": "warm room/reverb may support spaciousness without implying ritual acoustics",
+        "production_mastering_intent": "warm, dynamic, non-aggressive master"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Spiritual project profile",
+          "Current scalable Spiritual ensemble architecture"
+        ],
+        "source_confidence": {
+          "project_neutral_contract": "HIGH_AS_PROJECT_DEFINITION",
+          "universal_spiritual_genre_claim": "REJECTED"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "No inferred religion/culture.",
+          "No fake scalable-section percentages.",
+          "Explicit tradition requires sourced subprofile."
+        ],
+        "listening_tests": [
+          "Project-neutral variant remains culturally nonspecific.",
+          "Small foreground voices remain audible over scalable textures."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -10868,6 +11576,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "PROJECT_BASELINE_OR_EXPLICIT_NAMED_TRADITION",
+        "parent_family": "Spiritual",
+        "candidate_variants": [
+          "Project-neutral contemplative instrumental",
+          "Project-neutral choir/strings",
+          "Explicit user-specified sourced tradition"
+        ],
+        "hard_rule": "Never infer a religion, Indigenous tradition, chant, sacred rhythm, scale or cultural signifier from the word Spiritual alone."
       }
     }
   },
@@ -10909,6 +11627,13 @@
     "Downtempo",
     "Breakbeat-related",
     "Garage-related",
-    "Experimental Electronic"
+    "Experimental Electronic",
+    "New Age",
+    "Trip-Hop",
+    "Contemporary Trip-Hop / Trip-Hop Revival",
+    "DISCO",
+    "WALTZ",
+    "PIANIST",
+    "Spiritual"
   ]
 }

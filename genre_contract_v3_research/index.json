@@ -19,331 +19,661 @@
       "genre_name": "ROCK",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "New Age",
       "research_status": "V3_UPDATED__SUBGENRE_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Classical",
       "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "RESEARCH_REFERENCE_AVAILABLE",
+        "activity_reference": "SOURCE_REGISTERED_OR_REFERENCE_AVAILABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Swing",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Jazz Ballad",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Big Band",
       "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Jazz Waltz",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Bebop",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Cool Jazz",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Dixieland",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Jazz Fusion",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Rhythm and Blues",
       "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Soul",
       "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Funk",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Contemporary R&B",
       "research_status": "V3_UPDATED__PRODUCTION_VARIANT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Neo-Soul-related",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Traditional Country",
       "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Country Rock",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Country Ballad",
       "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Country Shuffle",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Two-Step",
       "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Country Waltz",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Bluegrass-related",
       "research_status": "V3_UPDATED__TRADITIONAL_FIVE_PILOT",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Bossa Nova",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Samba",
       "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Salsa",
       "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Mambo",
       "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Rumba",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Cha-Cha",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Bolero",
       "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "House",
       "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Techno",
       "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Trance",
       "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Ambient Electronic",
       "research_status": "V3_UPDATED__TEXTURE_STATE_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Downtempo",
       "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Breakbeat-related",
       "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Garage-related",
       "research_status": "V3_UPDATED__SUBGENRE_LAYER_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Experimental Electronic",
       "research_status": "V3_UPDATED__COMPONENT_CONTRACT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Eclectic New Indie",
       "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Mexican Reggaeton",
       "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Chugg / #chugg",
       "research_status": "V3_UPDATED__PROVISIONAL_2026_SCENE",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Afrobeats",
       "research_status": "V3_UPDATED__BROAD_FAMILY_VARIANT_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Afro-Latin / Afrobeats Fusion",
       "research_status": "V3_UPDATED__CONTROLLED_FUSION_RESOLVER",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Afro House",
       "research_status": "V3_UPDATED__CURRENT_SUBGENRE_LAYER_MODEL",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Trip-Hop",
       "research_status": "V3_UPDATED__VARIANT_LAYER_MODEL_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Contemporary Trip-Hop / Trip-Hop Revival",
       "research_status": "V3_UPDATED__OVERLAY_AUTHORITY",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Regional Electronic Hybrids",
       "research_status": "V3_UPDATED__PROVENANCE_RESOLVER",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Genre-Breaking / Borderless",
       "research_status": "V3_UPDATED__CONTROLLED_COMPONENT_ARCHITECTURE",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Custom Hybrid",
       "research_status": "V3_UPDATED__USER_COMPONENT_RESOLVER",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Custom Style",
       "research_status": "V3_UPDATED__USER_DEFINED_CONTAINER",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Controlled Custom Style Profile",
       "research_status": "V3_UPDATED__SAVED_PROFILE_EXECUTOR",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "DISCO",
       "research_status": "V3_UPDATED__ERA_FORMATION_REQUIRED",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "WALTZ",
       "research_status": "V3_UPDATED__STYLE_RESOLVER_ONLY",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "PIANIST",
       "research_status": "V3_UPDATED__INSTRUMENTAL_STYLE_CONTRACT",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     },
     {
       "genre_name": "Spiritual",
       "research_status": "V3_UPDATED__NONSECTARIAN_PROJECT_CONTRACT",
       "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
-      "approved_for_runtime": false
+      "approved_for_runtime": false,
+      "quantitative_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
+      }
     }
   ],
   "genre_master_file": "GENRE_CONTRACT_V3_ALL_55.json",

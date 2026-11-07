@@ -1,0 +1,19 @@
+name: Export Reasoning v0.1
+on:
+  push:
+    branches:
+      - temp-export-reasoning-v0-1-2026-11-07
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stage reasoning snapshot
+        run: |
+          mkdir -p export
+          cp -R experimental_reasoning export/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reasoning-v0-1-snapshot
+          path: export
+          if-no-files-found: error

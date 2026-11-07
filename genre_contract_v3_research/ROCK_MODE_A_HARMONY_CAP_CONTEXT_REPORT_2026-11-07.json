@@ -1,0 +1,73 @@
+{
+  "schema": "ROCK_MODE_A_HARMONY_CAP_CONTEXT_REPORT_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_harmony_sweep_run": 42391402408,
+  "source_harmony_sweep_artifact_id": 13581711960,
+  "source_harmony_sweep_digest": "sha256:1e19cc89b0536a2e1f6e35d4271c28728eb39216d9d53d9fb5dd636ef3d0ec96",
+  "treated_lead_source_run": 42390723896,
+  "treated_lead_source_artifact_id": 13581427805,
+  "mix_gains_db": {
+    "HARMONY": -5,
+    "LEAD": -6
+  },
+  "common_mix_gain": 1,
+  "duration_seconds": 15.908571,
+  "sample_rate_hz": 44100,
+  "channels": 2,
+  "conditions": [
+    "BASELINE_WITH_TREATED_LEAD",
+    "CAP_1_4_WITH_TREATED_LEAD",
+    "CAP_2_0_WITH_TREATED_LEAD",
+    "CURRENT_2_8_WITH_TREATED_LEAD"
+  ],
+  "pairwise_difference_analysis": {
+    "BASELINE_TO_CAP_1_4": {
+      "difference_rms": 0.007786639367016815,
+      "difference_dbfs": -42.17299877791839,
+      "difference_vs_baseline_mix_ratio": 0.5083253729900977
+    },
+    "BASELINE_TO_CAP_2_0": {
+      "difference_rms": 0.008515505356049417,
+      "difference_dbfs": -41.39579147115934,
+      "difference_vs_baseline_mix_ratio": 0.5559070135761749
+    },
+    "BASELINE_TO_CURRENT_2_8": {
+      "difference_rms": 0.008855890426747967,
+      "difference_dbfs": -41.055355311767144,
+      "difference_vs_baseline_mix_ratio": 0.5781279435393651
+    },
+    "CAP_1_4_TO_CAP_2_0": {
+      "difference_rms": 0.0031949226564031777,
+      "difference_dbfs": -49.910793018054555,
+      "difference_vs_baseline_mix_ratio": 0.20857011278446586
+    },
+    "CAP_2_0_TO_CURRENT_2_8": {
+      "difference_rms": 0.0023098404913851622,
+      "difference_dbfs": -52.7283601952573,
+      "difference_vs_baseline_mix_ratio": 0.15079040828634507
+    }
+  },
+  "interpretation": [
+    "The lead treatment remains fixed across all four conditions, so only HARMONY sustain cap changes.",
+    "The 1.4-to-2.0 step remains materially distinct in context.",
+    "The 2.0-to-2.8 step is smaller than the 1.4-to-2.0 step.",
+    "From a minimal-change standpoint, 2.0 is the targeted candidate because it trims only the extreme 2.8-beat gesture group; this is not listening approval."
+  ],
+  "unchanged_dimensions": [
+    "lead performance treatment",
+    "pitch",
+    "onset",
+    "velocity",
+    "voicing",
+    "event count",
+    "instrument identity",
+    "bass",
+    "drums",
+    "reasoning engine"
+  ],
+  "canonical_policy_modified": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "HUMAN_IN_CONTEXT_LISTENING_OF_HARMONY_CAPS"
+}

@@ -36,13 +36,30 @@ def eligible_genres():
             out.append(name)
     return out
 
+def explicit_formation_genres():
+    master=load_master()
+    out=[]
+    for name in master["contracts"]:
+        if name=="Classical":
+            continue
+        snap=snapshot_for(name)
+        if snap.get("resolution_policy")!="AUTOMATIC_BASELINE_ALLOWED":
+            continue
+        if resolve_explicit(name,snap).get("status")=="PASS":
+            out.append(name)
+    return out
+
 
 def main():
     genres=eligible_genres()
     if len(genres)!=40:
         raise RuntimeError("EXPECTED_40_RUNTIME_SYMBOLIC_GENRES__GOT_"+str(len(genres)))
+    explicit_genres=explicit_formation_genres()
+    if len(explicit_genres)!=7:
+        raise RuntimeError("EXPECTED_7_EXPLICIT_FORMATION_GENRES__GOT_"+str(len(explicit_genres)))
 
     rows={}
+    explicit_rows={}
     with tempfile.TemporaryDirectory() as tmp:
         engine=AICompositionEngine(history_path=Path(tmp)/"history.json")
         if getattr(engine.theory,"profile_source",None)!="GENRE_CONTRACT_V3_ALL_55":
@@ -117,10 +134,38 @@ def main():
                 "finished_composition_authority":result.get("finished_composition_authority"),
             }
 
+        # A researched formation is not permission to synthesize generic music.
+        # These seven genres must stop before the old family melody generator.
+        for name in explicit_genres:
+            result=engine.run(name,mode="quick",audio_backend="PRESERVED")
+            if result.get("status")!="BLOCKED" or result.get("stage")!="THEORY":
+                raise RuntimeError("EXPLICIT_FORMATION_DID_NOT_STOP_AT_THEORY::"+name)
+            if result.get("reason")!="V3_EXPLICIT_FORMATION_COMPOSITION_PENDING":
+                raise RuntimeError(
+                    "EXPLICIT_FORMATION_BLOCK_REASON_WRONG::"+name+"::"+
+                    str(result.get("reason"))
+                )
+            theory=result.get("theory_package") or {}
+            if theory.get("legacy_note_generator_used") is not False:
+                raise RuntimeError("EXPLICIT_FORMATION_USED_GENERIC_NOTE_GENERATOR::"+name)
+            if theory.get("events")!=[]:
+                raise RuntimeError("EXPLICIT_FORMATION_GENERATED_UNAPPROVED_EVENTS::"+name)
+            if theory.get("finished_composition_authority") is not False:
+                raise RuntimeError("EXPLICIT_FORMATION_PROMOTED_TO_FINISHED_COMPOSITION::"+name)
+            explicit_rows[name]={
+                "status":theory.get("status"),
+                "palette":theory.get("palette"),
+                "legacy_note_generator_used":theory.get("legacy_note_generator_used"),
+                "finished_composition_authority":theory.get("finished_composition_authority"),
+                "promotion_block":theory.get("promotion_block"),
+            }
+
     summary={
         "status":"PASS",
         "diagnostic_only":True,
-        "genre_count":len(rows),
+        "source_pattern_genre_count":len(rows),
+        "explicit_formation_safe_stop_count":len(explicit_rows),
+        "genre_count":len(rows)+len(explicit_rows),
         "genre_profile_source":"GENRE_CONTRACT_V3_ALL_55",
         "reasoning_engine_used":False,
         "audio_rendered":False,
@@ -138,11 +183,14 @@ def main():
         "result":(
             "The reconstructed Composer accepted V3-governed symbolic events for "
             "all 40 automatic genres without explicit V3 formations and resolved every "
-            "selected event instrument into the current instrument library. Brush-snare "
-            "and hand-drum remain canonical resource-required identities. Rendering was "
-            "intentionally blocked, and every package is explicitly marked accompaniment-only until a separate foreground/melody executor is compiled."
+            "selected event instrument into the current instrument library. The seven "
+            "automatic genres with explicit researched V3 formations stop safely before "
+            "the generic legacy melody generator. Brush-snare and hand-drum remain "
+            "canonical resource-required identities. Rendering remains blocked, and "
+            "accompaniment-only packages cannot be promoted without a foreground executor."
         ),
         "genres":rows,
+        "explicit_formation_safe_stops":explicit_rows,
         "next_gate":"GENRE_SPECIFIC_FORM_AND_MUSICAL_BEHAVIOR_REVALIDATION_BEFORE_AUDIO",
     }
     out=ROOT/"genre_contract_v3_research"/"V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json"

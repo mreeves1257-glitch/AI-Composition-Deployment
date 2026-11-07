@@ -34,7 +34,7 @@ jobs:
 
       - name: Install Python dependency
         run: |
-          python -m pip install --disable-pip-version-check --no-input numpy
+          python -m pip install --disable-pip-version-check --no-input numpy lameenc
 
       - name: Restore exact pinned Shinyguitar resource
         run: |
@@ -88,8 +88,31 @@ jobs:
 
       - name: Make listening MP3s without changing relative A/B level
         run: |
-          ffmpeg -hide_banner -loglevel error -y             -i genre_contract_v3_research/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.wav             -codec:a libmp3lame -b:a 256k             genre_contract_v3_research/rock_mode_a_guitar_ab/A_BEFORE_MODE_A.mp3
-          ffmpeg -hide_banner -loglevel error -y             -i genre_contract_v3_research/rock_mode_a_guitar_ab/B_AFTER_MODE_A.wav             -codec:a libmp3lame -b:a 256k             genre_contract_v3_research/rock_mode_a_guitar_ab/B_AFTER_MODE_A.mp3
+          python - <<'PY'
+          from pathlib import Path
+          import wave
+          import lameenc
+
+          folder=Path("genre_contract_v3_research/rock_mode_a_guitar_ab")
+          for stem in ("A_BEFORE_MODE_A","B_AFTER_MODE_A"):
+              src=folder/(stem+".wav")
+              dst=folder/(stem+".mp3")
+              with wave.open(str(src),"rb") as w:
+                  if w.getsampwidth()!=2 or w.getnchannels()!=2:
+                      raise RuntimeError("MP3_SOURCE_FORMAT_UNEXPECTED")
+                  rate=w.getframerate()
+                  pcm=w.readframes(w.getnframes())
+              enc=lameenc.Encoder()
+              enc.set_bit_rate(256)
+              enc.set_in_sample_rate(rate)
+              enc.set_channels(2)
+              enc.set_quality(2)
+              mp3=enc.encode(pcm)+enc.flush()
+              dst.write_bytes(mp3)
+              if dst.stat().st_size<=0:
+                  raise RuntimeError("MP3_EMPTY::"+stem)
+              print(stem,dst.stat().st_size)
+          PY
 
       - name: Upload controlled listening package
         uses: actions/upload-artifact@v4

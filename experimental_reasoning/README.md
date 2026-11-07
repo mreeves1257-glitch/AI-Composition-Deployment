@@ -152,3 +152,21 @@ This prevents spatial depth from being merely a final cosmetic effect. Space bec
 The rich-bass requirement uses the spatial plan to keep the bass deep and physically grounded with controlled low-frequency width. Bass and kick should have distinct low-end space, and other equal-importance instruments should remain clear.
 
 Depth is not hierarchy. An instrument placed farther back, wider, or in a different depth zone does not become less important to the composition.
+
+
+## Kick character — pronounced physical impact
+
+Default: `kick_impact = 1.0`
+
+The kick is intended to be distinctly pronounced in the low end: deep, punchy, full-bodied, physically felt, and easy to locate.
+
+This does not make the kick more compositionally important than other instruments. It defines its sound character and low-end job.
+
+The low-end relationship is:
+
+- **kick:** impact, punch, transient definition, physical hit;
+- **bass:** sustained depth, richness, warmth, tonal body.
+
+The two should reinforce each other without collapsing into one muddy low-frequency mass. The 3D spatial plan keeps the kick in a firm, controlled low-frequency center while leaving distinct depth and body for the bass.
+
+A pronounced kick must not be achieved by thinning the bass, masking other instruments, excessive click, uncontrolled boom, or flattening dynamics through overcompression.

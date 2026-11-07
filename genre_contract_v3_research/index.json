@@ -41,8 +41,8 @@
     },
     {
       "genre_name": "Classical",
-      "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_PENDING",
+      "research_status": "V3_QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCES_ADDED__PERIOD_SPLIT_PENDING",
+      "comparison_status": "QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCE_ADDED__PERIOD_SPLIT_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "RESEARCH_REFERENCE_AVAILABLE",

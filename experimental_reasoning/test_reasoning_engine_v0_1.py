@@ -127,6 +127,29 @@ def test_importance_ledger_prioritizes_instrument_that_has_been_neglected():
     assert p["priority_rule"] == "RESTORE_UNDERSERVED_INSTRUMENTS_TO_MEANINGFUL_FUNCTION"
 
 
+def test_equal_importance_creates_conversation_not_permanent_background():
+    state = ComposerState(
+        genre="Rock",
+        profile_id="ROCK_PROFILE",
+        section="Chorus",
+        active_instruments=("drums", "bass", "guitar", "keys"),
+        instrument_history=(
+            InstrumentMemory("drums", meaningful_windows=3, total_windows=3, last_role="groove"),
+            InstrumentMemory("bass", meaningful_windows=3, total_windows=3, last_role="foundation"),
+            InstrumentMemory("guitar", meaningful_windows=3, total_windows=3, last_role="riff"),
+            InstrumentMemory("keys", meaningful_windows=2, total_windows=3, last_role="texture"),
+        ),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    p = packet["decisions"]["instrument_interaction_plan"]
+    assert p["status"] == "PASS"
+    assert p["assignment_priority"] == ["keys"]
+    assert "PERMANENT_HIERARCHY" in p["principle"]
+    assert "NO_INSTRUMENT_IS_PERMANENTLY_CLASSIFIED_AS_LESS_IMPORTANT" in p["hierarchy_rule"]
+    assert p["space_rule"] == "NOT_ALL_INSTRUMENTS_MUST_PLAY_SIMULTANEOUSLY"
+
+
 def test_hash_detects_mutation():
     state = ComposerState(
         genre="Country",
@@ -150,6 +173,7 @@ if __name__ == "__main__":
         test_bridge_requires_contrast_without_creating_instrument_hierarchy,
         test_equal_importance_is_not_equal_notes_or_equal_volume,
         test_importance_ledger_prioritizes_instrument_that_has_been_neglected,
+        test_equal_importance_creates_conversation_not_permanent_background,
         test_hash_detects_mutation,
     ]
     for fn in tests:

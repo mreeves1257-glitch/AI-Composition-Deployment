@@ -681,5 +681,11 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "VARIANT_LEVEL_QUANTITATIVE_TARGETS_AND_LISTENING_VALIDATION"
+  "next_phase": "CLASSICAL_PERIOD_SPLIT_ACTIVITY_OCCUPANCY__THEN_VARIANT_ROLE_PRIORS",
+  "classical_checkpoint": {
+    "foreground_period_split": "ADDED_TO_ALL_55_MASTER",
+    "activity_period_split": "PENDING",
+    "runtime_status": "RESEARCH_ONLY__LIVE_COMPOSER_UNTOUCHED",
+    "master_commit": "6de7b744620883783e442a4767f56de2f73a1887"
+  }
 }

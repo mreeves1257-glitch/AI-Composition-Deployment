@@ -16,6 +16,16 @@ TheoryEngine=mod.TheoryEngine
 engine=TheoryEngine()
 from genre_contract_v3_execution_bridge import all_snapshots, execution_packet as v3_execution_packet
 profiles=all_snapshots()
+V3_REQUIRED_PROFILE_FIELDS=(
+    'groove_behavior','phrase_behavior','dynamic_behavior',
+    'articulation_behavior','timing_humanization_behavior','bass_behavior',
+    'percussion_behavior_if_applicable','instrument_role_behavior',
+    'ensemble_player_behavior','arrangement_transformation',
+    'continuous_performance_control','sound_effects_intent',
+    'mix_prominence_intent','production_mastering_intent',
+    'manufacturer_adapter_requirements',
+)
+profiles_meta_required=list(V3_REQUIRED_PROFILE_FIELDS)
 
 NOTE_PC={'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11}
 def midi(note:str,octave:int)->int: return 12*(octave+1)+NOTE_PC[note]
@@ -293,7 +303,8 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
         'duration_seconds':bars * beats_per_bar * 60 / bpm,
     }
 
-profiles_meta_required=json.loads(PROFILE_PATH.read_text())['universal_required_fields']
+# Diagnostic V3 path keeps required-field validation independent of the legacy
+# October registry. Do not overwrite profiles_meta_required from PROFILE_PATH.
 
 def chord_midis(ch, base_oct=3):
     out=[]
@@ -824,11 +835,24 @@ def generate_events(name,tmpl,profile,ctx,bpm,creation_seed=0,parts=None,generat
 
 
 class GenreExecutionAdapter:
-    def __init__(self, profile_registry_path=PROFILE_PATH, history_path=None):
+    def __init__(self, profile_registry_path=None, history_path=None):
         global profiles, profiles_meta_required
-        data=json.loads(Path(profile_registry_path).read_text())
-        profiles=data["profiles"]
-        profiles_meta_required=data["universal_required_fields"]
+        if profile_registry_path is None:
+            # V3 is the default execution authority on this diagnostic branch.
+            # The previous constructor silently reloaded the October registry here,
+            # undoing the module-level V3 switch every time the Composer started.
+            profiles=all_snapshots()
+            profiles_meta_required=list(V3_REQUIRED_PROFILE_FIELDS)
+            self.profile_source='GENRE_CONTRACT_V3_ALL_55'
+        else:
+            # Explicit legacy/custom registry loading remains possible only when a
+            # caller intentionally supplies a path; it is never the default.
+            data=json.loads(Path(profile_registry_path).read_text())
+            profiles=data["profiles"]
+            profiles_meta_required=data["universal_required_fields"]
+            self.profile_source='EXPLICIT_NONDEFAULT_REGISTRY'
+        if len(profiles)!=55:
+            raise ValueError('GENRE_EXECUTION_PROFILE_COUNT_NOT_55')
         self.history_path = Path(history_path) if history_path is not None else OUT / 'composition_history.json'
 
     def _history(self):

@@ -291,6 +291,42 @@ def test_3d_bass_position_preserves_depth_without_more_importance():
     assert "KICK" in b["masking_guardrail"]
 
 
+def test_kick_defaults_to_maximum_pronounced_impact_without_higher_importance():
+    state = ComposerState(
+        genre="Funk",
+        profile_id="FUNK_PROFILE",
+        section="Chorus",
+        active_instruments=("kick", "bass", "guitar", "clav"),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    k = packet["decisions"]["kick_character"]
+    assert k["target_0_to_1"] == 1.0
+    assert k["mode"] == "MAXIMUM_PRONOUNCED_IMPACT"
+    assert k["sound_character"]["impact"] == "VERY_PRONOUNCED"
+    assert k["sound_character"]["punch"] == "STRONG"
+    assert k["sound_character"]["physical_feel"] == "HIGH"
+    assert k["compositional_importance_change"] is False
+
+
+def test_kick_and_bass_have_distinct_low_end_jobs():
+    state = ComposerState(
+        genre="Soul",
+        profile_id="SOUL_PROFILE",
+        section="Verse",
+        active_instruments=("kick", "bass", "keys", "guitar"),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    k = packet["decisions"]["kick_character"]
+    s = packet["decisions"]["spatial_3d_intent"]
+    assert "KICK_PROVIDES_IMPACT" in k["bass_relationship"]
+    assert s["kick_spatial_rule"]["impact_target"] == 1.0
+    assert s["kick_spatial_rule"]["importance_change"] is False
+    assert s["bass_spatial_rule"]["importance_change"] is False
+    assert "TIGHT_CONTROLLED" in s["kick_spatial_rule"]["width"]
+
+
 def test_hash_detects_mutation():
     state = ComposerState(
         genre="Country",
@@ -321,6 +357,8 @@ if __name__ == "__main__":
         test_rich_bass_preserves_clarity_and_low_end_separation,
         test_3d_spatial_intent_is_planned_early_but_processed_late,
         test_3d_bass_position_preserves_depth_without_more_importance,
+        test_kick_defaults_to_maximum_pronounced_impact_without_higher_importance,
+        test_kick_and_bass_have_distinct_low_end_jobs,
         test_hash_detects_mutation,
     ]
     for fn in tests:

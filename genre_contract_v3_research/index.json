@@ -17,8 +17,8 @@
   "genres": [
     {
       "genre_name": "ROCK",
-      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
-      "comparison_status": "HUMAN_PERFORMANCE_REFERENCE_ADDED__FULL_QUANT_STATS_PENDING",
+      "research_status": "V3_UPDATED__GMD_GUITARSET_AND_JAMENDO_REFERENCES_ADDED__SUBGENRE_STATS_PENDING",
+      "comparison_status": "TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -149,8 +149,8 @@
     },
     {
       "genre_name": "Rhythm and Blues",
-      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__DIRECT_RNB_TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_STATS_PENDING",
+      "comparison_status": "TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -161,8 +161,8 @@
     },
     {
       "genre_name": "Soul",
-      "research_status": "V3_UPDATED__GMD_SOUL_DRUM_REFERENCE_ADDED__QUANT_STATS_PENDING",
-      "comparison_status": "HUMAN_PERFORMANCE_REFERENCE_ADDED__FULL_QUANT_STATS_PENDING",
+      "research_status": "V3_UPDATED__GMD_DRUM_PLUS_JAMENDO_INSTRUMENT_PRIOR_ADDED__VARIANT_STATS_PENDING",
+      "comparison_status": "TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -173,8 +173,8 @@
     },
     {
       "genre_name": "Funk",
-      "research_status": "V3_UPDATED__GMD_DRUM_AND_GUITARSET_ROLE_REFERENCES_ADDED__QUANT_STATS_PENDING",
-      "comparison_status": "HUMAN_PERFORMANCE_REFERENCE_ADDED__FULL_QUANT_STATS_PENDING",
+      "research_status": "V3_UPDATED__GMD_GUITARSET_AND_JAMENDO_REFERENCES_ADDED__QUANT_TIMING_STATS_PENDING",
+      "comparison_status": "TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_VALIDATION_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

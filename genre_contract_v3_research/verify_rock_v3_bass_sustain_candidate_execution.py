@@ -48,7 +48,11 @@ def main()->None:
     pitch_changes=0
     velocity_changes=0
     instrument_changes=0
-    overlap_count=0
+    source_overlap_count=0
+    candidate_overlap_count=0
+    introduced_overlap_count=0
+    worsened_overlap_count=0
+    changed_event_overlap_count=0
     bar_crossing_count=0
     extension_values=[]
     section_counts=Counter()
@@ -95,14 +99,29 @@ def main()->None:
 
         if i+1<len(cand_bass):
             nxt=float(cand_bass[i+1]["start_beat"])
-            if start+dur>nxt+1e-9:
-                overlap_count+=1
-            gap=nxt-(start+dur)
+            source_end=float(before["start_beat"])+float(before["duration_beats"])
+            candidate_end=start+dur
+            source_overlap=max(0.0,source_end-nxt)
+            candidate_overlap=max(0.0,candidate_end-nxt)
+            if source_overlap>1e-9:
+                source_overlap_count+=1
+            if candidate_overlap>1e-9:
+                candidate_overlap_count+=1
+            if source_overlap<=1e-9 and candidate_overlap>1e-9:
+                introduced_overlap_count+=1
+            if candidate_overlap>source_overlap+1e-9:
+                worsened_overlap_count+=1
+
+            gap=nxt-candidate_end
             if min_gap is None or gap<min_gap:
                 min_gap=gap
 
         ext=float(after["duration_beats"])-float(before["duration_beats"])
         if ext>1e-9:
+            if i+1<len(cand_bass):
+                nxt=float(cand_bass[i+1]["start_beat"])
+                if start+dur>nxt+1e-9:
+                    changed_event_overlap_count+=1
             extension_values.append(round(ext,6))
             section_counts[str(after.get("section","UNKNOWN"))]+=1
             if ext<0.14-1e-9:
@@ -110,8 +129,12 @@ def main()->None:
             if float(after["duration_beats"])>1.50+1e-9:
                 raise VerifyError("MAX_SUSTAIN_EXCEEDED")
 
-    if overlap_count:
-        raise VerifyError("NEXT_BASS_ATTACK_OVERLAP")
+    if introduced_overlap_count:
+        raise VerifyError("INTRODUCED_NEXT_BASS_ATTACK_OVERLAP")
+    if worsened_overlap_count:
+        raise VerifyError("WORSENED_NEXT_BASS_ATTACK_OVERLAP")
+    if changed_event_overlap_count:
+        raise VerifyError("CHANGED_BASS_EVENT_OVERLAPS_NEXT_ATTACK")
     if bar_crossing_count:
         raise VerifyError("BAR_BOUNDARY_CROSSING")
     if len(extension_values)!=58:
@@ -130,7 +153,11 @@ def main()->None:
         "minimum_applied_extension_beats":min(extension_values),
         "maximum_applied_extension_beats":max(extension_values),
         "minimum_gap_to_next_bass_attack_beats":None if min_gap is None else round(min_gap,6),
-        "next_bass_attack_overlap_count":0,
+        "source_preexisting_overlap_event_count":source_overlap_count,
+        "candidate_overlap_event_count":candidate_overlap_count,
+        "introduced_overlap_event_count":0,
+        "worsened_overlap_event_count":0,
+        "changed_event_overlap_count":0,
         "bar_boundary_crossing_count":0,
         "onset_changed_event_count":0,
         "pitch_changed_event_count":0,

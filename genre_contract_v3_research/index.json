@@ -29,8 +29,8 @@
     },
     {
       "genre_name": "Classical",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_PENDING",
       "approved_for_runtime": false
     },
     {
@@ -47,8 +47,8 @@
     },
     {
       "genre_name": "Big Band",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_PENDING",
       "approved_for_runtime": false
     },
     {
@@ -347,5 +347,6 @@
     }
   ],
   "genre_master_file": "GENRE_CONTRACT_V3_ALL_55.json",
-  "organization_policy": "ALL_55_GENRES_IN_ONE_MASTER_FILE"
+  "organization_policy": "ALL_55_GENRES_IN_ONE_MASTER_FILE",
+  "last_research_update": "2026-11-06"
 }

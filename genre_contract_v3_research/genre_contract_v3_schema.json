@@ -1,0 +1,82 @@
+{
+  "schema_id": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "purpose": "Evidence-backed composition-grade genre contracts for the AI Composer. Research workspace only; not live runtime authority.",
+  "rules": {
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true,
+    "no_generic_music_generator_fallback": true,
+    "genre_profile_precedes_reasoning": true,
+    "genre_specific_harmony_and_pitch_authority": true,
+    "reasoning_cannot_invent_pitch_unless_genre_contract_explicitly_allows_it": true,
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_distinct_from_population_mass": true
+  },
+  "required_fields": {
+    "identity": [
+      "genre_name",
+      "profile_id",
+      "family",
+      "status",
+      "scope_note"
+    ],
+    "musical_grammar": [
+      "form_model",
+      "harmony_model",
+      "melody_model",
+      "rhythm_groove_model",
+      "bass_model",
+      "percussion_model",
+      "phrase_model",
+      "transition_model",
+      "development_model",
+      "cadence_ending_model"
+    ],
+    "ensemble": [
+      "instrument_roster",
+      "population_mass_percent",
+      "presence_percent",
+      "activity_percent",
+      "musical_agency_percent",
+      "foreground_window_rules",
+      "role_handoff_rules",
+      "register_occupancy",
+      "spatial_footprint_percent",
+      "section_population_reference"
+    ],
+    "performance": [
+      "articulation_behavior",
+      "dynamic_behavior",
+      "timing_humanization_behavior",
+      "continuous_performance_control",
+      "interaction_rules"
+    ],
+    "production": [
+      "spatial_presentation",
+      "mix_prominence_intent",
+      "sound_effects_intent",
+      "production_mastering_intent"
+    ],
+    "evidence": [
+      "sources",
+      "source_confidence",
+      "source_license_status",
+      "conflicts_between_sources",
+      "unresolved_questions"
+    ],
+    "validation": [
+      "comparison_to_current_profile",
+      "structural_tests",
+      "listening_tests",
+      "golden_reference_status",
+      "approved_for_runtime"
+    ]
+  },
+  "percentage_definitions": {
+    "population_mass_percent": "Relative physical/ensemble mass within a typical formation. Not a direct gain multiplier.",
+    "presence_percent": "Estimated likelihood the instrument/section appears in the genre or selected subgenre.",
+    "activity_percent": "Estimated share of musical time in which the instrument/section is active.",
+    "musical_agency_percent": "Share of meaningful compositional responsibility over the whole piece; distinct from loudness and player count.",
+    "foreground_window_percent": "Estimated share of time the instrument/section carries foreground or featured material.",
+    "spatial_footprint_percent": "Relative width/depth allocation when active; not loudness."
+  }
+}

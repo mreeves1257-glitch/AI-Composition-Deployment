@@ -524,3 +524,36 @@ Run:
 `42393131339`
 
 No audio yet. Strum remains disabled. Canonical Mode A remains unchanged. Reasoning remains excluded. Live runtime remains untouched.
+
+
+## Rock V3 strict strum A/B listening gate launched
+
+Symbolic execution verification:
+`Rock V3 Strum Candidate Execution Verify`
+Run `42393131339` — PASS
+
+Verified candidate behavior:
+- 73 HARMONY vertical chord gestures
+- 3 notes per gesture
+- alternating low-to-high / high-to-low direction
+- offsets per gesture: 0.000 / 0.038 / 0.076 beat
+- 146 delayed note-events
+- every original absolute note-off preserved exactly
+- current 2.8-beat Mode A HARMONY sustain policy preserved
+- no pitch/velocity/event-count changes
+- LEAD/BASS/DRUMS unchanged
+- no live enablement
+- no reasoning engine
+
+Strict listening workflow:
+`Rock V3 Strum Listening AB`
+Run:
+`42393208378`
+
+Listening definitions:
+- A = current Mode A HARMONY vertical attacks
+- B = same Mode A score plus safe note-off-preserving strum attack staggering
+- both keep the human-preferred current 2.8 sustain ceiling
+- workflow produces HARMONY-only A/B and HARMONY+fixed treated-LEAD context A/B
+
+No other performance variable is allowed in this gate.

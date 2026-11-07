@@ -101,7 +101,7 @@ def _bar_harmony(phrase_name, bar_index, phrase_length, cadence, rng):
     return events
 
 
-def compile_plan(package, *, tempo_bpm, meter="4/4", mode="quick", seed=0):
+def compile_plan(package, *, tempo_bpm, meter="4/4", mode="quick", seed=0, tonic_pc=0, tonal_mode="major"):
     if package.get("package_id") != "CLASSICAL_V3_VARIANT_PACKAGE_001":
         raise ValueError("CLASSICAL_V3_PACKAGE_INVALID")
     if package.get("variant_id") != "CLASSICAL_PERIOD_ORCHESTRAL":
@@ -117,6 +117,10 @@ def compile_plan(package, *, tempo_bpm, meter="4/4", mode="quick", seed=0):
         raise ValueError("CLASSICAL_V3_STRUCTURAL_COMPILER_CURRENTLY_4_4_ONLY")
     if mode not in ("quick", "normal"):
         raise ValueError("CLASSICAL_V3_MODE_INVALID")
+    if not isinstance(tonic_pc, int) or not 0 <= tonic_pc <= 11:
+        raise ValueError("CLASSICAL_V3_TONIC_PC_INVALID")
+    if tonal_mode != "major":
+        raise ValueError("CLASSICAL_V3_FIRST_NOTE_REALIZER_SUPPORTS_MAJOR_ONLY")
 
     phrase_specs = QUICK_PHRASES if mode == "quick" else NORMAL_PHRASES
     rng = random.Random(seed * 7919 + 31)
@@ -189,6 +193,8 @@ def compile_plan(package, *, tempo_bpm, meter="4/4", mode="quick", seed=0):
         "meter": meter,
         "mode": mode,
         "seed": seed,
+        "global_tonic_pc": tonic_pc,
+        "tonal_mode": tonal_mode,
         "beats_per_bar": 4.0,
         "phrases": phrases,
         "bars": bars,

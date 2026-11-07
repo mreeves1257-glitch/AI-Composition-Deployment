@@ -118,10 +118,12 @@ def _pcm_mono(path:Path)->tuple[list[float],int]:
     return mono,rate
 
 
-def _rms(samples:list[float],rate:int,start:float,end:float)->float:
+def _rms(samples:list[float],rate:int,start:float,end:float,*,empty_is_zero:bool=False)->float:
     left=max(0,round(start*rate))
     right=min(len(samples),round(end*rate))
     if right<=left:
+        if empty_is_zero:
+            return 0.0
         raise ShinyguitarNoteLengthProofError("EMPTY_RMS_WINDOW")
     total=sum(x*x for x in samples[left:right])
     return math.sqrt(total/(right-left))
@@ -195,7 +197,10 @@ def main():
 
         # After the 0.25 s short note plus its 0.25 s release, the long condition
         # must still carry materially more sustained energy.
-        short_mid=_rms(short,rate,0.80,1.20)
+        # sfizz_render may trim trailing silence after the released note. If the
+        # short render has already ended by this post-release window, that is
+        # correctly treated as zero energy rather than as a measurement error.
+        short_mid=_rms(short,rate,0.80,1.20,empty_is_zero=True)
         long_mid=_rms(long,rate,0.80,1.20)
         if long_mid<=max(1e-5,short_mid*3.0):
             raise ShinyguitarNoteLengthProofError(
@@ -205,11 +210,24 @@ def main():
 
         # The long condition itself must still respond to its later note-off:
         # energy after 2.5 s must be materially lower than while it is held.
-        long_after=_rms(long,rate,2.55,2.95)
+        # The renderer may likewise trim the long render after its release.
+        # A missing post-release window therefore means zero residual energy.
+        long_after=_rms(long,rate,2.55,2.95,empty_is_zero=True)
         if long_after>=long_mid*0.60:
             raise ShinyguitarNoteLengthProofError(
                 "LONG_NOTE_DID_NOT_RELEASE_AFTER_LATER_NOTEOFF::"+
                 json.dumps({"long_mid":long_mid,"long_after":long_after},sort_keys=True)
+            )
+
+        short_render_seconds=len(short)/rate
+        long_render_seconds=len(long)/rate
+        if long_render_seconds<=short_render_seconds+0.75:
+            raise ShinyguitarNoteLengthProofError(
+                "RENDER_DURATION_DID_NOT_TRACK_NOTE_LENGTH::"+
+                json.dumps({
+                    "short_render_seconds":short_render_seconds,
+                    "long_render_seconds":long_render_seconds,
+                },sort_keys=True)
             )
 
         short_end=_active_end(short,rate)
@@ -242,6 +260,8 @@ def main():
             "long_post_release_rms":long_after,
             "held_vs_short_post_release_ratio":long_mid/max(short_mid,1e-12),
             "long_post_release_vs_held_ratio":long_after/max(long_mid,1e-12),
+            "short_render_seconds":short_render_seconds,
+            "long_render_seconds":long_render_seconds,
             "short_active_end_seconds":short_end,
             "long_active_end_seconds":long_end,
             "active_end_delta_seconds":long_end-short_end,

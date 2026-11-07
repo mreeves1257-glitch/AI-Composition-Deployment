@@ -10,6 +10,7 @@ on:
       - "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json"
       - "genre_contract_v3_research/verify_v3_runtime_symbolic_instrument_resolution.py"
       - "genre_contract_v3_research/verify_rock_v3_target_resource_contexts.py"
+      - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
       - "composer_overrides/genre_styles/*/SOURCE_PATTERN_LIBRARY_R1.json"
       - ".github/workflows/genre-v3-symbolic-runtime-resolution.yml"
   workflow_dispatch:
@@ -84,6 +85,11 @@ jobs:
         run: |
           python genre_contract_v3_research/verify_v3_runtime_symbolic_instrument_resolution.py
           test -s genre_contract_v3_research/V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json
+
+      - name: Acquire pinned Rock real-sample resource proof
+        run: |
+          bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh composer/runtime
+          test -s composer/runtime/ROCK_PINNED_RESOURCE_ACQUISITION.json
 
       - name: Preflight Rock V3 contextual target resources without audio
         env:

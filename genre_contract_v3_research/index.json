@@ -269,8 +269,8 @@
     },
     {
       "genre_name": "Afro-Latin / Afrobeats Fusion",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__CONTROLLED_FUSION_RESOLVER",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
       "approved_for_runtime": false
     },
     {
@@ -293,32 +293,32 @@
     },
     {
       "genre_name": "Regional Electronic Hybrids",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__PROVENANCE_RESOLVER",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Genre-Breaking / Borderless",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__CONTROLLED_COMPONENT_ARCHITECTURE",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Custom Hybrid",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__USER_COMPONENT_RESOLVER",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Custom Style",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__USER_DEFINED_CONTAINER",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Controlled Custom Style Profile",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__SAVED_PROFILE_EXECUTOR",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__RESOLVER_VALIDATION_PENDING",
       "approved_for_runtime": false
     },
     {

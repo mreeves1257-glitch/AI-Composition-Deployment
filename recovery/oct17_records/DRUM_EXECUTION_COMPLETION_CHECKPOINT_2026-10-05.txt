@@ -1,0 +1,25 @@
+AI COMPOSITION — DRUM EXECUTION COMPLETION CHECKPOINT — 2026-10-05
+
+Scope: Composer only. No Control Panel or Portal 4 changes.
+
+Completed logic:
+- Big Rusty full-kit mapping retained as the acoustic drum resource target.
+- Kick 36, snare 38, closed hat 42, ride 51, crash 49, toms 41/43/45/47.
+- Existing full-kit genre intent now reaches execution for crash/tom phrase transitions.
+- drums_ride emits ride note 51 rather than mislabeled hi-hat note 42.
+- brush_drums emits brush snare + brush ride behavior.
+- MIDI output supports initial per-track CC articulation selectors.
+- Big Rusty brush snare selector: CC25=80 (within 64-95 brush range).
+- Big Rusty brush ride selector: CC28=80 (within 64-95 brush range).
+- No synthetic drum fallback added.
+
+Verification:
+- pytest: 13 passed / 55 subtests passed.
+- internal chain: 5 tests passed.
+- focused MIDI proof: CC25=80 and snare note 38 present in percussion-channel MIDI payload.
+
+Not falsely declared complete:
+- Physical Big Rusty sample library is not yet bundled in this working package.
+- sfizz_render is not installed in the current runtime.
+- Therefore audible real-sample drum rendering is NOT yet proven.
+- Final real-audio acceptance still requires non-silent rendered kick/snare/hat/toms/ride/crash and brush articulation proof.

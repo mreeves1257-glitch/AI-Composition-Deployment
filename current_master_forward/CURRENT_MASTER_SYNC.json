@@ -29,6 +29,8 @@
     "classical_v3_variant_package.py",
     "genre_v3_symbolic_pattern_executor.py",
     "genre_v3_foreground_authority.py",
+    "rock_v3_foreground_pilot.py",
+    "genre_v3_foreground_executor_registry.py",
     "genre_v3_source_pattern_bridge.py",
     "genre_v3_instrument_authority.py",
     "genre_contract_v3_execution_bridge.py",
@@ -75,7 +77,9 @@
       "classical_v3_note_realizer.py",
       "classical_v3_orchestration_binder.py",
       "classical_v3_resource_mapper.py",
-      "genre_v3_foreground_authority.py"
+      "genre_v3_foreground_authority.py",
+      "genre_v3_foreground_executor_registry.py",
+      "rock_v3_foreground_pilot.py"
     ],
     "live_promotion_approved": false,
     "classical_v3_symbolic_path": {

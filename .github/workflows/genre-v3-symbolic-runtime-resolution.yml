@@ -102,7 +102,7 @@ jobs:
         run: |
           python genre_contract_v3_research/verify_rock_v3_core_performance_plan.py
           test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_PLAN_AUDIT.json
-          python genre_contract_v3_research/verify_rock_v3_core_performance_executor.py
+          python genre_contract_v3_research/verify_rock_v3_core_performance_mode_a.py
           test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_MODE_A_AUDIT.json
 
       - name: Acquire pinned Rock real-sample resource proof

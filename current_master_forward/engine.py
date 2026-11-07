@@ -110,11 +110,17 @@ class AICompositionEngine:
                     instrument_separator_resolution=separator_resolution),
                 'communication_blueprint':blueprint,
                 'genre_contract_v3_execution_packet':v3_contract_packet,
+                'genre_v3_foreground_authority':theory.get('genre_v3_foreground_authority'),
+                'foreground_execution_status':theory.get('foreground_execution_status'),
+                'foreground_notes_generated':False,
+                'finished_composition_authority':False,
+                'source_pattern_finished_composition_eligible':False,
+                'promotion_block':'SOURCE_PATTERN_ACCOMPANIMENT_MAY_NOT_BE_RENDERED_AS_FINISHED_COMPOSITION',
                 'audio_rendered':False,
                 'audio_authority':False,
                 'live_runtime_promoted':False,
                 'reasoning_engine_used':False,
-                'next_gate':'GENRE_SPECIFIC_MUSICAL_REVALIDATION_BEFORE_AUDIO',
+                'next_gate':'COMPILE_GENRE_SPECIFIC_FOREGROUND_EXECUTION_BEFORE_AUDIO',
             }
 
         # Execute the profile's dynamic contour BEFORE instrument separation. V1 is

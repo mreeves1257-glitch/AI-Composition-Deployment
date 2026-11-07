@@ -728,3 +728,37 @@ Listening outputs planned:
 
 No drums are included in this gate, so bass duration is the only new variable.
 No live enablement, no main merge, no reasoning engine.
+
+
+## Rock V3 bass sustain A/B completed and blinded
+
+Listening workflow:
+`Rock V3 Bass Sustain Listening AB`
+Run `42394879894` — PASS
+
+Artifact:
+`13583535149`
+Digest:
+`sha256:7e3b01dc5330ccca45261428668251f2b9b62186281bb451eb61a7cb097c31c1`
+
+16-bar listening window:
+- 23 changed BASS events
+- extension distribution: 7 × +0.225 beat, 13 × +0.420 beat, 3 × +0.615 beat
+- about 4.33 seconds of aggregate added symbolic bass-note ring
+- covers INTRO_1, VERSE_1, and part of CHORUS_1
+
+Audio validation:
+- exact Growlybass v1.002 mapping `growlybass_vicious.sfz`
+- exact Shinyguitar mapping `Programs/composer_electric.sfz`
+- current approved guitar treatment fixed: 2.8 HARMONY sustain + safe strum + treated LEAD
+- drums omitted so bass duration is the only new variable
+- no clipping: context peaks approximately -10.2 dBFS
+- bass-only A/B difference ≈ -31.0 dB relative to current bass RMS
+- context A/B difference ≈ -35.15 dB relative to current context RMS
+
+Blind copies prepared byte-for-byte.
+Mapping is recorded in:
+`ROCK_V3_BASS_SUSTAIN_BLIND_LISTENING_MAP_2026-11-07.json`
+
+Active gate:
+User chooses Blind 1, Blind 2, no difference, or both wrong. Do not reveal mapping before that judgment. Do not add kick/drums or another performance variable before this decision.

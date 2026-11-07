@@ -1477,3 +1477,125 @@ Reasoning engine remains excluded.
 
 Detailed record:
 `genre_contract_v3_research/OCT17_HARD_COPY_RECOVERY_SALVAGE_2026-11-07.md`
+
+
+## October 17 hard-copy selective recovery + Big Rusty graph repair
+
+User request:
+"Look into the December 17th copy and copy whatever you can out of that file."
+
+Date clarification used for recovery:
+The current date is 2026-11-07, so a 2026-12-17 copy cannot yet exist.
+The matching protected Composer recovery source found in Library was:
+`/Composer Backups/AI Composition - Sandbox_HARD_COPY_2026-10-17.zip`
+
+Donor archive:
+- size: 7,447,383 bytes
+- SHA-256: `27c122d962bc751cacac72eda3ab850f44aeef09461e4c5eafd1345a057c1ae0`
+- protected sidecar hash matched exactly
+- 106 actual files inside archive
+- archive was used as a donor/recovery source only; it did NOT replace current master
+
+Critical Oct-17 resource truth recovered:
+- Growlybass historical graph: 86 references / 86 unique / 1 SFZ
+- Shinyguitar historical graph: 6,798 references / 846 unique / 16 SFZ
+- Big Rusty full-kit historical graph:
+  - 7,922 sample references
+  - 4,466 unique samples
+  - 310 SFZ files
+  - 18 intentional silent choke regions
+- all remained fidelity-not-certified at that checkpoint
+
+Critical missing infrastructure recovered:
+`current_master_forward/sfz_sample_graph.py`
+- source Library file id: `file_00000000cad481f682ade43404fe954d`
+- exact Oct-17 SHA-256:
+  `39e5484053f317237d07a466af5aa61935d6951510e03e8d6e72163bae0b0e98`
+- role: read-only stream-order SFZ graph validation
+- preserves original-directory path resolution, #define/#include/default_path stream order, and intentional `*silence` choke regions
+
+Current newer `sfz_renderer_adapter.py` was NOT replaced.
+Only its `validate_sfz_samples()` entry point was changed to delegate to the recovered Oct-17 graph validator.
+All newer renderer/safety logic remains.
+
+Diagnostic runtime sync now includes `sfz_sample_graph.py`.
+Recovery provenance:
+`genre_contract_v3_research/OCT17_COMPOSER_RESOURCE_RECOVERY_EVIDENCE_2026-11-07.json`
+
+Quarantined donor modules copied under:
+`recovery/oct17_modules/`
+- restore_attached_resources.py
+- rock_full_instrument_gate.py
+- renderer005_sfz_safety_patch.py
+- stem_delivery_manifest.py
+- official_sfz_compatibility.py
+- sfz_renderer_adapter_OCT17.py
+- RECOVERY_PROVENANCE.json
+
+These donor modules are NOT active runtime authority.
+Only `sfz_sample_graph.py` was promoted because it solved a proven current defect.
+
+Quarantined donor records copied under:
+`recovery/oct17_records/`
+- CURRENT_RESOURCE_TRUTH_2026-10-17.json
+- CURRENT_RESOURCE_TRUTH_2026-10-17.md
+- DRUM_EXECUTION_COMPLETION_CHECKPOINT_2026-10-05.txt
+- Composer_Master_Growlybass_Repair_Status_2026-10-16.json
+- FORWARD_ORIGINAL_RESOURCE_REPAIR_REPORT_2026-10-12.json
+- RECOVERY_PROVENANCE.json
+
+Recovered Oct resource-repair evidence also records:
+- 5,312 original audio files fully decoded
+- 5,742 original files byte-identical
+- 10 sample bindings ready
+- original guitar/drum basic playback PASS
+- 8 distinct drum components verified
+- original expression fidelity NOT certified
+
+Big Rusty restore policy:
+Use exact pinned publisher commit
+`f07ce00df34a46b6b08375be56fe116cf15782bc`
+with complete `Programs` + `Samples` trees.
+Do not hand-pick a partial set and call it full.
+
+Objective drum resource/render preflight:
+Workflow:
+`Rock V3 Drum Resource Render Preflight`
+run `42403145501` — PASS
+artifact `13585892468`
+digest `sha256:f890c8ac2291f57931d0c90f4ef9a5e6faae1ff419d1f78ba11620fe7312b5da`
+
+Current recovered graph proof exactly matches Oct-17 truth:
+- 7,922 references
+- 4,466 unique samples
+- 310 SFZ files
+- 18 silent choke regions
+
+Publisher keymap confirmed:
+- KICK = MIDI 36
+- SNARE center = MIDI 38
+- tightly closed HAT = MIDI 42
+
+Existing first-eight-bar Rock drum writing rendered non-silent through real Big Rusty samples:
+- KICK: 14 events
+- SNARE: 16 events
+- HAT: 44 events
+
+This render used diagnostic `probe_original_sfz()`, not production `render_midi()`.
+Production compatibility gate remains unchanged/blocked:
+`DIAGNOSTIC_AUDIO_ONLY_NOT_CERTIFIED`.
+
+No timing, velocity, hit count, MIDI note, mapping, target gain, or mix was changed.
+No musical quality approval was claimed.
+No production-fidelity certification was claimed.
+No synthetic fallback.
+No publisher files modified.
+No reasoning engine.
+No main/live promotion.
+
+The drum preflight workflow now pins the recovered graph module's exact Oct-17 SHA before running.
+
+Practical consequence:
+Do not revert to the simplified SFZ graph parser for Big Rusty.
+Do not re-salvage these October donor pieces from scratch.
+Use the quarantined recovery directories as evidence/donor code, and promote any additional Oct-17 component only when a specific current defect justifies it.

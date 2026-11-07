@@ -869,3 +869,52 @@ Approved guitar context remains fixed in both A/B conditions:
 - HARMONY max ringing 2.8 beats
 - safe note-off-preserving strum
 - treated LEAD unchanged
+
+
+## Rock bass — user clarified upbeat/pitch behavior
+
+User listening diagnosis:
+- the bass downbeat/attack is good;
+- the bass tail resonates too far and can read as an upbeat;
+- the pitch also changes on the upbeat;
+- if bass sustain is allowed across that subdivision, it should remain the same tone.
+
+Symbolic/source findings:
+- 29 half-beat upbeat bass events in the 40-bar line;
+- 26 already retain the preceding bass pitch;
+- 3 half-beat upbeat pickups change pitch;
+- source-pattern audit also found broader overlapping different-pitch bass attacks before any sustain treatment is applied.
+
+Measured Vicious decay evidence at 123 BPM:
+- half-beat upbeat = 0.243902 s after attack;
+- 0.20-beat MIDI gate -> measured active end ~0.22 s / 0.451 beat;
+- 0.25-beat gate -> active end ~0.24 s;
+- 0.30-beat gate crosses the upbeat;
+- decay-grid artifact ID: 13583455938.
+
+Two repair candidates exist:
+1. **Narrow pitch-coherence repair** — preferred first test:
+   - never extends bass;
+   - before a different-pitch attack with enough spacing, shorten prior note to leave 0.25 beat release gap;
+   - for ultra-close different-pitch attacks <=0.30 beat, lock the later attack to the prior pitch;
+   - preserves same-pitch continuation;
+   - verified full40: 36 duration shortenings, 22 pitch locks, zero remaining different-pitch coherence violations.
+2. **Blanket downbeat damping fallback**:
+   - 0.20-beat gate on 146/147 bass notes;
+   - 3 half-beat pitch locks;
+   - final sustained arrival exempt;
+   - structurally verified but intentionally held as fallback because it is much more invasive.
+
+Current active gate:
+`Rock V3 Bass Pitch Coherence Listening AB`
+Run: `42395776007`
+
+A/B uses current Growlybass Vicious mapping and approved guitar context:
+- HARMONY max ringing 2.8 beats
+- safe strum
+- treated LEAD
+- no drums
+- A = current bass
+- B = narrow pitch-coherence repair
+
+Do not promote the blanket 0.20-beat damping candidate unless the narrower repair still sounds too resonant.

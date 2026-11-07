@@ -63,11 +63,16 @@ class ClassicalV3StructuralCompilerTests(unittest.TestCase):
                 "diagnostic_only":True,
             },
         )
-        self.assertEqual(setup["status"], "V3_NOTE_REALIZER_REQUIRED")
+        self.assertEqual(setup["status"], "V3_ORCHESTRATION_BINDING_REQUIRED")
         self.assertFalse(setup["legacy_classical_generator_executed"])
         self.assertEqual(setup["events"], [])
         self.assertEqual(setup["classical_v3_structural_validation"]["status"], "PASS")
         self.assertEqual(setup["classical_v3_structural_plan"]["schema"], "CLASSICAL_V3_STRUCTURAL_PLAN_001")
+        self.assertEqual(setup["classical_v3_abstract_note_validation"]["status"], "PASS")
+        self.assertEqual(
+            setup["classical_v3_abstract_note_validation"]["melody_with_three_voice_support_overlap_pct"],
+            100,
+        )
 
     def test_requires_explicit_supported_meter_and_tempo(self):
         with self.assertRaises(ValueError):

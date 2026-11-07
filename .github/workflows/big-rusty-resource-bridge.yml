@@ -11,13 +11,13 @@ jobs:
           git clone --filter=blob:none --no-checkout https://github.com/sfzinstruments/karoryfer.big-rusty-drums.git big-rusty
           cd big-rusty
           git sparse-checkout init --cone
-          git sparse-checkout set Programs Samples/kick_24 Samples/snare_14 Samples/hihat_14 Samples/tom_14 Samples/tom_15 Samples/tom_18 Samples/tom_22 Samples/crash_17 Samples/ride_22 Samples/china_18 Samples/stack_3_layer
+          git sparse-checkout set Programs Samples/kick_24 Samples/kick_24_nodamp Samples/snare_14 Samples/hihat_14 Samples/tom_14 Samples/tom_15 Samples/tom_18 Samples/tom_22 Samples/crash_17 Samples/crash_sizzle_17 Samples/ride_22 Samples/ride_sizzle_19 Samples/china_18 Samples/stack_3_layer
           git checkout f07ce00df34a46b6b08375be56fe116cf15782bc
       - name: Build full-kit proof pack
         run: |
           mkdir -p proof-pack/Samples
           cp -a big-rusty/Programs proof-pack/
-          for d in kick_24 snare_14 hihat_14 tom_14 tom_15 tom_18 tom_22 crash_17 ride_22 china_18 stack_3_layer; do
+          for d in kick_24 kick_24_nodamp snare_14 hihat_14 tom_14 tom_15 tom_18 tom_22 crash_17 crash_sizzle_17 ride_22 ride_sizzle_19 china_18 stack_3_layer; do
             test -d "big-rusty/Samples/$d"
             cp -a "big-rusty/Samples/$d" "proof-pack/Samples/"
           done

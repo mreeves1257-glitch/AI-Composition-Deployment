@@ -1,0 +1,31 @@
+{
+  "schema": "ROCK_V3_BASS_ATTACK_HYBRID_HUMAN_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "user_judgment": "D_PREFERRED",
+  "preferred_bass_treatment": {
+    "symbolic_base": "ROCK_V3_BASS_HELD_TONE_CANDIDATE_001",
+    "held_mapping": "growlybass_clean.sfz",
+    "attack_mapping": "growlybass_vicious.sfz",
+    "attack_layer_gain_db": -9,
+    "attack_gate_beats": 0.2,
+    "strong_beat_only": true,
+    "offbeat_reattacks": false,
+    "different_pitch_offbeats": 0,
+    "same_pitch_same_onset_attack_layer": true
+  },
+  "rejected_alternatives": {
+    "C": "HELD_BODY_ONLY__DOWNBEAT_TOO_SOFT",
+    "E": "HELD_BODY_PLUS_STRONGER_ATTACK__NOT_PREFERRED"
+  },
+  "interpretation": [
+    "Human listening preferred the light transient layer over the held-body baseline and the stronger transient version.",
+    "The preferred Rock bass behavior is sustained Clean body plus a short same-pitch Vicious transient at -9 dB on the same strong-beat onset.",
+    "No offbeat events are reintroduced.",
+    "Bass pitch/rhythm behavior remains fixed from the accepted held-tone candidate."
+  ],
+  "canonical_policy_modified": false,
+  "live_runtime_promoted": false,
+  "reasoning_engine_used": false,
+  "next_gate": "INTEGRATE_PREFERRED_BASS_D_WITH_APPROVED_GUITAR_CONTEXT__NO_NEW_PERFORMANCE_VARIABLES"
+}

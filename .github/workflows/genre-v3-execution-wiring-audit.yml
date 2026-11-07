@@ -38,6 +38,8 @@ on:
       - "genre_contract_v3_research/ROCK_V3_FORM_CANDIDATES_2026-11-07.json"
       - "current_master_forward/rock_v3_core_harmony_plan.py"
       - "genre_contract_v3_research/verify_rock_v3_core_harmony_plan.py"
+      - "current_master_forward/rock_v3_core_development_executor.py"
+      - "genre_contract_v3_research/verify_rock_v3_core_development_executor.py"
       - ".github/workflows/genre-v3-execution-wiring-audit.yml"
   workflow_dispatch:
 
@@ -129,6 +131,13 @@ jobs:
           python genre_contract_v3_research/verify_rock_v3_core_harmony_plan.py
           test -s genre_contract_v3_research/ROCK_V3_CORE_HARMONY_PLAN_AUDIT.json
 
+      - name: Audit Rock Core V3 developed symbolic events
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/verify_rock_v3_core_development_executor.py
+          test -s genre_contract_v3_research/ROCK_V3_CORE_DEVELOPED_EVENT_AUDIT.json
+
       - name: Upload wiring audits
         uses: actions/upload-artifact@v4
         with:
@@ -143,6 +152,7 @@ jobs:
             genre_contract_v3_research/ROCK_V3_CORE_FORM_PLAN_AUDIT.json
             genre_contract_v3_research/ROCK_V3_CORE_DEVELOPMENT_PLAN_AUDIT.json
             genre_contract_v3_research/ROCK_V3_CORE_HARMONY_PLAN_AUDIT.json
+            genre_contract_v3_research/ROCK_V3_CORE_DEVELOPED_EVENT_AUDIT.json
             genre_contract_v3_research/ROCK_V3_VARIANT_PACKAGE_AUDIT.json
             genre_contract_v3_research/ROCK_V3_FORM_PLANNER_AUDIT.json
           if-no-files-found: error

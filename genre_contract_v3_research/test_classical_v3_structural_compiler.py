@@ -10,6 +10,7 @@ if str(FORWARD) not in sys.path:
 from genre_contract_v3_execution_bridge import snapshot_for
 from classical_v3_variant_package import resolve as resolve_variant
 from classical_v3_structural_compiler import compile_plan, validate_plan
+from classical_composition import build_classical_setup
 
 
 class ClassicalV3StructuralCompilerTests(unittest.TestCase):
@@ -48,6 +49,25 @@ class ClassicalV3StructuralCompilerTests(unittest.TestCase):
         self.assertGreater(summary["bar_count"], 24)
         self.assertGreaterEqual(len(summary["phrase_lengths"]), 4)
         self.assertNotEqual(summary["phrase_lengths"], [8])
+
+    def test_specialized_classical_path_binds_v3_structure_without_legacy_notes(self):
+        setup = build_classical_setup(
+            self.profile,
+            mode="quick",
+            creation_seed=0,
+            v3_variant_package=self.package,
+            v3_piece_intent={
+                "intent_id":"TEST_CLASSICAL_PERIOD_ALLEGRO_MODERATO",
+                "tempo_bpm":112,
+                "meter":"4/4",
+                "diagnostic_only":True,
+            },
+        )
+        self.assertEqual(setup["status"], "V3_NOTE_REALIZER_REQUIRED")
+        self.assertFalse(setup["legacy_classical_generator_executed"])
+        self.assertEqual(setup["events"], [])
+        self.assertEqual(setup["classical_v3_structural_validation"]["status"], "PASS")
+        self.assertEqual(setup["classical_v3_structural_plan"]["schema"], "CLASSICAL_V3_STRUCTURAL_PLAN_001")
 
     def test_requires_explicit_supported_meter_and_tempo(self):
         with self.assertRaises(ValueError):

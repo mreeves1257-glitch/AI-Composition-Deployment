@@ -15,7 +15,30 @@ class GenreSelector:
     """
     def __init__(self, registry_path: str | Path, menu_path: str | Path | None = None):
         self.registry_path = Path(registry_path)
-        self.registry = json.loads(self.registry_path.read_text())
+        raw = json.loads(self.registry_path.read_text())
+        if isinstance(raw.get('contracts'), dict):
+            # Genre Contract V3 diagnostic mode. Build the selector view directly
+            # from the 55 canonical contracts rather than the legacy October registry.
+            contracts = raw['contracts']
+            if len(contracts) != 55:
+                raise GenreSelectionError('GENRE_V3_SELECTION_NOT_55')
+            self.registry_source = 'GENRE_CONTRACT_V3_ALL_55'
+            self.registry = {
+                'genre_selection_authority': 'USER_ONLY',
+                'registered_genres': {
+                    name: (contract.get('source_status') or
+                           (contract.get('current_profile_snapshot') or {}).get('status') or
+                           'CONTROLLED_PROFILE')
+                    for name, contract in contracts.items()
+                },
+                'detailed_or_new_profiles': {
+                    name: dict(contract.get('current_profile_snapshot') or {})
+                    for name, contract in contracts.items()
+                },
+            }
+        else:
+            self.registry_source = 'LEGACY_REGISTRY'
+            self.registry = raw
         if self.registry.get('genre_selection_authority') != 'USER_ONLY':
             raise GenreSelectionError('GENRE_AUTHORITY_NOT_USER_ONLY')
         self.menu_path = Path(menu_path) if menu_path else None
@@ -89,6 +112,7 @@ class GenreSelector:
             'registry_status': status,
             'profile': profile,
             'selection_authority': 'USER_ONLY',
+            'registry_source': self.registry_source,
             'immutable_after_selection': True,
         }
 

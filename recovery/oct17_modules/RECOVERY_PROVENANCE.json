@@ -1,0 +1,43 @@
+{
+  "schema": "OCT17_QUARANTINED_MODULE_RECOVERY_001",
+  "donor_archive_sha256": "27c122d962bc751cacac72eda3ab850f44aeef09461e4c5eafd1345a057c1ae0",
+  "policy": "QUARANTINED_DONOR_CODE__NOT_RUNTIME_AUTHORITY",
+  "modules": [
+    {
+      "name": "restore_attached_resources.py",
+      "path": "recovery/oct17_modules/restore_attached_resources.py",
+      "oct17_sha256": "940d87d2b4ae764a3ad7d711b1fbdb231d41bd76e1d48186891f140d3bd7a1df"
+    },
+    {
+      "name": "rock_full_instrument_gate.py",
+      "path": "recovery/oct17_modules/rock_full_instrument_gate.py",
+      "oct17_sha256": "09103e1f00d557498a70e036caedfe0bdf86070ee099836923f75b5dc3ba9b92"
+    },
+    {
+      "name": "renderer005_sfz_safety_patch.py",
+      "path": "recovery/oct17_modules/renderer005_sfz_safety_patch.py",
+      "oct17_sha256": "e72953db4d87d870fd74434e2d7a74879c33cf608a395abf65211abb3c459824"
+    },
+    {
+      "name": "stem_delivery_manifest.py",
+      "path": "recovery/oct17_modules/stem_delivery_manifest.py",
+      "oct17_sha256": "bba853b4b11c7c039695b5c71d8d02f5bc7e5788eea8eff37069a6afe5450867"
+    },
+    {
+      "name": "official_sfz_compatibility.py",
+      "path": "recovery/oct17_modules/official_sfz_compatibility.py",
+      "oct17_sha256": "ca07fb23565436d6d04a62c303553884544fd0a1153baa516d8fb9655c03867c"
+    },
+    {
+      "name": "sfz_renderer_adapter_OCT17.py",
+      "path": "recovery/oct17_modules/sfz_renderer_adapter_OCT17.py",
+      "oct17_sha256": "b05debf767ff6d33338f676116f36049b6fad541b4441bea90475a4fc2ae69bc"
+    }
+  ],
+  "promoted_modules": [
+    "current_master_forward/sfz_sample_graph.py"
+  ],
+  "active_runtime_changes_from_this_batch": [],
+  "reasoning_engine_used": false,
+  "live_runtime_promoted": false
+}

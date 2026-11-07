@@ -125,7 +125,7 @@ def main():
                 snapshot, "CLASSICAL_PERIOD_ORCHESTRAL")
             if classical_package.get("status") != "RESEARCH_PACKAGE_READY_FOR_STRUCTURAL_COMPILER__NOT_AUDIO_APPROVED":
                 raise RuntimeError("CLASSICAL_V3_PACKAGE_NOT_RESOLVED")
-            authority = "V3_CLASSICAL_VARIANT_PACKAGE__STRUCTURAL_COMPILER_REQUIRED"
+            authority = "V3_CLASSICAL_SYMBOLIC_ORCHESTRATION_RUNTIME_DIAGNOSTIC"
             classical_specialized += 1
         elif policy != "AUTOMATIC_BASELINE_ALLOWED":
             authority = "CONTROLLED_COMPONENT_INPUT"
@@ -182,7 +182,9 @@ def main():
         "legacy_classical_fixed_plan_code_still_present": "CLASSICAL_EXECUTABLE_PLAN_1" in classical_source,
         "classical_v3_structural_compiler_bound": "from classical_v3_structural_compiler import compile_plan as compile_v3_structure" in classical_source,
         "classical_abstract_note_realizer_bound": "from classical_v3_note_realizer import realize as realize_v3_notes" in classical_source,
-        "classical_orchestration_binding_still_required": "V3_ORCHESTRATION_BINDING_REQUIRED" in classical_source,
+        "classical_v3_orchestration_binder_bound": "from classical_v3_orchestration_binder import bind as bind_v3_orchestration" in classical_source,
+        "classical_v3_resource_mapper_bound": "from classical_v3_resource_mapper import map_resources as map_v3_resources" in classical_source,
+        "classical_symbolic_runtime_diagnostic_bound": "'execution_template':'classical_v3_symbolic_orchestration'" in classical_source and "'v3_symbolic_diagnostic_only':True" in classical_source,
         "classical_legacy_execution_explicitly_false": "'legacy_classical_generator_executed':False" in classical_source,
         "generic_blueprint_rejects_classical": "CLASSICAL_USES_EXISTING_SPECIALIZED_PATH" in communication_source,
         "performance_realizer_bypasses_classical": "CLASSICAL_SPECIALIZED_PATH_UNCHANGED" in performance_source,
@@ -206,7 +208,7 @@ def main():
             "V3_GOVERNED_SOURCE_PATTERN_ROLES": v3_source_pattern_roles,
             "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE_FALLBACK": legacy_fallback,
             "CONTROLLED_COMPONENT_INPUT": controlled_component,
-            "V3_CLASSICAL_VARIANT_PACKAGE__STRUCTURAL_COMPILER_REQUIRED": classical_specialized,
+            "V3_CLASSICAL_SYMBOLIC_ORCHESTRATION_RUNTIME_DIAGNOSTIC": classical_specialized,
         },
         "v3_downstream_guards": v3_downstream_guards,
         "confirmed_remaining_gaps": remaining_gaps,
@@ -215,8 +217,9 @@ def main():
             "Seven non-Classical automatic genres use explicit V3 formation authority "
             "and the remaining forty automatic genres use V3-governed source-pattern "
             "role authority. No automatic genre currently requires the legacy static "
-            "palette as execution authority. Classical uses its separately validated "
-            "V3 structural/note/orchestration diagnostic path."
+            "palette as execution authority. Classical uses its validated V3 "
+            "structure, abstract-note, canonical-orchestration and resource-mapping "
+            "path and stops at symbolic runtime instrument resolution before audio."
         ),
         "genres": results,
     }
@@ -244,6 +247,10 @@ def main():
             and "legacy_note_generator_used':False" in adapter_source
         ),
         "classical_v3_structural_compiler_bound": remaining_gaps["classical_v3_structural_compiler_bound"],
+        "classical_abstract_note_realizer_bound": remaining_gaps["classical_abstract_note_realizer_bound"],
+        "classical_v3_orchestration_binder_bound": remaining_gaps["classical_v3_orchestration_binder_bound"],
+        "classical_v3_resource_mapper_bound": remaining_gaps["classical_v3_resource_mapper_bound"],
+        "classical_symbolic_runtime_diagnostic_bound": remaining_gaps["classical_symbolic_runtime_diagnostic_bound"],
         "classical_legacy_execution_explicitly_false": remaining_gaps["classical_legacy_execution_explicitly_false"],
         "engine_symbolic_resolution_stop_present": "V3_SYMBOLIC_INSTRUMENT_RESOLUTION_PASS" in engine_source,
         "instrument_resolver_only_resolves_event_ids": remaining_gaps["instrument_resolver_only_resolves_event_ids"],

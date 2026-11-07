@@ -1,0 +1,33 @@
+name: Rock V3 Bass Offbeat Coherence Verify
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/rock-v3-bass-offbeat-coherence-verify.yml"
+      - "current_master_forward/rock_v3_bass_offbeat_coherence_candidate.py"
+      - "genre_contract_v3_research/verify_rock_v3_bass_offbeat_coherence_candidate.py"
+      - "current_master_forward/rock_v3_strum_candidate_executor.py"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify all-offbeat bass coherence
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/verify_rock_v3_bass_offbeat_coherence_candidate.py
+          test -s genre_contract_v3_research/ROCK_V3_BASS_OFFBEAT_COHERENCE_VERIFY.json
+      - name: Upload verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_V3_Bass_Offbeat_Coherence_Verify
+          path: genre_contract_v3_research/ROCK_V3_BASS_OFFBEAT_COHERENCE_VERIFY.json
+          if-no-files-found: error

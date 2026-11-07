@@ -82,6 +82,11 @@ def resolve(profile: dict[str, Any], variant_id: str) -> dict[str, Any]:
         "variant_id": variant_id,
         "candidate_variant_label": spec["candidate_variant_label"],
         "source_contract_sha256": source.get("contract_sha256"),
+        "profile_constraints": {
+            "tempo_bpm_range": deepcopy(profile.get("tempo_bpm_range") or []),
+            "meter_options": deepcopy(profile.get("meter_options") or []),
+            "form_tendencies": deepcopy(profile.get("form_tendencies") or []),
+        },
         "evidence_level": {
             "composition": composition.get("evidence_level"),
             "orchestration_role_state": role_state.get("evidence_level"),

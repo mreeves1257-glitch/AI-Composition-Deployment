@@ -6,29 +6,26 @@
   "source_artifact_id": 13582452120,
   "source_artifact_digest": "sha256:b7b8ea8c3d0c3626af991e0e066f69f6c607891c6bb53ea29958b8459d3ca1d8",
   "mapping": {
-    "BLIND_A_CONTEXT": "B_STRUM_WITH_TREATED_LEAD",
-    "BLIND_B_CONTEXT": "A_CURRENT_WITH_TREATED_LEAD",
-    "BLIND_A_HARMONY_ONLY": "B_HARMONY_STRUM",
-    "BLIND_B_HARMONY_ONLY": "A_HARMONY_CURRENT"
+    "BLIND_1_CONTEXT": "A_CURRENT_WITH_TREATED_LEAD",
+    "BLIND_2_CONTEXT": "B_STRUM_WITH_TREATED_LEAD",
+    "BLIND_1_GUITAR_ONLY": "A_HARMONY_CURRENT",
+    "BLIND_2_GUITAR_ONLY": "B_HARMONY_STRUM"
   },
   "sha256": {
-    "BLIND_A_CONTEXT": "66dd334eda499216ef015be7889c5a81117e349beeee9dcbda3d926d5a77a922",
-    "BLIND_B_CONTEXT": "8c1474a1a21d7d17ac747006282fc44e42b8ad957e2ad4a26351c09279d2bc19",
-    "BLIND_A_HARMONY_ONLY": "084e50a4c6496b946841ed2ce47ad3f5c8ea5779cb51840737d9c9807a43d038",
-    "BLIND_B_HARMONY_ONLY": "be479620ea3479bd23d9e2e53a2209382df26902fb804cc6875ab5b39546322f"
+    "BLIND_1_CONTEXT": "8c1474a1a21d7d17ac747006282fc44e42b8ad957e2ad4a26351c09279d2bc19",
+    "BLIND_2_CONTEXT": "66dd334eda499216ef015be7889c5a81117e349beeee9dcbda3d926d5a77a922",
+    "BLIND_1_GUITAR_ONLY": "be479620ea3479bd23d9e2e53a2209382df26902fb804cc6875ab5b39546322f",
+    "BLIND_2_GUITAR_ONLY": "084e50a4c6496b946841ed2ce47ad3f5c8ea5779cb51840737d9c9807a43d038"
   },
-  "audio_changed": false,
-  "remixed": false,
-  "normalized": false,
-  "transcoded": false,
   "current_harmony_max_ringing_beats": 2.8,
   "strum_note_gap_beats": 0.038,
-  "three_note_span_beats": 0.076,
+  "strum_three_note_span_beats": 0.076,
   "note_off_times_preserved": true,
+  "audio_changed_only_by_harmony_attack_timing": true,
   "canonical_policy_modified": false,
-  "strum_enabled_live": false,
+  "strum_candidate_enabled_live": false,
   "reasoning_engine_used": false,
   "listening_approval": false,
   "live_runtime_promoted": false,
-  "next_gate": "USER_BLIND_STRUM_A_B_JUDGMENT"
+  "next_gate": "USER_BLIND_STRUM_LISTENING_JUDGMENT"
 }

@@ -10,6 +10,7 @@ on:
       - "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json"
       - "genre_contract_v3_research/verify_v3_runtime_symbolic_instrument_resolution.py"
       - "genre_contract_v3_research/verify_rock_v3_target_resource_contexts.py"
+      - "genre_contract_v3_research/verify_rock_v3_core_performance_a_resource_preflight.py"
       - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
       - "composer_overrides/genre_styles/*/SOURCE_PATTERN_LIBRARY_R1.json"
       - ".github/workflows/genre-v3-symbolic-runtime-resolution.yml"
@@ -116,6 +117,13 @@ jobs:
           python genre_contract_v3_research/verify_rock_v3_target_resource_contexts.py
           test -s genre_contract_v3_research/ROCK_V3_TARGET_RESOURCE_CONTEXT_AUDIT.json
 
+      - name: Preflight 40-bar Rock Mode A resources and capability gate
+        env:
+          PYTHONPATH: ${{ github.workspace }}/composer/runtime
+        run: |
+          python genre_contract_v3_research/verify_rock_v3_core_performance_a_resource_preflight.py
+          test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_A_RESOURCE_PREFLIGHT.json
+
       - name: Upload integration audit
         uses: actions/upload-artifact@v4
         with:
@@ -123,6 +131,7 @@ jobs:
           path: |
             genre_contract_v3_research/V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json
             genre_contract_v3_research/ROCK_V3_TARGET_RESOURCE_CONTEXT_AUDIT.json
+            genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_A_RESOURCE_PREFLIGHT.json
             genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_PLAN_AUDIT.json
             genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_A_AUDIT.json
           if-no-files-found: error

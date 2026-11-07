@@ -77,8 +77,8 @@
     },
     {
       "genre_name": "Big Band",
-      "research_status": "V3_ROLE_AND_FORMATION_AUTHORITY_STRENGTHENED__QUANT_ACTIVITY_CORPUS_PENDING",
-      "comparison_status": "FORMATION_AND_ROLE_AUTHORITY_STRENGTHENED__QUANT_ACTIVITY_PENDING",
+      "research_status": "V3_FORMATION_AND_ROLE_ARCHITECTURE_STRONG__QUANTITATIVE_SECTION_ACTIVITY_CORPUS_PENDING",
+      "comparison_status": "FORMATION_AND_ROLE_ARCHITECTURE_STRONG__QUANTITATIVE_SECTION_ACTIVITY_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

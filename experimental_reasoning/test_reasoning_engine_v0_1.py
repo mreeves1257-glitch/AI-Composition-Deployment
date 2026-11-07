@@ -6,6 +6,7 @@ Run directly:
 from reasoning_engine_v0_1 import (
     ComposerState,
     InstrumentMemory,
+    MusicalIdeaMemory,
     MusicalGoal,
     reason,
     validate,
@@ -150,6 +151,79 @@ def test_equal_importance_creates_conversation_not_permanent_background():
     assert p["space_rule"] == "NOT_ALL_INSTRUMENTS_MUST_PLAY_SIMULTANEOUSLY"
 
 
+def test_musical_memory_recalls_idea_as_transformed_conversation():
+    state = ComposerState(
+        genre="Soul",
+        profile_id="SOUL_PROFILE",
+        section="Verse",
+        section_occurrence=2,
+        bars_elapsed=32,
+        active_instruments=("drums", "bass", "guitar", "keys"),
+        instrument_history=(
+            InstrumentMemory("drums", meaningful_windows=4, total_windows=4, last_role="groove"),
+            InstrumentMemory("bass", meaningful_windows=4, total_windows=4, last_role="foundation"),
+            InstrumentMemory("guitar", meaningful_windows=4, total_windows=4, last_role="answer"),
+            InstrumentMemory("keys", meaningful_windows=2, total_windows=4, last_role="texture"),
+        ),
+        musical_idea_history=(
+            MusicalIdeaMemory(
+                idea_id="IDEA_A",
+                origin_section="Verse",
+                origin_instrument="guitar",
+                contour_signature="RISE_FALL",
+                rhythm_signature="SHORT_SHORT_LONG",
+                harmonic_relation="CHORD_TONE_TO_EXTENSION",
+                expressive_character="QUESTIONING",
+                introduced_bar=4,
+                last_seen_bar=12,
+                appearances=2,
+                transformations=1,
+                last_carrier="guitar",
+            ),
+        ),
+    )
+    packet = reason(
+        state=state,
+        generation_plan={"literal_melody_reuse_after_bars": 16},
+    )
+    validate(packet)
+    m = packet["decisions"]["musical_memory"]
+    assert m["status"] == "PASS"
+    assert m["selected_idea_id"] == "IDEA_A"
+    assert m["action"] == "TRANSFORM_AND_RECALL"
+    assert m["preferred_next_carrier"] == "keys"
+    assert m["literal_copy_requested"] is False
+    assert m["exact_recall_eligible"] is True
+    assert "TRANSFER_TO_ANOTHER_COMPATIBLE_INSTRUMENT" in m["transformation_choices"]
+
+
+def test_musical_memory_allows_dormancy_and_does_not_force_every_idea_back():
+    state = ComposerState(
+        genre="Ambient",
+        profile_id="AMBIENT_PROFILE",
+        section="Intro",
+        bars_elapsed=6,
+        musical_idea_history=(
+            MusicalIdeaMemory(
+                idea_id="IDEA_SPACE",
+                origin_section="Intro",
+                contour_signature="STATIC",
+                rhythm_signature="LONG_SUSTAIN",
+                expressive_character="OPEN",
+                introduced_bar=2,
+                last_seen_bar=5,
+                appearances=2,
+                transformations=1,
+            ),
+        ),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    m = packet["decisions"]["musical_memory"]
+    assert m["literal_copy_requested"] is False
+    assert "NOT_EVERY_IDEA_MUST_RETURN_IMMEDIATELY" in m["dormancy_rule"]
+
+
 def test_hash_detects_mutation():
     state = ComposerState(
         genre="Country",
@@ -174,6 +248,8 @@ if __name__ == "__main__":
         test_equal_importance_is_not_equal_notes_or_equal_volume,
         test_importance_ledger_prioritizes_instrument_that_has_been_neglected,
         test_equal_importance_creates_conversation_not_permanent_background,
+        test_musical_memory_recalls_idea_as_transformed_conversation,
+        test_musical_memory_allows_dormancy_and_does_not_force_every_idea_back,
         test_hash_detects_mutation,
     ]
     for fn in tests:

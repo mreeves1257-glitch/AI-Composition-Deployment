@@ -432,6 +432,10 @@ def _spatial_choreography_plan(
         "breakdown": {"width": "FOCUSED", "depth": "DEEP_WITH_OPEN_SPACE", "intimacy": "CLOSE"},
         "solo": {"width": "WIDE", "depth": "MEDIUM_DEEP", "intimacy": "MID_CLOSE"},
         "outro": {"width": "MEDIUM_TO_WIDE", "depth": "DEEP", "intimacy": "RECEDING_OR_CLOSE_BY_INTENT"},
+        "statement": {"width": "MEDIUM_WIDE", "depth": "NATURALISTIC_DEEP", "intimacy": "MID"},
+        "contrast": {"width": "WIDE_OR_REFRAMED", "depth": "NATURALISTIC_DEEP", "intimacy": "VARIABLE_FOR_CONTRAST"},
+        "return": {"width": "WIDE", "depth": "NATURALISTIC_DEEP", "intimacy": "MID"},
+        "coda": {"width": "MEDIUM_TO_WIDE", "depth": "DEEP", "intimacy": "RECEDING_OR_RESOLVED"},
     }
     target = scene_map.get(section, {"width": "MEDIUM", "depth": "MEDIUM", "intimacy": "MID"})
 
@@ -439,11 +443,11 @@ def _spatial_choreography_plan(
         transition = "EXPAND_WIDTH_AND_DEPTH_WITHOUT_JUMPING_LEVELS"
     elif section == "verse" and previous == "chorus":
         transition = "CONTRACT_FIELD_SLIGHTLY_AND_RESTORE_INTIMACY"
-    elif section == "bridge":
+    elif section in {"bridge", "contrast"}:
         transition = "REFRAME_SPACE_FOR_CONTRAST_NOT_SIMPLY_MORE_WIDTH"
     elif section == "breakdown":
         transition = "REMOVE_SPATIAL_CLUTTER_AND_EXPOSE_DEPTH"
-    elif section == "outro":
+    elif section in {"outro", "coda"}:
         transition = "ALLOW_GRADUAL_SPATIAL_RELEASE_OR_RECEDING_DEPTH"
     elif energy_motion == "BUILD":
         transition = "EXPAND_OR_ADVANCE_SELECTIVELY_WITHOUT_RANDOM_MOVEMENT"
@@ -876,7 +880,7 @@ def _transition_intent(state: ComposerState, energy_motion: str, goal: MusicalGo
         cur = _norm_section(state.section)
         if nxt in {"chorus", "prechorus", "pre_chorus", "solo"}:
             mode = "BUILD_TOWARD_NEXT_SECTION"
-        elif cur == "outro" or nxt in {"outro", "end", "ending"}:
+        elif cur in {"outro", "coda"} or nxt in {"outro", "coda", "end", "ending"}:
             mode = "RESOLVE_OR_THIN"
         elif energy_motion == "PULL_BACK":
             mode = "CLEAN_RESET"

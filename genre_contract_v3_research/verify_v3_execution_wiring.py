@@ -19,6 +19,7 @@ if str(FORWARD) not in sys.path:
 from genre_contract_v3_execution_bridge import load_master, snapshot_for, execution_packet
 from genre_selector import GenreSelector
 from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority
+from classical_v3_variant_package import resolve as resolve_classical_v3_variant
 
 V3_PATH = ROOT / "genre_contract_v3_research" / "GENRE_CONTRACT_V3_ALL_55.json"
 ADAPTER_PATH = FORWARD / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
@@ -115,7 +116,11 @@ def main():
         policy = snapshot.get("resolution_policy")
         v3_instrument = resolve_v3_instrument_authority(name, snapshot)
         if name == "Classical":
-            authority = "SPECIALIZED_CLASSICAL_COMPOSITION_STATIC_PLAN_AND_ROSTER"
+            classical_package = resolve_classical_v3_variant(
+                snapshot, "CLASSICAL_PERIOD_ORCHESTRAL")
+            if classical_package.get("status") != "RESEARCH_PACKAGE_READY_FOR_STRUCTURAL_COMPILER__NOT_AUDIO_APPROVED":
+                raise RuntimeError("CLASSICAL_V3_PACKAGE_NOT_RESOLVED")
+            authority = "V3_CLASSICAL_VARIANT_PACKAGE__STRUCTURAL_COMPILER_REQUIRED"
             classical_specialized += 1
         elif policy != "AUTOMATIC_BASELINE_ALLOWED":
             authority = "CONTROLLED_COMPONENT_INPUT"
@@ -159,7 +164,9 @@ def main():
         "static_family_baseline_table_still_present": bool(bases),
         "fallback_path_still_uses_static_palette": "PALETTES.get(tmpl" in adapter_source,
         "classical_special_case_present": "if name == 'Classical':" in adapter_source,
-        "classical_fixed_plan_code_present": "CLASSICAL_EXECUTABLE_PLAN_1" in classical_source,
+        "legacy_classical_fixed_plan_code_still_present": "CLASSICAL_EXECUTABLE_PLAN_1" in classical_source,
+        "classical_v3_package_boundary_present": "V3_STRUCTURAL_COMPILER_REQUIRED" in classical_source,
+        "classical_legacy_execution_explicitly_false": "'legacy_classical_generator_executed':False" in classical_source,
         "generic_blueprint_rejects_classical": "CLASSICAL_USES_EXISTING_SPECIALIZED_PATH" in communication_source,
         "performance_realizer_bypasses_classical": "CLASSICAL_SPECIALIZED_PATH_UNCHANGED" in performance_source,
         "instrument_resolver_only_resolves_event_ids": "original = event['instrument_id']" in instrument_source,
@@ -181,7 +188,7 @@ def main():
             "GENRE_CONTRACT_V3_EXPLICIT_ROSTER": v3_explicit_roster,
             "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE_FALLBACK": legacy_fallback,
             "CONTROLLED_COMPONENT_INPUT": controlled_component,
-            "SPECIALIZED_CLASSICAL_COMPOSITION_STATIC_PLAN_AND_ROSTER": classical_specialized,
+            "V3_CLASSICAL_VARIANT_PACKAGE__STRUCTURAL_COMPILER_REQUIRED": classical_specialized,
         },
         "v3_downstream_guards": v3_downstream_guards,
         "confirmed_remaining_gaps": remaining_gaps,
@@ -190,8 +197,8 @@ def main():
             "Seven non-Classical automatic genres with explicit V3 formations now have "
             "V3 instrument-role authority. Forty automatic genres still require a "
             "clearly labeled legacy palette fallback because their V3 rosters are not "
-            "yet explicit. Classical remains isolated in its specialized fixed plan and "
-            "must next receive a resolved V3 variant/composition package."
+            "yet explicit. Classical now resolves a V3 period/orchestral package and "
+            "blocks the legacy fixed plan until a V3 structural compiler is bound."
         ),
         "genres": results,
     }
@@ -213,7 +220,9 @@ def main():
         "static_family_baseline_table_still_present",
         "fallback_path_still_uses_static_palette",
         "classical_special_case_present",
-        "classical_fixed_plan_code_present",
+        "legacy_classical_fixed_plan_code_still_present",
+        "classical_v3_package_boundary_present",
+        "classical_legacy_execution_explicitly_false",
         "generic_blueprint_rejects_classical",
         "performance_realizer_bypasses_classical",
         "instrument_resolver_only_resolves_event_ids",

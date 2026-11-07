@@ -149,18 +149,28 @@ def main():
         if abs(float(s["duration_beats"])-float(o["duration_beats"]))>1e-9:
             raise RuntimeError("ROCK_MODE_A_DESTROYED_LEAD_PHRASE_GAP::"+str(bar))
 
-    # Final developed sustained arrival remains intact.
-    final_src=[e for e in source_events if int(float(e["start_beat"])//4)==39]
+    # Preserve the actual developed sustained arrival, not every short
+    # approach note in the final bar. The development-stage authority defines
+    # the arrival as pitched BASS/HARMONY/LEAD events already sustained >= 1 beat.
+    final_src=[
+        e for e in source_events
+        if int(float(e["start_beat"])//4)==39
+        and e.get("role") in ("BASS","HARMONY","LEAD_GUITAR")
+        and float(e.get("duration_beats",0))>=1.0
+    ]
     final_out=[e for e in out_events if int(float(e["start_beat"])//4)==39]
+    if len(final_src)<2:
+        raise RuntimeError("ROCK_MODE_A_SOURCE_FINAL_SUSTAINED_ARRIVAL_MISSING")
     for src in final_src:
         matches=[
             e for e in final_out
             if e["track_id"]==src["track_id"]
+            and e["role"]==src["role"]
             and e["midi"]==src["midi"]
             and e["start_beat"]==src["start_beat"]
         ]
         if len(matches)!=1:
-            raise RuntimeError("ROCK_MODE_A_FINAL_EVENT_IDENTITY_MISSING")
+            raise RuntimeError("ROCK_MODE_A_FINAL_SUSTAINED_EVENT_IDENTITY_MISSING")
         if abs(float(matches[0]["duration_beats"])-float(src["duration_beats"]))>1e-9:
             raise RuntimeError("ROCK_MODE_A_CHANGED_FINAL_SUSTAINED_ARRIVAL")
 
@@ -188,6 +198,7 @@ def main():
         "pitch_onset_velocity_identity_preserved":True,
         "lead_phrase_gap_preservation":"PASS",
         "harmony_bar_boundary_safety":"PASS",
+        "final_sustained_arrival_event_count":len(final_src),
         "final_sustained_arrival_preserved":True,
         "random_jitter_used":False,
         "strum_candidate_applied":False,

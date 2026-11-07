@@ -1,0 +1,25 @@
+name: Export Genre V3 Transplant
+on:
+  push:
+    branches:
+      - temp-export-genre-v3-transplant-2026-11-07
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build safe genre transplant bundle
+        run: |
+          mkdir -p export/genre_v3_research
+          cp genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json export/genre_v3_research/
+          cp genre_contract_v3_research/index.json export/genre_v3_research/
+          cp genre_contract_v3_research/genre_contract_v3_schema.json export/genre_v3_research/
+          cp genre_contract_v3_research/source_map.json export/genre_v3_research/
+          cp genre_contract_v3_research/README.md export/genre_v3_research/
+          cp -R composer_overrides/genre_styles export/
+          find export -type f -print0 | sort -z | xargs -0 sha256sum > export/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: genre-v3-transplant-bundle
+          path: export
+          if-no-files-found: error

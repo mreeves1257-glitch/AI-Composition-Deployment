@@ -85,7 +85,7 @@ jobs:
             composer/runtime/rock_v3_core_harmony_plan.py \
             composer/runtime/rock_v3_core_development_executor.py \
             composer/runtime/rock_v3_core_performance_plan.py \
-            composer/runtime/rock_v3_core_performance_a.py \
+            composer/runtime/rock_v3_core_performance_executor.py \
             composer/runtime/genre_v3_composition_executor_registry.py \
             composer/runtime/rock_v3_foreground_pilot.py
 
@@ -102,7 +102,7 @@ jobs:
         run: |
           python genre_contract_v3_research/verify_rock_v3_core_performance_plan.py
           test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_PLAN_AUDIT.json
-          python genre_contract_v3_research/verify_rock_v3_core_performance_a.py
+          python genre_contract_v3_research/verify_rock_v3_core_performance_executor.py
           test -s genre_contract_v3_research/ROCK_V3_CORE_PERFORMANCE_A_AUDIT.json
 
       - name: Acquire pinned Rock real-sample resource proof

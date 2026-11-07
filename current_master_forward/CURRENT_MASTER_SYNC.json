@@ -2,7 +2,7 @@
   "schema": "AI_COMPOSER_DEPLOYMENT_SYNC_V1",
   "deployment_role": "MIRROR_OF_SINGLE_ACTIVE_MASTER_NOT_AN_ALTERNATE_MASTER",
   "source_active_master": "/Working File/INTEGRATED_WORKING_COPY",
-  "source_checkpoint": "2026-10-19",
+  "source_checkpoint": "2026-11-07_V3_NO_REASONING_DIAGNOSTIC",
   "master_policy": "ONE_MASTER_FORWARD_ONLY",
   "genre_count": 55,
   "protected_golden_references": [
@@ -22,6 +22,12 @@
     "genre_performance_realization.py",
     "genre_performance_capability_requirements.py",
     "genre_pre_generation_compiler.py",
+    "classical_v3_structural_compiler.py",
+    "classical_v3_variant_package.py",
+    "genre_v3_symbolic_pattern_executor.py",
+    "genre_v3_source_pattern_bridge.py",
+    "genre_v3_instrument_authority.py",
+    "genre_contract_v3_execution_bridge.py",
     "AI_Comp_Executable_Output_Core_001.py",
     "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py",
     "ensemble_architecture.py",
@@ -50,5 +56,19 @@
   "classical_checkpoint_prior_pipeline_sha256": "7ca38179e2a8056c93e0b57c39bcd1483b05635e629af0a80dc6fe3f8d8a839a",
   "approved_audio_pipeline_hash_basis": "Final active-master bytes after October 19 Big Band golden-recipe approval; prior Classical-only checkpoint hash retained separately as provenance.",
   "deployment_engine_contract": "OCT19_ENGINE_API_APPROVED_SF2_HOSTED_V1",
-  "deployment_verification": "55 structural/separator checks; approved Classical and Big Band anchor renders; 432 Hz render proof"
+  "deployment_verification": "55 structural/separator checks; approved Classical and Big Band anchor renders; 432 Hz render proof",
+  "diagnostic_v3_runtime_sync": {
+    "enabled": true,
+    "reasoning_engine_included": false,
+    "genre_source": "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json",
+    "added_runtime_modules": [
+      "genre_contract_v3_execution_bridge.py",
+      "genre_v3_instrument_authority.py",
+      "genre_v3_source_pattern_bridge.py",
+      "genre_v3_symbolic_pattern_executor.py",
+      "classical_v3_variant_package.py",
+      "classical_v3_structural_compiler.py"
+    ],
+    "live_promotion_approved": false
+  }
 }

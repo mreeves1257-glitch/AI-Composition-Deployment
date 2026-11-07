@@ -1,0 +1,57 @@
+{
+  "schema": "SHINYGUITAR_NOTE_LENGTH_CAPABILITY_CERTIFICATE_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "genre_use_scope": "ROCK_V3_CORE_MODE_A",
+  "capability": "NOTE_LENGTH_RESPONSE",
+  "status": "CERTIFIED_FOR_EXACT_MAPPING_AND_RENDERER",
+  "resource_id": "KARORYFER_SHINYGUITAR",
+  "mapping": "Programs/composer_electric.sfz",
+  "wrapper_sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35",
+  "renderer_version_pin": "sfizz 1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0",
+  "workflow_run_id": 42388034436,
+  "workflow_run_url": "https://github.com/mreeves1257-glitch/AI-Composition-Deployment/actions/runs/42388034436",
+  "artifact_id": 13580421411,
+  "artifact_digest_sha256": "19468f7294134d5bfb129d538f39b6010d75e1da960d503810349feb540d5893",
+  "controlled_variables": {
+    "pitch": 60,
+    "velocity": 80,
+    "tempo_bpm": 120,
+    "total_midi_seconds": 4,
+    "mapping_same": true,
+    "onset_same": true,
+    "renderer_same": true
+  },
+  "independent_variable": {
+    "note_off_time_seconds": {
+      "short": 0.25,
+      "long": 2
+    }
+  },
+  "measurements": {
+    "short_early_rms": 0.027598420622456377,
+    "long_early_rms": 0.027598420622456377,
+    "short_post_release_rms": 0,
+    "long_while_held_rms": 0.007861580284004592,
+    "long_post_release_rms": 0,
+    "short_render_seconds": 0.5340589569160997,
+    "long_render_seconds": 2.2523356009070294,
+    "short_active_end_seconds": 0.34,
+    "long_active_end_seconds": 2.04,
+    "active_end_delta_seconds": 1.7
+  },
+  "sample_graph_proof": {
+    "sample_references": 6798,
+    "unique_samples": 846,
+    "sfz_files_validated": 16
+  },
+  "certified_statement": "Changing only MIDI note-off time causes this exact preserved Shinyguitar mapping rendered by the pinned sfizz backend to sustain materially longer and release after the later note-off.",
+  "not_certified": {
+    "production_fidelity": true,
+    "full_composition_audio_quality": true,
+    "listening_approval": true,
+    "live_runtime_promotion": true,
+    "universal_shinyguitar_behavior_across_other_mappings_or_renderers": true
+  },
+  "next_gate": "NARROW_ROCK_MODE_A_LISTENING_A_B"
+}

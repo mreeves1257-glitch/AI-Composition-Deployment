@@ -110,3 +110,27 @@ This does not make instruments interchangeable. Compatibility remains mandatory.
 Recognition should come from preserved identity across change, not from compulsory literal repetition.
 
 Absence is also musically meaningful. A remembered idea does not need to return immediately, and not every stored idea must return at all.
+
+
+## Bass character — maximum rich depth
+
+Default: `bass_richness = 1.0`
+
+The bass is required to sound powerful, deep, full, warm, and harmonically defined.
+
+This is a **sound-character requirement**, not a compositional-importance override. Bass remains equal in compositional importance with every other active instrument.
+
+The target character is:
+
+- very deep low-register authority;
+- strong fundamental weight;
+- full low-mid body;
+- warm tone;
+- controlled attack rather than thin click;
+- enough upper-harmonic definition for the bass line to remain perceptible on smaller speakers;
+- clear coordination with kick and other low-register parts;
+- no weak, hollow, or anemic bass timbre.
+
+Richness must not turn into mud. If low-frequency parts collide, the arrangement and later mix/render stages should create separation rather than simply reducing the bass to insignificance.
+
+V0.1 does not apply EQ, compression, saturation, synthesis, sample selection, or rendering. It emits a future realization contract that later audio stages must satisfy.

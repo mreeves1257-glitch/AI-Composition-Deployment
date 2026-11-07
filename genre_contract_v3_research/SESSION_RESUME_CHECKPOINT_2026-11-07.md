@@ -1077,3 +1077,56 @@ Active gate:
 User chooses Blind 1, Blind 2, no difference, or both wrong.
 Do not reveal mapping before judgment.
 Do not enable candidate live or merge to main before approval.
+
+
+## Rock bass rule widened from half-beat-only to all off-beat subdivisions
+
+New human listening feedback:
+The bass still changed pitch on an upbeat after the half-beat-only repair.
+
+Audit:
+`Rock V3 Bass Offbeat Pitch Audit`
+run `42396632709` — PASS
+artifact `13583309618`
+digest `sha256:ae84d055d367f0deb46602b1cf41d3acf17dff9d402a4c4ace6f917cd9a7fc31`
+
+16-bar audit:
+- 56 bass events
+- 29 off-beat/subdivision bass attacks
+- current source: 12 different-pitch off-beats
+- previous half-beat-only candidate: 9 different-pitch off-beats still remained
+- missed positions included quarter/three-quarter subdivisions such as local beat 2.25, 3.25, and 3.75
+
+Corrected musical rule:
+- pitch changes are allowed on strong integer beats
+- every non-integer-beat bass attack must keep the immediately preceding bass pitch
+- 0.20-beat bass damping remains in place
+
+New candidate:
+`current_master_forward/rock_v3_bass_offbeat_coherence_candidate.py`
+
+Full 40-bar verification:
+`Rock V3 Bass Offbeat Coherence Verify`
+run `42396740749` — PASS
+artifact `13583643022`
+digest `sha256:0c15286293bb6fb368b0743f02fada791cd7182ff286e7a4ade7b3f65333472b`
+
+Full-form result:
+- 147 bass events
+- 77 off-beat bass events
+- 40 off-beat pitch changes normalized
+- 0 different-pitch off-beats remain
+- 63 strong-beat pitch changes remain allowed
+- all 147 bass durations capped at 0.20 beat
+- no onset/velocity/event-count/non-bass mutation
+- approved guitar context preserved
+- no reasoning engine, no main/live promotion
+
+Listening workflow:
+`Rock V3 Bass Offbeat Coherence Listening AB`
+run `42396840622`
+- first 16 bars
+- expected 56 duration changes
+- expected 12 pitch corrections
+- same Growlybass Vicious mapping in A/B
+- same approved HARMONY strum + treated LEAD

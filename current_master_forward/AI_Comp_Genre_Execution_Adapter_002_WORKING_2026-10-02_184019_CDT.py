@@ -297,10 +297,27 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
     if instrument_authority.get('authority') == 'V3_GOVERNED_SOURCE_PATTERN_ROLES':
         from genre_v3_symbolic_pattern_executor import compile_seed as compile_v3_symbolic_seed
         from genre_v3_foreground_authority import compile_authority as compile_v3_foreground_authority
+        from genre_v3_foreground_executor_registry import (
+            status_for as foreground_executor_status_for,
+            execute as execute_genre_foreground,
+        )
         symbolic=compile_v3_symbolic_seed(name)
         foreground_authority=compile_v3_foreground_authority(name)
         if foreground_authority.get('note_execution_ready_here') is not False:
             raise ValueError('V3_SOURCE_PATTERN_FOREGROUND_READINESS_UNEXPECTED')
+        foreground_executor=foreground_executor_status_for(name)
+        foreground_candidate=None
+        if foreground_executor.get('registered'):
+            foreground_candidate=execute_genre_foreground(name)
+            events=list(foreground_candidate['events'])
+            foreground_execution_status='GENRE_SPECIFIC_FOREGROUND_RESEARCH_CANDIDATE__STRUCTURAL_PASS'
+            foreground_notes_generated=True
+            promotion_block='FOREGROUND_CANDIDATE_REQUIRES_VARIANT_FORM_RESOURCE_AND_LISTENING_GATES'
+        else:
+            events=list(symbolic['events'])
+            foreground_execution_status=foreground_authority['execution_status']
+            foreground_notes_generated=False
+            promotion_block='SOURCE_PATTERN_ACCOMPANIMENT_MAY_NOT_BE_RENDERED_AS_FINISHED_COMPOSITION'
         meter=symbolic['meter']; bpm=symbolic['tempo_bpm']; bars=symbolic['bar_count']
         numerator,denominator=map(int,meter.split('/'))
         beats_per_bar=numerator*4/denominator
@@ -318,7 +335,12 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
             'source_pattern_seed_id':symbolic['source_seed_id'],
             'v3_symbolic_execution_sha256':symbolic['execution_sha256'],
             'legacy_note_generator_used':False,
-            'foreground_execution_status':foreground_authority['execution_status'],
+            'foreground_execution_status':foreground_execution_status,
+            'foreground_executor_registry_status':foreground_executor,
+            'foreground_candidate_execution':(
+                {k:v for k,v in foreground_candidate.items() if k!='events'}
+                if foreground_candidate is not None else None
+            ),
             'source_pattern_finished_composition_eligible':False,
         })
         generation_plan.pop('plan_sha256',None)
@@ -328,7 +350,6 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
         communication_blueprint=build_communication_blueprint(
             name,profile,parts,interpreted,generation_plan,
             v3_execution_packet=v3_packet)
-        events=list(symbolic['events'])
         linkage=link_genre(name,profile,parts,events,interpreted=interpreted)
         return {
             'genre_name':name,
@@ -347,7 +368,12 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
             'genre_v3_instrument_authority':instrument_authority,
             'v3_symbolic_pattern_execution':{k:v for k,v in symbolic.items() if k!='events'},
             'genre_v3_foreground_authority':foreground_authority,
-            'foreground_execution_status':foreground_authority['execution_status'],
+            'foreground_executor_registry_status':foreground_executor,
+            'foreground_candidate_execution':(
+                {k:v for k,v in foreground_candidate.items() if k!='events'}
+                if foreground_candidate is not None else None
+            ),
+            'foreground_execution_status':foreground_execution_status,
             'source_pattern_finished_composition_eligible':False,
             'communication_blueprint':communication_blueprint,
             'theory_request':{
@@ -370,7 +396,8 @@ def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int
             'audio_authority':False,
             'musical_audition_approved':False,
             'finished_composition_authority':False,
-            'foreground_notes_generated':False,
+            'foreground_notes_generated':foreground_notes_generated,
+            'promotion_block':promotion_block,
             'legacy_note_generator_used':False,
         }
 

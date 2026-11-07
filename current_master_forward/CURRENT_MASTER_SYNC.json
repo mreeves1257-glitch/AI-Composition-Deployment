@@ -35,6 +35,8 @@
     "rock_v3_form_planner.py",
     "rock_v3_core_development_executor.py",
     "rock_v3_core_performance_executor.py",
+    "instrument_role_performance_profiles.py",
+    "rock_v3_approved_performance_package.py",
     "rock_v3_core_performance_plan.py",
     "rock_v3_core_harmony_plan.py",
     "rock_v3_core_development_plan.py",
@@ -99,7 +101,9 @@
       "rock_v3_core_development_executor.py",
       "genre_v3_composition_executor_registry.py",
       "rock_v3_core_performance_plan.py",
-      "rock_v3_core_performance_executor.py"
+      "rock_v3_core_performance_executor.py",
+      "instrument_role_performance_profiles.py",
+      "rock_v3_approved_performance_package.py"
     ],
     "live_promotion_approved": false,
     "classical_v3_symbolic_path": {
@@ -160,7 +164,25 @@
       "modules": [
         "rock_v3_core_performance_plan.py",
         "rock_v3_core_performance_executor.py"
-      ]
+      ],
+      "approved_role_profile_registry": "instrument_role_performance_profiles.py",
+      "approved_performance_package": "rock_v3_approved_performance_package.py",
+      "approved_package_live_authority": false,
+      "legacy_mode_a_remains_separate": true
+    },
+    "approved_role_performance_profiles": {
+      "status": "HUMAN_APPROVED_DIAGNOSTIC__NOT_LIVE_RUNTIME_AUTHORITY",
+      "registry": "instrument_role_performance_profiles.py",
+      "package": "rock_v3_approved_performance_package.py",
+      "roles": [
+        "HARMONY",
+        "LEAD",
+        "BASS"
+      ],
+      "bass_treatment": "D__CLEAN_HELD_BODY_PLUS_VICIOUS_ATTACK_MINUS_9_DB",
+      "drums_included": false,
+      "new_performance_variables_added": false,
+      "live_promotion_approved": false
     }
   }
 }

@@ -1,0 +1,34 @@
+name: Rock V3 Drums vs Approved Bass Audit
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/rock-v3-drums-vs-approved-bass-audit.yml"
+      - "genre_contract_v3_research/analyze_rock_v3_drums_against_approved_bass.py"
+      - "current_master_forward/rock_v3_approved_performance_package.py"
+      - "current_master_forward/instrument_role_performance_profiles.py"
+      - "current_master_forward/rock_v3_bass_held_tone_candidate.py"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Audit existing drums against approved Bass D
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/analyze_rock_v3_drums_against_approved_bass.py
+          test -s genre_contract_v3_research/ROCK_V3_DRUMS_VS_APPROVED_BASS_AUDIT.json
+      - name: Upload audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_V3_Drums_Vs_Approved_Bass_Audit
+          path: genre_contract_v3_research/ROCK_V3_DRUMS_VS_APPROVED_BASS_AUDIT.json
+          if-no-files-found: error

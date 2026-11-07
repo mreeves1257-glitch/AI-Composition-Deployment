@@ -1,0 +1,31 @@
+{
+  "schema": "ROCK_V3_BASS_CORRECTED_ONLY_HUMAN_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "user_judgment": "CORRECTED_BASS_ONLY_PREFERRED",
+  "accepted_baseline": {
+    "candidate": "ROCK_V3_BASS_OFFBEAT_COHERENCE_CANDIDATE",
+    "max_gate_beats": 0.2,
+    "different_pitch_offbeats_remaining": 0,
+    "current_resource": "KARORYFER_GROWLYBASS_V1_002",
+    "current_mapping": "growlybass_vicious.sfz"
+  },
+  "rejected_for_now": [
+    "current uncorrected bass",
+    "bass sustain-extension candidate",
+    "corrected bass mixed with approved guitars as currently balanced"
+  ],
+  "user_observation": [
+    "Corrected bass-only removes the unwanted upbeat behavior.",
+    "Corrected bass-only has little/no sustain."
+  ],
+  "interpretation": [
+    "The corrected bass pitch/rhythm behavior is now the baseline and should not be reopened while testing sustain.",
+    "The next bass experiment should add body without reintroducing offbeat attacks or offbeat pitch changes.",
+    "Because growlybass_vicious.sfz is not meaningfully note-length-responsive for long sustain, a true held-tone test requires a sustain-capable Growlybass mapping."
+  ],
+  "next_gate": "BASS_ONLY_HELD_TONE_CANDIDATE__NO_OFFBEAT_REATTACKS__SAME_TONE_SUSTAIN",
+  "canonical_policy_modified": false,
+  "live_runtime_promoted": false,
+  "reasoning_engine_used": false
+}

@@ -1,0 +1,116 @@
+{
+  "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "genre_name": "New Age",
+  "source_profile_id": "NEW_AGE_V2",
+  "family": "New Age",
+  "source_status": "CONTROLLED_BROAD_PROFILE",
+  "research_status": "NOT_STARTED",
+  "approved_for_runtime": false,
+  "current_profile_snapshot": {
+    "profile_id": "NEW_AGE_V2",
+    "family": "New Age",
+    "status": "CONTROLLED_BROAD_PROFILE",
+    "scope_note": "Broad New Age baseline; rhythmic/progressive/neo-classical subprofiles may override.",
+    "tempo_bpm_range": [
+      55,
+      105
+    ],
+    "meter_options": [
+      "4/4",
+      "3/4",
+      "6/8"
+    ],
+    "form_tendencies": [
+      "through_composed",
+      "aba"
+    ],
+    "groove_behavior": "low-to-moderate rhythmic aggression; pulse may be flowing, sparse, arpeggiated or absent",
+    "phrase_behavior": "longer melodic arcs, breath/release space, gradual entrances and exits",
+    "harmony_behavior": "spacious tonal/modal harmony; add9/maj7/sus/open voicings common as options, not requirements",
+    "bass_behavior": "structural support with long tones, gentle motion or pedal behavior; avoid rigid repeated two-hit templates",
+    "percussion_behavior_if_applicable": "optional light percussion; when present favor supportive texture over dominant backbeat unless subtype says otherwise",
+    "instrument_role_behavior": "piano/electric piano/synth, flute, guitar, harp, strings, choir/textures as target resources; role separation foreground vs depth",
+    "ensemble_player_behavior": "continuous expressive shaping and low masking between melody and pads/textures",
+    "arrangement_transformation": "slow evolution of texture, register, orchestration and space; silence is valid material",
+    "dynamic_behavior": "long crescendos/diminuendos and section-scale breathing",
+    "articulation_behavior": "legato and sustained articulation favored, with soft attacks where the selected instrument supports them",
+    "timing_humanization_behavior": "phrase-level microtiming and tempo breathing; repetition must evolve",
+    "continuous_performance_control": "continuous expression, pedal, attack/release and ambience controls when target supports them",
+    "sound_effects_intent": "reverb/depth intentional; avoid washing out foreground definition",
+    "mix_prominence_intent": "clear foreground/background depth with broad spatial field",
+    "production_mastering_intent": "smooth, open, low-harshness master; transient restraint unless subtype requires more activity",
+    "manufacturer_adapter_requirements": "prefer expressive target voices; preserve continuous controller curves and long releases",
+    "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+    "provenance": [
+      "existing_project_theory",
+      "AllMusic New Age reference already recorded in project"
+    ],
+    "execution_rule": "USE_CONTROLLED_PROFILE"
+  },
+  "comparison": {
+    "current_profile_strengths": [],
+    "current_profile_gaps": [],
+    "external_sources_considered": [],
+    "retained_current_fields": [],
+    "upgraded_fields": [],
+    "conflicts": [],
+    "unresolved_questions": []
+  },
+  "musical_grammar": {
+    "form_model": null,
+    "harmony_model": null,
+    "melody_model": null,
+    "rhythm_groove_model": null,
+    "bass_model": null,
+    "percussion_model": null,
+    "phrase_model": null,
+    "transition_model": null,
+    "development_model": null,
+    "cadence_ending_model": null
+  },
+  "ensemble": {
+    "instrument_roster": [],
+    "population_mass_percent": {},
+    "presence_percent": {},
+    "activity_percent": {},
+    "musical_agency_percent": {},
+    "foreground_window_percent": {},
+    "foreground_window_rules": [],
+    "role_handoff_rules": [],
+    "register_occupancy": {},
+    "spatial_footprint_percent": {},
+    "section_population_reference": {}
+  },
+  "performance": {
+    "articulation_behavior": null,
+    "dynamic_behavior": null,
+    "timing_humanization_behavior": null,
+    "continuous_performance_control": null,
+    "interaction_rules": []
+  },
+  "production": {
+    "spatial_presentation": null,
+    "mix_prominence_intent": null,
+    "sound_effects_intent": null,
+    "production_mastering_intent": null
+  },
+  "evidence": {
+    "sources": [],
+    "source_confidence": {},
+    "source_license_status": {},
+    "conflicts_between_sources": [],
+    "unresolved_questions": []
+  },
+  "validation": {
+    "structural_tests": [],
+    "listening_tests": [],
+    "golden_reference_status": null,
+    "approved_for_runtime": false
+  },
+  "safeguards": {
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_not_loudness": true,
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "genre_name": "Soul",
+  "source_profile_id": "SOUL_V1",
+  "family": "R&B",
+  "source_status": "CONTROLLED_PROFILE",
+  "research_status": "NOT_STARTED",
+  "approved_for_runtime": false,
+  "current_profile_snapshot": {
+    "profile_id": "SOUL_V1",
+    "family": "R&B",
+    "status": "CONTROLLED_PROFILE",
+    "scope_note": "",
+    "tempo_bpm_range": [
+      60,
+      125
+    ],
+    "meter_options": [
+      "4/4",
+      "12/8"
+    ],
+    "form_tendencies": [
+      "verse_chorus",
+      "aba"
+    ],
+    "groove_behavior": "deep backbeat pocket with gospel/blues inflection and possible triplet feel",
+    "phrase_behavior": "vocal-like arcs, call-response and rising emotional intensity across sections",
+    "harmony_behavior": "gospel/blues/tonal harmony with dominant, plagal and chromatic color as controlled options",
+    "bass_behavior": "melodic supportive bass that locks with drums but can answer phrases",
+    "percussion_behavior_if_applicable": "backbeat kit with fills and tambourine/hand-percussion target options",
+    "instrument_role_behavior": "voice/lead, piano/organ/electric-piano target, guitar, bass, drums, horns/strings optional",
+    "ensemble_player_behavior": "ensemble breathes around lead; horn/string responses reinforce section peaks",
+    "arrangement_transformation": "verse/chorus/bridge or sectional builds with emotional climax",
+    "dynamic_behavior": "strong dynamic storytelling; choruses and bridges may expand orchestration",
+    "articulation_behavior": "expressive lead bends/scoops, sustained keys, guitar fills, horn accents",
+    "timing_humanization_behavior": "laid-back pocket with shared phrase pushes",
+    "continuous_performance_control": "continuous lead expression and ensemble swells",
+    "sound_effects_intent": "warm reverb/saturation optional; avoid overprocessing expressive lead",
+    "mix_prominence_intent": "lead foreground, rhythm section warm and present, responses secondary",
+    "production_mastering_intent": "warm, rounded, dynamic master",
+    "manufacturer_adapter_requirements": "organ/EP/voice/horn target resources should preserve expressive control",
+    "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+    "provenance": [
+      "existing_project_theory",
+      "established_genre_practice"
+    ],
+    "execution_rule": "USE_CONTROLLED_PROFILE"
+  },
+  "comparison": {
+    "current_profile_strengths": [],
+    "current_profile_gaps": [],
+    "external_sources_considered": [],
+    "retained_current_fields": [],
+    "upgraded_fields": [],
+    "conflicts": [],
+    "unresolved_questions": []
+  },
+  "musical_grammar": {
+    "form_model": null,
+    "harmony_model": null,
+    "melody_model": null,
+    "rhythm_groove_model": null,
+    "bass_model": null,
+    "percussion_model": null,
+    "phrase_model": null,
+    "transition_model": null,
+    "development_model": null,
+    "cadence_ending_model": null
+  },
+  "ensemble": {
+    "instrument_roster": [],
+    "population_mass_percent": {},
+    "presence_percent": {},
+    "activity_percent": {},
+    "musical_agency_percent": {},
+    "foreground_window_percent": {},
+    "foreground_window_rules": [],
+    "role_handoff_rules": [],
+    "register_occupancy": {},
+    "spatial_footprint_percent": {},
+    "section_population_reference": {}
+  },
+  "performance": {
+    "articulation_behavior": null,
+    "dynamic_behavior": null,
+    "timing_humanization_behavior": null,
+    "continuous_performance_control": null,
+    "interaction_rules": []
+  },
+  "production": {
+    "spatial_presentation": null,
+    "mix_prominence_intent": null,
+    "sound_effects_intent": null,
+    "production_mastering_intent": null
+  },
+  "evidence": {
+    "sources": [],
+    "source_confidence": {},
+    "source_license_status": {},
+    "conflicts_between_sources": [],
+    "unresolved_questions": []
+  },
+  "validation": {
+    "structural_tests": [],
+    "listening_tests": [],
+    "golden_reference_status": null,
+    "approved_for_runtime": false
+  },
+  "safeguards": {
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_not_loudness": true,
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true
+  }
+}

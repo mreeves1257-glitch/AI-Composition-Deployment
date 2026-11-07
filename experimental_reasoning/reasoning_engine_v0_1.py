@@ -35,6 +35,10 @@ _SECTION_BASE_ENERGY = {
     "breakdown": 0.34,
     "solo": 0.76,
     "outro": 0.30,
+    "statement": 0.50,
+    "contrast": 0.62,
+    "return": 0.66,
+    "coda": 0.34,
 }
 
 _SECTION_BASE_DENSITY = {
@@ -47,6 +51,10 @@ _SECTION_BASE_DENSITY = {
     "breakdown": 2,
     "solo": 4,
     "outro": 2,
+    "statement": 3,
+    "contrast": 4,
+    "return": 4,
+    "coda": 2,
 }
 
 
@@ -887,7 +895,7 @@ def _contrast_intent(state: ComposerState, goal: MusicalGoal) -> dict[str, Any]:
     if requested:
         return {"required": True, "basis": requested.upper()}
 
-    if _norm_section(state.section) == "bridge":
+    if _norm_section(state.section) in {"bridge", "contrast"}:
         return {"required": True, "basis": "TEXTURE_OR_REGISTER_OR_RHYTHMIC_CONTRAST"}
 
     if state.section_occurrence > 1:

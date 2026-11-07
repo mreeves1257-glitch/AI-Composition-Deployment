@@ -623,3 +623,42 @@ This is a preferred **diagnostic-branch** Rock treatment only. It is not merged 
 
 Next candidate, if work continues:
 Inspect the already-disabled Rock BASS sustain candidate separately. Do not combine it with another new variable without its own safety proof and A/B.
+
+
+## Rock V3 bass sustain safety gate launched
+
+The user blind-preferred Rock guitar treatment remains fixed:
+- HARMONY max ringing: 2.8 beats
+- safe note-off-preserving strum attack
+- treated LEAD unchanged
+
+The next isolated candidate is:
+`ROCK_BASS_SUSTAIN_V1_RESEARCH_DISABLED_DEFAULT`
+
+Candidate parameters:
+- next attack minimum: 0.80 beat
+- next attack maximum: 2.50 beats
+- spacing fraction: 0.78
+- maximum sustain: 1.50 beats
+- minimum extension: 0.14 beat
+- default enabled: false
+- listening approved: false
+
+A symbolic-only safety analyzer was added:
+`verify_rock_v3_bass_sustain_candidate_safety.py`
+
+Safety rules:
+- extend only; never shorten bass notes
+- no changes outside the spacing window
+- do not cross the next bass attack
+- do not cross the current bar/harmony boundary
+- require the 0.14-beat minimum extension
+- preserve bass pitch/onset/velocity/event count
+- preserve all guitar/lead/drum behavior
+
+Workflow:
+`Rock V3 Bass Sustain Candidate Safety`
+Run:
+`42394334886`
+
+No audio, no bass enablement, no canonical/live mutation, and no reasoning-engine involvement.

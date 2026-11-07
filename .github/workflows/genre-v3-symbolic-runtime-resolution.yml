@@ -71,7 +71,10 @@ jobs:
             composer/runtime/genre_contract_v3_execution_bridge.py \
             composer/runtime/genre_v3_instrument_authority.py \
             composer/runtime/genre_v3_source_pattern_bridge.py \
-            composer/runtime/genre_v3_symbolic_pattern_executor.py
+            composer/runtime/genre_v3_symbolic_pattern_executor.py \
+            composer/runtime/genre_v3_foreground_authority.py \
+            composer/runtime/genre_v3_foreground_executor_registry.py \
+            composer/runtime/rock_v3_foreground_pilot.py
 
       - name: Resolve V3 symbolic events through current instrument library
         env:

@@ -31,6 +31,18 @@ class ClassicalVariantValidationTests(unittest.TestCase):
         self.assertGreater(fg.get("BRASS", 0), 0)
         self.assertGreater(self.romantic["brass_foreground_bars"], 0)
 
+    def test_activity_windows_track_evidence_targets(self):
+        # Quick mode has 28 bars, so one bar is about 3.57 percentage points.
+        tolerance = 3.6
+        for summary in (self.classical, self.romantic):
+            for family, target in summary["activity_target_percent"].items():
+                observed = summary["active_bar_percent"].get(family, 0)
+                self.assertLessEqual(
+                    abs(observed - target),
+                    tolerance,
+                    msg=f"{summary['variant_id']} {family}: {observed} vs {target}",
+                )
+
     def test_late_romantic_brass_is_more_active(self):
         ca = self.classical["active_bar_percent"].get("BRASS", 0)
         ro = self.romantic["active_bar_percent"].get("BRASS", 0)

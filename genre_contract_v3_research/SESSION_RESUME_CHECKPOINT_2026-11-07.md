@@ -1420,3 +1420,60 @@ No production-fidelity claim.
 
 Practical consequence:
 Do not rediscover the approved Rock guitar/lead/bass performance behaviors through repeated listening. Reuse the role profiles/package. Human listening should be reserved for genuinely new musical decisions or unresolved roles (for example drums/kick integration).
+
+
+## October 17 hard-copy recovery salvage
+
+User requested recovery from the "December 17" copy; the available relevant hard copy is:
+`AI_Composer_Current_Master_Hard_Copy_2026-10-17.zip`
+
+The October 17 source was used as recovery material only, never as a replacement master.
+
+Source verification:
+- hard-copy SHA-256 matched preserved checksum:
+  `27c122d962bc751cacac72eda3ab850f44aeef09461e4c5eafd1345a057c1ae0`
+- archive: 115 entries / 106 files
+
+Protected recovery destination in active Library master:
+`/Working File/INTEGRATED_WORKING_COPY/MASTER_SUPPORT/RECOVERY_FROM_OCT17`
+
+Preserved there:
+- `OCT17_RECOVERY_SALVAGE_CODE_CONFIG.zip`
+- salvage bundle SHA-256:
+  `3b82337285bd585c037029a1668684c2536424952129454b9baf9864bcf1a9d9`
+- 74 selected recovery files
+- `OCT17_RECOVERY_SALVAGE_MANIFEST.json`
+- `BIG_RUSTY_OCT17_RECOVERY_VERIFICATION.json`
+- high-value resource truth/install records copied individually
+- production renderer/tuning/input/release helpers copied individually as recovery sources
+- classical expression helpers copied individually
+- original 3D mixer source modules copied individually
+
+Nothing in RECOVERY_FROM_OCT17 is auto-enabled in current runtime.
+
+Exact Big Rusty recovery:
+- three preserved recovery-part wrappers found in MASTER_SUPPORT/RECOVERY_ASSETS
+- all three wrapper SHA-256 values matched October audit
+- reconstructed canonical `Big_Rusty_Drums_1100.zip`
+- exact bytes: 619,600,370
+- exact SHA-256:
+  `d4a9990acd19376d91ce446dae415c81428728b5adebb6a88eddbb3a6aac8744`
+- 4,871 archive members
+- full ZIP CRC PASS
+
+October 17 resource truth for Big Rusty:
+- `Programs/01-full.sfz`
+- 7,922 sample references
+- 4,466 unique samples
+- 310 SFZ files validated
+- 18 intentional silent choke regions
+- production fidelity still not certified
+
+The canonical 619.6 MB archive was NOT duplicated into the active master because its verified recovery parts and full active resource tree already exist. This preserves the no-duplicate-active-resource rule.
+
+Current/newer runtime files and repaired mappings were not overwritten.
+No main/live promotion.
+Reasoning engine remains excluded.
+
+Detailed record:
+`genre_contract_v3_research/OCT17_HARD_COPY_RECOVERY_SALVAGE_2026-11-07.md`

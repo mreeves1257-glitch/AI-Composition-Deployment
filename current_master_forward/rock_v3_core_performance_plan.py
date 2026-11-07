@@ -18,6 +18,7 @@ import json
 from typing import Any
 
 from genre_contract_v3_execution_bridge import contract_for
+from instrument_role_performance_profiles import resolve as resolve_role_profile
 from rock_v3_core_development_executor import execute as build_symbolic_piece
 
 SCHEMA="ROCK_V3_CORE_PERFORMANCE_PLAN_001"
@@ -38,6 +39,10 @@ def build()->dict[str,Any]:
     piece=build_symbolic_piece()
     perf=contract.get("performance") or {}
     snapshot=contract.get("current_profile_snapshot") or {}
+
+    approved_harmony_profile=resolve_role_profile("ROCK","ROCK_CORE_V2","HARMONY")
+    approved_lead_profile=resolve_role_profile("ROCK","ROCK_CORE_V2","LEAD")
+    approved_bass_profile=resolve_role_profile("ROCK","ROCK_CORE_V2","BASS")
 
     required=(
         "articulation_behavior","dynamic_behavior",
@@ -97,9 +102,9 @@ def build()->dict[str,Any]:
                     "max_strum_span_beats":0.14,
                     "alternate_direction":True,
                     "preserve_pitch_velocity_count":True,
-                    "listening_approved":False,
+                    "listening_approved":True,
                     "default_enabled":False,
-                    "status":"PRIOR_ISOLATED_RESEARCH_CANDIDATE",
+                    "status":"HUMAN_APPROVED_DIAGNOSTIC__USED_BY_APPROVED_ROLE_PACKAGE__NOT_ENABLED_IN_MODE_A",
                 },
                 "forbidden":[
                     "KEYBOARD_BLOCK_ASSUMED_AS_FINAL_GUITAR_PERFORMANCE",
@@ -146,7 +151,7 @@ def build()->dict[str,Any]:
                     "minimum_extension_beats":0.14,
                     "listening_approved":False,
                     "default_enabled":False,
-                    "status":"PRIOR_REAL_SAMPLE_RESEARCH_CANDIDATE__SEPARATE_A_B_REQUIRED",
+                    "status":"REJECTED_AND_SUPERSEDED_BY_APPROVED_HELD_TONE_BASS_D_PROFILE",
                 },
                 "forbidden":[
                     "FORCE_CONTINUOUS_BASS_SUSTAIN",
@@ -179,6 +184,26 @@ def build()->dict[str,Any]:
                 "new_hits_allowed":False,
             },
         },
+        "approved_role_profile_refs":{
+            "HARMONY":{
+                "profile_id":approved_harmony_profile["profile_id"],
+                "profile_sha256":approved_harmony_profile["profile_sha256"],
+                "status":"HUMAN_APPROVED_DIAGNOSTIC",
+            },
+            "LEAD":{
+                "profile_id":approved_lead_profile["profile_id"],
+                "profile_sha256":approved_lead_profile["profile_sha256"],
+                "status":"HUMAN_APPROVED_DIAGNOSTIC",
+            },
+            "BASS":{
+                "profile_id":approved_bass_profile["profile_id"],
+                "profile_sha256":approved_bass_profile["profile_sha256"],
+                "status":"HUMAN_APPROVED_DIAGNOSTIC",
+                "treatment":"HELD_CLEAN_BODY_PLUS_VICIOUS_TRANSIENT_MINUS_9_DB",
+                "old_sustain_candidate_superseded":True,
+            },
+        },
+        "approved_package_status":"AVAILABLE_VIA_ROCK_V3_APPROVED_PERFORMANCE_PACKAGE__NOT_LIVE_RUNTIME_AUTHORITY",
         "shared_groove_policy":{
             "status":"STRUCTURED_BUT_NOT_YET_MUTATING_TIMING",
             "authority":perf["timing_humanization_behavior"],

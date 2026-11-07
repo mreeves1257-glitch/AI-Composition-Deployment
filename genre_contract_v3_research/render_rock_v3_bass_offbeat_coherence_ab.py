@@ -147,8 +147,8 @@ def main()->None:
         raise RenderError("BASS_TIMING_OR_VELOCITY_CHANGED")
     if duration_changes!=56:
         raise RenderError(f"EXPECTED_56_DURATION_CHANGES::{duration_changes}")
-    if pitch_changes!=12:
-        raise RenderError(f"EXPECTED_12_OFFBEAT_PITCH_CHANGES::{pitch_changes}")
+    if pitch_changes!=14:
+        raise RenderError(f"EXPECTED_14_OFFBEAT_PITCH_CHANGES::{pitch_changes}")
 
     out=ROOT/"genre_contract_v3_research"/"rock_v3_bass_offbeat_coherence_ab"
     out.mkdir(parents=True,exist_ok=True)

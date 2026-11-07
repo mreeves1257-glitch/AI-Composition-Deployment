@@ -530,7 +530,6 @@
           "Scope is labeled tonal chamber baseline but current Composer audition uses full-orchestra behavior.",
           "No executable subgenre/period resolver.",
           "No percentage-based ensemble population model in the genre contract itself.",
-          "No explicit foreground-window rule preventing small woodwind desks from being masked by larger string sections.",
           "No executable spatial seating/section-footprint contract.",
           "Current live Classical generator still contains hard-coded orchestration behavior separate from the profile."
         ],
@@ -560,14 +559,16 @@
           "foreground visibility windows",
           "role handoff rules",
           "spatial section presentation",
-          "evidence/validation requirements"
+          "evidence/validation requirements",
+          "duration-weighted empirical foreground ownership reference"
         ],
         "conflicts": [],
         "unresolved_questions": [
           "Derive activity percentages by period/variant from score/activity corpora.",
-          "Derive foreground ownership percentages by variant from Hauptstimme/Orchset-like annotations.",
           "Separate Baroque, Classical-period, Romantic, chamber and later orchestral variants before runtime approval.",
-          "Define tuba/percussion population by variant rather than forcing one universal orchestra."
+          "Define tuba/percussion population by variant rather than forcing one universal orchestra.",
+          "Derive foreground ownership priors separately by period/composer/variant instead of treating the aggregate corpus as universal.",
+          "Derive full activity percentages from score/activity data; Hauptstimme measures main-theme foreground, not total playing time."
         ]
       },
       "musical_grammar": {
@@ -654,12 +655,14 @@
           "note": "Must measure how much each section actually plays; player count alone is not activity."
         },
         "musical_agency_percent": {
-          "status": "TO_DERIVE_FROM_FOREGROUND_AND_PART_RELATIONSHIP_CORPORA",
-          "note": "Musical agency is independent of population and loudness."
+          "status": "EMPIRICAL_REFERENCE_ADDED__VARIANT_PRIORS_STILL_PENDING",
+          "reference": "See ensemble.foreground_empirical_reference.",
+          "rule": "Foreground/main-theme evidence may inform agency priors only after resolved Classical variant; never equate with loudness."
         },
         "foreground_window_percent": {
-          "status": "TO_DERIVE_BY_VARIANT",
-          "note": "Small desks may own clear foreground windows despite low population mass."
+          "status": "EMPIRICAL_REFERENCE_ADDED__RUNTIME_TARGETS_PENDING",
+          "reference": "OpenScore/Hauptstimme duration-weighted reference added.",
+          "rule": "Runtime foreground windows must be variant-conditional and composition-driven, not corpus quotas."
         },
         "foreground_window_rules": [
           "When a woodwind or other small section owns foreground material, accompaniment must create an audibility window through density, register, articulation and/or spatial separation rather than artificial loudness alone.",
@@ -699,6 +702,55 @@
             "PERCUSSION": 4
           },
           "qualification": "One documented full-orchestra reference, not a universal Classical headcount. Percentages are population reference values, not gain multipliers."
+        },
+        "foreground_empirical_reference": {
+          "source": "OpenScore Orchestra / Hauptstimme",
+          "corpus_scope": {
+            "annotation_files_total": 96,
+            "b_minor_mass_files_excluded": 24,
+            "remaining_annotation_files": 72,
+            "choir_foreground_duration_excluded": true,
+            "note": "One choral-orchestral work remained in the 72-file set; choir-labeled foreground duration was removed from the instrumental denominator."
+          },
+          "method": {
+            "measure": "duration-weighted Hauptstimme annotation intervals in quarter-note qstamp units",
+            "final_interval_policy": "Final annotation interval in each file omitted because no following qstamp boundary is present in the lightweight annotation table.",
+            "interpretation": "Empirical foreground/main-theme ownership reference only. NOT population, NOT activity share, NOT gain, and NOT a universal Classical target."
+          },
+          "family_foreground_share_percent": {
+            "STRINGS": 50.66,
+            "WOODWINDS": 41.83,
+            "BRASS": 7.45,
+            "PERCUSSION": 0.06,
+            "KEYBOARD": 0
+          },
+          "instrument_foreground_share_percent": {
+            "VIOLIN_FAMILY": 44.14,
+            "FLUTE": 22.75,
+            "OBOE": 9.86,
+            "CLARINET": 5.93,
+            "HORN": 4.65,
+            "CELLO": 2.7,
+            "VIOLA": 2.65,
+            "BASSOON": 2.25,
+            "TRUMPET": 2.09,
+            "GENERIC_STRINGS": 1.06,
+            "PICCOLO": 0.81,
+            "TROMBONE": 0.64,
+            "BASS_CLARINET": 0.1,
+            "DOUBLE_BASS": 0.1,
+            "ENGLISH_HORN": 0.08,
+            "BASS_TROMBONE": 0.07,
+            "TIMPANI": 0.06,
+            "CONTRABASSOON": 0.04,
+            "HARPSICHORD": 0
+          },
+          "hard_interpretive_guardrails": [
+            "Do not copy these percentages directly into a composition as quotas.",
+            "Use them as evidence that small woodwind populations can own substantial foreground duration.",
+            "Resolve by period/composer/variant before converting corpus evidence into runtime priors.",
+            "Population mass and foreground ownership remain separate dimensions."
+          ]
         }
       },
       "performance": {
@@ -730,16 +782,20 @@
           "Orchset (validation-only foreground research target)",
           "MusicNet and URMP (instrument/note participation research targets)",
           "DCML corpora (expert harmony/style-period research target)",
-          "Orchestral instrument-activity datasets (activity-percentage research target)"
+          "Orchestral instrument-activity datasets (activity-percentage research target)",
+          "OpenScore Orchestra / Hauptstimme: 72 non-B-Minor-Mass annotation files analyzed for duration-weighted instrumental foreground ownership"
         ],
         "source_confidence": {
           "current_profile": "MEDIUM__USEFUL_BASELINE_NOT_COMPLETE",
           "current_population_reference": "MEDIUM_HIGH_FOR_NAMED_FORMATION__NOT_UNIVERSAL",
-          "future_activity_foreground_statistics": "PENDING"
+          "future_activity_foreground_statistics": "PENDING",
+          "hauptstimme_foreground_aggregate": "HIGH_FOR_CORPUS_REFERENCE__NOT_UNIVERSAL_RUNTIME_TARGET"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
-          "external_corpora": "REVIEW_BEFORE_DIRECT_REUSE__DERIVED_RULES_PREFERRED"
+          "external_corpora": "REVIEW_BEFORE_DIRECT_REUSE__DERIVED_RULES_PREFERRED",
+          "OpenScore_scores": "CC0_1_0",
+          "Hauptstimme_annotations": "CC_BY_SA"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -749,13 +805,16 @@
           "Population percentages must sum to 100 for each resolved fixed formation, excluding explicitly variant-dependent/unassigned sections.",
           "Population percentage must never be applied as linear gain.",
           "Reasoning may alter density/role/space but not violate resolved harmony authority.",
-          "Foreground-owner tests must verify small sections can become audible without permanent level inflation."
+          "Foreground-owner tests must verify small sections can become audible without permanent level inflation.",
+          "Foreground priors must remain independent of population mass and gain.",
+          "Flute/woodwind foreground windows must not be suppressed merely because their physical population is small."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
           "Verify flute/oboe/bassoon remain audible during assigned foreground windows.",
           "Verify strings retain greater ensemble mass without permanently masking smaller sections.",
-          "Verify stereo/depth separation is materially audible, not metadata-only."
+          "Verify stereo/depth separation is materially audible, not metadata-only.",
+          "Confirm that a small woodwind section can carry a clearly audible foreground line over a larger string population without artificial permanent boosting."
         ],
         "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE",
         "approved_for_runtime": false
@@ -12805,5 +12864,7 @@
     "Resolve subgenre/formation defaults only where evidence supports them.",
     "Build compact runtime extraction without research prose or duplicate legacy data.",
     "Validate each candidate runtime contract structurally and by listening before approval."
-  ]
+  ],
+  "last_quantitative_update": "2026-11-06",
+  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED"
 }

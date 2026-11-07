@@ -46,12 +46,18 @@ def main():
     if pilot.get("status")!="PASS":
         raise RuntimeError("ROCK_FOREGROUND_PILOT_NOT_PASS")
     gate=pilot.get("rock_variant_gate") or {}
-    if gate.get("status")!="ROCK_VARIANT_REQUIRED":
-        raise RuntimeError("ROCK_VARIANT_GATE_NOT_ACTIVE")
+    if gate.get("status")!="ROCK_CORE_BASELINE_ALLOWED__NO_VARIANT_CUES":
+        raise RuntimeError("ROCK_CORE_BASELINE_GATE_WRONG")
+    if gate.get("family_baseline_music_allowed") is not True:
+        raise RuntimeError("ROCK_CORE_BASELINE_NOT_ALLOWED")
+    if gate.get("family_baseline_must_not_claim_subgenre") is not True:
+        raise RuntimeError("ROCK_CORE_BASELINE_SUBGENRE_GUARD_MISSING")
     if pilot.get("resolved_rock_variant") is not None:
         raise RuntimeError("ROCK_VARIANT_WAS_SILENTLY_DEFAULTED")
     if pilot.get("variant_specific_music_ready") is not False:
         raise RuntimeError("ROCK_VARIANT_MUSIC_FABRICATED")
+    if pilot.get("family_baseline_music_allowed") is not True:
+        raise RuntimeError("ROCK_FAMILY_BASELINE_FLAG_MISSING")
     if pilot.get("song_form_expansion_ready") is not False:
         raise RuntimeError("ROCK_FORM_EXPANSION_PREMATURELY_READY")
     if pilot.get("audio_generated") is not False or pilot.get("audio_authority") is not False:
@@ -179,6 +185,8 @@ def main():
         "musical_quality_proven":False,
         "listening_approval":False,
         "rock_variant_gate_status":gate.get("status"),
+        "family_baseline_music_allowed":gate.get("family_baseline_music_allowed"),
+        "family_baseline_must_not_claim_subgenre":gate.get("family_baseline_must_not_claim_subgenre"),
         "resolved_rock_variant":pilot.get("resolved_rock_variant"),
         "variant_specific_music_ready":pilot.get("variant_specific_music_ready"),
         "song_form_expansion_ready":pilot.get("song_form_expansion_ready"),
@@ -188,7 +196,7 @@ def main():
             "lead windows while bass/drums remain untouched and rhythm guitar yields "
             "density. This is not yet listening-approved."
         ),
-        "next_gate":"ROCK_VARIANT_MUSICAL_PACKAGE__THEN_FORM_EXPANSION__THEN_RESOURCE_AND_LISTENING",
+        "next_gate":"ROCK_CORE_FORM_EXPANSION__VARIANT_OVERRIDE_ONLY_WHEN_CUES_EXIST__THEN_RESOURCE_AND_LISTENING",
         "execution_sha256":pilot["execution_sha256"],
     }
     out=ROOT/"genre_contract_v3_research"/"ROCK_V3_FOREGROUND_PILOT_AUDIT.json"

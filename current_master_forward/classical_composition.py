@@ -301,29 +301,93 @@ def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None, v3
         abstract_note_validation=validate_v3_notes(
             abstract_note_plan, structural_plan)
 
-        # Composition logic is now bound through an abstract score. Stop before
-        # instrumentation/orchestration so orchestral color cannot hide a
-        # composition-layer failure.
-        return {
-            'genre_name':'Classical',
-            'profile_id':PROFILE_ID,
-            'status':'V3_ORCHESTRATION_BINDING_REQUIRED',
-            'resolution_policy':profile['resolution_policy'],
-            'execution_template':'classical_v3_abstract_score',
+        from classical_v3_orchestration_binder import bind as bind_v3_orchestration, validate as validate_v3_orchestration
+        canonical_orchestration=bind_v3_orchestration(
+            abstract_note_plan, structural_plan, v3_variant_package)
+        canonical_orchestration_validation=validate_v3_orchestration(
+            canonical_orchestration, abstract_note_plan, structural_plan)
+
+        from classical_v3_resource_mapper import map_resources as map_v3_resources
+        resource_mapping=map_v3_resources(canonical_orchestration)
+        events=list(resource_mapping['events'])
+        parts=sorted({event['instrument_id'] for event in events})
+        if not events or not parts:
+            raise ValueError('CLASSICAL_V3_RESOURCE_MAPPING_EMPTY')
+
+        from genre_interpreter_linkage import interpret_genre,link_genre
+        interpreted=interpret_genre('Classical',profile,parts)
+        linkage=link_genre(
+            'Classical',profile,parts,events,interpreted=interpreted)
+
+        generation_plan={
+            'status':'PASS',
+            'source':'CLASSICAL_V3_VARIANT_STRUCTURE_ABSTRACT_SCORE_ORCHESTRATION',
+            'variant_id':v3_variant_package['variant_id'],
             'tempo_bpm':structural_plan['tempo_bpm'],
             'meter':structural_plan['meter'],
             'bars':len(structural_plan['bars']),
-            'events':[],
-            'palette':[],
+            'harmony_family':'functional',
+            'structural_plan_sha256':structural_plan['plan_sha256'],
+            'legacy_note_generator_used':False,
+            'audio_authority':False,
+        }
+        generation_plan['plan_sha256']=digest(generation_plan)
+
+        return {
+            'genre_name':'Classical',
+            'profile_id':PROFILE_ID,
+            'status':'PASS',
+            'resolution_policy':profile['resolution_policy'],
+            'execution_template':'classical_v3_symbolic_orchestration',
+            'tempo_bpm':structural_plan['tempo_bpm'],
+            'meter':structural_plan['meter'],
+            'bars':len(structural_plan['bars']),
+            'form':'V3_CADENCE_DRIVEN_CLASSICAL_PERIOD',
+            'creation_seed':creation_seed,
+            'events':events,
+            'palette':parts,
             'classical_v3_variant_package':copy.deepcopy(v3_variant_package),
             'classical_v3_piece_intent':copy.deepcopy(v3_piece_intent),
             'classical_v3_structural_plan':structural_plan,
             'classical_v3_structural_validation':structural_validation,
             'classical_v3_abstract_note_plan':abstract_note_plan,
             'classical_v3_abstract_note_validation':abstract_note_validation,
+            'classical_v3_canonical_orchestration':canonical_orchestration,
+            'classical_v3_canonical_orchestration_validation':
+                canonical_orchestration_validation,
+            'classical_v3_resource_mapping':{
+                k:v for k,v in resource_mapping.items() if k!='events'
+            },
+            'genre_v3_instrument_authority':{
+                'status':'PASS',
+                'authority':'CLASSICAL_V3_VARIANT_CANONICAL_ORCHESTRATION',
+                'genre':'Classical',
+                'variant_id':v3_variant_package['variant_id'],
+                'event_roles':parts,
+                'section_resource_mappings':
+                    resource_mapping['section_resource_mappings'],
+                'fallback_used':False,
+            },
+            'pre_generation_genre_plan':generation_plan,
+            'theory_request':{
+                'source':'CLASSICAL_V3_SYMBOLIC_ORCHESTRATION',
+                'variant_id':v3_variant_package['variant_id'],
+                'meter':structural_plan['meter'],
+                'bars':len(structural_plan['bars']),
+            },
+            'theory_status':'V3_CLASSICAL_SYMBOLIC_ORCHESTRATION_PASS',
+            'genre_interpreter_linkage':linkage,
+            'beat_unit':'quarter_note',
+            'duration_seconds':(
+                len(structural_plan['bars'])*4*60/
+                float(structural_plan['tempo_bpm'])
+            ),
+            'v3_symbolic_diagnostic_only':True,
+            'audio_authority':False,
+            'musical_audition_approved':False,
+            'legacy_note_generator_used':False,
             'legacy_classical_generator_executed':False,
             'live_runtime_modified':False,
-            'reason':'V3_STRUCTURE_AND_ABSTRACT_NOTES_BOUND__ORCHESTRATION_NOT_YET_BOUND',
         }
     plan=copy.deepcopy(plan) if plan is not None else make_plan(creation_seed,mode)
     events=realize(plan)

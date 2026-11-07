@@ -32,6 +32,37 @@ assert hashlib.sha256(ap.read_bytes()).hexdigest()==manifest['approved_audio_pip
 (runtime/'CURRENT_MASTER_SYNC.json').write_text(json.dumps(manifest,indent=2)+'\\n')
 print('CURRENT_MASTER_FORWARD_SYNC_APPLIED',manifest['source_checkpoint'],len(manifest['runtime_files']),flush=True)
 FORWARDPY
+python - <<'REASONINGOVERLAYPY'
+import base64,hashlib,json,zlib
+from pathlib import Path
+
+parts=sorted(Path('all55_reasoning_overlay').glob('part*.b64'))
+assert [p.name for p in parts] == ['part01.b64','part02.b64','part03.b64','part04.b64'], 'ALL55_REASONING_OVERLAY_PARTS_MISSING'
+encoded=''.join(p.read_text().strip() for p in parts)
+compressed=base64.b64decode(encoded,validate=True)
+payload=json.loads(zlib.decompress(compressed).decode('utf-8'))
+assert payload.get('schema')=='AI_COMPOSER_RENDER_DEPLOYMENT_OVERLAY_V1'
+files=payload.get('files',[])
+assert len(files)==12, f'ALL55_REASONING_OVERLAY_FILE_COUNT:{len(files)}'
+runtime=Path('composer/runtime')
+for item in files:
+    rel=Path(item['path'])
+    assert not rel.is_absolute() and '..' not in rel.parts, f'UNSAFE_OVERLAY_PATH:{rel}'
+    data=item['content'].encode('utf-8')
+    actual=hashlib.sha256(data).hexdigest()
+    assert actual==item['sha256'], f'OVERLAY_SOURCE_HASH_MISMATCH:{rel}'
+    dst=runtime/rel
+    dst.parent.mkdir(parents=True,exist_ok=True)
+    dst.write_bytes(data)
+    assert hashlib.sha256(dst.read_bytes()).hexdigest()==item['sha256'], f'OVERLAY_WRITE_HASH_MISMATCH:{rel}'
+(runtime/'ALL55_REASONING_DEPLOYMENT.json').write_text(json.dumps({
+    'status':'ALL55_REASONING_WIRED',
+    'checkpoint':'2026-11-07',
+    'overlay_file_count':len(files),
+    'files':[{'path':x['path'],'sha256':x['sha256']} for x in files],
+},indent=2)+'\n')
+print('ALL55_REASONING_OVERLAY_APPLIED',len(files),flush=True)
+REASONINGOVERLAYPY
 python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
 python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
 cp connected_http_server.py composer/runtime/render_server.py
@@ -66,6 +97,23 @@ PYTHONPATH=composer/runtime python composer/runtime/verify_genre_recognition_55.
 PYTHONPATH=composer/runtime python composer/runtime/verify_performance_realization_55.py
 PYTHONPATH=composer/runtime python composer/runtime/verify_instrument_separator_55.py
 echo 'CONNECTED_ALL_55_MASTER_VERIFICATIONS_PASS'
+PYTHONPATH=composer/runtime python - <<'REASONINGPY'
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path('composer/runtime/experimental_reasoning').resolve()))
+from reasoning_engine_v0_1 import ComposerState, reason, validate, ENGINE_ID
+packet=reason(ComposerState(
+    genre='Classical',
+    profile_id='CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2',
+    section='Verse',
+    active_instruments=('violin_1','cello','double_bass')
+))
+validate(packet)
+assert ENGINE_ID=='COMPOSER_MUSICAL_REASONING_ENGINE_V0_1'
+from genre_reasoning_bridge import BRIDGE_ID
+assert 'REASONING' in BRIDGE_ID
+print('ALL55_REASONING_ENGINE_SMOKE_PASS',ENGINE_ID,BRIDGE_ID,flush=True)
+REASONINGPY
 PYTHONPATH=composer/runtime python - <<'PY'
 import tempfile,wave
 from pathlib import Path

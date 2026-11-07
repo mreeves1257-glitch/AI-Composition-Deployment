@@ -1,0 +1,53 @@
+name: Growlybass Vicious Decay Grid
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/growlybass-vicious-decay-grid.yml"
+      - ".github/actions/setup-pinned-sfizz/action.yml"
+      - "genre_contract_v3_research/characterize_growlybass_vicious_decay_grid.py"
+      - "genre_contract_v3_research/install_pinned_growlybass_v1002.sh"
+      - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/official_sfz_compatibility.py"
+  workflow_dispatch:
+
+jobs:
+  characterize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependency
+        run: python -m pip install --disable-pip-version-check --no-input numpy
+
+      - name: Restore exact pinned Growlybass v1.002
+        run: |
+          bash genre_contract_v3_research/install_pinned_growlybass_v1002.sh current_master_forward
+
+      - name: Setup exact pinned sfizz renderer
+        id: sfizz
+        uses: ./.github/actions/setup-pinned-sfizz
+
+      - name: Measure pre-upbeat decay grid
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+          AI_COMP_SFIZZ_PIN: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+          AI_COMP_SFZ_RENDERER: ${{ steps.sfizz.outputs.renderer }}
+        run: |
+          python genre_contract_v3_research/characterize_growlybass_vicious_decay_grid.py
+          test -s genre_contract_v3_research/GROWLYBASS_VICIOUS_DECAY_GRID.json
+
+      - name: Upload decay grid
+        uses: actions/upload-artifact@v4
+        with:
+          name: Growlybass_Vicious_Decay_Grid
+          path: genre_contract_v3_research/GROWLYBASS_VICIOUS_DECAY_GRID.json
+          if-no-files-found: error

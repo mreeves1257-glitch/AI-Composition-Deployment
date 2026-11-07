@@ -1,0 +1,30 @@
+{
+  "schema": "ROCK_V3_STRUM_LISTENING_TARGET_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "tempo_bpm": 123,
+  "note_gap_beats": 0.038,
+  "three_note_span_beats": 0.076,
+  "note_gap_milliseconds": 18.536585365853657,
+  "three_note_span_milliseconds": 37.073170731707314,
+  "listening_questions": [
+    "Does B sound more like one guitarist striking a three-note power-chord shape rather than three perfectly simultaneous MIDI notes?",
+    "Does the approximately 37 ms total strum spread remain tight enough for Rock rather than sounding arpeggiated?",
+    "Does alternating low-to-high/high-to-low direction feel natural or draw attention to itself?",
+    "Does preserving the original absolute note-off prevent the strum from adding extra sustain or smear?"
+  ],
+  "rejection_conditions": [
+    "B sounds flammy, rolled, arpeggiated, or rhythmically late.",
+    "Alternating direction sounds mechanical or patterned.",
+    "B weakens the attack or punch compared with A.",
+    "The onset spread becomes more noticeable than the chord itself."
+  ],
+  "approval_condition": "B must sound more guitar-like than A without losing Rock attack tightness.",
+  "sustain_policy": "CURRENT_HUMAN_PREFERRED_2_8_UNCHANGED",
+  "lead_policy": "CURRENT_MODE_A_TREATED_LEAD_UNCHANGED",
+  "bass_changed": false,
+  "drums_changed": false,
+  "canonical_policy_modified": false,
+  "reasoning_engine_used": false,
+  "live_runtime_promoted": false
+}

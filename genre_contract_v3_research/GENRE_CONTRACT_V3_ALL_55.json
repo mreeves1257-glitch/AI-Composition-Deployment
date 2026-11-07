@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_COMPOSITION_LAYERS_BOUND__DURABLE_COMBINED_PIANO_LISTENING_READY__HUMAN_REVIEW_PENDING",
+      "research_status": "V3_CLASSICAL_RHYTHMIC_PERFORMANCE_RENDER_READY__HUMAN_LISTENING_PENDING__ORCHESTRATION_BLOCKED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2967,7 +2967,39 @@
             "live_runtime_modified": false,
             "human_listening_review": "PENDING",
             "note": "Durable research-branch reproduction of the combined grammar+melody piano listening gate. No orchestration authority granted."
+          },
+          "human_listening_review": {
+            "status": "FAIL",
+            "date": "2026-11-06",
+            "feedback": "Piano timbre acceptable, but composition had insufficient rhythmic feel and sounded too mechanical.",
+            "consequence": "DO_NOT_BIND_ORCHESTRATION. Add and validate a dedicated rhythmic/performance layer first."
           }
+        },
+        "rhythmic_performance_checkpoint": {
+          "status": "RENDER_PASS__HUMAN_LISTENING_PENDING",
+          "date": "2026-11-06",
+          "renderer": "genre_contract_v3_research/render_classical_rhythmic_performance.py",
+          "renderer_commit": "a9d304b91f6d2d298f4d25cc6d4fad85645fa55c",
+          "workflow": ".github/workflows/research-classical-rhythmic-performance.yml",
+          "workflow_commit": "79ba78e26d1b0ee1e92e7d26a7b186ca3985a020",
+          "workflow_run_id": 42339712308,
+          "artifact_id": 13561471174,
+          "artifact_sha256": "9e7df587c5db27ceefabd1502ebfa6dc1daf250b6ab9bf6c02bb05ce945b036a",
+          "mp3_sha256": "9b725703d884b0061d3497fcd069dc9de689115e8188304e0cd0e517d9b75606",
+          "structural_gate": "PASS",
+          "rhythmic_gate": "PASS",
+          "live_runtime_modified": false,
+          "orchestration_enabled": false,
+          "human_listening_review": "PENDING",
+          "changes": [
+            "meter-aware accompaniment figures",
+            "strong/weak beat hierarchy",
+            "alternating accompaniment cells",
+            "phrase dynamic arches",
+            "cadence breathing",
+            "bar-level tempo shaping",
+            "melody/accompaniment articulation contrast"
+          ]
         }
       },
       "safeguards": {
@@ -18474,13 +18506,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Listen to the combined grammar+melody piano A/B before adding orchestral color.",
-    "If the composition-layer contrast is musically convincing, bind the validated composition package to Classical-period and Late-Romantic orchestration variants.",
-    "Keep the earlier orchestration-only A/B as a separate control so orchestration and composition changes remain auditable.",
+    "Human-listen to the revised Classical rhythmic/performance piano audition.",
+    "If rhythmic feel is still mechanical, revise rhythm/performance before touching orchestration.",
+    "Only after composition plus rhythm passes should period orchestration be bound.",
     "Do not integrate into the live Composer until combined orchestral listening validation passes."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_COMBINED_COMPOSITION_DURABLE_RENDER_PASS__HUMAN_LISTENING_GATE",
+  "quantitative_phase_status": "CLASSICAL_RHYTHMIC_PERFORMANCE_HUMAN_LISTENING_GATE",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

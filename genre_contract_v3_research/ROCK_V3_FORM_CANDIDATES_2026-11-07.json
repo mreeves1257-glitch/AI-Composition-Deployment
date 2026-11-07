@@ -1,0 +1,662 @@
+{
+  "schema": "ROCK_V3_FORM_CANDIDATES_001",
+  "date": "2026-11-07",
+  "genre": "ROCK",
+  "profile_id": "ROCK_CORE_V2",
+  "basis": {
+    "project_rule": "Broad Rock baseline permits 4- or 8-bar phrase organization with verse/chorus contrast, fills into boundaries, and selective lead call/response.",
+    "caution": "These are project research candidates for form planning, not universal historical definitions of the named variants.",
+    "source_seed_role_prototypes": [
+      "INTRO",
+      "VERSE_A",
+      "VERSE_RESPONSE",
+      "FILL",
+      "CHORUS_B",
+      "CHORUS_RESPONSE",
+      "ENDING"
+    ],
+    "note_generation_status": "NOT_INCLUDED"
+  },
+  "variants": {
+    "Hard rock": {
+      "status": "FORM_CHOICE_REQUIRED",
+      "candidates": [
+        {
+          "form_id": "HARD_RIFF_VERSE_CHORUS_SOLO_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "RIFF_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "ANTHEMIC_CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "CHORUS_2",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "ANTHEMIC_CHORUS_LIFT"
+            },
+            {
+              "name": "SOLO_RIFF",
+              "bars": 8,
+              "prototype_family": "FILL_PLUS_RIFF",
+              "role": "LEAD_OR_RIFF_EXTENSION"
+            },
+            {
+              "name": "FINAL_CHORUS",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "FINAL_LIFT"
+            },
+            {
+              "name": "ENDING",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "CADENTIAL_END"
+            }
+          ],
+          "total_bars": 56,
+          "new_material_required": [
+            "SOLO_RIFF_TRANSFORMATION"
+          ],
+          "note_expansion_ready": false
+        },
+        {
+          "form_id": "HARD_COMPACT_RIFF_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "RIFF_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "CHORUS_2",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS_LIFT"
+            },
+            {
+              "name": "BRIDGE_RIFF",
+              "bars": 8,
+              "prototype_family": "FILL_PLUS_NEW_RIFF",
+              "role": "CONTRAST"
+            },
+            {
+              "name": "FINAL_CHORUS",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "FINAL_LIFT"
+            },
+            {
+              "name": "ENDING",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "CADENTIAL_END"
+            }
+          ],
+          "total_bars": 56,
+          "new_material_required": [
+            "BRIDGE_RIFF"
+          ],
+          "note_expansion_ready": false
+        }
+      ]
+    },
+    "Soft rock": {
+      "status": "FORM_CHOICE_REQUIRED",
+      "candidates": [
+        {
+          "form_id": "SOFT_SONG_CENTERED_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "GENTLE_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "MELODIC_CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "CHORUS_2",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "MELODIC_CHORUS"
+            },
+            {
+              "name": "BRIDGE",
+              "bars": 8,
+              "prototype_family": "NEW_GENTLE_CONTRAST",
+              "role": "HARMONIC_OR_TEXTURE_CONTRAST"
+            },
+            {
+              "name": "FINAL_CHORUS",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "FINAL_MELODIC_LIFT"
+            },
+            {
+              "name": "OUTRO",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "GENTLE_RELEASE"
+            }
+          ],
+          "total_bars": 56,
+          "new_material_required": [
+            "BRIDGE"
+          ],
+          "note_expansion_ready": false
+        },
+        {
+          "form_id": "SOFT_VERSE_REFRAIN_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "GENTLE_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "REFRAIN_1",
+              "bars": 4,
+              "prototype_family": "CHORUS_B",
+              "role": "SHORT_REFRAIN"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "REFRAIN_2",
+              "bars": 4,
+              "prototype_family": "CHORUS_B",
+              "role": "SHORT_REFRAIN"
+            },
+            {
+              "name": "BRIDGE",
+              "bars": 8,
+              "prototype_family": "NEW_GENTLE_CONTRAST",
+              "role": "CONTRAST"
+            },
+            {
+              "name": "FINAL_REFRAIN",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "EXPANDED_FINAL_REFRAIN"
+            },
+            {
+              "name": "OUTRO",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "GENTLE_RELEASE"
+            }
+          ],
+          "total_bars": 48,
+          "new_material_required": [
+            "BRIDGE"
+          ],
+          "note_expansion_ready": false
+        }
+      ]
+    },
+    "Southern rock": {
+      "status": "FORM_CHOICE_REQUIRED",
+      "candidates": [
+        {
+          "form_id": "SOUTHERN_VERSE_CHORUS_JAM_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "ROOTS_RIFF_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "CHORUS_2",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "GUITAR_JAM",
+              "bars": 16,
+              "prototype_family": "FILL_PLUS_MULTI_GUITAR_EXTENSION",
+              "role": "IMPROVISATIONAL_EXTENSION"
+            },
+            {
+              "name": "FINAL_CHORUS",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "RETURN"
+            },
+            {
+              "name": "ENDING",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "ROOTS_ENDING"
+            }
+          ],
+          "total_bars": 64,
+          "new_material_required": [
+            "MULTI_GUITAR_JAM_DEVELOPMENT"
+          ],
+          "note_expansion_ready": false
+        },
+        {
+          "form_id": "SOUTHERN_ROOTS_COMPACT_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "ROOTS_RIFF_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "BRIDGE",
+              "bars": 8,
+              "prototype_family": "FILL_PLUS_ROOTS_CONTRAST",
+              "role": "ROOTS_CONTRAST"
+            },
+            {
+              "name": "CHORUS_2",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS_LIFT"
+            },
+            {
+              "name": "SOLO",
+              "bars": 8,
+              "prototype_family": "FILL_PLUS_LEAD",
+              "role": "GUITAR_INTERPLAY"
+            },
+            {
+              "name": "ENDING",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "ROOTS_ENDING"
+            }
+          ],
+          "total_bars": 56,
+          "new_material_required": [
+            "BRIDGE",
+            "SOLO_DEVELOPMENT"
+          ],
+          "note_expansion_ready": false
+        }
+      ]
+    },
+    "Punk-related rock": {
+      "status": "FORM_CHOICE_REQUIRED",
+      "scope_note": "Applies only to the 77-style baseline candidate; later punk-derived children require separate form packages.",
+      "candidates": [
+        {
+          "form_id": "PUNK_DIRECT_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "DIRECT_START"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_2",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "BREAK",
+              "bars": 4,
+              "prototype_family": "FILL_PLUS_RIFF",
+              "role": "SHORT_BREAK"
+            },
+            {
+              "name": "FINAL_CHORUS",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "FINAL_CHORUS"
+            },
+            {
+              "name": "ENDING",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "ABRUPT_OR_SHORT_END"
+            }
+          ],
+          "total_bars": 52,
+          "new_material_required": [
+            "SHORT_BREAK_VARIATION"
+          ],
+          "note_expansion_ready": false
+        },
+        {
+          "form_id": "PUNK_COMPACT_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "DIRECT_START"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "FINAL_CHORUS",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "FINAL_CHORUS"
+            },
+            {
+              "name": "ENDING",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "SHORT_END"
+            }
+          ],
+          "total_bars": 40,
+          "new_material_required": [],
+          "note_expansion_ready": false
+        }
+      ]
+    },
+    "Singer-songwriter rock": {
+      "status": "FORM_CHOICE_REQUIRED",
+      "candidates": [
+        {
+          "form_id": "SONGWRITER_STROPHIC_REFRAIN_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "SPARSE_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "REFRAIN_1",
+              "bars": 4,
+              "prototype_family": "CHORUS_B",
+              "role": "REFRAIN"
+            },
+            {
+              "name": "VERSE_3",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_DEVELOPMENT"
+            },
+            {
+              "name": "REFRAIN_2",
+              "bars": 4,
+              "prototype_family": "CHORUS_B",
+              "role": "REFRAIN"
+            },
+            {
+              "name": "BRIDGE",
+              "bars": 8,
+              "prototype_family": "NEW_SONG_CENTERED_CONTRAST",
+              "role": "CONTRAST"
+            },
+            {
+              "name": "FINAL_VERSE_REFRAIN",
+              "bars": 8,
+              "prototype_family": "VERSE_TO_CHORUS",
+              "role": "RESOLUTION"
+            },
+            {
+              "name": "OUTRO",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "SPARSE_RELEASE"
+            }
+          ],
+          "total_bars": 56,
+          "new_material_required": [
+            "BRIDGE",
+            "FINAL_VERSE_TO_REFRAIN_TRANSITION"
+          ],
+          "note_expansion_ready": false
+        },
+        {
+          "form_id": "SONGWRITER_VERSE_CHORUS_A",
+          "sections": [
+            {
+              "name": "INTRO",
+              "bars": 4,
+              "prototype_family": "INTRO",
+              "role": "SPARSE_ESTABLISHMENT"
+            },
+            {
+              "name": "VERSE_1",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE"
+            },
+            {
+              "name": "CHORUS_1",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "VERSE_2",
+              "bars": 8,
+              "prototype_family": "VERSE_A_RESPONSE",
+              "role": "VERSE_VARIATION"
+            },
+            {
+              "name": "CHORUS_2",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "CHORUS"
+            },
+            {
+              "name": "BRIDGE",
+              "bars": 8,
+              "prototype_family": "NEW_SONG_CENTERED_CONTRAST",
+              "role": "CONTRAST"
+            },
+            {
+              "name": "FINAL_CHORUS",
+              "bars": 8,
+              "prototype_family": "CHORUS_B_RESPONSE",
+              "role": "RESOLUTION"
+            },
+            {
+              "name": "OUTRO",
+              "bars": 4,
+              "prototype_family": "ENDING",
+              "role": "SPARSE_RELEASE"
+            }
+          ],
+          "total_bars": 56,
+          "new_material_required": [
+            "BRIDGE"
+          ],
+          "note_expansion_ready": false
+        }
+      ]
+    },
+    "Blues rock": {
+      "status": "FORM_SUBMODE_REQUIRED",
+      "reason": "Evidence supports both traditional blues-derived song cycles and riff-sectional rock with improvisation; choosing one silently would collapse distinct structures.",
+      "required_form_submodes": [
+        "BLUES_DERIVED_CYCLE",
+        "RIFF_SECTIONAL"
+      ],
+      "candidates": [],
+      "note_expansion_ready": false
+    },
+    "Progressive rock": {
+      "status": "CUSTOM_SECTION_AND_METER_PLAN_REQUIRED",
+      "reason": "Long/unusual forms and irregular/changing meters are part of the evidence-backed 1970s-core scope; forcing the broad 4/4 Rock seed into a standard template would erase the variant.",
+      "required_inputs": [
+        "SECTION_SEQUENCE",
+        "SECTION_BAR_LENGTHS",
+        "METER_PLAN",
+        "FOREGROUND_HANDOFF_PLAN"
+      ],
+      "candidates": [],
+      "note_expansion_ready": false
+    },
+    "Classic rock": {
+      "status": "SECOND_LEVEL_VARIANT_REQUIRED",
+      "candidates": [],
+      "note_expansion_ready": false
+    },
+    "Alternative rock": {
+      "status": "SECOND_LEVEL_VARIANT_REQUIRED",
+      "candidates": [],
+      "note_expansion_ready": false
+    }
+  },
+  "global_rules": {
+    "silent_form_default_allowed": false,
+    "prototype_repetition_is_not_note_generation": true,
+    "new_material_must_be_generated_by_variant_rules_not_bar_copy": true,
+    "audio_authority": false,
+    "live_runtime_authority": false,
+    "finished_composition_authority": false
+  }
+}

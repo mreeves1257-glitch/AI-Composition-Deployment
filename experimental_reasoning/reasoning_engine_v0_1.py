@@ -310,6 +310,72 @@ def _instrument_importance_plan(state: ComposerState, goal: MusicalGoal) -> dict
     }
 
 
+def _instrument_interaction_plan(state: ComposerState, density: int, importance_plan: Mapping[str, Any]) -> dict[str, Any]:
+    """Describe how equally-important instruments should share musical space.
+
+    V0.1 intentionally produces abstract role slots rather than assigning a
+    specific instrument to a role it may not be capable of performing.  The
+    existing genre/interpreter/capability layers remain responsible for that
+    compatibility decision.
+    """
+    section = _norm_section(state.section)
+    active = [str(x) for x in state.active_instruments if str(x).strip()]
+    priority = list(importance_plan.get("priority_for_next_window", []))
+
+    role_pool = [
+        "FOUNDATION_OR_ANCHOR",
+        "PRIMARY_GROOVE_OR_PULSE",
+        "HARMONIC_MOTION_OR_COLOR",
+        "ANSWER_OR_COUNTER_MOTION",
+        "TEXTURE_OR_SPACE_SHAPING",
+        "TRANSITION_OR_SECTION_LINK",
+    ]
+
+    if section == "bridge":
+        role_pool = [
+            "CONTRASTING_FUNCTION",
+            "ANSWER_OR_COUNTER_MOTION",
+            "HARMONIC_MOTION_OR_COLOR",
+            "FOUNDATION_OR_ANCHOR",
+            "TEXTURE_OR_SPACE_SHAPING",
+            "TRANSITION_OR_SECTION_LINK",
+        ]
+    elif section == "breakdown":
+        role_pool = [
+            "FOUNDATION_OR_ANCHOR",
+            "SPACE_SHAPING_OR_INTENTIONAL_REST",
+            "SPARSE_RESPONSE",
+            "TRANSITION_OR_SECTION_LINK",
+        ]
+    elif section == "chorus":
+        role_pool = [
+            "FOUNDATION_OR_ANCHOR",
+            "PRIMARY_GROOVE_OR_PULSE",
+            "SHARED_LIFT_OR_WIDTH",
+            "ANSWER_OR_COUNTER_MOTION",
+            "HARMONIC_MOTION_OR_COLOR",
+            "TRANSITION_OR_SECTION_LINK",
+        ]
+
+    slot_count = max(1, min(len(role_pool), int(density)))
+    slots = role_pool[:slot_count]
+
+    return {
+        "status": "PASS" if active else "WAITING_FOR_ACTIVE_INSTRUMENT_LIST",
+        "principle": "INSTRUMENTS_CONVERSE_AND_HAND_OFF_FUNCTIONS_INSTEAD_OF_STACKING_INTO_A_PERMANENT_HIERARCHY",
+        "active_instruments": active,
+        "meaningful_role_slots": slots,
+        "assignment_policy": "MATCH_ROLES_TO_INSTRUMENT_CAPABILITY_WITHOUT_RANKING_INSTRUMENT_IMPORTANCE",
+        "assignment_priority": priority,
+        "handoff_rule": "ROTATE_MEANINGFUL_FOCUS_AND_RESPONSE_WHILE_PRESERVING_GENRE_APPROPRIATE_FOUNDATION",
+        "collision_rule": "WHEN_PARTS_COMPETE_FOR_THE_SAME_REGISTER_RHYTHM_OR_ATTENTION_REDESIGN_THE_PARTS_RATHER_THAN_MAKING_ONE_DISPOSABLE",
+        "space_rule": "NOT_ALL_INSTRUMENTS_MUST_PLAY_SIMULTANEOUSLY",
+        "rest_rule": "REST_MAY_BE_AN_EQUAL_IMPORTANCE_MUSICAL_CHOICE_WHEN_IT_CREATES_SPACE_OR_EXPECTATION",
+        "hierarchy_rule": "NO_INSTRUMENT_IS_PERMANENTLY_CLASSIFIED_AS_LESS_IMPORTANT_BACKGROUND_MATERIAL",
+        "compatibility_guardrail": "DO_NOT_ASSIGN_A_ROLE_UNLESS_THE_EXISTING_GENRE_AND_INSTRUMENT_CAPABILITY_LAYERS_ALLOW_IT",
+    }
+
+
 def _rhythm_intent(tags: set[str], energy_motion: str, section: str) -> dict[str, Any]:
     behavior = "PRESERVE_GENRE_GROOVE"
     detail: list[str] = []
@@ -456,6 +522,7 @@ def reason(
     target_energy = _section_target_energy(state, goal)
     energy_motion = _energy_motion(state, target_energy)
     density = _density_target(state, target_energy)
+    importance_plan = _instrument_importance_plan(state, goal)
 
     decisions = {
         "section_function": section.upper(),
@@ -469,7 +536,8 @@ def reason(
         },
         "roles": _role_intent(state, energy_motion, density),
         "instrument_balance": _instrument_balance_intent(goal),
-        "instrument_importance_plan": _instrument_importance_plan(state, goal),
+        "instrument_importance_plan": importance_plan,
+        "instrument_interaction_plan": _instrument_interaction_plan(state, density, importance_plan),
         "rhythm": _rhythm_intent(tags, energy_motion, section),
         "harmony": _harmony_intent(tags, state),
         "melody": _melody_intent(state, generation_plan),
@@ -483,6 +551,7 @@ def reason(
             "DO_NOT_TREAT_ANY_ACTIVE_INSTRUMENT_AS_DISPOSABLE_OR_STRUCTURALLY_INFERIOR_WHEN_BALANCE_IS_1_0",
             "DO_NOT_USE_NOTE_COUNT_LOUDNESS_OR_FOREGROUND_TIME_AS_A_PROXY_FOR_INSTRUMENT_IMPORTANCE",
             "DO_NOT_ALLOW_CHRONIC_INSTRUMENT_NEGLECT_ACROSS_THE_COMPOSITION",
+            "DO_NOT_SOLVE_INSTRUMENT_COLLISIONS_BY_DECLARING_ONE_PART_UNIMPORTANT",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",
         ],
     }

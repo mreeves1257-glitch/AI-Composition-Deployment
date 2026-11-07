@@ -296,3 +296,36 @@ All candidates preserve pitch, onset, velocity, voicing, event count, instrument
 - CURRENT_2_8: 67.27%
 
 This establishes a clean sustain-density ladder. No canonical policy has been changed. Active gate is human listening to choose whether the shortest natural-sounding cap is 1.4, 2.0 or the current 2.8 beats. If all capped candidates still sound wrong, duration should no longer be treated as the primary issue.
+
+
+## Rock Mode A HARMONY cap sweep — treated-lead context mixes
+
+Four 8-bar context mixes were created locally from verified artifacts:
+- BASELINE HARMONY + treated LEAD
+- 1.4-beat HARMONY cap + treated LEAD
+- 2.0-beat HARMONY cap + treated LEAD
+- current 2.8-beat HARMONY + treated LEAD
+
+Mix gains are unchanged from the original Rock A/B:
+- HARMONY: -5 dB
+- LEAD: -6 dB
+- common gain: 1
+
+All four context files are 15.908571 s, 44.1 kHz stereo MP3.
+
+Pairwise difference RMS relative to baseline mix level:
+- baseline → 1.4: 0.5083
+- baseline → 2.0: 0.5559
+- baseline → 2.8: 0.5781
+- 1.4 → 2.0: 0.2086
+- 2.0 → 2.8: 0.1508
+
+Interpretation:
+- The 1.4→2.0 change remains materially distinct in context.
+- The 2.0→2.8 change is smaller.
+- From a minimal-change standpoint, 2.0 is the targeted candidate because it trims only the extreme 2.8-beat gesture group; this is not human listening approval.
+
+Saved report:
+`ROCK_MODE_A_HARMONY_CAP_CONTEXT_REPORT_2026-11-07.json`
+
+No canonical policy change, no live promotion, and no reasoning-engine involvement.

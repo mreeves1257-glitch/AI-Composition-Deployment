@@ -8,6 +8,7 @@ on:
       - "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json"
       - "genre_contract_v3_research/verify_v3_execution_wiring.py"
       - "current_master_forward/genre_contract_v3_execution_bridge.py"
+      - "current_master_forward/genre_v3_instrument_authority.py"
       - "current_master_forward/genre_selector.py"
       - "current_master_forward/engine.py"
       - "current_master_forward/AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"

@@ -10,6 +10,7 @@ on:
       - "genre_contract_v3_research/verify_v3_structured_pre_generation.py"
       - "current_master_forward/genre_contract_v3_execution_bridge.py"
       - "current_master_forward/genre_v3_instrument_authority.py"
+      - "current_master_forward/classical_v3_variant_package.py"
       - "current_master_forward/genre_selector.py"
       - "current_master_forward/genre_pre_generation_compiler.py"
       - "current_master_forward/engine.py"

@@ -16,7 +16,18 @@ import hashlib
 import json
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[1]
+HERE = Path(__file__).resolve()
+
+def _find_repo_root() -> Path:
+    # Works both from current_master_forward/ and after build sync into
+    # composer/runtime/. Never assume one fixed parent depth.
+    for candidate in (HERE.parents[1], HERE.parents[2], HERE.parents[3]):
+        master = candidate / "genre_contract_v3_research" / "GENRE_CONTRACT_V3_ALL_55.json"
+        if master.is_file():
+            return candidate
+    raise RuntimeError("GENRE_CONTRACT_V3_REPO_ROOT_NOT_FOUND")
+
+ROOT = _find_repo_root()
 MASTER_PATH = ROOT / "genre_contract_v3_research" / "GENRE_CONTRACT_V3_ALL_55.json"
 
 

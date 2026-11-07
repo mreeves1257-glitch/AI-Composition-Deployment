@@ -41,8 +41,8 @@
     },
     {
       "genre_name": "Classical",
-      "research_status": "V3_QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCES_ADDED__PERIOD_SPLIT_PENDING",
-      "comparison_status": "QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCE_COMPLETE__PERIOD_SPLIT_PENDING",
+      "research_status": "V3_QUANTITATIVE_FOREGROUND_ACTIVITY_AND_CROSS_PERIOD_TEXTURE_EVIDENCE_ADDED__FULL_PERIOD_TARGETS_PENDING",
+      "comparison_status": "POPULATION_FOREGROUND_ACTIVITY_AND_CROSS_PERIOD_TEXTURE_EVIDENCE_ADDED__FULL_PERIOD_TARGETS_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "RESEARCH_REFERENCE_AVAILABLE",
@@ -681,5 +681,5 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "QUANTITATIVE_EVIDENCE_AND_LISTENING_VALIDATION"
+  "next_phase": "VARIANT_LEVEL_QUANTITATIVE_TARGETS_AND_LISTENING_VALIDATION"
 }

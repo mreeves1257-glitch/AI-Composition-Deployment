@@ -69,7 +69,8 @@
     "original_mixer_adapter.py",
     "verify_instrument_separator_55.py",
     "verify_genre_recognition_55.py",
-    "verify_performance_realization_55.py"
+    "verify_performance_realization_55.py",
+    "sfz_sample_graph.py"
   ],
   "classical_checkpoint_prior_pipeline_sha256": "7ca38179e2a8056c93e0b57c39bcd1483b05635e629af0a80dc6fe3f8d8a839a",
   "approved_audio_pipeline_hash_basis": "Final active-master bytes after October 19 Big Band golden-recipe approval; prior Classical-only checkpoint hash retained separately as provenance.",
@@ -103,7 +104,8 @@
       "rock_v3_core_performance_plan.py",
       "rock_v3_core_performance_executor.py",
       "instrument_role_performance_profiles.py",
-      "rock_v3_approved_performance_package.py"
+      "rock_v3_approved_performance_package.py",
+      "sfz_sample_graph.py"
     ],
     "live_promotion_approved": false,
     "classical_v3_symbolic_path": {
@@ -182,6 +184,15 @@
       "bass_treatment": "D__CLEAN_HELD_BODY_PLUS_VICIOUS_ATTACK_MINUS_9_DB",
       "drums_included": false,
       "new_performance_variables_added": false,
+      "live_promotion_approved": false
+    },
+    "recovered_sfz_sample_graph": {
+      "source": "OCT17_WORKING_MASTER",
+      "source_library_file_id": "file_00000000cad481f682ade43404fe954d",
+      "sha256": "39e5484053f317237d07a466af5aa61935d6951510e03e8d6e72163bae0b0e98",
+      "donor_hard_copy_sha256": "27c122d962bc751cacac72eda3ab850f44aeef09461e4c5eafd1345a057c1ae0",
+      "recovery_scope": "SFZ_GRAPH_VALIDATION_ONLY",
+      "reasoning_engine_included": false,
       "live_promotion_approved": false
     }
   }

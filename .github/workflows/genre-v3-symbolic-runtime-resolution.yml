@@ -62,11 +62,6 @@ jobs:
           print("V3_DIAGNOSTIC_OVERLAY_APPLIED",len(manifest["runtime_files"]))
           PY
 
-      - name: Install pinned Python runtime dependencies
-        run: |
-          python -m pip install --no-index --find-links composer/runtime/enhancer_wheels -r composer/runtime/enhancer_requirements.txt
-          python -m pip install --no-index --no-deps composer/runtime/enhancer_wheels/basic_pitch-0.4.0-py2.py3-none-any.whl
-
       - name: Verify diagnostic modules compile
         run: |
           python -m py_compile \

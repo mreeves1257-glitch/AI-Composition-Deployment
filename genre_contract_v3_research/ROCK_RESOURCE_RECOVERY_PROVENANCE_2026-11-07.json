@@ -1,0 +1,81 @@
+{
+  "schema": "ROCK_RESOURCE_RECOVERY_PROVENANCE_001",
+  "date": "2026-11-07",
+  "purpose": "Preserve exact provenance for Rock sample-resource restoration used by the no-audio Genre V3 diagnostic.",
+  "active_master_truth": {
+    "source_record": "CURRENT_RESOURCE_TRUTH_2026-10-17.json / .md",
+    "active_master_scope": "/Working File/INTEGRATED_WORKING_COPY",
+    "declared_internal_binding_count": 10,
+    "declared_binding_paths_present": 10,
+    "fidelity_certified": false
+  },
+  "shinyguitar": {
+    "canonical_archive": {
+      "name": "Karoryfer.Shinyguitar.v1.002.zip",
+      "bytes": 368411844,
+      "sha256": "23cf4030cbf9ce9e2c84d7cbb1c022fbca124bfff0ad118a14eda7cf6c921d7b",
+      "archive_member_count": 876,
+      "wav_count": 846
+    },
+    "working_copy_wrapper": {
+      "path": "/Working File/INTEGRATED_WORKING_COPY/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz",
+      "bytes": 109,
+      "sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35",
+      "content": [
+        "// Composer wrapper; original SFZ/sample files unchanged.",
+        "#define $sample_dir ../Samples",
+        "#include \"main.sfz\""
+      ]
+    },
+    "upstream_diagnostic_source": {
+      "repository": "sfzinstruments/karoryfer.shinyguitar",
+      "pinned_commit": "57243cca85277dbcc120ce17c6178032f93c80f3",
+      "policy": "Pinned upstream resources plus exact recovered Composer wrapper; no synthetic substitution."
+    },
+    "historical_preflight": {
+      "sample_references": 6798,
+      "unique_samples": 846,
+      "sfz_files_validated": 16,
+      "status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOF_PRESENT_FIDELITY_NOT_CERTIFIED"
+    }
+  },
+  "big_rusty_drums": {
+    "canonical_archive": {
+      "name": "Big_Rusty_Drums_1100.zip",
+      "bytes": 619600370,
+      "sha256": "d4a9990acd19376d91ce446dae415c81428728b5adebb6a88eddbb3a6aac8744",
+      "archive_member_count": 4871,
+      "flac_count": 4366,
+      "wav_count": 100
+    },
+    "working_copy_mapping": {
+      "path": "/Working File/INTEGRATED_WORKING_COPY/sound_resources/KARORYFER_BIG_RUSTY_DRUMS/Programs/01-full.sfz",
+      "bytes": 8838
+    },
+    "upstream_diagnostic_source": {
+      "repository": "sfzinstruments/karoryfer.big-rusty-drums",
+      "pinned_commit": "f07ce00df34a46b6b08375be56fe116cf15782bc",
+      "policy": "Pinned upstream original resource; no synthetic substitution."
+    },
+    "historical_preflight": {
+      "sample_references": 7922,
+      "unique_samples": 4466,
+      "sfz_files_validated": 310,
+      "intentional_silent_choke_regions": 18,
+      "status": "ORIGINAL_SAMPLE_GRAPH_READY_PLAYBACK_PROOFS_PRESENT_FIDELITY_NOT_CERTIFIED"
+    }
+  },
+  "package_diagnosis": {
+    "connected_package_source": "AI_Composer_COMPLETE_CONNECTED_PACKAGE_R1_2026-10-11_1011_CDT.zip",
+    "finding": "The lightweight GitHub connected-package reconstruction does not carry the October 17 restored Shinyguitar and Big Rusty resource trees.",
+    "consequence": "No-audio diagnostic workflow must restore the exact pinned resource trees before target mapping/sample preflight. This is a diagnostic reconstruction step, not a live deployment change.",
+    "growlybass_note": "Growlybass mapping was already present in the reconstructed package during the Rock target-resource diagnostic."
+  },
+  "safety": {
+    "audio_rendered": false,
+    "live_runtime_promoted": false,
+    "sample_files_modified": false,
+    "synthetic_substitution": false,
+    "resource_presence_not_equal_fidelity_certification": true
+  }
+}

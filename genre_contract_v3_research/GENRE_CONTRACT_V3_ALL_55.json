@@ -835,7 +835,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_QUANTITATIVE_FOREGROUND_AND_ACTIVITY_REFERENCES_ADDED__PERIOD_SPLIT_PENDING",
+      "research_status": "V3_QUANTITATIVE_FOREGROUND_ACTIVITY_AND_CROSS_PERIOD_TEXTURE_EVIDENCE_ADDED__FULL_PERIOD_TARGETS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -1436,6 +1436,117 @@
             "apply only limited level correction if still required"
           ],
           "success_condition": "Foreground is clearly intelligible while the supporting ensemble retains believable mass and continuity."
+        },
+        "cross_period_texture_role_reference": {
+          "source": "MCTL Symphony Dataset orchestral texture annotations",
+          "scope": "Representative first movements only: Mozart Symphony No.41, Beethoven Symphony No.9, Tchaikovsky Symphony No.6, Dvorak Symphony No.9. Used as a cross-period validation sample, not a universal statistical target.",
+          "roles": "Percentages below are shares of each sampled part's active annotated time.",
+          "samples": {
+            "MOZART_SYMPHONY_41_MVT1": {
+              "FLUTE": {
+                "mel": 45.68,
+                "mel+rhythm": 1.98,
+                "harm": 14.24,
+                "rhythm": 5.35,
+                "rhythm+harm": 32.76
+              },
+              "VIOLIN_1": {
+                "mel": 74.88,
+                "mel+rhythm+harm": 10.78,
+                "mel+rhythm": 8.95,
+                "rhythm": 3.19,
+                "rhythm+harm": 2.21
+              },
+              "HORN_1": {
+                "mel": 6.62,
+                "mel+rhythm": 2.61,
+                "harm": 6.62,
+                "rhythm": 33.44,
+                "rhythm+harm": 50.71
+              }
+            },
+            "BEETHOVEN_SYMPHONY_9_MVT1": {
+              "FLUTE_1": {
+                "mel": 67.08,
+                "mel+harm": 0.68,
+                "mel+rhythm": 3.19,
+                "harm": 11.73,
+                "rhythm": 7.29,
+                "rhythm+harm": 10.02
+              },
+              "VIOLIN_1": {
+                "mel": 68.45,
+                "mel+rhythm+harm": 1.44,
+                "mel+rhythm": 11.65,
+                "harm": 1.65,
+                "rhythm": 12.27,
+                "rhythm+harm": 4.54
+              },
+              "HORN_1": {
+                "mel": 10.83,
+                "mel+harm": 2.1,
+                "harm": 36.35,
+                "rhythm": 35.8,
+                "rhythm+harm": 14.92
+              }
+            },
+            "TCHAIKOVSKY_SYMPHONY_6_MVT1": {
+              "FLUTE_1": {
+                "mel": 26.68,
+                "mel+harm": 43.48,
+                "harm": 3.16,
+                "rhythm": 20.97,
+                "rhythm+harm": 5.71
+              },
+              "VIOLIN_1": {
+                "mel": 13.77,
+                "mel+harm": 46.53,
+                "mel+rhythm": 4.65,
+                "harm": 2.04,
+                "rhythm": 12.94,
+                "rhythm+harm": 20.07
+              },
+              "HORN_1": {
+                "mel": 6.77,
+                "mel+harm": 4.34,
+                "harm": 26.76,
+                "rhythm": 23.24,
+                "rhythm+harm": 38.89
+              }
+            },
+            "DVORAK_SYMPHONY_9_MVT1": {
+              "FLUTE_1": {
+                "mel": 32.78,
+                "harm": 36.32,
+                "rhythm": 14.02,
+                "rhythm+harm": 16.88
+              },
+              "VIOLIN_1": {
+                "mel": 47.99,
+                "mel+rhythm": 9.16,
+                "harm": 9.6,
+                "rhythm": 30.71,
+                "rhythm+harm": 2.53
+              },
+              "HORN_1": {
+                "mel": 7.47,
+                "harm": 50.57,
+                "rhythm": 5.75,
+                "rhythm+harm": 36.21
+              }
+            }
+          },
+          "findings": [
+            "Flute role is frequently melodic or melody-combined in every sampled period/style; treating flute as merely decorative/background color is not supported.",
+            "Violin 1 can be strongly melodic, but its role mix changes substantially across repertoire and can include major harmonic/rhythmic support functions.",
+            "Horn 1 is predominantly harmonic/rhythmic support in these sampled movements, with smaller pure-melody shares.",
+            "Role distributions change enough across Mozart/Beethoven/Tchaikovsky/Dvorak to justify period/variant-specific Classical role probabilities rather than one universal profile."
+          ],
+          "guardrails": [
+            "This is a four-movement representative validation sample, not a balanced corpus.",
+            "Do not convert these percentages directly into gain, population or runtime quotas.",
+            "Use them to validate section-role-state behavior and period/variant differentiation."
+          ]
         }
       },
       "performance": {
@@ -1473,7 +1584,8 @@
           "MTG-Jamendo genre/instrument co-occurrence research reference",
           "OpenScore Orchestra / Hauptstimme: 70 instrumental orchestral foreground-annotation files used for interval-weighted foreground reference statistics",
           "OpenScore Orchestra full-score CSVs: 70 instrumental movements used for section/instrument activity occupancy analysis",
-          "OpenScore Orchestra / Hauptstimme score CSVs: 70 instrumental orchestral movements used for duration-weighted activity occupancy reference"
+          "OpenScore Orchestra / Hauptstimme score CSVs: 70 instrumental orchestral movements used for duration-weighted activity occupancy reference",
+          "MCTL Symphony Dataset: MIT-licensed orchestral texture-role annotations spanning Mozart, Beethoven, Tchaikovsky and Dvorak"
         ],
         "source_confidence": {
           "current_profile": "MEDIUM__USEFUL_BASELINE_NOT_COMPLETE",
@@ -1484,7 +1596,8 @@
           "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
           "Hauptstimme_foreground_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__NOT_UNIVERSAL_TARGET",
           "OpenScore_activity_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__PERIOD_VARIANT_SPLIT_PENDING",
-          "Hauptstimme_score_activity_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__VARIANT_SPLIT_STILL_REQUIRED"
+          "Hauptstimme_score_activity_reference": "MEDIUM_HIGH_FOR_CORPUS_OBSERVATION__VARIANT_SPLIT_STILL_REQUIRED",
+          "MCTL_cross_period_texture_roles": "MEDIUM_FOR_REPRESENTATIVE_FIRST_MOVEMENT_VALIDATION__HIGH_ANNOTATION_RELEVANCE"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
@@ -1492,7 +1605,8 @@
           "OpenScore_scores": "CC0_1_0",
           "Hauptstimme_annotations": "CC_BY_SA",
           "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
-          "OpenScore_Orchestra_scores": "CC0_1_0"
+          "OpenScore_Orchestra_scores": "CC0_1_0",
+          "MCTL_Symphony_Dataset": "MIT"
         },
         "conflicts_between_sources": [
           "Population reference and Hauptstimme foreground reference intentionally differ; this is not a conflict to normalize away."
@@ -1512,7 +1626,8 @@
           "Activity occupancy and foreground ownership must be stored and applied as separate dimensions.",
           "Family activity percentages must never be normalized to sum to 100 because orchestral families overlap in time.",
           "Activity occupancy and foreground ownership must remain separate runtime variables.",
-          "If a small-section foreground owner is masked while a high-activity family continues underneath, the arranger must first attempt orchestration-level anti-masking actions."
+          "If a small-section foreground owner is masked while a high-activity family continues underneath, the arranger must first attempt orchestration-level anti-masking actions.",
+          "Resolved Classical variant must be able to alter role-state probabilities; a universal flute/violin/horn role mix is forbidden."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
@@ -1551,7 +1666,8 @@
           "Chamber ensemble",
           "Full symphonic"
         ],
-        "note": "Candidate families only; each requires evidence-backed rules before activation."
+        "note": "Candidate families only; each requires evidence-backed rules before activation.",
+        "evidence_backed_requirement": "Role-state probabilities and orchestration behavior must vary by resolved Classical period/ensemble variant; no single universal Classical role distribution."
       },
       "quantitative_evidence_status": {
         "foreground_reference": "RESEARCH_REFERENCE_AVAILABLE",

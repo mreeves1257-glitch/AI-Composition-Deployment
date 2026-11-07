@@ -1,0 +1,37 @@
+name: Rock Mode A Duration Shape Audit
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - "genre_contract_v3_research/verify_rock_mode_a_duration_shape.py"
+      - "current_master_forward/rock_v3_core_performance_executor.py"
+      - "current_master_forward/rock_v3_core_performance_plan.py"
+      - "current_master_forward/rock_v3_core_development_executor.py"
+      - ".github/workflows/rock-mode-a-duration-shape-audit.yml"
+  workflow_dispatch:
+
+jobs:
+  symbolic-duration-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Audit Mode A duration shape
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python genre_contract_v3_research/verify_rock_mode_a_duration_shape.py
+          test -s genre_contract_v3_research/ROCK_MODE_A_DURATION_SHAPE_AUDIT.json
+
+      - name: Upload symbolic audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_Mode_A_Duration_Shape_Audit
+          path: genre_contract_v3_research/ROCK_MODE_A_DURATION_SHAPE_AUDIT.json
+          if-no-files-found: error

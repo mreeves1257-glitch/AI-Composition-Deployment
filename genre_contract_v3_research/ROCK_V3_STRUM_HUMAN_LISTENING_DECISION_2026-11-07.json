@@ -1,0 +1,33 @@
+{
+  "schema": "ROCK_V3_STRUM_HUMAN_LISTENING_DECISION_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "blind_test": true,
+  "blind_mapping": {
+    "Blind_1_Context": "CURRENT_MODE_A_HARMONY_PLUS_TREATED_LEAD",
+    "Blind_2_Context": "SAFE_STRUM_HARMONY_PLUS_TREATED_LEAD",
+    "Blind_1_Guitar_Only": "CURRENT_MODE_A_HARMONY",
+    "Blind_2_Guitar_Only": "SAFE_STRUM_HARMONY"
+  },
+  "user_judgment": "BLIND_2_CONTEXT_PREFERRED",
+  "revealed_result": {
+    "preferred_harmony_attack_treatment": "NOTE_OFF_PRESERVING_STRUM_ATTACK_STAGGER",
+    "strum_note_gap_beats": 0.038,
+    "three_note_span_beats": 0.076,
+    "alternate_direction": true,
+    "absolute_note_off_times_preserved": true,
+    "preferred_harmony_max_ringing_beats": 2.8,
+    "treated_lead_in_context": true
+  },
+  "rejected_control": "CURRENT_VERTICAL_CHORD_ATTACK_WITH_SAME_2_8_SUSTAIN_AND_TREATED_LEAD",
+  "interpretation": [
+    "Human blind listening preferred the safe strum-attack candidate over the current simultaneous vertical chord attack in the treated-lead context.",
+    "The preferred Rock guitar treatment is therefore the existing 2.8-beat HARMONY sustain ceiling plus the note-off-preserving strum attack stagger.",
+    "This approves the strum candidate only as the preferred diagnostic-branch treatment. It does not promote to main/live and does not authorize bass sustain or another performance dimension."
+  ],
+  "canonical_main_policy_changed": false,
+  "diagnostic_preferred_candidate_updated": true,
+  "reasoning_engine_used": false,
+  "live_runtime_promoted": false,
+  "next_gate": "RECORD_DIAGNOSTIC_PREFERRED_ROCK_MODE_A_PLUS_STRUM__THEN_INSPECT_BASS_SUSTAIN_SEPARATELY"
+}

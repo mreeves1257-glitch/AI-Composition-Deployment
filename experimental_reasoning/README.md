@@ -170,3 +170,36 @@ The low-end relationship is:
 The two should reinforce each other without collapsing into one muddy low-frequency mass. The 3D spatial plan keeps the kick in a firm, controlled low-frequency center while leaving distinct depth and body for the bass.
 
 A pronounced kick must not be achieved by thinning the bass, masking other instruments, excessive click, uncontrolled boom, or flattening dynamics through overcompression.
+
+
+## Spatial choreography
+
+3D intent now evolves with song form rather than remaining static.
+
+Examples:
+
+- verses may contract slightly and feel more intimate;
+- choruses may widen and deepen;
+- bridges may reframe the space for contrast rather than simply becoming louder;
+- breakdowns may expose depth by removing spatial clutter;
+- outros may gradually release or recede.
+
+Movement must follow musical intent. Random swirling, continuous autopan, and arbitrary depth motion are explicitly rejected unless a genre calls for them.
+
+Kick and bass remain stable enough in the low-frequency center of gravity to preserve physical authority. The deepest low end stays tightly controlled while upper harmonics may contribute width and definition.
+
+## Low-end musical interaction
+
+Kick and bass are not treated as two unrelated parts that happen to occupy low frequencies.
+
+Their default relationship is coordinated at the arrangement level:
+
+- kick supplies physical impact and pulse definition;
+- bass supplies sustained depth, tonal body, and motion;
+- selected structural accents may lock together;
+- other moments may interlock, answer, or leave intentional gaps;
+- constant duplication is avoided unless genre identity calls for it;
+- walking bass is not forced to mirror every kick;
+- four-on-the-floor styles may keep the kick stable while bass moves around it.
+
+Low-end clutter should be solved through timing, role, register, and space before simply reducing the strength of either part.

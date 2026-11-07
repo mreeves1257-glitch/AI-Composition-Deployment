@@ -811,3 +811,61 @@ Decision record:
 
 Active gate:
 Research-only characterization of `growlybass_clean.sfz` and `growlybass_dirty.sfz` from the same pinned v1.002 archive. The target registry remains unchanged. Only if a mapping proves note-length responsive should a new musical bass-sustain A/B be rendered.
+
+
+## Growlybass sustain-capable mapping research
+
+Current registry mapping remains:
+- `growlybass_vicious.sfz`
+- note-length response: false
+- active-end delta for 0.25 s vs 2.00 s note: 0.14 s
+- therefore not valid authority for bass-sustain listening
+
+Sustain-oriented mappings from the same exact pinned Growlybass v1.002 archive were characterized without changing the registry.
+
+Workflow:
+`Growlybass Sustain Mapping Characterization`
+Run:
+`42395101164`
+Artifact:
+`13582853415`
+Digest:
+`sha256:369693f5f940620acb05b58f11c6f127c41e86a34e90c0ff80bfd2298a2c3e57`
+
+Results:
+
+`growlybass_clean.sfz`
+- sample graph: 240 references / 240 unique samples
+- note-length responsive: true
+- 0.25 s note active end vs 2.00 s note active end delta: 1.72 s
+- releases after long note: true
+- classification: SUSTAIN_CAPABLE_NOTE_LENGTH_RESPONSIVE
+
+`growlybass_dirty.sfz`
+- sample graph: 310 references / 310 unique samples
+- note-length responsive: true
+- active-end delta: 1.68 s
+- releases after long note: true
+- classification: SUSTAIN_CAPABLE_NOTE_LENGTH_RESPONSIVE
+
+Research mapping selected:
+`growlybass_clean.sfz`
+
+Reason:
+- it is sustain-capable on the exact pinned v1.002 archive
+- the target registry already names it as `production_preferred_mapping`
+- choosing Clean avoids adding Dirty's release-sample behavior as another variable
+
+Decision record:
+`GROWLYBASS_SUSTAIN_RESEARCH_MAPPING_DECISION_2026-11-07.json`
+
+Registry is still unchanged.
+
+A new valid 16-bar bass sustain A/B has been launched with Clean held fixed in both versions and only bass duration changing:
+Workflow: `Rock V3 Bass Sustain Clean Listening AB`
+Run: `42395303554`
+
+Approved guitar context remains fixed in both A/B conditions:
+- HARMONY max ringing 2.8 beats
+- safe note-off-preserving strum
+- treated LEAD unchanged

@@ -217,9 +217,15 @@ VARIANT={name:i for i,name in enumerate(BASE)}
 def build_setup(name:str, profile:dict[str,Any], mode='quick', creation_seed:int=0):
     v3_packet=v3_execution_packet(name)
     if name == 'Classical':
+        from classical_v3_variant_package import resolve as resolve_classical_v3_variant
         from classical_composition import build_classical_setup
-        setup=build_classical_setup(profile, mode, creation_seed)
+        classical_v3_package=resolve_classical_v3_variant(
+            profile, 'CLASSICAL_PERIOD_ORCHESTRAL')
+        setup=build_classical_setup(
+            profile, mode, creation_seed,
+            v3_variant_package=classical_v3_package)
         setup['genre_contract_v3_execution_packet']=v3_packet
+        setup['classical_v3_variant_package']=classical_v3_package
         return setup
     policy=profile['resolution_policy']
     if policy!='AUTOMATIC_BASELINE_ALLOWED':

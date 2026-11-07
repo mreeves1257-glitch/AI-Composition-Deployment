@@ -3,7 +3,13 @@
 Run directly:
     python experimental_reasoning/test_reasoning_engine_v0_1.py
 """
-from reasoning_engine_v0_1 import ComposerState, MusicalGoal, reason, validate
+from reasoning_engine_v0_1 import (
+    ComposerState,
+    InstrumentMemory,
+    MusicalGoal,
+    reason,
+    validate,
+)
 
 
 def test_verse_two_after_chorus_pulls_back_and_develops():
@@ -58,7 +64,7 @@ def test_chorus_builds_without_choosing_instruments():
     assert d["roles"]["do_not_choose_specific_instruments_here"] is True
 
 
-def test_bridge_requires_contrast_but_not_more_volume():
+def test_bridge_requires_contrast_without_creating_instrument_hierarchy():
     state = ComposerState(
         genre="Jazz Ballad",
         profile_id="JAZZ_BALLAD_PROFILE",
@@ -77,23 +83,48 @@ def test_bridge_requires_contrast_but_not_more_volume():
     d = packet["decisions"]
     assert d["contrast"]["required"] is True
     assert d["roles"]["foreground_policy"] == "NO_PERSISTENT_INSTRUMENT_DOMINANCE"
-    assert d["instrument_balance"]["mode"] == "COMPLETE_EQUAL_BALANCE"
+    assert d["instrument_balance"]["mode"] == "COMPLETE_EQUAL_IMPORTANCE"
 
 
-def test_complete_equal_instrument_balance_is_default():
+def test_equal_importance_is_not_equal_notes_or_equal_volume():
     state = ComposerState(
         genre="Funk",
         profile_id="FUNK_PROFILE",
         section="Chorus",
+        active_instruments=("drums", "bass", "guitar", "keys"),
     )
     packet = reason(state=state)
     validate(packet)
     b = packet["decisions"]["instrument_balance"]
     assert b["target_0_to_1"] == 1.0
-    assert b["relative_prominence"] == "EQUAL"
-    assert b["persistent_instrument_dominance_allowed"] is False
+    assert b["compositional_importance"] == "EQUAL"
+    assert b["persistent_structural_subordination_allowed"] is False
     assert b["identical_note_density_required"] is False
-    assert b["solo_or_feature_exception"] == "REQUIRES_EXPLICIT_OVERRIDE"
+    assert b["identical_loudness_required"] is False
+    assert b["identical_foreground_time_required"] is False
+
+
+def test_importance_ledger_prioritizes_instrument_that_has_been_neglected():
+    state = ComposerState(
+        genre="Country",
+        profile_id="COUNTRY_PROFILE",
+        section="Verse",
+        active_instruments=("drums", "bass", "guitar", "fiddle"),
+        instrument_history=(
+            InstrumentMemory("drums", meaningful_windows=4, total_windows=4, last_role="groove"),
+            InstrumentMemory("bass", meaningful_windows=4, total_windows=4, last_role="foundation"),
+            InstrumentMemory("guitar", meaningful_windows=4, total_windows=4, last_role="harmony"),
+            InstrumentMemory("fiddle", meaningful_windows=1, total_windows=4, last_role="rest"),
+        ),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    p = packet["decisions"]["instrument_importance_plan"]
+    assert p["target"] == "EQUAL_COMPOSITIONAL_IMPORTANCE"
+    assert p["importance_unit"] == "MEANINGFUL_MUSICAL_FUNCTION"
+    assert p["note_quantity_is_importance"] is False
+    assert p["priority_for_next_window"] == ["fiddle"]
+    assert p["priority_rule"] == "RESTORE_UNDERSERVED_INSTRUMENTS_TO_MEANINGFUL_FUNCTION"
 
 
 def test_hash_detects_mutation():
@@ -116,8 +147,9 @@ if __name__ == "__main__":
     tests = [
         test_verse_two_after_chorus_pulls_back_and_develops,
         test_chorus_builds_without_choosing_instruments,
-        test_bridge_requires_contrast_but_not_more_volume,
-        test_complete_equal_instrument_balance_is_default,
+        test_bridge_requires_contrast_without_creating_instrument_hierarchy,
+        test_equal_importance_is_not_equal_notes_or_equal_volume,
+        test_importance_ledger_prioritizes_instrument_that_has_been_neglected,
         test_hash_detects_mutation,
     ]
     for fn in tests:

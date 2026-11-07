@@ -39,8 +39,8 @@ def eligible_genres():
 
 def main():
     genres=eligible_genres()
-    if len(genres)!=35:
-        raise RuntimeError("EXPECTED_35_RUNTIME_SYMBOLIC_GENRES__GOT_"+str(len(genres)))
+    if len(genres)!=40:
+        raise RuntimeError("EXPECTED_40_RUNTIME_SYMBOLIC_GENRES__GOT_"+str(len(genres)))
 
     rows={}
     with tempfile.TemporaryDirectory() as tmp:
@@ -117,8 +117,10 @@ def main():
         ),
         "result":(
             "The reconstructed Composer accepted V3-governed symbolic events for "
-            "35 automatic genres and resolved every selected event instrument into "
-            "the current instrument library. Rendering was intentionally blocked."
+            "all 40 automatic genres without explicit V3 formations and resolved every "
+            "selected event instrument into the current instrument library. Brush-snare "
+            "and hand-drum remain canonical resource-required identities. Rendering was "
+            "intentionally blocked."
         ),
         "genres":rows,
         "next_gate":"GENRE_SPECIFIC_FORM_AND_MUSICAL_BEHAVIOR_REVALIDATION_BEFORE_AUDIO",

@@ -10,13 +10,49 @@ FORWARD=ROOT/"current_master_forward"
 if str(FORWARD) not in sys.path:
     sys.path.insert(0,str(FORWARD))
 
-from genre_v3_source_pattern_bridge import audit_all
+from genre_v3_source_pattern_bridge import audit_all, resolve_source_roles
+from genre_contract_v3_execution_bridge import load_master, snapshot_for
+from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority
 
 
 def main():
     result=audit_all()
     genres=result["results"]
     roles={name:[r["role"] for r in item["roles"]] for name,item in genres.items()}
+    master=load_master()
+    hierarchy={}
+    counts={
+        "CONTROLLED_COMPONENT_INPUT":0,
+        "SPECIALIZED_CLASSICAL_PENDING_V3_VARIANT":0,
+        "GENRE_CONTRACT_V3_EXPLICIT_ROSTER":0,
+        "V3_GOVERNED_SOURCE_PATTERN_ROLES":0,
+        "LEGACY_STATIC_PALETTE_FALLBACK":0,
+    }
+    unresolved_source_role_genres=[]
+    for name,contract in master["contracts"].items():
+        snap=snapshot_for(name)
+        policy=snap.get("resolution_policy")
+        if policy!="AUTOMATIC_BASELINE_ALLOWED":
+            authority="CONTROLLED_COMPONENT_INPUT"
+        elif name=="Classical":
+            authority="SPECIALIZED_CLASSICAL_PENDING_V3_VARIANT"
+        else:
+            explicit=resolve_v3_instrument_authority(name,snap)
+            if explicit.get("status")=="PASS":
+                authority="GENRE_CONTRACT_V3_EXPLICIT_ROSTER"
+            else:
+                source_roles=resolve_source_roles(name)
+                if source_roles.get("status")=="PASS":
+                    authority="V3_GOVERNED_SOURCE_PATTERN_ROLES"
+                else:
+                    authority="LEGACY_STATIC_PALETTE_FALLBACK"
+                    unresolved_source_role_genres.append({
+                        "genre":name,
+                        "unresolved":source_roles.get("unresolved",[]),
+                    })
+        counts[authority]+=1
+        hierarchy[name]=authority
+
     summary={
         "status":"PASS",
         "diagnostic_only":True,
@@ -32,12 +68,17 @@ def main():
             for x in genres.values()
         ),
         "unique_seed_count":len({x["seed_id"] for x in genres.values()}),
+        "execution_authority_hierarchy_counts":counts,
+        "execution_authority_by_genre":hierarchy,
+        "source_role_unresolved_genres":unresolved_source_role_genres,
         "role_inventory_by_genre":roles,
         "result":(
             "All 55 original project-authored symbolic source-pattern seeds remain "
             "structurally compatible with the current V3 profile IDs, meter ranges, "
-            "tempo ranges, and expected source-pattern schema. They remain unauditioned "
-            "and have no audio/live authority."
+            "tempo ranges, and expected source-pattern schema. Under the conservative "
+            "execution hierarchy, explicit V3 formations remain first authority and "
+            "fully resolvable V3-governed source roles can replace legacy palettes for "
+            "additional automatic genres. Seeds remain unauditioned and have no audio/live authority."
         ),
     }
     if summary["genre_count"]!=55 or summary["family_count"]!=13:
@@ -46,6 +87,15 @@ def main():
         raise RuntimeError("V3_SOURCE_PATTERN_SEEDS_NOT_UNIQUE")
     if not summary["all_audio_authority_false"] or not summary["all_live_runtime_authority_false"]:
         raise RuntimeError("V3_SOURCE_PATTERN_AUTHORITY_ESCALATION")
+    expected={
+        "CONTROLLED_COMPONENT_INPUT":7,
+        "SPECIALIZED_CLASSICAL_PENDING_V3_VARIANT":1,
+        "GENRE_CONTRACT_V3_EXPLICIT_ROSTER":7,
+        "V3_GOVERNED_SOURCE_PATTERN_ROLES":35,
+        "LEGACY_STATIC_PALETTE_FALLBACK":5,
+    }
+    if counts!=expected:
+        raise RuntimeError("V3_EXECUTION_AUTHORITY_HIERARCHY_UNEXPECTED::"+json.dumps(counts,sort_keys=True))
     out=ROOT/"genre_contract_v3_research"/"V3_SOURCE_PATTERN_COMPATIBILITY_AUDIT.json"
     out.write_text(json.dumps(summary,indent=2)+"\n")
     print(json.dumps(summary,indent=2))

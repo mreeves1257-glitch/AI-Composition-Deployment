@@ -593,3 +593,33 @@ Mapping is recorded in:
 
 Active gate:
 User blind judgment of context A vs B. Do not reveal mapping or enable strum before that judgment.
+
+
+## Rock V3 blind strum listening result
+
+User preferred:
+**Blind 2 — guitar + treated lead**
+
+Blind mapping reveal:
+- Blind 1 context = current Mode A HARMONY vertical attacks + treated LEAD
+- Blind 2 context = safe note-off-preserving strum HARMONY + the same treated LEAD
+
+Therefore the preferred diagnostic Rock guitar treatment is now:
+- current human-preferred HARMONY max ringing: **2.8 beats**
+- HARMONY attack timing: **safe strum stagger**
+- string attack gap: **0.038 beat**
+- three-note total span: **0.076 beat**
+- direction alternates low-to-high / high-to-low
+- every original absolute note-off remains fixed
+- treated LEAD remains unchanged
+
+This result was blind and therefore not biased by knowing which version contained the strum.
+
+Decision record:
+`ROCK_V3_STRUM_HUMAN_LISTENING_DECISION_2026-11-07.json`
+
+Promotion boundary:
+This is a preferred **diagnostic-branch** Rock treatment only. It is not merged to main, not live, and does not authorize bass sustain or any other performance variable.
+
+Next candidate, if work continues:
+Inspect the already-disabled Rock BASS sustain candidate separately. Do not combine it with another new variable without its own safety proof and A/B.

@@ -99,8 +99,8 @@ class MusicalGoal:
     emotional_direction: str = "preserve"
     requested_contrast: Optional[str] = None
     force_transition: Optional[str] = None
-    # 1.0 means complete equal prominence among all active instruments.
-    # This is balance of musical/audible presence, not identical note counts.
+    # 1.0 means complete equal compositional importance among all active instruments.
+    # This does NOT require equal note counts, equal loudness, or equal foreground time.
     instrument_balance: float = 1.0
 
 
@@ -211,15 +211,18 @@ def _instrument_balance_intent(goal: MusicalGoal) -> dict[str, Any]:
     return {
         "parameter": "instrument_balance",
         "target_0_to_1": round(strength, 3),
-        "mode": "COMPLETE_EQUAL_BALANCE" if complete else "PARTIAL_BALANCE",
+        "mode": "COMPLETE_EQUAL_IMPORTANCE" if complete else "PARTIAL_IMPORTANCE_BALANCE",
         "applies_to": "ALL_ACTIVE_INSTRUMENTS",
-        "relative_prominence": "EQUAL" if complete else "BALANCE_WEIGHTED",
-        "persistent_instrument_dominance_allowed": not complete,
+        "compositional_importance": "EQUAL" if complete else "BALANCE_WEIGHTED",
+        "persistent_structural_subordination_allowed": not complete,
         "role_differences_allowed": True,
         "identical_note_density_required": False,
-        "arrangement_instruction": "GIVE_EACH_ACTIVE_INSTRUMENT_MEANINGFUL_AUDIBLE_SPACE",
-        "future_mix_instruction": "NORMALIZE_PERCEIVED_PROMINENCE_ACROSS_ACTIVE_INSTRUMENTS",
-        "solo_or_feature_exception": "REQUIRES_EXPLICIT_OVERRIDE",
+        "identical_loudness_required": False,
+        "identical_foreground_time_required": False,
+        "arrangement_instruction": "EVERY_ACTIVE_INSTRUMENT_MUST HAVE A MEANINGFUL MUSICAL FUNCTION",
+        "interaction_instruction": "INSTRUMENTS_MAY_LEAD_SUPPORT_ANSWER_OR_REST_BUT REMAIN EQUALLY IMPORTANT TO THE WHOLE",
+        "future_mix_instruction": "KEEP_EACH INSTRUMENT CLEAR AND INTENTIONAL WITHOUT FORCING EQUAL VOLUME",
+        "solo_or_feature_exception": "TEMPORARY_FOCUS_ALLOWED_WITHOUT_REDUCING_OTHER_INSTRUMENTS_OVERALL_IMPORTANCE",
     }
 
 
@@ -392,7 +395,7 @@ def reason(
             "DO_NOT_SELECT_SAMPLES_OR_RENDER_AUDIO",
             "DO_NOT_EMIT_MIDI_OR_NOTE_EVENTS_IN_V0_1",
             "DO_NOT_CHANGE_INSTRUMENT_IDENTITY",
-            "DO_NOT_ALLOW_PERSISTENT_INSTRUMENT_DOMINANCE_WHEN_BALANCE_IS_1_0",
+            "DO_NOT_TREAT_ANY_ACTIVE_INSTRUMENT_AS_DISPOSABLE_OR_STRUCTURALLY_INFERIOR_WHEN_BALANCE_IS_1_0",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",
         ],
     }

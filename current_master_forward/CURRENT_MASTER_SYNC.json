@@ -23,6 +23,9 @@
     "genre_performance_capability_requirements.py",
     "genre_pre_generation_compiler.py",
     "classical_v3_structural_compiler.py",
+    "classical_v3_resource_mapper.py",
+    "classical_v3_orchestration_binder.py",
+    "classical_v3_note_realizer.py",
     "classical_v3_variant_package.py",
     "genre_v3_symbolic_pattern_executor.py",
     "genre_v3_source_pattern_bridge.py",
@@ -67,8 +70,24 @@
       "genre_v3_source_pattern_bridge.py",
       "genre_v3_symbolic_pattern_executor.py",
       "classical_v3_variant_package.py",
-      "classical_v3_structural_compiler.py"
+      "classical_v3_structural_compiler.py",
+      "classical_v3_note_realizer.py",
+      "classical_v3_orchestration_binder.py",
+      "classical_v3_resource_mapper.py"
     ],
-    "live_promotion_approved": false
+    "live_promotion_approved": false,
+    "classical_v3_symbolic_path": {
+      "status": "READY_FOR_RUNTIME_INSTRUMENT_RESOLUTION_DIAGNOSTIC",
+      "variant": "CLASSICAL_PERIOD_ORCHESTRAL",
+      "audio_authority": false,
+      "live_promotion_approved": false,
+      "modules": [
+        "classical_v3_variant_package.py",
+        "classical_v3_structural_compiler.py",
+        "classical_v3_note_realizer.py",
+        "classical_v3_orchestration_binder.py",
+        "classical_v3_resource_mapper.py"
+      ]
+    }
   }
 }

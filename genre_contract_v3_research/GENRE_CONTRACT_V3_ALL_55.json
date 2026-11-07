@@ -1682,7 +1682,7 @@
       "source_profile_id": "JAZZ_SWING_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "JAZZ_SWING_V1",
@@ -1821,12 +1821,16 @@
         "foreground_window_rules": [
           "Solo/lead windows require accompaniment to thin or become more responsive.",
           "Walking bass and ride remain audible structural anchors without becoming permanent foreground.",
-          "Comping activity adapts to the solo/lead rather than filling every gap."
+          "Comping activity adapts to the solo/lead rather than filling every gap.",
+          "Small-combo evidence supports reducing the number of simultaneously active players when a soloist takes foreground rather than solving clarity with gain alone.",
+          "Rhythm-section accompaniment often remains present under solos, but not every accompaniment instrument must remain continuously active."
         ],
         "role_handoff_rules": [
           "Foreground transfers between head melody, soloists and ensemble figures.",
           "Accompaniment shifts between support, response and space.",
-          "Drums may set up transitions without becoming a generic fill machine."
+          "Drums may set up transitions without becoming a generic fill machine.",
+          "In small-combo variants, head→solo handoff may thin from near-full ensemble participation to soloist plus a reduced accompaniment subset.",
+          "Non-solo horn parts may rest during another horn's solo unless the resolved arrangement explicitly assigns backgrounds."
         ],
         "register_occupancy": {
           "rule": "Lead, comping and bass registers must remain separated enough for conversational clarity."
@@ -1910,6 +1914,52 @@
               ]
             }
           }
+        },
+        "jazzsamba_small_combo_reference": {
+          "source": "JazzSAMBA 1.0.0 (2026)",
+          "scope": "Five-player jazz-combo recordings using drums, bass, piano, trumpet and one saxophone; observations apply only to this small-combo variant and are not universal genre percentages.",
+          "repertoire_observation": {
+            "source_genre": "swing",
+            "song_count": 29,
+            "bpm": {
+              "min": 75,
+              "median": 170,
+              "max": 250
+            },
+            "swung_percent": 100,
+            "meters": {
+              "4/4": 28,
+              "5/4": 1
+            },
+            "forms": {
+              "AABA": 10,
+              "ABAC": 8,
+              "ABCAD": 2,
+              "AABC": 2,
+              "ABAB": 2,
+              "ABC": 1,
+              "ABA": 1,
+              "AA": 1,
+              "ABCD": 1,
+              "ABCB": 1
+            },
+            "avg_active_players_head": 4.8,
+            "avg_active_players_solo": 3.26,
+            "solo_to_head_active_ratio": 0.679,
+            "solo_accompaniment_presence_percent": {
+              "drums": 80.2,
+              "bass": 73.9,
+              "piano": 71.2
+            }
+          },
+          "interpretation_guardrails": [
+            "Tempo, form, meter and swing values describe the JazzSAMBA repertoire sample, not hard genre limits.",
+            "Solo rotation in JazzSAMBA is partly shaped by dataset/recording design and must not become a rule that every instrument must solo.",
+            "Section_musicians annotations are useful evidence for accompaniment thinning and foreground windows.",
+            "Average active-player counts describe annotated section participation, not loudness or mix gain.",
+            "Do not apply this small-combo evidence to Big Band or full traditional percussion ensembles."
+          ],
+          "key_finding": "In the swing sample, solo sections average 68% of the active-player count found in head sections, supporting deliberate ensemble thinning when a soloist takes foreground."
         }
       },
       "performance": {
@@ -1939,20 +1989,23 @@
           "Berklee Arranging 1",
           "Weimar Jazz Database",
           "Berklee jazz performance/arranging references",
-          "MTG-Jamendo genre/instrument co-occurrence research reference"
+          "MTG-Jamendo genre/instrument co-occurrence research reference",
+          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations"
         ],
         "source_confidence": {
           "core_swing_behavior": "HIGH",
           "single_universal_formation": "REJECTED",
           "variant_percentages": "PENDING",
-          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
+          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE",
           "Berklee": "REFERENCE_ONLY",
           "Weimar": "REVIEW_CURRENT_DATA_LICENSE",
-          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
+          "JazzSAMBA_code_and_metadata": "MIT_REPO__VERIFY_DATASET_AUDIO_TERMS_BEFORE_DIRECT_AUDIO_REUSE"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -1962,13 +2015,15 @@
           "No population percentages are accepted until a Swing variant/formation is resolved.",
           "Big Band formation cannot be silently substituted for Swing.",
           "Solo foreground and accompaniment hierarchy must be explicit.",
-          "Walking/two-feel behavior must be variant- and section-aware."
+          "Walking/two-feel behavior must be variant- and section-aware.",
+          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default."
         ],
         "listening_tests": [
           "Pocket remains coherent across bass, ride and comping.",
           "Solo/lead is audible without accompaniment disappearing.",
           "Swing variation sounds developmental rather than looped.",
-          "Different resolved formations sound materially different."
+          "Different resolved formations sound materially different.",
+          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -2005,7 +2060,7 @@
       "source_profile_id": "JAZZ_BALLAD_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "JAZZ_BALLAD_V1",
@@ -2137,11 +2192,15 @@
         "foreground_window_rules": [
           "Lead/solo owns clear space; comping thins under exposed phrases.",
           "Bass and brushes remain audible anchors without crowding.",
-          "Secondary colors enter selectively."
+          "Secondary colors enter selectively.",
+          "Small-combo evidence supports reducing the number of simultaneously active players when a soloist takes foreground rather than solving clarity with gain alone.",
+          "Rhythm-section accompaniment often remains present under solos, but not every accompaniment instrument must remain continuously active."
         ],
         "role_handoff_rules": [
           "Foreground may transfer to piano/guitar/horn solo, then return to principal lead.",
-          "Outgoing foreground becomes support or silence."
+          "Outgoing foreground becomes support or silence.",
+          "In small-combo variants, head→solo handoff may thin from near-full ensemble participation to soloist plus a reduced accompaniment subset.",
+          "Non-solo horn parts may rest during another horn's solo unless the resolved arrangement explicitly assigns backgrounds."
         ],
         "register_occupancy": {
           "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
@@ -2152,6 +2211,46 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "Jazz ballad describes behavior/form as much as instrumentation; percentages require a resolved formation."
+        },
+        "jazzsamba_small_combo_reference": {
+          "source": "JazzSAMBA 1.0.0 (2026)",
+          "scope": "Five-player jazz-combo recordings using drums, bass, piano, trumpet and one saxophone; observations apply only to this small-combo variant and are not universal genre percentages.",
+          "repertoire_observation": {
+            "source_genre": "ballad",
+            "song_count": 9,
+            "bpm": {
+              "min": 75,
+              "median": 110,
+              "max": 145
+            },
+            "swung_percent": 66.7,
+            "meters": {
+              "4/4": 8,
+              "3/4": 1
+            },
+            "forms": {
+              "AABA": 6,
+              "ABAC": 1,
+              "AABC": 1,
+              "ABC": 1
+            },
+            "avg_active_players_head": 4.53,
+            "avg_active_players_solo": 3.21,
+            "solo_to_head_active_ratio": 0.709,
+            "solo_accompaniment_presence_percent": {
+              "drums": 80.4,
+              "bass": 67.8,
+              "piano": 73
+            }
+          },
+          "interpretation_guardrails": [
+            "Tempo, form, meter and swing values describe the JazzSAMBA repertoire sample, not hard genre limits.",
+            "Solo rotation in JazzSAMBA is partly shaped by dataset/recording design and must not become a rule that every instrument must solo.",
+            "Section_musicians annotations are useful evidence for accompaniment thinning and foreground windows.",
+            "Average active-player counts describe annotated section participation, not loudness or mix gain.",
+            "Do not apply this small-combo evidence to Big Band or full traditional percussion ensembles."
+          ],
+          "key_finding": "In the ballad sample, solo sections average 71% of the active-player count found in head sections, supporting deliberate ensemble thinning when a soloist takes foreground."
         }
       },
       "performance": {
@@ -2179,17 +2278,20 @@
           "Current AI Composer Jazz Ballad profile",
           "MMA SlowJazz/MellowJazz",
           "Weimar Jazz Database",
-          "Berklee jazz references"
+          "Berklee jazz references",
+          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations"
         ],
         "source_confidence": {
           "core_ballad_behavior": "HIGH",
-          "formation_percentages": "PENDING"
+          "formation_percentages": "PENDING",
+          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "MMA": "LICENSE_REVIEW",
           "Weimar": "ODbL_DATA_REFERENCE",
-          "Berklee": "REFERENCE_ONLY"
+          "Berklee": "REFERENCE_ONLY",
+          "JazzSAMBA_code_and_metadata": "MIT_REPO__VERIFY_DATASET_AUDIO_TERMS_BEFORE_DIRECT_AUDIO_REUSE"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -2197,12 +2299,14 @@
       "validation": {
         "structural_tests": [
           "No fixed percentages before formation resolution.",
-          "Rubato/time changes must be shared."
+          "Rubato/time changes must be shared.",
+          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default."
         ],
         "listening_tests": [
           "Lead remains intimate and forward.",
           "Accompaniment breathes.",
-          "Bass/brushes do not crowd the line."
+          "Bass/brushes do not crowd the line.",
+          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -2630,7 +2734,7 @@
       "source_profile_id": "JAZZ_WALTZ_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "JAZZ_WALTZ_V1",
@@ -2760,10 +2864,14 @@
         },
         "foreground_window_rules": [
           "Solo/lead receives clear space; 3/4 accompaniment remains responsive.",
-          "Walking bass/ride maintain pulse without dominating."
+          "Walking bass/ride maintain pulse without dominating.",
+          "Small-combo evidence supports reducing the number of simultaneously active players when a soloist takes foreground rather than solving clarity with gain alone.",
+          "Rhythm-section accompaniment often remains present under solos, but not every accompaniment instrument must remain continuously active."
         ],
         "role_handoff_rules": [
-          "Foreground transfers between head and soloists; comping becomes response/support."
+          "Foreground transfers between head and soloists; comping becomes response/support.",
+          "In small-combo variants, head→solo handoff may thin from near-full ensemble participation to soloist plus a reduced accompaniment subset.",
+          "Non-solo horn parts may rest during another horn's solo unless the resolved arrangement explicitly assigns backgrounds."
         ],
         "register_occupancy": {
           "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
@@ -2774,6 +2882,45 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "Jazz Waltz is a meter/style grammar, not one fixed ensemble."
+        },
+        "jazzsamba_small_combo_reference": {
+          "source": "JazzSAMBA 1.0.0 (2026)",
+          "scope": "Five-player jazz-combo recordings using drums, bass, piano, trumpet and one saxophone; observations apply only to this small-combo variant and are not universal genre percentages.",
+          "repertoire_observation": {
+            "source_genre": "waltz",
+            "song_count": 5,
+            "bpm": {
+              "min": 155,
+              "median": 165,
+              "max": 205
+            },
+            "swung_percent": 80,
+            "meters": {
+              "3/4": 5
+            },
+            "forms": {
+              "AABA": 2,
+              "AABC": 1,
+              "ABAC": 1,
+              "ABCDE": 1
+            },
+            "avg_active_players_head": 4.69,
+            "avg_active_players_solo": 3.25,
+            "solo_to_head_active_ratio": 0.693,
+            "solo_accompaniment_presence_percent": {
+              "drums": 79,
+              "bass": 70.1,
+              "piano": 76.4
+            }
+          },
+          "interpretation_guardrails": [
+            "Tempo, form, meter and swing values describe the JazzSAMBA repertoire sample, not hard genre limits.",
+            "Solo rotation in JazzSAMBA is partly shaped by dataset/recording design and must not become a rule that every instrument must solo.",
+            "Section_musicians annotations are useful evidence for accompaniment thinning and foreground windows.",
+            "Average active-player counts describe annotated section participation, not loudness or mix gain.",
+            "Do not apply this small-combo evidence to Big Band or full traditional percussion ensembles."
+          ],
+          "key_finding": "In the waltz sample, solo sections average 69% of the active-player count found in head sections, supporting deliberate ensemble thinning when a soloist takes foreground."
         }
       },
       "performance": {
@@ -2800,17 +2947,20 @@
           "Current AI Composer Jazz Waltz profile",
           "MMA JazzWaltz",
           "Yamaha-derived JazzWaltz style evidence",
-          "Weimar Jazz Database"
+          "Weimar Jazz Database",
+          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations"
         ],
         "source_confidence": {
           "core_meter_behavior": "HIGH",
-          "formation_percentages": "PENDING"
+          "formation_percentages": "PENDING",
+          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "MMA": "LICENSE_REVIEW",
           "Weimar": "ODbL_DATA_REFERENCE",
-          "manufacturer_style_content": "REFERENCE_ONLY"
+          "manufacturer_style_content": "REFERENCE_ONLY",
+          "JazzSAMBA_code_and_metadata": "MIT_REPO__VERIFY_DATASET_AUDIO_TERMS_BEFORE_DIRECT_AUDIO_REUSE"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -2818,12 +2968,14 @@
       "validation": {
         "structural_tests": [
           "Meter fixed at 3/4 for this contract unless explicit hybrid.",
-          "No generic ballroom-waltz fallback."
+          "No generic ballroom-waltz fallback.",
+          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default."
         ],
         "listening_tests": [
           "Feels like jazz in 3 rather than generic waltz.",
           "Bass/ride are clear but not dominant.",
-          "Solo/comping hierarchy remains conversational."
+          "Solo/comping hierarchy remains conversational.",
+          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -2857,7 +3009,7 @@
       "source_profile_id": "BEBOP_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BEBOP_V1",
@@ -2987,11 +3139,15 @@
         "foreground_window_rules": [
           "Soloist/head owns primary foreground; comping and drums interact without crowding.",
           "Walking bass remains audible foundation.",
-          "Second horn backgrounds are selective, not constant."
+          "Second horn backgrounds are selective, not constant.",
+          "Small-combo evidence supports reducing the number of simultaneously active players when a soloist takes foreground rather than solving clarity with gain alone.",
+          "Rhythm-section accompaniment often remains present under solos, but not every accompaniment instrument must remain continuously active."
         ],
         "role_handoff_rules": [
           "Foreground moves head→soloists→head; rhythm section adapts each handoff.",
-          "Trading/fours or drum features require explicit temporary foreground transfer."
+          "Trading/fours or drum features require explicit temporary foreground transfer.",
+          "In small-combo variants, head→solo handoff may thin from near-full ensemble participation to soloist plus a reduced accompaniment subset.",
+          "Non-solo horn parts may rest during another horn's solo unless the resolved arrangement explicitly assigns backgrounds."
         ],
         "register_occupancy": {
           "rule": "Keep solo/lead, comping and bass registers sufficiently separated for conversational clarity."
@@ -3002,6 +3158,44 @@
         "section_population_reference": {
           "status": "NO_SINGLE_UNIVERSAL_FORMATION",
           "note": "Bebop commonly uses small combos but quartet/quintet/piano-less/guitar variants differ."
+        },
+        "jazzsamba_small_combo_reference": {
+          "source": "JazzSAMBA 1.0.0 (2026)",
+          "scope": "Five-player jazz-combo recordings using drums, bass, piano, trumpet and one saxophone; observations apply only to this small-combo variant and are not universal genre percentages.",
+          "repertoire_observation": {
+            "source_genre": "bebop",
+            "song_count": 8,
+            "bpm": {
+              "min": 135,
+              "median": 180,
+              "max": 250
+            },
+            "swung_percent": 100,
+            "meters": {
+              "4/4": 8
+            },
+            "forms": {
+              "AABA": 4,
+              "ABAC": 3,
+              "AA": 1
+            },
+            "avg_active_players_head": 4.69,
+            "avg_active_players_solo": 3.31,
+            "solo_to_head_active_ratio": 0.706,
+            "solo_accompaniment_presence_percent": {
+              "drums": 79.5,
+              "bass": 75.1,
+              "piano": 75.5
+            }
+          },
+          "interpretation_guardrails": [
+            "Tempo, form, meter and swing values describe the JazzSAMBA repertoire sample, not hard genre limits.",
+            "Solo rotation in JazzSAMBA is partly shaped by dataset/recording design and must not become a rule that every instrument must solo.",
+            "Section_musicians annotations are useful evidence for accompaniment thinning and foreground windows.",
+            "Average active-player counts describe annotated section participation, not loudness or mix gain.",
+            "Do not apply this small-combo evidence to Big Band or full traditional percussion ensembles."
+          ],
+          "key_finding": "In the bebop sample, solo sections average 71% of the active-player count found in head sections, supporting deliberate ensemble thinning when a soloist takes foreground."
         }
       },
       "performance": {
@@ -3029,18 +3223,21 @@
           "Current AI Composer Bebop profile",
           "Weimar Jazz Database",
           "MMA Bebop",
-          "Berklee jazz references"
+          "Berklee jazz references",
+          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations"
         ],
         "source_confidence": {
           "bebop_style_identity": "HIGH",
           "solo_style_data": "HIGH_FOR_DATABASE_SCOPE",
-          "formation_percentages": "PENDING"
+          "formation_percentages": "PENDING",
+          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET"
         },
         "source_license_status": {
           "internal": "PROJECT_INTERNAL",
           "Weimar": "ODbL",
           "MMA": "LICENSE_REVIEW",
-          "Berklee": "REFERENCE_ONLY"
+          "Berklee": "REFERENCE_ONLY",
+          "JazzSAMBA_code_and_metadata": "MIT_REPO__VERIFY_DATASET_AUDIO_TERMS_BEFORE_DIRECT_AUDIO_REUSE"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -3049,12 +3246,14 @@
         "structural_tests": [
           "No generic swing profile substitution.",
           "Solo foreground hierarchy explicit.",
-          "No rock backbeat fallback."
+          "No rock backbeat fallback.",
+          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default."
         ],
         "listening_tests": [
           "Bop line/harmony feels idiomatic at tempo.",
           "Walking bass/ride remain coherent.",
-          "Comping leaves room for solo."
+          "Comping leaves room for solo.",
+          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -6968,7 +7167,7 @@
       "source_profile_id": "BOSSA_NOVA_V1",
       "family": "Latin",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BOSSA_NOVA_V1",
@@ -7102,12 +7301,16 @@
         "foreground_window_rules": [
           "Lead/vocal/flute windows require comping simplification and register space.",
           "Guitar or piano may be primary pulse owner; the other should complement rather than duplicate.",
-          "Percussion remains light enough to preserve intimacy."
+          "Percussion remains light enough to preserve intimacy.",
+          "Small-combo evidence supports reducing the number of simultaneously active players when a soloist takes foreground rather than solving clarity with gain alone.",
+          "Rhythm-section accompaniment often remains present under solos, but not every accompaniment instrument must remain continuously active."
         ],
         "role_handoff_rules": [
           "Foreground may pass between lead, guitar/piano solo and instrumental color.",
           "Outgoing foreground becomes sparse comping/support.",
-          "Bass remains structural without becoming constant foreground."
+          "Bass remains structural without becoming constant foreground.",
+          "In small-combo variants, head→solo handoff may thin from near-full ensemble participation to soloist plus a reduced accompaniment subset.",
+          "Non-solo horn parts may rest during another horn's solo unless the resolved arrangement explicitly assigns backgrounds."
         ],
         "register_occupancy": {
           "rule": "Keep melody and comping registers distinct; avoid dense low-mid buildup."
@@ -7191,6 +7394,47 @@
               ]
             }
           }
+        },
+        "jazzsamba_small_combo_reference": {
+          "source": "JazzSAMBA 1.0.0 (2026)",
+          "scope": "Five-player jazz-combo recordings using drums, bass, piano, trumpet and one saxophone; observations apply only to this small-combo variant and are not universal genre percentages.",
+          "repertoire_observation": {
+            "source_genre": "bossa nova",
+            "song_count": 12,
+            "bpm": {
+              "min": 125,
+              "median": 145,
+              "max": 175
+            },
+            "swung_percent": 0,
+            "meters": {
+              "4/4": 12
+            },
+            "forms": {
+              "AABA": 4,
+              "ABAB": 2,
+              "ABAC": 2,
+              "AB": 2,
+              "ABACDEF": 1,
+              "ABCD": 1
+            },
+            "avg_active_players_head": 4.91,
+            "avg_active_players_solo": 3.33,
+            "solo_to_head_active_ratio": 0.678,
+            "solo_accompaniment_presence_percent": {
+              "drums": 82.6,
+              "bass": 72.6,
+              "piano": 78
+            }
+          },
+          "interpretation_guardrails": [
+            "Tempo, form, meter and swing values describe the JazzSAMBA repertoire sample, not hard genre limits.",
+            "Solo rotation in JazzSAMBA is partly shaped by dataset/recording design and must not become a rule that every instrument must solo.",
+            "Section_musicians annotations are useful evidence for accompaniment thinning and foreground windows.",
+            "Average active-player counts describe annotated section participation, not loudness or mix gain.",
+            "Do not apply this small-combo evidence to Big Band or full traditional percussion ensembles."
+          ],
+          "key_finding": "In the bossa nova sample, solo sections average 68% of the active-player count found in head sections, supporting deliberate ensemble thinning when a soloist takes foreground."
         }
       },
       "performance": {
@@ -7220,20 +7464,23 @@
           "Berklee Arranging 1",
           "MMA Bossa-related libraries",
           "GuitarSet",
-          "MTG-Jamendo genre/instrument co-occurrence research reference"
+          "MTG-Jamendo genre/instrument co-occurrence research reference",
+          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations"
         ],
         "source_confidence": {
           "core_bossa_behavior": "HIGH",
           "universal_formation": "REJECTED",
           "variant_percentages": "PENDING",
-          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE"
+          "MTG_Jamendo_presence_reference": "MEDIUM_FOR_RESEARCH_CROSS_CHECK__UPLOADER_TAGS_INCOMPLETE",
+          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
           "MMA": "LICENSE_REVIEW",
           "GuitarSet": "LICENSE_REVIEW",
-          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED"
+          "MTG_Jamendo_metadata": "CC_BY_NC_SA_4_0__NONCOMMERCIAL_RESEARCH_ONLY__RUNTIME_BLOCKED",
+          "JazzSAMBA_code_and_metadata": "MIT_REPO__VERIFY_DATASET_AUDIO_TERMS_BEFORE_DIRECT_AUDIO_REUSE"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -7242,13 +7489,15 @@
         "structural_tests": [
           "No fixed percentages until a formation variant is resolved.",
           "No heavy generic backbeat.",
-          "Guitar/piano roles must complement rather than duplicate."
+          "Guitar/piano roles must complement rather than duplicate.",
+          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default."
         ],
         "listening_tests": [
           "Melody remains clearly audible at low density.",
           "Bass is warm but not dominant.",
           "Comping feels interlocked and restrained.",
-          "Bossa remains recognizably distinct from Samba."
+          "Bossa remains recognizably distinct from Samba.",
+          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false
@@ -7284,7 +7533,7 @@
       "source_profile_id": "SAMBA_V1",
       "family": "Latin",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "research_status": "V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS__JAZZSAMBA_SMALL_COMBO_REFERENCE_ADDED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "SAMBA_V1",
@@ -7440,12 +7689,16 @@
         "foreground_window_rules": [
           "Repinique or other percussion may temporarily become a featured call while other bateria roles maintain support.",
           "Melodic foreground requires density management rather than flattening the bateria.",
-          "Three surdo functions remain differentiated rather than cloned."
+          "Three surdo functions remain differentiated rather than cloned.",
+          "Small-combo evidence supports reducing the number of simultaneously active players when a soloist takes foreground rather than solving clarity with gain alone.",
+          "Rhythm-section accompaniment often remains present under solos, but not every accompaniment instrument must remain continuously active."
         ],
         "role_handoff_rules": [
           "Percussion calls/responses can move among repinique, tamborim, agogo and other roles.",
           "Rhythm-section instruments may move forward in contemporary variants without replacing bateria identity.",
-          "Density changes should be role-specific."
+          "Density changes should be role-specific.",
+          "In small-combo variants, head→solo handoff may thin from near-full ensemble participation to soloist plus a reduced accompaniment subset.",
+          "Non-solo horn parts may rest during another horn's solo unless the resolved arrangement explicitly assigns backgrounds."
         ],
         "register_occupancy": {
           "rule": "Separate low surdo/bass energy from mid/high percussion and melodic register to avoid masking."
@@ -7472,6 +7725,46 @@
             "BATERIA": 8
           },
           "qualification": "Composer pilot formation, not a universal samba headcount."
+        },
+        "jazzsamba_small_combo_reference": {
+          "source": "JazzSAMBA 1.0.0 (2026)",
+          "scope": "Five-player jazz-combo recordings using drums, bass, piano, trumpet and one saxophone; observations apply only to this small-combo variant and are not universal genre percentages.",
+          "repertoire_observation": {
+            "source_genre": "samba",
+            "song_count": 5,
+            "bpm": {
+              "min": 165,
+              "median": 180,
+              "max": 270
+            },
+            "swung_percent": 0,
+            "meters": {
+              "4/4": 5
+            },
+            "forms": {
+              "ABCB": 1,
+              "AABCA": 1,
+              "ABCABCD": 1,
+              "ABC": 1,
+              "AABA": 1
+            },
+            "avg_active_players_head": 4.73,
+            "avg_active_players_solo": 3.26,
+            "solo_to_head_active_ratio": 0.689,
+            "solo_accompaniment_presence_percent": {
+              "drums": 79.4,
+              "bass": 69.7,
+              "piano": 77.3
+            }
+          },
+          "interpretation_guardrails": [
+            "Tempo, form, meter and swing values describe the JazzSAMBA repertoire sample, not hard genre limits.",
+            "Solo rotation in JazzSAMBA is partly shaped by dataset/recording design and must not become a rule that every instrument must solo.",
+            "Section_musicians annotations are useful evidence for accompaniment thinning and foreground windows.",
+            "Average active-player counts describe annotated section participation, not loudness or mix gain.",
+            "Do not apply this small-combo evidence to Big Band or full traditional percussion ensembles."
+          ],
+          "key_finding": "In the samba sample, solo sections average 69% of the active-player count found in head sections, supporting deliberate ensemble thinning when a soloist takes foreground."
         }
       },
       "performance": {
@@ -7498,17 +7791,20 @@
           "Current AI Composer Samba profile",
           "Current Composer SAMBA_BATERIA_10_PLAYER_COMPOSER_REFERENCE",
           "Berklee Contemporary Music Styles samba/bossa curriculum",
-          "MMA Samba library"
+          "MMA Samba library",
+          "JazzSAMBA 1.0.0: multitrack jazz standards with bar/chord/section/soloist and per-section musician annotations"
         ],
         "source_confidence": {
           "pilot_bateria_structure": "HIGH_FOR_PROJECT_PILOT",
           "three_surdo_role_distinction": "HIGH",
-          "variant_population_activity_statistics": "PENDING"
+          "variant_population_activity_statistics": "PENDING",
+          "JazzSAMBA_small_combo_section_participation": "HIGH_FOR_DATASET_OBSERVATION__NOT_UNIVERSAL_GENRE_TARGET"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
           "Berklee": "REFERENCE_ONLY",
-          "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE"
+          "MMA": "LICENSE_REVIEW_BEFORE_DIRECT_PATTERN_REUSE",
+          "JazzSAMBA_code_and_metadata": "MIT_REPO__VERIFY_DATASET_AUDIO_TERMS_BEFORE_DIRECT_AUDIO_REUSE"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -7518,13 +7814,15 @@
           "Pilot formation population percentages sum to 100.",
           "Three surdo functions remain separate identities.",
           "No generic percussion collapse.",
-          "Resolved variant determines whether full bateria architecture is active."
+          "Resolved variant determines whether full bateria architecture is active.",
+          "Small-combo solo state must be able to reduce active-player density without muting the rhythm foundation by default."
         ],
         "listening_tests": [
           "Low-end surdo/bass remains powerful without burying higher percussion.",
           "Repinique/tamborim/agogo/ganza remain individually perceptible.",
           "Melodic foreground remains audible without destroying rhythmic mass.",
-          "Transitions sound samba-specific rather than generic drum fills."
+          "Transitions sound samba-specific rather than generic drum fills.",
+          "Verify solo foreground becomes clearer because accompaniment participation/density changes, not because the solo stem is permanently overboosted."
         ],
         "golden_reference_status": null,
         "approved_for_runtime": false

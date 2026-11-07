@@ -224,6 +224,41 @@ def test_musical_memory_allows_dormancy_and_does_not_force_every_idea_back():
     assert "NOT_EVERY_IDEA_MUST_RETURN_IMMEDIATELY" in m["dormancy_rule"]
 
 
+def test_bass_defaults_to_maximum_rich_depth_without_higher_importance():
+    state = ComposerState(
+        genre="Soul",
+        profile_id="SOUL_PROFILE",
+        section="Chorus",
+        active_instruments=("drums", "bass", "guitar", "keys"),
+    )
+    packet = reason(state=state)
+    validate(packet)
+    b = packet["decisions"]["bass_character"]
+    assert b["target_0_to_1"] == 1.0
+    assert b["mode"] == "MAXIMUM_RICH_DEPTH"
+    assert b["sound_character"]["depth"] == "VERY_DEEP"
+    assert b["sound_character"]["weight"] == "POWERFUL"
+    assert b["sound_character"]["body"] == "FULL_AND_RICH"
+    assert b["compositional_importance_change"] is False
+    assert "EQUAL_IN_COMPOSITIONAL_IMPORTANCE" in b["importance_rule"]
+
+
+def test_rich_bass_preserves_clarity_and_low_end_separation():
+    state = ComposerState(
+        genre="Funk",
+        profile_id="FUNK_PROFILE",
+        section="Verse",
+        active_instruments=("kick", "bass", "guitar", "clav"),
+    )
+    packet = reason(state=state, semantic_tags=("syncopated",))
+    validate(packet)
+    b = packet["decisions"]["bass_character"]
+    assert "MUD" in b["clarity_policy"]
+    assert "KICK_AND_BASS" in b["kick_relationship"]
+    assert b["sound_character"]["harmonic_definition"] == "PRESENT"
+    assert b["v0_1_audio_processing_applied"] is False
+
+
 def test_hash_detects_mutation():
     state = ComposerState(
         genre="Country",
@@ -250,6 +285,8 @@ if __name__ == "__main__":
         test_equal_importance_creates_conversation_not_permanent_background,
         test_musical_memory_recalls_idea_as_transformed_conversation,
         test_musical_memory_allows_dormancy_and_does_not_force_every_idea_back,
+        test_bass_defaults_to_maximum_rich_depth_without_higher_importance,
+        test_rich_bass_preserves_clarity_and_low_end_separation,
         test_hash_detects_mutation,
     ]
     for fn in tests:

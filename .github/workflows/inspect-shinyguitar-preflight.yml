@@ -56,3 +56,16 @@ jobs:
           echo "=== counts ==="
           printf 'sfz='; find composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs -type f -name '*.sfz' | wc -l
           printf 'samples='; find composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Samples -type f | wc -l
+          echo "=== SFZ defines ==="
+          grep -Rhn '^#define' composer/runtime/sound_resources/KARORYFER_SHINYGUITAR/Programs || true
+          echo "=== official compatibility module ==="
+          sed -n '1,260p' composer/runtime/official_sfz_compatibility.py
+          echo "=== Shinyguitar compatibility assessment ==="
+          PYTHONPATH=composer/runtime python - <<'PY'
+          from official_sfz_compatibility import assess_production_mapping
+          print(assess_production_mapping(
+              "KARORYFER_SHINYGUITAR",
+              "Programs/composer_electric.sfz",
+              backend="external_sfz",
+          ))
+          PY

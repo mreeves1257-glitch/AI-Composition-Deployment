@@ -2086,7 +2086,7 @@
       "source_profile_id": "BIG_BAND_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
+      "research_status": "V3_ROLE_AND_FORMATION_AUTHORITY_STRENGTHENED__QUANT_ACTIVITY_CORPUS_PENDING",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BIG_BAND_V1",
@@ -2168,7 +2168,9 @@
         "unresolved_questions": [
           "Derive activity/foreground shares for swing-era versus modern variants.",
           "Quantify rhythm-section activity separately from horn-section activity.",
-          "Research optional doubles and variant-specific instrumentation without treating them as universal."
+          "Research optional doubles and variant-specific instrumentation without treating them as universal.",
+          "Find a defensible open corpus of full big-band arrangements before assigning section activity or foreground-frequency percentages.",
+          "Do not derive representative frequencies from copyrighted MIDI archives or from teaching miniatures designed for stylistic illustration."
         ]
       },
       "musical_grammar": {
@@ -2249,12 +2251,18 @@
         "foreground_window_rules": [
           "Featured solo chair remains single-chair foreground; do not inflate solo into whole section.",
           "Background sections must subordinate density/register/articulation to the current foreground owner.",
-          "Shout/ensemble climaxes may temporarily use coordinated full-section foreground."
+          "Shout/ensemble climaxes may temporarily use coordinated full-section foreground.",
+          "Solo foreground and written background may coexist; background sections must reduce density, register competition, attack length, or dynamic profile rather than disappear by default.",
+          "Section call-and-response requires explicit turn-taking: the answering section may become temporarily prominent while the calling section yields.",
+          "Full-band/shout foreground is a special state, not the default state for every horn section."
         ],
         "role_handoff_rules": [
           "Foreground may transfer among saxes, trumpets, trombones, solo chairs and rhythm features.",
           "Outgoing section converts to background/support or rests rather than competing as a second lead.",
-          "Rhythm section remains foundational while adapting density to featured material."
+          "Rhythm section remains foundational while adapting density to featured material.",
+          "Section handoff can rotate saxes→trumpets→trombones→solo chair→full ensemble while preserving rhythm-section continuity.",
+          "When a soloist enters, horn sections move to background/rest/setup roles until explicitly reassigned.",
+          "Lead-chair foreground and section-block foreground are separate states and must not be conflated."
         ],
         "register_occupancy": {
           "rule": "Section voicings occupy differentiated registers; avoid chronic brass/reed masking of lead lines."
@@ -2273,6 +2281,55 @@
             "RHYTHM_SECTION": 4
           },
           "qualification": "Standard 17-player pilot formation; variants may alter doubles or instrumentation."
+        },
+        "standard_formation_corroboration": {
+          "player_total": 17,
+          "sections": {
+            "SAXOPHONES": {
+              "players": 5,
+              "percent": 29.41,
+              "chairs": [
+                "Alto 1",
+                "Alto 2",
+                "Tenor 1",
+                "Tenor 2",
+                "Baritone"
+              ]
+            },
+            "TRUMPETS": {
+              "players": 4,
+              "percent": 23.53
+            },
+            "TROMBONES": {
+              "players": 4,
+              "percent": 23.53,
+              "note": "Commonly includes a bass trombone chair in modern standard instrumentation."
+            },
+            "RHYTHM": {
+              "players": 4,
+              "percent": 23.53,
+              "chairs": [
+                "Piano",
+                "Guitar",
+                "Bass",
+                "Drums"
+              ]
+            }
+          },
+          "evidence_note": "The same 5-sax / 4-trumpet / 4-trombone / 4-rhythm formation is independently described by Jazz in America, Berklee Jazz Arranging, and other jazz-education references.",
+          "guardrail": "Formation percentages describe physical chair count only, not loudness, activity, or foreground ownership."
+        },
+        "arranging_role_authority": {
+          "high_confidence_rules": [
+            "Melody can be assigned to the full ensemble or selected sections/chairs in unison or harmony.",
+            "Sections can alternate melody and accompaniment roles across form.",
+            "Sax and brass sections can answer each other in call-and-response.",
+            "During an improvised or featured solo, other sections can provide written backgrounds while remaining subordinate to the solo foreground.",
+            "Lead chair and harmonizing chairs are not interchangeable roles; doubling a lead chair to increase loudness is not a default solution.",
+            "Rhythm section supplies continuous structural support but changes comping, density and setup behavior according to foreground and section function."
+          ],
+          "evidence_note": "Supported by Jazz in America arrangement descriptions, Berklee arranging curriculum, and the At the Arranging Desk comparative teaching studies.",
+          "quantitative_status": "ROLE_LOGIC_HIGH_CONFIDENCE__ACTIVITY_FREQUENCIES_PENDING"
         }
       },
       "performance": {
@@ -2304,16 +2361,25 @@
           "Yamaha/Korg arranger architecture",
           "JJazzLab",
           "Weimar Jazz Database",
-          "Berklee arranging references"
+          "Berklee arranging references",
+          "Jazz in America: typical big-band formation and arrangement-role descriptions",
+          "Berklee Online Jazz Arranging: standard five-sax/four-trumpet/four-trombone/full-rhythm big-band writing",
+          "At the Arranging Desk: 150 original comparative teaching orchestrations illustrating lead/background/section voicing and role changes"
         ],
         "source_confidence": {
           "17_player_formation": "HIGH_FOR_STANDARD_PILOT_FORMATION",
           "activity_foreground_statistics": "PENDING",
-          "variant_taxonomy": "PENDING_RESEARCH"
+          "variant_taxonomy": "PENDING_RESEARCH",
+          "standard_17_player_formation": "HIGH__MULTIPLE_INDEPENDENT_EDUCATIONAL_AUTHORITIES",
+          "section_role_logic": "HIGH__MULTIPLE_ARRANGING_REFERENCES",
+          "section_activity_percentages": "PENDING__NO_DEFENSIBLE_OPEN_REPRESENTATIVE_CORPUS_YET"
         },
         "source_license_status": {
           "internal_project_sources": "PROJECT_INTERNAL",
-          "external_sources": "RESEARCH_REFERENCE_OR_LICENSE_REVIEW_REQUIRED"
+          "external_sources": "RESEARCH_REFERENCE_OR_LICENSE_REVIEW_REQUIRED",
+          "Jazz_in_America": "REFERENCE_ONLY",
+          "Berklee_Jazz_Arranging": "REFERENCE_ONLY",
+          "At_the_Arranging_Desk": "REFERENCE_ONLY_UNTIL_REUSE_TERMS_VERIFIED"
         },
         "conflicts_between_sources": [],
         "unresolved_questions": []
@@ -2323,13 +2389,17 @@
           "17-player population percentages sum to 100 for the pilot formation.",
           "Only one primary foreground owner per assignment epoch unless explicitly coupled.",
           "Single-chair solo remains single-chair.",
-          "Section harmonizers/backgrounds remain subordinate to foreground owner."
+          "Section harmonizers/backgrounds remain subordinate to foreground owner.",
+          "Lead chair, section foreground, section background, and full-band/shout states must be represented as distinct arranger states.",
+          "Call-and-response handoffs must prevent simultaneous permanent foreground assignment to both sections."
         ],
         "listening_tests": [
           "Compare against approved Big Band golden reference.",
           "Verify section call/response is clear.",
           "Verify lead chair remains identifiable without making the rest of the section disappear.",
-          "Verify rhythm section supports rather than overwhelms horn figures."
+          "Verify rhythm section supports rather than overwhelms horn figures.",
+          "Verify a soloist remains clear while written horn backgrounds continue underneath.",
+          "Verify sax/brass call-and-response sounds like alternating musical authority rather than stacked equal-volume sections."
         ],
         "golden_reference_status": "AVAILABLE__BIG_BAND_APPROVED_REFERENCE",
         "approved_for_runtime": false

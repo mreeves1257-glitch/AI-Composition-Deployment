@@ -1,0 +1,54 @@
+name: Publish Rock Mode A Listening Artifact
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/publish-rock-mode-a-listening-artifact.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: genre-contract-v3-no-reasoning-diagnostic
+
+      - name: Download successful controlled listening artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Rock_Mode_A_Guitar_Listening_AB
+          run-id: 42388941089
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/rock_ab
+
+      - name: Verify expected listening files
+        run: |
+          test -s /tmp/rock_ab/A_BEFORE_MODE_A.mp3
+          test -s /tmp/rock_ab/B_AFTER_MODE_A.mp3
+          test -s /tmp/rock_ab/ROCK_MODE_A_GUITAR_AB_LISTENING_REPORT.json
+          sha256sum /tmp/rock_ab/*.mp3
+
+      - name: Publish MP3s to diagnostic branch only
+        run: |
+          set -euo pipefail
+          out="genre_contract_v3_research/listening_outputs/rock_mode_a_guitar_ab"
+          mkdir -p "$out"
+          cp /tmp/rock_ab/A_BEFORE_MODE_A.mp3 "$out/"
+          cp /tmp/rock_ab/B_AFTER_MODE_A.mp3 "$out/"
+          cp /tmp/rock_ab/ROCK_MODE_A_GUITAR_AB_LISTENING_REPORT.json "$out/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$out"
+          if git diff --cached --quiet; then
+            echo "LISTENING_FILES_ALREADY_PUBLISHED"
+            exit 0
+          fi
+          git commit -m "Publish controlled Rock Mode A guitar listening A/B"
+          git push origin HEAD:genre-contract-v3-no-reasoning-diagnostic

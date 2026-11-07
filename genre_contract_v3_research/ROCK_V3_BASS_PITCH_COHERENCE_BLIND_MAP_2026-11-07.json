@@ -1,0 +1,42 @@
+{
+  "schema": "ROCK_V3_BASS_PITCH_COHERENCE_BLIND_MAP_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_workflow_run": 42395776007,
+  "source_artifact_id": 13582444349,
+  "source_artifact_digest": "sha256:bb34eba27d3e4876c9ba0fb517ad1587ca393a22358bd9f72d98bb5785d1b0e5",
+  "mapping": {
+    "BLIND_1_CONTEXT": "B_PITCH_COHERENT_WITH_APPROVED_GUITARS",
+    "BLIND_2_CONTEXT": "A_CURRENT_WITH_APPROVED_GUITARS",
+    "BLIND_1_BASS_ONLY": "B_BASS_PITCH_COHERENT",
+    "BLIND_2_BASS_ONLY": "A_BASS_CURRENT"
+  },
+  "sha256": {
+    "BLIND_1_CONTEXT": "80d4c53f68fa2b434fd50f35cb2259a298b785aff19c1560799245b99f5a6af4",
+    "BLIND_2_CONTEXT": "da5a3500e040556897002ef4adbcac3f49e05ef0ff9df3a48b739d56087c3dc2",
+    "BLIND_1_BASS_ONLY": "60c3f3b7c407d973ea21093a7eaaa3e74ace0487de63d96576cefacf86884642",
+    "BLIND_2_BASS_ONLY": "9dd5428dc8c964c291118b5cfb8a989b58d65177e98d550d7657506371a33e1e"
+  },
+  "repair_window": {
+    "bars": 16,
+    "bass_event_count": 56,
+    "duration_shortened_event_count": 17,
+    "pitch_locked_event_count": 5,
+    "duration_extended_event_count": 0,
+    "onset_changed_event_count": 0,
+    "velocity_changed_event_count": 0
+  },
+  "approved_context": {
+    "growlybass_mapping": "growlybass_vicious.sfz",
+    "harmony_max_ringing_beats": 2.8,
+    "safe_strum": true,
+    "treated_lead": true,
+    "drums_included": false
+  },
+  "canonical_policy_modified": false,
+  "candidate_enabled_live": false,
+  "reasoning_engine_used": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "USER_BLIND_BASS_PITCH_COHERENCE_JUDGMENT"
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "ROCK_V3_STRUM_CANDIDATE_PROVENANCE_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "candidate": {
+    "source": "ROCK_SHINYGUITAR_STRUM_ATTACK_TIMING_V1",
+    "max_cluster_gap_beats": 0.047,
+    "note_gap_beats": 0.038,
+    "max_strum_span_beats": 0.14,
+    "alternate_direction": true,
+    "preserve_pitch_velocity_count": true,
+    "default_enabled": false,
+    "listening_approved": false,
+    "status": "PRIOR_ISOLATED_RESEARCH_CANDIDATE"
+  },
+  "provenance_findings": [
+    "The current diagnostic branch contains the disabled strum policy entry in rock_v3_core_performance_plan.py.",
+    "No dedicated branch-local strum renderer, verifier, or listening artifact was found in genre_contract_v3_research.",
+    "The older composer_overrides/instrument_performance_contract.py groups near-simultaneous electric-guitar attacks into a single gesture for duration logic, but does not stagger their onsets into a performed strum.",
+    "The generic instrument_gesture_handoff path routes explicit expressive tags and is not an implementation of Rock chord-strum attack timing.",
+    "Therefore the disabled Rock strum candidate should be treated as unvalidated research parameters, not as an already-certified performance implementation."
+  ],
+  "current_duration_gate_result": {
+    "blind_user_preference": "B",
+    "blind_B_mapping": "CURRENT_2_8_WITH_TREATED_LEAD",
+    "preferred_harmony_max_ringing_beats": 2.8,
+    "rejected_replacement_cap_beats": 2
+  },
+  "canonical_duration_policy_changed": false,
+  "strum_candidate_enabled": false,
+  "audio_generated": false,
+  "reasoning_engine_used": false,
+  "live_runtime_promoted": false,
+  "next_gate": "SYMBOLIC_SAFETY_ANALYSIS_OF_STRUM_PARAMETERS_AGAINST_CURRENT_40_BAR_SCORE"
+}

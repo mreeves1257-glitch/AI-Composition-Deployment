@@ -91,6 +91,16 @@ def _bar_harmony(phrase_name, bar_index, phrase_length, cadence, rng):
     for function, duration in zip(functions, durations):
         candidates = FUNCTION_CANDIDATES[function]
         roman = candidates[rng.randrange(len(candidates))]
+        if final:
+            if cadence == "PAC":
+                if function == "DOMINANT":
+                    roman = "V7"
+                elif function == "TONIC_ARRIVAL":
+                    roman = "I"
+            elif cadence == "IAC" and function == "TONIC_ARRIVAL":
+                roman = "I6"
+            elif cadence == "HC" and function == "DOMINANT":
+                roman = "V"
         events.append({
             "offset_qb": offset,
             "duration_qb": duration,

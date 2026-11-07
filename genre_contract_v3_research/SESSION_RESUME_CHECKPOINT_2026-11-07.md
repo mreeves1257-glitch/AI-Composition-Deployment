@@ -160,3 +160,49 @@ Purpose:
 Active gate:
 - Judge HARMONY sustain separately from LEAD connection.
 - Do not add strum timing, bass sustain, random timing, continuous control, or other performance variables until this role-isolated A/B is judged.
+
+
+## Corrected role-isolated Rock Mode A listening authority
+
+Supersedes the earlier role-isolated MP3 artifacts.
+
+Validated workflow run: `42390723896`  
+Artifact ID: `13581427805`  
+Artifact digest: `sha256:4969d1f60fc2b494c04f79e979568c79c691ca5a0dcfb41739daeb5d7c935726`
+
+- Workflow now installs ffmpeg and encodes with libmp3lame.
+- Every listening MP3 is validated with ffprobe before upload.
+- Six files pass as MP3 / 44.1 kHz / stereo.
+- Earlier role-isolated artifacts from runs `42389872268` and `42390219578` are superseded for LEAD listening because their lead MP3 packaging was malformed despite successful workflow status.
+- Reasoning engine excluded; live runtime untouched.
+
+### Audio-envelope comparison
+
+Using the validated full role-isolated files and 10 ms RMS windows:
+
+At approximately -40 dBFS activity threshold:
+- LEAD active fraction: A 48.48% -> B 52.21% (+3.73 percentage points).
+- HARMONY active fraction: A 25.07% -> B 66.13% (+41.06 percentage points).
+
+This strongly localizes the large Mode A occupancy change to HARMONY sustain rather than LEAD connection.
+
+### Component-context listening mixes
+
+Secondary diagnostic mixes were built from the validated role files with the existing Composer target gains:
+- HARMONY -5 dB
+- LEAD -6 dB
+- no normalization / limiter / new performance behavior
+
+Conditions:
+- A_BASELINE = A HARMONY + A LEAD
+- C_LEAD_ONLY_MODE_A = A HARMONY + B LEAD
+- D_HARMONY_ONLY_MODE_A = B HARMONY + A LEAD
+- B_FULL_MODE_A = B HARMONY + B LEAD
+
+All four validate as MP3 / 44.1 kHz / stereo / ~78.21 s.
+
+Active listening gate:
+- Compare A vs C for LEAD Mode A in context.
+- Compare A vs D for HARMONY Mode A in context.
+- Compare C vs B to hear the incremental effect of adding HARMONY Mode A after the lead treatment.
+- Do not add strum timing, bass sustain, random timing, continuous control, or any other performance variable yet.

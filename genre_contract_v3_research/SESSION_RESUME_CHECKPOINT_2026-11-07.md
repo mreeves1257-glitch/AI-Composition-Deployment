@@ -269,3 +269,30 @@ Files:
 Workflow run `42391402408` is active. Exact Shinyguitar restore and 846-sample graph validation have passed; pinned sfizz build is the current stage.
 
 No live promotion and no canonical duration-policy modification has been made.
+
+
+## Rock Mode A HARMONY sustain-cap sweep completed
+
+Audio workflow run: `42391402408` — PASS  
+Artifact ID: `13581711960`  
+Artifact digest: `sha256:1e19cc89b0536a2e1f6e35d4271c28728eb39216d9d53d9fb5dd636ef3d0ec96`
+
+Symbolic verification workflow run: `42391580885` — PASS  
+Artifact ID: `13581249726`  
+Artifact digest: `sha256:fdd5493367abd09331605c7be725a2f6b980b34c9fc9d51b463f312ac8b3428a`
+
+Four verified 8-bar rhythm-guitar conditions:
+- BASELINE — no Mode A HARMONY extension, max duration 0.5 beat.
+- CAP_1_4 — existing Mode A extension behavior capped at 1.4 beats.
+- CAP_2_0 — existing Mode A extension behavior capped at 2.0 beats.
+- CURRENT_2_8 — canonical current Mode A, 2.8-beat maximum.
+
+All candidates preserve pitch, onset, velocity, voicing, event count, instrument identity and non-HARMONY roles. Canonical shortenings are preserved. No bar crossing or split vertical chord durations.
+
+10 ms RMS envelope occupancy at threshold 0.01:
+- BASELINE mean active bar fraction: 21.27%
+- CAP_1_4: 46.84%
+- CAP_2_0: 58.62%
+- CURRENT_2_8: 67.27%
+
+This establishes a clean sustain-density ladder. No canonical policy has been changed. Active gate is human listening to choose whether the shortest natural-sounding cap is 1.4, 2.0 or the current 2.8 beats. If all capped candidates still sound wrong, duration should no longer be treated as the primary issue.

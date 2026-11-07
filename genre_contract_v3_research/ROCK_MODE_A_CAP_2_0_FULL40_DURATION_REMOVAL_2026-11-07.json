@@ -1,0 +1,57 @@
+{
+  "schema": "ROCK_MODE_A_CAP_2_0_FULL40_DURATION_REMOVAL_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "tempo_bpm": 123,
+  "canonical_extreme_duration_beats": 2.8,
+  "candidate_extreme_duration_beats": 2,
+  "duration_removed_per_affected_vertical_gesture_beats": 0.8,
+  "affected_vertical_gestures": 26,
+  "affected_note_events": 78,
+  "total_vertical_gesture_beats_removed": 20.8,
+  "approximate_total_seconds_of_vertical_gesture_ring_removed": 10.1463,
+  "note_event_beats_removed": 62.4,
+  "section_impact": {
+    "INTRO_1": {
+      "gestures": 4,
+      "gesture_beats_removed": 3.2,
+      "approx_seconds_removed": 1.561
+    },
+    "VERSE_1": {
+      "gestures": 5,
+      "gesture_beats_removed": 4,
+      "approx_seconds_removed": 1.9512
+    },
+    "CHORUS_1": {
+      "gestures": 5,
+      "gesture_beats_removed": 4,
+      "approx_seconds_removed": 1.9512
+    },
+    "VERSE_2": {
+      "gestures": 5,
+      "gesture_beats_removed": 4,
+      "approx_seconds_removed": 1.9512
+    },
+    "CHORUS_2": {
+      "gestures": 5,
+      "gesture_beats_removed": 4,
+      "approx_seconds_removed": 1.9512
+    },
+    "OUTRO_1": {
+      "gestures": 2,
+      "gesture_beats_removed": 1.6,
+      "approx_seconds_removed": 0.7805
+    }
+  },
+  "interpretation": [
+    "The 2.0-beat candidate is a uniform trim of exactly 0.8 beat from only the extreme 2.8-beat HARMONY gestures.",
+    "Moderate canonical HARMONY durations below 2.0 beats are untouched.",
+    "The change is distributed through all major sections rather than concentrated in one passage.",
+    "Approximate seconds removed describes vertical chord-gesture duration at 123 BPM, not summed three-note event time and not final acoustic decay."
+  ],
+  "canonical_policy_modified": false,
+  "reasoning_engine_used": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "FULL40_RENDERED_CONTEXT_LISTENING"
+}

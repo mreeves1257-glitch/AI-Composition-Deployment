@@ -1,0 +1,115 @@
+{
+  "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "genre_name": "Rhythm and Blues",
+  "source_profile_id": "RHYTHM_AND_BLUES_V1",
+  "family": "R&B",
+  "source_status": "CONTROLLED_PROFILE",
+  "research_status": "NOT_STARTED",
+  "approved_for_runtime": false,
+  "current_profile_snapshot": {
+    "profile_id": "RHYTHM_AND_BLUES_V1",
+    "family": "R&B",
+    "status": "CONTROLLED_PROFILE",
+    "scope_note": "",
+    "tempo_bpm_range": [
+      70,
+      135
+    ],
+    "meter_options": [
+      "4/4",
+      "12/8"
+    ],
+    "form_tendencies": [
+      "verse_chorus",
+      "through_composed"
+    ],
+    "groove_behavior": "backbeat-centered groove; straight, shuffle or triplet-derived feel depending profile",
+    "phrase_behavior": "4/8-bar vocal/instrumental phrases with turnarounds and call-response",
+    "harmony_behavior": "blues/gospel-derived tonal harmony, dominant color and repeated progressions with variation",
+    "bass_behavior": "groove-oriented bass tied to kick with fills into phrase boundaries",
+    "percussion_behavior_if_applicable": "firm snare backbeat, kick pocket, hats/ride; shuffle variants allowed",
+    "instrument_role_behavior": "voice or horn/guitar lead, piano/electric piano, guitar, bass, drums, optional brass",
+    "ensemble_player_behavior": "rhythm section pocket supports lead; responses occupy gaps rather than overlap constantly",
+    "arrangement_transformation": "verse/chorus, blues-based or sectional song forms",
+    "dynamic_behavior": "medium-to-strong groove dynamics with chorus lift",
+    "articulation_behavior": "expressive bends/scoops, guitar accents and strong drum backbeat",
+    "timing_humanization_behavior": "pocket may sit slightly behind/around beat but remains ensemble-coherent",
+    "continuous_performance_control": "expression and articulation curves for lead plus rhythm-section dynamics",
+    "sound_effects_intent": "warm amp/room/reverb; saturation optional",
+    "mix_prominence_intent": "lead and bass clear; backbeat present but not crushing",
+    "production_mastering_intent": "warm/punchy master with dynamic vocal or lead space",
+    "manufacturer_adapter_requirements": "map keys/guitar/horns and drum resources with groove-preserving articulations",
+    "resolution_policy": "AUTOMATIC_BASELINE_ALLOWED",
+    "provenance": [
+      "existing_project_theory",
+      "established_genre_practice"
+    ],
+    "execution_rule": "USE_CONTROLLED_PROFILE"
+  },
+  "comparison": {
+    "current_profile_strengths": [],
+    "current_profile_gaps": [],
+    "external_sources_considered": [],
+    "retained_current_fields": [],
+    "upgraded_fields": [],
+    "conflicts": [],
+    "unresolved_questions": []
+  },
+  "musical_grammar": {
+    "form_model": null,
+    "harmony_model": null,
+    "melody_model": null,
+    "rhythm_groove_model": null,
+    "bass_model": null,
+    "percussion_model": null,
+    "phrase_model": null,
+    "transition_model": null,
+    "development_model": null,
+    "cadence_ending_model": null
+  },
+  "ensemble": {
+    "instrument_roster": [],
+    "population_mass_percent": {},
+    "presence_percent": {},
+    "activity_percent": {},
+    "musical_agency_percent": {},
+    "foreground_window_percent": {},
+    "foreground_window_rules": [],
+    "role_handoff_rules": [],
+    "register_occupancy": {},
+    "spatial_footprint_percent": {},
+    "section_population_reference": {}
+  },
+  "performance": {
+    "articulation_behavior": null,
+    "dynamic_behavior": null,
+    "timing_humanization_behavior": null,
+    "continuous_performance_control": null,
+    "interaction_rules": []
+  },
+  "production": {
+    "spatial_presentation": null,
+    "mix_prominence_intent": null,
+    "sound_effects_intent": null,
+    "production_mastering_intent": null
+  },
+  "evidence": {
+    "sources": [],
+    "source_confidence": {},
+    "source_license_status": {},
+    "conflicts_between_sources": [],
+    "unresolved_questions": []
+  },
+  "validation": {
+    "structural_tests": [],
+    "listening_tests": [],
+    "golden_reference_status": null,
+    "approved_for_runtime": false
+  },
+  "safeguards": {
+    "population_is_not_linear_gain": true,
+    "musical_agency_is_not_loudness": true,
+    "current_profile_preserved": true,
+    "no_live_merge_without_review": true
+  }
+}

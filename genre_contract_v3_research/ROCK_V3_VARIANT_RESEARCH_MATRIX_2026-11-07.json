@@ -1,0 +1,375 @@
+{
+  "schema": "ROCK_V3_VARIANT_RESEARCH_MATRIX_001",
+  "date": "2026-11-07",
+  "genre": "ROCK",
+  "profile_id": "ROCK_CORE_V2",
+  "purpose": "Separate executable Rock composition variants from umbrella labels before variant-specific form expansion or audio.",
+  "governing_rules": [
+    "Broad ROCK_CORE_V2 is not a finished composition grammar.",
+    "Do not silently default a broad Rock request to any child variant.",
+    "Do not treat a radio/canon format or catch-all scene label as one deterministic musical recipe.",
+    "Machine-executable variant packages must define form, groove, harmonic vocabulary, texture/role ownership, foreground behavior, density/development, and transition/cadence behavior before audio.",
+    "Evidence-derived tendencies are constraints and weighted choices, not mandatory clichés."
+  ],
+  "sources": [
+    {
+      "id": "ALLMUSIC_HARD_ROCK",
+      "title": "Hard Rock Music Genre Overview",
+      "url": "https://www.allmusic.com/genre/hard-rock-ma0000002636",
+      "use": "Hard-rock riffs, backbeat, chorus scale, blues/psychedelia lineage."
+    },
+    {
+      "id": "ALLMUSIC_SOFT_ROCK",
+      "title": "Soft Rock Music Genre Overview",
+      "url": "https://www.allmusic.com/genre/soft-rock-ma0000011841",
+      "use": "Soft-rock melodic emphasis, smoother edges, lush production."
+    },
+    {
+      "id": "ALLMUSIC_SOUTHERN_ROCK",
+      "title": "Southern Rock Music Genre Overview",
+      "url": "https://www.allmusic.com/genre/southern-rock-ma0000002872",
+      "use": "Blues/country fusion, boogie, improvisation, multi-guitar/jam tendencies."
+    },
+    {
+      "id": "ALLMUSIC_BLUES_ROCK",
+      "title": "Blues-Rock Music Style Overview",
+      "url": "https://www.allmusic.com/style/blues-rock-ma0000002468",
+      "use": "Three-chord blues basis, instrumental improvisation, loud/riff-oriented combo behavior."
+    },
+    {
+      "id": "ROCHESTER_PROG_DISSERTATION",
+      "title": "Keys To Attention: Keyboard Performance and Texture in 1970s Progressive Rock",
+      "url": "https://urresearch.rochester.edu/fileDownloadForInstitutionalItem.action?itemFileId=192543&itemId=38028",
+      "use": "Complex textures, irregular meters, long/unusual forms, virtuosity, atypical instruments."
+    },
+    {
+      "id": "MTO_PUNK_ANALYSIS",
+      "title": "Extreme Hardcore Punk and the Analytical Challenges of Rhythm, Riffs, and Timbre in Punk Music",
+      "url": "https://mtosmt.org/issues/mto.19.25.1/mto.19.25.1.pearson.html",
+      "use": "Power-chord/riff behavior, bass coupling, speed, short forms, 77-style verse/chorus baseline."
+    },
+    {
+      "id": "ALLMUSIC_PUNK",
+      "title": "Punk Music Style Overview",
+      "url": "https://www.allmusic.com/style/punk-ma0000002806",
+      "use": "Three-chord/simple-melody, louder/faster/more abrasive stripped-down baseline."
+    },
+    {
+      "id": "ALLMUSIC_ALTERNATIVE",
+      "title": "Alternative/Indie Rock Music Style Overview",
+      "url": "https://www.allmusic.com/style/alternative-indie-rock-ma0000012230",
+      "use": "Alternative as a highly diverse catch-all rather than one composition grammar."
+    },
+    {
+      "id": "ALLMUSIC_SINGER_SONGWRITER",
+      "title": "Singer/Songwriter Music Style Overview",
+      "url": "https://www.allmusic.com/style/singer-songwriter-ma0000002855",
+      "use": "Song-centered, sparse/direct/reflective arrangements; acoustic guitar/piano and small backing groups."
+    },
+    {
+      "id": "AMERICAN_RADIO_CLASSIC_ROCK",
+      "title": "Historical Dictionary of American Radio — Classic Rock",
+      "url": "https://www.worldradiohistory.com/BOOKSHELF-ARH/Encyclopedias/Miscellaneous-Encyclopedias/Historical-Dictionary-of-American-Radio-Leigh-Godfrey-1998.pdf",
+      "use": "Classic rock as a radio format centered on late-1960s/1970s and later harder rock canon."
+    }
+  ],
+  "variants": {
+    "Classic rock": {
+      "classification": "UMBRELLA_RADIO_CANON__SECOND_LEVEL_RESOLUTION_REQUIRED",
+      "machine_package_status": "BLOCK_SINGLE_RECIPE",
+      "evidence_confidence": "HIGH_FOR_UMBRELLA_CLASSIFICATION",
+      "reason": "Classic rock is primarily a radio/canon format spanning blues-rock, hard rock, progressive rock and related album-rock material rather than one coherent composition grammar.",
+      "required_child_resolution": [
+        "riff_hard_rock",
+        "blues_rock",
+        "progressive_album_rock",
+        "roots_or_southern_leaning",
+        "other_evidence_backed_period_style"
+      ],
+      "broad_form_rule": "NO_SINGLE_FORM_DEFAULT",
+      "broad_groove_rule": "NO_SINGLE_GROOVE_DEFAULT",
+      "broad_harmony_rule": "NO_SINGLE_HARMONY_DEFAULT",
+      "broad_foreground_rule": "GUITAR_OR_VOCAL_FOREGROUND_COMMON_BUT_CHILD_STYLE_OWNS_DETAILS",
+      "sources": [
+        "AMERICAN_RADIO_CLASSIC_ROCK"
+      ]
+    },
+    "Hard rock": {
+      "classification": "EXECUTABLE_COMPOSITION_VARIANT_CANDIDATE",
+      "machine_package_status": "RESEARCH_SUFFICIENT_FOR_STRUCTURAL_CANDIDATE__LISTENING_PENDING",
+      "evidence_confidence": "MEDIUM_HIGH",
+      "form_strategy": {
+        "primary": "SECTIONAL_VERSE_CHORUS_OR_RIFF_DRIVEN",
+        "chorus_behavior": "ANTHEMIC_LIFT",
+        "instrumental_expansion": "OPTIONAL_RIFF_OR_SOLO_EXTENSION"
+      },
+      "groove_strategy": {
+        "pulse": "STRAIGHT_OR_SWAGGERING_ROCK_BACKBEAT",
+        "backbeat": "STRUCTURAL_AND_HEAVY",
+        "riff_sync": "GUITAR_BASS_KICK_COORDINATION_WITH_ELASTIC_FILL_SPACE"
+      },
+      "harmony_strategy": {
+        "vocabulary": "RIFF_AND_CHORD_PROGRESSION_CENTERED",
+        "blues_influence": "ALLOWED_TO_STRONG",
+        "power_chords": "COMMON_NOT_MANDATORY"
+      },
+      "texture_strategy": {
+        "rhythm_guitar": "PROMINENT_DISTORTED_OR_OVERDRIVEN_RIFF_OWNER",
+        "bass": "FOUNDATION_WITH_RIFF_LOCK_AND_INDEPENDENT_CONNECTIVE_MOTION",
+        "drums": "STOMPING_BACKBEAT_WITH_SECTIONAL_FILLS"
+      },
+      "foreground_strategy": {
+        "lead": "SELECTIVE_GUITAR_OR_VOCAL_LEAD",
+        "chorus": "HOOK_PRIORITY",
+        "solo": "OPTIONAL_AND_STYLE_DEPENDENT"
+      },
+      "development_strategy": "BUILD_BY_RIFF_DENSITY_REGISTER_CHORUS_SCALE_AND_FILL_INTENSITY",
+      "sources": [
+        "ALLMUSIC_HARD_ROCK"
+      ]
+    },
+    "Soft rock": {
+      "classification": "EXECUTABLE_COMPOSITION_VARIANT_CANDIDATE",
+      "machine_package_status": "RESEARCH_SUFFICIENT_FOR_STRUCTURAL_CANDIDATE__LISTENING_PENDING",
+      "evidence_confidence": "MEDIUM_HIGH",
+      "form_strategy": {
+        "primary": "SONG_CENTERED_VERSE_CHORUS_OR_BALLAD_SECTIONAL",
+        "chorus_behavior": "MELODIC_LIFT_WITHOUT_AGGRESSIVE_DENSITY_JUMP",
+        "instrumental_expansion": "RESTRAINED"
+      },
+      "groove_strategy": {
+        "pulse": "SLOW_TO_MODERATE_SMOOTH_ROCK_PULSE",
+        "backbeat": "SOFTER_AND_LESS_RAUCous",
+        "subdivision": "STRAIGHT_OR_TRIPLET_FEEL_ALLOWED_BY_SONG"
+      },
+      "harmony_strategy": {
+        "vocabulary": "ACCESSIBLE_TONAL_POP_ROCK_WITH_MELODIC_SUPPORT",
+        "chord_duration": "CAN_REMAIN_STABLE_LONGER_THAN_HARD_ROCK",
+        "dissonance": "CONTROLLED"
+      },
+      "texture_strategy": {
+        "guitars_keys": "CLEANER_OR_ACOUSTIC_FORWARD",
+        "production_density": "LUSH_ALLOWED_BUT_MELODY_MUST_REMAIN_CLEAR",
+        "drums": "SUPPORTIVE_NOT_DOMINATING"
+      },
+      "foreground_strategy": {
+        "melody": "PRIMARY_IDENTITY",
+        "lead_instrument": "VOCAL_MELODY_ANALOG_OR_GENTLE_INSTRUMENTAL_FOREGROUND",
+        "solo": "SHORT_OR_OPTIONAL"
+      },
+      "development_strategy": "BUILD_WITH_HARMONY_BACKGROUND_VOICES_KEYS_STRINGS_OR_GENTLE_DENSITY_RATHER_THAN_AGGRESSION",
+      "sources": [
+        "ALLMUSIC_SOFT_ROCK"
+      ]
+    },
+    "Alternative rock": {
+      "classification": "UMBRELLA_SCENE_STYLE__SECOND_LEVEL_RESOLUTION_REQUIRED",
+      "machine_package_status": "BLOCK_SINGLE_RECIPE",
+      "evidence_confidence": "HIGH_FOR_UMBRELLA_CLASSIFICATION",
+      "reason": "Alternative/indie rock explicitly spans highly divergent substyles including jangle-pop, post-hardcore, industrial, funk-metal, punk-pop, experimental rock and more.",
+      "required_child_resolution": [
+        "jangle_or_college_rock",
+        "grunge_or_heavy_alternative",
+        "post_punk_or_dark",
+        "indie_or_lofi",
+        "experimental_or_art_rock",
+        "other_evidence_backed_alternative_child"
+      ],
+      "broad_form_rule": "NO_SINGLE_FORM_DEFAULT",
+      "broad_groove_rule": "NO_SINGLE_GROOVE_DEFAULT",
+      "broad_harmony_rule": "NO_SINGLE_HARMONY_DEFAULT",
+      "sources": [
+        "ALLMUSIC_ALTERNATIVE"
+      ]
+    },
+    "Southern rock": {
+      "classification": "EXECUTABLE_COMPOSITION_VARIANT_CANDIDATE",
+      "machine_package_status": "RESEARCH_SUFFICIENT_FOR_STRUCTURAL_CANDIDATE__LISTENING_PENDING",
+      "evidence_confidence": "MEDIUM_HIGH",
+      "form_strategy": {
+        "primary": "ROOTS_ROCK_SECTIONAL_WITH_ROOM_FOR_INSTRUMENTAL_EXTENSION",
+        "instrumental_expansion": "STRONG_OPTION_FOR_JAM_OR_MULTI_GUITAR_EXTENSION",
+        "bridge_behavior": "CAN_OPEN_TEXTURE_OR_SHIFT_ROOTS_INFLUENCE"
+      },
+      "groove_strategy": {
+        "pulse": "HEAVY_BOOGIE_OR_ROOTS_ROCK_BACKBEAT",
+        "feel": "BLUES_AND_COUNTRY_INFLUENCE",
+        "elasticity": "LOOSER_JAM_CAPABLE"
+      },
+      "harmony_strategy": {
+        "vocabulary": "BLUES_COUNTRY_AND_ROCK_ROOTED",
+        "riff_behavior": "BOOGIE_AND_BLUES_RIFFS_COMMON",
+        "cadential_behavior": "ROOTS_TONAL_WITH_BLUES_INFLECTION"
+      },
+      "texture_strategy": {
+        "guitars": "MULTI_GUITAR_INTERPLAY_ALLOWED_TO_PROMINENT",
+        "bass_drums": "ROOTS_GROOVE_FOUNDATION",
+        "optional_color": "COUNTRY_OR_BLUES_DERIVED"
+      },
+      "foreground_strategy": {
+        "lead": "GUITAR_INTERPLAY_AND_IMPROVISATION_CAN_SHARE_FOREGROUND",
+        "vocal": "SONGWRITING_REMAINS_STRUCTURAL",
+        "solo": "LONGER_THAN_BROAD_ROCK_BASELINE_ALLOWED"
+      },
+      "development_strategy": "GROW_THROUGH_GUITAR_INTERPLAY_BOOGIE_INTENSITY_AND_IMPROVISATIONAL_EXTENSION",
+      "sources": [
+        "ALLMUSIC_SOUTHERN_ROCK"
+      ]
+    },
+    "Progressive rock": {
+      "classification": "EXECUTABLE_COMPOSITION_VARIANT_CANDIDATE__1970S_CORE_SCOPE",
+      "machine_package_status": "RESEARCH_SUFFICIENT_FOR_STRUCTURAL_CANDIDATE__LISTENING_PENDING",
+      "evidence_confidence": "HIGH_FOR_1970S_CORE_SCOPE",
+      "form_strategy": {
+        "primary": "MULTI_SECTION_LONG_FORM_OR_UNUSUAL_FORM",
+        "repetition": "MOTIVIC_RECALL_WITH_TRANSFORMATION",
+        "transitions": "COMPOSED_SECTIONAL_TRANSITIONS_REQUIRED"
+      },
+      "groove_strategy": {
+        "meter": "IRREGULAR_OR_CHANGING_METERS_ALLOWED_TO_PROMINENT",
+        "groove": "CAN_SHIFT_BETWEEN_GROOVE_TEXTURES_AND_NON_GROOVE_PASSAGES",
+        "pulse": "NOT_REQUIRED_TO_MAINTAIN_STANDARD_ROCK_BACKBEAT_CONTINUOUSLY"
+      },
+      "harmony_strategy": {
+        "vocabulary": "ROCK_PLUS_NON_ROCK_OR_CLASSICAL_JAZZ_DERIVED_RESOURCES",
+        "modulation": "GREATER_TONAL_OR_MODAL_RANGE_ALLOWED",
+        "harmonic_rhythm": "SECTION_DEPENDENT"
+      },
+      "texture_strategy": {
+        "arrangement": "COMPLEX_STRATIFIED_TEXTURES",
+        "instruments": "ATYPICAL_ROCK_INSTRUMENTS_AND_KEYBOARDS_ALLOWED",
+        "virtuosity": "INDIVIDUAL_PLAYER_VIRTUOSITY_CAN_BE_STRUCTURAL"
+      },
+      "foreground_strategy": {
+        "owner": "CAN_HAND_OFF_AMONG_GUITAR_KEYS_VOCAL_AND_OTHER_INSTRUMENTS",
+        "solo": "VIRTUOSIC_OR_DEVELOPMENTAL_SOLOING_ALLOWED",
+        "motif": "RECURRING_THEMATIC_MATERIAL_PREFERRED_OVER_GENERIC_LEAD_FILL"
+      },
+      "development_strategy": "TRANSFORM_MOTIFS_METERS_TEXTURES_AND_SECTIONAL_MATERIAL_OVER_LONGER_FORM",
+      "sources": [
+        "ROCHESTER_PROG_DISSERTATION"
+      ]
+    },
+    "Punk-related rock": {
+      "classification": "EXECUTABLE_COMPOSITION_VARIANT_CANDIDATE__77_STYLE_BASELINE_ONLY",
+      "machine_package_status": "RESEARCH_SUFFICIENT_FOR_STRUCTURAL_CANDIDATE__LISTENING_PENDING",
+      "evidence_confidence": "HIGH_FOR_77_STYLE_BASELINE",
+      "scope_note": "Later hardcore, pop-punk, post-punk and other punk-derived styles require separate child packages.",
+      "form_strategy": {
+        "primary": "SHORT_DIRECT_VERSE_CHORUS",
+        "intros_bridges": "OPTIONAL_AND_BRIEF",
+        "duration_behavior": "BRIEF_RELATIVE_TO_BROAD_ROCK"
+      },
+      "groove_strategy": {
+        "tempo_character": "FAST_OR_DRIVING",
+        "guitar_bass": "FAST_CONSTANT_OR_NEAR_CONSTANT_RIFF_STRUMMING",
+        "drums": "HEAVILY_ACCENTED_DIRECT_PULSE"
+      },
+      "harmony_strategy": {
+        "vocabulary": "SIMPLE_POWER_CHORD_OR_THREE_CHORD_CENTERED",
+        "riff_priority": "RIFFS_CAN_FUNCTION_MORE_MELODICALLY_TIMBRALLY_THAN_FUNCTIONAL_HARMONY"
+      },
+      "texture_strategy": {
+        "ensemble": "STRIPPED_GUITAR_BASS_DRUMS_BASELINE",
+        "guitar": "HEAVILY_DISTORTED_POWER_CHORD_RIFFS",
+        "bass": "ROOT_COUPLING_WITH_LIMITED_VARIATION"
+      },
+      "foreground_strategy": {
+        "melody": "LIMITED_RANGE_DIRECT_MELODY_ALLOWED",
+        "virtuoso_solo": "DEEMPHASIZED",
+        "intensity": "TIMBRE_AND_RHYTHMIC_FORCE_OVER_ORNAMENT"
+      },
+      "development_strategy": "CHANGE_RIFF_SECTION_HOOK_AND_DYNAMICS_WITH_MINIMAL_ORNAMENTAL_EXPANSION",
+      "sources": [
+        "MTO_PUNK_ANALYSIS",
+        "ALLMUSIC_PUNK"
+      ]
+    },
+    "Blues rock": {
+      "classification": "EXECUTABLE_COMPOSITION_VARIANT_CANDIDATE",
+      "machine_package_status": "RESEARCH_SUFFICIENT_FOR_STRUCTURAL_CANDIDATE__LISTENING_PENDING",
+      "evidence_confidence": "HIGH",
+      "form_strategy": {
+        "primary": "BLUES_DERIVED_OR_RIFF_SECTIONAL",
+        "instrumental_expansion": "IMPROVISATIONAL_EXTENSION_ALLOWED_TO_PROMINENT",
+        "chorus_behavior": "CAN_BE_RIFF_OR_VOCAL_REFRAIN_CENTERED"
+      },
+      "groove_strategy": {
+        "feel": "BLUES_SHUFFLE_STRAIGHT_OR_BOOGIE_CHILD_RESOLUTION",
+        "amplification": "ROCK_WEIGHT",
+        "pocket": "GROOVE_WITH_SOLO_SPACE"
+      },
+      "harmony_strategy": {
+        "vocabulary": "THREE_CHORD_BLUES_AND_BLUES_DERIVED_PROGRESSIONS_CORE",
+        "riffs": "BLUES_RIFFS_AND_TURNAROUNDS_COMMON",
+        "chromaticism": "BLUES_INFLECTION_ALLOWED"
+      },
+      "texture_strategy": {
+        "ensemble": "AMPLIFIED_COMBO",
+        "guitar": "RIFF_PLUS_IMPROVISATIONAL_FOREGROUND",
+        "rhythm_section": "SUPPORT_SOLO_ELASTICITY"
+      },
+      "foreground_strategy": {
+        "solo": "INSTRUMENTAL_IMPROVISATION_STRUCTURAL",
+        "lead": "GUITAR_OR_OTHER_BLUES_LEAD",
+        "phrase": "CALL_RESPONSE_AND_BLUES_PHRASING_ALLOWED"
+      },
+      "development_strategy": "EXTEND_OR_TRANSFORM_RIFFS_AND_SOLO_CHORUSES_WITH_DYNAMIC_BUILD",
+      "sources": [
+        "ALLMUSIC_BLUES_ROCK"
+      ]
+    },
+    "Singer-songwriter rock": {
+      "classification": "EXECUTABLE_COMPOSITION_VARIANT_CANDIDATE__SONG_CENTERED_SCOPE",
+      "machine_package_status": "RESEARCH_SUFFICIENT_FOR_STRUCTURAL_CANDIDATE__LISTENING_PENDING",
+      "evidence_confidence": "MEDIUM_HIGH",
+      "form_strategy": {
+        "primary": "SONG_AND_LYRIC_ANALOG_CENTERED_VERSE_CHORUS_OR_STROPHIC",
+        "instrumental_expansion": "SECONDARY_TO_SONG",
+        "arrangement": "SPARE_TO_SMALL_ENSEMBLE"
+      },
+      "groove_strategy": {
+        "pulse": "SUPPORTIVE_AND_NON_DOMINATING",
+        "drums": "OPTIONAL_OR_RESTRAINED",
+        "rubato": "PHRASE_LEVEL_FLEXIBILITY_ALLOWED"
+      },
+      "harmony_strategy": {
+        "vocabulary": "FOLK_COUNTRY_POP_ROCK_DERIVED_TONAL_SONGCRAFT",
+        "complexity": "SERVES_MELODY_AND_NARRATIVE_ANALOG"
+      },
+      "texture_strategy": {
+        "core": "ACOUSTIC_GUITAR_OR_PIANO_FORWARD",
+        "backing": "SMALL_GROUP_OR_SPARSE_DIRECT_TEXTURE",
+        "density": "LOWER_THAN_BROAD_FULL_BAND_ROCK_BASELINE"
+      },
+      "foreground_strategy": {
+        "melody": "PRIMARY",
+        "phrasing": "DIRECT_REFLECTIVE_SONG_LIKE",
+        "instrumental_lead": "SHORT_RESPONSES_NOT_CONSTANT_SOLOING"
+      },
+      "development_strategy": "DEVELOP_THROUGH_LYRIC_ANALOG_PHRASE_SHAPE_HARMONIC_COLOR_AND_GRADUAL_ARRANGEMENT_GROWTH",
+      "sources": [
+        "ALLMUSIC_SINGER_SONGWRITER"
+      ]
+    }
+  },
+  "current_machine_policy": {
+    "executable_candidate_variants": [
+      "Hard rock",
+      "Soft rock",
+      "Southern rock",
+      "Progressive rock",
+      "Punk-related rock",
+      "Blues rock",
+      "Singer-songwriter rock"
+    ],
+    "umbrella_variants_requiring_child_resolution": [
+      "Classic rock",
+      "Alternative rock"
+    ],
+    "audio_authority": false,
+    "live_runtime_authority": false,
+    "finished_composition_authority": false,
+    "next_gate": "Compile typed variant packages and form expanders; structural validation before listening."
+  }
+}

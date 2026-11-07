@@ -56,6 +56,17 @@ def main()->None:
 
     if len(source_non)!=len(cand_non):
         raise VerifyError("NON_BASS_EVENT_COUNT_CHANGED")
+    sort_key=lambda e:(
+        float(e["start_beat"]),
+        str(e.get("track_id","")),
+        int(e.get("midi",0)),
+        int(e.get("velocity",0)),
+        float(e.get("duration_beats",0.0)),
+        str(e.get("section","")),
+        str(e.get("source_cell","")),
+    )
+    source_non=sorted(source_non,key=sort_key)
+    cand_non=sorted(cand_non,key=sort_key)
     for a,b in zip(source_non,cand_non):
         for key in ("track_id","role","instrument_id","source_instrument_id","start_beat","duration_beats","midi","velocity","section","section_type","source_cell","chord_symbol"):
             if a.get(key)!=b.get(key):

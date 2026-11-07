@@ -91,14 +91,17 @@ def main()->None:
     if changed!=58:
         raise VerifyError("TOTAL_CHANGED_DURATION_COUNT_DRIFT")
 
-    for i,(before,after) in enumerate(zip(source_bass,cand_bass)):
+    bass_pairs=list(zip(source_bass,cand_bass))
+    bass_pairs.sort(key=lambda pair:(float(pair[0]["start_beat"]),int(pair[0]["midi"])))
+
+    for i,(before,after) in enumerate(bass_pairs):
         start=float(after["start_beat"])
         dur=float(after["duration_beats"])
         if start+dur>_bar_end(start)+1e-9:
             bar_crossing_count+=1
 
-        if i+1<len(cand_bass):
-            nxt=float(cand_bass[i+1]["start_beat"])
+        if i+1<len(bass_pairs):
+            nxt=float(bass_pairs[i+1][1]["start_beat"])
             source_end=float(before["start_beat"])+float(before["duration_beats"])
             candidate_end=start+dur
             source_overlap=max(0.0,source_end-nxt)
@@ -118,8 +121,8 @@ def main()->None:
 
         ext=float(after["duration_beats"])-float(before["duration_beats"])
         if ext>1e-9:
-            if i+1<len(cand_bass):
-                nxt=float(cand_bass[i+1]["start_beat"])
+            if i+1<len(bass_pairs):
+                nxt=float(bass_pairs[i+1][1]["start_beat"])
                 if start+dur>nxt+1e-9:
                     changed_event_overlap_count+=1
             extension_values.append(round(ext,6))

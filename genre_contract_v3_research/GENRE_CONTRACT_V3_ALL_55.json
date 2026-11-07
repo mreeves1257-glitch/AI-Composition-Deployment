@@ -830,7 +830,7 @@
       }
     },
     "Classical": {
-      "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+      "contract_schema": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_002",
       "genre_name": "Classical",
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
@@ -1401,6 +1401,41 @@
             "Corpus repertoire is not period-balanced and should not be used as a universal Classical target without variant splitting.",
             "Use this reference to model when sections should thin, sustain, rest, or change register around the current foreground owner."
           ]
+        },
+        "section_role_state_rules": {
+          "allowed_states": [
+            "FOREGROUND",
+            "COUNTERLINE",
+            "HARMONIC_SUPPORT",
+            "TEXTURAL_SUPPORT",
+            "FOUNDATION",
+            "REST"
+          ],
+          "classical_application": [
+            "A featured woodwind may enter FOREGROUND while strings remain active as HARMONIC_SUPPORT or TEXTURAL_SUPPORT.",
+            "When strings are FOREGROUND, winds may remain COUNTERLINE, HARMONIC_SUPPORT, TEXTURAL_SUPPORT or REST according to score logic.",
+            "Bass/low strings may remain FOUNDATION while upper strings thin under a wind foreground.",
+            "No section receives permanent FOREGROUND because it has more players."
+          ]
+        },
+        "masking_risk_rules": {
+          "trigger": "Foreground owner is perceptually obscured by one or more active supporting sections.",
+          "especially_monitor": [
+            "woodwind foreground under active strings",
+            "solo/desk foreground under full section",
+            "middle-register foreground under dense brass/strings",
+            "quiet articulation under high-attack accompaniment"
+          ],
+          "correction_order": [
+            "reduce supporting density/activity",
+            "redistribute supporting register/voicing",
+            "simplify supporting rhythm/lengthen notes",
+            "soften supporting articulation/attack",
+            "insert selective supporting rests",
+            "increase spatial/depth separation",
+            "apply only limited level correction if still required"
+          ],
+          "success_condition": "Foreground is clearly intelligible while the supporting ensemble retains believable mass and continuity."
         }
       },
       "performance": {
@@ -15350,6 +15385,32 @@
       "Do not export MTG-Jamendo-derived percentages without commercial authorization or independent corroboration.",
       "Do not export corpus aggregate percentages as hard quotas; convert only to variant-specific priors after validation.",
       "Keep one runtime authority; do not duplicate genre rules into individual generators."
+    ]
+  },
+  "schema_id": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_002",
+  "global_execution_rules": {
+    "section_role_states": [
+      "FOREGROUND",
+      "COUNTERLINE",
+      "HARMONIC_SUPPORT",
+      "TEXTURAL_SUPPORT",
+      "FOUNDATION",
+      "REST"
+    ],
+    "masking_risk_correction_order": [
+      "density/activity",
+      "register/voicing",
+      "note-length/rhythmic simplification",
+      "articulation",
+      "selective rests",
+      "spatial separation",
+      "limited level change last"
+    ],
+    "hard_guardrails": [
+      "Population mass never directly determines gain.",
+      "Activity occupancy never directly determines foreground.",
+      "Foreground ownership never requires matching the population mass of a larger section.",
+      "No generic generator may override a resolved genre/variant contract."
     ]
   }
 }

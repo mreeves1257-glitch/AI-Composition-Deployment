@@ -19,6 +19,7 @@ from genre_contract_v3_execution_bridge import snapshot_for
 REPO = Path(__file__).resolve().parents[1]
 STYLE_ROOT = REPO / "composer_overrides" / "genre_styles"
 INDEX_PATH = STYLE_ROOT / "index.json"
+INSTRUMENT_LIBRARY_PATH = REPO / "current_master_forward" / "instrument_library.json"
 PACK_NAME = "SOURCE_PATTERN_LIBRARY_R1.json"
 PACK_SCHEMA = "AI_COMP_GENRE_ORIGINAL_SOURCE_PATTERNS_R1"
 SECTION_NAMES = (
@@ -166,6 +167,116 @@ def load_seed(genre_name: str) -> dict[str, Any]:
         ),
     }
     result["bridge_sha256"] = _sha(result)
+    return result
+
+
+
+# These are compatibility aliases between the October symbolic seed vocabulary
+# and current canonical instrument IDs. They are accepted only where the target
+# instrument is actually present in the current instrument library.
+SAFE_INSTRUMENT_ALIASES = {
+    "acoustic_bass": "double_bass",
+    "nylon_guitar": "acoustic_guitar",
+    "conga": "conga_family",
+    "clave": "claves",
+    "kick_drum_soft": "kick_drum_kit_acoustic",
+    "kick_drum_electronic": "electronic_kick",
+    "hi_hat_electronic": "electronic_hat",
+}
+
+# The current electronic-snare profile explicitly exposes a "clap-layer variant".
+# Keep that performance intent attached; do not silently treat a clap as an
+# ordinary snare hit.
+INTENT_ALIASES = {
+    "hand_clap": {
+        "instrument_id": "electronic_snare",
+        "performance_intent": "clap-layer variant",
+    },
+}
+
+
+def _instrument_ids() -> set[str]:
+    root = _read(INSTRUMENT_LIBRARY_PATH)
+    ids = {str(x.get("id")) for x in root.get("instruments", []) if x.get("id")}
+    if not ids:
+        raise GenreV3SourcePatternError("CURRENT_INSTRUMENT_LIBRARY_EMPTY")
+    return ids
+
+
+def resolve_source_roles(genre_name: str) -> dict[str, Any]:
+    """Resolve one V3-compatible seed's roles to current instrument identities.
+
+    This function does not generate events. A partial mapping returns NOT_READY
+    rather than substituting an ambiguous instrument.
+    """
+    seed = load_seed(genre_name)
+    library = _instrument_ids()
+    mappings = []
+    unresolved = []
+    event_roles = []
+
+    for role in seed["roles"]:
+        source_id = str(role.get("instrument_id"))
+        target = None
+        mapping_kind = None
+        performance_intent = None
+
+        if source_id in library:
+            target = source_id
+            mapping_kind = "EXACT_CURRENT_ID"
+        elif source_id in SAFE_INSTRUMENT_ALIASES:
+            candidate = SAFE_INSTRUMENT_ALIASES[source_id]
+            if candidate in library:
+                target = candidate
+                mapping_kind = "SAFE_CANONICAL_ALIAS"
+        elif source_id in INTENT_ALIASES:
+            spec = INTENT_ALIASES[source_id]
+            candidate = spec["instrument_id"]
+            if candidate in library:
+                target = candidate
+                mapping_kind = "CURRENT_ID_WITH_EXPLICIT_PERFORMANCE_INTENT"
+                performance_intent = spec["performance_intent"]
+
+        if target is None:
+            unresolved.append({
+                "role": role.get("role"),
+                "source_instrument_id": source_id,
+                "reason": "NO_JUSTIFIED_CURRENT_INSTRUMENT_MAPPING",
+            })
+            continue
+
+        item = {
+            "role": role.get("role"),
+            "source_instrument_id": source_id,
+            "instrument_id": target,
+            "mapping_kind": mapping_kind,
+            "performance_intent": performance_intent,
+            "playable_midi_range": deepcopy(role.get("playable_midi_range")),
+        }
+        mappings.append(item)
+        if target not in event_roles:
+            event_roles.append(target)
+
+    status = "PASS" if not unresolved else "SOURCE_ROLE_RESOURCE_MAPPING_INCOMPLETE"
+    result = {
+        "status": status,
+        "authority": "V3_GOVERNED_ORIGINAL_SYMBOLIC_SOURCE_ROLES",
+        "genre": genre_name,
+        "profile_id": seed["profile_id"],
+        "source_pattern_file": seed["source_pattern_file"],
+        "event_roles": event_roles,
+        "role_mappings": mappings,
+        "unresolved": unresolved,
+        "audio_authority": False,
+        "live_runtime_authority": False,
+        "fallback_allowed_if_incomplete": True,
+        "rule": (
+            "Use source-pattern instrument roles only when every role maps to a "
+            "current justified instrument identity. Partial mappings may not be "
+            "silently activated."
+        ),
+    }
+    result["mapping_sha256"] = _sha(result)
     return result
 
 

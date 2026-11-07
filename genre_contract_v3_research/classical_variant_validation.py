@@ -383,3 +383,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# CI trigger: paired Classical listening validation only; no runtime behavior change.

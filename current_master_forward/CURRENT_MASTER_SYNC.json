@@ -33,6 +33,10 @@
     "rock_v3_variant_resolver.py",
     "rock_v3_variant_package.py",
     "rock_v3_form_planner.py",
+    "rock_v3_core_development_executor.py",
+    "rock_v3_core_harmony_plan.py",
+    "rock_v3_core_development_plan.py",
+    "rock_v3_core_form_plan.py",
     "genre_v3_foreground_executor_registry.py",
     "genre_v3_source_pattern_bridge.py",
     "genre_v3_instrument_authority.py",
@@ -85,7 +89,11 @@
       "rock_v3_foreground_pilot.py",
       "rock_v3_variant_resolver.py",
       "rock_v3_variant_package.py",
-      "rock_v3_form_planner.py"
+      "rock_v3_form_planner.py",
+      "rock_v3_core_form_plan.py",
+      "rock_v3_core_development_plan.py",
+      "rock_v3_core_harmony_plan.py",
+      "rock_v3_core_development_executor.py"
     ],
     "live_promotion_approved": false,
     "classical_v3_symbolic_path": {
@@ -99,6 +107,21 @@
         "classical_v3_note_realizer.py",
         "classical_v3_orchestration_binder.py",
         "classical_v3_resource_mapper.py"
+      ]
+    },
+    "rock_core_symbolic_path": {
+      "status": "DEVELOPED_EVENT_AUDIT_PENDING_RUNTIME_INTEGRATION",
+      "resolved_variant": null,
+      "family_baseline_only": true,
+      "variant_cues_present": false,
+      "bar_count": 40,
+      "audio_authority": false,
+      "live_promotion_approved": false,
+      "modules": [
+        "rock_v3_core_form_plan.py",
+        "rock_v3_core_development_plan.py",
+        "rock_v3_core_harmony_plan.py",
+        "rock_v3_core_development_executor.py"
       ]
     }
   }

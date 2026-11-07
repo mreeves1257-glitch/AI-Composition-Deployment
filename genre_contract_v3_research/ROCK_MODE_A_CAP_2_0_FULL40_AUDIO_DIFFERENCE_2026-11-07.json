@@ -1,0 +1,72 @@
+{
+  "schema": "ROCK_MODE_A_CAP_2_0_FULL40_AUDIO_DIFFERENCE_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_workflow_run": 42392024204,
+  "source_artifact_id": 13581124287,
+  "source_artifact_digest": "sha256:b13b9b2c2a95eb9664ec09b4252f9157ebbc6bf233b78d22b28bac1ae5e6b9c3",
+  "sample_rate_hz": 44100,
+  "analyzed_duration_seconds": 78.1815873015873,
+  "overall": {
+    "cap_2_0_mix_rms": 0.018507828770644306,
+    "current_2_8_mix_rms": 0.01866915470983747,
+    "difference_rms": 0.0020785089256990462,
+    "difference_dbfs": -53.64496212343418,
+    "difference_vs_cap_2_0_mix_ratio": 0.112304309244303
+  },
+  "sections": {
+    "INTRO_1": {
+      "start_seconds": 0,
+      "end_seconds": 7.804878048780488,
+      "difference_rms": 0.0028272861118670404,
+      "difference_dbfs": -50.97260480284728,
+      "difference_vs_cap_2_0_mix_ratio": 0.1804089443998366
+    },
+    "VERSE_1": {
+      "start_seconds": 7.804878048780488,
+      "end_seconds": 23.414634146341463,
+      "difference_rms": 0.0021283196546134165,
+      "difference_dbfs": -53.43926288647664,
+      "difference_vs_cap_2_0_mix_ratio": 0.11354557612164322
+    },
+    "CHORUS_1": {
+      "start_seconds": 23.414634146341463,
+      "end_seconds": 39.02439024390244,
+      "difference_rms": 0.0019543294139266047,
+      "difference_dbfs": -54.18004463022746,
+      "difference_vs_cap_2_0_mix_ratio": 0.0944483825365499
+    },
+    "VERSE_2": {
+      "start_seconds": 39.02439024390244,
+      "end_seconds": 54.63414634146341,
+      "difference_rms": 0.002130149409452649,
+      "difference_dbfs": -53.431798678406906,
+      "difference_vs_cap_2_0_mix_ratio": 0.11581388051779198
+    },
+    "CHORUS_2": {
+      "start_seconds": 54.63414634146341,
+      "end_seconds": 70.2439024390244,
+      "difference_rms": 0.001615483764867562,
+      "difference_dbfs": -55.83394804310142,
+      "difference_vs_cap_2_0_mix_ratio": 0.08919582522632567
+    },
+    "OUTRO_1": {
+      "start_seconds": 70.2439024390244,
+      "end_seconds": 78.04878048780488,
+      "difference_rms": 0.002070994534186021,
+      "difference_dbfs": -53.67642094609022,
+      "difference_vs_cap_2_0_mix_ratio": 0.1207911530386348
+    }
+  },
+  "interpretation": [
+    "The 2.0-vs-2.8 difference remains measurable across every major section of the full 40-bar form.",
+    "The largest relative section difference occurs in the intro.",
+    "Both chorus sections show smaller relative differences than the verses and intro, so the 2.0 cap does not concentrate its largest audio change in the chorus sections.",
+    "This is an objective difference analysis only and does not establish musical preference."
+  ],
+  "canonical_policy_modified": false,
+  "reasoning_engine_used": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "HUMAN_FULL40_2_0_VS_2_8_LISTENING"
+}

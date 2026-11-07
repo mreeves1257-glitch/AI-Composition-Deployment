@@ -291,13 +291,25 @@ def realize(structural_plan):
             reference = round(previous_melody * 0.72 + contour_target * 0.28)
 
             next_same_harmony = False
+            next_is_forced_cadence = False
             if index + 1 < len(onset_records):
+                next_onset = onset_records[index + 1]
                 next_same_harmony = (
-                    onset_records[index + 1]["harmony"]["harmony_id"]
+                    next_onset["harmony"]["harmony_id"]
                     == harmony["harmony_id"]
                 )
+                next_bar = next_onset["bar_data"]
+                next_is_forced_cadence = (
+                    bool(next_bar.get("cadence"))
+                    and next_onset["index_in_bar"]
+                    == len(_melody_onsets_for_bar(next_bar)) - 1
+                )
 
-            if not structural and next_same_harmony:
+            # A decorative non-chord tone is legal only when the *next* event is
+            # free to execute the precomputed step resolution. Do not place one
+            # immediately before a forced cadence target, where the cadence rule
+            # would override that resolution.
+            if not structural and next_same_harmony and not next_is_forced_cadence:
                 direction = 1 if ((bar["bar"] + onset["index_in_bar"]) % 2 == 0) else -1
                 neighbor = [
                     previous_melody + step

@@ -3,7 +3,7 @@
   "source_registry_checkpoint": "2026-10-02_182810_CDT",
   "source_registry_id": "AI_COMP_GENRE_PERFORMANCE_REGISTRY_002_SELECTOR_COMPAT",
   "genre_count": 55,
-  "branch": "genre-contract-v3-research",
+  "branch": "genre-contract-v3-no-reasoning-diagnostic",
   "runtime_integration": false,
   "workflow": [
     "Preserve current profile verbatim.",
@@ -681,7 +681,7 @@
   "last_research_update": "2026-11-06",
   "first_pass_status": "COMPLETE_55_OF_55",
   "first_pass_completed_on": "2026-11-06",
-  "next_phase": "V3_MACHINE_READABLE_EXECUTION_LAYER__NO_REASONING_ENGINE",
+  "next_phase": "V3_FOREGROUND_MELODY_AUTHORITY__NO_AUDIO__NO_REASONING_ENGINE",
   "classical_checkpoint": {
     "foreground_period_split": "DONE",
     "activity_period_split": "DONE",
@@ -712,7 +712,7 @@
   },
   "execution_wiring_diagnosis": {
     "date": "2026-11-07",
-    "status": "V3_SOURCE_AND_STRUCTURED_PREGEN_PASS__EXECUTION_LAYER_NEXT",
+    "status": "V3_SOURCE__STRUCTURED_PREGEN__SYMBOLIC_INSTRUMENT_RESOLUTION_PASS__FOREGROUND_LAYER_NEXT",
     "diagnostic_branch": "genre-contract-v3-no-reasoning-diagnostic",
     "reasoning_engine_status": "PRESERVED_ELSEWHERE__EXCLUDED_FROM_DIAGNOSTIC_BRANCH",
     "findings": [
@@ -745,9 +745,43 @@
     "latest_wiring_audit_run_id": 42377911425,
     "structured_pre_generation_pass_count": 55,
     "explicit_v3_instrument_authority_genres": 7,
-    "automatic_legacy_instrument_fallback_genres": 40,
+    "automatic_legacy_instrument_fallback_genres": 0,
     "controlled_component_genres": 7,
     "classical_specialized_genres": 1,
-    "next_gap": "Event/note generation still executes legacy family-template logic; add machine-readable V3 execution authority before further audio tests."
+    "next_gap": "Compile genre-specific V3 foreground/melody/role-handoff authority before any further audio listening tests.",
+    "v3_governed_source_pattern_genres": 40,
+    "latest_positive_wiring_audit_run_id": 42379201319,
+    "latest_positive_wiring_audit_status": "PASS",
+    "runtime_symbolic_instrument_resolution_status": "PASS_40_AUTOMATIC_SOURCE_PATTERN_GENRES",
+    "runtime_symbolic_instrument_resolution_run_id": 42379124618,
+    "runtime_symbolic_instrument_resolution_artifact_id": 13576294603,
+    "runtime_symbolic_instrument_resolution_artifact_sha256": "e761b7742b272e7a21ef788f2c7fd124d8919837dc27a91c9d3c06fe1b0c7b52",
+    "legacy_note_generator_bypassed_for_source_pattern_genres": true,
+    "audio_rendered": false,
+    "audio_promotion_blocked": true,
+    "source_pattern_foreground_role_audit": {
+      "status": "FAIL_AS_FINISHED_COMPOSITION__ACCOMPANIMENT_ONLY",
+      "source_seed_count": 55,
+      "explicit_foreground_role_count": 0,
+      "observed_role_vocabulary": [
+        "BASS",
+        "BRUSH",
+        "CLAP",
+        "CLAVE",
+        "CONGA",
+        "CYMBAL",
+        "HAND_DRUM",
+        "HARMONY",
+        "HAT",
+        "KICK",
+        "LEFT_HAND",
+        "RIDE",
+        "RIGHT_HAND",
+        "SHAKER",
+        "SNARE"
+      ],
+      "finding": "Recovered source-pattern seeds provide accompaniment/groove roles but no explicit LEAD/MELODY/SOLO/HOOK/THEME/COUNTER/VOCAL role.",
+      "consequence": "DO_NOT_RENDER_SYMBOLIC_SOURCE_PATTERNS_AS_FINISHED_COMPOSITIONS. Add a separate V3 foreground/melody authority first."
+    }
   }
 }

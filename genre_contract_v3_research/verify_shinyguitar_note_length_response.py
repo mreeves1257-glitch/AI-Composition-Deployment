@@ -271,8 +271,8 @@ def main():
                     "frames":report["frames"],
                     "channels":report["channels"],
                     "sample_rate":report["sample_rate"],
-                    "peak_dbfs":report["peak_dbfs"],
-                    "rms_dbfs":report["rms_dbfs"],
+                    "peak_dbfs":report.get("peak_dbfs"),
+                    "rms_dbfs":report.get("rms_dbfs"),
                     "audio_rendered":report["audio_rendered"],
                 }
                 for name,report in reports.items()

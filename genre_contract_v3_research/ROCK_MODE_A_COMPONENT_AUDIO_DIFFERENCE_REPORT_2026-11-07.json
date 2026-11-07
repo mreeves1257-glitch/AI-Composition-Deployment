@@ -1,0 +1,49 @@
+{
+  "schema": "ROCK_MODE_A_COMPONENT_AUDIO_DIFFERENCE_REPORT_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source": "verified role-isolated listening artifact from workflow run 42390723896",
+  "artifact_id": 13581427805,
+  "artifact_digest": "sha256:4969d1f60fc2b494c04f79e979568c79c691ca5a0dcfb41739daeb5d7c935726",
+  "mix_gains_db": {
+    "HARMONY": -5,
+    "LEAD": -6
+  },
+  "common_mix_gain": 1,
+  "sample_rate": 44100,
+  "frames": 3447808,
+  "baseline_rms": 0.016495041377665245,
+  "comparisons": {
+    "LEAD_ONLY_MODE_A": {
+      "difference_rms": 0.0012827916805381347,
+      "difference_peak": 0.029635418206453323,
+      "difference_rms_vs_baseline_ratio": 0.07776832147114654,
+      "difference_rms_db_relative_to_baseline": -22.18394549259244,
+      "difference_rms_as_fraction_of_full_difference_rms": 0.14788990587572304
+    },
+    "HARMONY_ONLY_MODE_A": {
+      "difference_rms": 0.008585492208066793,
+      "difference_peak": 0.20648061484098434,
+      "difference_rms_vs_baseline_ratio": 0.5204892798687849,
+      "difference_rms_db_relative_to_baseline": -5.671764218045907,
+      "difference_rms_as_fraction_of_full_difference_rms": 0.9898003345446595
+    },
+    "FULL_MODE_A_B": {
+      "difference_rms": 0.008673963736349311,
+      "difference_peak": 0.20648061484098434,
+      "difference_rms_vs_baseline_ratio": 0.5258528025333786,
+      "difference_rms_db_relative_to_baseline": -5.582716143310931
+    }
+  },
+  "interpretation": [
+    "HARMONY-only duration treatment produces nearly the same RMS difference from baseline as full Mode A.",
+    "LEAD-only duration treatment is materially smaller.",
+    "Ratios are magnitude comparisons and are not additive percentages because the component changes are correlated and mixes are decoded/re-encoded for this diagnostic.",
+    "No new performance behavior was introduced."
+  ],
+  "reasoning_engine_used": false,
+  "production_fidelity_certified": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "HUMAN_COMPONENT_LISTENING_REVIEW_BEFORE_ANY_HARMONY_DURATION_POLICY_CHANGE"
+}

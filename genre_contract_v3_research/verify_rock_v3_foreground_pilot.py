@@ -45,6 +45,15 @@ def main():
     pilot=realize()
     if pilot.get("status")!="PASS":
         raise RuntimeError("ROCK_FOREGROUND_PILOT_NOT_PASS")
+    gate=pilot.get("rock_variant_gate") or {}
+    if gate.get("status")!="ROCK_VARIANT_REQUIRED":
+        raise RuntimeError("ROCK_VARIANT_GATE_NOT_ACTIVE")
+    if pilot.get("resolved_rock_variant") is not None:
+        raise RuntimeError("ROCK_VARIANT_WAS_SILENTLY_DEFAULTED")
+    if pilot.get("variant_specific_music_ready") is not False:
+        raise RuntimeError("ROCK_VARIANT_MUSIC_FABRICATED")
+    if pilot.get("song_form_expansion_ready") is not False:
+        raise RuntimeError("ROCK_FORM_EXPANSION_PREMATURELY_READY")
     if pilot.get("audio_generated") is not False or pilot.get("audio_authority") is not False:
         raise RuntimeError("ROCK_FOREGROUND_AUDIO_ESCALATION")
     if pilot.get("live_runtime_authority") is not False:
@@ -169,13 +178,17 @@ def main():
         "legacy_note_generator_used":False,
         "musical_quality_proven":False,
         "listening_approval":False,
+        "rock_variant_gate_status":gate.get("status"),
+        "resolved_rock_variant":pilot.get("resolved_rock_variant"),
+        "variant_specific_music_ready":pilot.get("variant_specific_music_ready"),
+        "song_form_expansion_ready":pilot.get("song_form_expansion_ready"),
         "result":(
             "Rock now has a structurally valid V3 foreground research candidate: "
             "project-authored motif vocabulary creates chord-responsive electric-guitar "
             "lead windows while bass/drums remain untouched and rhythm guitar yields "
             "density. This is not yet listening-approved."
         ),
-        "next_gate":"ROCK_FOREGROUND_HUMAN_LISTENING_ONLY_AFTER_FORM_EXPANSION_AND_RESOURCE_GATE",
+        "next_gate":"ROCK_VARIANT_MUSICAL_PACKAGE__THEN_FORM_EXPANSION__THEN_RESOURCE_AND_LISTENING",
         "execution_sha256":pilot["execution_sha256"],
     }
     out=ROOT/"genre_contract_v3_research"/"ROCK_V3_FOREGROUND_PILOT_AUDIT.json"

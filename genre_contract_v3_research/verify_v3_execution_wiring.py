@@ -18,6 +18,7 @@ if str(FORWARD) not in sys.path:
 
 from genre_contract_v3_execution_bridge import load_master, snapshot_for, execution_packet
 from genre_selector import GenreSelector
+from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority
 
 V3_PATH = ROOT / "genre_contract_v3_research" / "GENRE_CONTRACT_V3_ALL_55.json"
 ADAPTER_PATH = FORWARD / "AI_Comp_Genre_Execution_Adapter_002_WORKING_2026-10-02_184019_CDT.py"
@@ -56,20 +57,26 @@ def main():
     palettes = _literal_assignment(adapter_source, "PALETTES")
     bases = _literal_assignment(adapter_source, "BASE")
 
-    # Static proof that the diagnostic adapter has been patched to V3 as its
-    # profile source, without importing the full runtime/theory package.
     adapter_v3_source_patch = (
         "from genre_contract_v3_execution_bridge import all_snapshots" in adapter_source
         and "profiles=all_snapshots()" in adapter_source
         and "v3_execution_packet(name)" in adapter_source
     )
+    adapter_v3_roster_patch = (
+        "from genre_v3_instrument_authority import resolve as resolve_v3_instrument_authority" in adapter_source
+        and "resolve_genre_parts_with_authority" in adapter_source
+        and "genre_v3_instrument_authority" in adapter_source
+    )
     if not adapter_v3_source_patch:
         raise RuntimeError("ADAPTER_V3_SOURCE_PATCH_MISSING")
+    if not adapter_v3_roster_patch:
+        raise RuntimeError("ADAPTER_V3_ROSTER_PATCH_MISSING")
 
     results = []
     selection_pass = 0
     packet_pass = 0
-    automatic_nonclassical = 0
+    v3_explicit_roster = 0
+    legacy_fallback = 0
     controlled_component = 0
     classical_specialized = 0
     structured_section_instances = 0
@@ -104,15 +111,19 @@ def main():
         structured_section_instances += sum(packet.get(field) is not None for field in required_structured)
 
         policy = snapshot.get("resolution_policy")
+        v3_instrument = resolve_v3_instrument_authority(name, snapshot)
         if name == "Classical":
             authority = "SPECIALIZED_CLASSICAL_COMPOSITION_STATIC_PLAN_AND_ROSTER"
             classical_specialized += 1
         elif policy != "AUTOMATIC_BASELINE_ALLOWED":
             authority = "CONTROLLED_COMPONENT_INPUT"
             controlled_component += 1
+        elif v3_instrument.get("status") == "PASS":
+            authority = "GENRE_CONTRACT_V3_EXPLICIT_ROSTER"
+            v3_explicit_roster += 1
         else:
-            authority = "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE"
-            automatic_nonclassical += 1
+            authority = "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE_FALLBACK"
+            legacy_fallback += 1
 
         ensemble = contract.get("ensemble") or {}
         roster = ensemble.get("instrument_roster") or []
@@ -124,6 +135,8 @@ def main():
             "execution_packet_source": packet.get("source"),
             "contract_sha256": (snapshot.get("_genre_contract_v3_source") or {}).get("contract_sha256"),
             "instrument_authority_remaining": authority,
+            "v3_instrument_authority_status": v3_instrument.get("status"),
+            "v3_event_roles": v3_instrument.get("event_roles", []),
             "v3_instrument_roster_count": len(roster),
             "v3_instrument_roster": roster,
             "v3_structured_sections_present": [
@@ -133,10 +146,10 @@ def main():
 
     remaining_gaps = {
         "adapter_v3_profile_source_patch_present": adapter_v3_source_patch,
-        "static_palette_table_present": bool(palettes),
-        "static_family_baseline_table_present": bool(bases),
-        "resolve_genre_parts_uses_static_palette": "PALETTES.get(tmpl" in adapter_source,
-        "profile_prose_explicitly_non_executable_for_parts": "profile prose remains recognition/context" in adapter_source,
+        "adapter_v3_roster_patch_present": adapter_v3_roster_patch,
+        "static_palette_table_still_present_as_fallback": bool(palettes),
+        "static_family_baseline_table_still_present": bool(bases),
+        "fallback_path_still_uses_static_palette": "PALETTES.get(tmpl" in adapter_source,
         "classical_special_case_present": "if name == 'Classical':" in adapter_source,
         "classical_fixed_plan_code_present": "CLASSICAL_EXECUTABLE_PLAN_1" in classical_source,
         "generic_blueprint_rejects_classical": "CLASSICAL_USES_EXISTING_SPECIALIZED_PATH" in communication_source,
@@ -157,32 +170,37 @@ def main():
         "legacy_static_palette_template_count": len(palettes),
         "legacy_family_baseline_template_count": len(bases),
         "remaining_execution_authority_counts": {
-            "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE": automatic_nonclassical,
+            "GENRE_CONTRACT_V3_EXPLICIT_ROSTER": v3_explicit_roster,
+            "LEGACY_FAMILY_TEMPLATE_AND_STATIC_PALETTE_FALLBACK": legacy_fallback,
             "CONTROLLED_COMPONENT_INPUT": controlled_component,
             "SPECIALIZED_CLASSICAL_COMPOSITION_STATIC_PLAN_AND_ROSTER": classical_specialized,
         },
         "confirmed_remaining_gaps": remaining_gaps,
         "interpretation": (
-            "All 55 V3 contracts now survive selection and execution-packet creation on "
-            "this diagnostic branch. Reading V3 is therefore no longer the immediate "
-            "source-propagation problem here. The next gap is execution: automatic "
-            "non-Classical generation still routes through legacy family templates/static "
-            "palettes, while Classical still routes through its specialized fixed plan. "
-            "The downstream instrument resolver only resolves event instrument IDs and "
-            "does not independently infer genre-correct instrumentation."
+            "All 55 V3 contracts survive selection and execution-packet creation. "
+            "Seven non-Classical automatic genres with explicit V3 formations now have "
+            "V3 instrument-role authority. Forty automatic genres still require a "
+            "clearly labeled legacy palette fallback because their V3 rosters are not "
+            "yet explicit. Classical remains isolated in its specialized fixed plan and "
+            "must next receive a resolved V3 variant/composition package."
         ),
         "genres": results,
     }
 
     if selection_pass != 55 or packet_pass != 55:
         raise RuntimeError("ALL_55_V3_PROPAGATION_NOT_PROVEN")
-    if automatic_nonclassical == 0 or classical_specialized != 1:
-        raise RuntimeError("EXPECTED_EXECUTION_AUTHORITY_GAPS_NOT_DETECTED")
+    if v3_explicit_roster != 7:
+        raise RuntimeError(f"EXPECTED_7_V3_EXPLICIT_ROSTER_GENRES__GOT_{v3_explicit_roster}")
+    if legacy_fallback != 40:
+        raise RuntimeError(f"EXPECTED_40_LEGACY_FALLBACK_GENRES__GOT_{legacy_fallback}")
+    if controlled_component != 7 or classical_specialized != 1:
+        raise RuntimeError("EXPECTED_CONTROLLED_OR_CLASSICAL_COUNTS_NOT_MET")
     required_gap_truths = (
         "adapter_v3_profile_source_patch_present",
-        "static_palette_table_present",
-        "static_family_baseline_table_present",
-        "resolve_genre_parts_uses_static_palette",
+        "adapter_v3_roster_patch_present",
+        "static_palette_table_still_present_as_fallback",
+        "static_family_baseline_table_still_present",
+        "fallback_path_still_uses_static_palette",
         "classical_special_case_present",
         "classical_fixed_plan_code_present",
         "generic_blueprint_rejects_classical",

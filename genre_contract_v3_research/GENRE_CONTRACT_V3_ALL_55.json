@@ -511,6 +511,12 @@
           "Singer-songwriter rock"
         ],
         "hard_rule": "Do not let broad Rock baseline stand in for a resolved subgenre when cues are available."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "New Age": {
@@ -815,6 +821,12 @@
           "Solo instrumental"
         ],
         "hard_rule": "New Age may overlap ambient or spiritual-use contexts, but must not silently resolve to Ambient Electronic or project-defined Spiritual."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Classical": {
@@ -1364,6 +1376,12 @@
           "Full symphonic"
         ],
         "note": "Candidate families only; each requires evidence-backed rules before activation."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "RESEARCH_REFERENCE_AVAILABLE",
+        "activity_reference": "SOURCE_REGISTERED_OR_REFERENCE_AVAILABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Swing": {
@@ -1681,6 +1699,12 @@
           "Dance-band swing"
         ],
         "note": "Big Band remains a separate top-level Composer genre; Swing must not silently inherit the 17-player Big Band formation."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Jazz Ballad": {
@@ -1907,6 +1931,12 @@
           "Guitar-led ballad",
           "Chamber/orchestrated jazz ballad"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Big Band": {
@@ -2181,6 +2211,12 @@
           "Vocal-feature big band"
         ],
         "note": "Candidates require evidence-backed rules; current 17-player standard remains the pilot formation."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Jazz Waltz": {
@@ -2402,6 +2438,12 @@
           "Horn-led jazz waltz",
           "Modern/modal jazz waltz"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Bebop": {
@@ -2627,6 +2669,12 @@
           "Piano-less small combo",
           "Guitar-led bop combo"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Cool Jazz": {
@@ -2850,6 +2898,12 @@
           "Piano-less cool combo",
           "Vibraphone-led cool"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Dixieland": {
@@ -3074,6 +3128,12 @@
           "Revival-style ensemble"
         ],
         "note": "Historical terminology and instrumentation require careful source qualification."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Jazz Fusion": {
@@ -3375,6 +3435,12 @@
           "Latin fusion",
           "Modern progressive fusion"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Rhythm and Blues": {
@@ -3678,6 +3744,12 @@
           "12/8 R&B ballad"
         ],
         "note": "Contemporary R&B remains a separate top-level profile."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Soul": {
@@ -3983,6 +4055,12 @@
           "Funk-influenced soul",
           "Soul ballad"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Funk": {
@@ -4296,6 +4374,12 @@
           "Minimalist groove funk",
           "Modern funk"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Contemporary R&B": {
@@ -4529,6 +4613,12 @@
           "6/8 contemporary R&B",
           "Electronic/ambient R&B"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Neo-Soul-related": {
@@ -4763,6 +4853,12 @@
           "Funk-influenced neo-soul",
           "Contemporary hybrid neo-soul"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Traditional Country": {
@@ -5065,6 +5161,12 @@
           "Old-time country band",
           "Traditional country with fiddle/steel emphasis"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Country Rock": {
@@ -5286,6 +5388,12 @@
           "Southern/country rock",
           "Acoustic-electric country rock"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Country Ballad": {
@@ -5514,6 +5622,12 @@
           "Acoustic-guitar-led ballad",
           "Orchestrated country ballad"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Country Shuffle": {
@@ -5731,6 +5845,12 @@
           "Western-swing-adjacent shuffle",
           "Slow shuffle"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Two-Step": {
@@ -5949,6 +6069,12 @@
           "Western/Texas two-step-related",
           "Fast modern country two-step"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Country Waltz": {
@@ -6169,6 +6295,12 @@
           "Fiddle/steel-feature waltz",
           "Orchestrated country waltz"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Bluegrass-related": {
@@ -6417,6 +6549,12 @@
           "Instrumental bluegrass"
         ],
         "note": "Traditional five-piece pilot uses guitar, bass, banjo, mandolin and fiddle; optional dobro/other roles are variant-dependent."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Bossa Nova": {
@@ -6727,6 +6865,12 @@
           "Contemporary bossa hybrid"
         ],
         "hard_rule": "Do not collapse bossa into Samba or generic Latin."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Samba": {
@@ -6997,6 +7141,12 @@
           "Samba with contemporary band"
         ],
         "hard_rule": "Do not force one fixed percussion formation onto every Samba variant."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Salsa": {
@@ -7285,6 +7435,12 @@
           "Vocal-feature salsa"
         ],
         "hard_rule": "Do not treat all salsa-family rhythmic styles as interchangeable."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Mambo": {
@@ -7564,6 +7720,12 @@
           "Vocal-feature mambo"
         ],
         "note": "Current 20-player formation is a pilot reference, not universal."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Rumba": {
@@ -7786,6 +7948,12 @@
           "Contemporary fusion"
         ],
         "hard_rule": "Ballroom rumba is a different system and must never resolve here."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Cha-Cha": {
@@ -7999,6 +8167,12 @@
           "Vocal cha-cha",
           "Latin-jazz cha-cha"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Bolero": {
@@ -8224,6 +8398,12 @@
           "Spanish-derived variant"
         ],
         "hard_rule": "Do not conflate Latin bolero with orchestral Ravel-style bolero."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "House": {
@@ -8608,6 +8788,12 @@
           "Minimal/deep-tech-adjacent"
         ],
         "note": "Current marketplace taxonomies separate several of these as their own categories; resolver must not collapse them automatically."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Techno": {
@@ -8926,6 +9112,12 @@
           "Hard Techno"
         ],
         "hard_rule": "Do not treat all Techno as peak-time four-on-floor."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Trance": {
@@ -9247,6 +9439,12 @@
           "Hypnotic Trance"
         ],
         "note": "Psy-Trance is sufficiently distinct to resolve separately rather than silently inheriting."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Ambient Electronic": {
@@ -9629,6 +9827,12 @@
           "Melodic ambient",
           "Electro-acoustic ambient"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Downtempo": {
@@ -9939,6 +10143,12 @@
           "Song-oriented downtempo"
         ],
         "note": "Trip-Hop remains a separate profile."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Breakbeat-related": {
@@ -10247,6 +10457,12 @@
           "Old-school breakbeat",
           "Hybrid electronic breaks"
         ]
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Garage-related": {
@@ -10485,6 +10701,12 @@
           "Bassline"
         ],
         "hard_rule": "Do not use continuous four-on-floor unless selected subgenre requires it."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Experimental Electronic": {
@@ -10866,6 +11088,12 @@
           "Spectral/drone electronic"
         ],
         "hard_rule": "Variant label alone is insufficient; explicit component map is mandatory."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Eclectic New Indie": {
@@ -11094,6 +11322,12 @@
           "Balanced eclectic"
         ],
         "hard_rule": "Do not hard-code one permanent grammar; scene definition must be periodically revalidated."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Mexican Reggaeton": {
@@ -11321,6 +11555,12 @@
           "Guitar/alternative hybrid"
         ],
         "hard_rule": "Do not treat Beatport Reggaeton, Dembow or Regional Mexican categories as interchangeable with this SoundCloud scene."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Chugg / #chugg": {
@@ -11536,6 +11776,12 @@
         "base_contract": "Mexican Reggaeton",
         "scene_vintage": "2026",
         "hard_rule": "#chugg inherits only verified scene relationships; do not invent a complete grammar where evidence is absent."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Afrobeats": {
@@ -11771,6 +12017,12 @@
           "Alté-adjacent"
         ],
         "hard_rule": "Afrobeats must not resolve to 1970s Afrobeat; Amapiano, Alté, Afropop and Afro R&B remain distinguishable source/neighbor categories."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Afro-Latin / Afrobeats Fusion": {
@@ -12006,6 +12258,12 @@
         "conflict_policy": "EXPLICIT_PRIORITY_OR_SECTION_HANDOFF_REQUIRED",
         "provenance_required": true,
         "default_blend_forbidden": true
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Afro House": {
@@ -12230,6 +12488,12 @@
           "Afro Melodic"
         ],
         "hard_rule": "Amapiano remains a separate neighboring genre; do not silently substitute it for Afro House."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Trip-Hop": {
@@ -12532,6 +12796,12 @@
           "Rock/guitar-inflected"
         ],
         "hard_rule": "Do not collapse into generic Downtempo; sampled/broken-beat identity and atmospheric tension remain defining constraints."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Contemporary Trip-Hop / Trip-Hop Revival": {
@@ -12739,6 +13009,12 @@
         "base_contract": "Trip-Hop",
         "overlay_id": "CONTEMPORARY_TRIP_HOP_V2",
         "hard_rule": "Overlay cannot remove broken-beat/atmospheric Trip-Hop core; if it does, resolve to another genre."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Regional Electronic Hybrids": {
@@ -12960,6 +13236,12 @@
         "unsupported_cultural_inference": "FAIL",
         "conflict_policy": "EXPLICIT_PRIORITY_OR_SECTION_HANDOFF",
         "component_percentage_required": true
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Genre-Breaking / Borderless": {
@@ -13174,6 +13456,12 @@
         "section_scope_required": true,
         "conflict_policy": "EXPLICIT_RESOLUTION",
         "traceability_required": true
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Custom Hybrid": {
@@ -13382,6 +13670,12 @@
         "authority_map_required": true,
         "conflict_policy_required": true,
         "section_scope_required": true
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Custom Style": {
@@ -13590,6 +13884,12 @@
           "spatial_policy"
         ],
         "percentage_fields_optional_but_semantically_defined": true
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Controlled Custom Style Profile": {
@@ -13792,6 +14092,12 @@
         "version_required": true,
         "content_hash_required": true,
         "migration_must_be_explicit": true
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "DISCO": {
@@ -14091,6 +14397,12 @@
           "Studio/orchestrated disco"
         ],
         "hard_rule": "Current Beatport Nu Disco/Disco is a modern marketplace category and must not silently replace classic Disco grammar."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "WALTZ": {
@@ -14292,6 +14604,12 @@
           "Custom 3/4 style"
         ],
         "hard_rule": "WALTZ cannot reach composition stage until a musical context is resolved."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "PIANIST": {
@@ -14503,6 +14821,12 @@
           "User-defined solo piano"
         ],
         "hard_rule": "Pianist defines instrumentation/performance mode, not the harmonic genre by itself."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     },
     "Spiritual": {
@@ -14729,6 +15053,12 @@
           "Explicit user-specified sourced tradition"
         ],
         "hard_rule": "Never infer a religion, Indigenous tradition, chant, sacred rhythm, scale or cultural signifier from the word Spiritual alone."
+      },
+      "quantitative_evidence_status": {
+        "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
+        "activity_reference": "PENDING_OR_NOT_APPLICABLE",
+        "instrument_presence_reference": "PENDING_OR_NOT_APPLICABLE",
+        "runtime_numeric_authority": "NOT_APPROVED"
       }
     }
   },
@@ -14800,5 +15130,15 @@
     "Validate each candidate runtime contract structurally and by listening before approval."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED__ACTIVITY_DATASET_REGISTERED__MTG_PRESENCE_CROSSCHECK_ADDED"
+  "quantitative_phase_status": "CLASSICAL_FOREGROUND_REFERENCE_ADDED__ACTIVITY_DATASET_REGISTERED__MTG_PRESENCE_CROSSCHECK_ADDED",
+  "runtime_extraction_policy": {
+    "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
+    "rules": [
+      "Exclude research prose, citations, raw source excerpts, test history and license-blocked numeric references from runtime.",
+      "Only export rules/percentages marked runtime_numeric_authority=APPROVED after independent validation.",
+      "Do not export MTG-Jamendo-derived percentages without commercial authorization or independent corroboration.",
+      "Do not export corpus aggregate percentages as hard quotas; convert only to variant-specific priors after validation.",
+      "Keep one runtime authority; do not duplicate genre rules into individual generators."
+    ]
+  }
 }

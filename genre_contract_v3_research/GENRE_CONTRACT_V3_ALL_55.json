@@ -242,7 +242,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -287,63 +287,243 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Useful common-practice tonal baseline for phrase, harmony, dynamics, articulation and shared rubato.",
+          "Already distinguishes melody/counterline/harmony/bass audibility as a desired mix outcome.",
+          "Existing Composer has preserved canonical orchestral identities and a researched formation reference."
+        ],
+        "current_profile_gaps": [
+          "Scope is labeled tonal chamber baseline but current Composer audition uses full-orchestra behavior.",
+          "No executable subgenre/period resolver.",
+          "No percentage-based ensemble population model in the genre contract itself.",
+          "No explicit foreground-window rule preventing small woodwind desks from being masked by larger string sections.",
+          "No executable spatial seating/section-footprint contract.",
+          "Current live Classical generator still contains hard-coded orchestration behavior separate from the profile."
+        ],
+        "external_sources_considered": [
+          "Current AI Composer 55-profile registry",
+          "Current Composer ensemble_architecture Classical population reference",
+          "OpenScore Orchestra / Hauptstimme",
+          "Orchset",
+          "MusicNet",
+          "URMP",
+          "DCML corpora",
+          "Orchestral instrument-activity datasets"
+        ],
+        "retained_current_fields": [
+          "functional harmony and voice-leading baseline",
+          "motivic development and formal return",
+          "wide phrase-shaped dynamics",
+          "score-like articulation relationships",
+          "shared phrase/cadence rubato",
+          "naturalistic room/depth intent",
+          "independent audibility of musical roles"
+        ],
+        "upgraded_fields": [
+          "variant resolution",
+          "ensemble population percentages",
+          "population-vs-musical-agency separation",
+          "foreground visibility windows",
+          "role handoff rules",
+          "spatial section presentation",
+          "evidence/validation requirements"
+        ],
         "conflicts": [],
-        "unresolved_questions": []
+        "unresolved_questions": [
+          "Derive activity percentages by period/variant from score/activity corpora.",
+          "Derive foreground ownership percentages by variant from Hauptstimme/Orchset-like annotations.",
+          "Separate Baroque, Classical-period, Romantic, chamber and later orchestral variants before runtime approval.",
+          "Define tuba/percussion population by variant rather than forcing one universal orchestra."
+        ]
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "status": "PARTIAL_RETAIN_AND_EXPAND",
+          "retained": "ABA/through-composed and cadence hierarchy remain valid for the current common-practice pilot.",
+          "required_upgrade": "Variant-specific formal vocabularies and probabilities; no single form template for all Classical."
+        },
+        "harmony_model": {
+          "authority": "GENRE_VARIANT_HARMONY_ENGINE",
+          "current_baseline": "Common-practice functional harmony with voice-leading.",
+          "hard_rule": "Reasoning layer may not invent or transpose pitches outside the resolved variant harmony/voice-leading authority.",
+          "expansion_required": true
+        },
+        "melody_model": {
+          "current_baseline": "Motivic development, register transfer, thematic return.",
+          "required_upgrade": "Variant-specific thematic development, counterpoint, ornamental practice and foreground ownership."
+        },
+        "rhythm_groove_model": {
+          "rule": "Meter hierarchy and phrase rhythm; no generic modern groove.",
+          "variant_specific": true
+        },
+        "bass_model": {
+          "rule": "Low strings/bassoon/keyboard support harmonic function; density must respond to orchestration rather than remain continuously heavy.",
+          "masking_guardrail": "Low-register activity must not bury middle/upper orchestral colors."
+        },
+        "percussion_model": {
+          "rule": "Structurally motivated and variant-dependent; never constant merely because percussion resources exist."
+        },
+        "phrase_model": {
+          "rule": "Phrase/cadence hierarchy with development and breathing space; foreground ownership may transfer among sections."
+        },
+        "transition_model": {
+          "rule": "Transitions arise from cadence, orchestration, register, dynamics and thematic transformation; no generic fill logic."
+        },
+        "development_model": {
+          "rule": "Develop existing material through motivic transformation, redistribution, register, texture and harmony before introducing unrelated material."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific cadential/ending grammar; current common-practice pilot retains authentic/half-cadence logic."
+        }
       },
       "ensemble": {
-        "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "instrument_roster": [
+          "VIOLIN_I",
+          "VIOLIN_II",
+          "VIOLA",
+          "CELLO",
+          "DOUBLE_BASS",
+          "FLUTE_SECTION",
+          "OBOE_SECTION",
+          "CLARINET_SECTION",
+          "BASSOON_SECTION",
+          "FRENCH_HORN",
+          "TRUMPET",
+          "TROMBONE_FAMILY",
+          "TIMPANI",
+          "PERCUSSION",
+          "TUBA_VARIANT_DEPENDENT"
+        ],
+        "population_mass_percent": {
+          "VIOLIN_I": 17.39,
+          "VIOLIN_II": 15.22,
+          "VIOLA": 13.04,
+          "CELLO": 10.87,
+          "DOUBLE_BASS": 8.7,
+          "FLUTE_SECTION": 4.35,
+          "OBOE_SECTION": 4.35,
+          "CLARINET_SECTION": 4.35,
+          "BASSOON_SECTION": 4.35,
+          "FRENCH_HORN": 5.43,
+          "TRUMPET": 3.26,
+          "TROMBONE_FAMILY": 3.26,
+          "TIMPANI": 1.09,
+          "PERCUSSION": 4.35,
+          "TUBA_VARIANT_DEPENDENT": null
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT",
+          "note": "Do not infer presence probability directly from one orchestra roster."
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_FROM_SCORE_AND_ACTIVITY_CORPORA",
+          "note": "Must measure how much each section actually plays; player count alone is not activity."
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE_FROM_FOREGROUND_AND_PART_RELATIONSHIP_CORPORA",
+          "note": "Musical agency is independent of population and loudness."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT",
+          "note": "Small desks may own clear foreground windows despite low population mass."
+        },
+        "foreground_window_rules": [
+          "When a woodwind or other small section owns foreground material, accompaniment must create an audibility window through density, register, articulation and/or spatial separation rather than artificial loudness alone.",
+          "Large string population does not grant permanent foreground ownership.",
+          "Foreground transfer must be explicit and time-bounded; supporting sections retain musical agency without masking the current owner."
+        ],
+        "role_handoff_rules": [
+          "Theme/countertheme may transfer among strings, woodwinds, brass and solo desks when supported by the resolved variant.",
+          "During handoff, previous foreground material simplifies, sustains, changes register or yields rhythmic activity as needed for clarity.",
+          "Population mass remains stable while foreground authority changes dynamically."
+        ],
+        "register_occupancy": {
+          "status": "RULE_BASED",
+          "rule": "Avoid chronic overlap of dense low strings/brass with featured middle/upper voices; register allocation follows role and variant."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "initial_rule": "Section width/depth scales with ensemble type and seating tradition; not a loudness percentage."
+        },
+        "section_population_reference": {
+          "reference_id": "CLASSICAL_FULL_ORCHESTRA_LPO_BEETHOVEN9_2026_REFERENCE",
+          "reference_total_without_unassigned_tuba": 92,
+          "counts": {
+            "VIOLIN_I": 16,
+            "VIOLIN_II": 14,
+            "VIOLA": 12,
+            "CELLO": 10,
+            "DOUBLE_BASS": 8,
+            "FLUTE_SECTION": 4,
+            "OBOE_SECTION": 4,
+            "CLARINET_SECTION": 4,
+            "BASSOON_SECTION": 4,
+            "FRENCH_HORN": 5,
+            "TRUMPET": 3,
+            "TROMBONE_FAMILY": 3,
+            "TIMPANI": 1,
+            "PERCUSSION": 4
+          },
+          "qualification": "One documented full-orchestra reference, not a universal Classical headcount. Percentages are population reference values, not gain multipliers."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato/staccato/tenuto/accent/bow/breath intent passed to instrument authority",
+        "dynamic_behavior": "wide phrase-shaped dynamics including crescendos, diminuendos and terraced contrasts where appropriate",
+        "timing_humanization_behavior": "shared rubato at phrase/cadence level rather than random note displacement",
+        "continuous_performance_control": "expression, breath/bow/pedal and tempo curves preserved",
+        "interaction_rules": [
+          "Shared phrase-level timing; no independent random jitter.",
+          "Foreground windows must be achieved first through orchestration/interaction, not post-mix boosting.",
+          "Population realization should create section richness/width through controlled variation, not identical-note cloning or linear gain."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "UPGRADE_REQUIRED",
+          "rule": "Resolved Classical variant supplies explicit section positions and depth; reasoning plans space before rendering and the shared 3D mixer realizes it after stems exist.",
+          "current_failure_found": "Previous audition collapsed sections toward a common center, reducing audible separation."
+        },
+        "mix_prominence_intent": "Preserve orchestral mass while keeping current foreground, counterline, harmony and bass functions independently intelligible.",
+        "sound_effects_intent": "naturalistic room/depth baseline; effects do not replace orchestration",
+        "production_mastering_intent": "retain dynamic range; avoid overcompression and excessive brightness"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer 55-profile registry",
+          "Current Composer ensemble_architecture Classical formation reference",
+          "OpenScore Orchestra / Hauptstimme (foreground/part-relationship research target)",
+          "Orchset (validation-only foreground research target)",
+          "MusicNet and URMP (instrument/note participation research targets)",
+          "DCML corpora (expert harmony/style-period research target)",
+          "Orchestral instrument-activity datasets (activity-percentage research target)"
+        ],
+        "source_confidence": {
+          "current_profile": "MEDIUM__USEFUL_BASELINE_NOT_COMPLETE",
+          "current_population_reference": "MEDIUM_HIGH_FOR_NAMED_FORMATION__NOT_UNIVERSAL",
+          "future_activity_foreground_statistics": "PENDING"
+        },
+        "source_license_status": {
+          "internal_project_sources": "PROJECT_INTERNAL",
+          "external_corpora": "REVIEW_BEFORE_DIRECT_REUSE__DERIVED_RULES_PREFERRED"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
-        "golden_reference_status": null,
+        "structural_tests": [
+          "Population percentages must sum to 100 for each resolved fixed formation, excluding explicitly variant-dependent/unassigned sections.",
+          "Population percentage must never be applied as linear gain.",
+          "Reasoning may alter density/role/space but not violate resolved harmony authority.",
+          "Foreground-owner tests must verify small sections can become audible without permanent level inflation."
+        ],
+        "listening_tests": [
+          "Compare against approved Classical golden reference.",
+          "Verify flute/oboe/bassoon remain audible during assigned foreground windows.",
+          "Verify strings retain greater ensemble mass without permanently masking smaller sections.",
+          "Verify stereo/depth separation is materially audible, not metadata-only."
+        ],
+        "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE",
         "approved_for_runtime": false
       },
       "safeguards": {
@@ -351,6 +531,23 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Classical",
+        "default_policy": "DO_NOT_TREAT_ALL_CLASSICAL_AS_ONE_FORMATION",
+        "candidate_variants": [
+          "Baroque ensemble/orchestral",
+          "Classical-period chamber",
+          "Classical-period orchestral",
+          "Romantic orchestral",
+          "Late-Romantic/expanded orchestral",
+          "Impressionist/early-modern orchestral",
+          "Modern/contemporary tonal",
+          "Chamber ensemble",
+          "Full symphonic"
+        ],
+        "note": "Candidate families only; each requires evidence-backed rules before activation."
       }
     },
     "Swing": {
@@ -588,7 +785,7 @@
       "source_profile_id": "BIG_BAND_V1",
       "family": "Jazz",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "PILOT_V3_UPDATED__EVIDENCE_EXPANSION_IN_PROGRESS",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BIG_BAND_V1",
@@ -630,63 +827,210 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Strong section-based identity: saxes, trumpets, trombones and rhythm section.",
+          "Existing Composer already supports a documented 17-player formation and chair expansion.",
+          "Current hierarchy distinguishes foreground lead, harmonizers, backgrounds and single-chair solos."
+        ],
+        "current_profile_gaps": [
+          "Current prose profile does not itself carry the 17-player percentages.",
+          "Variant system is not explicit enough for swing-era, modern, ballad, Latin or other big-band practices.",
+          "Presence/activity/foreground percentages are not yet derived from corpora.",
+          "Style-element variation/intros/fills/endings can be richer."
+        ],
+        "external_sources_considered": [
+          "Current AI Composer 55-profile registry",
+          "Current Composer Berklee-based 17-player formation",
+          "MMA Big Band/Swing libraries",
+          "Yamaha/Korg arranger architecture",
+          "JJazzLab",
+          "Weimar Jazz Database",
+          "Berklee arranging references"
+        ],
+        "retained_current_fields": [
+          "walking/riff-based bass relationship",
+          "ride/backbeat and ensemble-hit support",
+          "sax/trumpet/trombone section identity",
+          "section-as-unit phrasing",
+          "solo/background contrast",
+          "large sectional dynamics"
+        ],
+        "upgraded_fields": [
+          "formation percentages",
+          "variant resolution",
+          "foreground ownership percentages",
+          "section activity percentages",
+          "style-element/form variation",
+          "spatial section footprint"
+        ],
         "conflicts": [],
-        "unresolved_questions": []
+        "unresolved_questions": [
+          "Derive activity/foreground shares for swing-era versus modern variants.",
+          "Quantify rhythm-section activity separately from horn-section activity.",
+          "Research optional doubles and variant-specific instrumentation without treating them as universal."
+        ]
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "status": "PARTIAL_RETAIN_AND_EXPAND",
+          "rule": "Support introductions, ensemble choruses, solo features, backgrounds, shout/climactic returns and endings; variant determines sequence/probability."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BIG_BAND_JAZZ_VARIANT",
+          "rule": "Extended tonal/jazz harmony and voice-leading appropriate to variant; section voicings remain chord-aware."
+        },
+        "melody_model": {
+          "rule": "Lead chair/section owns foreground; other chairs harmonize or answer rather than becoming parallel equal leads."
+        },
+        "rhythm_groove_model": {
+          "rule": "Swing/variant pocket is shared across rhythm and horn phrasing; swing ratio and articulation vary by tempo/style."
+        },
+        "bass_model": {
+          "rule": "Walking or riff-based bass coordinates with drums/ensemble figures without duplicating every hit."
+        },
+        "percussion_model": {
+          "rule": "Ride/timekeeping, hi-hat, kick/snare support and setup fills follow section function and ensemble figures."
+        },
+        "phrase_model": {
+          "rule": "Section figures phrase as units; call/response and background figures leave room for the active foreground owner."
+        },
+        "transition_model": {
+          "rule": "Setups, fills, breaks and ensemble hits prepare sectional boundaries; no generic fill pasted across variants."
+        },
+        "development_model": {
+          "rule": "Develop head material through section transfer, backgrounds, solo support, density and voicing changes."
+        },
+        "cadence_ending_model": {
+          "rule": "Variant-specific tags, held endings, ensemble hits and arranged codas."
+        }
       },
       "ensemble": {
-        "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "instrument_roster": [
+          "ALTO_SAX_1",
+          "ALTO_SAX_2",
+          "TENOR_SAX_1",
+          "TENOR_SAX_2",
+          "BARITONE_SAX",
+          "TRUMPET_1",
+          "TRUMPET_2",
+          "TRUMPET_3",
+          "TRUMPET_4",
+          "TROMBONE_1",
+          "TROMBONE_2",
+          "TROMBONE_3",
+          "TROMBONE_4",
+          "PIANO",
+          "GUITAR",
+          "BASS",
+          "DRUMS"
+        ],
+        "population_mass_percent": {
+          "SAXES": 29.41,
+          "TRUMPETS": 23.53,
+          "TROMBONES": 23.53,
+          "RHYTHM_SECTION": 23.53
+        },
+        "presence_percent": {
+          "core_17_player_formation": "100% within this pilot formation",
+          "optional_doubles_and_variant_instruments": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE_BY_VARIANT_AND_SECTION_FUNCTION"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Musical authority rotates among lead chairs, sections, solos and rhythm features; headcount does not determine foreground."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Only one primary foreground owner at a time unless the arrangement explicitly calls for coordinated coupled foreground."
+        },
+        "foreground_window_rules": [
+          "Featured solo chair remains single-chair foreground; do not inflate solo into whole section.",
+          "Background sections must subordinate density/register/articulation to the current foreground owner.",
+          "Shout/ensemble climaxes may temporarily use coordinated full-section foreground."
+        ],
+        "role_handoff_rules": [
+          "Foreground may transfer among saxes, trumpets, trombones, solo chairs and rhythm features.",
+          "Outgoing section converts to background/support or rests rather than competing as a second lead.",
+          "Rhythm section remains foundational while adapting density to featured material."
+        ],
+        "register_occupancy": {
+          "rule": "Section voicings occupy differentiated registers; avoid chronic brass/reed masking of lead lines."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "initial_rule": "Saxes, trumpets, trombones and rhythm section receive distinct stage footprints; individual solo chair can localize within its section."
+        },
+        "section_population_reference": {
+          "reference_id": "BIG_BAND_STANDARD_17_BERKLEE",
+          "total_players": 17,
+          "counts": {
+            "SAXES": 5,
+            "TRUMPETS": 4,
+            "TROMBONES": 4,
+            "RHYTHM_SECTION": 4
+          },
+          "qualification": "Standard 17-player pilot formation; variants may alter doubles or instrumentation."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "tight staccato/accented figures contrasted with legato section pads",
+        "dynamic_behavior": "large sectional contrasts with controlled crescendos into ensemble hits",
+        "timing_humanization_behavior": "section-coherent placement; brass/reed attacks align with intentional pushes/lays",
+        "continuous_performance_control": "section expression and articulation controls plus solo-feature dynamics",
+        "interaction_rules": [
+          "Horn sections phrase as coordinated units.",
+          "Lead chair is not duplicated by every chair.",
+          "Backgrounds answer/support rather than mask solos.",
+          "Rhythm section and horn accents coordinate structurally."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "UPGRADE_REQUIRED",
+          "rule": "Distinct section stage positions and depth; preserve lead-chair localization and rhythm-section cohesion."
+        },
+        "mix_prominence_intent": "rhythm section foundation; featured section/solo foreground; backgrounds subordinate",
+        "sound_effects_intent": "natural room with limited enhancement; avoid smearing ensemble attacks",
+        "production_mastering_intent": "retain punch and brass detail without harshness"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current AI Composer 55-profile registry",
+          "Current Composer BIG_BAND_STANDARD_17_BERKLEE formation",
+          "MMA Big Band/Swing libraries",
+          "Yamaha/Korg arranger architecture",
+          "JJazzLab",
+          "Weimar Jazz Database",
+          "Berklee arranging references"
+        ],
+        "source_confidence": {
+          "17_player_formation": "HIGH_FOR_STANDARD_PILOT_FORMATION",
+          "activity_foreground_statistics": "PENDING",
+          "variant_taxonomy": "PENDING_RESEARCH"
+        },
+        "source_license_status": {
+          "internal_project_sources": "PROJECT_INTERNAL",
+          "external_sources": "RESEARCH_REFERENCE_OR_LICENSE_REVIEW_REQUIRED"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
-        "golden_reference_status": null,
+        "structural_tests": [
+          "17-player population percentages sum to 100 for the pilot formation.",
+          "Only one primary foreground owner per assignment epoch unless explicitly coupled.",
+          "Single-chair solo remains single-chair.",
+          "Section harmonizers/backgrounds remain subordinate to foreground owner."
+        ],
+        "listening_tests": [
+          "Compare against approved Big Band golden reference.",
+          "Verify section call/response is clear.",
+          "Verify lead chair remains identifiable without making the rest of the section disappear.",
+          "Verify rhythm section supports rather than overwhelms horn figures."
+        ],
+        "golden_reference_status": "AVAILABLE__BIG_BAND_APPROVED_REFERENCE",
         "approved_for_runtime": false
       },
       "safeguards": {
@@ -694,6 +1038,19 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_RUNTIME",
+        "parent_family": "Big Band",
+        "candidate_variants": [
+          "Swing-era dance band",
+          "Modern/contemporary big band",
+          "Big-band ballad",
+          "Blues/shout-chorus oriented",
+          "Latin big band",
+          "Vocal-feature big band"
+        ],
+        "note": "Candidates require evidence-backed rules; current 17-player standard remains the pilot formation."
       }
     },
     "Jazz Waltz": {
@@ -6309,5 +6666,10 @@
         "no_live_merge_without_review": true
       }
     }
-  }
+  },
+  "last_research_update": "2026-11-06",
+  "pilot_updates": [
+    "Classical",
+    "Big Band"
+  ]
 }

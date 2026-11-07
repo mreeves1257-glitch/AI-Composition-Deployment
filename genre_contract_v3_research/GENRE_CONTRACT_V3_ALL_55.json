@@ -1075,7 +1075,8 @@
           "No executable subgenre/period resolver.",
           "No percentage-based ensemble population model in the genre contract itself.",
           "No executable spatial seating/section-footprint contract.",
-          "Current live Classical generator still contains hard-coded orchestration behavior separate from the profile."
+          "Current live Classical generator still contains hard-coded orchestration behavior separate from the profile.",
+          "Current Classical pilot hard-codes foreground to violin/flute and restricts brass to support/punctuation, preventing evidence-backed role handoffs."
         ],
         "external_sources_considered": [
           "Current AI Composer 55-profile registry",
@@ -2360,7 +2361,9 @@
           "Resolved Classical variant must be able to alter role-state probabilities; a universal flute/violin/horn role mix is forbidden.",
           "Family activity occupancy must be a temporal union over active member parts; summing overlapping member percentages is forbidden.",
           "A VALIDATION_ONLY cohort may not directly set runtime probabilities or family-wide role weights.",
-          "A COMPOSER_STYLE_REFERENCE may constrain or validate a variant but may not be silently promoted to an era-wide default."
+          "A COMPOSER_STYLE_REFERENCE may constrain or validate a variant but may not be silently promoted to an era-wide default.",
+          "A resolved variant must be able to assign FOREGROUND to every section family permitted by that variant; the realization layer may not hard-code foreground to violin/flute.",
+          "Late-Romantic expanded-orchestra validation must demonstrate at least one genuine brass-foreground passage generated from composition logic, not post-mix boosting."
         ],
         "listening_tests": [
           "Compare against approved Classical golden reference.",
@@ -2374,7 +2377,8 @@
           "Verify a large string mass still sounds larger than a single wind even when the wind owns the foreground.",
           "During flute-led passages, verify strings can remain present yet perceptually subordinate through orchestration rather than simply muting them.",
           "Compare woodwind-led and string-led passages for clear role change without destroying orchestral continuity.",
-          "Compare candidate Classical-period and Late-Romantic variants using the same thematic seed; verify that role handoffs, brass agency, density and section interaction change audibly without changing the underlying seed identity."
+          "Compare candidate Classical-period and Late-Romantic variants using the same thematic seed; verify that role handoffs, brass agency, density and section interaction change audibly without changing the underlying seed identity.",
+          "Using one fixed thematic seed, compare current hard-coded orchestration against variant-aware orchestration and verify that the latter produces audible section-role handoffs without losing thematic identity."
         ],
         "golden_reference_status": "AVAILABLE__CLASSICAL_APPROVED_REFERENCE",
         "approved_for_runtime": false
@@ -2632,6 +2636,51 @@
         "activity_reference": "PERIOD_SPLIT_RESEARCH_REFERENCE_AVAILABLE",
         "instrument_presence_reference": "RESEARCH_ONLY_LICENSE_BLOCKED",
         "runtime_numeric_authority": "NOT_APPROVED"
+      },
+      "implementation_gap_audit": {
+        "source_file": "current_master_forward/classical_composition.py",
+        "audit_status": "RESEARCH_BRANCH_READ_ONLY_AUDIT__NO_LIVE_CHANGE",
+        "findings": [
+          {
+            "issue": "FIXED_TWO-INSTRUMENT_FOREGROUND",
+            "evidence": "make_plan assigns lead='flute' in B and lead='violin' elsewhere; ROLE_INSTRUMENT foreground roles are limited to violin/flute/clarinet/double_bass and the realized lead path only selects violin or flute.",
+            "consequence": "Oboe, bassoon, horn, trumpet, trombone, cello/viola desks and other orchestral colors cannot become true thematic owners under the current pilot.",
+            "research_conflict": "Period foreground evidence shows substantial woodwind ownership across all cohorts and substantial brass foreground in late-Romantic samples."
+          },
+          {
+            "issue": "CONTINUOUS_STRING_BODY",
+            "evidence": "The full-orchestra realization adds the string section every bar using orchestral_string_section.",
+            "consequence": "Strings cannot naturally yield through selective rests or major density reduction when another section owns foreground.",
+            "research_conflict": "Activity evidence supports high string activity, but foreground evidence requires strings to change role/density/register under wind or brass foreground rather than remain an invariant body."
+          },
+          {
+            "issue": "BRASS_RESTRICTED_TO_PUNCTUATION",
+            "evidence": "Trumpet/trombone/tuba are added only for development, contrast or final bars and are labeled orchestral_brass_punctuation; horns are coded as support.",
+            "consequence": "Brass foreground authority is structurally impossible in the current generator.",
+            "research_conflict": "Late-Romantic Beach+Bruckner evidence gives brass about 23.71% of observed foreground in the pooled sample."
+          },
+          {
+            "issue": "WOODWIND_ROTATION_WITHOUT_ROLE_AUTHORITY",
+            "evidence": "Flute 2, oboe, clarinet 2 and bassoon are rotated as orchestral_woodwind_color based on bar parity/section operation.",
+            "consequence": "Their entries are decorative/support scheduling, not composition-level thematic handoffs.",
+            "research_conflict": "Foreground evidence requires explicit, time-bounded ownership windows rather than color-only entrances."
+          },
+          {
+            "issue": "VARIANT_AGNOSTIC_ORCHESTRATION",
+            "evidence": "One fixed roster and one fixed realization procedure are used for the entire Classical family.",
+            "consequence": "Baroque continuo behavior, Classical-period balance, Romantic expanded brass and early-modern color cannot be distinguished.",
+            "research_conflict": "Paired activity/foreground evidence shows material differences across cohorts."
+          }
+        ],
+        "root_cause_summary": "The current pilot has a serviceable harmonic/phrase skeleton but orchestration is encoded as one fixed arrangement recipe. Instrument identities are present, yet role authority and density behavior are not resolved by Classical variant.",
+        "repair_direction": [
+          "Keep make_plan/thematic seed and harmonic authority separate from orchestration variant.",
+          "Add a variant resolver before realization.",
+          "Replace fixed lead assignment with section-role-state scheduling.",
+          "Let foreground ownership transfer among eligible sections by variant.",
+          "Let supporting sections change density/register/articulation/rest state before any gain correction.",
+          "Keep physical population, activity, foreground and gain as separate variables."
+        ]
       }
     },
     "Swing": {
@@ -17465,10 +17514,10 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Build isolated listening-validation extracts for the Classical-period symphonic baseline and Late-Romantic expanded-orchestra candidate variants.",
-    "Use the same thematic seed across variants so orchestration/role behavior can be compared directly.",
-    "Do not merge these candidates into live runtime until the listening tests pass.",
-    "Continue quantitative evidence extraction for remaining genre families after the Classical pilot validation."
+    "Build an isolated Classical variant-orchestration validation harness on the research branch; do not edit the live Composer path.",
+    "Use one fixed thematic/harmonic plan and generate at least Classical-period baseline and Late-Romantic expanded variants.",
+    "Validate event-level role ownership, activity, density and anti-masking before rendering audio.",
+    "Render paired MP3 auditions only after structural tests pass."
   ],
   "last_quantitative_update": "2026-11-06",
   "quantitative_phase_status": "CLASSICAL_CANDIDATE_VARIANT_ROLE_PRIORS_DEFINED__LISTENING_VALIDATION_NEXT",

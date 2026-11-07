@@ -62,6 +62,17 @@ def main():
                 )
             if result.get("audio_rendered") is not False:
                 raise RuntimeError("RUNTIME_SYMBOLIC_AUDIO_ESCALATION::"+name)
+            if result.get("finished_composition_authority") is not False:
+                raise RuntimeError("SOURCE_PATTERN_WRONGLY_PROMOTED_TO_FINISHED_COMPOSITION::"+name)
+            if result.get("source_pattern_finished_composition_eligible") is not False:
+                raise RuntimeError("SOURCE_PATTERN_WRONGLY_MARKED_FINISHED_ELIGIBLE::"+name)
+            if result.get("foreground_notes_generated") is not False:
+                raise RuntimeError("FOREGROUND_NOTES_WERE_FABRICATED::"+name)
+            if result.get("foreground_execution_status") != "STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED":
+                raise RuntimeError("FOREGROUND_EXECUTION_STATUS_UNEXPECTED::"+name+"::"+str(result.get("foreground_execution_status")))
+            fg=result.get("genre_v3_foreground_authority") or {}
+            if fg.get("source_pattern_can_supply_finished_foreground") is not False:
+                raise RuntimeError("FOREGROUND_AUTHORITY_GUARD_MISSING::"+name)
             theory=result["theory_package"]
             if theory.get("legacy_note_generator_used") is not False:
                 raise RuntimeError("LEGACY_NOTE_GENERATOR_STILL_USED::"+name)
@@ -102,6 +113,8 @@ def main():
                 "meter":theory.get("meter"),
                 "legacy_note_generator_used":theory.get("legacy_note_generator_used"),
                 "audio_rendered":result.get("audio_rendered"),
+                "foreground_execution_status":result.get("foreground_execution_status"),
+                "finished_composition_authority":result.get("finished_composition_authority"),
             }
 
     summary={
@@ -115,12 +128,19 @@ def main():
         "all_legacy_note_generator_bypassed":all(
             row["legacy_note_generator_used"] is False for row in rows.values()
         ),
+        "all_finished_composition_authority_false":all(
+            row["finished_composition_authority"] is False for row in rows.values()
+        ),
+        "all_foreground_execution_blocked":all(
+            row["foreground_execution_status"]=="STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED"
+            for row in rows.values()
+        ),
         "result":(
             "The reconstructed Composer accepted V3-governed symbolic events for "
             "all 40 automatic genres without explicit V3 formations and resolved every "
             "selected event instrument into the current instrument library. Brush-snare "
             "and hand-drum remain canonical resource-required identities. Rendering was "
-            "intentionally blocked."
+            "intentionally blocked, and every package is explicitly marked accompaniment-only until a separate foreground/melody executor is compiled."
         ),
         "genres":rows,
         "next_gate":"GENRE_SPECIFIC_FORM_AND_MUSICAL_BEHAVIOR_REVALIDATION_BEFORE_AUDIO",

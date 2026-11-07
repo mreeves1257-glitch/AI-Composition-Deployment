@@ -245,26 +245,26 @@
     },
     {
       "genre_name": "Eclectic New Indie",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Mexican Reggaeton",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__2026_SCENE_COMPONENT_MODEL",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Chugg / #chugg",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__PROVISIONAL_2026_SCENE",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
       "genre_name": "Afrobeats",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__BROAD_FAMILY_VARIANT_REQUIRED",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {
@@ -275,8 +275,8 @@
     },
     {
       "genre_name": "Afro House",
-      "research_status": "NOT_STARTED",
-      "comparison_status": "PENDING",
+      "research_status": "V3_UPDATED__CURRENT_SUBGENRE_LAYER_MODEL",
+      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
       "approved_for_runtime": false
     },
     {

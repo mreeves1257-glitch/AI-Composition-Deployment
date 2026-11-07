@@ -1,5 +1,5 @@
 {
-  "schema_id": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_001",
+  "schema_id": "GENRE_CONTRACT_V3_RESEARCH_SCHEMA_002",
   "purpose": "Evidence-backed composition-grade genre contracts for the AI Composer. Research workspace only; not live runtime authority.",
   "rules": {
     "current_profile_preserved": true,
@@ -9,7 +9,9 @@
     "genre_specific_harmony_and_pitch_authority": true,
     "reasoning_cannot_invent_pitch_unless_genre_contract_explicitly_allows_it": true,
     "population_is_not_linear_gain": true,
-    "musical_agency_is_distinct_from_population_mass": true
+    "musical_agency_is_distinct_from_population_mass": true,
+    "activity_is_not_foreground": true,
+    "foreground_is_not_population": true
   },
   "required_fields": {
     "identity": [
@@ -39,6 +41,8 @@
       "musical_agency_percent",
       "foreground_window_rules",
       "role_handoff_rules",
+      "section_role_state_rules",
+      "masking_risk_rules",
       "register_occupancy",
       "spatial_footprint_percent",
       "section_population_reference"
@@ -78,5 +82,35 @@
     "musical_agency_percent": "Share of meaningful compositional responsibility over the whole piece; distinct from loudness and player count.",
     "foreground_window_percent": "Estimated share of time the instrument/section carries foreground or featured material.",
     "spatial_footprint_percent": "Relative width/depth allocation when active; not loudness."
+  },
+  "section_role_states": {
+    "FOREGROUND": "Primary perceptual/musical owner for the current phrase/window.",
+    "COUNTERLINE": "Independent secondary line that must remain intelligible without competing as primary foreground.",
+    "HARMONIC_SUPPORT": "Chordal/voicing support that yields register, density, articulation and/or activity to foreground.",
+    "TEXTURAL_SUPPORT": "Color/texture support; may be broad but must not obscure foreground.",
+    "FOUNDATION": "Bass/rhythm/pulse or structural foundation; high importance does not imply foreground.",
+    "REST": "Intentional silence/space."
+  },
+  "masking_risk_model": {
+    "inputs": [
+      "foreground_owner",
+      "population_mass_percent",
+      "current_activity_state",
+      "register_overlap",
+      "rhythmic_density_overlap",
+      "articulation_attack_overlap",
+      "spectral_overlap",
+      "spatial_overlap"
+    ],
+    "correction_order": [
+      "reduce accompaniment note density/activity",
+      "move accompaniment register/voicing",
+      "lengthen/supporting note values or simplify rhythm",
+      "soften supporting articulation/attack",
+      "insert selective rests",
+      "adjust spatial separation/depth",
+      "only then use limited level changes if still needed"
+    ],
+    "prohibited_shortcut": "Do not solve orchestration masking primarily by permanently boosting the small/featured instrument."
   }
 }

@@ -762,3 +762,52 @@ Mapping is recorded in:
 
 Active gate:
 User chooses Blind 1, Blind 2, no difference, or both wrong. Do not reveal mapping before that judgment. Do not add kick/drums or another performance variable before this decision.
+
+
+## Rock V3 bass sustain — structural gate passed; current Vicious mapping rejected for sustain listening
+
+Preferred guitar context remains fixed:
+- HARMONY max ringing: 2.8 beats
+- safe note-off-preserving strum
+- treated LEAD unchanged
+
+Bass symbolic candidate:
+- source: `ROCK_BASS_SUSTAIN_V1_RESEARCH_DISABLED_DEFAULT`
+- 147 bass events total
+- 58 bass durations changed across full 40 bars
+- extension range: +0.225 to +0.615 beat
+- minimum remaining gap to next bass attack on changed events: 0.275 beat
+- no candidate-introduced overlap
+- no candidate-worsened overlap
+- no changed-event overlap
+- no bar-boundary crossing
+- pitch/onset/velocity/event count unchanged
+- all non-BASS roles unchanged
+
+The later verifier failures were traced to non-chronological bass-event checking in the verifier, not the executor. The verifier was fixed to sort bass pairs by onset. Corrected workflow run `42394807720` passed.
+
+Growlybass exact resource proof:
+- release: v1.002
+- official asset ID: 83416481
+- archive size: 167454256 bytes
+- archive SHA256: `b92dca75494fa39d6e8d8b8addaabfe70c5aaa59b5f9a0f624be6de51a2374bc`
+- registry mapping: `growlybass_vicious.sfz`
+- sample graph: 86 references / 86 unique samples / 1 SFZ
+- no synthetic fallback
+
+Current mapping note-length characterization:
+- workflow run: `42394927340`
+- artifact ID: `13583152249`
+- classification: `NOTE_LENGTH_NONRESPONSIVE_OR_STACCATO`
+- 0.25 s note active end: 0.34 s
+- 2.00 s note active end: 0.48 s
+- active-end delta: only 0.14 s
+- therefore note-length response for current mapping: false
+
+The technically successful bass A/B run `42394879894` is rejected as authority for bass-sustain musical judgment because the exact Vicious mapping does not materially express note-length differences.
+
+Decision record:
+`GROWLYBASS_VICIOUS_SUSTAIN_GATE_DECISION_2026-11-07.json`
+
+Active gate:
+Research-only characterization of `growlybass_clean.sfz` and `growlybass_dirty.sfz` from the same pinned v1.002 archive. The target registry remains unchanged. Only if a mapping proves note-length responsive should a new musical bass-sustain A/B be rendered.

@@ -1,4 +1,5 @@
 name: Genre V3 Symbolic Runtime Instrument Resolution
+# Current target: all 40 automatic non-explicit-roster V3 source-pattern genres.
 
 on:
   push:

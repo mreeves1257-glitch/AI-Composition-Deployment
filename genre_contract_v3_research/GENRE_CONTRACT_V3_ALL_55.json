@@ -9938,7 +9938,7 @@
       "source_profile_id": "AFRO_LATIN_AFROBEATS_FUSION_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_HYBRID_RESOLVER",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__CONTROLLED_FUSION_RESOLVER",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "AFRO_LATIN_AFROBEATS_FUSION_V2",
@@ -9980,62 +9980,157 @@
         "execution_rule": "RESOLVE_COMPONENTS_WITH_PROVENANCE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already correctly defined as a resolver rather than one fixed genre.",
+          "Current profile requires provenance for Afrobeats and selected Afro-Latin/Latin rhythmic components.",
+          "It already warns against stacking every rhythm simultaneously."
+        ],
+        "current_profile_gaps": [
+          "Needs formal ownership/conflict fields for groove, harmony, bass and percussion.",
+          "No explicit component percentage/agency model.",
+          "No validation against generic pan-Latin or pan-African simplification."
+        ],
+        "external_sources_considered": [
+          "Current resolver profile",
+          "upgraded Afrobeats contract",
+          "upgraded Salsa/Samba/Mambo/Rumba/Cha-Cha/Bolero contracts",
+          "Beatport African/Latin taxonomy as boundary reference"
+        ],
+        "retained_current_fields": [
+          "component provenance",
+          "no generic pan-Latin beat",
+          "source-specific harmony colors",
+          "controlled handoffs",
+          "low-end separation"
+        ],
+        "upgraded_fields": [
+          "component ownership map",
+          "conflict resolver",
+          "component contribution percentages",
+          "agency handoffs",
+          "source-contract inheritance"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Resolved from source forms with explicit section ownership/handoffs."
+        },
+        "harmony_model": {
+          "authority": "COMPONENT_ASSIGNMENT",
+          "rule": "No automatic averaging of Afrobeats and Latin harmony systems."
+        },
+        "melody_model": {
+          "rule": "Lead/hook language follows declared component or explicit fusion rule."
+        },
+        "rhythm_groove_model": {
+          "rule": "Each rhythmic layer names its source; incompatible groove grids require section handoff or explicit reconciliation."
+        },
+        "bass_model": {
+          "rule": "One bass authority per state unless an explicit compatible composite rule is validated."
+        },
+        "percussion_model": {
+          "rule": "Percussion layers retain source identity; stacking all source percussion is forbidden."
+        },
+        "phrase_model": {
+          "rule": "Phrase behavior follows active component authority."
+        },
+        "transition_model": {
+          "rule": "Handoffs between source components must be musically explicit and provenance-preserving."
+        },
+        "development_model": {
+          "rule": "Develop by controlled component exchange/transformation, not feature accumulation."
+        },
+        "cadence_ending_model": {
+          "rule": "Ending authority must be assigned to one component or explicit fusion rule."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "presence_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "activity_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "musical_agency_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_rules": [
+          "Derived from component contracts plus explicit hybrid handoff rules; do not average incompatible rules blindly."
+        ],
+        "role_handoff_rules": [
+          "Every cross-component foreground transfer must declare source component, destination component and transition rule."
+        ],
+        "register_occupancy": {
+          "rule": "Resolve collisions after component merge; provenance alone does not guarantee compatible register/spectral occupancy."
+        },
+        "spatial_footprint_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "section_population_reference": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "component_contribution_percent": {
+          "status": "REQUIRED_PER_COMPOSITION",
+          "rule": "Percentages describe structural contribution, not gain."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "articulation follows component source",
+        "dynamic_behavior": "energy shaped by layer introduction/removal",
+        "timing_humanization_behavior": "timing grids must be reconciled explicitly; no blind quantization",
+        "continuous_performance_control": "expression/automation with provenance",
+        "interaction_rules": [
+          "Component timing systems must be reconciled explicitly.",
+          "No tokenizing/regional placeholder instruments.",
+          "Conflicting rules trigger resolver failure rather than generic fallback."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "RESOLVE_FROM_COMPONENTS_WITH_COLLISION_CHECK"
+        },
+        "mix_prominence_intent": "groove clarity and low-end separation primary",
+        "sound_effects_intent": "effects selected by component and overall production",
+        "production_mastering_intent": "hybrid master preserves percussion detail"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current fusion profile",
+          "upgraded source contracts",
+          "Beatport taxonomy boundary reference"
+        ],
+        "source_confidence": {
+          "resolver_architecture": "HIGH",
+          "universal_fusion_grammar": "REJECTED"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Beatport": "TAXONOMY_REFERENCE"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Two named source contracts required.",
+          "Component ownership complete.",
+          "No pan-Latin placeholder.",
+          "No generic fallback on conflict."
+        ],
+        "listening_tests": [
+          "Both sources remain recognizable without sounding stacked randomly.",
+          "Low end and percussion remain coherent.",
+          "Handoffs sound intentional."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -10044,6 +10139,32 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "MANDATORY_COMPONENT_RESOLUTION",
+        "parent_family": "Afro-Latin / Afrobeats Fusion",
+        "required_components": [
+          "one resolved Afrobeats variant",
+          "one explicitly named Afro-Latin/Latin source contract"
+        ],
+        "hard_rule": "The phrase Afro-Latin cannot stand in for an unnamed rhythm. Name the actual source tradition/genre."
+      },
+      "component_contract": {
+        "required_fields": [
+          "component_id",
+          "source_contract",
+          "section_scope",
+          "rhythm_authority",
+          "harmony_authority",
+          "bass_authority",
+          "percussion_authority",
+          "instrument_authority",
+          "foreground_authority",
+          "transformation_rules"
+        ],
+        "conflict_policy": "EXPLICIT_PRIORITY_OR_SECTION_HANDOFF_REQUIRED",
+        "provenance_required": true,
+        "default_blend_forbidden": true
       }
     },
     "Afro House": {
@@ -10709,7 +10830,7 @@
       "source_profile_id": "REGIONAL_ELECTRONIC_HYBRID_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_HYBRID_RESOLVER",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__PROVENANCE_RESOLVER",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "REGIONAL_ELECTRONIC_HYBRID_V2",
@@ -10752,62 +10873,153 @@
         "execution_rule": "RESOLVE_COMPONENTS_WITH_PROVENANCE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Existing profile already requires explicit region/tradition and source provenance.",
+          "It correctly forbids a generic world-music placeholder and silent overwrite by electronic layers."
+        ],
+        "current_profile_gaps": [
+          "Needs formal cultural-source authority and conflict resolution.",
+          "No rule requiring tradition-specific research confidence before activation.",
+          "No component contribution model."
+        ],
+        "external_sources_considered": [
+          "Current resolver profile",
+          "CompMusic/tradition-specific corpora as research model",
+          "resolved electronic contracts"
+        ],
+        "retained_current_fields": [
+          "explicit source tradition",
+          "verified regional instruments only",
+          "percussion provenance",
+          "non-tokenizing interaction",
+          "source-detail preservation"
+        ],
+        "upgraded_fields": [
+          "tradition-evidence gate",
+          "component authority map",
+          "contribution percentages",
+          "conflict failure mode",
+          "cultural provenance audit"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Source-tradition and electronic form are assigned by section/state, not automatically averaged."
+        },
+        "harmony_model": {
+          "authority": "DOCUMENTED_SOURCE_PLUS_ELECTRONIC_COMPONENT_MAP"
+        },
+        "melody_model": {
+          "rule": "Regional melodic systems remain source-specific; electronic transformation cannot rewrite them into generic Western melody."
+        },
+        "rhythm_groove_model": {
+          "rule": "Regional rhythmic identities retain provenance; electronic grid must adapt or hand off explicitly."
+        },
+        "bass_model": {
+          "rule": "Bass authority assigned explicitly; do not overwrite source low-end logic automatically."
+        },
+        "percussion_model": {
+          "rule": "Traditional/regional percussion identities remain canonical and sourced."
+        },
+        "phrase_model": {
+          "rule": "Phrase grammar follows active source contract."
+        },
+        "transition_model": {
+          "rule": "Cross-system transitions require explicit transformation rules."
+        },
+        "development_model": {
+          "rule": "Develop through sourced transformation and electronic production without tokenizing source material."
+        },
+        "cadence_ending_model": {
+          "rule": "Assigned to source/electronic component or explicit hybrid rule."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "presence_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "activity_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "musical_agency_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_rules": [
+          "Derived from component contracts plus explicit hybrid handoff rules; do not average incompatible rules blindly."
+        ],
+        "role_handoff_rules": [
+          "Every cross-component foreground transfer must declare source component, destination component and transition rule."
+        ],
+        "register_occupancy": {
+          "rule": "Resolve collisions after component merge; provenance alone does not guarantee compatible register/spectral occupancy."
+        },
+        "spatial_footprint_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "section_population_reference": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "component_contribution_percent": {
+          "status": "REQUIRED_PER_COMPOSITION"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "articulation follows verified instruments and electronic resources",
+        "dynamic_behavior": "dynamic behavior follows selected source/electronic profiles",
+        "timing_humanization_behavior": "timing relationships reconciled intentionally",
+        "continuous_performance_control": "automation + performance controls from both component systems",
+        "interaction_rules": [
+          "No unsourced cultural signifiers.",
+          "Instrument identities and performance practices retain provenance.",
+          "Electronic quantization cannot silently erase source timing."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "SOURCE_AND_ELECTRONIC_COMPONENT_RESOLUTION"
+        },
+        "mix_prominence_intent": "mix preserves source-specific detail",
+        "sound_effects_intent": "effects may connect components but cannot erase provenance",
+        "production_mastering_intent": "mastering avoids flattening acoustic/organic dynamics"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current resolver profile",
+          "tradition-specific corpora/research appropriate to selected source",
+          "resolved electronic contract"
+        ],
+        "source_confidence": {
+          "resolver_architecture": "HIGH",
+          "specific_tradition": "MUST_BE_ESTABLISHED_PER_USE"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "external_tradition_sources": "CASE_BY_CASE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Named tradition required.",
+          "Evidence/provenance required.",
+          "Unsupported cultural inference fails closed.",
+          "Component percentages and authority map complete."
+        ],
+        "listening_tests": [
+          "Source identity remains musically meaningful.",
+          "Electronic layer enhances rather than tokenizes/erases.",
+          "Timing/harmony conflicts are resolved intentionally."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -10816,6 +11028,21 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "MANDATORY_SOURCED_COMPONENTS",
+        "required_components": [
+          "explicit named regional/traditional source contract",
+          "explicit electronic source contract"
+        ],
+        "hard_rule": "No 'world' or regional placeholder may reach generation without a documented source tradition."
+      },
+      "component_contract": {
+        "provenance_required": true,
+        "tradition_evidence_gate": "REQUIRED",
+        "unsupported_cultural_inference": "FAIL",
+        "conflict_policy": "EXPLICIT_PRIORITY_OR_SECTION_HANDOFF",
+        "component_percentage_required": true
       }
     },
     "Genre-Breaking / Borderless": {
@@ -10824,7 +11051,7 @@
       "source_profile_id": "BORDERLESS_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_COMPONENT_ARCHITECTURE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__CONTROLLED_COMPONENT_ARCHITECTURE",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BORDERLESS_V2",
@@ -10869,62 +11096,147 @@
         "execution_rule": "RESOLVE_COMPONENTS_WITH_PROVENANCE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already rejects random style blending.",
+          "Current profile preserves source identity and allows section-specific morphing with traceability."
+        ],
+        "current_profile_gaps": [
+          "Needs a formal component graph, conflict resolver and contribution model.",
+          "No validation preventing too many simultaneous authorities."
+        ],
+        "external_sources_considered": [
+          "Current component profile",
+          "upgraded genre contracts"
+        ],
+        "retained_current_fields": [
+          "deliberate cross-genre design",
+          "source identity",
+          "section-specific morphing",
+          "traceable mix hierarchy"
+        ],
+        "upgraded_fields": [
+          "component graph",
+          "authority ownership",
+          "conflict resolution",
+          "contribution percentages",
+          "complexity ceiling"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Section/state graph with explicit source ownership and morph transitions."
+        },
+        "harmony_model": {
+          "authority": "COMPONENT_GRAPH"
+        },
+        "melody_model": {
+          "rule": "Each melodic state names its source grammar or explicit transformation."
+        },
+        "rhythm_groove_model": {
+          "rule": "No fixed groove; imported rhythms retain source identity until explicitly transformed."
+        },
+        "bass_model": {
+          "rule": "Assigned per state/component."
+        },
+        "percussion_model": {
+          "rule": "Assigned per state/component."
+        },
+        "phrase_model": {
+          "rule": "Inherited or explicitly transformed."
+        },
+        "transition_model": {
+          "rule": "Morph edges declare what changes and what remains invariant."
+        },
+        "development_model": {
+          "rule": "Develop through controlled component graph, not accumulation."
+        },
+        "cadence_ending_model": {
+          "rule": "Ending authority explicitly assigned."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "presence_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "activity_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "musical_agency_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_rules": [
+          "Derived from component contracts plus explicit hybrid handoff rules; do not average incompatible rules blindly."
+        ],
+        "role_handoff_rules": [
+          "Every cross-component foreground transfer must declare source component, destination component and transition rule."
+        ],
+        "register_occupancy": {
+          "rule": "Resolve collisions after component merge; provenance alone does not guarantee compatible register/spectral occupancy."
+        },
+        "spatial_footprint_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "section_population_reference": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "component_contribution_percent": {
+          "status": "REQUIRED_PER_COMPOSITION"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "articulation changes follow selected style/instrument",
+        "dynamic_behavior": "dynamic transitions coordinate style changes",
+        "timing_humanization_behavior": "timing transformations are explicit, not random",
+        "continuous_performance_control": "automation may mediate cross-style transitions",
+        "interaction_rules": [
+          "Maximum active authorities enforced.",
+          "Source timing/performance rules stay traceable.",
+          "Conflicts cannot fall back to generic generator."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "COMPONENT_GRAPH_AUTHORITY"
+        },
+        "mix_prominence_intent": "mix hierarchy can shift by section with traceability",
+        "sound_effects_intent": "effects support transitions but do not define genre by themselves",
+        "production_mastering_intent": "mastering preserves intentional contrasts"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Borderless profile",
+          "upgraded source contracts"
+        ],
+        "source_confidence": {
+          "architecture": "HIGH"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "At least two valid components.",
+          "No unresolved conflicts.",
+          "Traceability complete.",
+          "No generic fallback."
+        ],
+        "listening_tests": [
+          "Cross-genre changes feel deliberate.",
+          "Source identities remain intelligible.",
+          "Complexity does not become undifferentiated clutter."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -10933,6 +11245,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "MANDATORY_COMPONENT_GRAPH",
+        "hard_rule": "Borderless is an architecture, not permission to blend everything."
+      },
+      "component_contract": {
+        "min_components": 2,
+        "max_simultaneous_primary_authorities": 2,
+        "source_contracts_required": true,
+        "section_scope_required": true,
+        "conflict_policy": "EXPLICIT_RESOLUTION",
+        "traceability_required": true
       }
     },
     "Custom Hybrid": {
@@ -10941,7 +11265,7 @@
       "source_profile_id": "CUSTOM_HYBRID_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_HYBRID_RESOLVER",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__USER_COMPONENT_RESOLVER",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CUSTOM_HYBRID_V2",
@@ -10986,62 +11310,142 @@
         "execution_rule": "REQUIRE_USER_COMPONENTS"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Already requires user-selected components and forbids an automatic default from the word Custom.",
+          "Provenance and explicit component-level hybridization are already present."
+        ],
+        "current_profile_gaps": [
+          "Needs complete validation schema and contribution percentages.",
+          "Needs conflict-resolution UI/data contract."
+        ],
+        "external_sources_considered": [
+          "Current custom-hybrid profile",
+          "upgraded genre contracts"
+        ],
+        "retained_current_fields": [
+          "user-selected components",
+          "no default groove",
+          "explicit component map",
+          "source provenance"
+        ],
+        "upgraded_fields": [
+          "required component schema",
+          "component percentages",
+          "conflict resolver",
+          "validation gate"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Resolved from user component map."
+        },
+        "harmony_model": {
+          "authority": "USER_COMPONENT_MAP"
+        },
+        "melody_model": {
+          "rule": "Resolved."
+        },
+        "rhythm_groove_model": {
+          "rule": "Resolved; no default."
+        },
+        "bass_model": {
+          "rule": "Resolved."
+        },
+        "percussion_model": {
+          "rule": "Resolved."
+        },
+        "phrase_model": {
+          "rule": "Resolved."
+        },
+        "transition_model": {
+          "rule": "Explicit component handoffs/morphs."
+        },
+        "development_model": {
+          "rule": "Resolved from component map."
+        },
+        "cadence_ending_model": {
+          "rule": "Explicitly assigned."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "presence_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "activity_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "musical_agency_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_rules": [
+          "Derived from component contracts plus explicit hybrid handoff rules; do not average incompatible rules blindly."
+        ],
+        "role_handoff_rules": [
+          "Every cross-component foreground transfer must declare source component, destination component and transition rule."
+        ],
+        "register_occupancy": {
+          "rule": "Resolve collisions after component merge; provenance alone does not guarantee compatible register/spectral occupancy."
+        },
+        "spatial_footprint_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "section_population_reference": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "component_contribution_percent": {
+          "status": "REQUIRED_FROM_USER_OR_RESOLVER"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "articulation inherited/resolved",
+        "dynamic_behavior": "dynamic behavior inherited/resolved",
+        "timing_humanization_behavior": "timing behavior inherited/resolved",
+        "continuous_performance_control": "continuous controls inherited/resolved",
+        "interaction_rules": [
+          "No unspecified defaults.",
+          "Conflicts must be resolved before composition."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "USER_COMPONENT_MAP"
+        },
+        "mix_prominence_intent": "mix hierarchy explicitly assigned",
+        "sound_effects_intent": "effects inherited/resolved",
+        "production_mastering_intent": "mastering follows resolved hybrid intent"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Custom Hybrid profile",
+          "selected source contracts"
+        ],
+        "source_confidence": {
+          "resolver_architecture": "HIGH"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Reject empty component map.",
+          "Reject unresolved conflicts.",
+          "Contribution percentages/rules complete."
+        ],
+        "listening_tests": [
+          "Output reflects selected components rather than generic hybrid style."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -11050,6 +11454,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "USER_COMPONENTS_REQUIRED",
+        "hard_rule": "No generation from Custom Hybrid label alone."
+      },
+      "component_contract": {
+        "source_contracts_required": true,
+        "component_contribution_percent_required": true,
+        "authority_map_required": true,
+        "conflict_policy_required": true,
+        "section_scope_required": true
       }
     },
     "Custom Style": {
@@ -11058,7 +11473,7 @@
       "source_profile_id": "CUSTOM_STYLE_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_COMPONENT_ARCHITECTURE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__USER_DEFINED_CONTAINER",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CUSTOM_STYLE_V2",
@@ -11103,62 +11518,135 @@
         "execution_rule": "REQUIRE_USER_COMPONENTS"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Correctly identified as user-defined container, not automatic genre."
+        ],
+        "current_profile_gaps": [
+          "Needs minimum schema validation so user-defined does not mean undefined."
+        ],
+        "external_sources_considered": [
+          "Current Custom Style profile",
+          "Genre Contract v3 schema"
+        ],
+        "retained_current_fields": [
+          "user-defined authority",
+          "no automatic genre assumptions"
+        ],
+        "upgraded_fields": [
+          "minimum valid custom schema",
+          "percentage semantics",
+          "validation errors"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "harmony_model": {
+          "authority": "USER_DEFINED_REQUIRED"
+        },
+        "melody_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "rhythm_groove_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "bass_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "percussion_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "phrase_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "transition_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "development_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        },
+        "cadence_ending_model": {
+          "rule": "USER_DEFINED_REQUIRED"
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "presence_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "activity_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "musical_agency_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_rules": [
+          "Derived from component contracts plus explicit hybrid handoff rules; do not average incompatible rules blindly."
+        ],
+        "role_handoff_rules": [
+          "Every cross-component foreground transfer must declare source component, destination component and transition rule."
+        ],
+        "register_occupancy": {
+          "rule": "Resolve collisions after component merge; provenance alone does not guarantee compatible register/spectral occupancy."
+        },
+        "spatial_footprint_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "section_population_reference": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "component_contribution_percent": {
+          "status": "USER_DEFINED_OR_DERIVED"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "user-defined",
+        "dynamic_behavior": "user-defined",
+        "timing_humanization_behavior": "user-defined",
+        "continuous_performance_control": "user-defined",
+        "interaction_rules": [
+          "Must be supplied by valid custom definition."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "USER_DEFINED_REQUIRED"
+        },
+        "mix_prominence_intent": "user-defined",
+        "sound_effects_intent": "user-defined",
+        "production_mastering_intent": "user-defined"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Custom Style profile",
+          "Genre Contract v3 schema"
+        ],
+        "source_confidence": {
+          "container_architecture": "HIGH"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Reject incomplete custom definition.",
+          "No generic defaults may silently fill missing musical authority."
+        ],
+        "listening_tests": [
+          "Validate against user's declared custom intent."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -11167,6 +11655,24 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "USER_DEFINITION_REQUIRED",
+        "hard_rule": "Custom Style label alone cannot compose."
+      },
+      "component_contract": {
+        "required_fields": [
+          "form",
+          "harmony_or_pitch_system",
+          "rhythm_or_time_system",
+          "instrument_roles",
+          "bass_policy",
+          "percussion_policy",
+          "development_rules",
+          "foreground_rules",
+          "spatial_policy"
+        ],
+        "percentage_fields_optional_but_semantically_defined": true
       }
     },
     "Controlled Custom Style Profile": {
@@ -11175,7 +11681,7 @@
       "source_profile_id": "CONTROLLED_CUSTOM_STYLE_PROFILE_V2",
       "family": "Emerging / Hybrid",
       "source_status": "CONTROLLED_COMPONENT_ARCHITECTURE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__SAVED_PROFILE_EXECUTOR",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CONTROLLED_CUSTOM_STYLE_PROFILE_V2",
@@ -11220,62 +11726,136 @@
         "execution_rule": "REQUIRE_SAVED_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Correctly executes only from an existing saved controlled profile."
+        ],
+        "current_profile_gaps": [
+          "Needs version/schema/hash validation and migration policy."
+        ],
+        "external_sources_considered": [
+          "Current controlled-profile definition",
+          "Genre Contract v3 schema"
+        ],
+        "retained_current_fields": [
+          "saved-profile-only execution",
+          "no inferred defaults"
+        ],
+        "upgraded_fields": [
+          "schema/version/hash gate",
+          "migration policy",
+          "runtime validation"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "harmony_model": {
+          "authority": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "melody_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "rhythm_groove_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "bass_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "percussion_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "phrase_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "transition_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "development_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "cadence_ending_model": {
+          "rule": "LOAD_FROM_VALIDATED_PROFILE"
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "presence_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "activity_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "musical_agency_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_percent": {
+          "status": "RESOLVE_THEN_VALIDATE"
+        },
+        "foreground_window_rules": [
+          "Derived from component contracts plus explicit hybrid handoff rules; do not average incompatible rules blindly."
+        ],
+        "role_handoff_rules": [
+          "Every cross-component foreground transfer must declare source component, destination component and transition rule."
+        ],
+        "register_occupancy": {
+          "rule": "Resolve collisions after component merge; provenance alone does not guarantee compatible register/spectral occupancy."
+        },
+        "spatial_footprint_percent": {
+          "status": "RESOLVE_FROM_COMPONENTS"
+        },
+        "section_population_reference": {
+          "status": "RESOLVE_FROM_COMPONENT_CONTRACTS"
+        },
+        "component_contribution_percent": {
+          "status": "LOAD_FROM_VALIDATED_PROFILE"
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "loaded from saved controlled custom profile",
+        "dynamic_behavior": "loaded from saved controlled custom profile",
+        "timing_humanization_behavior": "loaded from saved controlled custom profile",
+        "continuous_performance_control": "loaded from saved controlled custom profile",
+        "interaction_rules": [
+          "Loaded profile is authoritative after validation."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "LOAD_FROM_VALIDATED_PROFILE"
+        },
+        "mix_prominence_intent": "loaded from saved controlled custom profile",
+        "sound_effects_intent": "loaded from saved controlled custom profile",
+        "production_mastering_intent": "loaded from saved controlled custom profile"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Controlled Custom Style profile",
+          "Genre Contract v3 schema"
+        ],
+        "source_confidence": {
+          "executor_architecture": "HIGH"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Saved profile exists.",
+          "Schema/version/hash pass.",
+          "Migration explicit if older schema."
+        ],
+        "listening_tests": [
+          "Compare output with saved profile intent/reference."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -11284,6 +11864,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "SAVED_PROFILE_REQUIRED",
+        "hard_rule": "No saved valid controlled profile = no generation."
+      },
+      "component_contract": {
+        "saved_profile_required": true,
+        "schema_validation_required": true,
+        "version_required": true,
+        "content_hash_required": true,
+        "migration_must_be_explicit": true
       }
     },
     "DISCO": {
@@ -12198,6 +12789,12 @@
     "Mexican Reggaeton",
     "Chugg / #chugg",
     "Afrobeats",
-    "Afro House"
+    "Afro House",
+    "Afro-Latin / Afrobeats Fusion",
+    "Regional Electronic Hybrids",
+    "Genre-Breaking / Borderless",
+    "Custom Hybrid",
+    "Custom Style",
+    "Controlled Custom Style Profile"
   ]
 }

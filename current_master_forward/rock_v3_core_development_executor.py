@@ -113,6 +113,82 @@ def _realize_degree(symbol:str,degree:int,octave:int)->int:
 def _source_role_map(seed:dict[str,Any])->dict[str,dict[str,Any]]:
     return {x["role"]:x for x in seed.get("roles") or []}
 
+GUITAR_ROOT_TARGET_BY_EPOCH={
+    "INTRO_1":48,
+    "VERSE_1":49,
+    "CHORUS_1":52,
+    "VERSE_2":50,
+    "CHORUS_2":53,
+    "OUTRO_1":48,
+}
+
+
+def _nearest_pitch_class(pc:int,target:int,low:int=42,high:int=88)->int:
+    candidates=[m for m in range(low,high+1) if m%12==pc%12]
+    if not candidates:
+        raise RockV3CoreDevelopmentExecutorError("ROCK_GUITAR_PITCH_CLASS_UNAVAILABLE")
+    return min(candidates,key=lambda m:(abs(m-target),m))
+
+
+def _guitar_voicing(
+    symbol:str,
+    *,
+    top_degree:int,
+    epoch:str,
+)->list[int]:
+    """Create a real vertical Rock rhythm-guitar voicing.
+
+    Root + fifth establish the rock harmonic foundation. The source pattern's
+    degree is preserved as an upper color/voice, so the original cell still
+    influences voicing while the result is no longer a single-note line.
+    """
+    chord=CHORDS.get(symbol)
+    if chord is None:
+        raise RockV3CoreDevelopmentExecutorError(
+            "ROCK_GUITAR_UNSUPPORTED_CHORD::"+str(symbol)
+        )
+    if epoch not in GUITAR_ROOT_TARGET_BY_EPOCH:
+        raise RockV3CoreDevelopmentExecutorError(
+            "ROCK_GUITAR_UNKNOWN_EPOCH::"+str(epoch)
+        )
+    if type(top_degree) is not int or not 1<=top_degree<=7:
+        raise RockV3CoreDevelopmentExecutorError("ROCK_GUITAR_BAD_TOP_DEGREE")
+
+    root_pc=chord["root_pc"]
+    root=_nearest_pitch_class(
+        root_pc,
+        GUITAR_ROOT_TARGET_BY_EPOCH[epoch],
+        low=42,
+        high=64,
+    )
+    fifth=_nearest_pitch_class((root_pc+7)%12,root+7,low=root+4,high=76)
+
+    top_pc=(root_pc+chord["scale"][top_degree-1])%12
+    top_candidates=[
+        m for m in range(max(fifth+3,root+10),89)
+        if m%12==top_pc
+    ]
+    if not top_candidates:
+        raise RockV3CoreDevelopmentExecutorError(
+            "ROCK_GUITAR_TOP_VOICE_UNAVAILABLE"
+        )
+    top=min(top_candidates,key=lambda m:(abs(m-(root+14)),m))
+
+    voicing=sorted({root,fifth,top})
+    if len(voicing)<3:
+        # Degree 1/5 can otherwise collapse onto an existing chord member.
+        octave_root=_nearest_pitch_class(root_pc,top+5,low=top+1,high=92)
+        voicing=sorted({root,fifth,top,octave_root})
+    if len(voicing)<3:
+        raise RockV3CoreDevelopmentExecutorError(
+            "ROCK_GUITAR_VERTICAL_VOICING_COLLAPSED"
+        )
+    if not all(42<=m<=104 for m in voicing):
+        raise RockV3CoreDevelopmentExecutorError(
+            "ROCK_GUITAR_VERTICAL_VOICING_OUTSIDE_RANGE"
+        )
+    return voicing
+
 
 def _pattern_map(seed:dict[str,Any])->dict[str,dict[str,Any]]:
     return {x["role"]:x for x in seed.get("patterns") or []}
@@ -317,49 +393,71 @@ def execute()->dict[str,Any]:
                     raise RockV3CoreDevelopmentExecutorError("ROCK_EVENT_TIMING_INVALID")
 
                 if pattern["kind"]=="CHORD_RELATIVE":
-                    midi=_realize_degree(symbol,int(note["degree"]),int(note["octave"]))
+                    if role=="HARMONY":
+                        midi_values=_guitar_voicing(
+                            symbol,
+                            top_degree=int(note["degree"]),
+                            epoch=spec["development_epoch"],
+                        )
+                    else:
+                        midi_values=[
+                            _realize_degree(
+                                symbol,
+                                int(note["degree"]),
+                                int(note["octave"]),
+                            )
+                        ]
                 elif pattern["kind"]=="DRUM_ABSOLUTE":
-                    midi=int(note["midi"])
+                    midi_values=[int(note["midi"])]
                 else:
                     raise RockV3CoreDevelopmentExecutorError(
                         "ROCK_PATTERN_KIND_UNSUPPORTED::"+str(pattern["kind"])
                     )
 
-                if (
-                    isinstance(playable,list) and len(playable)==2
-                    and not int(playable[0])<=midi<=int(playable[1])
-                ):
-                    raise RockV3CoreDevelopmentExecutorError(
-                        "ROCK_EVENT_OUTSIDE_ROLE_RANGE::"+role
-                    )
+                for voice_index,midi in enumerate(midi_values):
+                    if (
+                        isinstance(playable,list) and len(playable)==2
+                        and not int(playable[0])<=midi<=int(playable[1])
+                    ):
+                        raise RockV3CoreDevelopmentExecutorError(
+                            "ROCK_EVENT_OUTSIDE_ROLE_RANGE::"+role
+                        )
 
-                event={
-                    "track_id":role,
-                    "role":role,
-                    "instrument_id":mapping["instrument_id"],
-                    "source_instrument_id":mapping["source_instrument_id"],
-                    "start_beat":float(Fraction(bar*4)+beat),
-                    "duration_beats":float(duration),
-                    "midi":midi,
-                    "velocity":int(note["velocity"]),
-                    "section":spec["section_id"],
-                    "section_type":spec["section_type"],
-                    "source_cell":cell,
-                    "source_variation":variation,
-                    "source_cell_occurrence":spec["source_cell_occurrence"],
-                    "chord_symbol":symbol,
-                    "foreground_owner":spec["foreground_owner"],
-                    "arrangement_role":(
-                        "SUPPORTING_HARMONY"
-                        if role=="HARMONY" and spec["foreground_owner"]=="LEAD_GUITAR"
-                        else "FOREGROUND_RIFF"
-                        if role=="HARMONY"
-                        else "FOUNDATION"
-                    ),
-                    "source_rule":"ROCK_V3_CORE_DEVELOPED_SOURCE_PATTERN",
-                    "symbolic_only":True,
-                }
-                events.append(event)
+                    event={
+                        "track_id":role,
+                        "role":role,
+                        "instrument_id":mapping["instrument_id"],
+                        "source_instrument_id":mapping["source_instrument_id"],
+                        "start_beat":float(Fraction(bar*4)+beat),
+                        "duration_beats":float(duration),
+                        "midi":midi,
+                        "velocity":int(note["velocity"]),
+                        "section":spec["section_id"],
+                        "section_type":spec["section_type"],
+                        "source_cell":cell,
+                        "source_variation":variation,
+                        "source_cell_occurrence":spec["source_cell_occurrence"],
+                        "chord_symbol":symbol,
+                        "foreground_owner":spec["foreground_owner"],
+                        "arrangement_role":(
+                            "SUPPORTING_HARMONY"
+                            if role=="HARMONY" and spec["foreground_owner"]=="LEAD_GUITAR"
+                            else "FOREGROUND_RIFF"
+                            if role=="HARMONY"
+                            else "FOUNDATION"
+                        ),
+                        "source_rule":"ROCK_V3_CORE_DEVELOPED_SOURCE_PATTERN",
+                        "symbolic_only":True,
+                    }
+                    if role=="HARMONY":
+                        event["vertical_voicing"]=True
+                        event["voicing_member_index"]=voice_index
+                        event["voicing_size"]=len(midi_values)
+                        event["source_top_degree"]=int(note["degree"])
+                    events.append(event)
+
+                if role=="HARMONY" and notes:
+                    per_bar_transforms.append("RHYTHM_GUITAR_VERTICAL_VOICING")
 
         motif_id=_lead_motif_for_bar(spec)
         if spec["foreground_owner"]=="LEAD_GUITAR":
@@ -462,6 +560,9 @@ def execute()->dict[str,Any]:
         "musical_quality_proven":False,
         "listening_approval":False,
         "performance_realization_applied":False,
+        "rhythm_guitar_vertical_voicing_used":True,
+        "minimum_harmony_attack_pitch_count":3,
+        "single_note_rhythm_guitar_attack_allowed":False,
         "render_allowed":False,
         "next_gate":"ROCK_CORE_DEVELOPED_EVENT_AUDIT__THEN_PERFORMANCE_PLAN__NO_AUDIO_YET",
     }

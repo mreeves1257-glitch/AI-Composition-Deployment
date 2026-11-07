@@ -1,0 +1,34 @@
+{
+  "schema": "ROCK_V3_STRUM_BLIND_LISTENING_MAP_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_workflow_run": 42393208378,
+  "source_artifact_id": 13582452120,
+  "source_artifact_digest": "sha256:b7b8ea8c3d0c3626af991e0e066f69f6c607891c6bb53ea29958b8459d3ca1d8",
+  "mapping": {
+    "BLIND_A_CONTEXT": "B_STRUM_WITH_TREATED_LEAD",
+    "BLIND_B_CONTEXT": "A_CURRENT_WITH_TREATED_LEAD",
+    "BLIND_A_HARMONY_ONLY": "B_HARMONY_STRUM",
+    "BLIND_B_HARMONY_ONLY": "A_HARMONY_CURRENT"
+  },
+  "sha256": {
+    "BLIND_A_CONTEXT": "66dd334eda499216ef015be7889c5a81117e349beeee9dcbda3d926d5a77a922",
+    "BLIND_B_CONTEXT": "8c1474a1a21d7d17ac747006282fc44e42b8ad957e2ad4a26351c09279d2bc19",
+    "BLIND_A_HARMONY_ONLY": "084e50a4c6496b946841ed2ce47ad3f5c8ea5779cb51840737d9c9807a43d038",
+    "BLIND_B_HARMONY_ONLY": "be479620ea3479bd23d9e2e53a2209382df26902fb804cc6875ab5b39546322f"
+  },
+  "audio_changed": false,
+  "remixed": false,
+  "normalized": false,
+  "transcoded": false,
+  "current_harmony_max_ringing_beats": 2.8,
+  "strum_note_gap_beats": 0.038,
+  "three_note_span_beats": 0.076,
+  "note_off_times_preserved": true,
+  "canonical_policy_modified": false,
+  "strum_enabled_live": false,
+  "reasoning_engine_used": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "USER_BLIND_STRUM_A_B_JUDGMENT"
+}

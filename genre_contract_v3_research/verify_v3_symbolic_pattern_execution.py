@@ -82,16 +82,14 @@ def main():
                 raise RuntimeError("INCOMPLETE_SOURCE_ROLE_MAPPING_DID_NOT_REFUSE::"+name)
             expected_refusals[name]=roles.get("unresolved",[])
 
-    expected_refusal_names={
-        "Jazz Ballad","Country Ballad","Country Waltz","Afrobeats","Afro House"
-    }
+    expected_refusal_names=set()
     if set(expected_refusals)!=expected_refusal_names:
         raise RuntimeError(
             "SYMBOLIC_REFUSAL_SET_UNEXPECTED::"+
             json.dumps(sorted(expected_refusals))
         )
-    if len(compiled)!=35:
-        raise RuntimeError("EXPECTED_35_SYMBOLIC_EXECUTABLE_GENRES__GOT_"+str(len(compiled)))
+    if len(compiled)!=40:
+        raise RuntimeError("EXPECTED_40_SYMBOLIC_EXECUTABLE_GENRES__GOT_"+str(len(compiled)))
     if len(skipped)!=15:
         raise RuntimeError("EXPECTED_15_HIGHER_AUTHORITY_OR_CONTROLLED_SKIPS__GOT_"+str(len(skipped)))
 
@@ -110,10 +108,11 @@ def main():
         "refused":expected_refusals,
         "skipped":skipped,
         "result":(
-            "35 automatic genres now have a V3-governed, current-instrument-resolved "
-            "symbolic event path. Five ambiguous source-role genres fail closed. Seven "
-            "explicit V3 formation genres, seven controlled genres and Classical remain "
-            "on higher-authority/separate paths."
+            "All 40 automatic genres without explicit V3 formations now have a "
+            "V3-governed, current-instrument-recognized symbolic event path. Brush-snare "
+            "and hand-drum identities are preserved as resource-required canonical roles "
+            "rather than unsafe substitutions. Seven explicit V3 formation genres, seven "
+            "controlled genres and Classical remain on higher-authority/separate paths."
         ),
         "next_gate":(
             "Bind symbolic execution into the diagnostic Stage-3-to-4 handoff, then "

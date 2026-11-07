@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_RHYTHMIC_PERFORMANCE_RENDER_READY__HUMAN_LISTENING_PENDING__ORCHESTRATION_BLOCKED",
+      "research_status": "V3_CLASSICAL_LISTENING_FAIL__SOURCE_GENRE_CONTRACT_REVISION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2990,7 +2990,20 @@
           "rhythmic_gate": "PASS",
           "live_runtime_modified": false,
           "orchestration_enabled": false,
-          "human_listening_review": "PENDING",
+          "human_listening_review": {
+            "status": "FAIL",
+            "date": "2026-11-06",
+            "feedback": [
+              "Piano timbre/tone remained acceptable.",
+              "Texture still sounded like isolated staccato whole-note-like attacks.",
+              "Attacks were excessively even/mechanical.",
+              "No convincing melodic line was perceptible.",
+              "Harmony sounded off to the ear.",
+              "Tempo/pacing felt extremely slow."
+            ],
+            "diagnosis": "Genre/composition execution remains under-specified: melody, vertical harmony, texture, rhythmic note-value behavior, and tempo behavior require source-level revision before further orchestration or runtime integration.",
+            "consequence": "STOP_AUDIO_ITERATION__RETURN_TO_CLASSICAL_GENRE_CONTRACT_AND_COMPOSITION_RULES"
+          },
           "changes": [
             "meter-aware accompaniment figures",
             "strong/weak beat hierarchy",
@@ -18506,13 +18519,14 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Human-listen to the revised Classical rhythmic/performance piano audition.",
-    "If rhythmic feel is still mechanical, revise rhythm/performance before touching orchestration.",
-    "Only after composition plus rhythm passes should period orchestration be bound.",
-    "Do not integrate into the live Composer until combined orchestral listening validation passes."
+    "Revise Classical-period genre contract at source before rendering more audio.",
+    "Make melody generation explicitly audible and independently validated.",
+    "Add simultaneous vertical-harmony/texture rules and accompaniment vocabulary.",
+    "Add variant-specific tempo and note-value behavior.",
+    "Re-test composition on piano only before orchestration."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_RHYTHMIC_PERFORMANCE_HUMAN_LISTENING_GATE",
+  "quantitative_phase_status": "CLASSICAL_SOURCE_RULE_REVISION_REQUIRED_BEFORE_MORE_AUDIO",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

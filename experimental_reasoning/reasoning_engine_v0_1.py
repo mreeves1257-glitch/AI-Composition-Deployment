@@ -283,6 +283,50 @@ def _bass_character_intent(goal: MusicalGoal, tags: set[str]) -> dict[str, Any]:
     }
 
 
+def _spatial_3d_intent(state: ComposerState, goal: MusicalGoal, importance_plan: Mapping[str, Any]) -> dict[str, Any]:
+    """Plan spatial relationships early while leaving actual 3D processing downstream.
+
+    This stage emits compositional spatial intent only. The preserved 3D mixer remains
+    the realization stage after stems exist.
+    """
+    active=[str(x) for x in state.active_instruments if str(x).strip()]
+    section=_norm_section(state.section)
+    bass_ids=[x for x in active if "bass" in x.lower()]
+    return {
+        "status": "PASS" if active else "WAITING_FOR_ACTIVE_INSTRUMENT_LIST",
+        "architecture": "SPATIAL_INTENT_EARLY__PHYSICAL_3D_MIX_LATE",
+        "planning_stage": "PRE_GENERATION_REASONING",
+        "realization_stage": "POST_STEM_EXISTING_3D_MIXER",
+        "move_existing_mixer_now": False,
+        "dimensions": {
+            "left_right": "PLANNED_FOR_SEPARATION_AND_CONVERSATION",
+            "front_back": "PLANNED_FOR_DEPTH_WITHOUT_IMPORTANCE_HIERARCHY",
+            "vertical_or_spectral_space": "PLANNED_AS_REGISTER_AND_FREQUENCY_OCCUPANCY_NOT_LITERAL_HEIGHT",
+            "distance": "PLANNED_FOR_INTIMACY_OR_DEPTH_BY_ROLE_AND_SECTION",
+        },
+        "equal_importance_rule": "SPATIAL_DEPTH_MUST_NOT_BE_USED_TO MAKE_ANY ACTIVE_INSTRUMENT LESS IMPORTANT",
+        "clarity_rule": "CREATE_DISTINCT SPATIAL HOMES SO RICHNESS DOES NOT COLLAPSE INTO MASKING",
+        "interaction_rule": "POSITIONING SHOULD SUPPORT CALL_RESPONSE_HANDOFF_AND_COUNTER_MOTION",
+        "section_rule": (
+            "ALLOW_WIDER_DEEPER_FIELD_WITH_CLEAR_CENTER_OF_GRAVITY"
+            if section in {"chorus","solo"} else
+            "PRESERVE_SPACE_AND_DEPTH_WITHOUT OVERCROWDING"
+        ),
+        "bass_spatial_rule": {
+            "bass_instruments": bass_ids,
+            "center_of_gravity": "STABLE_LOW_FREQUENCY_ANCHOR",
+            "depth": "DEEP_AND_PHYSICALLY_GROUNDED",
+            "width": "CONTROLLED_LOW_END_WIDTH",
+            "richness_target": round(float(goal.bass_richness),3),
+            "importance_change": False,
+            "masking_guardrail": "PRESERVE_LOW_END_AUTHORITY_WHILE LEAVING DISTINCT SPACE_FOR KICK_AND OTHER INSTRUMENTS",
+        },
+        "importance_priority_context": list(importance_plan.get("priority_for_next_window",[])),
+        "future_handoff_required": True,
+        "audio_processing_applied_here": False,
+    }
+
+
 def _instrument_balance_intent(goal: MusicalGoal) -> dict[str, Any]:
     strength = _clamp(float(goal.instrument_balance), 0.0, 1.0)
     complete = strength >= 0.999
@@ -706,6 +750,7 @@ def reason(
         "roles": _role_intent(state, energy_motion, density),
         "bass_character": _bass_character_intent(goal, tags),
         "instrument_balance": _instrument_balance_intent(goal),
+        "spatial_3d_intent": _spatial_3d_intent(state, goal, importance_plan),
         "instrument_importance_plan": importance_plan,
         "instrument_interaction_plan": _instrument_interaction_plan(state, density, importance_plan),
         "musical_memory": _musical_memory_plan(state, generation_plan, importance_plan),
@@ -725,6 +770,8 @@ def reason(
             "DO_NOT_SOLVE_INSTRUMENT_COLLISIONS_BY_DECLARING_ONE_PART_UNIMPORTANT",
             "DO_NOT_EQUATE_BASS_DEPTH_WITH_GREATER_COMPOSITIONAL_IMPORTANCE",
             "DO_NOT_ALLOW_RICH_BASS_TO_MASK_OTHER_EQUAL_IMPORTANCE_INSTRUMENTS",
+            "DO_NOT_APPLY_PHYSICAL_3D_AUDIO_PROCESSING_INSIDE_REASONING",
+            "DO_NOT_POSTPONE_ALL_SPATIAL_DECISIONS_UNTIL_AFTER_RENDERING",
             "DO_NOT_EQUATE_MUSICAL_MEMORY_WITH_LITERAL_NOTE_COPYING",
             "DO_NOT_REINTRODUCE_EVERY_REMEMBERED_IDEA_IMMEDIATELY",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",

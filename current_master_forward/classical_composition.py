@@ -270,9 +270,30 @@ def realize(plan):
 def duration_seconds(plan):
     return sum(180/t['bpm'] for t in plan['tempo_map'])
 
-def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None):
+def build_classical_setup(profile, mode='normal', creation_seed=0, plan=None, v3_variant_package=None):
     if profile.get('profile_id')!=PROFILE_ID:
         raise ValueError('CLASSICAL_PROFILE_ID_MISMATCH')
+    if v3_variant_package is not None:
+        if v3_variant_package.get('package_id') != 'CLASSICAL_V3_VARIANT_PACKAGE_001':
+            raise ValueError('CLASSICAL_V3_VARIANT_PACKAGE_INVALID')
+        if v3_variant_package.get('status') != 'RESEARCH_PACKAGE_READY_FOR_STRUCTURAL_COMPILER__NOT_AUDIO_APPROVED':
+            raise ValueError('CLASSICAL_V3_VARIANT_PACKAGE_STATUS_INVALID')
+        # Do not silently execute the legacy fixed Classical pilot while claiming
+        # that the V3 package is authoritative. The V3 structural compiler must
+        # explicitly replace the old fixed plan first.
+        return {
+            'genre_name':'Classical',
+            'profile_id':PROFILE_ID,
+            'status':'V3_STRUCTURAL_COMPILER_REQUIRED',
+            'resolution_policy':profile['resolution_policy'],
+            'execution_template':'classical_v3_pending_structural_compiler',
+            'events':[],
+            'palette':[],
+            'classical_v3_variant_package':copy.deepcopy(v3_variant_package),
+            'legacy_classical_generator_executed':False,
+            'live_runtime_modified':False,
+            'reason':'V3_PACKAGE_RESOLVED_BUT_LEGACY_FIXED_PLAN_NOT_ALLOWED_AS_V3_EXECUTION',
+        }
     plan=copy.deepcopy(plan) if plan is not None else make_plan(creation_seed,mode)
     events=realize(plan)
     # Keep the proven 14-section score/routing intact, but attach a researched

@@ -1,0 +1,132 @@
+"""Run the reconstructed Composer through V3 symbolic instrument resolution.
+
+This is an integration test, not an audio test. It expects the modules in
+current_master_forward to have been synchronized into composer/runtime first.
+"""
+from __future__ import annotations
+
+from pathlib import Path
+import json
+import sys
+import tempfile
+
+ROOT=Path(__file__).resolve().parents[1]
+RUNTIME=ROOT/"composer"/"runtime"
+if str(RUNTIME) not in sys.path:
+    sys.path.insert(0,str(RUNTIME))
+
+from engine import AICompositionEngine
+from genre_contract_v3_execution_bridge import load_master, snapshot_for
+from genre_v3_instrument_authority import resolve as resolve_explicit
+from genre_v3_source_pattern_bridge import resolve_source_roles
+
+
+def eligible_genres():
+    master=load_master()
+    out=[]
+    for name in master["contracts"]:
+        snap=snapshot_for(name)
+        if snap.get("resolution_policy")!="AUTOMATIC_BASELINE_ALLOWED":
+            continue
+        if name=="Classical":
+            continue
+        if resolve_explicit(name,snap).get("status")=="PASS":
+            continue
+        if resolve_source_roles(name).get("status")=="PASS":
+            out.append(name)
+    return out
+
+
+def main():
+    genres=eligible_genres()
+    if len(genres)!=35:
+        raise RuntimeError("EXPECTED_35_RUNTIME_SYMBOLIC_GENRES__GOT_"+str(len(genres)))
+
+    rows={}
+    with tempfile.TemporaryDirectory() as tmp:
+        engine=AICompositionEngine(history_path=Path(tmp)/"history.json")
+        if getattr(engine.theory,"profile_source",None)!="GENRE_CONTRACT_V3_ALL_55":
+            raise RuntimeError("RUNTIME_ADAPTER_DID_NOT_DEFAULT_TO_V3")
+
+        for name in genres:
+            result=engine.run(name,mode="quick",audio_backend="PRESERVED")
+            if result.get("status")!="V3_SYMBOLIC_INSTRUMENT_RESOLUTION_PASS":
+                raise RuntimeError(
+                    "RUNTIME_SYMBOLIC_RESOLUTION_FAIL::"+name+"::"+
+                    json.dumps({
+                        "status":result.get("status"),
+                        "stage":result.get("stage"),
+                        "reason":result.get("reason"),
+                        "missing":result.get("missing"),
+                    },sort_keys=True)
+                )
+            if result.get("audio_rendered") is not False:
+                raise RuntimeError("RUNTIME_SYMBOLIC_AUDIO_ESCALATION::"+name)
+            theory=result["theory_package"]
+            if theory.get("legacy_note_generator_used") is not False:
+                raise RuntimeError("LEGACY_NOTE_GENERATOR_STILL_USED::"+name)
+            authority=theory.get("genre_v3_instrument_authority") or {}
+            if authority.get("authority")!="V3_GOVERNED_SOURCE_PATTERN_ROLES":
+                raise RuntimeError("SOURCE_ROLE_AUTHORITY_NOT_ACTIVE::"+name)
+            if theory.get("execution_template")!="v3_symbolic_source_pattern":
+                raise RuntimeError("SOURCE_PATTERN_EXECUTION_TEMPLATE_NOT_ACTIVE::"+name)
+            if not theory.get("events"):
+                raise RuntimeError("RUNTIME_SYMBOLIC_EVENTS_EMPTY::"+name)
+
+            package=result["instrument_package"]
+            resolution=package.get("instrument_separator_resolution") or {}
+            if resolution.get("status")!="PASS":
+                raise RuntimeError("RUNTIME_INSTRUMENT_SEPARATOR_RESOLUTION_FAIL::"+name)
+            if resolution.get("missing_registrations"):
+                raise RuntimeError("RUNTIME_INSTRUMENT_REGISTRATION_MISSING::"+name)
+
+            source_ids=sorted({e["instrument_id"] for e in theory["events"]})
+            resolved_ids=sorted({
+                p.get("instrument_id")
+                for p in package.get("profiles",[])
+                if p.get("instrument_id")
+            })
+            unresolved=[iid for iid in source_ids if iid not in resolved_ids]
+            if unresolved:
+                raise RuntimeError(
+                    "RUNTIME_CURRENT_INSTRUMENT_PROFILE_MISSING::"+
+                    name+"::"+",".join(unresolved)
+                )
+
+            rows[name]={
+                "event_count":len(theory["events"]),
+                "selected_instrument_ids":source_ids,
+                "resolved_instrument_ids":resolved_ids,
+                "registration_count":resolution.get("resolved_registration_count"),
+                "tempo_bpm":theory.get("tempo_bpm"),
+                "meter":theory.get("meter"),
+                "legacy_note_generator_used":theory.get("legacy_note_generator_used"),
+                "audio_rendered":result.get("audio_rendered"),
+            }
+
+    summary={
+        "status":"PASS",
+        "diagnostic_only":True,
+        "genre_count":len(rows),
+        "genre_profile_source":"GENRE_CONTRACT_V3_ALL_55",
+        "reasoning_engine_used":False,
+        "audio_rendered":False,
+        "live_runtime_promoted":False,
+        "all_legacy_note_generator_bypassed":all(
+            row["legacy_note_generator_used"] is False for row in rows.values()
+        ),
+        "result":(
+            "The reconstructed Composer accepted V3-governed symbolic events for "
+            "35 automatic genres and resolved every selected event instrument into "
+            "the current instrument library. Rendering was intentionally blocked."
+        ),
+        "genres":rows,
+        "next_gate":"GENRE_SPECIFIC_FORM_AND_MUSICAL_BEHAVIOR_REVALIDATION_BEFORE_AUDIO",
+    }
+    out=ROOT/"genre_contract_v3_research"/"V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json"
+    out.write_text(json.dumps(summary,indent=2)+"\n")
+    print(json.dumps(summary,indent=2))
+
+
+if __name__=="__main__":
+    main()

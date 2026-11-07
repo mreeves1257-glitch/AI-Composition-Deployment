@@ -149,8 +149,8 @@
     },
     {
       "genre_name": "Rhythm and Blues",
-      "research_status": "V3_UPDATED__DIRECT_RNB_TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_STATS_PENDING",
-      "comparison_status": "TAGGED_INSTRUMENT_PRIOR_ADDED__VARIANT_VALIDATION_PENDING",
+      "research_status": "V3_UPDATED__DIRECT_RNB_INSTRUMENT_PRIOR_AND_VARIANT_TAXONOMY_ADDED__ERA_STATS_PENDING",
+      "comparison_status": "SUBGENRE_TIMING_OR_TAXONOMY_AUTHORITY_STRENGTHENED__FURTHER_QUANT_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -185,8 +185,8 @@
     },
     {
       "genre_name": "Contemporary R&B",
-      "research_status": "V3_UPDATED__PRODUCTION_VARIANT_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__CONTEMPORARY_RNB_TIMING_AND_TAXONOMY_AUTHORITY_ADDED__INSTRUMENT_SUBSTYLE_STATS_PENDING",
+      "comparison_status": "SUBGENRE_TIMING_OR_TAXONOMY_AUTHORITY_STRENGTHENED__FURTHER_QUANT_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",
@@ -197,8 +197,8 @@
     },
     {
       "genre_name": "Neo-Soul-related",
-      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
-      "comparison_status": "INITIAL_COMPARISON_COMPLETE__STATISTICS_OR_VARIANTS_PENDING",
+      "research_status": "V3_UPDATED__NEO_SOUL_RELATIONAL_MICROTIMING_AUTHORITY_ADDED__HARMONY_QUANT_PENDING",
+      "comparison_status": "SUBGENRE_TIMING_OR_TAXONOMY_AUTHORITY_STRENGTHENED__FURTHER_QUANT_PENDING",
       "approved_for_runtime": false,
       "quantitative_status": {
         "foreground_reference": "PENDING_OR_NOT_APPLICABLE",

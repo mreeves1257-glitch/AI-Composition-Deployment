@@ -99,6 +99,9 @@ class MusicalGoal:
     emotional_direction: str = "preserve"
     requested_contrast: Optional[str] = None
     force_transition: Optional[str] = None
+    # 1.0 means complete equal prominence among all active instruments.
+    # This is balance of musical/audible presence, not identical note counts.
+    instrument_balance: float = 1.0
 
 
 def _section_target_energy(state: ComposerState, goal: MusicalGoal) -> float:
@@ -168,7 +171,7 @@ def _role_intent(state: ComposerState, energy_motion: str, density: int) -> dict
 
     intent: dict[str, Any] = {
         "preserve_foundation_roles": ["bass", "primary_groove"],
-        "foreground_policy": "ONE_CLEAR_PRIMARY_FOCUS",
+        "foreground_policy": "NO_PERSISTENT_INSTRUMENT_DOMINANCE",
         "supporting_role_density": density,
         "do_not_choose_specific_instruments_here": True,
     }
@@ -193,14 +196,31 @@ def _role_intent(state: ComposerState, energy_motion: str, density: int) -> dict
         })
 
     if section == "chorus":
-        intent["foreground_policy"] = "STRONG_PRIMARY_FOCUS_WITH_SUPPORT"
         intent["add"] = list(dict.fromkeys(intent["add"] + ["width_or_counter_support"]))
     elif section == "bridge":
-        intent["foreground_policy"] = "CONTRASTING_PRIMARY_FOCUS"
+        intent["add"] = list(dict.fromkeys(intent["add"] + ["contrasting_role_behavior"]))
     elif section == "breakdown":
-        intent["foreground_policy"] = "MINIMAL_FOCUS"
+        intent["add"] = list(dict.fromkeys(intent["add"] + ["shared_sparse_space"]))
 
     return intent
+
+
+def _instrument_balance_intent(goal: MusicalGoal) -> dict[str, Any]:
+    strength = _clamp(float(goal.instrument_balance), 0.0, 1.0)
+    complete = strength >= 0.999
+    return {
+        "parameter": "instrument_balance",
+        "target_0_to_1": round(strength, 3),
+        "mode": "COMPLETE_EQUAL_BALANCE" if complete else "PARTIAL_BALANCE",
+        "applies_to": "ALL_ACTIVE_INSTRUMENTS",
+        "relative_prominence": "EQUAL" if complete else "BALANCE_WEIGHTED",
+        "persistent_instrument_dominance_allowed": not complete,
+        "role_differences_allowed": True,
+        "identical_note_density_required": False,
+        "arrangement_instruction": "GIVE_EACH_ACTIVE_INSTRUMENT_MEANINGFUL_AUDIBLE_SPACE",
+        "future_mix_instruction": "NORMALIZE_PERCEIVED_PROMINENCE_ACROSS_ACTIVE_INSTRUMENTS",
+        "solo_or_feature_exception": "REQUIRES_EXPLICIT_OVERRIDE",
+    }
 
 
 def _rhythm_intent(tags: set[str], energy_motion: str, section: str) -> dict[str, Any]:
@@ -341,6 +361,8 @@ def reason(
 
     generation_plan = dict(generation_plan or {})
     goal = goal or MusicalGoal()
+    if not 0.0 <= float(goal.instrument_balance) <= 1.0:
+        raise ValueError("REASONING_INSTRUMENT_BALANCE_OUT_OF_RANGE")
     tags = _norm_tags(semantic_tags)
     section = _norm_section(state.section)
 
@@ -359,6 +381,7 @@ def reason(
             "principle": "DENSITY_FOLLOWS_SECTION_FUNCTION_AND_ENERGY_NOT_FIXED_TRACK_COUNT",
         },
         "roles": _role_intent(state, energy_motion, density),
+        "instrument_balance": _instrument_balance_intent(goal),
         "rhythm": _rhythm_intent(tags, energy_motion, section),
         "harmony": _harmony_intent(tags, state),
         "melody": _melody_intent(state, generation_plan),
@@ -369,6 +392,7 @@ def reason(
             "DO_NOT_SELECT_SAMPLES_OR_RENDER_AUDIO",
             "DO_NOT_EMIT_MIDI_OR_NOTE_EVENTS_IN_V0_1",
             "DO_NOT_CHANGE_INSTRUMENT_IDENTITY",
+            "DO_NOT_ALLOW_PERSISTENT_INSTRUMENT_DOMINANCE_WHEN_BALANCE_IS_1_0",
             "DO_NOT_ACTIVATE_LIVE_PIPELINE",
         ],
     }

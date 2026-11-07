@@ -3697,7 +3697,7 @@
       "source_profile_id": "TRADITIONAL_COUNTRY_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__ERA_VARIANT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "TRADITIONAL_COUNTRY_V1",
@@ -3740,62 +3740,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good two-beat/four-beat pulse, alternating bass, fiddle/steel/guitar role language.",
+          "Correctly keeps fills in melody gaps.",
+          "Harmony baseline is appropriately direct without being absolutely restricted to I/IV/V."
+        ],
+        "current_profile_gaps": [
+          "Traditional Country spans eras/regional practices.",
+          "No formation resolver or population percentages.",
+          "No explicit fill-role ownership among fiddle/steel/guitar/piano.",
+          "No measured presence/activity statistics."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Country harmony corpus research",
+          "Groove MIDI Dataset country performances",
+          "MMA country/slow-country/western-swing libraries",
+          "Berklee American Roots references"
+        ],
+        "retained_current_fields": [
+          "two/four beat pulse",
+          "alternating bass",
+          "fiddle/steel/guitar colors",
+          "fill-in-gaps rule",
+          "simple tonal core"
+        ],
+        "upgraded_fields": [
+          "era/variant resolver",
+          "fill-role agency",
+          "formation resolver",
+          "presence/activity statistics",
+          "turnaround/ending grammar"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Strophic, verse/chorus or bridge forms with instrumental turnarounds and fills; era-specific."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_VARIANT",
+          "rule": "Direct tonal country syntax informed by corpus evidence; I/IV/V centrality may coexist with vi/ii/secondary-dominant and passing colors."
+        },
+        "melody_model": {
+          "rule": "Lead/lyric-like melody owns foreground; fiddle/steel/guitar/piano fills answer in gaps."
+        },
+        "rhythm_groove_model": {
+          "rule": "Two-beat, four-beat, boom-chick, shuffle or variant-specific country pulse."
+        },
+        "bass_model": {
+          "rule": "Alternating root/fifth or walking approaches by section/variant."
+        },
+        "percussion_model": {
+          "rule": "Simple kit, brushes or shuffle support; fills at phrase boundaries rather than constant activity."
+        },
+        "phrase_model": {
+          "rule": "Lead phrases define answer windows for fills."
+        },
+        "transition_model": {
+          "rule": "Instrumental turnarounds, drum fills, steel/fiddle/guitar pickups and stops by variant."
+        },
+        "development_model": {
+          "rule": "Develop through fill rotation, instrumental breaks, harmony color, density and register."
+        },
+        "cadence_ending_model": {
+          "rule": "Turnarounds, tags, stops, held endings or classic country finishes by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Lead/fill/rhythm authority rotates independently of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead retains clarity; fill instruments answer rather than overlap constantly.",
+          "Fiddle/steel/guitar/piano rotate fill ownership instead of all filling simultaneously."
+        ],
+        "role_handoff_rules": [
+          "Foreground passes to instrumental break/turnaround, then returns to lead.",
+          "Rhythm guitar/bass/drums maintain pulse during fill handoffs."
+        ],
+        "register_occupancy": {
+          "rule": "Keep lead and fill instruments in distinct windows; separate bass from low guitar/piano."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Country bands vary by era and regional/production practice."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "guitar strum/pick articulation, fiddle-like legato, clean backbeat",
+        "dynamic_behavior": "clear sectional lifts with moderate dynamic range",
+        "timing_humanization_behavior": "human timing follows two-step/shuffle pocket rather than randomization",
+        "continuous_performance_control": "expression and articulation, limited pedal/amp controls",
+        "interaction_rules": [
+          "Consistent ensemble pulse.",
+          "Fills listen to lead gaps.",
+          "No random independent timing."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "ERA_VARIANT_DEPENDENT"
+        },
+        "mix_prominence_intent": "lead/melody forward; bass and guitars separated",
+        "sound_effects_intent": "natural room/slapback/amp color optional",
+        "production_mastering_intent": "clear midrange, controlled brightness, moderate compression"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Traditional Country profile",
+          "Country harmony corpus research",
+          "Groove MIDI Dataset",
+          "MMA country libraries",
+          "Berklee American Roots references"
+        ],
+        "source_confidence": {
+          "core_country_behavior": "HIGH",
+          "era_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "published_corpus_research": "REFERENCE",
+          "GMD": "CC_BY_4_0",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Era/variant required for formation percentages.",
+          "Fill ownership cannot be simultaneous by default."
+        ],
+        "listening_tests": [
+          "Lead stays clear.",
+          "Fiddle/steel/guitar fills answer naturally.",
+          "Country pulse remains distinct from rock unless variant says otherwise."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -3804,6 +3904,17 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Traditional Country",
+        "candidate_variants": [
+          "Honky-tonk/traditional",
+          "Nashville-style traditional",
+          "Western/cowboy-related",
+          "Old-time country band",
+          "Traditional country with fiddle/steel emphasis"
+        ]
       }
     },
     "Country Rock": {
@@ -3812,7 +3923,7 @@
       "source_profile_id": "COUNTRY_ROCK_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_ROCK_V1",
@@ -3853,62 +3964,160 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good fusion of rock backbeat with country fills/instrument colors.",
+          "Already splits rhythm/lead guitars and preserves fiddle/steel foreground when featured."
+        ],
+        "current_profile_gaps": [
+          "No strength-of-country-vs-rock blend resolver.",
+          "No formation percentages.",
+          "No fill/activity statistics.",
+          "No explicit guitar/fiddle/steel foreground scheduling."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Berklee roots/rock arranging references",
+          "Groove MIDI Dataset rock/country",
+          "GuitarSet Rock",
+          "MMA folk/country rock references"
+        ],
+        "retained_current_fields": [
+          "rock backbeat",
+          "country guitar phrasing",
+          "lead/rhythm split",
+          "fiddle/steel optional colors",
+          "verse/chorus/bridge"
+        ],
+        "upgraded_fields": [
+          "blend resolver",
+          "formation resolver",
+          "foreground schedule",
+          "activity percentages",
+          "country-vs-rock instrumentation weighting"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/chorus/bridge with solo/breakdown; blend controls section intensity."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_ROCK_BLEND",
+          "rule": "Country tonal syntax may combine with rock power/blues vocabulary according to blend."
+        },
+        "melody_model": {
+          "rule": "Lead/vocal-like melody foreground; lead guitar/fiddle/steel features receive explicit windows."
+        },
+        "rhythm_groove_model": {
+          "rule": "Rock backbeat foundation with country phrasing/two-beat influence only when resolved."
+        },
+        "bass_model": {
+          "rule": "Electric bass locks with kick while using country-style approaches and fills."
+        },
+        "percussion_model": {
+          "rule": "Rock kit foundation with country-style fills; no generic constant crash density."
+        },
+        "phrase_model": {
+          "rule": "Country fills answer lead gaps over a rock-derived pulse."
+        },
+        "transition_model": {
+          "rule": "Rock drum/guitar builds plus country fill/turnaround devices by blend."
+        },
+        "development_model": {
+          "rule": "Develop through guitar texture, instrumental features, density and country/rock emphasis shifts."
+        },
+        "cadence_ending_model": {
+          "rule": "Rock stops/fades or country tags/turnarounds according to blend."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Lead/fill/rhythm authority rotates independently of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Featured fiddle/steel/lead guitar gets room from rhythm guitars/keys.",
+          "Kick/bass foundation remains clear without masking acoustic/country colors."
+        ],
+        "role_handoff_rules": [
+          "Foreground rotates lead↔lead guitar/fiddle/steel.",
+          "Rhythm guitar becomes support during features."
+        ],
+        "register_occupancy": {
+          "rule": "Separate electric-guitar density from fiddle/steel/lead registers."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Country Rock formations vary by blend and instrumentation."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "clean-to-driven guitar attacks, bends, slides, drum backbeat",
+        "dynamic_behavior": "chorus and solo sections increase density and drive",
+        "timing_humanization_behavior": "tight groove with human pushes into section boundaries",
+        "continuous_performance_control": "guitar expression/drive, dynamics and articulation",
+        "interaction_rules": [
+          "Rock pocket and country fills share one timing concept.",
+          "Lead/rhythm guitars remain distinct."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "BLEND_DEPENDENT"
+        },
+        "mix_prominence_intent": "bass/kick/rhythm clear; lead guitar/fiddle foreground when featured",
+        "sound_effects_intent": "amp/room/reverb and selective delay",
+        "production_mastering_intent": "punchy rock-country master without masking acoustic detail"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Country Rock profile",
+          "Berklee roots/rock references",
+          "Groove MIDI Dataset",
+          "GuitarSet",
+          "MMA related libraries"
+        ],
+        "source_confidence": {
+          "blend_core": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY",
+          "GMD": "CC_BY_4_0",
+          "GuitarSet": "LICENSE_REVIEW",
+          "MMA": "LICENSE_REVIEW"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Blend must be resolved.",
+          "Featured country instruments cannot be permanently buried by electric guitars."
+        ],
+        "listening_tests": [
+          "Country and rock identities are both audible.",
+          "Featured fiddle/steel/guitar stays clear.",
+          "Backbeat is strong but not generic."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -3917,6 +4126,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Country Rock",
+        "candidate_variants": [
+          "Country-forward rock band",
+          "Rock-forward country band",
+          "Southern/country rock",
+          "Acoustic-electric country rock"
+        ]
       }
     },
     "Country Ballad": {
@@ -3925,7 +4144,7 @@
       "source_profile_id": "COUNTRY_BALLAD_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_BALLAD_V1",
@@ -3969,62 +4188,162 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good sparse accompaniment and lead-breath logic.",
+          "Already distinguishes 4/4, 6/8 and 3/4 ballad possibilities.",
+          "Low end and fills are appropriately restrained."
+        ],
+        "current_profile_gaps": [
+          "Different meters require different grammars, not one ballad engine.",
+          "No formation percentages.",
+          "No orchestration-growth state model.",
+          "No fill-color scheduling."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "MMA SlowCountry",
+          "Berklee roots references",
+          "Groove MIDI Dataset country",
+          "Country harmony research"
+        ],
+        "retained_current_fields": [
+          "slow pulse",
+          "sparse accompaniment",
+          "steel/fiddle/strings color",
+          "lead breath",
+          "gradual orchestration growth"
+        ],
+        "upgraded_fields": [
+          "meter resolver",
+          "formation resolver",
+          "growth states",
+          "foreground windows",
+          "presence/activity statistics"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Verse/chorus or ABA with gradual orchestration growth; meter-specific phrasing."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_BALLAD_VARIANT",
+          "rule": "Simple tonal core with tasteful suspensions, secondary dominants and passing chords."
+        },
+        "melody_model": {
+          "rule": "Lead phrasing controls accompaniment density and color entrances."
+        },
+        "rhythm_groove_model": {
+          "rule": "4/4, 6/8 and 3/4 are distinct resolved pulse grammars; do not normalize them into one grid."
+        },
+        "bass_model": {
+          "rule": "Long roots/fifths or melodic approaches; low activity by default."
+        },
+        "percussion_model": {
+          "rule": "Brushes/light kit or delayed drum entrance; fills restrained."
+        },
+        "phrase_model": {
+          "rule": "Long lead phrases with clear breath and fill windows."
+        },
+        "transition_model": {
+          "rule": "Orchestration growth, light fills, steel/fiddle/piano pickups and harmonic transitions."
+        },
+        "development_model": {
+          "rule": "Develop through gradual layer growth, instrumental color and dynamic contour."
+        },
+        "cadence_ending_model": {
+          "rule": "Tags, ritardandi, held endings or country turnarounds by variant."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Lead/fill/rhythm authority rotates independently of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead remains intimate; steel/fiddle/strings answer selectively.",
+          "New layers enter gradually and do not erase negative space."
+        ],
+        "role_handoff_rules": [
+          "Instrumental fills briefly take foreground, then yield to lead."
+        ],
+        "register_occupancy": {
+          "rule": "Avoid dense low-mid accompaniment under intimate lead."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Ballad formation depends on meter and acoustic/piano/orchestrated variant."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "legato lead colors, gentle strum/pick, brush articulation",
+        "dynamic_behavior": "soft-to-medium arc with emotional peak late",
+        "timing_humanization_behavior": "rubato at phrase edges; stable pulse within sections",
+        "continuous_performance_control": "expression/pedal and phrase dynamics",
+        "interaction_rules": [
+          "Lead breath controls fills.",
+          "Rubato/pulse breathing is shared.",
+          "Dynamics grow gradually."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT",
+          "rule": "Lead forward; color instruments wider/deeper as arrangement grows."
+        },
+        "mix_prominence_intent": "lead intimate; accompaniment wide/soft",
+        "sound_effects_intent": "warm room/reverb; no heavy processing",
+        "production_mastering_intent": "warm and dynamic with restrained high end"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Country Ballad profile",
+          "MMA SlowCountry",
+          "Berklee roots references",
+          "Groove MIDI Dataset",
+          "Country harmony research"
+        ],
+        "source_confidence": {
+          "ballad_core": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY",
+          "GMD": "CC_BY_4_0",
+          "published_corpus": "REFERENCE"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Meter must resolve before generation.",
+          "Layer growth cannot become generic density ramp."
+        ],
+        "listening_tests": [
+          "Lead stays intimate.",
+          "Meter identity is clear.",
+          "Steel/fiddle/strings remain color, not constant wall."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -4033,6 +4352,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Country Ballad",
+        "candidate_variants": [
+          "4/4 country ballad",
+          "6/8 country ballad",
+          "3/4 country ballad",
+          "Piano-led ballad",
+          "Acoustic-guitar-led ballad",
+          "Orchestrated country ballad"
+        ]
       }
     },
     "Country Shuffle": {
@@ -4041,7 +4372,7 @@
       "source_profile_id": "COUNTRY_SHUFFLE_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_SHUFFLE_V1",
@@ -4084,62 +4415,154 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Clear triplet/shuffle subdivision and alternating-bass motion.",
+          "Fills preserving triplet feel is an important existing rule."
+        ],
+        "current_profile_gaps": [
+          "No shuffle-depth/tempo variant model.",
+          "No formation percentages.",
+          "No fiddle/steel/piano role scheduling.",
+          "12/8 versus 4/4 shuffle handling needs explicit meter authority."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Groove MIDI Dataset country",
+          "MMA country/shuffle references",
+          "Berklee roots references"
+        ],
+        "retained_current_fields": [
+          "shuffle subdivision",
+          "country backbeat",
+          "alternating bass",
+          "triplet-preserving fills"
+        ],
+        "upgraded_fields": [
+          "meter/shuffle resolver",
+          "formation resolver",
+          "fill-role scheduling",
+          "activity percentages"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Strophic/verse-chorus dance-song forms with shuffle-specific turnarounds."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_SHUFFLE_VARIANT",
+          "rule": "I/IV/V-centered tonal harmony with blues/dominant color according to variant."
+        },
+        "melody_model": {
+          "rule": "Lead phrasing and fills share shuffle subdivision."
+        },
+        "rhythm_groove_model": {
+          "rule": "Triplet/shuffle subdivision is structural; 4/4 and 12/8 remain distinct meter representations."
+        },
+        "bass_model": {
+          "rule": "Alternating root/fifth plus walking approaches, locked to shuffle feel."
+        },
+        "percussion_model": {
+          "rule": "Shuffle snare/ride/hat pattern; fills preserve triplet subdivision."
+        },
+        "phrase_model": {
+          "rule": "Fiddle/steel/guitar/piano fills answer lead gaps within shuffle grid."
+        },
+        "transition_model": {
+          "rule": "Shuffle-preserving drum and instrumental turnarounds."
+        },
+        "development_model": {
+          "rule": "Develop through fill rotation, instrumental breaks and density while maintaining shuffle identity."
+        },
+        "cadence_ending_model": {
+          "rule": "Shuffle tags, stops or turnarounds."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Lead/fill/rhythm authority rotates independently of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead remains clear; fills rotate rather than stack.",
+          "Shuffle pulse stays audible without excessive cymbal/bass dominance."
+        ],
+        "role_handoff_rules": [
+          "Foreground passes to fiddle/steel/guitar/piano breaks and back to lead."
+        ],
+        "register_occupancy": {
+          "rule": "Separate fill instruments and lead register."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Country Shuffle formation varies; meter/tempo variant must resolve first."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "short guitar comping, fiddle/piano fills, shuffle drum articulation",
+        "dynamic_behavior": "steady medium dynamics with fills and chorus lifts",
+        "timing_humanization_behavior": "swing/shuffle timing shared across ensemble",
+        "continuous_performance_control": "velocity/articulation control",
+        "interaction_rules": [
+          "All parts share triplet feel.",
+          "Fills do not straighten subdivision."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT"
+        },
+        "mix_prominence_intent": "bass/shuffle pulse clear; fills secondary",
+        "sound_effects_intent": "natural/amp room color",
+        "production_mastering_intent": "punchy but not overcompressed"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Country Shuffle profile",
+          "Groove MIDI Dataset",
+          "MMA country/shuffle references",
+          "Berklee roots references"
+        ],
+        "source_confidence": {
+          "shuffle_core": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "GMD": "CC_BY_4_0",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Triplet feel must survive fills.",
+          "4/4 vs 12/8 cannot be silently normalized."
+        ],
+        "listening_tests": [
+          "Shuffle identity remains constant.",
+          "Fills feel country-specific.",
+          "Lead and bass pulse both remain clear."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -4148,6 +4571,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Country Shuffle",
+        "candidate_variants": [
+          "4/4 country shuffle",
+          "12/8 country shuffle",
+          "Western-swing-adjacent shuffle",
+          "Slow shuffle"
+        ]
       }
     },
     "Two-Step": {
@@ -4156,7 +4589,7 @@
       "source_profile_id": "COUNTRY_TWO_STEP_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__METER_VARIANT_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_TWO_STEP_V1",
@@ -4199,62 +4632,155 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Clear dance-pulse priority and alternating-bass structural role.",
+          "Already rejects rubato and protects consistent pulse."
+        ],
+        "current_profile_gaps": [
+          "2/4 versus 4/4/felt-in-2 behavior needs explicit resolver.",
+          "No formation percentages.",
+          "No regional/era variant distinction.",
+          "No turnaround/activity statistics."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "MMA country/western-swing/two-beat references",
+          "Groove MIDI Dataset country",
+          "Berklee American Roots references"
+        ],
+        "retained_current_fields": [
+          "steady dance pulse",
+          "alternating root/fifth",
+          "simple functional cycles",
+          "instrumental turnarounds"
+        ],
+        "upgraded_fields": [
+          "meter/felt-pulse resolver",
+          "formation resolver",
+          "regional variants",
+          "turnaround grammar"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Strophic/verse-chorus with instrumental turnarounds; dance continuity is primary."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_TWO_STEP_VARIANT",
+          "rule": "Clear tonal functional cycles; harmonic complexity cannot disrupt dance pulse."
+        },
+        "melody_model": {
+          "rule": "Melody and fiddle/steel/guitar fills ride over a consistent dance foundation."
+        },
+        "rhythm_groove_model": {
+          "rule": "2/4 and 4/4-felt-in-2 are explicit resolved pulse states; no ambiguous meter conversion."
+        },
+        "bass_model": {
+          "rule": "Alternating root/fifth structural drive with approaches at changes."
+        },
+        "percussion_model": {
+          "rule": "Steady kick/snare or light kit supports dance pulse; fills cannot interrupt floor continuity."
+        },
+        "phrase_model": {
+          "rule": "Turnarounds and fills fit dance phrase lengths."
+        },
+        "transition_model": {
+          "rule": "Short instrumental turnarounds and fills maintain pulse."
+        },
+        "development_model": {
+          "rule": "Develop through fill rotation and instrumental breaks without destabilizing dance groove."
+        },
+        "cadence_ending_model": {
+          "rule": "Dance-band tags, stops or turnarounds."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Lead/fill/rhythm authority rotates independently of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Lead/fill instruments remain clear while dance pulse never disappears.",
+          "Bass/drums are foundation, not permanent foreground."
+        ],
+        "role_handoff_rules": [
+          "Foreground rotates lead↔instrumental turnaround while rhythm foundation stays stable."
+        ],
+        "register_occupancy": {
+          "rule": "Separate dance bass foundation from guitar/piano/fiddle/steel fills."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Two-Step formation and pulse representation vary by region/era."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "crisp strums/picks and clean rhythmic articulation",
+        "dynamic_behavior": "stable dynamics with modest chorus/solo lift",
+        "timing_humanization_behavior": "tight ensemble timing with small human feel",
+        "continuous_performance_control": "limited continuous control; articulation and velocity central",
+        "interaction_rules": [
+          "Consistent dance timing.",
+          "No independent rubato.",
+          "Fills preserve pulse."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT"
+        },
+        "mix_prominence_intent": "dance pulse and melody both clear",
+        "sound_effects_intent": "natural/amp ambience",
+        "production_mastering_intent": "even, punchy master"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Two-Step profile",
+          "MMA country/western-swing references",
+          "Groove MIDI Dataset",
+          "Berklee American Roots references"
+        ],
+        "source_confidence": {
+          "dance_pulse_core": "HIGH",
+          "regional_variant_data": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "MMA": "LICENSE_REVIEW",
+          "GMD": "CC_BY_4_0",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Meter/felt-pulse must resolve first.",
+          "Dance pulse cannot be broken by fills."
+        ],
+        "listening_tests": [
+          "Dance drive is unmistakable.",
+          "Melody remains clear.",
+          "Turnarounds feel integrated."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -4263,6 +4789,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Country Two-Step",
+        "candidate_variants": [
+          "2/4 traditional two-step",
+          "4/4 felt-in-2 dance two-step",
+          "Western/Texas two-step-related",
+          "Fast modern country two-step"
+        ]
       }
     },
     "Country Waltz": {
@@ -4271,7 +4807,7 @@
       "source_profile_id": "COUNTRY_WALTZ_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__VARIANT_FORMATION_REQUIRED",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "COUNTRY_WALTZ_V1",
@@ -4313,62 +4849,158 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Explicitly distinguishes country waltz from generic classical waltz.",
+          "Beat-one bass foundation and lighter beats two/three are already defined.",
+          "Lead-forward mix is appropriate."
+        ],
+        "current_profile_gaps": [
+          "No formation percentages.",
+          "No waltz subtype/tempo resolver.",
+          "No fill/ornament activity model.",
+          "No explicit fiddle/steel/piano color scheduling."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "MMA CountryWaltz library",
+          "Berklee American Roots references",
+          "Country harmony research"
+        ],
+        "retained_current_fields": [
+          "3/4 country flow",
+          "beat-one foundation",
+          "simple tonal harmony",
+          "fiddle/steel/piano color",
+          "melody-forward mix"
+        ],
+        "upgraded_fields": [
+          "variant resolver",
+          "formation resolver",
+          "ornament/fill scheduling",
+          "activity percentages",
+          "ending grammar"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Strophic/verse-chorus/ABA in 3/4 with variant-specific intros/turnarounds/endings."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_COUNTRY_WALTZ_VARIANT",
+          "rule": "Simple tonal country harmony with controlled secondary-dominant/passing color."
+        },
+        "melody_model": {
+          "rule": "Melody stays forward; fiddle/steel/piano/flute-like colors answer selectively."
+        },
+        "rhythm_groove_model": {
+          "rule": "Strong beat one with lighter two/three; avoid generic orchestral waltz or jazz-waltz behavior."
+        },
+        "bass_model": {
+          "rule": "Root/strong foundation on beat one with fifth/approach support later in bar."
+        },
+        "percussion_model": {
+          "rule": "Light waltz kit/brushes or none; support 3-beat dance flow."
+        },
+        "phrase_model": {
+          "rule": "Fills fit 3/4 phrase windows and do not overcrowd melody."
+        },
+        "transition_model": {
+          "rule": "3/4 turnarounds, light fills and instrumental pickups."
+        },
+        "development_model": {
+          "rule": "Develop through color-instrument entries, melody variation and dynamics."
+        },
+        "cadence_ending_model": {
+          "rule": "Country-waltz tags, held beat-one endings or arranged 3/4 closes."
+        }
       },
       "ensemble": {
         "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "population_mass_percent": {
+          "status": "BLOCKED_UNTIL_VARIANT_FORMATION_RESOLVED"
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE"
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Lead/fill/rhythm authority rotates independently of player count."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE_BY_VARIANT"
+        },
+        "foreground_window_rules": [
+          "Melody remains forward; fiddle/steel/piano colors get short windows.",
+          "Bass beat-one foundation stays supportive."
+        ],
+        "role_handoff_rules": [
+          "Foreground moves briefly to instrumental color/turnaround, then returns."
+        ],
+        "register_occupancy": {
+          "rule": "Keep color instruments distinct from melody and bass foundation."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_BY_FORMATION"
+        },
+        "section_population_reference": {
+          "status": "NO_SINGLE_UNIVERSAL_FORMATION",
+          "note": "Country Waltz instrumentation varies; the 3/4 grammar is more stable than formation."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "smooth strum, legato fiddle/steel, soft drum articulation",
+        "dynamic_behavior": "gentle phrase swells",
+        "timing_humanization_behavior": "subtle rubato without losing dance pulse",
+        "continuous_performance_control": "expression and phrase dynamics",
+        "interaction_rules": [
+          "Shared 3/4 flow.",
+          "Fills fit meter.",
+          "No generic classical-waltz phrasing."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "status": "VARIANT_DEPENDENT"
+        },
+        "mix_prominence_intent": "melody forward, bass beat-one foundation supportive",
+        "sound_effects_intent": "warm natural ambience",
+        "production_mastering_intent": "warm, open master"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Country Waltz profile",
+          "MMA CountryWaltz",
+          "Berklee American Roots references",
+          "Country harmony research"
+        ],
+        "source_confidence": {
+          "country_waltz_core": "HIGH",
+          "formation_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "MMA": "LICENSE_REVIEW",
+          "Berklee": "REFERENCE_ONLY",
+          "published_corpus": "REFERENCE"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "3/4 required.",
+          "No jazz/classical waltz fallback."
+        ],
+        "listening_tests": [
+          "Country waltz identity is clear.",
+          "Melody stays forward.",
+          "Fills/colors remain tasteful."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -4377,6 +5009,16 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_PERCENTAGES",
+        "parent_family": "Country Waltz",
+        "candidate_variants": [
+          "Traditional country waltz",
+          "Slow country waltz",
+          "Fiddle/steel-feature waltz",
+          "Orchestrated country waltz"
+        ]
       }
     },
     "Bluegrass-related": {
@@ -4385,7 +5027,7 @@
       "source_profile_id": "BLUEGRASS_RELATED_V1",
       "family": "Country",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "NOT_STARTED",
+      "research_status": "V3_UPDATED__TRADITIONAL_FIVE_PILOT",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "BLUEGRASS_RELATED_V1",
@@ -4428,62 +5070,183 @@
         "execution_rule": "USE_CONTROLLED_PROFILE"
       },
       "comparison": {
-        "current_profile_strengths": [],
-        "current_profile_gaps": [],
-        "external_sources_considered": [],
-        "retained_current_fields": [],
-        "upgraded_fields": [],
+        "current_profile_strengths": [
+          "Good acoustic subdivision, offbeat/chop relationships and rotating solo-break model.",
+          "Correctly avoids drum kit as a traditional default and sustained sub-bass aesthetics.",
+          "Existing roster language already names core bluegrass instruments."
+        ],
+        "current_profile_gaps": [
+          "No explicit traditional formation percentages.",
+          "No chop/roll/rhythm-guitar role occupancy model.",
+          "No break-order/agency statistics.",
+          "Regional/modern variants unresolved."
+        ],
+        "external_sources_considered": [
+          "Current profile",
+          "Berklee Bluegrass Ensemble",
+          "Berklee American Roots reporting on traditional five-piece instrumentation",
+          "MMA/folk-country references"
+        ],
+        "retained_current_fields": [
+          "acoustic drive",
+          "offbeat/chop relationships",
+          "rotating solo breaks",
+          "upright-style bass",
+          "no default drums",
+          "banjo/fiddle/mandolin/guitar core"
+        ],
+        "upgraded_fields": [
+          "traditional five-piece pilot",
+          "variant resolver",
+          "break agency",
+          "rhythmic-role occupancy",
+          "foreground windows"
+        ],
         "conflicts": [],
         "unresolved_questions": []
       },
       "musical_grammar": {
-        "form_model": null,
-        "harmony_model": null,
-        "melody_model": null,
-        "rhythm_groove_model": null,
-        "bass_model": null,
-        "percussion_model": null,
-        "phrase_model": null,
-        "transition_model": null,
-        "development_model": null,
-        "cadence_ending_model": null
+        "form_model": {
+          "rule": "Strophic song/tune forms with rotating breaks, instrumental returns and variant-specific vocal sections."
+        },
+        "harmony_model": {
+          "authority": "RESOLVED_BLUEGRASS_VARIANT",
+          "rule": "Direct tonal I/IV/V-centered harmony with modal/blues color; harmonic complexity remains subordinate to drive and melody."
+        },
+        "melody_model": {
+          "rule": "Lead vocal/fiddle/banjo/mandolin/guitar breaks rotate; backup parts reconfigure under each featured instrument."
+        },
+        "rhythm_groove_model": {
+          "rule": "Driving acoustic subdivision with guitar pulse, mandolin chop and banjo/fiddle/other roles interlocking; no generic drum groove."
+        },
+        "bass_model": {
+          "rule": "Acoustic/upright two-beat or walking support; avoid sustained sub-bass."
+        },
+        "percussion_model": {
+          "rule": "Traditional pilot uses no drum kit; hybrid variants must explicitly request drums and keep them restrained."
+        },
+        "phrase_model": {
+          "rule": "Breaks and fills rotate; backup instruments leave room for featured lines."
+        },
+        "transition_model": {
+          "rule": "Turnarounds, pickup notes and break handoffs rather than drum fills."
+        },
+        "development_model": {
+          "rule": "Develop through break rotation, harmony/vocal changes, instrumental response and dynamic interaction."
+        },
+        "cadence_ending_model": {
+          "rule": "Traditional tags, ensemble stops or pickup/turnaround-based endings."
+        }
       },
       "ensemble": {
-        "instrument_roster": [],
-        "population_mass_percent": {},
-        "presence_percent": {},
-        "activity_percent": {},
-        "musical_agency_percent": {},
-        "foreground_window_percent": {},
-        "foreground_window_rules": [],
-        "role_handoff_rules": [],
-        "register_occupancy": {},
-        "spatial_footprint_percent": {},
-        "section_population_reference": {}
+        "instrument_roster": [
+          "ACOUSTIC_GUITAR",
+          "ACOUSTIC_BASS",
+          "BANJO",
+          "MANDOLIN",
+          "FIDDLE"
+        ],
+        "population_mass_percent": {
+          "ACOUSTIC_GUITAR": 20,
+          "ACOUSTIC_BASS": 20,
+          "BANJO": 20,
+          "MANDOLIN": 20,
+          "FIDDLE": 20
+        },
+        "presence_percent": {
+          "status": "TO_DERIVE_BY_VARIANT",
+          "note": "Five-piece pilot presence is structural only for the selected traditional pilot."
+        },
+        "activity_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Backup activity changes dramatically depending on which instrument owns the break."
+        },
+        "musical_agency_percent": {
+          "status": "TO_DERIVE",
+          "rule": "All five instruments can hold equal musical agency over time while occupying different backup/foreground roles moment to moment."
+        },
+        "foreground_window_percent": {
+          "status": "TO_DERIVE",
+          "rule": "Break rotation should distribute meaningful foreground opportunities without equalizing acoustic power."
+        },
+        "foreground_window_rules": [
+          "Featured break instrument receives clear space; other instruments simplify backup roles.",
+          "Banjo backup must not drown lead/voice; rhythmic pulse can remain with minimal spectral space.",
+          "Mandolin chop, guitar pulse and bass foundation continue without competing as leads."
+        ],
+        "role_handoff_rules": [
+          "Foreground rotates among vocal/lead and instrumental breaks.",
+          "Outgoing soloist returns to backup function.",
+          "Backup roles reconfigure for each featured instrument."
+        ],
+        "register_occupancy": {
+          "rule": "Use register and articulation to separate banjo/fiddle/mandolin/guitar while keeping acoustic bass foundation distinct."
+        },
+        "spatial_footprint_percent": {
+          "status": "TO_DERIVE_AND_VALIDATE",
+          "rule": "Five localized acoustic sources with natural stage spread; no artificial wall-of-strings treatment."
+        },
+        "section_population_reference": {
+          "reference_id": "BLUEGRASS_TRADITIONAL_FIVE_BERKLEE_REFERENCE",
+          "total_physical_players": 5,
+          "counts": {
+            "ACOUSTIC_GUITAR": 1,
+            "ACOUSTIC_BASS": 1,
+            "BANJO": 1,
+            "MANDOLIN": 1,
+            "FIDDLE": 1
+          },
+          "qualification": "Qualified traditional five-piece pilot, not a universal bluegrass headcount. Dobro and other instruments are variant-dependent."
+        }
       },
       "performance": {
-        "articulation_behavior": null,
-        "dynamic_behavior": null,
-        "timing_humanization_behavior": null,
-        "continuous_performance_control": null,
-        "interaction_rules": []
+        "articulation_behavior": "fast picking/bowing/chop articulation and crisp note release",
+        "dynamic_behavior": "acoustic dynamic accents with solo-feature lift",
+        "timing_humanization_behavior": "tight shared pulse with natural acoustic push",
+        "continuous_performance_control": "velocity/articulation and limited expression; preserve fast note clarity",
+        "interaction_rules": [
+          "Players listen/respond in real time.",
+          "Backup is sparse enough not to drown featured instrument.",
+          "Timing is shared acoustic drive, not random jitter."
+        ]
       },
       "production": {
-        "spatial_presentation": null,
-        "mix_prominence_intent": null,
-        "sound_effects_intent": null,
-        "production_mastering_intent": null
+        "spatial_presentation": {
+          "rule": "Natural acoustic ensemble spread; bass anchored, featured break localized, backup instruments individually intelligible."
+        },
+        "mix_prominence_intent": "acoustic midrange clarity with bass audible but not sub-heavy",
+        "sound_effects_intent": "natural room only; avoid heavy synthetic processing",
+        "production_mastering_intent": "dynamic acoustic master, minimal compression"
       },
       "evidence": {
-        "sources": [],
-        "source_confidence": {},
-        "source_license_status": {},
+        "sources": [
+          "Current Bluegrass-related profile",
+          "Berklee Bluegrass Ensemble",
+          "Berklee traditional bluegrass instrumentation examples",
+          "Berklee American Roots references"
+        ],
+        "source_confidence": {
+          "traditional_five_pilot": "MEDIUM_HIGH_FOR_QUALIFIED_REFERENCE",
+          "variant_percentages": "PENDING"
+        },
+        "source_license_status": {
+          "internal": "PROJECT_INTERNAL",
+          "Berklee": "REFERENCE_ONLY"
+        },
         "conflicts_between_sources": [],
         "unresolved_questions": []
       },
       "validation": {
-        "structural_tests": [],
-        "listening_tests": [],
+        "structural_tests": [
+          "Traditional pilot percentages sum to 100.",
+          "No default drum kit.",
+          "Break foreground owner must be explicit."
+        ],
+        "listening_tests": [
+          "All acoustic instruments remain distinguishable.",
+          "Break instrument is clear without permanently boosting it.",
+          "Backup drive continues without masking."
+        ],
         "golden_reference_status": null,
         "approved_for_runtime": false
       },
@@ -4492,6 +5255,18 @@
         "musical_agency_is_not_loudness": true,
         "current_profile_preserved": true,
         "no_live_merge_without_review": true
+      },
+      "variant_resolution": {
+        "status": "REQUIRED_BEFORE_FULL_RUNTIME",
+        "parent_family": "Bluegrass-related",
+        "candidate_variants": [
+          "Traditional five-piece bluegrass",
+          "Dobro-added six-piece",
+          "Modern/progressive bluegrass",
+          "Vocal-harmony bluegrass",
+          "Instrumental bluegrass"
+        ],
+        "note": "Traditional five-piece pilot uses guitar, bass, banjo, mandolin and fiddle; optional dobro/other roles are variant-dependent."
       }
     },
     "Bossa Nova": {
@@ -9116,6 +9891,13 @@
     "Soul",
     "Funk",
     "Contemporary R&B",
-    "Neo-Soul-related"
+    "Neo-Soul-related",
+    "Traditional Country",
+    "Country Rock",
+    "Country Ballad",
+    "Country Shuffle",
+    "Two-Step",
+    "Country Waltz",
+    "Bluegrass-related"
   ]
 }

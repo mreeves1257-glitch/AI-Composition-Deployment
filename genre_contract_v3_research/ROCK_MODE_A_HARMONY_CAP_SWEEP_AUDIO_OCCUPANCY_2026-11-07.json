@@ -1,0 +1,101 @@
+{
+  "schema": "ROCK_MODE_A_HARMONY_CAP_SWEEP_AUDIO_OCCUPANCY_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_workflow_run": 42391402408,
+  "source_artifact_id": 13581711960,
+  "source_artifact_digest": "sha256:1e19cc89b0536a2e1f6e35d4271c28728eb39216d9d53d9fb5dd636ef3d0ec96",
+  "measurement": {
+    "tempo_bpm": 123,
+    "bars": 8,
+    "sample_rate_hz": 44100,
+    "rms_window_ms": 10,
+    "active_threshold_linear_full_scale": 0.01,
+    "note": "Audible occupancy is a diagnostic envelope metric, not a musical-quality score."
+  },
+  "conditions": {
+    "BASELINE": {
+      "positive_extension_cap_beats": null,
+      "mean_active_bar_fraction": 0.2127256672,
+      "median_active_bar_fraction": 0.1457744636,
+      "per_bar_active_fraction": [
+        0.1384615385,
+        0.1487179487,
+        0.1384615385,
+        0.1435897436,
+        0.1479591837,
+        0.4256410256,
+        0.1435897436,
+        0.4153846154
+      ]
+    },
+    "CAP_1_4": {
+      "positive_extension_cap_beats": 1.4,
+      "mean_active_bar_fraction": 0.4683608059,
+      "median_active_bar_fraction": 0.3615384615,
+      "per_bar_active_fraction": [
+        0.358974359,
+        0.3641025641,
+        0.3538461538,
+        0.3641025641,
+        0.3571428571,
+        0.7743589744,
+        0.358974359,
+        0.8153846154
+      ]
+    },
+    "CAP_2_0": {
+      "positive_extension_cap_beats": 2,
+      "mean_active_bar_fraction": 0.5862179487,
+      "median_active_bar_fraction": 0.5076923077,
+      "per_bar_active_fraction": [
+        0.5025641026,
+        0.5076923077,
+        0.4358974359,
+        0.5128205128,
+        0.5,
+        0.841025641,
+        0.5076923077,
+        0.8820512821
+      ]
+    },
+    "CURRENT_2_8": {
+      "positive_extension_cap_beats": 2.8,
+      "mean_active_bar_fraction": 0.6727335165,
+      "median_active_bar_fraction": 0.6794871795,
+      "per_bar_active_fraction": [
+        0.6205128205,
+        0.7025641026,
+        0.4358974359,
+        0.7076923077,
+        0.5357142857,
+        0.841025641,
+        0.6564102564,
+        0.8820512821
+      ]
+    }
+  },
+  "structural_symbolic_verification": {
+    "workflow_run": 42391580885,
+    "artifact_id": 13581249726,
+    "artifact_digest": "sha256:fdd5493367abd09331605c7be725a2f6b980b34c9fc9d51b463f312ac8b3428a",
+    "status": "PASS"
+  },
+  "unchanged_dimensions": [
+    "pitch",
+    "onset",
+    "velocity",
+    "voicing",
+    "event_count",
+    "instrument_identity",
+    "lead",
+    "bass",
+    "drums",
+    "reasoning_engine"
+  ],
+  "canonical_policy_modified": false,
+  "production_fidelity_certified": false,
+  "listening_approval": false,
+  "live_runtime_promoted": false,
+  "next_gate": "HUMAN_HARMONY_CAP_SWEEP_LISTENING_REVIEW"
+}

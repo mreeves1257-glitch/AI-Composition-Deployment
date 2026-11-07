@@ -115,7 +115,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0,str(Path('composer/runtime/experimental_reasoning').resolve()))
 from reasoning_engine_v0_1 import ComposerState, reason, validate, ENGINE_ID
-packet=reason(ComposerState(
+packet=reason(state=ComposerState(
     genre='Classical',
     profile_id='CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2',
     section='Verse',

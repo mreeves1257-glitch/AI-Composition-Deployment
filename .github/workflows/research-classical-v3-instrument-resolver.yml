@@ -1,0 +1,97 @@
+name: Research Classical V3 Instrument Resolver Handoff
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - "genre_contract_v3_research/GENRE_CONTRACT_V3_ALL_55.json"
+      - "current_master_forward/genre_contract_v3_execution_bridge.py"
+      - "current_master_forward/classical_v3_variant_package.py"
+      - "current_master_forward/classical_v3_structural_compiler.py"
+      - "current_master_forward/classical_v3_note_realizer.py"
+      - "current_master_forward/classical_v3_orchestration_binder.py"
+      - "current_master_forward/classical_v3_resource_mapper.py"
+      - "current_master_forward/instrument_separator.py"
+      - "current_master_forward/instrument_program.py"
+      - "current_master_forward/instrument_library.json"
+      - "genre_contract_v3_research/test_classical_v3_resource_mapper.py"
+      - ".github/workflows/research-classical-v3-instrument-resolver.yml"
+  workflow_dispatch:
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run V3 to existing instrument resolver tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python -m unittest genre_contract_v3_research/test_classical_v3_resource_mapper.py -v
+
+      - name: Export seed-0 resolver handoff summary
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          from genre_contract_v3_execution_bridge import snapshot_for
+          from classical_v3_variant_package import resolve
+          from classical_v3_structural_compiler import compile_plan, validate_plan
+          from classical_v3_note_realizer import realize as realize_notes, validate as validate_notes
+          from classical_v3_orchestration_binder import bind, validate as validate_orchestration
+          from classical_v3_resource_mapper import map_resources, validate as validate_resources
+          from instrument_separator import separate_events, verify_instrument_resolution
+          from instrument_program import InstrumentProgram
+
+          out = Path("listening/classical_v3_resource_handoff")
+          out.mkdir(parents=True, exist_ok=True)
+          profile = snapshot_for("Classical")
+          package = resolve(profile, "CLASSICAL_PERIOD_ORCHESTRAL")
+          structure = compile_plan(
+              package, tempo_bpm=112, meter="4/4", mode="quick",
+              seed=0, tonic_pc=0, tonal_mode="major")
+          validate_plan(structure)
+          notes = realize_notes(structure)
+          validate_notes(notes, structure)
+          orchestration = bind(notes, structure, package)
+          validate_orchestration(orchestration, notes, structure)
+          mapped = map_resources(orchestration)
+          ip = InstrumentProgram(
+              Path("current_master_forward/instrument_library.json"))
+          mapping_summary = validate_resources(
+              mapped, orchestration, set(ip.by_id))
+          separated = separate_events("Classical", mapped["events"])
+          resolved = ip.resolve_events(separated["events"])
+          resolution = verify_instrument_resolution(
+              separated["manifest"], resolved)
+          summary = {
+              "status":"PASS",
+              "genre_source":"GENRE_CONTRACT_V3",
+              "variant":"CLASSICAL_PERIOD_ORCHESTRAL",
+              "mapping":mapping_summary,
+              "separator_registration_count":
+                  separated["manifest"]["registration_count"],
+              "instrument_resolver_status":resolved["status"],
+              "instrument_resolution":resolution,
+              "audio_generated":False,
+          }
+          (out / "Classical_V3_Instrument_Resolver_Handoff_seed0.json").write_text(
+              json.dumps(summary, indent=2) + "\n")
+          print(json.dumps(summary, indent=2))
+          PY
+
+      - name: Upload resolver handoff artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Classical_V3_Instrument_Resolver_Handoff
+          path: listening/classical_v3_resource_handoff/*.json
+          if-no-files-found: error

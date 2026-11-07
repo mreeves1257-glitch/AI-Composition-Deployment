@@ -25,6 +25,7 @@ from typing import Any
 
 from genre_v3_foreground_authority import compile_authority
 from genre_v3_symbolic_pattern_executor import compile_seed
+from rock_v3_variant_resolver import resolve as resolve_rock_variant
 
 SCHEMA="ROCK_V3_FOREGROUND_PILOT_001"
 PROFILE_ID="ROCK_CORE_V2"
@@ -170,6 +171,9 @@ def _compose_bar(
 
 def realize()->dict[str,Any]:
     foreground=compile_authority("ROCK")
+    variant_gate=resolve_rock_variant(None)
+    if variant_gate.get("status")!="ROCK_VARIANT_REQUIRED":
+        raise RockV3ForegroundPilotError("ROCK_VARIANT_GATE_DID_NOT_BLOCK_BROAD_ROCK")
     if foreground.get("profile_id")!=PROFILE_ID:
         raise RockV3ForegroundPilotError("ROCK_PROFILE_ID_DRIFT")
     if foreground.get("execution_status")!="STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED":
@@ -265,6 +269,10 @@ def realize()->dict[str,Any]:
         "source_execution_sha256":source["execution_sha256"],
         "foreground_authority_sha256":foreground["foreground_authority_sha256"],
         "foreground_schedule":deepcopy(SECTION_PLAN),
+        "rock_variant_gate":variant_gate,
+        "resolved_rock_variant":None,
+        "variant_specific_music_ready":False,
+        "song_form_expansion_ready":False,
         "lead_instrument_id":LEAD_INSTRUMENT_ID,
         "lead_register_midi":list(LEAD_REGISTER),
         "lead_event_count":len(lead),
@@ -280,7 +288,7 @@ def realize()->dict[str,Any]:
         "legacy_note_generator_used":False,
         "prior_project_melodic_vocabulary":"ROCK_MELODIC_AUTHOR_V1",
         "new_candidate_decision":"SECTION_TO_FOREGROUND_SCHEDULE_REQUIRES_LISTENING_VALIDATION",
-        "promotion_gate":"STRUCTURAL_PASS_THEN_ROCK_LISTENING_VALIDATION_BEFORE_ANY_RUNTIME_AUDIO",
+        "promotion_gate":"ROCK_VARIANT_REQUIRED__THEN_VARIANT_FORM_RESOURCE_AND_LISTENING_GATES",
     }
     result["execution_sha256"]=_sha({k:v for k,v in result.items() if k!="execution_sha256"})
     return result

@@ -57,7 +57,7 @@ required={
     'genre_v3_safe_overlay.json':'Classical',
     'genre_style_sound_maps.json':'Big Band',
     'genre_selector.py':'genre_v3_overlay',
-    'genre_pre_generation_compiler.py':'v3_genre_grammar',
+    'genre_pre_generation_compiler.py':'v3_safe_grammar',
     'experimental_reasoning/reasoning_engine_v0_1.py':'COMPOSER_MUSICAL_REASONING_ENGINE_V0_1',
 }
 for rel,marker in required.items():

@@ -1,0 +1,110 @@
+name: Rock Mode A Harmony Cap Full 40
+
+on:
+  push:
+    branches:
+      - genre-contract-v3-no-reasoning-diagnostic
+    paths:
+      - ".github/workflows/rock-mode-a-harmony-cap-full40.yml"
+      - "genre_contract_v3_research/render_rock_mode_a_harmony_cap_full40.py"
+      - "genre_contract_v3_research/install_pinned_rock_resource_proof.sh"
+      - "current_master_forward/rock_v3_core_development_executor.py"
+      - "current_master_forward/rock_v3_core_performance_executor.py"
+      - "current_master_forward/rock_v3_core_performance_plan.py"
+      - "current_master_forward/target_registry.json"
+      - "current_master_forward/sfz_renderer_adapter.py"
+      - "current_master_forward/official_sfz_compatibility.py"
+  workflow_dispatch:
+
+jobs:
+  full40:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --disable-pip-version-check --no-input numpy
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Restore exact pinned Shinyguitar resource
+        run: |
+          bash genre_contract_v3_research/install_pinned_rock_resource_proof.sh current_master_forward
+          test "$(sha256sum current_master_forward/sound_resources/KARORYFER_SHINYGUITAR/Programs/composer_electric.sfz | awk '{print $1}')" = "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35"
+
+      - name: Prove Shinyguitar sample graph
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from sfz_renderer_adapter import validate_sfz_samples
+          pack=Path("current_master_forward/sound_resources/KARORYFER_SHINYGUITAR").resolve()
+          report=validate_sfz_samples(pack/"Programs/composer_electric.sfz",allowed_root=pack)
+          assert report == {
+              "sample_references":6798,
+              "unique_samples":846,
+              "sfz_files_validated":16,
+          }, report
+          print(report)
+          PY
+
+      - name: Build pinned sfizz 1.2.3 renderer
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sfizz /tmp/sfizz-build
+          git clone --recursive https://github.com/sfztools/sfizz.git /tmp/sfizz
+          cd /tmp/sfizz
+          git checkout 4e70dc0bef53b41f2853ed46e26f5911114c92d0
+          git submodule update --init --recursive
+          cmake -S /tmp/sfizz -B /tmp/sfizz-build             -DCMAKE_BUILD_TYPE=Release             -DENABLE_LTO=OFF             -DSFIZZ_JACK=OFF             -DSFIZZ_SHARED=OFF             -DSFIZZ_RENDER=ON             -DSFIZZ_TESTS=OFF             -DSFIZZ_DEMOS=OFF             -DSFIZZ_DEVTOOLS=OFF
+          cmake --build /tmp/sfizz-build --target sfizz_render --parallel 2
+          RENDERER="$(find /tmp/sfizz-build -type f -name sfizz_render -perm -111 | head -n 1)"
+          test -n "$RENDERER"
+          printf '%s\n' "$RENDERER" > /tmp/sfizz-renderer-path
+
+      - name: Render full-40 harmony candidate, control, and treated lead
+        env:
+          PYTHONPATH: ${{ github.workspace }}/current_master_forward
+          AI_COMP_SFIZZ_PIN: "1.2.3@4e70dc0bef53b41f2853ed46e26f5911114c92d0"
+        run: |
+          export AI_COMP_SFZ_RENDERER="$(cat /tmp/sfizz-renderer-path)"
+          python genre_contract_v3_research/render_rock_mode_a_harmony_cap_full40.py
+
+      - name: Build matched full-40 context mixes
+        run: |
+          set -euo pipefail
+          folder="genre_contract_v3_research/rock_mode_a_harmony_cap_full40"
+
+          ffmpeg -hide_banner -loglevel error -y             -i "$folder/HARMONY_CAP_2_0.wav"             -i "$folder/LEAD_TREATED.wav"             -filter_complex "[0:a]volume=-5dB[h];[1:a]volume=-6dB[l];[h][l]amix=inputs=2:duration=longest:normalize=0[m]"             -map "[m]" -codec:a libmp3lame -b:a 256k             "$folder/CAP_2_0_WITH_TREATED_LEAD_FULL40.mp3"
+
+          ffmpeg -hide_banner -loglevel error -y             -i "$folder/HARMONY_CURRENT_2_8.wav"             -i "$folder/LEAD_TREATED.wav"             -filter_complex "[0:a]volume=-5dB[h];[1:a]volume=-6dB[l];[h][l]amix=inputs=2:duration=longest:normalize=0[m]"             -map "[m]" -codec:a libmp3lame -b:a 256k             "$folder/CURRENT_2_8_WITH_TREATED_LEAD_FULL40.mp3"
+
+      - name: Validate full-40 MP3s
+        run: |
+          set -euo pipefail
+          folder="genre_contract_v3_research/rock_mode_a_harmony_cap_full40"
+          for f in             "$folder/CAP_2_0_WITH_TREATED_LEAD_FULL40.mp3"             "$folder/CURRENT_2_8_WITH_TREATED_LEAD_FULL40.mp3"
+          do
+            codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "$f")"
+            rate="$(ffprobe -v error -select_streams a:0 -show_entries stream=sample_rate -of default=nw=1:nk=1 "$f")"
+            channels="$(ffprobe -v error -select_streams a:0 -show_entries stream=channels -of default=nw=1:nk=1 "$f")"
+            duration="$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "$f")"
+            python -c 'import sys; d=float(sys.argv[1]); assert d>70.0; assert sys.argv[2]=="mp3"; assert int(sys.argv[3])==44100; assert int(sys.argv[4])==2; print("VALID",sys.argv[5],d)' "$duration" "$codec" "$rate" "$channels" "$f"
+          done
+
+      - name: Upload full-40 comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rock_Mode_A_Harmony_Cap_Full40
+          path: |
+            genre_contract_v3_research/rock_mode_a_harmony_cap_full40/CAP_2_0_WITH_TREATED_LEAD_FULL40.mp3
+            genre_contract_v3_research/rock_mode_a_harmony_cap_full40/CURRENT_2_8_WITH_TREATED_LEAD_FULL40.mp3
+            genre_contract_v3_research/rock_mode_a_harmony_cap_full40/ROCK_MODE_A_HARMONY_CAP_FULL40_RENDER_REPORT.json
+          if-no-files-found: error

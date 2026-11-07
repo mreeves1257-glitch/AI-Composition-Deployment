@@ -1262,3 +1262,34 @@ Invariants:
 
 Active gate:
 Human listening chooses C, D, E, or none.
+
+
+## Rock bass hybrid D selected by human listening
+
+Human judgment:
+**D preferred**
+
+Preferred Rock bass diagnostic treatment:
+- symbolic base: held-tone bass candidate
+- strong-beat attacks only
+- no offbeat bass re-attacks
+- 0 different-pitch offbeats
+- sustain/body mapping: `growlybass_clean.sfz`
+- crisp attack mapping: `growlybass_vicious.sfz`
+- attack layer gain: **-9 dB**
+- attack gate: **0.20 beat**
+- attack layer uses exact same onset/pitch/velocity as held note
+- no extra rhythmic event is created
+
+Rejected alternatives:
+- C: held body alone; downbeat too soft
+- E: stronger Vicious transient at -6 dB; not preferred
+
+Decision record:
+`ROCK_V3_BASS_ATTACK_HYBRID_HUMAN_DECISION_2026-11-07.json`
+
+This is now the preferred diagnostic Rock bass treatment.
+No main/live promotion yet. Reasoning engine remains excluded.
+
+Next clean gate:
+Integrate preferred bass D with the already-approved Rock guitar treatment (2.8 HARMONY sustain + safe strum + treated LEAD), with no additional performance variables.

@@ -903,14 +903,14 @@
     },
     "rock_variant_behavior_evidence_file": "genre_contract_v3_research/ROCK_VARIANT_BEHAVIOR_EVIDENCE_2026-11-07.json",
     "rock_foreground_resource_checkpoint": {
-      "status": "PASS_NO_AUDIO",
+      "status": "PASS_NO_AUDIO__PUBLISHER_FILES_UNCHANGED",
       "runtime_workflow_run_id": 42381024844,
       "artifact_id": 13577857135,
       "artifact_sha256": "aee65fd527951a5fa066a177dec5ea04c3da48d18c5d096f5695764f7198d628",
       "source_pattern_genres_runtime_resolution": "PASS_40",
       "rock_foreground_candidate": "STRUCTURAL_PASS",
       "rock_variant_gate": "FAMILY_BASELINE_ALLOWED_ONLY_WHEN_NO_SUBGENRE_CUES__RESOLVE_VARIANT_WHEN_CUES_AVAILABLE",
-      "resource_acquisition": "PASS_PINNED_SHINYGUITAR_AND_BIG_RUSTY",
+      "resource_acquisition": "PASS_PINNED_SHINYGUITAR_AND_BIG_RUSTY__PUBLISHER_TRACKED_FILES_UNCHANGED",
       "shinyguitar_wrapper": {
         "size_bytes": 109,
         "sha256": "da026ba66ab34a4ebb99c6cda93a24d4bc48e57e252a26db5c1fd6916cbaed35",
@@ -924,7 +924,8 @@
       },
       "audio_rendered": false,
       "live_runtime_promoted": false,
-      "next_gate": "BUILD_AND_VALIDATE_NEUTRAL_ROCK_CORE_FAMILY_FORM_WITHOUT_CLAIMING_SUBGENRE"
+      "next_gate": "BUILD_AND_VALIDATE_NEUTRAL_ROCK_CORE_FAMILY_FORM_WITHOUT_CLAIMING_SUBGENRE",
+      "runtime_workflow_head_sha": "8924c3afdede547a96db981560cb31e9dca84d95"
     }
   }
 }

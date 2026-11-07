@@ -1020,7 +1020,7 @@
       "source_profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
       "family": "Classical",
       "source_status": "CONTROLLED_PROFILE",
-      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__GRAMMAR_AND_VOICE_LEADING_PASS__MELODY_EVIDENCE_ADDED",
+      "research_status": "V3_CLASSICAL_ORCHESTRATION_OBJECTIVE_PASS__GRAMMAR_VOICE_LEADING_AND_MELODY_GATES_READY__BINDING_NEXT",
       "approved_for_runtime": false,
       "current_profile_snapshot": {
         "profile_id": "CLASSICAL_COMMON_PRACTICE_TONAL_CHAMBER_V2",
@@ -2759,6 +2759,98 @@
           "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
           "live_runtime_modified": false,
           "next_gate": "USER_GRAMMAR_LISTENING_AND_MELODY_PHRASE_RESEARCH"
+        },
+        "melody_harness_checkpoint": {
+          "status": "STRUCTURAL_ALGORITHM_PASS__REGRESSION_TEST_COMMITTED__CI_EXECUTION_UNAVAILABLE",
+          "date": "2026-11-06",
+          "harness": "genre_contract_v3_research/classical_melody_validation.py",
+          "harness_commit": "f7134f648cc1543e8b5ca0d47602b7e892477e8a",
+          "test": "genre_contract_v3_research/test_classical_melody_validation.py",
+          "test_commit": "23e6248874bd6370fe12e8b1677b6714762e03c5",
+          "seed_count_per_variant": 32,
+          "shared_neutral_harmony": true,
+          "variants": {
+            "CLASSICAL_PERIOD_TOPLINE": {
+              "mean_notes_per_qb": 2.185,
+              "mean_abs_interval_semitones": 2.99,
+              "repeat_percent": 10.95,
+              "step_percent": 49.488,
+              "third_percent": 19.675,
+              "leap_5plus_percent": 19.887,
+              "large_7plus_percent": 11.736,
+              "direction_change_percent": 53.968,
+              "mean_note_duration_qb": 0.375,
+              "large_leap_recovery_percent": 84.177,
+              "bar_downbeat_chord_tone_percent": 100,
+              "cadence_target_percent": 100,
+              "motif_return_bucket_match_percent": 84.762,
+              "maximum_interval_over_32_seeds": 12
+            },
+            "ROMANTIC_TONAL_TOPLINE": {
+              "mean_notes_per_qb": 1.682,
+              "mean_abs_interval_semitones": 3.417,
+              "repeat_percent": 12.759,
+              "step_percent": 37.95,
+              "third_percent": 20.926,
+              "leap_5plus_percent": 28.364,
+              "large_7plus_percent": 16.066,
+              "direction_change_percent": 60.967,
+              "mean_note_duration_qb": 0.536,
+              "large_leap_recovery_percent": 83.858,
+              "bar_downbeat_chord_tone_percent": 100,
+              "cadence_target_percent": 100,
+              "motif_return_bucket_match_percent": 76.823,
+              "maximum_interval_over_32_seeds": 12
+            }
+          },
+          "interpretation": "The period top-line candidates reproduce the broad corpus contrast while preserving cadence targets, downbeat harmonic anchoring, bounded leaps, leap recovery and motivic-category return.",
+          "guardrails": [
+            "This is still a top-line proxy model, not perceptual-melody ground truth.",
+            "Harmony is deliberately neutral/shared in this gate.",
+            "Instrument-specific phrasing and ornamentation are not yet included.",
+            "Live Composer remains untouched."
+          ],
+          "next_gate": "MELODY_TO_PERIOD_GRAMMAR_BINDING"
+        },
+        "controlled_melody_audio_checkpoint": {
+          "status": "LOCAL_RENDER_COMPLETE__HUMAN_LISTENING_PENDING",
+          "date": "2026-11-06",
+          "seed": 0,
+          "tempo_bpm": 76,
+          "instrumentation": "Same acoustic-grand-piano GM program 0 for both variants",
+          "harmony": "Identical 28-bar neutral functional accompaniment for both variants",
+          "mix": "Identical accompaniment velocity and +18 dB global monitoring gain",
+          "variants": {
+            "CLASSICAL_PERIOD_TOPLINE": {
+              "duration_seconds": 69.642449,
+              "listening_mp3_sha256": "pending_master_sync_from_container",
+              "seed0_notes_per_qb": 2.25,
+              "seed0_step_percent": 49.47,
+              "seed0_leap_5plus_percent": 19.15,
+              "seed0_direction_change_percent": 50,
+              "seed0_cadence_target_percent": 100
+            },
+            "ROMANTIC_TONAL_TOPLINE": {
+              "duration_seconds": 69.668571,
+              "listening_mp3_sha256": "pending_master_sync_from_container",
+              "seed0_notes_per_qb": 1.655,
+              "seed0_step_percent": 44.2,
+              "seed0_leap_5plus_percent": 27.54,
+              "seed0_direction_change_percent": 57.85,
+              "seed0_cadence_target_percent": 100
+            }
+          },
+          "ab_comparison": {
+            "duration_seconds": 140.8,
+            "sha256": "b2e52e4464ca2b463db08cda54e0f33956ed50678b7425174de4d5e3ccbccc6f",
+            "order": [
+              "CLASSICAL_PERIOD_TOPLINE",
+              "1.5_SECOND_GAP",
+              "ROMANTIC_TONAL_TOPLINE"
+            ]
+          },
+          "artifact_location_note": "Audio binaries are conversation-container artifacts, not committed to GitHub.",
+          "live_runtime_modified": false
         }
       },
       "safeguards": {
@@ -18265,13 +18357,13 @@
   "first_pass_completed_on": "2026-11-06",
   "first_pass_scope": "Architecture, current-profile comparison, variant/resolver structure, percentage semantics, evidence targets, safeguards, and validation requirements. Quantitative presence/activity/agency statistics remain intentionally pending where evidence has not yet been derived.",
   "next_phase": [
-    "Build a research-only melody/phrase harness with the same neutral harmonic support for both period melody variants.",
-    "Validate interval class bands, rhythmic density, leap recovery, contour reversals and cadence targeting separately from orchestration.",
-    "Add ornament/grace-note behavior only after the core line passes structural tests.",
-    "Keep live Composer untouched."
+    "Bind each period melody variant to its corresponding period grammar while orchestration remains disabled.",
+    "Require chord-tone anchoring at structural harmonic onsets and explicit resolution for non-chord tones.",
+    "Preserve the period interval/rhythm contrast after harmonic binding.",
+    "Render combined grammar+melody piano auditions only after structural binding tests pass."
   ],
   "last_quantitative_update": "2026-11-06",
-  "quantitative_phase_status": "CLASSICAL_MELODY_TOPLINE_EVIDENCE_ADDED__MELODY_HARNESS_NEXT",
+  "quantitative_phase_status": "CLASSICAL_MELODY_GATE_READY__MELODY_TO_GRAMMAR_BINDING_NEXT",
   "runtime_extraction_policy": {
     "policy_id": "GENRE_CONTRACT_V3_RUNTIME_EXTRACTION_POLICY_001",
     "rules": [

@@ -1,0 +1,105 @@
+{
+  "schema": "ROCK_V3_BASS_PITCH_SUSTAIN_COHERENCE_AUDIT_001",
+  "date": "2026-11-07",
+  "diagnostic_only": true,
+  "source_file": "composer_overrides/genre_styles/Rock/SOURCE_PATTERN_LIBRARY_R1.json",
+  "user_listening_observation": [
+    "The bass downbeat feels correct.",
+    "The bass resonates too far into the following subdivision.",
+    "The pitch changes while the previous bass tone is still audibly ringing.",
+    "If bass sustain is used, the sustained portion should remain the same tone."
+  ],
+  "rule_under_test": "A sustained bass tone may ring only while pitch remains unchanged; any pitch change must begin as a distinct new attack after the previous tone is released.",
+  "source_pattern_violations": {
+    "A1": [
+      {
+        "earlier": {
+          "beat": 1.5,
+          "duration": 0.75,
+          "degree": 1
+        },
+        "later": {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        "overlap_beats": 0.25,
+        "pitch_change": true,
+        "violation": "ROOT_TONE_STILL_RINGING_WHEN_FIFTH_ATTACKS"
+      }
+    ],
+    "A2": [
+      {
+        "earlier": {
+          "beat": 1.5,
+          "duration": 0.75,
+          "degree": 1
+        },
+        "later": {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        "overlap_beats": 0.25,
+        "pitch_change": true,
+        "violation": "ROOT_TONE_STILL_RINGING_WHEN_FIFTH_ATTACKS"
+      }
+    ],
+    "B1": [
+      {
+        "earlier": {
+          "beat": 1.5,
+          "duration": 0.75,
+          "degree": 1
+        },
+        "later": {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        "overlap_beats": 0.25,
+        "pitch_change": true,
+        "violation": "ROOT_TONE_STILL_RINGING_WHEN_FIFTH_ATTACKS"
+      },
+      {
+        "earlier": {
+          "beat": 2,
+          "duration": 0.75,
+          "degree": 5
+        },
+        "later": {
+          "beat": 2.25,
+          "duration": 0.75,
+          "degree": 1
+        },
+        "overlap_beats": 0.5,
+        "pitch_change": true,
+        "violation": "FIFTH_TONE_STILL_RINGING_WHEN_ROOT_REATTACKS"
+      }
+    ]
+  },
+  "unaffected_patterns": [
+    "INTRO",
+    "FILL",
+    "B2",
+    "OUTRO"
+  ],
+  "diagnosis": [
+    "The source pattern itself contains overlapping attacks with different chord-relative degrees.",
+    "This creates simultaneous or tail-overlapping bass pitches before any sustain candidate is applied.",
+    "The current Growlybass sample tail makes these source-writing overlaps more audible.",
+    "Bass sustain duration tuning cannot repair a pitch-coherence violation already present in the symbolic source."
+  ],
+  "repair_direction": [
+    "Preserve the approved downbeat attack timing.",
+    "Do not extend a bass note through a later attack of a different pitch.",
+    "If a bass tone is intended to sustain across a subdivision, keep the same pitch through that sustain.",
+    "Treat any root-to-fifth or fifth-to-root move as a discrete new note with the previous pitch released first.",
+    "Do not add a new pitch change merely to create rhythmic movement."
+  ],
+  "sustain_candidate_status": "REJECTED_AS_CURRENT_REPAIR_PATH",
+  "canonical_policy_modified": false,
+  "reasoning_engine_used": false,
+  "live_runtime_promoted": false,
+  "next_gate": "BUILD_SYMBOLIC_BASS_PITCH_COHERENCE_REPAIR_CANDIDATE"
+}

@@ -83,13 +83,26 @@ def main():
                 raise RuntimeError("SOURCE_PATTERN_WRONGLY_PROMOTED_TO_FINISHED_COMPOSITION::"+name)
             if result.get("source_pattern_finished_composition_eligible") is not False:
                 raise RuntimeError("SOURCE_PATTERN_WRONGLY_MARKED_FINISHED_ELIGIBLE::"+name)
-            if result.get("foreground_notes_generated") is not False:
-                raise RuntimeError("FOREGROUND_NOTES_WERE_FABRICATED::"+name)
-            if result.get("foreground_execution_status") != "STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED":
-                raise RuntimeError("FOREGROUND_EXECUTION_STATUS_UNEXPECTED::"+name+"::"+str(result.get("foreground_execution_status")))
             fg=result.get("genre_v3_foreground_authority") or {}
             if fg.get("source_pattern_can_supply_finished_foreground") is not False:
                 raise RuntimeError("FOREGROUND_AUTHORITY_GUARD_MISSING::"+name)
+            registry=result.get("foreground_executor_registry_status") or {}
+            if name=="ROCK":
+                if result.get("foreground_notes_generated") is not True:
+                    raise RuntimeError("ROCK_FOREGROUND_CANDIDATE_NOT_ACTIVE")
+                if result.get("foreground_execution_status")!="GENRE_SPECIFIC_FOREGROUND_RESEARCH_CANDIDATE__STRUCTURAL_PASS":
+                    raise RuntimeError("ROCK_FOREGROUND_RUNTIME_STATUS_WRONG::"+str(result.get("foreground_execution_status")))
+                if registry.get("registered") is not True:
+                    raise RuntimeError("ROCK_FOREGROUND_EXECUTOR_NOT_REGISTERED")
+                if not (result.get("foreground_candidate_execution") or {}).get("lead_event_count"):
+                    raise RuntimeError("ROCK_FOREGROUND_CANDIDATE_METADATA_MISSING")
+            else:
+                if result.get("foreground_notes_generated") is not False:
+                    raise RuntimeError("UNREGISTERED_FOREGROUND_NOTES_WERE_FABRICATED::"+name)
+                if result.get("foreground_execution_status") != "STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED":
+                    raise RuntimeError("FOREGROUND_EXECUTION_STATUS_UNEXPECTED::"+name+"::"+str(result.get("foreground_execution_status")))
+                if registry.get("registered") is not False:
+                    raise RuntimeError("UNEXPECTED_FOREGROUND_EXECUTOR_REGISTERED::"+name)
             theory=result["theory_package"]
             if theory.get("legacy_note_generator_used") is not False:
                 raise RuntimeError("LEGACY_NOTE_GENERATOR_STILL_USED::"+name)
@@ -132,6 +145,9 @@ def main():
                 "audio_rendered":result.get("audio_rendered"),
                 "foreground_execution_status":result.get("foreground_execution_status"),
                 "finished_composition_authority":result.get("finished_composition_authority"),
+                "foreground_notes_generated":result.get("foreground_notes_generated"),
+                "foreground_executor_registered":bool((result.get("foreground_executor_registry_status") or {}).get("registered")),
+                "lead_event_count":(result.get("foreground_candidate_execution") or {}).get("lead_event_count",0),
             }
 
         # A researched formation is not permission to synthesize generic music.
@@ -176,9 +192,17 @@ def main():
         "all_finished_composition_authority_false":all(
             row["finished_composition_authority"] is False for row in rows.values()
         ),
-        "all_foreground_execution_blocked":all(
-            row["foreground_execution_status"]=="STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED"
-            for row in rows.values()
+        "registered_foreground_candidate_count":sum(
+            1 for row in rows.values() if row["foreground_executor_registered"]
+        ),
+        "foreground_blocked_source_pattern_count":sum(
+            1 for row in rows.values()
+            if row["foreground_execution_status"]=="STRUCTURED_FOREGROUND_AUTHORITY_PRESENT__NOTE_EXECUTION_NOT_COMPILED"
+        ),
+        "rock_foreground_candidate_active":(
+            rows["ROCK"]["foreground_notes_generated"] is True
+            and rows["ROCK"]["foreground_executor_registered"] is True
+            and rows["ROCK"]["finished_composition_authority"] is False
         ),
         "result":(
             "The reconstructed Composer accepted V3-governed symbolic events for "
@@ -187,11 +211,13 @@ def main():
             "automatic genres with explicit researched V3 formations stop safely before "
             "the generic legacy melody generator. Brush-snare and hand-drum remain "
             "canonical resource-required identities. Rendering remains blocked, and "
-            "accompaniment-only packages cannot be promoted without a foreground executor."
+            "Rock alone uses its registered structurally validated foreground research candidate; "
+            "the other 39 source-pattern genres remain accompaniment-only. No source-pattern package "
+            "has finished-composition authority and rendering remains blocked."
         ),
         "genres":rows,
         "explicit_formation_safe_stops":explicit_rows,
-        "next_gate":"GENRE_SPECIFIC_FORM_AND_MUSICAL_BEHAVIOR_REVALIDATION_BEFORE_AUDIO",
+        "next_gate":"ROCK_VARIANT_FORM_RESOURCE_GATES__OTHER_GENRES_FOREGROUND_EXECUTORS",
     }
     out=ROOT/"genre_contract_v3_research"/"V3_RUNTIME_SYMBOLIC_INSTRUMENT_RESOLUTION_AUDIT.json"
     out.write_text(json.dumps(summary,indent=2)+"\n")

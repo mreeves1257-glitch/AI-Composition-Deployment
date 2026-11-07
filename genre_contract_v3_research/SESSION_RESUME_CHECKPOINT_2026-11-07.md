@@ -1293,3 +1293,45 @@ No main/live promotion yet. Reasoning engine remains excluded.
 
 Next clean gate:
 Integrate preferred bass D with the already-approved Rock guitar treatment (2.8 HARMONY sustain + safe strum + treated LEAD), with no additional performance variables.
+
+
+## Preferred Rock bass D + approved guitars integration completed
+
+Workflow:
+`Rock V3 Preferred Bass Guitar Integration`
+run `42399341270` — PASS
+
+Artifact:
+`13585036397`
+Digest:
+`sha256:2002e99439ad18d997494cb69b61ac484570798e40bc7bebc8443d2edce9f75a`
+
+Integration:
+- 8 bars / 123 BPM
+- preferred bass D:
+  - Clean held body
+  - Vicious transient at -9 dB
+  - 0.20-beat transient gate
+  - strong-beat bass only
+  - no offbeat re-attacks
+- approved guitar:
+  - HARMONY max ringing 2.8 beats
+  - safe strum
+  - HARMONY gain -5 dB
+  - treated LEAD gain -6 dB
+- no drums
+- no new performance variables
+- reasoning engine excluded
+
+Objective mix check:
+- integrated peak ≈ -13.16 dBFS
+- integrated RMS ≈ -33.77 dBFS
+- no clipping / ample headroom
+- bass held-body RMS ≈ -39.34 dBFS before mix gain
+- bass attack RMS ≈ -43.62 dBFS before -9 dB attack-layer gain
+- HARMONY RMS ≈ -31.36 dBFS before -5 dB mix gain
+- LEAD RMS ≈ -34.74 dBFS before -6 dB mix gain
+- balance is technically reasonable enough for one human listening gate
+
+Active gate:
+Single short human listening clip only. Do not generate variant stack unless this integrated result reveals a specific musical problem.

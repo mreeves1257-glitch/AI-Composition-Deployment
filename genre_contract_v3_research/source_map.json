@@ -286,6 +286,60 @@
       ],
       "use_policy": "REFERENCE_ONLY",
       "license_note": "Use as cited research, not copied content."
+    },
+    {
+      "name": "JazzSAMBA",
+      "role": [
+        "jazz combo multitrack stems",
+        "timed sections",
+        "soloist annotations",
+        "bar/chord grid",
+        "piano/drum MIDI"
+      ],
+      "use_policy": "RESEARCH_AND_DERIVED_RULES",
+      "license_note": "Open dataset published 2026; verify per-record/archive license before direct embedding. Use derived interaction/form statistics preferentially.",
+      "relevance": [
+        "Swing",
+        "Bebop",
+        "Jazz Ballad",
+        "Jazz Waltz",
+        "Bossa Nova",
+        "small-combo jazz variants"
+      ]
+    },
+    {
+      "name": "MCTL Symphony Dataset",
+      "role": [
+        "symbolic orchestral scores",
+        "musical form",
+        "orchestral layer annotations",
+        "classical-to-romantic texture comparison"
+      ],
+      "use_policy": "RESEARCH_AND_VALIDATION",
+      "license_note": "Public research repository; verify repository/data license before any direct redistribution. Derived rules/statistics preferred.",
+      "relevance": [
+        "Classical variant split",
+        "orchestral texture",
+        "period comparison",
+        "activity/layer validation"
+      ]
+    },
+    {
+      "name": "Berklee Jazz Arranging / Writing for Big Band",
+      "role": [
+        "standard big-band section formation",
+        "arranging methods",
+        "section combinations",
+        "rhythm-section writing"
+      ],
+      "use_policy": "REFERENCE_ONLY",
+      "license_note": "Copyrighted educational/reference material; do not copy exercises or arrangements.",
+      "relevance": [
+        "Big Band",
+        "Swing",
+        "Jazz arranging"
+      ]
     }
-  ]
+  ],
+  "last_updated": "2026-11-06"
 }

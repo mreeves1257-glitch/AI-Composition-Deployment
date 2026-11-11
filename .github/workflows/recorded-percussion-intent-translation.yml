@@ -1,0 +1,33 @@
+name: Verify Existing Recorded Percussion Performance Commands
+on:
+  push:
+    branches:
+      - recorded-instrument-control-inventory-2026-10-08
+  workflow_dispatch:
+jobs:
+  recorded-layer-translation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract original MIDI event structures; do not install or re-render samples
+        run: |
+          mkdir -p composer/runtime
+          base64 -d composer/runtime.b64 | tar -xzf - -C composer/runtime
+          cp composer_overrides/recorded_percussion_performance_map.json composer/runtime/
+          cp composer_overrides/recorded_percussion_strike_interpreter.py composer/runtime/
+          cp composer_overrides/test_recorded_percussion_strike_interpreter.py composer/runtime/
+      - name: Test exact SFZ program boundaries and source-grounded note velocities
+        env:
+          PYTHONPATH: composer/runtime
+        run: |
+          python -m py_compile composer/runtime/recorded_percussion_strike_interpreter.py composer/runtime/test_recorded_percussion_strike_interpreter.py
+          python -m unittest -v test_recorded_percussion_strike_interpreter
+      - name: Assert genre operations and live Composer are not activated
+        run: |
+          test ! -e composer_overrides/genre_styles/genre_mix_ratios
+          ! grep -q 'recorded_percussion_strike_interpreter' build_current_composer.sh
+          python composer_overrides/genre_styles/validate_profiles.py
+          echo RECORDED_PERCUSSION_EXPRESSION_SOURCE_TEST_PASS
